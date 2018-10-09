@@ -1,0 +1,95 @@
+/*=========================================================================
+|| FILE: Plugins variables
+===========================================================================
+|| Addons variables for plugins
+|| Uncomment to activate
+=========================================================================*/
+ 
+ 
+//=================================================================//
+// FronBox grunt plugins
+ 
+// @import "automatic/_automatic";             // Grunt: automatic class
+// @import "automatic/_responsive";            // Grunt: responsive class
+ 
+//=================================================================//
+// Scrollbar
+// Assigned to elements: body | .scrollbar
+ 
+@import "../plugins/browser/scrollbar";
+@scrollbar-background: @color-primary;          // Scrollbar container background color
+@scrollbar-size: 8px;                           // Scrollbar container width size
+@scrollbar-color: @color-black;                 // Scrollbar position background color
+
+/**
+  * Burger menu
+  * Collection:
+  under-header, from-side
+**/
+
+@plugin-burger-menu-animation: from-side;
+
+/**
+  * Burger toggle { REQUIRED }
+  * animation { less/plugins/animations/burger/ }
+**/
+
+@burger-planks: 3;                      // Burger planks count
+@burger-animation-style: 2;             // Burger animation style { 1 - 2 }
+
+//=================================================================//
+// Other plugins
+
+@import "plugins/navigation-arrow";
+@import "plugins/navigation-dot";
+@import "plugins/text-block/text-in-line";
+@import "plugins/text-block/text-icon";
+
+// ANIMATIONS
+@import "plugins/animation/loader/bouncing-dots";
+@import "plugins/animation/loader/donut-spinner";
+@import "plugins/animation/loader/scale-lines";
+@import "plugins/animation/loader/circle-rotate";
+@import "plugins/animation/slider-navigation-clip";
+
+// TEXT
+@import "plugins/text/underline-pretty";
+@import "plugins/text/truncate";
+
+// JavaScript
+@import "plugins/javascript/rotate-text";
+@import "plugins/javascript/element-spy";
+@import "plugins/javascript/collapse";
+@import "plugins/javascript/modals";
+@import "plugins/javascript/tabs";
+@import "plugins/javascript/blazy";
+@import "plugins/javascript/cookies";
+@import "plugins/javascript/scroll";
+@import "plugins/javascript/list-vertical-scroll";
+@import "plugins/wcag";
+@import "plugins/javascript/show-more";
+
+// Hover
+@import "plugins/hover/text-line-truncated";
+
+// Inputs
+@import "plugins/inputs/counter";
+
+// Browser
+@import "plugins/browser/selection-color";
+
+// Block
+@import "plugins/blocks/rosette-circle";
+
+// Box
+@import "plugins/box/timeline";
+@import "plugins/box/breadcrumbs";
+@import "plugins/box/flipper";
+
+// Info
+@import "plugins/info/no-script";
+
+// Progress bar
+@import "plugins/progress/progress-line";
+
+@import "plugins/debug/css";

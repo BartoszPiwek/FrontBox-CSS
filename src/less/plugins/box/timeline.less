@@ -1,0 +1,112 @@
+/*=========================================================================
+|| FILE: timeline.less
+===========================================================================
+|| Create timeline box
+||
+|| EMMET:
+.box-timeline>.box-timeline__container>.box-timeline__item*3>.box-timeline__dot+.box-timeline__text{$}
+||
+|| MODIFIER
+|| - for .box-timeline__item
+|| -- .active 
+=========================================================================*/
+
+//=========================================================================
+// Custom style
+
+.box-timeline {
+    // Text { box-timeline__text }
+    &__text {
+        font-size: 14px;
+    }
+    // Dot { box-timeline__dot }
+    &__dot {
+        width: 20px;
+        height: 20px;
+        background-color: @color-black;
+        border-radius: 50%;
+    }
+    // Item { box-timeline__item }
+    &__item { 
+        &.active {
+            .box-timeline__dot {
+                // Insert dot in dot { box-timeline__item.active .box-timeline__dot:before }  
+                &:before { 
+                    width: 40%;
+                    height: 40%; 
+                    border-radius: 50%;
+                    background-color: @color-white;                  
+                }
+            }
+        }
+    }
+    // Container { box-timeline__container }
+    &__container {
+        > .box-timeline__item {
+            &:before {
+                height: 7px;
+                // Calculate top:
+                // box-timeline__dot height / 2 - this height / 2
+                top: 20px / 2 - 7/2;
+                width: 100%;
+                background-color: fade(@color-black, 40%);
+            }
+        }
+    }
+}
+
+//=========================================================================
+// Required style
+
+.box-timeline {
+   
+    &__item { // Items
+        flex: 1 0 0px;
+        position: relative;
+        &.active {
+            .box-timeline__dot {
+                &:before {
+                    content: '';
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    position: absolute;
+                }
+            }
+        }
+    } // END Item
+
+    &__container {
+        display: flex;
+        text-align: center;
+        >.box-timeline__item {  // Line
+            z-index: 1;
+            &:before {
+                z-index: -1;
+                content: '';
+                width: 100%;
+                left: 0;
+                position: absolute;
+                display: block;
+            }
+            &:first-child {
+                &:before {
+                    left: 50%;
+                    width: 50%;
+                }
+            }
+            &:last-child {
+                &:before {
+                    left: 0;
+                    width: 50%;
+                }
+            }
+        } // END Line
+    } 
+
+    &__dot { // Dot
+        display: block;
+        margin: 0 auto;
+        position: relative;
+    } // END Dot
+}

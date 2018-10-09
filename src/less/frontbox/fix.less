@@ -1,0 +1,15 @@
+/*=========================================================================
+|| FILE: _fix.less
+===========================================================================
+|| Classes used for avoid common CSS problems
+=========================================================================*/
+
+//=========================================================================
+// Position fixed
+//= iOS devices have problem with fixed elements and scrolling
+
+.fix_fixed {
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
+}

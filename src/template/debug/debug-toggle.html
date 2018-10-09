@@ -1,0 +1,80 @@
+<!-- build:include header.html -->
+<!-- /build -->
+<title>FrontBox DEBUG</title>
+<!-- build:include header-end.html -->
+<!-- /build -->
+
+<div class="wrap">
+<!-- wrap -->
+
+  <h2 class="h2">TOGGLE ELEMENTS</h2>
+
+  <div class="doc">
+    <div class="doc-block doc-block--article">
+      <p class="doc__text">SINGLE TOGGLE <span class="code">data-element="#test_1" data-toggle="hide"</span></p>
+      <div class="doc__prev ghost-info">
+          <p><span class="link" data-element="#test_1" data-toggle="hide" >toggle block</span></p>
+          <div class="h-40 bg-red" id="test_1">
+            TOGGLE BLOCK
+          </div>
+      </div>
+    </div>
+
+    <div class="doc-block doc-block--article">
+      <p class="doc__text">MULTI TOGGLE <span class="code">data-element="#test_2,#test_3,.test-block" data-toggle="hide"</span></p>
+      <div class="doc__prev ghost-info">
+          <p><span class="link" data-element="#test_2,#test_3,.test-block" data-toggle="hide" >toggle blocks</span></p>
+          <div class="h-40 bg-red" id="test_2">
+            TOGGLE BLOCK 1
+          </div>
+          <div class="h-40 bg-red" id="test_3">
+            TOGGLE BLOCK 2
+          </div>
+          <div class="h-40 bg-red" id="test_4">
+            TOGGLE BLOCK 3
+          </div>
+          <div class="h-40 bg-red test-block">
+            TOGGLE BLOCK 4
+          </div>
+          <div class="h-40 bg-red test-block">
+            TOGGLE BLOCK 5
+          </div>
+      </div>
+    </div>
+
+    <div class="doc-block doc-block--article">
+      <p class="doc__text">SINGLE COLLAPSE <span class="code">data-element="#test_5" data-toggle="collapse"</span></p>
+      <div class="doc__prev ghost-info">
+          <p><span class="link" data-element="#test_5" data-toggle="collapse" >collapse blocks</span></p>
+          <div class="collapse off" id="test_5">
+            <br><br>COLLAPSE BLOCK<br><br>
+            <p><span class="link" data-element="#test_1_1" data-toggle="collapse" >collapse blocks</span></p>
+            <div class="collapse off" id="test_1_1">
+              <br><br>COLLAPSE BLOCK<br><br>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="doc-block doc-block--article">
+      <p class="doc__text">MULTI COLLAPSE <span class="code">data-element="#test_5" data-toggle="collapse"</span></p>
+      <div class="doc__prev ghost-info">
+          <p><span class="link" data-element="#test_6,#test_7,.text-block2" data-toggle="collapse" >collapse blocks</span></p>
+          <div class="collapse off" id="test_6">
+            <br><br>COLLAPSE BLOCK 1<br><br>
+          </div>
+          <div class="collapse off" id="test_7">
+            <br><br>COLLAPSE BLOCK 2<br><br>
+          </div>
+          <div class="collapse off text-block2">
+            <br><br>COLLAPSE BLOCK 2<br><br>
+          </div>
+      </div>
+    </div>
+
+<!-- end wrap -->
+</div>
+
+
+<!-- build:include footer.html -->
+<!-- /build -->

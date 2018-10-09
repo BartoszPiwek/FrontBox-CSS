@@ -1,0 +1,23 @@
+/*=========================================================================
+|| Plugin: scrollbar.less
+===========================================================================
+|| Change scrollbar view ( webkit browser )
+|| Variables in: less/variables/_plugins.less "Scrollbar"
+=========================================================================*/
+
+body, .scrollbar {
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: @scrollbar-size;
+        height: @scrollbar-size;
+        background-color: @scrollbar-background;
+    }
+    &::-webkit-scrollbar-thumb {
+        min-width: @scrollbar-size;
+        max-height: @scrollbar-size;
+        background-color: @scrollbar-color;
+    }
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+}

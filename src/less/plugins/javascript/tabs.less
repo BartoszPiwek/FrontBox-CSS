@@ -1,0 +1,24 @@
+/*=========================================================================
+|| Plugin: tabs.less
+===========================================================================
+|| Style for javascript tabs toggle
+=========================================================================*/
+
+*[data-tabs-content] {
+  & > * {
+    height: 0;
+    overflow: hidden;
+    transition: height @time-transition;
+  }
+  .js_tabs--active {
+    height: auto;
+  }
+}
+
+*[data-tabs] {
+  cursor: pointer;
+
+  &.js_tabs--active {
+    cursor: default;
+  }
+}

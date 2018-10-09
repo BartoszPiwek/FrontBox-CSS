@@ -1,0 +1,35 @@
+/*=========================================================================
+|| Plugin: navigation-arrow.less
+===========================================================================
+|| Foundation style for absolute/fixed arrow navigation
+|| HTML: .navigation-arrow {&--left | &--right} > .icon { SVG }
+=========================================================================*/
+
+.navigation-arrow {
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  user-select: none;
+  transition: background-color @time-transition;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+
+  &--left {
+    left: 0;
+  }
+
+  &--right {
+    right: 0;
+  }
+
+  > .icon {
+    fill: @color-white;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: fill @time-transition;
+  }
+}

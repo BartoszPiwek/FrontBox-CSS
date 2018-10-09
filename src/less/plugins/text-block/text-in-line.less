@@ -1,0 +1,52 @@
+/*=========================================================================
+|| FILE: text-in-line.less
+===========================================================================
+|| Text beetween lines
+||
+|| EMMET:
+.line-text>.line-text__item>.line-text__line.line-text__line--left+.line-text__line.line-text__line--right
+=========================================================================*/
+
+
+// Main container
+.line-text {
+  padding: 10px 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  // Fix safari width
+  overflow: hidden;
+
+  // Text
+  &__item {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-size: 13px;
+    color: @color-primary;
+    // Space between lines
+    padding: 0 20px;
+  }
+
+  // Lines
+  &__line {
+    height: 1px;
+    background-color: @color-primary;
+    position: absolute;
+    width: 100vw;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &--left {
+      left: 100%;
+    }
+    
+    &--right {
+      right: 100%;
+    }
+  }
+}

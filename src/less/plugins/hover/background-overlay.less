@@ -1,0 +1,41 @@
+/*=========================================================================
+|| Create disappear overlay
+|| CATEGORY: Hover
+||
+== STRUCTURE
+.hover-background-overlay { this element have hover trigger }
+    text
+    div
+        div
+    div.hover-background-overlay__item { this element have overlay }
+        img
+
+== EMMET
+.hover-background-overlay>.hover-background-overlay__item
+=========================================================================*/
+
+.hover-background-overlay {
+    &__item {
+        position: relative;
+        &:before {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #333;
+            opacity: .1;
+            transition: opacity 0.2s;
+        }
+    }
+    &:hover, &:focus, &:active {
+        .hover-background-overlay {
+            &__item {
+                &:before {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}

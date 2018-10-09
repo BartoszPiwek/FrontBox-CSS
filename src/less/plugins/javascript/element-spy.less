@@ -1,0 +1,63 @@
+.js-spy {
+
+  &__container {
+    position: relative;
+  }
+
+  &__element {
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+  perspective: 1000;
+    &.run {
+      position: fixed;
+      top: 0;
+      bottom: auto;
+    }
+    &.bottom {
+      position: absolute;
+      bottom: 0;
+      top: auto;
+    }
+
+    &.run {
+      margin: 0 !important;
+    }
+  }
+}
+
+
+.spy-test {
+  position: absolute;
+  &:not(.run){
+    top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    &.bottom {
+      bottom: 0 !important;
+      top: auto !important;
+    }
+  }
+
+  &--2 {
+    &:not(.run){
+      right: 0 !important;
+      top: 0 !important;
+      left: auto !important;
+      &.bottom {
+        bottom: 0 !important;
+        top: auto !important;
+      }
+    }
+  }
+
+  &--3 {
+    &:not(.run){
+      top: 0 !important;
+      right: auto !important;
+      &.bottom {
+        bottom: 0 !important;
+        top: auto !important;
+      }
+    }
+  }
+}

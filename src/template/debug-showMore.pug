@@ -1,0 +1,22 @@
+- var page_title = "Debug show more"
+- var page_description = "FrontBox Description"
+- var page_critical_css = false
+
+include includes/header.pug
+
+main.page-content.relative
+
+    .wrap
+        h2 JS showMore
+
+        .row
+            .col-4
+                .show-more
+                    .show-more__content
+                        | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, alias fugit qui sint aliquid laborum, exercitationem provident vitae vero ratione animi et quia accusantium quibusdam voluptas, odit dolor ea ab.
+                a.show-more-button(href="#" data="showMore" data-target="prevElement") 
+                    span.show-more-button--less Show less
+                    span.show-more-button--more Show more
+
+include includes/footer.pug
+include includes/end.pug

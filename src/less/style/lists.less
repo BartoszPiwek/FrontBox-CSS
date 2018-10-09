@@ -1,0 +1,63 @@
+/*=========================================================================
+|| FILE: lists.less
+===========================================================================
+|| Style for lists
+=========================================================================*/
+
+.list-vertical {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.list {
+
+}
+
+/**
+  * Navigation list
+**/
+
+.list-navigation {
+
+  @media @media_burger-hide {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  & > &__item {
+
+    display: block;
+    color: @color-white;
+    transition+: color @time-transition;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 6px;
+
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+    
+    .add-hover({
+      color: @color-primary;
+    });
+
+    @media @media_burger-hide {
+
+      flex: 1 1 auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
+      padding: 0;
+      margin-bottom: 0 !important;
+      margin-right: 16px;
+
+      &:last-child {
+        margin-right: 0 !important;
+      }
+    }
+
+  }
+}

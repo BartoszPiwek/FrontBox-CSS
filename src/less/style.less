@@ -1,0 +1,44 @@
+/*!******************************************************************
+Author:     Bartosz Piwek
+Framework:  FrontBox-CSS (https://github.com/BartoszPiwek/FrontBox-CSS)
+Version:    Unpublished
+********************************************************************/
+
+/*=========================================================================
+|| FILE: Main style concat
+=========================================================================*/
+@charset "UTF-8";
+
+
+//=================================================================//
+// Initialization
+
+/**
+  * Linked for version:
+  - dev
+  - prod
+**/
+
+// Grid
+& when (@version = dev) { @import "grid.css"; }
+& when (@version = prod) { @import (less) "../../public/dev/css/grid.css"; }
+// Base
+& when (@version = dev) { @import "base.css"; }
+& when (@version = prod) { @import (less) "../../public/dev/css/base.css"; }
+
+// Debug
+& when (@version = dev) { @import "plugins/debug/javascript"; }
+
+// Variables & Settings
+@import "variables/_style";  
+// Frontbox               
+@import "frontbox/_style";                 
+
+//=================================================================//
+// Website style
+
+@import "style/_style";
+
+// Utilities
+& when (@version = dev) { @import "utilities.css"; }
+& when (@version = prod) { @import (less) "../../public/dev/css/utilities.css"; }

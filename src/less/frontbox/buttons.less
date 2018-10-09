@@ -1,0 +1,69 @@
+/*=========================================================================
+|| FILE: _button.less
+===========================================================================
+|| Button style element
+|| Class:
+||              .btn
+|| Collections:
+||              -block ( 100% width, centering )
+||              -disable ( remove clickable behavior )
+=========================================================================*/
+
+
+//=========================================================================
+// Function
+
+.add-button(@color, @background, @border:false, @hover:@defaul-darken){
+  color: @color;
+  background-color: @background;
+  & when not (@border = false) {
+    border: @border;
+  }
+  // when focus
+  &:hover, &:focus {
+    color: darken(@color, @hover);
+    background: darken(@background, @hover);
+  }
+  // when clicked
+  &:active {
+    transform: translateY(1px);
+    color: darken(@color, @hover);
+    background: darken(@background, @hover);
+  }
+}
+
+//=========================================================================
+// Style
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &-block {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  &-disable {
+    pointer-events: none;
+    position: relative;
+    &:before {
+      border-radius: inherit;
+      pointer-events: none;
+      height: 100%;
+      width: 100%;
+      background: black;
+      opacity: 0.6;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+}

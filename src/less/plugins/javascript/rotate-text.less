@@ -1,0 +1,17 @@
+.js-text-rotate.run {
+  display: inline-block;
+  overflow: hidden;
+  > span {
+    display: block;
+    transition: transform 1s 0s;
+    &.hide {
+      display: none;
+    }
+  }
+  &.next {
+    > span {
+      transition: transform 1s 1s;
+      transform: translateY(-100%);
+    }
+  }
+}

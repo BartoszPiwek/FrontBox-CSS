@@ -1,0 +1,57 @@
+- var page_title = "FrontBox Starter!"
+- var page_description = "FrontBox Description"
+- var page_critical_css = "index"
+
+include includes/header.pug
+
+.page-content.relative
+	.wrap
+
+		//- Row responsive
+
+		h2.debug-title.
+			responsive &nbsp; static column
+		p.debug-code.
+			.row.row-responsive
+				.col.col-static
+				.col.col-responsive
+		.debug-view.center
+			.row.row-responsive
+				.col.col-static(style="background-color: red; width: 300px")
+					| .col-static (width: 300px)
+				.col.col-responsive(style="background-color: blue")
+					| .col-responsive
+			br
+			.row.row-responsive
+				.col.col-static(style="background-color: red; width: 120px")
+					| .col-static (width: 120px)
+				.col.col-responsive(style="background-color: blue")
+					| .col-responsive
+
+		h2.debug-title.
+			row reverse
+			
+		p.debug-code.
+			.row.row-reverse
+				.col
+				.col
+		.debug-view.center
+			.row.row-reverse
+				.col(style="background-color: red;")
+					| .col
+				.col(style="background-color: blue;")
+					| .col
+
+		p.debug-code.
+			.row.lg_row-reverse
+				.col
+				.col
+		.debug-view.center
+			.row.lg_row-reverse
+				.col(style="background-color: red;")
+					| .col
+				.col(style="background-color: blue;")
+					| .col
+
+include includes/footer.pug
+include includes/end.pug

@@ -1,0 +1,59 @@
+html.no_js(lang= website_locale itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#") 
+  head
+
+      //- Base Meta
+      meta(charset="utf-8")
+      meta(name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1")
+      meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+      meta(name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no")
+
+      //- Title
+      if page_title
+        title #{page_title}
+      else
+        title #{website_title}
+
+      //- Description
+      if page_description
+        meta(name="description" content= page_description)
+      else
+        meta(name="description" content= website_description)
+
+      //- Keywords
+      if page_keywords
+        meta(name="keywords" content= page_keywords)
+
+      //- Addon Meta
+      if website_color
+        meta(name="theme-color" content= website_color)
+      if website_author
+        meta(name="author" content= website_author)
+
+      //- Base Style
+      link(rel="stylesheet" type="text/css" href="/css/style.css")
+
+      //- Critical CSS
+      if page_criticalCss && website_criticalCSS && version == "prod"
+        <!-- build:css:critical inline -->
+        <link rel="stylesheet" href="../critical-css/#{page_critical_css}.css">
+        <!-- /build -->
+
+      //- Favicons
+      include favicon.html
+
+  body#body
+
+    //- Information about off javascript
+    if website_infoOffJavascript && version == "prod"
+      noscript
+        link(rel="stylesheet" type="text/css" href="/css/info-off-favascipt.css")
+        .info-no-script
+          .info-no-script__content
+            p.info-no-script__header.
+              Przeglądarka zablokowała wykonywanie kodu <strong>JavaScript</strong>.
+            p.info-no-script__text.
+              Do pełnej funkcjonalności strony potrzebujesz włączonej obsługi skryptów. <a class="underline" href="https://www.enable-javascript.com/pl/" rel="nofollow" target="_blank">Tu znajdziesz instrukcje</a>, które pozwolą Ci włączyć skrypty w Twojej przeglądarce.
+
+    //- Information about old browser
+    if website_infoOldBrowser && version == "prod"
+      <!--[if lte IE 9]><div class="info-old-browser"><p>Korzystasz z <strong>przestarzałej</strong> przeglądarki. Proszę <a class="underline" ref="nofollow" target="_blank" href="http://browsehappy.com/">uaktualnij ją</a>.</p></div><![endif]-->

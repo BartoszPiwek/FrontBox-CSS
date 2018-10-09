@@ -1,0 +1,63 @@
+/*=========================================================================
+|| Rosette circle
+===========================================================================
+|| Create nested circles
+|| TODO Function to create n nested circle
+=========================================================================*/
+
+.rosette-circle {
+
+    /**
+      * Function
+    **/
+
+    @rosette-value: blue, white;
+    @rosette-name: blue, white;
+    @rosette-count: 3;
+
+    .list(@rosette-name, @rosette-value, {
+        &--@{name} {
+            background-color: fade(@value, 10%);
+            .loop(@rosette-count, {
+                span:nth-child(@{i}) {
+                    color: red;
+                }
+            });
+        }
+    });
+
+    /**
+      * Begin style
+    **/
+
+    width: 60px;
+    height: 60px;
+    position: relative;
+    line-height: 60px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 50%;
+
+    .icon {
+        width: 28px;
+        height: 27px;
+    }
+
+    &:before {
+        content: '';
+        width: 40px;
+        height: 40px;
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform+_: translate(-50%, -50%);
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    /**
+      * 
+    **/
+    
+}

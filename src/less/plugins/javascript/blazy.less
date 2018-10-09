@@ -1,0 +1,18 @@
+/*=========================================================================
+|| Plugin: blazy.less
+===========================================================================
+|| Style for lib bLazy.js (lazyload image script)
+=========================================================================*/
+
+.js_blazy {
+    background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
+    background-size: cover;
+    opacity: 0.3;
+    background-color: @color-black;
+    transition: opacity @time-transition;
+    display: block;
+    
+    &--active {
+        opacity: 1;
+    }
+}

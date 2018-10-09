@@ -1,0 +1,48 @@
+/*=========================================================================
+|| FILE: badges.less
+===========================================================================
+|| Circular element with text
+=========================================================================*/
+
+
+/*=========================================================================
+// BADGE - create default badge element
+// .add-badge(size, background-color, color, hover-darken-percent)
+// * badge width/height size (min-width, height)
+// * background color
+// * text color {optional | default @defaul-color}
+// * change color on darken percent {optional | default @defaul-darken}
+== SNIPPETS: add-badge
+=========================================================================*/
+.badge {
+  .add-badge(20px, red, white);
+}
+
+//=========================================================================
+// Function
+
+.add-badge(@offset, @background-color, @color:@default-color, @hover:@default-darken){
+  min-width: @offset;
+  height: @offset;
+  background-color: @background-color;
+  & when not (@hover = false) {
+  	.add-hover({
+  	  background-color: darken(@background-color, 20%);
+  	});
+  }
+}
+
+//=========================================================================
+// Style
+
+.badge {
+  display: inline-flex;
+  text-align: center;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  font-family: @font-family-monospace;
+  border-radius: 50%;
+  background: @color-primary;
+  .flex-sameSize();
+}

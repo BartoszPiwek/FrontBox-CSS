@@ -1,0 +1,107 @@
+.add-responsive(@property, @lg-size, @md-size, @sm-size) {
+
+  // Mobile size
+	@{property}: ~"@{sm-size}px";
+
+  // Tablet size
+  @media @tablet {
+  	@{property}: ~"@{md-size}px";
+  }
+
+  // Desktop size
+  @media @desktop {
+  	@{property}: ~"@{lg-size}px";
+  }
+
+}
+
+// .responsive(@prefix, @sufix, @prop1, @prop2, @i:(length(@grid-list))) when (@i > 0) {
+// 	@size: e(extract(@grid-list, @i ));
+// 	@value: e(extract(@grid-list, (@i - 1) ));
+// 	.@{prefix}-@{size}-@{sufix} {
+// 		@media @value {
+// 		@{prop1}: ~'@{prop2}';
+// 		}
+// 	}
+// 	.responsive (@prefix, @sufix, @prop1, @prop2, @i - 2);
+// }
+//
+// .responsive-single(@name, @prefix, @sufix, @i:(length(@grid-list))) when (@i > 0) {
+// 	@size: e(extract(@grid-list, @i ));
+// 	@value: e(extract(@grid-list, (@i - 1) ));
+// 	.@{name}@{size}-@{sufix} {
+// 		@media @value {
+// 		@{prefix}: ~'@{sufix}';
+// 		}
+// 	}
+// 	.responsive-single (@name, @prefix, @sufix, @i - 2);
+// }
+//
+// .make-responsive-single(@full-name, @prefix, @count, @i:(length(@grid-list))) when (@i > 0) {
+// 	@size: e(extract(@grid-list, @i ));
+// 	@value: e(extract(@grid-list, (@i - 1) ));
+// 		.@{size}_@{full-name} {
+// 		@media @value {
+// 		@{prefix}: ~'@{count}';
+// 		}
+// 	}
+// 	.make-responsive-single(@full-name, @prefix, @count, @i - 2);
+// }
+//
+//=========================================================================
+// RESPONSIVE CORE
+//
+// TODO: documentation
+//=========================================================================
+//
+.function-responsive-full(@code, @i:(length(@grid-list))) when (@i > 0) {
+
+	& when (@i = length(@grid-list)) {
+		& {
+			@code();
+		}
+	}
+
+	@value: ~`(function(){
+		var array = @{grid-list-js};
+		return valueResponsive = array[@{i} - 2];
+	})()`;
+
+	@name: ~`(function(){
+		var array = @{grid-list-js};
+		return nameResponsive = array[@{i} - 1];
+	})()`;
+
+	@media @value {
+		@{name}_& {
+			@code();
+		}
+	}
+
+	.function-responsive-full(@code, @i - 2);
+}
+
+/**
+  * Create responsive class
+  * name - class name without dot
+  * code - any style
+**/
+
+.create-responsive-class(@name, @code) {
+	.@{name} {
+		@code();
+	}
+
+	.for2-reverse(@grid-list, {
+
+		@responsive-value: arrayElement(@grid-list, @i - 1);
+		@responsive-name: arrayElement(@grid-list, @i);
+	
+		@media @responsive-value {
+			.@{responsive-name}_@{name} {
+				@code();
+			}
+		}
+
+	});
+}

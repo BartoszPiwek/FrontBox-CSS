@@ -1,0 +1,57 @@
+/*=========================================================================
+|| FILE: blocks.less
+===========================================================================
+|| Often used elements style
+=========================================================================*/
+
+/**
+  * Square
+  * Same width and height
+**/
+
+.block-square {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    & > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+/** 
+  * Absolute center vertical, horizostal
+**/
+
+.block-absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform+_: translateY(-50%);
+	text-align: center;
+	display: block;
+	width: 100%;
+}
+
+/**
+  * Rounded
+**/
+
+.block_rounded {
+    border-radius: 50%;
+}
+
+/** 
+  * Vertical center 
+  * EMMET: 
+.group-middle>span{Text}+img{} 
+.group-middle>span{Text}+svg{} 
+**/ 
+ 
+.group-middle { 
+    > * { 
+        vertical-align: middle !important; 
+        display: inline-block !important; 
+    } 
+}

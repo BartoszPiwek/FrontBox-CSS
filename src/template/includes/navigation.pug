@@ -1,0 +1,43 @@
+
+//- Add placeholder element for spy header
+if !navbar_fixed
+    <div class="header__placeholder" id="header-placeholder">
+
+header#header.header.navbar
+    .wrap.wrap-navbar
+        .container
+            .container__position.container__position--left
+                .container__item
+                    a.navbar__homepage(href="/")
+                        img.navbar-logo(src="images/logo.png" alt="Logo")
+                .container__item
+                    | sub container item
+            .container__position.container__position--center
+                | container center
+            .container__position.container__position--right
+                //- Burger button
+                #burger-button.burger-button
+                    .plank
+                    .plank
+                    .plank
+                //- Burger menu container
+                #burger-menu.burger-menu
+                    #burger-menu-container.burger-menu__container
+                        //- Navigation items
+                        nav.burger-menu__item.list-navigation
+                            a.list-navigation__item(href="/")
+                                | Home
+                            a.list-navigation__item(href="/help.html")
+                                | Other 1
+                            a.list-navigation__item(href="/Other.html")
+                                | Other 2
+                            a.list-navigation__item(href="/Other.html")
+                                | Other 3
+                            a.list-navigation__item(href="/help.html")
+                                | Contact
+                        .burger-menu__item.is_burger-menu--visible
+                            | Visible only when burger is visible
+
+//- Add placeholder element for spy header
+if !navbar_fixed
+    </div>

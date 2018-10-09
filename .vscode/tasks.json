@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile DEV version",
+            "type": "shell",
+            "command": "grunt",
+            "group": "build"
+        },
+        {
+            "label": "Compile PROD version",
+            "type": "shell",
+            "command": "grunt prod",
+            "group": "build"
+        }
+    ]
+}

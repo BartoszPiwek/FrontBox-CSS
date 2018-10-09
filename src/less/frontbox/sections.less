@@ -1,0 +1,28 @@
+//=========================================================================
+// FILE: _sections.less
+//=========================================================================
+// FUNCTION FOR CREATE RESPONSIVE SECTIONS
+
+.make-section(@property) {
+
+  // Mobile size
+  @{property}: @sm-size 0;
+
+  // Tablet size
+  @media @tablet {
+    @{property}: @md-size 0;
+  }
+
+  // Desktop size
+  @media @desktop {
+    @{property}: @lg-size 0;
+  }
+}
+
+.add-hero(@lg-size, @md-size:"", @sm-size:"") {
+  .make-section(padding);
+}
+
+.add-section(@lg-size, @md-size:"", @sm-size:"") {
+  .make-section(margin);
+}

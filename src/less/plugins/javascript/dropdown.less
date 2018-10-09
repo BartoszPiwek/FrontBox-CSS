@@ -1,0 +1,28 @@
+/*=========================================================================
+|| FILE: _dropdown.less
+===========================================================================
+|| JavaScript dropdown style
+=========================================================================*/
+
+
+.dropdown {
+  position: relative;
+
+  &__item {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: opacity @time-transition;
+  }
+
+  // Dropdown active style
+  &.js_active {
+    .dropdown {
+      &__item {
+        opacity: 1;
+      }
+    }
+  }
+}

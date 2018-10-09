@@ -1,0 +1,23 @@
+/*
+    Burger to icon X { first and last plank rotate; center plank hide }
+    planks: 3;
+    style: 1;
+*/
+
+.add-burger-animation() {
+    &:first-child {
+        left: 0;
+        top: 45%;
+        transform: rotate(45deg);
+        width: 100%;
+    }
+    &:nth-child(2) {
+        opacity: 0;
+    }
+    &:last-child {
+        left: 0;
+        top: 45%;
+        transform: rotate(-45deg);
+        width: 100%;
+    }
+}

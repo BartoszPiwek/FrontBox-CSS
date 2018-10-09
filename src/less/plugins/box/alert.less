@@ -1,0 +1,67 @@
+/*=========================================================================
+|| FILE: _alert.less
+===========================================================================
+|| Alert elements ( notification )
+=========================================================================*/
+
+
+//=========================================================================
+// Function
+
+.add-alert(@color, @background, @font-size, @height, @border, @iconX, @iconY:"") {
+
+  // Basic
+  color: @color;
+  background-color: @background;
+  border: @border;
+
+  // Count padding
+  & when (@iconY > @font-size) {
+    @paddingCalc: ((@height - @font-size) / 2) - ((@iconX - @font-size) /2);
+    padding: ~"@{paddingCalc}px 20px";
+  } else {
+    @paddingCalc: (@height - @font-size) / 2;
+    padding: ~"@{paddingCalc}px 20px";
+  }
+
+  // Fix white gap
+  .fixWhiteSpace();
+
+  // Fix when icon don't include
+  &.ignore {
+    @paddingCalc: (@height - @font-size) / 2;
+    padding: ~"@{paddingCalc}px 20px";
+  }
+
+  & > .text {
+    font-size: ~"@{font-size}px";
+    & > .icon {
+      width: ~"@{iconX}px";
+      height: ~"@{iconY}px";
+    }
+  }
+}
+
+//=========================================================================
+// Style
+
+.alert {
+  display: block;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  & > .text {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    position: relative;
+    & > svg:not(.ignore) {
+      vertical-align: middle;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(100%, -25%);
+    }
+  }
+}

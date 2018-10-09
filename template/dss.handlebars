@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>{{project.name}} styleguide</title> 
+  <link rel="stylesheet" href="assets/js/prettify/prettify.css?v=1" type="text/css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=1" type="text/css" />
+  <script src="assets/js/prettify/prettify.js?v=1"></script>
+</head>
+<body> 
+  <header>
+    <h1>{{project.name}} styleguide</h1>
+    <p class="version">v.<strong>{{project.version}}</strong></p>
+    <p class="description">{{project.description}}</p>
+  </header>
+  <div id="wrapper">
+    <nav role="main">
+      <h2>Table of Contents</h2>
+      <ul>
+        {{#files}}
+        <li><a href="#{{file}}" data-file="{{file}}">{{file}}</a></li>
+        {{/files}}
+      </ul>
+    </nav>
+
+    <div class="styleguide">
+      {{#files}}
+      <div class="file">
+
+        <h3 id="{{file}}">{{file}}</h3>
+
+        {{#blocks}}
+
+        <div class="block">
+
+          <div class="info">
+            <h4>{{name}}</h4>
+            {{#if description}}
+            <p class="description">{{description}}</p>
+            {{/if}}
+            {{#if emmet}}
+            <p class="emmet">{{emmet}}</p>
+            {{/if}}
+
+            {{#state}}
+            <p class="state"><span>{{name}}</span> - {{description}}</p>
+            {{/state}}
+          </div>
+
+          {{#if markup}}
+
+          <div class="example">
+            <div class="item" style="display: none;">{{{markup.example}}}</div>
+            <iframe></iframe>
+          </div>
+
+          {{#state}}
+          <div class="example state {{class}}">
+            <div class="name">{{name}}</div>
+            <div class="item" data-state="{{escaped}}" style="display: none;">{{{../markup.example}}}</div>
+            <iframe></iframe>
+          </div>
+          {{/state}}
+          <pre class="prettyprint lang-html markup">
+          {{{markup.escaped}}}
+          </pre>
+
+          {{/if}}
+
+        </div>
+        {{/blocks}}
+
+      </div>
+      {{/files}}
+    </div>
+  </div>
+<footer></footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(function() {
+    $("div.example > div.item").each(function() {
+      var $self = $(this),
+          pseudoState = $self.attr("data-state"),
+          $iframe = $self.next('iframe');
+
+      $self.children().addClass(pseudoState);
+
+      $iframe.ready(function() {
+        var markup = $self.html();
+
+        $iframe.contents().find('head').append('<link rel="stylesheet" href="../public/dev/css/style.css?v=1" type="text/css" />');
+        $iframe.contents().find('body').css('background', 'none').css('margin', '0').css('padding', '0').css('overflow', 'hidden').append('<div class="content" style="padding:12px;">' + markup + '</div>');
+        setTimeout(function() {
+          $iframe.height($iframe.contents().find('.content').outerHeight(true));
+        }, 1000);
+      });
+    });
+  });
+</script>
+</body>
+</html>

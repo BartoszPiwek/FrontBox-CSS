@@ -1,0 +1,135 @@
+.list-vertical-scroll {
+    position: relative;
+    padding: 0 !important;
+    box-sizing: border-box;
+    
+    &__nav-content {
+        width: auto !important;
+
+        transition: transform 0.4s;
+        display: flex;
+    }
+    
+    &__nav {
+        /* Make this scrollable when needed */
+        overflow-x: auto;
+        /* We don't want vertical scrolling */
+        overflow-y: hidden;
+        /* For WebKit implementations, provide inertia scrolling */
+        -webkit-overflow-scrolling: touch;
+        /* We don't want internal inline elements to wrap */
+        white-space: nowrap;
+        /* If JS present, let's hide the default scrollbar */
+        .js & {
+            /* Make an auto-hiding scroller for the 3 people using a IE */
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            /* Remove the default scrollbar for WebKit implementations */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        /* positioning context for advancers */
+        position: relative;
+        width: 100%;
+    }
+
+    &__button {
+        /* Reset the button */
+        appearance: none;
+        background: transparent;
+        padding: 0;
+        border: 0;
+        width: 10px;
+        z-index: -1;
+        pointer-events: none;
+        user-select: none;
+        &:focus {
+            outline: 0;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        /* Now style it as needed */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        /* Set the buttons invisible by default */
+        opacity: 0;
+        transition: opacity .3s, z-index 0s .3s;
+
+        &[data-direction="left"] {
+            left: -14px;
+
+            [data-overflowing="none"] > &,
+            [data-overflowing="right"] > & {
+                opacity: 1;
+                z-index: 0;
+                transition: opacity .3s, z-index 0s;
+                pointer-events: all;
+            }
+        }
+
+        &[data-direction="right"] {
+            right: -14px;
+
+            [data-overflowing="none"] > &,
+            [data-overflowing="left"] > & {
+                opacity: 1;
+                z-index: 0;
+                transition: opacity .3s, z-index 0s;
+                pointer-events: all;
+            }
+        }
+
+        &:hover {
+            .list-vertical-scroll {
+                &__icon {
+                    fill: @color-primary;
+                }
+            }
+        }
+    }
+
+    &__icon {
+        width: 9px;
+        height: 17px;
+        transition: fill 0.2s;
+        fill: @color-white;
+    }
+
+    /**
+     * Style
+     */
+    &--dark {
+        .list-vertical-scroll {
+            &__button {
+                background-color: #191e24;
+                &:before {
+                    content: '';
+                    width: 10px;
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                }
+
+                &[data-direction="left"] {
+                    &:before {
+                        right: 0;
+                        background: linear-gradient(to right, #191e24 80%, transparent 100%);
+                        transform: translateX(100%);
+                    }
+                }
+
+                &[data-direction="right"] {
+                    &:before {
+                        left: 0;
+                        background: linear-gradient(to right, transparent 0%, #191e24 100%);
+                        transform: translateX(-100%);
+                    }
+                }
+
+            }
+        }
+    }
+
+}

@@ -1,0 +1,32 @@
+/*=========================================================================
+|| Plugin: navigation-dot.less
+===========================================================================
+|| Foundation style for dots navigation
+|| HTML: .navigation-dot > .item{.active} * x
+=========================================================================*/
+
+.navigation-dot {
+  bottom: 40px;
+  display: block;
+  font-size: 0;
+  text-align: center;
+
+  > .item {
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 22px;
+    margin-right: 11px;
+    transition: border-color @time-transition, background-color @time-transition;
+    width: 22px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    .add-hover({ background-color: @color-white });
+
+    &.active {
+      background-color: @color-primary;
+    }
+  }
+}

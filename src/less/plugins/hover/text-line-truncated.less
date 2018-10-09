@@ -1,0 +1,30 @@
+/*=========================================================================
+* @name Text underline animation
+* @description .hover_text-line-truncated>.hover_text-line-truncated__item
+* @markup
+<a class="hover_text-line-truncated" href="#"><span class="hover_text-line-truncated__item">Lorem ipsum dolor sit amet consectetur adipisicing elit</span></a>
+*/
+
+
+.hover_text-line-truncated {
+
+    display: block;
+
+    &__item {
+        width: calc(100%);
+        background-image: linear-gradient(transparent calc(100% - 3px), @color-primary 3px);
+        background-repeat: no-repeat;
+        background-size: 0 100%;
+        transition: background-size .5s ease-in-out;
+        display: inline;
+    }
+
+    .add-hover({
+        .hover_text-line-truncated {
+            &__item {
+                background-size: 100% 100%;
+            }
+        }
+    });
+
+}

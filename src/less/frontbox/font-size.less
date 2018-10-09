@@ -1,0 +1,24 @@
+/*=========================================================================
+|| FILE: _font-size.less
+// TODO responsive size from array
+===========================================================================
+|| Create responsive font size
+=========================================================================*/
+
+
+.add-font-size(@lg-size, @md-size, @sm-size) {
+
+  // Mobile size
+  font-size: @sm-size;
+
+  // Tablet size
+  @media @tablet {
+    font-size: @md-size;
+  }
+
+  // Desktop size
+  @media @desktop {
+    font-size: @lg-size;
+  }
+
+}

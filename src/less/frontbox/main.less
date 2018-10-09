@@ -1,0 +1,192 @@
+/*=========================================================================
+|| FILE: main.less
+===========================================================================
+|| Main style modyfication
+=========================================================================*/
+
+
+/**
+  * Generated <body> <html> style
+**/
+
+body {
+
+	font-family: @font-family;
+	color: @default-color;
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+
+  	/* Add top space when <header> is position fixed */
+	& when (@setting_header_fixed = true) {
+		.add-responsive(padding-top, @header-height);
+	}
+
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body, html {
+
+	/* Lock page in 100% device height */
+	& when (@setting_page_lock_height = true) {
+		min-height: 100%;
+		max-height: 100%;
+		height: 100%;
+		overflow-y: hidden;
+	}
+
+	/* Lock page in 100% device width */
+	& when (@setting_page_lock_width = true) {
+		width: 100%;
+	}
+
+}
+
+//=========================================================================
+// Page behavior
+//=========================================================================
+
+.page {
+	// Change page size to 100% device height to block scroll
+	& when (@setting_page_class_lock = true) {
+		body&--overflow {
+			overflow: hidden!important;
+			position: relative!important;
+			height: 100%!important;
+		}
+
+		html&--overflow {
+			position: relative;
+			height: 100%;
+		}
+	}
+	// end
+}
+
+& when (@setting_js_burger_menu = true) {
+	.header__overlay {
+		transition: background-color @time-transition;
+	}
+
+	@media @mobile {
+		html.js_menu-active {
+			overflow: hidden;
+
+			&.system-ios {
+				overflow: hidden !important;
+				position: relative !important;
+				height: 100% !important;
+
+				body {
+					overflow: hidden !important;
+					position: relative !important;
+					height: 100% !important;
+				}
+			}
+
+			body {
+				overflow: hidden;
+			}
+
+			.header__overlay {
+				background-color: fade(@color-black, 80%);
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				z-index: @zindex-menu - 1;
+			}
+		}
+	}
+}
+
+// BUG - white space in firefox
+// main {
+// 	font-size: 0;
+// 	> * {
+// 		font-size: initial;
+// 	}
+// }
+
+/**
+  * Text and elements
+**/
+
+* {
+	// Mobile tap color highlight
+	& when not (@color-tap = false) {
+		-webkit-tap-highlight-color: @color-tap;
+	}
+	& when (@color-tap = false) {
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+	// Text selection color
+	& when not (@color-selection = false) {
+		&::selection {
+			background: @color-selection;
+		}
+		&::-moz-selection {
+			background: @color-selection;
+		}
+	}
+}
+
+//=========================================================================
+// Clickable elements
+//=========================================================================
+
+.link {
+	transition: color @default-transition;
+	.add-tap();
+	cursor: pointer;
+	.remove_click_delay();
+}
+
+.click {
+	transition: color @default-transition;
+	.add-tap();
+	cursor: pointer;
+	.remove_click_delay();
+}
+
+.background {
+	user-select: none;
+	pointer-events: none;
+}
+
+//=========================================================================
+// SVG Icon
+//=========================================================================
+
+.icon, svg {
+	display: inline-block;
+	width: 1.6rem;
+	height: 1.6rem;
+	vertical-align: middle;
+	color: currentColor;
+	fill: currentColor;
+	transition: color 0.2s;
+	pointer-events: none;
+	overflow: visible;
+}
+
+//=========================================================================
+// Default class
+//=========================================================================
+
+.hidden,
+.hide,
+.none {
+	display: none;
+}
+
+//=========================================================================
+// Image
+//=========================================================================
+
+img {
+	image-rendering: -webkit-optimize-contrast;
+	width: 100%;
+	height: auto;
+}

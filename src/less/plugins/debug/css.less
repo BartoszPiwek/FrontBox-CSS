@@ -1,0 +1,44 @@
+.debug {
+    &-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 35px 0 20px;
+    }
+    &-code {
+        margin: 15px 0;
+        white-space: pre;
+        font-size: 15px;
+        overflow-x: auto;
+        padding: 30px 15px 15px;
+        border-radius: 6px;
+        border: 2px solid #dedede;
+        position: relative;
+        &:before {
+            content: 'code';
+            top: 5px;
+            left: 5px;
+            font-size: 12px;
+            color: #dedede;
+            position: absolute;
+            font-weight: bold;
+        }
+    }
+    &-view {
+        margin: 15px 0;
+        padding: 30px 15px 15px;
+        border-radius: 6px;
+        border: 1px dashed #dedede;
+        background-color: #fafafa;
+        position: relative;
+        color: #FFFFFF;
+        &:before {
+            content: 'preview';
+            top: 5px;
+            left: 5px;
+            font-size: 12px;
+            color: #dedede;
+            position: absolute;
+            font-weight: bold;
+        }
+    }
+}
