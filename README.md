@@ -183,7 +183,12 @@ Sync IDE settings, snippets, packages between computers
 <br>
 <img src="gitfiles/logo-develop.jpg" style="width=100%; height: auto;">
 
-## Bugs and development
+## Development
+For new project create symbolic links with function <a target="_blank" href="https://www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/">mklink</a>
+> mklink /J "C:\Projects\{project-folder}\src\less\frontbox" "C:\Projects\Frontbox-CSS\src\less\frontbox"
+
+## Bugs 
+
 Feel free to report:
 > https://github.com/BartoszPiwek/FrontBox-CSS/issues
 

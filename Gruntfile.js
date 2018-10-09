@@ -11,40 +11,40 @@ Author:      Bartosz Piwek
 var SETTINGS = {};
 
 // Main
-SETTINGS.dev = require('./settings/settings');
+SETTINGS.dev = require('./grunt-settings/settings');
 SETTINGS.dev.version = 'dev';
-SETTINGS.prod = require('./settings/settings');
+SETTINGS.prod = require('./grunt-settings/settings');
 SETTINGS.prod.version = 'prod';
 // HTML
-SETTINGS.htmlmin = require('./settings/tasks/html/htmlmin');
-SETTINGS.prettify = require('./settings/tasks/html/prettify');
-SETTINGS.autosvg = require('./settings/tasks/html/autosvg');
-SETTINGS.processhtml = require('./settings/tasks/html/processhtml');
-SETTINGS.hash_res = require('./settings/tasks/html/hash_res');
-SETTINGS.pug = require('./settings/tasks/html/pug')(SETTINGS);
+SETTINGS.htmlmin = require('./grunt-settings/tasks/html/htmlmin');
+SETTINGS.prettify = require('./grunt-settings/tasks/html/prettify');
+SETTINGS.autosvg = require('./grunt-settings/tasks/html/autosvg');
+SETTINGS.processhtml = require('./grunt-settings/tasks/html/processhtml');
+SETTINGS.hash_res = require('./grunt-settings/tasks/html/hash_res');
+SETTINGS.pug = require('./grunt-settings/tasks/html/pug')(SETTINGS);
 // JavaScript
-SETTINGS.uglify = require('./settings/tasks/js/uglify');
-SETTINGS.babel = require('./settings/tasks/js/babel');
-SETTINGS.requirejs = require('./settings/tasks/js/requirejs');
-SETTINGS.strip_code = require('./settings/tasks/js/strip_code');
+SETTINGS.uglify = require('./grunt-settings/tasks/js/uglify');
+SETTINGS.babel = require('./grunt-settings/tasks/js/babel');
+SETTINGS.requirejs = require('./grunt-settings/tasks/js/requirejs');
+SETTINGS.strip_code = require('./grunt-settings/tasks/js/strip_code');
 // Graphic assets
-SETTINGS.image = require('./settings/tasks/assets/image');
-SETTINGS.sprite = require('./settings/tasks/assets/sprite');
-SETTINGS.favicons = require('./settings/tasks/assets/favicons');
-SETTINGS.svgmin = require('./settings/tasks/assets/svgmin');
+SETTINGS.image = require('./grunt-settings/tasks/assets/image');
+SETTINGS.sprite = require('./grunt-settings/tasks/assets/sprite');
+SETTINGS.favicons = require('./grunt-settings/tasks/assets/favicons');
+SETTINGS.svgmin = require('./grunt-settings/tasks/assets/svgmin');
 // CSS
-SETTINGS.less = require('./settings/tasks/css/less');
-SETTINGS.postcss = require('./settings/tasks/css/postcss');
-SETTINGS.uncss = require('./settings/tasks/css/uncss');
-SETTINGS.critical = require('./settings/tasks/css/critical');
-SETTINGS.autocolor = require('./settings/tasks/css/autocolor');
-SETTINGS.cmq = require('./settings/tasks/css/cmq');
-SETTINGS.cssstats = require('./settings/tasks/css/cssstats');
+SETTINGS.less = require('./grunt-settings/tasks/css/less')(SETTINGS);
+SETTINGS.postcss = require('./grunt-settings/tasks/css/postcss');
+SETTINGS.uncss = require('./grunt-settings/tasks/css/uncss');
+SETTINGS.critical = require('./grunt-settings/tasks/css/critical');
+SETTINGS.autocolor = require('./grunt-settings/tasks/css/autocolor');
+SETTINGS.cmq = require('./grunt-settings/tasks/css/cmq');
+SETTINGS.cssstats = require('./grunt-settings/tasks/css/cssstats');
 // Other
-SETTINGS.copy = require('./settings/tasks/other/copy');
-SETTINGS.connect = require('./settings/tasks/other/connect');
-SETTINGS.clean = require('./settings/tasks/other/clean');
-SETTINGS.watch = require('./settings/tasks/other/watch');
+SETTINGS.copy = require('./grunt-settings/tasks/other/copy')(SETTINGS);
+SETTINGS.connect = require('./grunt-settings/tasks/other/connect');
+SETTINGS.clean = require('./grunt-settings/tasks/other/clean');
+SETTINGS.watch = require('./grunt-settings/tasks/other/watch');
 
 // END Settings
 //=========================================================================

@@ -28,10 +28,10 @@
             }
             & when not (@temp2 =@grid-count) {
                 .@{grid-value}_pull-@{temp2} {
-                    right: 100%/(@grid-count / @temp2);
+                    right: 100%/(@grid-count / @temp2) !important;
                 }
                 .@{grid-value}_push-@{temp2} {
-                    left: 100%/(@grid-count / @temp2);
+                    left: 100%/(@grid-count / @temp2) !important;
                 }
             }
             .loop(@temp2 - 1);
@@ -49,15 +49,14 @@
     }
     & when not (@value =@grid-count) {
         .pull-@{value} {
-            right: 100%/(@grid-count / @value);
+            right: 100%/(@grid-count / @value) !important;
         }
         .push-@{value} {
-            left: 100%/(@grid-count / @value);
+            left: 100%/(@grid-count / @value) !important;
         }
     }
-}
+});
 
-);
 .grid-responsive();
 
 /**
@@ -68,7 +67,9 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    &>* {
+    position: relative;
+
+    & > * {
         flex-grow: 0;
         flex-shrink: 0;
         height: auto !important;
@@ -77,6 +78,7 @@
         flex-direction: column;
         display: flex;
     }
+
 }
 
 /**
@@ -152,5 +154,15 @@
         &-center {
             justify-content: center;
         }
+    }
+
+    &-absolute {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &-y-center {
+        top: 50%;
+        transform+_: translateY(-50%);
     }
 }

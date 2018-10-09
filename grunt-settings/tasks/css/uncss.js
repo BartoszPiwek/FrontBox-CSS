@@ -3,7 +3,8 @@ module.exports = {
     prod: {
         options: {
             ignore: [
-                /\.js_.*/
+                /\.select2*/,
+                /\.js_.*/,
             ],
             stylesheets: ['css/style.css']
         },

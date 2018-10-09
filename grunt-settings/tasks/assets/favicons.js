@@ -9,11 +9,11 @@ module.exports = {
             windowsTile: true,
             tileBlackWhite: false,
             tileColor: "auto",
-            html: 'src/template/includes/favicon.html',
-            HTMLPrefix: "/images/favicon/"
+            html: 'template-parts/favicon.php',
+            HTMLPrefix: "<?php echo $url; ?>/assets/images/favicon/"
         },
         src: 'src/images/favicon.png',
-        dest: 'src/images/favicon'
+        dest: 'assets/images/favicon'
     }
 
 };

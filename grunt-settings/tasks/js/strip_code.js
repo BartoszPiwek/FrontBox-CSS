@@ -7,7 +7,7 @@ module.exports = {
         }]
     },
     prod: {
-        src: 'public/prod/js/frontbox.js',
+        src: 'public/prod/js/main.js',
     },
 
 };

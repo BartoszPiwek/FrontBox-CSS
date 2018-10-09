@@ -2,11 +2,11 @@ module.exports = {
 
     // HTML
     html: {
-        files: ['src/template/**/*.pug'],
-        tasks: ['pug:dev'],
+        files: ['*.php', 'template-parts/*.php', 'inc/**/*.php'],
         options: {
-            spawn: false,
-        }
+            livereload: true,
+            spawn: true,
+        },
     },
 
     // Style
@@ -18,7 +18,7 @@ module.exports = {
         }
     },
     dev_style_grid: {
-        files: ['src/less/grid.less', 'src/less/frontbox/variables.less', 'sec/less/frontbox/functions'],
+        files: ['src/less/grid.less', 'src/less/frontbox/variables.less', 'src/less/frontbox/functions.less', 'src/less/frontbox/grid/*.less'],
         tasks: ['less:dev_style_grid'],
         options: {
             spawn: true,
@@ -41,8 +41,8 @@ module.exports = {
 
     // Assets
     images: {
-        files: ['src/images/**/*.jpg', 'src/images/**/*.png'],
-        tasks: ['newer:copy:dev'],
+        files: ['src/images/**/*'],
+        tasks: ['newer:copy:img'],
         options: {
             spawn: false,
         }
@@ -63,13 +63,6 @@ module.exports = {
             spawn: false,
         }
     },
-    // js_frontbox: {
-    //     files: ['src/js/frontbox/*.js'],
-    //     tasks: ['copy:dev_frontbox', 'preprocess:dev_frontbox'],
-    //     options: {
-    //         spawn: false,
-    //     }
-    // },
 
     // Reload
     livereload: {
@@ -77,7 +70,7 @@ module.exports = {
             livereload: true,
             spawn: true,
         },
-        files: ['src/*/**']
+        files: ['src/**/*']
     },
 
     // Grunt

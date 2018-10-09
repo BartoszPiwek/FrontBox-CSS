@@ -25,7 +25,15 @@
 
 .add-hover(@code){
 
-    &:hover, &:active, &:focus {
+    &--hover:hover &, 
+    &--hover:hover &, 
+    &--hover:hover &, 
+
+    &:hover,
+    &:active,
+    &:focus 
+    
+    {
       @code();
     }
 }
@@ -153,7 +161,7 @@
   background-position: @offsetx / ( @spritex - @width ) - 100% * @offsety / ( @spritey - @height ) - 100%;
 }
 
-.image-placeholder (@width, @height) {
+.add-holder (@width, @height) {
   position: relative;
   &:before {
     display: block;
