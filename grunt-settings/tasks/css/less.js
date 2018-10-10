@@ -1,10 +1,18 @@
 module.exports = function(SETTINGS) {
 
+    var modifyVarsDev, modifyVarsProd;
+
+    modifyVarsDev = JSON.parse(JSON.stringify(SETTINGS));
+    modifyVarsProd = JSON.parse(JSON.stringify(SETTINGS));
+
+    modifyVarsDev.version = 'dev';
+    modifyVarsProd.version = 'prod';
+
     return {
 
         options: {
             javascriptEnabled: true,
-            modifyVars: SETTINGS.dev,
+            modifyVars: modifyVarsDev
         },
 
         /**
@@ -15,52 +23,52 @@ module.exports = function(SETTINGS) {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.dev.pathToMainCSS}/style.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToMainCSS}/style.css.map`,
                 sourceMapURL: 'style.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
             src: `src/less/style.less`,
-            dest: `${SETTINGS.dev.pathToMainCSS}/style.css`,
+            dest: `${SETTINGS.pathToMainCSS}/style.css`,
         },
 
         dev_style_grid: {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.dev.pathToDev}/css/grid.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToDev}/css/grid.css.map`,
                 sourceMapURL: 'grid.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
             src: `src/less/grid.less`,
-            dest: `${SETTINGS.dev.pathToDev}/css/grid.css`,
+            dest: `${SETTINGS.pathToDev}/css/grid.css`,
         },
 
         dev_style_base: {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.dev.pathToDev}/css/base.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToDev}/css/base.css.map`,
                 sourceMapURL: 'base.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
             src: `src/less/base.less`,
-            dest: `${SETTINGS.dev.pathToDev}/css/base.css`,
+            dest: `${SETTINGS.pathToDev}/css/base.css`,
         },
 
         dev_style_utilities: {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.dev.pathToDev}/css/utilities.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToDev}/css/utilities.css.map`,
                 sourceMapURL: 'utilities.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
             src: `src/less/utilities.less`,
-            dest: `${SETTINGS.dev.pathToDev}/css/utilities.css`,
+            dest: `${SETTINGS.pathToDev}/css/utilities.css`,
         },
 
         /**
@@ -71,10 +79,10 @@ module.exports = function(SETTINGS) {
             options: {
                 compress: false,
                 sourceMap: false,
-                modifyVars: SETTINGS.prod,
+                modifyVars: modifyVarsProd,
             },
             src: `src/less/style.less`,
-            dest: `${SETTINGS.prod.pathToMainCSS}/css/style.prod.css`,
+            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
         },
 
     };

@@ -59,43 +59,6 @@
     }
 }
 
-.btn {
-  /*=========================================================================
-  // BUTTON - create button elements
-  // .add-button(text-color, background-color, border, hover-darken-percent)
-  // * text color
-  // * background color
-  // * all border property (1px solid color) {optional | default "false"}
-  // * change color on darken percent {optional | default @defaul-darken}
-  == SNIPPETS: add-button
-  ==           add-button-advance {all possibilities}
-  =========================================================================*/
-
-  // Style
-  transition+: background-color @time-transition;
-  transition+: color @time-transition;
-  transition+: border-color @time-transition;
-  transition+: transform @time-transition;
-  padding: 14px 6px;
-  
-  .add-button(white, @color-primary, false, 50%);
-
-  // Declaration
-  &-primary {
-    .add-button(white, red, false, 50%);
-  }
-
-  /*=========================================================================
-  * @name Buttons
-  * @description .btn
-  *
-  * @state .btn-primary
-  *
-  * @markup
-  <a href="#" class="btn">Button</a>
-  */
-}
-
 .list {
   /*=========================================================================
   // LIST - create list elements
@@ -116,48 +79,3 @@
 // @color-3: @color-white;
 // @color-list-string: 1, 2, 3;
 // .color-list(@color-list-string, color, fill);
-
-.hero {
-  /*=========================================================================
-  // HERO - create content space using padding ( better for header section )
-  // .add-hero(space-desktop, space-tablet, space-mobile)
-  // * space = padding-top & padding-bottom value
-  == SNIPPETS: add-hero
-  =========================================================================*/
-
-  .add-hero(200px, 150px, 50px);
-}
-
-.section {
-  /*=========================================================================
-  // SECTION - create content space using margin ( better for flow multi section site )
-  // .add-section(space-desktop, space-tablet, space-mobile)
-  // * space = margin-top & margin-bottom value
-  == SNIPPETS: add-section
-  =========================================================================*/
-
-  .add-section(200px, 150px, 50px);
-}
-
-/*=========================================================================
-// FONT SIZE - set responsive font size for elements
-// .add-font-size(size-desktop, size-tablet, size-mobile)
-// * font sizes for @desktop, @tablet, and default (mobile first)
-== SNIPPETS: add-font-size
-=========================================================================*/
-
-.h1 {
-  .add-font-size(55px, 45px, 35px);
-}
-.h2 {
-  .add-font-size(50px, 40px, 30px);
-}
-.h3 {
-  .add-font-size(45px, 35px, 30px);
-}
-.h4 {
-  .add-font-size(40px, 30px, 25px);
-}
-.h5 {
-  .add-font-size(35px, 25px, 20px);
-}

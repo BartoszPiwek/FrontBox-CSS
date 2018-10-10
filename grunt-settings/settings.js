@@ -5,10 +5,18 @@ module.exports = {
     /**
      * Path
      */
+    "pathToMainCSS": 'public/dev/css', 
     "pathToDev": "public/dev",
     "pathToProd": "public/prod",
-    "pathToModulesDev": '"./"',
-    "pathToModulesProd": '"./"',
+    "pathToModulesDev": "'.'",
+    "pathToModulesProd": "'.'",
+
+    "pathToFavicon": "src/template/includes/favicon.html",
+
+    /**
+     * Prefix
+     */
+    "prefixFaviconHTML": "/images/favicon/",
 
     /**
      * Functions

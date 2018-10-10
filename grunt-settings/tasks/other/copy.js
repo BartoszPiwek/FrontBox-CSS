@@ -30,26 +30,26 @@ module.exports = function(SETTINGS){
             expand: true,
             cwd: 'src/images/',
             src: ['**/*'],
-            dest: `${SETTINGS.dev.pathToDev}/images/`,
+            dest: `${SETTINGS.pathToDev}/images/`,
             filter: 'isFile'
         },
         // JS
-        js: {
-            files: [{
-                expand: true,
-                cwd: 'src/js/',
-                src: ['**/*.js'],
-                dest: `${SETTINGS.dev.pathToDev}/js/`,
-                filter: 'isFile',
-            }],
-        },
+        // js: {
+        //     files: [{
+        //         expand: true,
+        //         cwd: 'src/js/',
+        //         src: ['**/*.js'],
+        //         dest: `${SETTINGS.pathToDev}/js/`,
+        //         filter: 'isFile',
+        //     }],
+        // },
         // HTML
         html: {
             files: [{
                 expand: true,
                 cwd: 'src/template/',
                 src: ['**/*.html'],
-                dest: `${SETTINGS.dev.pathToDev}/`,
+                dest: `${SETTINGS.pathToDev}/`,
                 filter: 'isFile'
             }]
         },
@@ -59,7 +59,7 @@ module.exports = function(SETTINGS){
                 expand: true,
                 cwd: 'src/css',
                 src: '*.css',
-                dest: `${SETTINGS.dev.pathToDev}/css/`,
+                dest: `${SETTINGS.pathToDev}/css/`,
                 filter: 'isFile'
             }],
         },
@@ -69,7 +69,7 @@ module.exports = function(SETTINGS){
                 expand: true,
                 cwd: 'src/fonts/',
                 src: '*',
-                dest: `${SETTINGS.dev.pathToDev}/fonts/`,
+                dest: `${SETTINGS.pathToDev}/fonts/`,
                 filter: 'isFile'
             }],
         },
@@ -79,7 +79,7 @@ module.exports = function(SETTINGS){
                 expand: true,
                 cwd: 'src/',
                 src: '*',
-                dest: `${SETTINGS.dev.pathToDev}/`,
+                dest: `${SETTINGS.pathToDev}/`,
                 filter: 'isFile'
             }],
         },
@@ -91,7 +91,7 @@ module.exports = function(SETTINGS){
                     expand: true,
                     cwd: 'src/images/',
                     src: '**',
-                    dest: `${SETTINGS.dev.pathToProd}/images/`,
+                    dest: `${SETTINGS.pathToProd}/images/`,
                     filter: 'isFile'
                 },
                 // JavaScript
@@ -99,7 +99,7 @@ module.exports = function(SETTINGS){
                     expand: true,
                     cwd: 'src/js/',
                     src: ['**/*.js'],
-                    dest: `${SETTINGS.dev.pathToProd}/js/`,
+                    dest: `${SETTINGS.pathToProd}/js/`,
                     filter: 'isFile'
                 },
                 // HTML
@@ -107,7 +107,7 @@ module.exports = function(SETTINGS){
                     expand: true,
                     cwd: 'src/template/',
                     src: ['**/*.html'],
-                    dest: `${SETTINGS.dev.pathToProd}/`,
+                    dest: `${SETTINGS.pathToProd}/`,
                     filter: 'isFile'
                 },
                 // Fonts
@@ -115,7 +115,7 @@ module.exports = function(SETTINGS){
                     expand: true,
                     cwd: 'src/fonts/',
                     src: '**',
-                    dest: `${SETTINGS.dev.pathToProd}/fonts/`,
+                    dest: `${SETTINGS.pathToProd}/fonts/`,
                     filter: 'isFile'
                 },
                 // Static CSS
@@ -123,7 +123,7 @@ module.exports = function(SETTINGS){
                     expand: true,
                     cwd: 'src/css',
                     src: '*.css',
-                    dest: `${SETTINGS.dev.pathToProd}/css/`,
+                    dest: `${SETTINGS.pathToProd}/css/`,
                     filter: 'isFile'
                 },
                 // Other files
@@ -131,7 +131,7 @@ module.exports = function(SETTINGS){
                     expand: true,
                     cwd: 'src/',
                     src: '.*',
-                    dest: `${SETTINGS.dev.pathToProd}/`,
+                    dest: `${SETTINGS.pathToProd}/`,
                     filter: 'isFile'
                 },
             ]

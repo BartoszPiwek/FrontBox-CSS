@@ -6,6 +6,8 @@
         span
 
 if version == 'prod'
-    script(src="/js/main.js")
+    script(src="js/app.prod.js")
+if version == 'dev'
+    script(src="js/app.dev.js")
 else
     

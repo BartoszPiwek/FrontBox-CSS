@@ -1,20 +1,21 @@
-module.exports = {
+module.exports = (data) => {
 
-    $container: null,
-    $element: null,
-    $button: null,
-
-    SETTINGS: {
+    var 
+    DATA = {
+        $container: null,
+        $element: null,
+        $button: null,
+        $body: null,
         open: false,
     },
-        
-    start: function(data) {
-        var self = this;
+    elements = {};
 
-        $.extend( self.SETTINGS, data );
+    $.extend( DATA, data );
+        
+    var start = (data) => {
 
         var debugBoxClass = 'debug-box debug-box--variables';
-        if (!self.SETTINGS.open) {
+        if (!DATA.open) {
             debugBoxClass += ' debug-box--hide';
         }
         
@@ -22,64 +23,59 @@ module.exports = {
         var debugBoxButton = $("<div id='debug-box-button' class='debug-box__button'>FrontBox variables</div>");
         var debugBoxContainer = $("<div id='debug-box-container' class='debug-box__container'></div>");
         
-        ELEMENTS.$body.append(debugBox);
-        self.$element = $("#debug-box");
+        DATA.ELEMENTS.$body.append(debugBox);
+        DATA.$element = $("#debug-box");
         
-        self.$element.append(debugBoxButton);
-        self.$element.append(debugBoxContainer);
+        DATA.$element.append(debugBoxButton);
+        DATA.$element.append(debugBoxContainer);
         
-        self.$button = $("#debug-box-button");
-        self.$container = $("#debug-box-container");
+        DATA.$button = $("#debug-box-button");
+        DATA.$container = $("#debug-box-container");
         
         var toggleDebugBox = function() {
-            self.$element.toggleClass("debug-box--hide");
+            DATA.$element.toggleClass("debug-box--hide");
         };
-        
-        self.$button.on("click", toggleDebugBox);
-        
-    },
 
-    click() {
-        var $this = $(this);
-
-        $this.toggleClass("js_focus");
-    },
+        DATA.$button.on("click", toggleDebugBox);
+                
+    };
             
-    fill: function() {
+    var fill = () => {
         var self = this;
 
         $(".debug-box__container > p").off("click", self.click);
         
-        self.$container.empty();
+        DATA.$container.empty();
         
-        Object.keys(self.elements).forEach(function(key) {
+        Object.keys(elements).forEach(function(key) {
             var idElement = key.split(" ").join("-").toLowerCase();
-            self.$container.append("<p>" + key + "<span id='debug-box-" + idElement + "'></p>");
+            DATA.$container.append("<p>" + key + "<span id='debug-box-" + idElement + "'></p>");
         });
 
         $(".debug-box__container > p").on("click", self.click);
         
-        self.update();
-    },
+        update();
+    };
             
-    update: function() {
-        var self = this;
-        
-        Object.keys(self.elements).forEach(function(key) {
-            var value = self.elements[key],
+    var update = () => {        
+        Object.keys(elements).forEach(function(key) {
+            var value = elements[key],
                 idElement = key.split(" ").join("-").toLowerCase(),
                 $item = $("#debug-box-" + idElement);
             $item.text(value);
         });
-    },
+    };
             
-    add: function(addObject) {
-        var self = this;
+    var add = (addObject) => {
         
-        $.extend(self.elements, addObject);
+        $.extend(elements, addObject);
         
-        self.fill();
-    },
-            
-    elements: {}
+        fill();
+    };
+
+    start();
+
+    return {
+        add: add,
+    };
 };

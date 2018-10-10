@@ -1,38 +1,46 @@
-module.exports = {
+module.exports = (data) => {
 
-    bind() {
-        var self = this;
-        $(window).scroll(self.refresh);
+    var 
+    DATA = {},
+    DEVICE = data.DEVICE;
+
+    var bind = () => {
+
+        $(window).scroll(refresh);
+
         $(window).on('resize orientationchange', function() {
-            self.refresh();
+            refresh();
         });
-        this.refresh();
-    },
 
-    refresh() {
-        SCROLL.centerLast = SCROLL.center;
+        refresh();
+    };
 
-        SCROLL.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        SCROLL.center = SCROLL.top + DEVICE.heightHalf;
+    var refresh = () => {
+        DATA.centerLast = DATA.center;
 
-        SCROLL.speed = Math.abs(SCROLL.centerLast - SCROLL.center);
+        DATA.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        DATA.center = DATA.top + DEVICE.heightHalf;
 
-        if (SCROLL.center > SCROLL.centerLast) {
-            SCROLL.direction = 0;
+        DATA.speed = Math.abs(DATA.centerLast - DATA.center);
+
+        if (DATA.center > DATA.centerLast) {
+            DATA.direction = 0;
         } else {
-            SCROLL.direction = 1;
+            DATA.direction = 1;
         }
 
         /* test-code */
-        var debugBox = {
-            "Scroll top ": SCROLL.top,
-            "Scroll center ": SCROLL.center,
-            "Scroll center last ": SCROLL.centerLast,
-            "Scroll direction ": SCROLL.direction,
-            "Scroll speed ": SCROLL.speed,
-        };
-        DEBUG.debugVariables.add(debugBox);
+        DEBUG.debugVariables.add({
+            "Scroll top ": DATA.top,
+            "Scroll center ": DATA.center,
+            "Scroll center last ": DATA.centerLast,
+            "Scroll direction ": DATA.direction,
+            "Scroll speed ": DATA.speed,
+        });
         /* end-test-code */
-    },
+    };
 
+    bind();
+
+    return DATA;
 };

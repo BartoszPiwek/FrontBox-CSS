@@ -5,7 +5,8 @@ module.exports = {
             processors: [
                 require('autoprefixer')({
                     browsers: ['last 2 versions', 'ie >= 8', 'Android >= 4.0.0', 'Safari >= 7.1', 'iOS >= 6']
-                }), // add vendor prefixes
+                }), 
+                // add vendor prefixes
                 require('postcss-pxtorem')({
                     rootValue: 10,
                     unitPrecision: 5,

@@ -1,20 +1,19 @@
-module.exports = {
+module.exports = (data) => {
 
-    $container: null,
-    $element: null,
-    $button: null,
-
-    SETTINGS: {
+    DATA = {
+        $container: null,
+        $element: null,
+        $button: null,
+        $body: null,
         open: false,
-    },
-    
-    start: function(data) {
-        var self = this;
+    };
 
-        $.extend( self.SETTINGS, data );
+    $.extend( DATA, data );
+    
+    var start = (data) => {
 
         var debugBoxClass = 'debug-box debug-box--console';
-        if (!self.SETTINGS.open) {
+        if (!DATA.open) {
             debugBoxClass += ' debug-box--hide';
         }
     
@@ -22,28 +21,31 @@ module.exports = {
         var debugBoxButton = $("<div id='debug-box-console-button' class='debug-box__button'>FrontBox console</div>");
         var debugBoxContainer = $("<div id='debug-box-console-container' class='debug-box__container'></div>");
     
-        ELEMENTS.$body.append(debugBox);
-        self.$element = $("#debug-box-console");
+        DATA.ELEMENTS.$body.append(debugBox);
+        DATA.$element = $("#debug-box-console");
     
-        self.$element.append(debugBoxButton);
-        self.$element.append(debugBoxContainer);
+        DATA.$element.append(debugBoxButton);
+        DATA.$element.append(debugBoxContainer);
     
-        self.$button = $("#debug-box-console-button");
-        self.$container = $("#debug-box-console-container");
+        DATA.$button = $("#debug-box-console-button");
+        DATA.$container = $("#debug-box-console-container");
     
         var toggleDebugBox = () => {
-            console.log("a");
-            self.$element.toggleClass("debug-box--hide");
+            DATA.$element.toggleClass("debug-box--hide");
         };
         
-        self.$button.on("click", toggleDebugBox);
+        DATA.$button.on("click", toggleDebugBox);
     
-    },
+    };
     
-    add: function(addString, addonClass = '') {
-        var self = this;
-    
-        self.$container.prepend("<p class='" + addonClass + "'>"+addString+"</p>");
-    },
+    var add = (addString, addonClass = '') => {
+        DATA.$container.prepend("<p class='" + addonClass + "'>"+addString+"</p>");
+    };
+
+    start();
+
+    return {
+        add: add,
+    };
 
 };

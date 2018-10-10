@@ -1,16 +1,25 @@
 module.exports = function(SETTINGS){
     
+    var modifyVarsDev, modifyVarsProd;
+
+    modifyVarsDev = JSON.parse(JSON.stringify(SETTINGS));
+    modifyVarsProd = JSON.parse(JSON.stringify(SETTINGS));
+
+    modifyVarsDev.version = 'dev';
+    modifyVarsProd.version = 'prod';
+
     return {
+
         dev: {
             files: [{
                 expand: true,
                 cwd: 'src/template/',
                 src: ['**/*.pug'],
-                dest: 'public/dev/',
+                dest: `${SETTINGS.pathToDev}/`,
                 ext: '.html'
             }],
             options: {
-                data: SETTINGS.dev,
+                data: modifyVarsDev,
                 filters: {
                     pageName: function(block) {
                         return block;
@@ -23,11 +32,11 @@ module.exports = function(SETTINGS){
                 expand: true,
                 cwd: 'src/template/',
                 src: ['**/*.pug'],
-                dest: 'public/prod/',
+                dest: `${SETTINGS.pathToProd}/`,
                 ext: '.html'
             }],
             options: {
-                data: SETTINGS.prod,
+                data: modifyVarsProd,
                 filters: {
                     pageName: function(block) {
                         return block;

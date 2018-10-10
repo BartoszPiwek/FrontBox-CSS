@@ -1,64 +1,67 @@
 /**
-  * Main
+ * Libs
  */
-var Main = {};
 global.$ = require('jquery');
+global.jQuery = $;
+// slick = require('slick-carousel');
 
-global.ELEMENTS = {
-    $body: $("body"),
-    $header: $("#header"),
-    $headerPlaceholder: $("#header-placeholder"),
-    $window: $(window),
-    $overlay: $("#page-overlay"),
-    $html: $('html'),
-    $page: $('html, body'),
-};
-global.DEVICE = {
-    height: 0,
-    width: 0,
-    prevWidth: 0,
-    heightHalf: 0,
-    responsive: 0,
-};
-global.SCROLL = {
-    top: 0,
-    center: 0,
-    centerLast: 0,
-    direction: 0,
-    speed: 0,
-};
+(function($, _) {
 
-/**
- * Modules
- */
+    global.ELEMENTS = {
+        $body: $("body"),
+        $header: $("#header"),
+        $headerPlaceholder: $("#header-placeholder"),
+        $window: $(window),
+        $overlay: $("#page-overlay"),
+        $html: $('html'),
+        $page: $('html, body'),
+    };
+    global.DEVICE = {
+        height: 0,
+        width: 0,
+        prevWidth: 0,
+        heightHalf: 0,
+        responsive: 0,
+    };
+    global.SCROLL = {
+        top: 0,
+        center: 0,
+        centerLast: 0,
+        direction: 0,
+        speed: 0,
+    };
 
-// Debug
-/* test-code */ 
-global.DEBUG = {};
-global.DEBUG.debugConsole = require('./frontbox/debug/console');
-global.DEBUG.debugConsole.start({
-    open: false,
-});
-global.DEBUG.debugVariables = require('./frontbox/debug/variables');
-global.DEBUG.debugVariables.start({
-    open: false,
-});
-/* end-test-code */
+    /**
+     * Modules
+     */
 
-// Helpful
-global.FUNCTION = require('./frontbox/functions');
-Main.dataScroll = require('./frontbox/data/scroll');
-Main.dataScroll.bind();
-Main.dataPage = require('./frontbox/data/page');
-Main.dataPage.bind();
-
-Main.headerBurger = require('./frontbox/header/burger');
-if (ELEMENTS.$header.length) {
-    Main.navbar = require('./frontbox/header/navbar');
-    Main.navbar.start({
-        offset: 200,
+    // Debug
+    /* test-code */ 
+    global.DEBUG = {};
+    global.DEBUG.debugConsole = require('./frontbox/debug/console');
+    global.DEBUG.debugConsole.start({
+        open: false,
     });
-}
+    global.DEBUG.debugVariables = require('./frontbox/debug/variables');
+    global.DEBUG.debugVariables.start({
+        open: false,
+    });
+    /* end-test-code */
+
+    // Helpful
+    global.FUNCTION = require('./frontbox/functions');
+    Main.dataScroll = require('./frontbox/data/scroll');
+    Main.dataScroll.bind();
+    Main.dataPage = require('./frontbox/data/page');
+    Main.dataPage.bind();
+
+    Main.headerBurger = require('./frontbox/header/burger');
+    if (ELEMENTS.$header.length) {
+        Main.navbar = require('./frontbox/header/navbar');
+        Main.navbar.start({
+            offset: 200,
+        });
+    }
     /**
      * Main
      */
@@ -108,9 +111,11 @@ Main.bindResize.onResizeBind();
     // // Main.tabs = require('frontbox/tabs');
     // // Main.tabs.add("main");
 
-    // // ! Required 'frontbox/functions'
-    // Main.scrollTo = require('frontbox/scrollTo');
-    // Main.scrollTo.start();
+    var scrollTo = require('./frontbox/scrollTo')({
+        ELEMENTS: ELEMENTS,
+        SCROLL: SCROLL,
+        FUNCTIONS: FUNCTIONS,
+     });
 
     // Main.listVerticalScroll = require('frontbox/listVerticalScroll');
     // Main.listVerticalScroll.start();
@@ -132,9 +137,11 @@ Main.bindResize.onResizeBind();
     // // Main.wpLoadMorePosts = require('frontbox/wordpress/load-more-posts');
     // // Main.wpLoadMorePosts.start();
 
-/* test-code */
-DEBUG.debugConsole.add("Running correct...");
-/* end-test-code */
+    /* test-code */
+    DEBUG.debugConsole.add("Running correct...");
+    /* end-test-code */
 
-// Inform stylesheed to remove style fallback for JavaScript elements
-ELEMENTS.$html.removeClass("no_js");
+    // Inform stylesheed to remove style fallback for JavaScript elements
+    ELEMENTS.$html.removeClass("no_js");
+
+})($, window);

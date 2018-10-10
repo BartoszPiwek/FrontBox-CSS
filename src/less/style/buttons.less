@@ -1,0 +1,28 @@
+/*=========================================================================
+// BUTTON - create button elements
+// .add-button(text-color, background-color, border, hover-darken-percent)
+// * text color
+// * background color
+// * all border property (1px solid color) {optional | default "false"}
+// * change color on darken percent {optional | default @defaul-darken}
+== SNIPPETS: add-button
+==           add-button-advance {all possibilities}
+=========================================================================*/
+
+.btn {
+
+    // Style
+    transition+: background-color @time-transition;
+    transition+: color @time-transition;
+    transition+: border-color @time-transition;
+    transition+: transform @time-transition;
+    padding: 14px 6px;
+    
+    .add-button(white, @color-primary, false, 50%);
+  
+    // Declaration
+    &-primary {
+      .add-button(white, red, false, 50%);
+    }
+
+}

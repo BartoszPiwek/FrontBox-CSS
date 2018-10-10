@@ -1,50 +1,45 @@
 /*!******************************************************************
-Framework:   FrontBox 1.0.4 (github.com/BartoszPiwek/FrontBox)
-Author:      Bartosz Piwek
+Framework:      FrontBox 1.0.4 (github.com/BartoszPiwek/FrontBox)
+Author:         Bartosz Piwek
+For:            static website
 ********************************************************************/
 'use strict';
-// var fs = require('fs');
 
 //=========================================================================
 // Settings
 
-var SETTINGS = {};
+// Variables
+var SETTINGS = require('./grunt-settings/settings');
 
-// Main
-SETTINGS.dev = require('./grunt-settings/settings');
-SETTINGS.dev.version = 'dev';
-SETTINGS.prod = require('./grunt-settings/settings');
-SETTINGS.prod.version = 'prod';
+// Modules
+var MODULES = {};
+
 // HTML
-SETTINGS.htmlmin = require('./grunt-settings/tasks/html/htmlmin');
-SETTINGS.prettify = require('./grunt-settings/tasks/html/prettify');
-SETTINGS.autosvg = require('./grunt-settings/tasks/html/autosvg');
-SETTINGS.processhtml = require('./grunt-settings/tasks/html/processhtml');
-SETTINGS.hash_res = require('./grunt-settings/tasks/html/hash_res');
-SETTINGS.pug = require('./grunt-settings/tasks/html/pug')(SETTINGS);
+MODULES.autosvg = require('./grunt-settings/tasks/html/autosvg');
+MODULES.pug = require('./grunt-settings/tasks/html/pug')(SETTINGS);
 // JavaScript
-SETTINGS.uglify = require('./grunt-settings/tasks/js/uglify');
-SETTINGS.babel = require('./grunt-settings/tasks/js/babel');
-SETTINGS.requirejs = require('./grunt-settings/tasks/js/requirejs');
-SETTINGS.strip_code = require('./grunt-settings/tasks/js/strip_code');
+MODULES.uglify = require('./grunt-settings/tasks/js/uglify');
+MODULES.babel = require('./grunt-settings/tasks/js/babel');
+MODULES.requirejs = require('./grunt-settings/tasks/js/requirejs');
+MODULES.strip_code = require('./grunt-settings/tasks/js/strip_code');
+MODULES.browserify = require('./grunt-settings/tasks/js/browserify')(SETTINGS);
 // Graphic assets
-SETTINGS.image = require('./grunt-settings/tasks/assets/image');
-SETTINGS.sprite = require('./grunt-settings/tasks/assets/sprite');
-SETTINGS.favicons = require('./grunt-settings/tasks/assets/favicons');
-SETTINGS.svgmin = require('./grunt-settings/tasks/assets/svgmin');
+MODULES.image = require('./grunt-settings/tasks/assets/image');
+MODULES.sprite = require('./grunt-settings/tasks/assets/sprite');
+MODULES.favicons = require('./grunt-settings/tasks/assets/favicons')(SETTINGS);
+MODULES.svgmin = require('./grunt-settings/tasks/assets/svgmin');
 // CSS
-SETTINGS.less = require('./grunt-settings/tasks/css/less')(SETTINGS);
-SETTINGS.postcss = require('./grunt-settings/tasks/css/postcss');
-SETTINGS.uncss = require('./grunt-settings/tasks/css/uncss');
-SETTINGS.critical = require('./grunt-settings/tasks/css/critical');
-SETTINGS.autocolor = require('./grunt-settings/tasks/css/autocolor');
-SETTINGS.cmq = require('./grunt-settings/tasks/css/cmq');
-SETTINGS.cssstats = require('./grunt-settings/tasks/css/cssstats');
+MODULES.less = require('./grunt-settings/tasks/css/less')(SETTINGS);
+MODULES.postcss = require('./grunt-settings/tasks/css/postcss');
+MODULES.uncss = require('./grunt-settings/tasks/css/uncss');
+MODULES.autocolor = require('./grunt-settings/tasks/css/autocolor');
+MODULES.cmq = require('./grunt-settings/tasks/css/cmq');
+MODULES.cssstats = require('./grunt-settings/tasks/css/cssstats');
 // Other
-SETTINGS.copy = require('./grunt-settings/tasks/other/copy')(SETTINGS);
-SETTINGS.connect = require('./grunt-settings/tasks/other/connect');
-SETTINGS.clean = require('./grunt-settings/tasks/other/clean');
-SETTINGS.watch = require('./grunt-settings/tasks/other/watch');
+MODULES.copy = require('./grunt-settings/tasks/other/copy')(SETTINGS);
+MODULES.clean = require('./grunt-settings/tasks/other/clean');
+MODULES.connect = require('./grunt-settings/tasks/other/connect');
+MODULES.watch = require('./grunt-settings/tasks/other/watch');
 
 // END Settings
 //=========================================================================
@@ -73,96 +68,57 @@ module.exports = function(grunt) {
          * HTML
          */
 
-        htmlmin: SETTINGS.htmlmin, // Minify HTML files
-        processhtml: SETTINGS.processhtml, // Process HTML
-        pug: SETTINGS.pug, // Compile Pug templates
-        prettify: SETTINGS.prettify, // Prettify HTML files
-        autosvg: SETTINGS.autosvg, // Insert inline SVG
-        hash_res: SETTINGS.hash_res, // Hash files
+        htmlmin: MODULES.htmlmin, // Minify HTML files
+        processhtml: MODULES.processhtml, // Process HTML
+        pug: MODULES.pug, // Compile Pug templates
+        prettify: MODULES.prettify, // Prettify HTML files
+        autosvg: MODULES.autosvg, // Insert inline SVG
+        hash_res: MODULES.hash_res, // Hash files
 
         /**
          * JavaScript
          */
 
-        uglify: SETTINGS.uglify, // Uglify
-        babel: SETTINGS.babel, // The compiler for next generation JavaScript
-        requirejs: SETTINGS.requirejs, // JavaScript file and module loader
-        strip_code: SETTINGS.strip_code, // Remove dev scripts
-        browserify: {
-            dev: {
-                files: {
-                    'public/dev/js/main.js': ['src/js/main.js']
-                },
-            },
-            prod: {
-                files: {
-                    'public/prod/js/main.js': ['src/js/main.js']
-                },
-            }
-        },
+        uglify: MODULES.uglify, // Uglify
+        babel: MODULES.babel, // The compiler for next generation JavaScript
+        requirejs: MODULES.requirejs, // JavaScript file and module loader
+        strip_code: MODULES.strip_code, // Remove dev scripts
+        browserify: MODULES.browserify,
 
         /**
          * Graphic assets 
          */
 
-        image: SETTINGS.image, // Compress png,jpg,gif
-        sprite: SETTINGS.sprite, // Converting a set of images into a spritesheet
-        favicons: SETTINGS.favicons, // Generate favicons
-        svgmin: SETTINGS.svgmin, // Compress SVG
+        image: MODULES.image, // Compress png,jpg,gif
+        sprite: MODULES.sprite, // Converting a set of images into a spritesheet
+        favicons: MODULES.favicons, // Generate favicons
+        svgmin: MODULES.svgmin, // Compress SVG
 
         /**
          * CSS tasks
          */
 
-        less: SETTINGS.less, // LESS Compile
-        postcss: SETTINGS.postcss, // Add vendor prefixes to CSS rules using values from Can I Use
-        uncss: SETTINGS.uncss, // Delete unused css class, id
-        critical: SETTINGS.critical, // Create critical css
-        autocolor: SETTINGS.autocolor, // Colors to variables
-        cmq: SETTINGS.cmq, // Combine matching media queries into one media query definition
-        cssstats: SETTINGS.cssstats, // Create CSS statistics 
+        less: MODULES.less, // LESS Compile
+        postcss: MODULES.postcss, // Add vendor prefixes to CSS rules using values from Can I Use
+        uncss: MODULES.uncss, // Delete unused css class, id
+        critical: MODULES.critical, // Create critical css
+        autocolor: MODULES.autocolor, // Colors to variables
+        cmq: MODULES.cmq, // Combine matching media queries into one media query definition
+        cssstats: MODULES.cssstats, // Create CSS statistics 
 
         /**
          * Other
          */
         
-        connect: SETTINGS.connect, // VirtualHost
-        copy: SETTINGS.copy, // Copy
-        clean: SETTINGS.clean, // Remove files
-
-        /**
-         * Prod tasks
-         */
-
-        // DSS
-        dss: {
-            docs: {
-                files: {
-                    'docs/': 'src/less/**/*.less',
-                },
-                options: {
-                    template_index: 'dss.handlebars',
-                    template: 'template/',
-                    include_empty_files: false,
-                    parsers: {
-                        // Finds @link in comment blocks
-                        // link: function(i, line, block){
-              
-                        //   // Replace link with HTML wrapped version
-                        //   var exp = /(b(https?|ftp|file)://[-A-Z])/g;
-                        //   line.replace(exp, "<a href='$1'>$1</a>");
-                        //   return line;
-                        // }
-                    }
-                }
-            }
-        },
+        connect: MODULES.connect, // VirtualHost
+        copy: MODULES.copy, // Copy
+        clean: MODULES.clean, // Remove files
 
         /**
          * Watch
          */
 
-        watch: SETTINGS.watch,
+        watch: MODULES.watch,
 
     });
 
@@ -179,21 +135,21 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', [
         // Copy
         'newer:copy:img',
-        'newer:copy:js',
         'newer:copy:html',
         'newer:copy:static_CSS',
         'newer:copy:fonts',
         'newer:copy:other', 
-        // HTML
-        'pug:dev',
         // CSS
         'less:dev_style_grid',
         'less:dev_style_base',
         'less:dev_style_utilities',
         'less:dev_style_main',
+        // HTML
+        'pug:dev',
         // Assets
         'svgmin',
-        'autosvg:dev',
+        // JS
+        'browserify:dev',
         // Other
         'connect:dev',
         'watch'
@@ -207,12 +163,12 @@ module.exports = function(grunt) {
 
         // Images
         'favicon',
+        'sprite',
 
         'copy:prod',
 
         'image',
         'svgmin',
-
 
         // HTML
         'pug:prod',
@@ -220,8 +176,8 @@ module.exports = function(grunt) {
         // CSS
         // 'autoclass',
         'less:prod',
-        'cmq',
-        'uncss',
+        // 'cmq',
+        // 'uncss',
         'postcss:prod',
         'postcss:min',
         // Critical CSS
@@ -232,19 +188,19 @@ module.exports = function(grunt) {
         'prod:js',
 
         // General
-        'hash_res',
+        // 'hash_res',
 
         // HTML end
         'autosvg:prod',
-        'htmlmin',
+        // 'htmlmin',
 
         // END
         'clean:end',
     ]);
 
     grunt.registerTask('prod:js', [
-        'strip_code:prod',
         'browserify:prod',
+        'strip_code:prod',
         'babel',
         'uglify',
     ]);
@@ -256,6 +212,6 @@ module.exports = function(grunt) {
     grunt.registerTask('libs', ['copy:libs']);
     grunt.registerTask('favicon', ['favicons']);
     grunt.registerTask('doc', ['dss']);
-    grunt.registerTask('begin', ['clean:begin']);
+    grunt.registerTask('start', ['clean:begin']);
 
 };

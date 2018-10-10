@@ -19,18 +19,21 @@ Version:    Unpublished
   - prod
 **/
 
-// Grid
-& when (@version = dev) { @import "grid.css"; }
-& when (@version = prod) { @import (less) "../../public/dev/css/grid.css"; }
-// Base
-& when (@version = dev) { @import "base.css"; }
-& when (@version = prod) { @import (less) "../../public/dev/css/base.css"; }
+& when (@version = dev) {
+  @import "@{pathToModulesDev}/grid.css";
+  @import "@{pathToModulesDev}/base.css";
+  // Debug
+  @import "plugins/debug/javascript";
+}
 
-// Debug
-& when (@version = dev) { @import "plugins/debug/javascript"; }
+& when (@version = prod) {
+  @import (less, optional) "@{pathToModulesProd}/grid.css";
+  @import (less, optional) "@{pathToModulesProd}/base.css";
+}
 
 // Variables & Settings
 @import "variables/_style";  
+
 // Frontbox               
 @import "frontbox/_style";                 
 
@@ -40,5 +43,10 @@ Version:    Unpublished
 @import "style/_style";
 
 // Utilities
-& when (@version = dev) { @import "utilities.css"; }
-& when (@version = prod) { @import (less) "../../public/dev/css/utilities.css"; }
+& when (@version = dev) {
+  @import "@{pathToModulesDev}/utilities.css";
+}
+
+& when (@version = prod) {
+  @import (less, optional) "@{pathToModulesProd}/utilities.css";
+}
