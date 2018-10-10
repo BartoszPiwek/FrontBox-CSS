@@ -1,54 +1,51 @@
-SET FrontBoxPath=D:\Repo\Frontbox-CSS
-SET ProjectPath=D:\Repo\luxmed\wp-content\themes\luxmed
+@echo off
 
-:: # Catalogs
+:: Paths
+set FrontBoxPath=D:\Repo\Frontbox-CSS
+set ProjectPath=D:\Repo\luxmed\wp-content\themes\luxmed
 
-:: ## LESS Frontbox
-IF EXIST %ProjectPath%\src\less\frontbox (
-    rmdir %ProjectPath%\src\less\frontbox /s /q
+:: Arrays
+set Catalogs[0]="\src\less\frontbox\" 
+set Catalogs[1]="\src\less\utilities\"
+set Catalogs[2]="\src\js\frontbox\"
+set Catalogs[3]="\grunt-settings\tasks\"
+set Catalogs[4]="\grunt-settings\template\"
+set "CatalogsCount=0"
+set Files[0]="\src\less\utilities.less"
+set Files[1]="\src\less\style.less"
+set Files[2]="\src\less\grid.less"
+set Files[3]="\src\less\base.less"
+set "FilesCount=0"
+
+echo Creating Symbolic Links for repository %ProjectPath%
+
+
+:CatalogsLoop 
+if defined Catalogs[%CatalogsCount%] ( 
+
+    call set path=%%Catalogs[%CatalogsCount%]%%
+
+    if exist "%ProjectPath%%path%" (
+        rmdir "%ProjectPath%%path%" /s /q
+    )
+    
+    mklink /J "%ProjectPath%%path%" "%FrontBoxPath%%path%"
+
+    set /a "CatalogsCount+=1"
+    GOTO :CatalogsLoop 
 )
-mklink /J %ProjectPath%\src\less\frontbox %FrontBoxPath%\src\less\frontbox
 
-:: ## LESS Utilities
-IF EXIST %ProjectPath%\src\less\utilities (
-    rmdir %ProjectPath%\src\less\utilities /s /q
-)
-mklink /J %ProjectPath%\src\less\utilities %FrontBoxPath%\src\less\utilities
+:FilesLoop 
+if defined Files[%FilesCount%] ( 
 
-:: ## JavaScript
-IF EXIST %ProjectPath%\src\js\frontbox (
-    rmdir %ProjectPath%\src\js\frontbox /s /q
-)
-mklink /J %ProjectPath%\src\js\frontbox %FrontBoxPath%\src\js\frontbox
+    call set path=%%Files[%FilesCount%]%%
 
-:: Files
-IF EXIST %ProjectPath%\src\less\utilities.less (
-    del /f %ProjectPath%\src\less\utilities.less
-)
-mklink %ProjectPath%\src\less\utilities.less %FrontBoxPath%\src\less\utilities.less
+    if exist "%ProjectPath%%path%" (
+        del /f "%ProjectPath%%path%"
+    )
+    
+    mklink "%ProjectPath%%path%" "%FrontBoxPath%%path%"
 
-IF EXIST %ProjectPath%\src\less\style.less (
-    del /f %ProjectPath%\src\less\style.less
+    set /a "FilesCount+=1"
+    GOTO :FilesLoop 
 )
-mklink %ProjectPath%\src\less\style.less %FrontBoxPath%\src\less\style.less
-
-IF EXIST %ProjectPath%\src\less\grid.less (
-    del /f %ProjectPath%\src\less\grid.less
-)
-mklink %ProjectPath%\src\less\grid.less %FrontBoxPath%\src\less\grid.less
-
-IF EXIST %ProjectPath%\src\less\base.less (
-    del /f %ProjectPath%\src\less\base.less
-)
-mklink %ProjectPath%\src\less\base.less %FrontBoxPath%\src\less\base.less
-
-:: Grunt catalogs
-IF EXIST %ProjectPath%\grunt-settings\tasks (
-    rmdir /Q /S %ProjectPath%\grunt-settings\tasks
-)
-mklink /J %ProjectPath%\grunt-settings\tasks %FrontBoxPath%\grunt-settings\tasks
-
-IF EXIST %ProjectPath%\grunt-settings\template (
-    rmdir /Q /S %ProjectPath%\grunt-settings\template
-)
-mklink /J %ProjectPath%\grunt-settings\template %FrontBoxPath%\grunt-settings\template
