@@ -4,24 +4,37 @@
 |-TODO
 =========================================================================*/
 
+
 /**
-  * Add link hover
-**/
-
-// .add-link(@color-hover, @background:"", @color:""){
-// 		& when (@color = false) {
-// 			color: @color;
-// 		}
-// 		&:hover, &:active, &:focus {
-// 			color: @color-hover;
-// 			& when (length(@background) > 0) {
-// 				background: @background;
-// 			}
-// 		}
-// }
-
-//=========================================================================
-// HELPFUL
+ *? Set style for selectors :hover :active :focus 
+ * Set class &--hover for parent element to trigger hover
+ * 
+ ** Function:
+ *  .add-hover(@code);
+ * 
+ ** Arguments:
+ *  @code: normal CSS code
+ * 
+ ** Example:
+ *
+ *  .foo {
+ *    .add-hover({
+ *      color: red;
+ *    });
+ *  }
+ * 
+ ** Output
+ *
+ *  .foo--hover:hover .foo,
+ *  .foo--hover:hover .foo,
+ *  .foo--hover:hover .foo,
+ *  .foo:hover,
+ *  .foo:active,
+ *  .foo:focus {
+ *    background-color: red;
+ *  }
+ * 
+ */
 
 .add-hover(@code){
 
@@ -38,59 +51,38 @@
     }
 }
 
-.em-to-px(@pixels, @context: 16) {
-  @return: @pixels * @context / 10px;
-}
-
-.setChildernClass(@class, @code, @tag:div){
-  & > @{tag}[class^=~"@{class}"], & > @{tag}[class*=~"@{class}"] {
-    @code();
-  }
-}
-
-.return-path-2 (@path) {
-  @return: ~"@{path}-x2";
-}
-
 .px2rem(@value) {
   @return: ~`pxtorem('@{value}')`;
 }
 
-.if-pixel(@value) {
-  @return: ispixel(@value);
-}
-
-/*=========================================================================
-|| CREATE COLOR LIST
-===========================================================================
-|| Function:
-==  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
-||
-|| Sample:
-==
-    @color-windows: #333333;
-    @color-linux: #EEEEEE;
-    @color-omega: red;
-    @color-string: windows, linux, omega;
-    .color-list(@color-string, color, fill);
-||
-|| Output:
-==
-    fill-windows {
-      fill: #333333;
-    }
-    fill-linux {
-      fill: #EEEEEE;
-    }
-    fill-omega {
-      fill: red;
-    }
-||
-|| Arguments:
-==  1: array with @colors sufix name { windows, linux, omega }
-    2: sufix name variables colors { color }
-    3: prefix class and property for color { fill }
-=========================================================================*/
+/**
+ *? Create color class using variables
+ * 
+ ** Function:
+ *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+ * 
+ ** Arguments:
+ *  @color-name-array: array with @colors sufix name { ex: foo, fee }
+ *  @color-variable-prefix: sufix name for variables { color }
+ *  @property: prefix class and property for color { fill }
+ * 
+ ** Example:
+ * 
+ *  @color-foo: red;
+ *  @color-fee: blue;
+ *  @color-string: foo, fee;
+ *  .color-list(@color-string, color, fill);
+ * 
+ ** Output:
+ *
+ *  fill-foo {
+ *    fill: red;
+ *  }
+ *  fill-fee {
+ *    fill: blue;
+ *  }
+ * 
+ */
 
 .color-list(@color-name-array, @color-variable-prefix, @prefix:color){
   .for(@color-name-array, {
@@ -101,11 +93,11 @@
   });
 };
 
-//=========================================================================
-// FIX
 
+/**
+ *? Force an element to self-clear its children
+ */
 
-// Float fix
 .clearfix() {
   *zoom:1;
   zoom:1;
@@ -142,24 +134,7 @@
 }
 
 //=========================================================================
-// IMAGES
-
-.holder(@width, @height) {
-	width: @width;
-	height: @height;
-	position: relative;
-	> * {
-		position: absolute;
-	}
-}
-
-.image-responsive (@width, @height, @offsetx, @offsety, @path, @spitey, @spritex){
-  padding-bottom: @height / @width * 100%;
-  background-image: url("@path");
-  background-repeat: no-repeat;
-  background-size: @spritex / @width 100% * @spritey / @height 100%;
-  background-position: @offsetx / ( @spritex - @width ) - 100% * @offsety / ( @spritey - @height ) - 100%;
-}
+// Space
 
 .add-holder (@width, @height) {
   position: relative;
@@ -171,25 +146,30 @@
   }
 }
 
-.createHolder(@width, @height) {
-	&:before {
-		content: "";
-		padding-top: (@width / @height) * 100%;
-		position: relative;
-		z-index: -10;
-	}
-	& > div {
-		display: absolute;
-		left: 0;
-		top: 0;
-	}
+/**
+ *? Set space beetween elements in ASIX X/Y
+ *
+ ** For class: 
+ *  .row
+ */
+
+// Horizontal space
+.space-x(@size) {
+	margin-left: ~"-@{size}";
+	width: calc(100% + @size);
+
+> div:not(.row-gap-ignore) {
+		padding-left: @size;
+	};
 }
 
-//=========================================================================
-// SIZES
+// Vertical space 
+.space-y(@space) {
+	margin-bottom: ~'-@{space} !important';
 
-.flex-sameSize() {
-  flex: 0 0 auto;
+	> div:not(.row-space-ignore) {
+		padding-bottom: ~'@{space}';
+	};
 }
 
 //=========================================================================
@@ -221,7 +201,8 @@
 
 /**
   * Triangle
-**/
+  * 
+  */
 
 .add-triangle(@width, @height, @position, @color: "") {
 
@@ -254,7 +235,7 @@
 }
 
 //=========================================================================
-// LOOPS
+// Loops
 
 
 .for(@list, @code) {
@@ -442,34 +423,8 @@
 	// end Loop
 }
 
-// .responsive-class(@name, @classInclude) {
-
-//   .for2(@grid-list, {
-    
-//     @resName: ~`(function(){
-//       var array = @{grid-list-js};
-//       nameResponsive = array[array.indexOf('@{value}') + 1];
-//       console.log(nameResponsive);
-//     })()`;
-
-//     @resValue: ~`(function(){
-//       var array = @{grid-list-js};
-//       nameResponsive = array[array.indexOf('@{value}') ];
-//       console.log(nameResponsive);
-//     })()`;
-
-//     @{resName}_@{name} {
-//       @{classInclude};
-//     }
-
-//   });
-
-//   @test: ~`(function(){
-//   })()`;
-// }
-
 /**
-  * Generator
+  * Tools generator
 **/
 
 .make-utilities (@prefix, @property, @data...) {
@@ -481,7 +436,6 @@
 		}
 	});
 }
-
 
 .generate-tool-count(@prefix, @count){
   .loop(@count, {
@@ -523,28 +477,4 @@
       @{prefix}-right: ~"@{value}px !important";
     }
   });
-}
-
-/**
- * Set space beetween columns in ASIX X/Y
- * For class: .row
- */
-
-// Horizontal space
-.space-x(@size) {
-	margin-left: ~"-@{size}";
-	width: calc(100% + @size);
-
-> div:not(.row-gap-ignore) {
-		padding-left: @size;
-	};
-}
-
-// Vertical space 
-.space-y(@space) {
-	margin-bottom: ~'-@{space} !important';
-
-	> div:not(.row-space-ignore) {
-		padding-bottom: ~'@{space}';
-	};
 }

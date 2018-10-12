@@ -33,6 +33,9 @@
                 .@{grid-value}_push-@{temp2} {
                     left: 100%/(@grid-count / @temp2) !important;
                 }
+                .@{grid-value}_order-@{temp2} {
+                    order: @temp2;
+                }
             }
             .loop(@temp2 - 1);
         }
@@ -47,12 +50,15 @@
         flex-basis: 100%/(@grid-count / @value);
         max-width: 100%/(@grid-count / @value);
     }
-    & when not (@value =@grid-count) {
+    & when not (@value = @grid-count) {
         .pull-@{value} {
             right: 100%/(@grid-count / @value) !important;
         }
         .push-@{value} {
             left: 100%/(@grid-count / @value) !important;
+        }
+        .order-@{value} {
+            order: @value;
         }
     }
 });
