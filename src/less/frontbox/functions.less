@@ -524,3 +524,27 @@
     }
   });
 }
+
+/**
+ * Set space beetween columns in ASIX X/Y
+ * For class: .row
+ */
+
+// Horizontal space
+.space-x(@size) {
+	margin-left: ~"-@{size}";
+	width: calc(100% + @size);
+
+> div:not(.row-gap-ignore) {
+		padding-left: @size;
+	};
+}
+
+// Vertical space 
+.space-y(@space) {
+	margin-bottom: ~'-@{space} !important';
+
+	> div:not(.row-space-ignore) {
+		padding-bottom: ~'@{space}';
+	};
+}

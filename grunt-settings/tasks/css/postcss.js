@@ -1,38 +1,42 @@
-module.exports = {
+module.exports = function(SETTINGS) {
 
-    prod: {
-        options: {
-            processors: [
-                require('autoprefixer')({
-                    browsers: ['last 2 versions', 'ie >= 8', 'Android >= 4.0.0', 'Safari >= 7.1', 'iOS >= 6']
-                }), 
-                // add vendor prefixes
-                require('postcss-pxtorem')({
-                    rootValue: 10,
-                    unitPrecision: 5,
-                    propWhiteList: [],
-                    selectorBlackList: [],
-                    replace: true,
-                    mediaQuery: false,
-                    minPixelValue: 0
-                })
-            ],
-            map: false
-        },
-        src: 'public/prod/css/*.css'
-    },
+    return {
 
-    min: {
-        options: {
-            processors: [
-                require('cssnano')({
-                    zindex: false,
-                    autoprefixer: false
-                }) // minify the result
-            ],
-            map: false
+        prod: {
+            options: {
+                processors: [
+                    require('autoprefixer')({
+                        browsers: ['last 2 versions', 'ie >= 8', 'Android >= 4.0.0', 'Safari >= 7.1', 'iOS >= 6']
+                    }), 
+                    // add vendor prefixes
+                    require('postcss-pxtorem')({
+                        rootValue: 10,
+                        unitPrecision: 5,
+                        propWhiteList: [],
+                        selectorBlackList: [],
+                        replace: true,
+                        mediaQuery: false,
+                        minPixelValue: 0
+                    })
+                ],
+                map: false
+            },
+            src: `${SETTINGS.pathToMainCSS}*.css`
         },
-        src: 'public/prod/css/style.css'
-    }
+    
+        min: {
+            options: {
+                processors: [
+                    require('cssnano')({
+                        zindex: false,
+                        autoprefixer: false
+                    }) // minify the result
+                ],
+                map: false
+            },
+            src: `${SETTINGS.pathToMainCSS}*.css`
+        }
+    
+    };
 
 };

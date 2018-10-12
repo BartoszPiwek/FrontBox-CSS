@@ -9,7 +9,7 @@ module.exports = function(SETTINGS) {
 
         prod: {
             src: `src/js/app.js`,
-            dest: `${SETTINGS.pathToProd}/js/app.dev.js`,
+            dest: `${SETTINGS.pathToProd}/js/app.prod.js`,
         }
 
     };

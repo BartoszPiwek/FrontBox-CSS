@@ -1,13 +1,17 @@
-module.exports = {
+module.exports = function(SETTINGS) {
 
-    options: {
-        blocks: [{
-            start_block: "/* test-code */",
-            end_block: "/* end-test-code */"
-        }]
-    },
-    prod: {
-        src: 'public/prod/js/main.js',
-    },
+    return {
+
+        options: {
+            blocks: [{
+                start_block: "/* test-code */",
+                end_block: "/* end-test-code */"
+            }]
+        },
+        prod: {
+            src: `${SETTINGS.pathToProd}/js/app.prod.js`,
+        },
+
+    };
 
 };

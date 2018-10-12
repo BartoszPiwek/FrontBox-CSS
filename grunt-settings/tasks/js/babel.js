@@ -1,13 +1,16 @@
-module.exports = {
+module.exports = function(SETTINGS) {
 
-    options: {
-        sourceMap: false,
-        presets: ['env']
-    },
-    dist: {
-        files: {
-            'public/prod/js/frontbox.js': 'public/prod/js/frontbox.js'
-        }
-    }
+    return {
+
+        options: {
+            sourceMap: false,
+            presets: ['env']
+        },
+        dist: {
+            src: `${SETTINGS.pathToProd}/js/app.prod.js`,
+            desc: `${SETTINGS.pathToProd}/js/app.prod.js`,
+        },
+
+    };
 
 };
