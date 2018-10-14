@@ -1,9 +1,8 @@
 /*=========================================================================
-|| FILE: tools.less
+|| Create class using functions
 ===========================================================================
-|| Create repeatedly class using functions
+|| TODO: documentation
 =========================================================================*/
-
 
 .wrap {
   /*=========================================================================
@@ -14,6 +13,10 @@
   //=======================================================================*/
 
   .add-wrap(1024px, 20px);
+
+  /**
+   * Elements
+   */
 
   // Navigation bar
   &-navbar {
@@ -26,20 +29,20 @@
   /*=========================================================================
   // ROW GAP
   // Set space beetween columns in ASIX X
-  .add-row-gap(20px);
+  .space-x(20px);
   // * space beetween columns
   //=========================================================================
   // ROW SPACE
   // Set space beetween columns in ASIX Y
-  .add-row-space(20px);
+  .space-y(20px);
   // * space beetween columns
   == WARNING: row will have 'overflow: hidden'
   //=======================================================================*/
 
-  &-section {
-    .add-row-gap(100px);
-    .add-row-space(50px);
+  &- {
+    
   }
+
 }
 
 .col { // tools {col-static}
@@ -57,16 +60,6 @@
         width: 300px;
       }
     }
-}
-
-.list {
-  /*=========================================================================
-  // LIST - create list elements
-  // TODO change to ul/ol list
-  // .add-maker(@size, @offset, @border, @size-tick, @font)
-  =========================================================================*/
-
-  .add-marker(30);
 }
 
 /*=========================================================================

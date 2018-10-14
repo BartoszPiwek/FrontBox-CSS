@@ -166,14 +166,10 @@ module.exports = (data) => {
                 // Animate scroll
                 FUNCTIONS.offUserScroll();
                 ELEMENTS.$page.animate({
-                    scrollTop: targetPositionTop - ELEMENTS.$header.outerHeight(true),
+                    scrollTop: targetPositionTop,
                 }, scrollTime, () => {
-                    ELEMENTS.$page.animate({
-                        scrollTop: targetPositionTop - ELEMENTS.$header.outerHeight(true),
-                        }, 200, () => {
-                        FUNCTIONS.onUserScroll();
-                        active = false;
-                    });
+                    FUNCTIONS.onUserScroll();
+                    active = false;
                 });
 
                 return true;
