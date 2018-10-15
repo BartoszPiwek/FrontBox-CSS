@@ -1,12 +1,19 @@
 module.exports = {
 
-    // HTML
-    html: {
+    // HTML/PHP
+    PHP: {
         files: ['*.php', 'template-parts/*.php', 'inc/**/*.php'],
         options: {
             livereload: true,
             spawn: true,
         },
+    },
+    pug: {
+        files: ['./src/template/**/*.pug'],
+        tasks: ['newer:pug:dev'],
+        options: {
+            spawn: true,
+        }
     },
 
     // Style
