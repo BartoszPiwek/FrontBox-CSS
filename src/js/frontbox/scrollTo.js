@@ -111,6 +111,9 @@ module.exports = (data) => {
 
         // Check event and remove default action
         if (event) {
+            /* test-code */
+            DEBUG.debugConsole.add(`Click scrollTo: event.preventDefault()`, 'click');
+            /* end-test-code */
             $this = $(event.currentTarget);
             event.preventDefault();
         }
@@ -146,7 +149,9 @@ module.exports = (data) => {
 
                 // Grab target top position
                 var
-                targetPositionTop = $target.offset().top;              
+                targetPositionTop = $target.offset().top,
+                // Scroll position
+                scrollTo = targetPositionTop - ELEMENTS.$header.outerHeight(true);    
 
                 // Calculate scrollTime 
                 var scrollTime = Math.round(Math.abs(targetPositionTop - SCROLL.top) / SETTINGS.time);
@@ -158,21 +163,25 @@ module.exports = (data) => {
                 {
                     scrollTime = SETTINGS.maxTime;
                 }
+                
 
                 /* test-code */
-                DEBUG.debugConsole.add(`Click scrollTo: scroll to element <strong>${targetID}</strong> with speed <strong>${scrollTime}ms</strong>`, 'click');
+                DEBUG.debugConsole.add(`Click scrollTo: scroll to element {target: <strong>${targetID}</strong>; speed <strong>${scrollTime}ms</strong>; position: <strong>${scrollTo}</strong>}`, 'click');
                 /* end-test-code */
 
                 // Animate scroll
                 FUNCTIONS.offUserScroll();
                 ELEMENTS.$page.animate({
-                    scrollTop: targetPositionTop,
-                }, scrollTime, () => {
-                    FUNCTIONS.onUserScroll();
-                    active = false;
-                });
+                    scrollTop: scrollTo,
+                }, 1200);
+                // ELEMENTS.$page.animate({
+                //     scrollTop: targetPositionTop - ELEMENTS.$header.outerHeight(true),
+                // }, scrollTime, () => {
+                //     FUNCTIONS.onUserScroll();
+                //     active = false;
+                // });
 
-                return true;
+                return false;
             }
             else {
                 /* test-code */

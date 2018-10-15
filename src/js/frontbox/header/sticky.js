@@ -13,7 +13,7 @@ module.exports = (data) => {
         height: null,
         offset: null,
     },
-    active = false;
+    active = false,
     position = null;
 
     $.extend( SETTINGS, data.SETTINGS );
