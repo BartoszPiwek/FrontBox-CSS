@@ -6,9 +6,9 @@ module.exports = function(SETTINGS) {
             sourceMap: false,
             presets: ['env']
         },
-        dist: {
+        prod: {
             src: `${SETTINGS.pathToProd}/js/app.prod.js`,
-            desc: `${SETTINGS.pathToProd}/js/app.prod.js`,
+            dest: `${SETTINGS.pathToProd}/js/app.prod.js`,
         },
 
     };

@@ -2,16 +2,16 @@ module.exports = function(SETTINGS){
 
     return {
 
-        begin: ['public/prod/'],
+        begin: [
+            `${SETTINGS.pathToProd}`,
+        ],
         end: [
-            'public/prod/css/critical*.css',
-            'public/prod/images/svg/',
-            'public/prod/js/frontbox.js',
-            'public/prod/js/frontbox/',
-            'public/prod/js/libs',
-            'public/prod/js/frontbox-debug.js',
-            'public/prod/includes',
-            // `${SETTINGS.pathToProd}/js/frontbox`,
+            `${SETTINGS.pathToProd}/css/critical*.css`,
+            `${SETTINGS.pathToProd}/includes`,
+            `${SETTINGS.pathToProd}/js/frontbox`,
+            `${SETTINGS.pathToProd}/js/libs`,
+            `${SETTINGS.pathToProd}/js/app.dev.js`,
+            `${SETTINGS.pathToProd}/js/app.js`,
         ],
         dev: [
             'public/dev/*.html'
