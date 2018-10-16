@@ -16,36 +16,48 @@ module.exports = (data) => {
     active = false,
     position = null;
 
-    $.extend( SETTINGS, data.SETTINGS );
+    if (data.SETTINGS) {
+        $.extend(DATA, data.SETTINGS);
+    }
+    console.log(data);
+    console.log(DATA);
+    
 
     var start = (data) => {
 
-        $(window).on('resize orientationchange', function() {
+        if ($elementSpy.length) {
+
+            $(window).on('resize orientationchange', function() {
+                refresh();
+            });
+    
             refresh();
-        });
-
-        refresh();
-        
-        if (SETTINGS.spyTop) 
-        {
-            spyTop();
-
-            ELEMENTS.$window.on("scroll", () => {
+            
+            if (SETTINGS.spyTop) 
+            {
                 spyTop();
-            });   
+    
+                ELEMENTS.$window.on("scroll", () => {
+                    spyTop();
+                });   
+            }
+
+            /* test-code */
+            DEBUG.debugConsole.add(`Start sticky.js {offset: ${DATA.offset}; }`);
+            /* end-test-code */
         }
     };
 
     var refresh = () => {
         calculateHeader();
-
+        console.log(SETTINGS.offset);
+        
         if (!SETTINGS.offset) {
-            DATA.offset = position;
+            DATA.offset = SETTINGS.offset;
         }
     };
 
     var calculateHeader = (data) => {
-        var self = this;
 
         position = $elementSpy.offset().top;
         DATA.height = $elementSpy.outerHeight(true);
@@ -65,7 +77,7 @@ module.exports = (data) => {
             if (!active) 
             {
                 active = true;
-                ELEMENTS.$headerPlaceholder.css({height: DATA.height});
+                // ELEMENTS.$headerPlaceholder.css({height: DATA.height});
                 ELEMENTS.$html.addClass(SETTINGS.spyTopClass);
             }
         } 
@@ -73,7 +85,7 @@ module.exports = (data) => {
         {
             if (active) {
                 active = false;
-                ELEMENTS.$headerPlaceholder.css({height: ""});
+                // ELEMENTS.$headerPlaceholder.css({height: ""});
                 ELEMENTS.$html.removeClass(SETTINGS.spyTopClass);
             }
         }

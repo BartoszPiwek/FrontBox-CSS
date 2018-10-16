@@ -53,5 +53,46 @@ include includes/header.pug
 				.col(style="background-color: blue;")
 					| .col
 
+		h2.debug-title
+			| .col content controll
+		| Features: responsive {sm_, md_, lg_}
+			
+		p.debug-code.
+			.col-y-top .col-y-center .col-y-bottom .col-x-left .col-x-center .col-x-right
+		.debug-view.center
+			.row
+
+				.col-2.col-y-top(style="background-color: red; height: 200px !important")
+					| .col-y-top
+				.col-2
+				.col-2.col-y-center(style="background-color: red; height: 200px !important")
+					| .col-y-center
+				.col-2
+				.col-2.col-y-bottom(style="background-color: red; height: 200px !important")
+					| .col-y-bottom
+				.col-2
+				.col-2
+				.col-2.col-x-left(style="background-color: red; height: 200px !important")
+					| .col-x-left
+				.col-2
+				.col-2.col-x-center(style="background-color: red; height: 200px !important")
+					| .col-x-center
+				.col-2
+				.col-2.col-x-right(style="background-color: red; height: 200px !important")
+					| .col-x-right
+
+
+
+		p.debug-code.
+			.row.lg_row-reverse
+				.col
+				.col
+		.debug-view.center
+			.row.lg_row-reverse
+				.col(style="background-color: red;")
+					| .col
+				.col(style="background-color: blue;")
+					| .col
+
 include includes/footer.pug
 include includes/end.pug

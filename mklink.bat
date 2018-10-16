@@ -26,7 +26,7 @@ if defined Catalogs[%CatalogsCount%] (
     call set path=%%Catalogs[%CatalogsCount%]%%
 
     if exist "%ProjectPath%%path%" (
-        rmdir "%ProjectPath%%path%" /s /q
+        rmdir %ProjectPath%%path% /s
     )
     
     mklink /J "%ProjectPath%%path%" "%FrontBoxPath%%path%"

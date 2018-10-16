@@ -25,7 +25,7 @@ module.exports = {
         }
     },
     dev_style_grid: {
-        files: ['src/less/grid.less', 'src/less/frontbox/variables.less', 'src/less/frontbox/functions.less', 'src/less/frontbox/grid/*.less'],
+        files: ['src/less/grid.less', 'src/less/frontbox/variables.less', 'src/less/frontbox/functions.less', 'src/less/frontbox/grid.less'],
         tasks: ['less:dev_style_grid'],
         options: {
             spawn: true,

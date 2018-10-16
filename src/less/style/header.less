@@ -11,57 +11,19 @@
 
 .header {
     -webkit-backface-visibility: hidden;
-    z-index: @zindex-menu; // Header place
-    & when (@setting_header_fixed =true) {
-        position: fixed;
-        top: 0;
-        left: 0;
-        // .fix_fixed;
-    } // Other place
-    // JS | Navbar drop shadow style when scrolled
-    & when (@setting_js_header_shadow =true) {
-        transition+: box-shadow @time-transition;
-        &--shadow {
-            box-shadow: 0 1px 40px 0px @color-black;
-        }
-    } // Set responsive height for sticky header
-    // Height from array @header-height (desktop,tablet,mobile)
-    .add-responsive(height, @header-height);
+    z-index: @zindex-menu;
 
-    /**
-      * Style for header spy sticky
-    **/
+    transition+: height @time-transition;
+    transition+: box-shadow @time-transition;
 
-    & when (@setting_header = spy ) {
-        @media @media_burger-show {
-            position: relative;
-            &--sticky {
-                position: fixed;
-                top: 0;
-                left: 0;
-                z-index: @zindex-menu;
+    position: absolute;
+    right: 0;
+    top: 0;
 
-                & + .header {
-                    &__placeholder {
-                        .add-responsive(height, @header-height);
-                    }
-                }
+    box-shadow: 0 1px 40px 0px transparent;
 
-                .burger-menu {
-                    @height: extract(@header-height, length(@header-height)); 
-                    height: calc(100vh - @height) !important; 
-                }
-            }
-            &:not(&--sticky) {
-                .burger-menu {
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    padding-top: 55px;
-                }
-            }
-        }
-    }
+    //* Set height only if !@header-always-sticky
+    // height: 60px;
 }
 
 /*
@@ -293,3 +255,40 @@ nav.nav>a.nav__item*x
         }
     }
 }
+
+/**
+ * JavaScript manipulation
+ */
+html {
+
+    // Navigation spy
+    &.js_sticky-element {
+      &--active {
+        @media @mobile {
+          .header-container {
+            background-color: @color-white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 58px;
+            box-shadow: 0 1px 40px 0px @color-black;
+            z-index: @zindex-header-sticky;
+            width: 100%;
+          }
+          #body {
+            padding-top: 60px;
+          }
+        }
+        @media @tablet {
+          #sticky-element {
+            background-color: @color-white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 45px;
+            box-shadow: 0 1px 40px 0px @color-black;
+          }
+        }
+      }
+    }
+  }

@@ -52,7 +52,7 @@ global.jQuery = $;
         SCROLL: SCROLL,
         SETTINGS: {
             placeholder: false,
-            offset: false,
+            offset: 300,
         },
         $elementSpy: $("#sticky-element"),
     });

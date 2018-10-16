@@ -17,9 +17,9 @@ body {
 	position: relative;
 
   	/* Add top space when <header> is position fixed */
-	& when (@setting_header_fixed = true) {
-		.add-responsive(padding-top, @header-height);
-	}
+	// & when (@header-always-sticky = true) {
+	// 	.add-responsive(padding-top, @header-height);
+	// }
 
 }
 
