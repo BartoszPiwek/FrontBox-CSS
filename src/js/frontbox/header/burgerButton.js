@@ -7,6 +7,7 @@ module.exports = (data) => {
             $menu_container: null,
         },
         ELEMENTS = data.ELEMENTS,
+        FUNCTIONS = data.FUNCTIONS,
         SETTINGS = {
             wait: 300,
             style: 'under-header',
@@ -59,8 +60,60 @@ module.exports = (data) => {
         /* end-test-code */
 
         window.setTimeout(function() {
+            FUNCTIONS.onUserScroll();
             moving = false;
             ELEMENTS.$html.removeClass('js_menu-active--end');
+
+            /* test-code */
+            DEBUG.debugVariables.add({
+                'Burger moving': moving,
+            });
+            /* end-test-code */
+
+        }, SETTINGS.wait);
+
+    };
+
+    var toggleOn = () => {
+        FUNCTIONS.offUserScroll();
+
+        /* test-code */
+        DEBUG.debugConsole.add("Burger toggleOn", "click");
+        /* end-test-code */
+
+        if (SETTINGS.style) {
+            switch (SETTINGS.style) {
+
+                /**
+                 * For burger animation
+                 * @import "../plugins/animation/navbar/under-header";
+                 */
+                case 'under-header':
+                    DATA.$menu = DATA.$menu_container.offsetHeight + 'px';
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        ELEMENTS.$html.addClass('js_menu-active');
+        ELEMENTS.$overlay.on('click', toggleOverlay);
+
+        moving = true;
+        active = true;
+
+        /* test-code */
+        DEBUG.debugVariables.add({
+            'Burger active': active,
+            'Burger moving': moving,
+        });
+        /* end-test-code */
+
+        window.setTimeout(function() {
+
+            ELEMENTS.$html.addClass('js_menu-active--end');
+            moving = false;
 
             /* test-code */
             DEBUG.debugVariables.add({
@@ -96,54 +149,7 @@ module.exports = (data) => {
             if (active) {
                 toggleOff();
             } else {
-
-                /* test-code */
-                DEBUG.debugConsole.add("Burger toggleOn", "click");
-                /* end-test-code */
-
-                if (SETTINGS.style) {
-                    switch (SETTINGS.style) {
-
-                        /**
-                         * For burger animation
-                         * @import "../plugins/animation/navbar/under-header";
-                         */
-                        case 'under-header':
-                            DATA.$menu = DATA.$menu_container.offsetHeight + 'px';
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-
-
-
-                ELEMENTS.$html.addClass('js_menu-active');
-                ELEMENTS.$overlay.on('click', toggleOverlay);
-
-                moving = true;
-                active = true;
-
-                /* test-code */
-                DEBUG.debugVariables.add({
-                    'Burger active': active,
-                    'Burger moving': moving,
-                });
-                /* end-test-code */
-
-                window.setTimeout(function() {
-
-                    ELEMENTS.$html.addClass('js_menu-active--end');
-                    moving = false;
-
-                    /* test-code */
-                    DEBUG.debugVariables.add({
-                        'Burger moving': moving,
-                    });
-                    /* end-test-code */
-
-                }, SETTINGS.wait);
+                toggleOn();
             }
 
         }

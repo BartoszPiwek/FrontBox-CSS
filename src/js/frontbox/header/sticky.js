@@ -19,9 +19,6 @@ module.exports = (data) => {
     if (data.SETTINGS) {
         $.extend(DATA, data.SETTINGS);
     }
-    console.log(data);
-    console.log(DATA);
-    
 
     var start = (data) => {
 
@@ -50,7 +47,6 @@ module.exports = (data) => {
 
     var refresh = () => {
         calculateHeader();
-        console.log(SETTINGS.offset);
         
         if (!SETTINGS.offset) {
             DATA.offset = SETTINGS.offset;
@@ -72,7 +68,7 @@ module.exports = (data) => {
 
     var spyTop = () => {
 
-        if (SCROLL.top > DATA.offset) 
+        if (SCROLL.top > position) 
         {
             if (!active) 
             {

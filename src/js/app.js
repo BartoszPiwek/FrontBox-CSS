@@ -8,6 +8,9 @@ global.jQuery = $;
 (function($, _) {
     'use strict';
 
+    /**
+     * Elements
+     */
     var 
     ELEMENTS = {
         $body: $("body"),
@@ -36,7 +39,7 @@ global.jQuery = $;
     /* end-test-code */
 
     /**
-     * Helpful
+     * Required
      */
     var FUNCTIONS = require('./frontbox/functions');
     var DEVICE = require('./frontbox/data/device')();
@@ -44,17 +47,40 @@ global.jQuery = $;
         DEVICE: DEVICE
     });
 
-    var burger = require('./frontbox/header/burgerButton')({
-        ELEMENTS: ELEMENTS,
-    });
-    var headerSticky = require('./frontbox/header/sticky')({
+    /**
+     *? Create fixed element when page is scroll
+     *  Required base: ELEMENTS, SCROLL
+     *  
+     ** When create sticky element
+     *  @param {null, number} SETTINGS.offset 
+     *  null - automatic 
+     *  number - how many pixel user may scroll to trigger sticky   
+     * 
+     ** Add height to placeholder when trigger sticky
+     *  Set true only if @header-always-sticky = false
+     *  @param {bool} SETTINGS.placeholder
+     * 
+     ** Sticky element 
+     *  @param {jQuery Object} $elementSpy 
+     */
+    var 
+    headerSticky = require('./frontbox/header/sticky')({
         ELEMENTS: ELEMENTS,
         SCROLL: SCROLL,
         SETTINGS: {
             placeholder: false,
-            offset: 300,
+            offset: false,
         },
         $elementSpy: $("#sticky-element"),
+    });
+
+    /**
+     * Helpful
+     */
+
+
+    var burger = require('./frontbox/header/burgerButton')({
+        ELEMENTS: ELEMENTS,
     });
 
     // Slick

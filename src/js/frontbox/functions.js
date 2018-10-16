@@ -7,10 +7,10 @@ module.exports = {
         window.scrollTo( 0, 0 );
     },
     offUserScroll() {
-        window.addEventListener('scroll', this.disableScroll);
+        window.addEventListener('scroll', this.functionScrollBlock);
     },
     onUserScroll() {
-        window.removeEventListener('scroll', this.disableScroll);
+        window.removeEventListener('scroll', this.functionScrollBlock);
     },
 
     /**
