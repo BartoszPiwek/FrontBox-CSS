@@ -45,8 +45,16 @@ var foo = require('./frontbox/libs/getStyle');
      */
     var FUNCTIONS = require('./frontbox/functions');
     var DEVICE = require('./frontbox/data/device')();
+    var BROWSER = require('./frontbox/data/browser')();
     var SCROLL = require('./frontbox/data/scroll')({
         DEVICE: DEVICE
+    });
+
+    /**
+     * Animations
+     */
+    var transitionHeight = require('./frontbox/transitionHeight')({
+        BROWSER : BROWSER,
     });
 
     /**
