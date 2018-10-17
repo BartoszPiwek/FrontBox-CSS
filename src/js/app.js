@@ -3,6 +3,8 @@
  */
 global.$ = require('jquery');
 global.jQuery = $;
+
+var foo = require('./frontbox/libs/getStyle');
 // slick = require('slick-carousel');
 
 (function($, _) {
@@ -68,7 +70,7 @@ global.jQuery = $;
         ELEMENTS: ELEMENTS,
         SCROLL: SCROLL,
         SETTINGS: {
-            placeholder: false,
+            placeholder: true,
             offset: false,
         },
         $elementSpy: $("#sticky-element"),
