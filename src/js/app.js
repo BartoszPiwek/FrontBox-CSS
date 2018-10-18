@@ -3,9 +3,14 @@
  */
 global.$ = require('jquery');
 global.jQuery = $;
+// require('slick-carousel');
+// require('select2')();
 
-var foo = require('./frontbox/libs/getStyle');
-// slick = require('slick-carousel');
+/**
+ * jQuery plugins
+ */
+require('./frontbox/jquery/scrollBlock')();
+require('./frontbox/libs/getStyle');
 
 (function($, _) {
     'use strict';
