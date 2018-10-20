@@ -170,10 +170,13 @@ module.exports = (data) => {
                 /* end-test-code */
 
                 // Animate scroll
-                FUNCTIONS.offUserScroll();
+                ELEMENTS.$body.scrollDisable();
                 ELEMENTS.$page.animate({
                     scrollTop: scrollTo,
-                }, 1200);
+                }, 1200, () => {
+                    ELEMENTS.$body.scrollDisable("undo");
+                    active = false;
+                });
                 // ELEMENTS.$page.animate({
                 //     scrollTop: targetPositionTop - ELEMENTS.$header.outerHeight(true),
                 // }, scrollTime, () => {

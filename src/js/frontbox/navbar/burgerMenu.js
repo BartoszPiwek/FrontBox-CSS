@@ -60,7 +60,7 @@ module.exports = (data) => {
         /* end-test-code */
 
         window.setTimeout(function() {
-            FUNCTIONS.onUserScroll();
+            ELEMENTS.$body.scrollDisable("undo");
             moving = false;
             ELEMENTS.$html.removeClass('js_menu-active--end');
 
@@ -75,7 +75,7 @@ module.exports = (data) => {
     };
 
     var toggleOn = () => {
-        FUNCTIONS.offUserScroll();
+        ELEMENTS.$body.scrollDisable();
 
         /* test-code */
         DEBUG.debugConsole.add("Burger toggleOn", "click");

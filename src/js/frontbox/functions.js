@@ -1,19 +1,6 @@
 module.exports = {
 
     /**
-     * Disable user scrolling
-     */
-    functionScrollBlock() {
-        window.scrollTo( 0, 0 );
-    },
-    offUserScroll() {
-        window.addEventListener('scroll', this.functionScrollBlock);
-    },
-    onUserScroll() {
-        window.removeEventListener('scroll', this.functionScrollBlock);
-    },
-
-    /**
      * Convert string to boolean
      * fastest method http://jsben.ch/cqVSj
      */
@@ -34,7 +21,7 @@ module.exports = {
     /*
      * Determine Overflow
      */
-    functionDetermineOverflow: function(content, container) {
+    determineOverflow: function(content, container) {
 
         if (content instanceof jQuery)
         {

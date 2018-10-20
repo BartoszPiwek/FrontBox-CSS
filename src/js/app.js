@@ -3,9 +3,15 @@
  */
 global.$ = require('jquery');
 global.jQuery = $;
+// global.Cookies = require('js-cookie');
+// require('slick-carousel');
+// require('select2')();
+// require('./frontbox/libs/getStyle');
 
-var foo = require('./frontbox/libs/getStyle');
-// slick = require('slick-carousel');
+/**
+ * jQuery plugins
+ */
+require('./frontbox/jquery/scrollBlock')();
 
 (function($, _) {
     'use strict';
@@ -45,28 +51,31 @@ var foo = require('./frontbox/libs/getStyle');
      */
     var FUNCTIONS = require('./frontbox/functions');
     var DEVICE = require('./frontbox/data/device')();
+    var BROWSER = require('./frontbox/data/browser')();
     var SCROLL = require('./frontbox/data/scroll')({
         DEVICE: DEVICE
     });
 
     /**
-     *? Create fixed element when page is scroll
-     *  Required base: ELEMENTS, SCROLL
-     *  
-     ** When create sticky element
-     *  @param {null, number} SETTINGS.offset 
-     *  null - automatic 
-     *  number - how many pixel user may scroll to trigger sticky   
-     * 
-     ** Add height to placeholder when trigger sticky
-     *  Set true only if @header-always-sticky = false
-     *  @param {bool} SETTINGS.placeholder
-     * 
-     ** Sticky element 
-     *  @param {jQuery Object} $elementSpy 
+     * Animations
      */
-    var 
-    headerSticky = require('./frontbox/header/sticky')({
+    var transitionHeight = require('./frontbox/transitionHeight')({
+        BROWSER : BROWSER,
+    });
+
+    /**
+     * Create fixed element when page is scroll
+     * 
+     *!@param {ELEMENTS} ELEMENTS
+     *!@param {ELEMENTS} SCROLL
+     * @param {null, number} SETTINGS.offset when create sticky element
+     * null - automatic 
+     * number - how many pixel user may scroll to trigger sticky   
+     * @param {bool} SETTINGS.placeholder add height to placeholder when trigger sticky
+     * set true only if @header-always-sticky = false
+     * @param {jQuery Object} $elementSpy sticky element 
+     */
+    require('./frontbox/header/sticky')({
         ELEMENTS: ELEMENTS,
         SCROLL: SCROLL,
         SETTINGS: {
@@ -77,90 +86,80 @@ var foo = require('./frontbox/libs/getStyle');
     });
 
     /**
-     * Helpful
+     * Burger menu
+     * 
+     * !@param {ELEMENTS} ELEMENTS
+     * !@param {FUNCTIONS} FUNCTIONS
+     * @param {Bool} OPTIONS.dropdown
+     * menu items can be expand
+     * @param {Bool, Number} OPTIONS.dropdownResponsive
+     * breakpoint to trigger item expand
      */
-
-
-    var burger = require('./frontbox/header/burgerButton')({
+    require('./frontbox/navbar/burgerMenu')({
         ELEMENTS: ELEMENTS,
+        FUNCTIONS: FUNCTIONS,
+        OPTIONS: {
+            dropdown: true,
+            dropdownResponsive: 2,
+        }
     });
 
-    // Slick
-    var $slick = $(".slider");
-    if ($slick.length) {
-        $slick.slick({
-            dots: true,
-            infinite: true,
-            slidesToShow: 1,
-            arrows: false,
-        });
-    }
-
-    
-     /**
-      * Main
-      */
-
-
-     // /**
-     //  * Header
-     //  */
-     //
-     // Main.headerBurger.start();
-
-     // if (Main.ELEMENTS.$header.length) {
-     //     Main.navbar = require('frontbox/header/navbar');
-     //     Main.navbar.start();
-     // }
-
-     /**
-      * Form
-      */
-     // Main.formInputCounter = require('frontbox/form/input-counter');
-     // Main.formInputCounter.start();
-
-     /**
-      * Fallback
-      */
-
-     // // Calculate vertical units
-     // Main.vUnits = require('frontbox/fallback/v-units');
-     // Main.vUnits.start();
-
-     // /**
-     //  * Binds
-     //  */
-
-    // Delay functions trigger for page resize
-    // Main.bindResize = require('./frontbox/bind/resize');
-    // Main.bindResize.onResizeBind();
-
-     // var log = () => {
-     //     console.log("log!");
-     // };
-     // Main.bindResize.add("name", log );
-
-     // /**
-     //  * Other
-     //  */
-     // // Main.tabs = require('frontbox/tabs');
-     // // Main.tabs.add("main");
-
-     // // ! Required 'frontbox/functions'
-     var scrollTo = require('./frontbox/scrollTo')({
+    /**
+     * Cookies
+     * 
+     * !@param {ELEMENTS} ELEMENTS
+     * @param {String} OPTIONS.imgSrc patch to image
+     * @param {String} OPTIONS.content content text
+     */
+    require('./frontbox/cookies')({
         ELEMENTS: ELEMENTS,
-        SCROLL: SCROLL,
+        OPTIONS: {
+            imgSrc: `/assets/images/cookies.png`,
+            content: `W naszym serwisie wykorzystujemy pliki Cookies. Są one zapisywane na dysku urządzenia końcowego użytkownika w celach statystycznych oraz ułatwienia korzystania z serwisu. Ustawienia te zawsze można zmienić. Szczegółowe informacje o plikach Cookies znajdują się w <a href="#" target="_blank">Polityce Prywatności</a>`,
+        },
+    });
+    
+    /**
+     * Smooth scroll to target
+     * 
+     *!@param {ELEMENTS} ELEMENTS
+     *!@param {SCROLL} SCROLL
+     *!@param {FUNCTIONS} FUNCTIONS
+     */
+    var scrollTo = require('./frontbox/scrollTo')({
+       ELEMENTS: ELEMENTS,
+       SCROLL: SCROLL,
+       FUNCTIONS: FUNCTIONS,
+    });
+    
+    /**
+     * Google Maps API
+     * 
+     * !@param {FUNCTIONS} FUNCTIONS
+     * !@param {SCROLL} SCROLL
+     * @param {Number} OPTIONS.center patch to image
+     * @param {Number} OPTIONS.content content text
+     */
+    var googleMaps = require('./googleMaps')({
         FUNCTIONS: FUNCTIONS,
+        SCROLL: SCROLL,
+        OPTIONS: {
+            // First position
+            center: {
+                lat: 51.919437,
+                lng: 19.145136,
+            },
+            mapID: "map",
+            zoom: 5.8,
+            disableDefaultUI: true,
+            streetViewControl: false,
+            draggable: false,
+            scaleControl: false,
+            scrollwheel: false,
+            styles: require('./googleMapsStyle'),
+            markerSize: [21, 34],
+        },
      });
-
-     // Main.listVerticalScroll = require('frontbox/listVerticalScroll');
-     // Main.listVerticalScroll.start();
-
-     /**
-      * Elements
-      */
-     // Main.showMore = require('./frontbox/showMore');
-     // Main.showMore.start();
 
     /* test-code */
     DEBUG.debugConsole.add("Running correct...");
