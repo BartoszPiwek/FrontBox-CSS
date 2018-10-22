@@ -10,7 +10,6 @@ module.exports = function(SETTINGS){
             `${SETTINGS.pathToProd}/includes`,
             `${SETTINGS.pathToProd}/js/frontbox`,
             `${SETTINGS.pathToProd}/js/libs`,
-            `${SETTINGS.pathToProd}/js/app.dev.js`,
             `${SETTINGS.pathToProd}/js/app.js`,
         ],
         dev: [
