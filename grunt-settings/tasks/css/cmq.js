@@ -1,13 +1,16 @@
-module.exports = {
+module.exports = function(SETTINGS) {
 
-    options: {
-        log: true
-    },
-    your_target: {
-        files: [{
-            src: 'public/prod/css/style.css',
-            dest: 'public/prod/css/style.css',
-        }]
-    }
+    return {
 
+        options: {
+            log: true
+        },
+        your_target: {
+            files: [{
+                src: `${SETTINGS.pathToMainCSS}/style.prod.css`,
+                dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
+            }]
+        }
+
+    };
 };

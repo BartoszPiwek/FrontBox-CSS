@@ -2,17 +2,20 @@ module.exports = function(SETTINGS) {
 
     var modifyVarsDev, modifyVarsProd;
 
-    modifyVarsDev = JSON.parse(JSON.stringify(SETTINGS));
-    modifyVarsProd = JSON.parse(JSON.stringify(SETTINGS));
-
-    modifyVarsDev.version = 'dev';
+    modifyVarsDev = {
+        pathToModulesDev: SETTINGS.pathToModulesDev,
+        pathToModulesProd: SETTINGS.pathToModulesProd,
+        isWordpress: SETTINGS.isWordpress,
+    };
+    modifyVarsProd = JSON.parse(JSON.stringify(modifyVarsDev));
     modifyVarsProd.version = 'prod';
+    modifyVarsDev.version = 'dev';
 
     return {
 
         options: {
             javascriptEnabled: true,
-            modifyVars: modifyVarsDev
+            modifyVars: modifyVarsDev,
         },
 
         /**
@@ -83,6 +86,35 @@ module.exports = function(SETTINGS) {
             },
             src: `src/less/style.less`,
             dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
+        },
+        prod_style_grid: {
+            options: {
+                compress: false,
+                sourceMap: false,
+                modifyVars: modifyVarsProd,
+            },
+            src: `src/less/grid.less`,
+            dest: `${SETTINGS.pathToDev}/css/grid.prod.css`,
+        },
+
+        prod_style_base: {
+            options: {
+                compress: false,
+                sourceMap: false,
+                modifyVars: modifyVarsProd,
+            },
+            src: `src/less/base.less`,
+            dest: `${SETTINGS.pathToDev}/css/base.prod.css`,
+        },
+
+        prod_style_utilities: {
+            options: {
+                compress: false,
+                sourceMap: false,
+                modifyVars: modifyVarsProd,
+            },
+            src: `src/less/utilities.less`,
+            dest: `${SETTINGS.pathToDev}/css/utilities.prod.css`,
         },
 
     };

@@ -27,8 +27,8 @@ Version:    Unpublished
 }
 
 & when (@version = prod) {
-  @import (less, optional) "@{pathToModulesProd}/grid.css";
-  @import (less, optional) "@{pathToModulesProd}/base.css";
+  @import (less, optional) "@{pathToModulesProd}/grid.prod.css";
+  @import (less, optional) "@{pathToModulesProd}/base.prod.css";
 }
 
 // Variables & Settings
@@ -48,5 +48,5 @@ Version:    Unpublished
 }
 
 & when (@version = prod) {
-  @import (less, optional) "@{pathToModulesProd}/utilities.css";
+  @import (less, optional) "@{pathToModulesProd}/utilities.prod.css";
 }
