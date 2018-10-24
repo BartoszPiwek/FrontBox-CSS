@@ -158,7 +158,7 @@
 	margin-left: ~"-@{size}";
 	width: calc(100% + @size);
 
-> div:not(.row-gap-ignore) {
+  & > div:not(.row-gap-ignore) {
 		padding-left: @size;
 	};
 }
@@ -167,7 +167,7 @@
 .space-y(@space) {
 	margin-bottom: ~'-@{space} !important';
 
-	> div:not(.row-space-ignore) {
+	& > div:not(.row-space-ignore) {
 		padding-bottom: ~'@{space}';
 	};
 }
@@ -405,7 +405,7 @@
 
   // Return @media resolution
 	@resName: ~`(function(){
-		var array = @{grid-list-js};
+		var array = @{responsive_list-js};
 		return nameResponsive = array[array.indexOf('@{prefix}') - 1];
 	})()`;
 

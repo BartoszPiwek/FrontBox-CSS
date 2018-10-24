@@ -7,6 +7,8 @@ global.jQuery = $;
 // require('slick-carousel');
 // require('select2')();
 // require('./frontbox/libs/getStyle');
+// var 
+// Sharer = require('slick-carousel'); // http://ellisonleao.github.io/sharer.js/
 
 /**
  * jQuery plugins
@@ -82,6 +84,18 @@ require('./frontbox/jquery/scrollBlock')();
         ELEMENTS: ELEMENTS,
         SCROLL: SCROLL,
         FUNCTIONS: FUNCTIONS,
+        SETTINGS: {
+            // active automatic scroll page to element via URL hash
+            autoScroll: false,
+            // divide distance by this value to calculate time scroll
+            time: 2,
+            // min time scroll
+            minTime: 400,
+            // max time scroll
+            maxTime: 1200,
+            // run autoScroll when hash in URL is begin with this string
+            prefixAutoScroll: 'scroll-'
+        },
      });
 
     /**

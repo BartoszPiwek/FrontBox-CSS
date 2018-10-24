@@ -15,21 +15,21 @@
 
 }
 
-.function-responsive-full(@code, @i:(length(@grid-list))) when (@i > 0) {
+.function-responsive-full(@code, @i:(length(@responsive_list))) when (@i > 0) {
 
-	& when (@i = length(@grid-list)) {
+	& when (@i = length(@responsive_list)) {
 		& {
 			@code();
 		}
 	}
 
 	@value: ~`(function(){
-		var array = @{grid-list-js};
+		var array = @{responsive_list-js};
 		return valueResponsive = array[@{i} - 2];
 	})()`;
 
 	@name: ~`(function(){
-		var array = @{grid-list-js};
+		var array = @{responsive_list-js};
 		return nameResponsive = array[@{i} - 1];
 	})()`;
 
@@ -53,10 +53,10 @@
 		@code();
 	}
 
-	.for2-reverse(@grid-list, {
+	.for2-reverse(@responsive_list, {
 
-		@responsive-value: arrayElement(@grid-list, @i - 1);
-		@responsive-name: arrayElement(@grid-list, @i);
+		@responsive-value: arrayElement(@responsive_list, @i - 1);
+		@responsive-name: arrayElement(@responsive_list, @i);
 	
 		@media @responsive-value {
 			.@{responsive-name}_@{name} {

@@ -26,6 +26,7 @@ module.exports = (data) => {
 
     var
     SETTINGS = {
+        // active automatic scroll page to element via URL hash
         autoScroll: false,
         // divide distance by this value to calculate time scroll
         time: 2,
@@ -36,6 +37,9 @@ module.exports = (data) => {
         // run autoScroll when hash in URL is begin with this string
         prefixAutoScroll: 'scroll-'
     };
+
+    $.extend( SETTINGS, data.SETTINGS );
+    console.log(SETTINGS);
 
     /**
      * Start function
@@ -49,12 +53,11 @@ module.exports = (data) => {
         /* test-code */
         DEBUG.debugConsole.add("Start: scrollTo");
         /* end-test-code */
-
-        $.extend( self.SETTINGS, data );
+        
 
         if (SETTINGS.autoScroll) 
         {
-            autoScrol();
+            autoScroll();
         }
 
         refresh();
@@ -75,7 +78,7 @@ module.exports = (data) => {
         if( hash.startsWith( "#" + SETTINGS.prefixAutoScroll ) ) {
 
             // Fix annoying jumping when user disturb scroll
-            Main.function.offUserScroll();
+            ELEMENTS.$body.scrollDisable(true);
 
             // Remove hash from url
             var 
@@ -119,20 +122,16 @@ module.exports = (data) => {
         }
 
         // Check target element
-        if (!target) 
-        {
+        if (!target) {
             targetID = "#" + $this.attr("data-scroll");
             $target = $(targetID);
         } 
-        else 
-        {
-            if (target instanceof jQuery) 
-            {
+        else {
+            if (target instanceof jQuery) {
                 $target = target;
                 targetID = "#" + $target.attr("ID");
             } 
-            else
-            {
+            else {
                 targetID = "#" + target;
                 $target = $(targetID);
             }
@@ -151,8 +150,8 @@ module.exports = (data) => {
                 var
                 targetPositionTop = $target.offset().top,
                 // Scroll position
-                scrollTo = targetPositionTop - ELEMENTS.$header.outerHeight(true);    
-
+                scrollTo = targetPositionTop;    
+                
                 // Calculate scrollTime 
                 var scrollTime = Math.round(Math.abs(targetPositionTop - SCROLL.top) / SETTINGS.time);
                 if (scrollTime < SETTINGS.minTime) 
@@ -174,7 +173,7 @@ module.exports = (data) => {
                 ELEMENTS.$page.animate({
                     scrollTop: scrollTo,
                 }, 1200, () => {
-                    ELEMENTS.$body.scrollDisable("undo");
+                    ELEMENTS.$body.scrollDisable('undo');
                     active = false;
                 });
                 // ELEMENTS.$page.animate({
@@ -209,7 +208,7 @@ module.exports = (data) => {
      */
     var
     on = (element, time = false) => {
-        return this.scroll(false, element, time);
+        return scroll(false, element, time);
     };
     
     /**

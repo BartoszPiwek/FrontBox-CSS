@@ -4,8 +4,4 @@
 
 // Max columns in one row
 @grid-count: 12;
-@grid-list-count: length(@grid-list) - 1;
-
-// Responsive list & responsive list for javascript less function
-@grid-list: @desktop, lg, @tablet, md, @fablet, sm, @mobile, xs;
-@grid-list-js:  ~'["@{desktop}", "lg", "@{tablet}", "md", "@{fablet}", "md",  "@{mobile}", "xs"]';
+@responsive_list-count: length(@responsive_list) - 1;

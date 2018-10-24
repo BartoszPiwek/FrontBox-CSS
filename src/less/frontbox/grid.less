@@ -6,11 +6,11 @@
   * Grid generator
 **/
 
-.grid-responsive(@i: (length(@grid-list) - 2)) when (@i > 0) {
+.grid-responsive(@i: (length(@responsive_list) - 2)) when (@i > 0) {
 
-    @grid-name: arrayElement(@grid-list, @i - 2);
+    @grid-name: arrayElement(@responsive_list, @i - 2);
 
-    @grid-value: arrayElement(@grid-list, @i - 1);
+    @grid-value: arrayElement(@responsive_list, @i - 1);
 
     @media @grid-name {
 
@@ -83,6 +83,10 @@
         position: relative;
         flex-direction: column;
         display: flex;
+
+        & > * {
+            flex: 1 1 auto;
+        }
     }
 
 }
@@ -141,9 +145,14 @@
 
     flex: 1 1 1px !important;
 
+    &-static {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
     &-responsive {
         flex: 1 1 auto !important;
     }
+
     // Vertical & horizontal center
     &-center {
         align-items: center;

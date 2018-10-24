@@ -41,3 +41,10 @@
     --tablet: @responsive_tablet;
     --desktop: @responsive_desktop;
 }
+
+/*=========================================================================
+|| Responsive list & responsive list for javascript less function
+=========================================================================*/
+
+@responsive_list: @desktop, lg, @tablet, md, @fablet, sm, @mobile, xs;
+@responsive_list-js:  ~'["@{desktop}", "lg", "@{tablet}", "md", "@{fablet}", "sm",  "@{mobile}", "xs"]';
