@@ -1,60 +1,10 @@
 /*=========================================================================
 || FILE: _variables.less
-===========================================================================
-|| Main variables
-|| - responsive size
-|| - grid columns
-|| - paths
 =========================================================================*/
 
-
-/*=========================================================================
-// Responsive sizes
-=========================================================================*/
-
-@responsive_desktop: 1024;
-@responsive_desktop-only: (@responsive_desktop - 1);
-@responsive_tablet: 768;
-@responsive_fablet-only: (@responsive_fablet - 1);
-@responsive_fablet: 550;
-@responsive_mobile: (@responsive_tablet - 1);
-
-/*=========================================================================
-|| Responsive variables
-===========================================================================
-|| Easy way using @media queries
-|| @media @mobile === @media only screen and (max-width: 767px)
-||
-|| SYNTAX:
-||   "variable-name: value"
-||   · "variable-name":     width screen name
-||   · "value":             "only screen and ()" with destination in parenthesis
-=========================================================================*/
-
-@mobile: ~"only screen and (max-width: @{responsive_mobile}px)";
-@fablet: ~"only screen and (min-width: @{responsive_fablet}px)";
-@tablet: ~"only screen and (min-width: @{responsive_tablet}px)";
-@desktop: ~"only screen and (min-width: @{responsive_desktop}px)";
-@desktop-only: ~"only screen and (max-width: @{responsive_desktop-only}px)";
-@fablet-less: ~"only screen and (max-width: @{responsive_fablet}px)";
-@tablet-only: ~"only screen and (max-width: @{responsive_desktop}px) and (min-width: @{responsive_tablet}px)";
-@fablet-only: ~"only screen and (min-width: @{responsive_fablet-only}px)";
-@portable: ~"only screen and (max-width: @{responsive_desktop}px)";
-
-/*=========================================================================
-|| Grid variables
-=========================================================================*/
-
-// Max columns in one row
-@grid-count: 12;
-@grid-list-count: length(@grid-list) - 1;
-// Responsive list & responsive list for javascript less function
-@grid-list: @desktop, lg, @tablet, md, @mobile, sm;
-@grid-list-js:  ~'["@{desktop}", "lg", "@{tablet}", "md", "@{mobile}", "sm"]';
-
-/*=========================================================================
-|| Z-index variables
-=========================================================================*/
+/**
+ * Z-index variables
+ */
 
 @zindex-first: 9999;
 @zindex-site: 8000;
@@ -62,8 +12,8 @@
 @zindex-menu: 7000;
 @zindex-content: 6000;
 
-/*=========================================================================
-|| Other variables
-=========================================================================*/
+/**
+ * Transition
+ */
 
 @default-transition: 0.2s;
