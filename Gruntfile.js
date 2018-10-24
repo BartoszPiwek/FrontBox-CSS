@@ -18,10 +18,10 @@ var MODULES = {};
 MODULES.autosvg = require('./grunt-settings/tasks/html/autosvg');
 MODULES.pug = require('./grunt-settings/tasks/html/pug')(SETTINGS);
 // JavaScript
-MODULES.uglify = require('./grunt-settings/tasks/js/uglify');
-MODULES.babel = require('./grunt-settings/tasks/js/babel');
+MODULES.uglify = require('./grunt-settings/tasks/js/uglify')(SETTINGS);
+MODULES.babel = require('./grunt-settings/tasks/js/babel')(SETTINGS);
 MODULES.requirejs = require('./grunt-settings/tasks/js/requirejs');
-MODULES.strip_code = require('./grunt-settings/tasks/js/strip_code');
+MODULES.strip_code = require('./grunt-settings/tasks/js/strip_code')(SETTINGS);
 MODULES.browserify = require('./grunt-settings/tasks/js/browserify')(SETTINGS);
 // Graphic assets
 MODULES.image = require('./grunt-settings/tasks/assets/image');
@@ -30,16 +30,17 @@ MODULES.favicons = require('./grunt-settings/tasks/assets/favicons')(SETTINGS);
 MODULES.svgmin = require('./grunt-settings/tasks/assets/svgmin');
 // CSS
 MODULES.less = require('./grunt-settings/tasks/css/less')(SETTINGS);
-MODULES.postcss = require('./grunt-settings/tasks/css/postcss');
-MODULES.uncss = require('./grunt-settings/tasks/css/uncss');
+MODULES.postcss = require('./grunt-settings/tasks/css/postcss')(SETTINGS);
+MODULES.uncss = require('./grunt-settings/tasks/css/uncss')(SETTINGS);
 MODULES.autocolor = require('./grunt-settings/tasks/css/autocolor');
-MODULES.cmq = require('./grunt-settings/tasks/css/cmq');
+MODULES.cmq = require('./grunt-settings/tasks/css/cmq')(SETTINGS);
 MODULES.cssstats = require('./grunt-settings/tasks/css/cssstats');
 // Other
 MODULES.copy = require('./grunt-settings/tasks/other/copy')(SETTINGS);
-MODULES.clean = require('./grunt-settings/tasks/other/clean');
+MODULES.clean = require('./grunt-settings/tasks/other/clean')(SETTINGS);
 MODULES.connect = require('./grunt-settings/tasks/other/connect');
 MODULES.watch = require('./grunt-settings/tasks/other/watch');
+MODULES.exec = require('./grunt-settings/tasks/other/exec')(SETTINGS);
 
 // END Settings
 //=========================================================================
@@ -67,7 +68,6 @@ module.exports = function(grunt) {
         /**
          * HTML
          */
-
         htmlmin: MODULES.htmlmin, // Minify HTML files
         processhtml: MODULES.processhtml, // Process HTML
         pug: MODULES.pug, // Compile Pug templates
@@ -78,7 +78,6 @@ module.exports = function(grunt) {
         /**
          * JavaScript
          */
-
         uglify: MODULES.uglify, // Uglify
         babel: MODULES.babel, // The compiler for next generation JavaScript
         requirejs: MODULES.requirejs, // JavaScript file and module loader
@@ -88,7 +87,6 @@ module.exports = function(grunt) {
         /**
          * Graphic assets 
          */
-
         image: MODULES.image, // Compress png,jpg,gif
         sprite: MODULES.sprite, // Converting a set of images into a spritesheet
         favicons: MODULES.favicons, // Generate favicons
@@ -97,7 +95,6 @@ module.exports = function(grunt) {
         /**
          * CSS tasks
          */
-
         less: MODULES.less, // LESS Compile
         postcss: MODULES.postcss, // Add vendor prefixes to CSS rules using values from Can I Use
         uncss: MODULES.uncss, // Delete unused css class, id
@@ -109,15 +106,14 @@ module.exports = function(grunt) {
         /**
          * Other
          */
-        
         connect: MODULES.connect, // VirtualHost
         copy: MODULES.copy, // Copy
         clean: MODULES.clean, // Remove files
+        exec: MODULES.exec,
 
         /**
          * Watch
          */
-
         watch: MODULES.watch,
 
     });
@@ -174,11 +170,7 @@ module.exports = function(grunt) {
         'pug:prod',
 
         // CSS
-        // 'autoclass',
-        'less:prod',
-        // 'cmq',
-        // 'uncss',
-        'postcss:prod',
+        'prod:style',
         'postcss:min',
         // Critical CSS
         //'critical',
@@ -204,6 +196,17 @@ module.exports = function(grunt) {
         'babel',
         'uglify',
     ]);
+    grunt.registerTask('prod:style', [
+        'less:prod_style_grid',
+        'less:prod_style_base',
+        'less:prod_style_utilities',
+        'less:prod',
+        'load_sitemap_json',
+        'uncss',
+        'cmq',
+        'postcss:prod',
+        'postcss:min',
+    ]);
 
     // Style tasks
     grunt.registerTask('colors', ['autocolor']);
@@ -213,5 +216,11 @@ module.exports = function(grunt) {
     grunt.registerTask('favicon', ['favicons']);
     grunt.registerTask('doc', ['dss']);
     grunt.registerTask('start', ['clean:begin']);
+    
+    // Wordpress
+    grunt.registerTask('load_sitemap_json', function() {
+        var sitemap_urls = grunt.file.readJSON('./sitemap.json');
+        grunt.config.set('uncss.prod.options.urls', sitemap_urls);
+    });
 
 };

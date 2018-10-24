@@ -57,11 +57,32 @@ require('./frontbox/jquery/scrollBlock')();
     });
 
     /**
+     * CSS Variables
+     * 
+     * Usage CSS.getPropertyValue("--mobile")
+     */
+    const
+    CSS = getComputedStyle(document.body);
+    
+    /**
      * Animations
      */
     var transitionHeight = require('./frontbox/transitionHeight')({
         BROWSER : BROWSER,
     });
+
+    /**
+     * Smooth scroll to target
+     * 
+     *!@param {ELEMENTS} ELEMENTS
+     *!@param {SCROLL} SCROLL
+     *!@param {FUNCTIONS} FUNCTIONS
+     */
+    var scrollTo = require('./frontbox/scrollTo')({
+        ELEMENTS: ELEMENTS,
+        SCROLL: SCROLL,
+        FUNCTIONS: FUNCTIONS,
+     });
 
     /**
      * Create fixed element when page is scroll
@@ -75,7 +96,7 @@ require('./frontbox/jquery/scrollBlock')();
      * set true only if @header-always-sticky = false
      * @param {jQuery Object} $elementSpy sticky element 
      */
-    require('./frontbox/header/sticky')({
+    require('./frontbox/navbar/sticky')({
         ELEMENTS: ELEMENTS,
         SCROLL: SCROLL,
         SETTINGS: {
@@ -111,27 +132,14 @@ require('./frontbox/jquery/scrollBlock')();
      * @param {String} OPTIONS.imgSrc patch to image
      * @param {String} OPTIONS.content content text
      */
-    require('./frontbox/cookies')({
-        ELEMENTS: ELEMENTS,
-        OPTIONS: {
-            imgSrc: `/assets/images/cookies.png`,
-            content: `W naszym serwisie wykorzystujemy pliki Cookies. Są one zapisywane na dysku urządzenia końcowego użytkownika w celach statystycznych oraz ułatwienia korzystania z serwisu. Ustawienia te zawsze można zmienić. Szczegółowe informacje o plikach Cookies znajdują się w <a href="#" target="_blank">Polityce Prywatności</a>`,
-        },
-    });
-    
-    /**
-     * Smooth scroll to target
-     * 
-     *!@param {ELEMENTS} ELEMENTS
-     *!@param {SCROLL} SCROLL
-     *!@param {FUNCTIONS} FUNCTIONS
-     */
-    var scrollTo = require('./frontbox/scrollTo')({
-       ELEMENTS: ELEMENTS,
-       SCROLL: SCROLL,
-       FUNCTIONS: FUNCTIONS,
-    });
-    
+    // require('./frontbox/cookies')({
+    //     ELEMENTS: ELEMENTS,
+    //     OPTIONS: {
+    //         imgSrc: `/assets/images/cookies.png`,
+    //         content: `W naszym serwisie wykorzystujemy pliki Cookies. Są one zapisywane na dysku urządzenia końcowego użytkownika w celach statystycznych oraz ułatwienia korzystania z serwisu. Ustawienia te zawsze można zmienić. Szczegółowe informacje o plikach Cookies znajdują się w <a href="#" target="_blank">Polityce Prywatności</a>`,
+    //     },
+    // });
+
     /**
      * Google Maps API
      * 
@@ -140,26 +148,36 @@ require('./frontbox/jquery/scrollBlock')();
      * @param {Number} OPTIONS.center patch to image
      * @param {Number} OPTIONS.content content text
      */
-    var googleMaps = require('./googleMaps')({
-        FUNCTIONS: FUNCTIONS,
-        SCROLL: SCROLL,
-        OPTIONS: {
-            // First position
-            center: {
-                lat: 51.919437,
-                lng: 19.145136,
-            },
-            mapID: "map",
-            zoom: 5.8,
-            disableDefaultUI: true,
-            streetViewControl: false,
-            draggable: false,
-            scaleControl: false,
-            scrollwheel: false,
-            styles: require('./googleMapsStyle'),
-            markerSize: [21, 34],
-        },
-     });
+    // var googleMaps = require('./googleMaps')({
+    //     FUNCTIONS: FUNCTIONS,
+    //     SCROLL: SCROLL,
+    //     OPTIONS: {
+    //         // First position
+    //         center: {
+    //             lat: 51.919437,
+    //             lng: 19.145136,
+    //         },
+    //         mapID: "map",
+    //         zoom: 5.8,
+    //         disableDefaultUI: true,
+    //         streetViewControl: false,
+    //         draggable: false,
+    //         scaleControl: false,
+    //         scrollwheel: false,
+    //         styles: require('./googleMapsStyle'),
+    //         markerSize: [21, 34],
+    //     },
+    // });
+
+    /**
+     * Select2
+     */
+    // var $select2 = $(".select2");
+    // if ($select2.length) {
+    //    $select2.select2({
+    //        minimumResultsForSearch: -1,
+    //    });
+    // }
 
     /* test-code */
     DEBUG.debugConsole.add("Running correct...");

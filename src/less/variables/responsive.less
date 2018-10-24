@@ -1,0 +1,43 @@
+/*=========================================================================
+// Screen sizes for responsive design
+=========================================================================*/
+
+@responsive_desktop: 1024;
+@responsive_tablet: 768;
+@responsive_fablet: 550;
+@responsive_mobile: (@responsive_tablet - 1);
+
+@responsive_desktop-only: (@responsive_desktop - 1);
+@responsive_tablet-only: (@responsive_tablet - 1);
+@responsive_fablet-only: (@responsive_fablet - 1);
+
+/*=========================================================================
+|| Responsive variables
+===========================================================================
+|| Easy way using @media queries
+|| @media @mobile === @media only screen and (max-width: 767px)
+||
+|| SYNTAX:
+||   "variable-name: value"
+||   · "variable-name":     width screen name
+||   · "value":             "only screen and ()" with destination in parenthesis
+=========================================================================*/
+
+@mobile: ~"only screen and (max-width: @{responsive_mobile}px)";
+@fablet: ~"only screen and (min-width: @{responsive_fablet}px)";
+@tablet: ~"only screen and (min-width: @{responsive_tablet}px)";
+@desktop: ~"only screen and (min-width: @{responsive_desktop}px)";
+
+@desktop-only: ~"only screen and (max-width: @{responsive_desktop-only}px)";
+@fablet-only: ~"only screen and (max-width: @{responsive_fablet}px)";
+@tablet-only: ~"only screen and (max-width: @{responsive_desktop}px) and (min-width: @{responsive_tablet}px)";
+@fablet-only: ~"only screen and (min-width: @{responsive_fablet-only}px)";
+
+@portable: ~"only screen and (max-width: @{responsive_tablet}px)";
+
+:root {
+    --mobile: @responsive_mobile;
+    --fablet: @responsive_fablet;
+    --tablet: @responsive_tablet;
+    --desktop: @responsive_desktop;
+}

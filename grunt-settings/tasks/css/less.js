@@ -10,7 +10,7 @@ module.exports = function(SETTINGS) {
     modifyVarsProd = JSON.parse(JSON.stringify(modifyVarsDev));
     modifyVarsProd.version = 'prod';
     modifyVarsDev.version = 'dev';
-
+    
     return {
 
         options: {

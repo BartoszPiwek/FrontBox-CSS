@@ -59,6 +59,7 @@
     "grunt-cli": "^1.2.0",
     "grunt-contrib-pug": "^1.0.0",
     "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-exec": "^3.0.0",
     "image-size": "^0.6.2",
     "is-my-json-valid": "^2.17.1",
     "jquery": "^3.3.1",

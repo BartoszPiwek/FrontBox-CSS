@@ -6,7 +6,7 @@
   * Grid generator
 **/
 
-.grid-responsive(@i: (length(@grid-list))) when (@i > 0) {
+.grid-responsive(@i: (length(@grid-list) - 2)) when (@i > 0) {
 
     @grid-name: arrayElement(@grid-list, @i - 2);
 
