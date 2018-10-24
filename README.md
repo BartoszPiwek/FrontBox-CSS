@@ -5,8 +5,8 @@
 > <strong>Author</strong>: Bartosz Piwek<br>
 > <strong>HTML Preprocessor</strong>: Pug<br>
 > <strong>CSS Preprocessor</strong>: LESS<br>
-> <strong>JS addon</strong>: RequireJS<br>
-> <strong>Version</strong>: 1.0.6<br>
+> <strong>JS Preprocessor</strong>: Browserify<br>
+> <strong>Version</strong>: 1.0.7<br>
 > <strong>Compatibility</strong>: < IE10
 
 ## Used programs
