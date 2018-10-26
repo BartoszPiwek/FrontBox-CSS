@@ -39,8 +39,12 @@
 .add-hover(@code){
 
     &--hover:hover &, 
-    &--hover:hover &, 
-    &--hover:hover &, 
+    &--hover:active &, 
+    &--hover:focus &, 
+
+    &--hover-active &, 
+    &--hover-active &, 
+    &--hover-active &, 
 
     &:hover,
     &:active,
@@ -49,6 +53,19 @@
     {
       @code();
     }
+}
+
+.add-active(@code){
+
+  &--hover:active &, 
+
+  &--hover-active, 
+
+  &:active,
+  
+  {
+    @code();
+  }
 }
 
 .px2rem(@value) {

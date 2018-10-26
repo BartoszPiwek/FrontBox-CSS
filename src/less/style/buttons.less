@@ -91,12 +91,44 @@
     /**
      * Animation
      */
-    &:active {
+    .add-active({
       transform: translateY(1px);
-    }
-
-    .add-hover({
     });
+}
 
-    
+/**
+ * Default buttons style
+ */
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &--block {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  &--disable {
+    pointer-events: none;
+    position: relative;
+
+    &:before {
+      border-radius: inherit;
+      pointer-events: none;
+      height: 100%;
+      width: 100%;
+      background: black;
+      opacity: 0.6;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 }
