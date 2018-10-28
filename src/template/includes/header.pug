@@ -30,7 +30,10 @@ html.no_js(lang= website_locale itemscope itemtype="http://schema.org/WebPage" d
         meta(name="author" content= website_author)
 
       //- Base Style
-      link(rel="stylesheet" type="text/css" href="/css/style.css")
+      if version == 'dev'
+        link(rel="stylesheet" type="text/css" href="/css/style.dev.css")
+      else
+        link(rel="stylesheet" type="text/css" href="/css/style.prod.css")
 
       //- Critical CSS
       if page_criticalCss && website_criticalCSS && version == "prod"
