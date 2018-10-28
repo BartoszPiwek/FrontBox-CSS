@@ -85,7 +85,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
+            dest: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/style.prod.css`,
         },
         prod_style_grid: {
             options: {
@@ -94,7 +94,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/grid.less`,
-            dest: `${SETTINGS.pathToDev}/css/grid.prod.css`,
+            dest: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/grid.prod.css`,
         },
 
         prod_style_base: {
@@ -104,7 +104,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/base.less`,
-            dest: `${SETTINGS.pathToDev}/css/base.prod.css`,
+            dest: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/base.prod.css`,
         },
 
         prod_style_utilities: {
@@ -114,7 +114,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/utilities.less`,
-            dest: `${SETTINGS.pathToDev}/css/utilities.prod.css`,
+            dest: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/utilities.prod.css`,
         },
 
     };

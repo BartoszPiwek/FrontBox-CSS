@@ -21,9 +21,9 @@ module.exports = () => {
         DATA.heightHalf = DATA.height / 2;
 
         // Set responsive size
-        if (window.matchMedia('(min-width: 1024px)').matches) {
+        if (DATA.width > 1024) {
             DATA.responsive = 0;
-        } else if (window.matchMedia('(min-width: 768px)').matches) {
+        } else if (DATA.width > 768) {
             DATA.responsive = 1;
         } else {
             DATA.responsive = 2;

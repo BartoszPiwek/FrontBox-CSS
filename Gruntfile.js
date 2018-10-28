@@ -26,7 +26,7 @@ MODULES.browserify = require('./grunt-settings/tasks/js/browserify')(SETTINGS);
 // Graphic assets
 MODULES.image = require('./grunt-settings/tasks/assets/image');
 MODULES.sprite = require('./grunt-settings/tasks/assets/sprite');
-MODULES.favicons = require('./grunt-settings/tasks/assets/favicons')(SETTINGS);
+MODULES.realFavicon = require('./grunt-settings/tasks/assets/realFavicon')(SETTINGS);
 MODULES.svgmin = require('./grunt-settings/tasks/assets/svgmin');
 // CSS
 MODULES.less = require('./grunt-settings/tasks/css/less')(SETTINGS);
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
          */
         image: MODULES.image, // Compress png,jpg,gif
         sprite: MODULES.sprite, // Converting a set of images into a spritesheet
-        favicons: MODULES.favicons, // Generate favicons
+        realFavicon: MODULES.realFavicon, // Generate favicons
         svgmin: MODULES.svgmin, // Compress SVG
 
         /**
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
 
         // Images
         'favicon',
-        'sprite',
+        // 'sprite',
 
         'copy:prod',
 
@@ -169,15 +169,16 @@ module.exports = function(grunt) {
         // HTML
         'pug:prod',
 
+        // JavaScript
+        'prod:js',
+
         // CSS
         'prod:style',
-        'postcss:min',
         // Critical CSS
         //'critical',
         //'processhtml:critical',
 
-        // JavaScript
-        'prod:js',
+
 
         // General
         // 'hash_res',
@@ -213,14 +214,16 @@ module.exports = function(grunt) {
 
     // Addon tasks
     grunt.registerTask('libs', ['copy:libs']);
-    grunt.registerTask('favicon', ['favicons']);
+    grunt.registerTask('favicon', ['realFavicon']);
     grunt.registerTask('doc', ['dss']);
     grunt.registerTask('start', ['clean:begin']);
     
     // Wordpress
     grunt.registerTask('load_sitemap_json', function() {
-        var sitemap_urls = grunt.file.readJSON('./sitemap.json');
-        grunt.config.set('uncss.prod.options.urls', sitemap_urls);
+        if (SETTINGS.isWordpress) {
+            var sitemap_urls = grunt.file.readJSON('./sitemap.json');
+            grunt.config.set('uncss.prod.options.urls', sitemap_urls);
+        }
     });
 
 };

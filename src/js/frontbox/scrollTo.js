@@ -39,7 +39,6 @@ module.exports = (data) => {
     };
 
     $.extend( SETTINGS, data.SETTINGS );
-    console.log(SETTINGS);
 
     /**
      * Start function

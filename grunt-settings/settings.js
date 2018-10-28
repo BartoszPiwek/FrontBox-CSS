@@ -5,11 +5,11 @@ module.exports = {
     /**
      * Path
      */
-    "pathToMainCSS": 'public/dev/css', 
-    "pathToDev": "public/dev",
-    "pathToProd": "public/prod",
-    "pathToModulesDev": "'.'",
-    "pathToModulesProd": "'.'",
+    "pathToMainCSS": './css', 
+    "pathToDev": "./public/dev",
+    "pathToProd": "./public/prod",
+    "pathToModulesDev": "'../css'",
+    "pathToModulesProd": "'./public/prod/css'",
 
     "pathToFavicon": "src/template/includes/favicon.html",
 

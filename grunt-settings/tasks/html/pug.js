@@ -31,7 +31,7 @@ module.exports = function(SETTINGS){
             files: [{
                 expand: true,
                 cwd: 'src/template/',
-                src: ['**/*.pug'],
+                src: ['**/*.pug', '!includes/**'],
                 dest: `${SETTINGS.pathToProd}/`,
                 ext: '.html'
             }],
