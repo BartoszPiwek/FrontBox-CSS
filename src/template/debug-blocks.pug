@@ -1,0 +1,73 @@
+- var page_title = "Debug Blocks | FrontBox"
+- var page_description = false
+- var page_critical_css = false
+
+include includes/header.pug
+
+.page-content.relative
+	.wrap
+
+		//- Default
+		h2.debug-title.
+			Blocks
+		.row.row-space
+			.col-6
+				div
+					.debug-code.
+						.block-square
+			.col-6
+				div
+					.debug-view.center
+						div.block-square(style="background: red;")
+
+		//- Embed
+		h2.debug-title.
+			Embed
+		.row.row-space
+
+			.col-6
+				div
+					.debug-code.
+						.embed-youtube
+							iframe
+			.col-6
+				div
+					.debug-view
+						.embed-youtube
+							iframe(src="https://www.youtube.com/embed/GRxofEmo3HA")
+
+			.col-6
+				div
+					.debug-code.
+						.embed-youtube--16x9
+							iframe
+			.col-6
+				div
+					.debug-view
+						.embed-youtube.embed-youtube--16x9
+							iframe(src="https://www.youtube.com/embed/GRxofEmo3HA")
+
+			.col-6
+				div
+					.debug-code.
+						.embed-youtube--4x3
+							iframe
+			.col-6
+				div
+					.debug-view
+						.embed-youtube.embed-youtube--4x3
+							iframe(src="https://www.youtube.com/embed/GRxofEmo3HA")
+
+			.col-6
+				div
+					.debug-code.
+						.embed-youtube--1x1
+							iframe
+			.col-6
+				div
+					.debug-view
+						.embed-youtube.embed-youtube--1x1
+							iframe(src="https://www.youtube.com/embed/GRxofEmo3HA")
+
+
+include includes/end.pug

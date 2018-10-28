@@ -16,10 +16,11 @@
     transition+: color @time-transition;
     transition+: border-color @time-transition;
     transition+: transform @time-transition;
-    text-align: center;
+
+    cursor: pointer;
     user-select: none;
     position: relative;
-    cursor: pointer;
+    text-align: center;
 
     // Size
     padding: 14px 6px;
@@ -28,7 +29,7 @@
     height: 100%;
 
     // Colors
-    color: @color-white;
+    color: @color-black;
     background-color: @color-primary;
 
     // Border
@@ -40,64 +41,79 @@
 
       // Behavior
       transition+: transform @time-transition;
-      transition+: fill @time-transition;
-
-    }
-    
-  
-    /**
-     * Colors
-     */
-    // &- {}
-
-    /**
-     * Size
-     */
-    // &- {}
-    &-y-small {
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-    &-x-small {
-      padding-left: 2px;
-      padding-right: 2px;
-    }
-    &-xy-small {
-     padding: 4px;
-    }
-
-    /**
-     * Special
-     */
-    // &- {}
-
-    /**
-     * Elements
-     */
-    .icon-arrow {
-
-      // Behavior
-      transition+: transform @time-transition;
-
-      // Size
-      width: 10px;
-      height: 10px;
-
-      // Style
-      fill: @color-white;
 
     }
 
     /**
      * Animation
      */
-    .add-active({
+
+    &:active {
       transform: translateY(1px);
+    }
+    .add-hover({
+      background-color: darken(@color-primary, 20%);
     });
 }
 
 /**
- * Default buttons style
+ * Colors
+ */
+
+.btn {
+  &-primary {
+
+  }
+  &-secondary {
+
+  }
+  &-success {
+
+  }
+  &-danger {
+
+  }
+  &-warning {
+
+  }
+  &-info {
+
+  }
+  &-light {
+
+  }
+  &-dark {
+
+  }
+}
+
+/**
+ * Size
+ */
+
+.btn {
+  &-large {
+
+  }
+  &-wide {
+
+  }
+  &-big {
+
+  }
+  &-medium {
+
+  }
+  &-small {
+
+  }
+  &-tiny {
+
+  }
+}
+
+/**
+ * Default style
  */
 
 .btn {
@@ -108,13 +124,13 @@
   user-select: none;
   -webkit-user-drag: none;
 
-  &--block {
+  &-block {
     display: block;
     width: 100% !important;
     max-width: 100% !important;
   }
 
-  &--disable {
+  &-disable {
     pointer-events: none;
     position: relative;
 
@@ -130,5 +146,10 @@
       top: 0;
       left: 0;
     }
+  }
+  
+  &-link {
+    background: transparent !important;
+    border-color:  transparent !important;
   }
 }

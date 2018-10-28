@@ -5,9 +5,9 @@
 =========================================================================*/
 
 /**
-  * Square
-  * Same width and height
-**/
+ * Block square
+ * - same width and height
+ */
 
 .block-square {
     width: 100%;
@@ -18,6 +18,19 @@
         top: 0;
         left: 0;
     }
+}
+
+/**
+ * Block transparent
+ */
+.block-transparent {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    vertical-align: top;
+    background-image: linear-gradient(45deg,#c4c4c4 25%,transparent 25%,transparent 75%,#c4c4c4 75%,#c4c4c4),linear-gradient(45deg,#c4c4c4 25%,transparent 25%,transparent 75%,#c4c4c4 75%,#c4c4c4);
+    background-position: 0 0,10px 10px;
+    background-size: 20px 20px;
 }
 
 /** 
@@ -34,14 +47,6 @@
 	width: 100%;
 }
 
-/**
-  * Rounded
-**/
-
-.block_rounded {
-    border-radius: 50%;
-}
-
 /** 
   * Vertical center 
   * EMMET: 
@@ -55,3 +60,43 @@
         display: inline-block !important; 
     } 
 }
+
+/**
+ * Embed YouTube Iframe
+ * - default 21/9
+ * - 
+ * .embed-youtube>iframe
+ */
+
+ .embed-youtube {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding-top: (9 / 21) * 100%;
+    height: 0;
+    &:extend(.block-transparent);
+
+    iframe {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /**
+     * Size
+     */
+    &--16x9 {
+        padding-top: (9 / 16) * 100%;
+    }
+    &--4x3 {
+        padding-top: (3 / 4) * 100%;
+    }
+    &--1x1 {
+        padding-top: (1 / 1) * 100%;
+    }
+ }

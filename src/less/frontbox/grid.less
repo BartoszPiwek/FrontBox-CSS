@@ -196,3 +196,11 @@
 //         grid-column: span @value;
 //     }
 // }, 0);
+
+
+each(@responsive, {
+    @name: @value[name];
+    .sel-@{name} {
+      foo: color;
+    }
+});

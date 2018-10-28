@@ -26,13 +26,13 @@ module.exports = function(SETTINGS) {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.pathToMainCSS}/style.dev.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToDev}/${SETTINGS.pathToMainCSS}/style.dev.css.map`,
                 sourceMapURL: 'style.dev.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
             src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSS}/style.dev.css`,
+            dest: `${SETTINGS.pathToDev}/${SETTINGS.pathToMainCSS}/style.dev.css`,
         },
 
         dev_style_grid: {

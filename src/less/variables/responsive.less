@@ -2,6 +2,34 @@
 // Screen sizes for responsive design
 =========================================================================*/
 
+@responsive: {
+    @desktop: {
+        name: desktop;
+        shortcode: lg;
+        value: 1024;
+    }
+    @tablet: {
+        name: tablet;
+        shortcode: md;
+        value: 768;
+    };
+    @fablet: {
+        name: fablet;
+        shortcode: sm;
+        value: 550;
+    };
+    @mobile: {
+        name: mobile;
+        shortcode: xs;
+        value: @responsive[@fablet][value] - 1;
+    };
+}
+@responsive-length: length(@responsive);
+
+.foo {
+    color: @responsive-length;
+}
+
 @responsive_desktop: 1024;
 @responsive_tablet: 768;
 @responsive_fablet: 550;

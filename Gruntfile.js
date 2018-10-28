@@ -219,10 +219,12 @@ module.exports = function(grunt) {
     grunt.registerTask('start', ['clean:begin']);
     
     // Wordpress
-    grunt.registerTask('load_sitemap_json', function() {
+    grunt.registerTask('load_sitemap_json', () => {
         if (SETTINGS.isWordpress) {
-            var sitemap_urls = grunt.file.readJSON('./sitemap.json');
-            grunt.config.set('uncss.prod.options.urls', sitemap_urls);
+            grunt.config.set(
+                'uncss.prod.options.urls',
+                grunt.file.readJSON('./sitemap.json')
+            );
         }
     });
 

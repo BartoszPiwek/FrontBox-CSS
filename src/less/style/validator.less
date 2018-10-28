@@ -10,8 +10,8 @@
 **/
 
 .input-error {
-    border-color: @color-error  !important;
-    color: @color-error  !important;
+    border-color: @color-danger  !important;
+    color: @color-danger  !important;
     /**
       * Absolute validator information
       - default style
@@ -28,7 +28,7 @@
             padding: 6px;
             text-align: center;
             display: block;
-            border: 1px solid @color-error;
+            border: 1px solid @color-danger;
             border-radius: 4px;
             position: relative;
             font-size: 13px;
@@ -42,7 +42,7 @@
                 top: 0;
                 left: 50%;
                 transform+_: translate(-50%, -100%);
-                .add-triangle( 10, 10, top, @color-error);
+                .add-triangle( 10, 10, top, @color-danger);
             }
         }
     }
@@ -61,7 +61,7 @@
                     top: 50%;
                     left: 0;
                     transform+_: translate(-100%, -50%);
-                    .add-triangle( 10, 10, left, @color-error);
+                    .add-triangle( 10, 10, left, @color-danger);
                 }
             }
         }
@@ -84,7 +84,7 @@
                     right: 0;
                     left: auto;
                     transform+_: translate(100%, -50%);
-                    .add-triangle( 10, 10, right, @color-error);
+                    .add-triangle( 10, 10, right, @color-danger);
                 }
             }
         }
