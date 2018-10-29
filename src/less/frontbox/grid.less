@@ -197,10 +197,31 @@
 //     }
 // }, 0);
 
-
-each(@responsive, {
-    @name: @value[name];
-    .sel-@{name} {
-      foo: color;
+/* Default size */
+.loop(@grid-count, {
+    .col-@{value} {
+        flex-basis: 100%/(@grid-count / @value);
+        max-width: 100%/(@grid-count / @value);
+    }
+    & when not (@value = @grid-count) {
+        .pull-@{value} {
+            right: 100%/(@grid-count / @value) !important;
+        }
+        .push-@{value} {
+            left: 100%/(@grid-count / @value) !important;
+        }
+        .order-@{value} {
+            order: @value;
+        }
     }
 });
+
+
+// each(@responsive, {
+
+//     @name: @value[name];
+//     @shortcode: @value[shortcode];
+//     @value: @value[value];
+
+//     @media @
+// });

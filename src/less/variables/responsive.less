@@ -7,6 +7,7 @@
         name: desktop;
         shortcode: lg;
         value: 1024;
+        min: ~"only screen and (min-width: @{responsive}[@desktop][value])";
     }
     @tablet: {
         name: tablet;
@@ -27,7 +28,7 @@
 @responsive-length: length(@responsive);
 
 .foo {
-    color: @responsive-length;
+    // color: @responsive[@desktop][min];
 }
 
 @responsive_desktop: 1024;
@@ -62,13 +63,6 @@
 @fablet-only: ~"only screen and (min-width: @{responsive_fablet-only}px)";
 
 @portable: ~"only screen and (max-width: @{responsive_tablet}px)";
-
-:root {
-    --mobile: @responsive_mobile;
-    --fablet: @responsive_fablet;
-    --tablet: @responsive_tablet;
-    --desktop: @responsive_desktop;
-}
 
 /*=========================================================================
 || Responsive list & responsive list for javascript less function

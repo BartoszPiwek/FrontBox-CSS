@@ -6,7 +6,7 @@
  * Functions
  */
 @plugin "frontbox/javascript";
-@import "variables/_style";
+@import "variables/responsive";
 @import "frontbox/functions";
 @import "frontbox/responsive";
 @import "frontbox/variables";
@@ -20,3 +20,7 @@
 @import "utilities/other";
 @import "utilities/flex";
 @import "utilities/col";
+
+.foo {
+    color: @responsive[@desktop][min];
+}

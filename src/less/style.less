@@ -9,7 +9,6 @@ Version:    Unpublished
 =========================================================================*/
 @charset "UTF-8";
 
-
 //=================================================================//
 // Initialization
 
@@ -49,4 +48,12 @@ Version:    Unpublished
 
 & when (@version = prod) {
   @import (less) "@{pathToModulesProd}/utilities.prod.css";
+}
+
+/* Pass responsive variables to JavaScript */ 
+:root {
+  --mobile: @responsive_mobile;
+  --fablet: @responsive_fablet;
+  --tablet: @responsive_tablet;
+  --desktop: @responsive_desktop;
 }
