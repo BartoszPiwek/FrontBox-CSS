@@ -1,83 +1,36 @@
 .responsive( @code ) {
+
+	/* Responsive */
 	each(@responsive, {
 
 		@name: @value[name];
-		@shortcode: @value[shortcode];
-		@breakpoint: @value[breakpoint];
-		@stringDefault: @value[@string][default];
-	
-		@media @stringDefault {
+
+		
+		& when (@name = default) {
+			@prefix: ~"";
 			@code();
 		}
 
+		& when not (@name = default) {
+			@name: @value[name];
+			@shortcode: @value[shortcode];
+			@breakpoint: @value[breakpoint];
+			@prefix: ~"@{shortcode}_";
+			@stringDefault: @value[@string][default];
+
+			@media @stringDefault {
+
+				@name: @value[name];
+				@shortcode: @value[shortcode];
+				@breakpoint: @value[breakpoint];
+				@prefix: ~"@{shortcode}_";
+				@stringDefault: @value[@string][default];
+
+				@code();
+			}
+		}
+
+
 	});
-}
-
-.add-responsive(@property, @lg-size, @md-size, @sm-size) {
-
-  // Mobile size
-	@{property}: ~"@{sm-size}px";
-
-  // Tablet size
-  @media @tablet {
-  	@{property}: ~"@{md-size}px";
-  }
-
-  // Desktop size
-  @media @desktop {
-  	@{property}: ~"@{lg-size}px";
-  }
 
 }
-
-// .function-responsive-full(@code, @i:(length(@responsive_list))) when (@i > 0) {
-
-// 	& when (@i = length(@responsive_list)) {
-// 		& {
-// 			@code();
-// 		}
-// 	}
-
-// 	@value: ~`(function(){
-// 		var array = @{responsive_list-js};
-// 		return valueResponsive = array[@{i} - 2];
-// 	})()`;
-
-// 	@name: ~`(function(){
-// 		var array = @{responsive_list-js};
-// 		return nameResponsive = array[@{i} - 1];
-// 	})()`;
-
-// 	@media @value {
-// 		@{name}_& {
-// 			@code();
-// 		}
-// 	}
-
-// 	.function-responsive-full(@code, @i - 2);
-// }
-
-/**
-  * Create responsive class
-  * name - class name without dot
-  * code - any style
-**/
-
-// .create-responsive-class(@name, @code) {
-// 	.@{name} {
-// 		@code();
-// 	}
-
-// 	.for2-reverse(@responsive_list, {
-
-// 		@responsive-value: arrayElement(@responsive_list, @i - 1);
-// 		@responsive-name: arrayElement(@responsive_list, @i);
-	
-// 		@media @responsive-value {
-// 			.@{responsive-name}_@{name} {
-// 				@code();
-// 			}
-// 		}
-
-// 	});
-// }

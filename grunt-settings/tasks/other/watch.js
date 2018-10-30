@@ -18,7 +18,10 @@ module.exports = {
 
     // Style
     dev_style_responsive: {
-        files: ['src/less/variables/responsive.less'],
+        files: [
+            'src/less/variables/responsive.less', 
+            'src/less/frontbox/responsive.less',
+        ],
         tasks: [
             'less:dev_style_grid',
             // 'less:dev_style_base',

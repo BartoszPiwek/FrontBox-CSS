@@ -3,22 +3,8 @@
 =========================================================================*/
 
 @responsive: {
-    @desktop: {
-        name: desktop;
-        shortcode: lg;
-        breakpoint: 1024;
-        @string: {
-            default: ~"only screen and (min-width: 1024px)";
-        };
-    }
-    @tablet: {
-        name: tablet;
-        shortcode: md;
-        breakpoint: 768;
-        @string: {
-            default: ~"only screen and (min-width: 768px)";
-            max: ~"only screen and (max-width: 767px)";
-        };
+    @default: {
+        name: default;
     };
     @fablet: {
         name: fablet;
@@ -28,6 +14,23 @@
             default: ~"only screen and (min-width: 550px)";
         };
     };
+    @tablet: {
+        name: tablet;
+        shortcode: md;
+        breakpoint: 768;
+        @string: {
+            default: ~"only screen and (min-width: 768px)";
+            max: ~"only screen and (max-width: 767px)";
+        };
+    };
+    @desktop: {
+        name: desktop;
+        shortcode: lg;
+        breakpoint: 1024;
+        @string: {
+            default: ~"only screen and (min-width: 1024px)";
+        };
+    }
     @mobile: {
         name: mobile;
         shortcode: xs;

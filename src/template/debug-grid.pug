@@ -5,7 +5,7 @@
 include includes/header.pug
 
 .page-content.relative
-	.wrap
+	.debug-wrap.wrap
 
 		//- Columns
 		h2.debug-title.
@@ -72,19 +72,22 @@ include includes/header.pug
 			.row
 				.<strong>{responsive}</strong>_col-<strong>{number}</strong>
 		.debug-view.center
-			.row.row-space
-				.col-9.sm_col-1
-					div(style="background-color: blue;")
-						| .col-9<br>sm_col-1
-				.col-1.sm_col-9.md_col-1
-					div(style="background-color: red;")
-						| .col-1<br>sm_col-9<br>md_col-1
-				.col-1.sm_col-1.md_col-9.lg_col-1
-					div(style="background-color: blue;")
-						| .col-1<br>sm_col-1<br>md_col-9<br>lg_col-1
-				.col-1.sm_col-1.md_col-1.lg_col-9
-					div(style="background-color: red;")
-						| .col-1<br>sm_col-1<br>md_col-1<br>lg_col-9
+			.debug-responsive
+				iframe.debug-iframe(data-iframe="row-responsive")
+				div(data-iframe-content="row-responsive")
+					.row.row-space
+						.col-9.sm_col-1
+							div(style="background-color: blue;")
+								| .col-9<br>sm_col-1
+						.col-1.sm_col-9.md_col-1
+							div(style="background-color: red;")
+								| .col-1<br>sm_col-9<br>md_col-1
+						.col-1.sm_col-1.md_col-9.lg_col-1
+							div(style="background-color: blue;")
+								| .col-1<br>sm_col-1<br>md_col-9<br>lg_col-1
+						.col-1.sm_col-1.md_col-1.lg_col-9
+							div(style="background-color: red;")
+								| .col-1<br>sm_col-1<br>md_col-1<br>lg_col-9
 
 		//- Columns responsive/static
 		h2.debug-title.
@@ -94,33 +97,36 @@ include includes/header.pug
 				.col-static
 				.col-responsive
 		.debug-view.center
-			.row.row-responsive
-				.col-static(style="background-color: red; flex-basis: 300px")
-					| .col-static (flex-basis: 300px)
-				.col-responsive(style="background-color: blue")
-					| .col-responsive
-			br
-			.row.row-responsive#js_testPlaceholder
-				.col-static(style="background-color: red; flex-basis: 120px")
-					| .col-static (flex-basis: 120px)
-				.col-responsive(style="background-color: blue")
-					| .col-responsive
-			br
-			.row.row-responsive#js_testPlaceholder
-				.col-static(style="background-color: red; flex-basis: 50px")
-					| .col-static (flex-basis: 50px)
-				.col-responsive(style="background-color: blue")
-					| .col-responsive
-				.col-static(style="background-color: red; flex-basis: 50px")
-					| .col-static (flex-basis: 50px)
-			br
-			.row.row-responsive#js_testPlaceholder
-				.col-responsive(style="background-color: blue")
-					| .col-responsive
-				.col-static(style="background-color: red; flex-basis: 200px")
-					| .col-static (flex-basis: 200px)
-				.col-responsive(style="background-color: blue")
-					| .col-responsive
+			.debug-responsive
+				iframe.debug-iframe(data-iframe="row-responsive-static")
+				div(data-iframe-content="row-responsive-static")
+					.row.row-responsive
+						.col-static(style="background-color: red; flex-basis: 300px")
+							| .col-static (flex-basis: 300px)
+						.col-responsive(style="background-color: blue")
+							| .col-responsive
+					br
+					.row.row-responsive#js_testPlaceholder
+						.col-static(style="background-color: red; flex-basis: 120px")
+							| .col-static (flex-basis: 120px)
+						.col-responsive(style="background-color: blue")
+							| .col-responsive
+					br
+					.row.row-responsive#js_testPlaceholder
+						.col-static(style="background-color: red; flex-basis: 50px")
+							| .col-static (flex-basis: 50px)
+						.col-responsive(style="background-color: blue")
+							| .col-responsive
+						.col-static(style="background-color: red; flex-basis: 50px")
+							| .col-static (flex-basis: 50px)
+					br
+					.row.row-responsive#js_testPlaceholder
+						.col-responsive(style="background-color: blue")
+							| .col-responsive
+						.col-static(style="background-color: red; flex-basis: 200px")
+							| .col-static (flex-basis: 200px)
+						.col-responsive(style="background-color: blue")
+							| .col-responsive
 
 		//- Row reverse
 		h2.debug-title.

@@ -194,6 +194,22 @@ require('./frontbox/jquery/scrollBlock')();
     // }
 
     /* test-code */
+    var
+    $iframe = $("[data-iframe]");
+    $iframe.each(function (index, element) {
+        var 
+        $this = $(this),
+        find = $this.attr("data-iframe"),
+        $content = $(`[data-iframe-content="${find}"]`);
+
+        $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
+        $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
+        $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
+        $this.contents().find("body").append( $content );
+    });
+    /* end-test-code */
+
+    /* test-code */
     DEBUG.debugConsole.add("Running correct...");
     /* end-test-code */
 

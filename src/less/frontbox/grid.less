@@ -28,6 +28,30 @@
 
 }
 
+.responsive({
+    .@{prefix}row {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        position: relative;
+    
+        & > * {
+            flex-grow: 0;
+            flex-shrink: 0;
+            height: auto !important;
+            min-height: 1px;
+            position: relative;
+            flex-direction: column;
+            display: flex;
+    
+            & > * {
+                flex: 1 1 auto;
+            }
+        }
+    
+    }
+});
+
 /**
   * Addon row grid style for columns inside
   * center, v-center, h-center
@@ -66,11 +90,13 @@
 }
 
 /**
-  * Row responsive style
-**/
+ * Row responsive style
+ */
 
 .responsive({
-    flex-direction: row-reverse;
+    .@{prefix}row-reverse {
+        flex-direction: row-reverse;
+    }
 });
 
 /**
@@ -119,43 +145,23 @@
  * Grid generator
  */
 
-/* Default size */
-.loop(@grid-count, {
-    .col-@{value} {
-        flex-basis: 100%/(@grid-count / @value);
-        max-width: 100%/(@grid-count / @value);
-    }
-    & when not (@value = @grid-count) {
-        .pull-@{value} {
-            right: 100%/(@grid-count / @value) !important;
-        }
-        .push-@{value} {
-            left: 100%/(@grid-count / @value) !important;
-        }
-        .order-@{value} {
-            order: @value;
-        }
-    }
-});
-
-/* Responsive size */
 .responsive({
 
-    .gridLoop(@i: 0) when (@i =< @grid-count) {
-        
-        .@{shortcode}_col-@{i} {
+    .gridLoop(@i: 1) when (@i =< @grid-count) {
+
+        .@{prefix}col-@{i} {
             flex-basis: 100%/(@grid-count / @i);
             max-width: 100%/(@grid-count / @i);
         }
 
-        & when not (@value = @grid-count) {
-            .@{shortcode}_pull-@{i} {
+        & when not (@i = @grid-count) {
+            .@{prefix}pull-@{i} {
                 right: 100%/(@grid-count / @i) !important;
             }
-            .@{shortcode}_push-@{i} {
+            .@{prefix}push-@{i} {
                 left: 100%/(@grid-count / @i) !important;
             }
-            .@{shortcode}_order-@{i} {
+            .@{prefix}order-@{i} {
                 order: @i;
             }
         }
