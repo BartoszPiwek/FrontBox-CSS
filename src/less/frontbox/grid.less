@@ -3,69 +3,6 @@
 =========================================================================*/
 
 /**
-  * Grid generator
-**/
-
-.grid-responsive(@i: (length(@responsive_list) - 2)) when (@i > 0) {
-
-    @grid-name: arrayElement(@responsive_list, @i - 2);
-
-    @grid-value: arrayElement(@responsive_list, @i - 1);
-
-    @media @grid-name {
-
-        // Create responsive row class
-        .@{grid-value}_row {
-            .row();
-        } 
-        // Loop grid-count (default 12) to create class
-        .loop(@temp2: @grid-count) when (@temp2 >=0) {
-            & when (@temp2 > 0) {
-                .@{grid-value}_col-@{temp2} {
-                    flex-basis: 100%/(@grid-count / @temp2);
-                    max-width: 100%/(@grid-count / @temp2);
-                }
-            }
-            & when not (@temp2 =@grid-count) {
-                .@{grid-value}_pull-@{temp2} {
-                    right: 100%/(@grid-count / @temp2) !important;
-                }
-                .@{grid-value}_push-@{temp2} {
-                    left: 100%/(@grid-count / @temp2) !important;
-                }
-                .@{grid-value}_order-@{temp2} {
-                    order: @temp2;
-                }
-            }
-            .loop(@temp2 - 1);
-        }
-        .loop(); 
-        // End Loop
-    }
-    .grid-responsive(@i - 2);
-}
-
-.loop(@grid-count, {
-    .col-@{value} {
-        flex-basis: 100%/(@grid-count / @value);
-        max-width: 100%/(@grid-count / @value);
-    }
-    & when not (@value = @grid-count) {
-        .pull-@{value} {
-            right: 100%/(@grid-count / @value) !important;
-        }
-        .push-@{value} {
-            left: 100%/(@grid-count / @value) !important;
-        }
-        .order-@{value} {
-            order: @value;
-        }
-    }
-});
-
-.grid-responsive();
-
-/**
   * Default grid style
 **/
 
@@ -132,7 +69,7 @@
   * Row responsive style
 **/
 
-.create-responsive-class( row-reverse, {
+.responsive({
     flex-direction: row-reverse;
 });
 
@@ -178,24 +115,9 @@
     }
 }
 
-// @grid2-count: 12;
-
-// .row {
-//     display: grid;
-//     grid-template-columns: repeat(@grid2-count, 1fr);
-//     grid-column-gap: 1em;
-//     grid-row-gap: 1em;
-
-//     & > * {
-//         grid-auto-columns: auto;
-//     }
-// }
-
-// .loop(@grid2-count, {
-//     .col-@{value} {
-//         grid-column: span @value;
-//     }
-// }, 0);
+/**
+ * Grid generator
+ */
 
 /* Default size */
 .loop(@grid-count, {
@@ -216,12 +138,30 @@
     }
 });
 
+/* Responsive size */
+.responsive({
 
-// each(@responsive, {
+    .gridLoop(@i: 0) when (@i =< @grid-count) {
+        
+        .@{shortcode}_col-@{i} {
+            flex-basis: 100%/(@grid-count / @i);
+            max-width: 100%/(@grid-count / @i);
+        }
 
-//     @name: @value[name];
-//     @shortcode: @value[shortcode];
-//     @value: @value[value];
+        & when not (@value = @grid-count) {
+            .@{shortcode}_pull-@{i} {
+                right: 100%/(@grid-count / @i) !important;
+            }
+            .@{shortcode}_push-@{i} {
+                left: 100%/(@grid-count / @i) !important;
+            }
+            .@{shortcode}_order-@{i} {
+                order: @i;
+            }
+        }
 
-//     @media @
-// });
+        .gridLoop(@i + 1);
+    }
+    .gridLoop();
+
+});

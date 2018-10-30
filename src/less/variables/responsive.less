@@ -6,39 +6,38 @@
     @desktop: {
         name: desktop;
         shortcode: lg;
-        value: 1024;
-        min: ~"only screen and (min-width: @{responsive}[@desktop][value])";
+        breakpoint: 1024;
+        @string: {
+            default: ~"only screen and (min-width: 1024px)";
+        };
     }
     @tablet: {
         name: tablet;
         shortcode: md;
-        value: 768;
+        breakpoint: 768;
+        @string: {
+            default: ~"only screen and (min-width: 768px)";
+        };
     };
     @fablet: {
         name: fablet;
         shortcode: sm;
-        value: 550;
+        breakpoint: 550;
+        @string: {
+            default: ~"only screen and (min-width: 550px)";
+        };
     };
     @mobile: {
         name: mobile;
         shortcode: xs;
-        value: @responsive[@fablet][value] - 1;
+        breakpoint: @responsive[@fablet][breakpoint] - 1;
+        @string: {
+            default: ~"only screen and (max-width: 549px)";
+        };
     };
 }
+
 @responsive-length: length(@responsive);
-
-.foo {
-    // color: @responsive[@desktop][min];
-}
-
-@responsive_desktop: 1024;
-@responsive_tablet: 768;
-@responsive_fablet: 550;
-@responsive_mobile: (@responsive_tablet - 1);
-
-@responsive_desktop-only: (@responsive_desktop - 1);
-@responsive_tablet-only: (@responsive_tablet - 1);
-@responsive_fablet-only: (@responsive_fablet - 1);
 
 /*=========================================================================
 || Responsive variables
@@ -52,21 +51,7 @@
 ||   · "value":             "only screen and ()" with destination in parenthesis
 =========================================================================*/
 
-@mobile: ~"only screen and (max-width: @{responsive_mobile}px)";
-@fablet: ~"only screen and (min-width: @{responsive_fablet}px)";
-@tablet: ~"only screen and (min-width: @{responsive_tablet}px)";
-@desktop: ~"only screen and (min-width: @{responsive_desktop}px)";
-
-@desktop-only: ~"only screen and (max-width: @{responsive_desktop-only}px)";
-@fablet-only: ~"only screen and (max-width: @{responsive_fablet}px)";
-@tablet-only: ~"only screen and (max-width: @{responsive_desktop}px) and (min-width: @{responsive_tablet}px)";
-@fablet-only: ~"only screen and (min-width: @{responsive_fablet-only}px)";
-
-@portable: ~"only screen and (max-width: @{responsive_tablet}px)";
-
-/*=========================================================================
-|| Responsive list & responsive list for javascript less function
-=========================================================================*/
-
-@responsive_list: @desktop, lg, @tablet, md, @fablet, sm, @mobile, xs;
-@responsive_list-js:  ~'["@{desktop}", "lg", "@{tablet}", "md", "@{fablet}", "sm",  "@{mobile}", "xs"]';
+@mobile: @responsive[@mobile][@string][default];
+@fablet: @responsive[@fablet][@string][default];
+@tablet: @responsive[@tablet][@string][default];
+@desktop:@responsive[@desktop][@string][default];

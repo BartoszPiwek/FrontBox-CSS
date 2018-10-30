@@ -418,27 +418,27 @@
 }
 
 //===== For property when have responsive prefix
-.automatic-responsive(@prefix, @sufix, @value, @variables...) {
+// .automatic-responsive(@prefix, @sufix, @value, @variables...) {
 
-  // Return @media resolution
-	@resName: ~`(function(){
-		var array = @{responsive_list-js};
-		return nameResponsive = array[array.indexOf('@{prefix}') - 1];
-	})()`;
+//   // Return @media resolution
+// 	@resName: ~`(function(){
+// 		var array = @{responsive_list-js};
+// 		return nameResponsive = array[array.indexOf('@{prefix}') - 1];
+// 	})()`;
 
-	@length: length(@variables);
+// 	@length: length(@variables);
 
-	// Loop
-	.for(@variables, {
-		@count: extract(@variables, @length);
-		@media @resName {
-			.@{prefix}_@{sufix}-@{count} {
-				@{value}: ~'@{count}px';
-			}
-		}
-	});
-	// end Loop
-}
+// 	// Loop
+// 	.for(@variables, {
+// 		@count: extract(@variables, @length);
+// 		@media @resName {
+// 			.@{prefix}_@{sufix}-@{count} {
+// 				@{value}: ~'@{count}px';
+// 			}
+// 		}
+// 	});
+// 	// end Loop
+// }
 
 /**
   * Tools generator

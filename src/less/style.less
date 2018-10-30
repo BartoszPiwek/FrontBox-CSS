@@ -52,8 +52,8 @@ Version:    Unpublished
 
 /* Pass responsive variables to JavaScript */ 
 :root {
-  --mobile: @responsive_mobile;
-  --fablet: @responsive_fablet;
-  --tablet: @responsive_tablet;
-  --desktop: @responsive_desktop;
+  --mobile: @responsive[@mobile][breakpoint];
+  --fablet: @responsive[@fablet][breakpoint];
+  --tablet: @responsive[@tablet][breakpoint];
+  --desktop: @responsive[@desktop][breakpoint];
 }
