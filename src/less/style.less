@@ -26,8 +26,8 @@ Version:    Unpublished
 }
 
 & when (@version = prod) {
-  @import (less) "@{pathToModulesProd}/grid.prod.css";
-  @import (less) "@{pathToModulesProd}/base.prod.css";
+  @import (optional, less) "@{pathToModulesProd}/grid.prod.css";
+  @import (optional, less) "@{pathToModulesProd}/base.prod.css";
 }
 
 // Variables & Settings
@@ -47,7 +47,7 @@ Version:    Unpublished
 }
 
 & when (@version = prod) {
-  @import (less) "@{pathToModulesProd}/utilities.prod.css";
+  @import (optional, less) "@{pathToModulesProd}/utilities.prod.css";
 }
 
 /* Pass responsive variables to JavaScript */ 

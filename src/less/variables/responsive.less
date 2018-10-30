@@ -17,6 +17,7 @@
         breakpoint: 768;
         @string: {
             default: ~"only screen and (min-width: 768px)";
+            max: ~"only screen and (max-width: 767px)";
         };
     };
     @fablet: {
@@ -54,4 +55,5 @@
 @mobile: @responsive[@mobile][@string][default];
 @fablet: @responsive[@fablet][@string][default];
 @tablet: @responsive[@tablet][@string][default];
+@tablet-only: @responsive[@tablet][@string][max];
 @desktop:@responsive[@desktop][@string][default];
