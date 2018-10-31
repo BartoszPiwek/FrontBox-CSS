@@ -39,7 +39,7 @@ require('./frontbox/jquery/scrollBlock')();
     global.DEBUG = {};
 
     global.DEBUG.debugConsole = require('./frontbox/debug/console')({
-        open: false,
+        open: true,
         ELEMENTS: ELEMENTS,
     });
     global.DEBUG.debugVariables = require('./frontbox/debug/variables')({
@@ -153,6 +153,21 @@ require('./frontbox/jquery/scrollBlock')();
     //         content: `W naszym serwisie wykorzystujemy pliki Cookies. Są one zapisywane na dysku urządzenia końcowego użytkownika w celach statystycznych oraz ułatwienia korzystania z serwisu. Ustawienia te zawsze można zmienić. Szczegółowe informacje o plikach Cookies znajdują się w <a href="#" target="_blank">Polityce Prywatności</a>`,
     //     },
     // });
+
+    /**
+     * Tabs
+     * 
+     * !@param {ELEMENTS} ELEMENTS
+     * @param {String} OPTIONS.imgSrc patch to image
+     * @param {String} OPTIONS.content content text
+     */
+    require('./frontbox/tabs')({
+        ELEMENTS: ELEMENTS,
+        OPTIONS: {
+            imgSrc: `/assets/images/cookies.png`,
+            content: `W naszym serwisie wykorzystujemy pliki Cookies. Są one zapisywane na dysku urządzenia końcowego użytkownika w celach statystycznych oraz ułatwienia korzystania z serwisu. Ustawienia te zawsze można zmienić. Szczegółowe informacje o plikach Cookies znajdują się w <a href="#" target="_blank">Polityce Prywatności</a>`,
+        },
+    });
 
     /**
      * Google Maps API

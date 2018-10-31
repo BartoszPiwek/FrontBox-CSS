@@ -8,9 +8,31 @@ module.exports = {
             spawn: true,
         },
     },
+    
     pug: {
-        files: ['./src/template/**/*.pug'],
+        files: ['./src/template/*.pug'],
         tasks: ['newer:pug:dev'],
+        options: {
+            spawn: true,
+        }
+    },
+    
+    pug_includes: {
+        files: [
+            './src/template/includes/*.pug'
+        ],
+        tasks: [
+            'newer:pug:dev',
+            'newer:pug:pug_debug',
+        ],
+        options: {
+            spawn: true,
+        }
+    },
+
+    pug_debug: {
+        files: ['./src/debug/**/*.pug'],
+        tasks: ['newer:pug:debug'],
         options: {
             spawn: true,
         }

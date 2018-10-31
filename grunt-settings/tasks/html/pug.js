@@ -27,6 +27,7 @@ module.exports = function(SETTINGS){
                 }
             }
         },
+
         prod: {
             files: [{
                 expand: true,
@@ -37,6 +38,25 @@ module.exports = function(SETTINGS){
             }],
             options: {
                 data: modifyVarsProd,
+                filters: {
+                    pageName: function(block) {
+                        return block;
+                    },
+                }
+            }
+        },
+
+        // Debug
+        debug: {
+            files: [{
+                expand: true,
+                cwd: 'src/debug/',
+                src: ['**/*.pug'],
+                dest: `${SETTINGS.pathToDev}/debug/`,
+                ext: '.html'
+            }],
+            options: {
+                data: modifyVarsDev,
                 filters: {
                     pageName: function(block) {
                         return block;

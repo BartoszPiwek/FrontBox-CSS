@@ -84,11 +84,37 @@ JavaScript to scr/js/libs
 
 ## Project tree:
 
+### LESS Files
+
+#### Version
 <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
-├───.vscode/                 | Configurations for Visual Studio Code
-├───public/                  | Generated website version
-│   ├─── prod/                  | Production
-│   └─── dev/                   | Development
+├─── public/                   | Compiled website
+    ├─── prod/                  | Production
+    └─── dev/                   | Development
+</pre>
+
+#### Settings
+<pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
+├─── base.less                | Base settings
+├─── responsive.less          | Screen sizes for responsive design & grid count
+├─── colors.less              | Base & required colors
+├─── fonts.less               | Fonts variables & declarations
+├─── plugins.less             | Addon components
+</pre>
+
+#### Source
+<pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
+└─── src/                     | Source code
+    ├─── fonts/                 | Generated fonts (https://www.fontsquirrel.com/tools/webfont-generator)
+    └─── images/                
+        ├────── sprites/               | Spritesmith assets
+        ├────── favicons/              | Generated favicons
+        ├────── favicon.png            | Favicon image
+        ├────── svg/                   | Vector assets
+        ├────── logo.png               | Website logo image
+</pre>
+
+<pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
 └─── src/                     | Development files
     ├─── fonts/                  | Generated fonts (https://www.fontsquirrel.com/tools/webfont-generator)
     ├─── images/

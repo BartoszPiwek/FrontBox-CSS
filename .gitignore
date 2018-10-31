@@ -1,17 +1,21 @@
+# Node
 node_modules/
-public/
-src/js/libs
-src/less/libs/*
-.git
-.git/*
-src/images/favicon/
+
 src/less/automatic/*less
 logs/*html
+logs/*
+src/template/critical-css/*
+docs
+
+# Generated website
+public/dev/*
+public/public/*
+
+# Manifest
 package-lock.json
 yarn-error.log
 yarn.lock
-logs/*
-src/template/critical-css/*
+
+# Favicons
+src/images/favicon/*
 src/template/includes/favicon.html
-frontbox-update/
-docs

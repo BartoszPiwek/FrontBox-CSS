@@ -1,8 +1,8 @@
-- var page_title = "Debug tabs"
-- var page_description = "FrontBox Description"
+- var page_title = "Debug Tabs | FrontBox"
+- var page_description = false
 - var page_critical_css = false
 
-include includes/header.pug
+include ../template/includes/header.pug
 
 main.page-content.relative
 
@@ -12,44 +12,37 @@ main.page-content.relative
         .row
 
             .col-6.lg_col-3
-                div(data-tabs="main" data-tabs-step="0")
+                div.tab-switch(data-tabs="main" data-tabs-step="0")
                     h3 0
 
-
             .col-6.lg_col-3
-                div(data-tabs="main" data-tabs-step="1")
+                div.tab-switch(data-tabs="main" data-tabs-step="1")
                     h3 1
 
             .col-6.lg_col-3
-                div(data-tabs="main" data-tabs-step="2")
+                div.tab-switch(data-tabs="main" data-tabs-step="2")
                     h3 2
 
             .col-6.lg_col-3
-                div.js_tabs--active(data-tabs="main" data-tabs-step="3")
+                div.tab-switch(data-tabs="main" data-tabs-step="3")
                     h3 3
 
-        div(data-tabs-content="main")
+        div.tab-field(data-tabs-field="main")
 
-            div(data-tabs-content-step="0")
+            div.tab-content(data-tabs-content="0")
                 p.
                     0 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi dolorum nesciunt cupiditate accusantium id soluta doloremque distinctio blanditiis aliquid ex, voluptatibus ratione, fuga saepe expedita assumenda quisquam eos ea mollitia?
 
-            div(data-tabs-content-step="1")
+            div.tab-content(data-tabs-content="1")
                 p.
                     1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi dolorum nesciunt cupiditate accusantium id soluta doloremque distinctio blanditiis aliquid ex, voluptatibus ratione, fuga saepe expedita assumenda quisquam eos ea mollitia?
 
-            div(data-tabs-content-step="2")
+            div.tab-content(data-tabs-content="2")
                 p.
                     2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi dolorum nesciunt cupiditate accusantium id soluta doloremque distinctio blanditiis aliquid ex, voluptatibus ratione, fuga saepe expedita assumenda quisquam eos ea mollitia?
 
-            div.js_tabs--active(data-tabs-content-step="3")
+            div.tab-content(data-tabs-content="3")
                 p.
                     3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi dolorum nesciunt cupiditate accusantium id soluta doloremque distinctio blanditiis aliquid ex, voluptatibus ratione, fuga saepe expedita assumenda quisquam eos ea mollitia?
 
-include includes/footer.pug
-include includes/end.pug
-
-//- script.
-//-     window.setTimeout(function() {
-//-         Main.tabs.add("main");
-//-     }, 1000);
+include ../template/includes/end.pug

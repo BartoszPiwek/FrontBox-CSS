@@ -142,6 +142,7 @@ module.exports = function(grunt) {
         'less:dev_style_main',
         // HTML
         'pug:dev',
+        'pug:debug',
         // Assets
         'svgmin',
         // JS
