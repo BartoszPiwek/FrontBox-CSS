@@ -9,7 +9,7 @@ docs
 
 # Generated website
 public/dev/*
-public/public/*
+public/prod/*
 
 # Manifest
 package-lock.json
