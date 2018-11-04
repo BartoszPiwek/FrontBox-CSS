@@ -22,3 +22,35 @@
 	  padding-right: @padding;
   }
 }
+
+/**
+ * Reset
+ */
+
+.no-wrap {
+	max-width: 100% !important;
+}
+
+@media @fablet-only {
+	.sm_no-wrap {
+		.no-wrap;
+	}
+}
+
+@media @tablet-only {
+	.md_no-wrap {
+		.no-wrap;
+	}
+}
+
+@media @desktop {
+	.lg_no-wrap {
+		.no-wrap;
+	}
+}
+
+@media @mobile {
+	.xs_no-wrap {
+		.no-wrap;
+	}
+}

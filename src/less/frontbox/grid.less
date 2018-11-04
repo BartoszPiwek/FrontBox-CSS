@@ -3,35 +3,6 @@
 =========================================================================*/
 
 /**
-  * Grid base style
-**/
-
-.responsive({
-
-    .@{prefix}row {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        position: relative;
-    
-        & > * {
-            flex-grow: 0;
-            flex-shrink: 0;
-            height: auto !important;
-            min-height: 1px;
-            position: relative;
-            flex-direction: column;
-            display: flex;
-    
-            & > * {
-                flex: 1 1 auto;
-            }
-        }
-    }
-
-});
-
-/**
   * Addon row grid style for columns inside
   * center, v-center, h-center
 **/
@@ -119,6 +90,35 @@
         left: 0;
     }
 }
+
+/**
+ * Grid base style
+ */
+
+.responsive({
+
+    .@{prefix}row {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        position: relative;
+    
+        & > * {
+            flex-grow: 0;
+            flex-shrink: 0;
+            height: auto !important;
+            min-height: 1px;
+            position: relative;
+            flex-direction: column;
+            display: flex;
+    
+            & > * {
+                flex: 1 1 auto;
+            }
+        }
+    }
+
+});
 
 /**
  * Grid generator

@@ -4,16 +4,6 @@
 || Style for lists
 =========================================================================*/
 
-.list-vertical {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-.list {
-
-}
-
 /**
   * Navigation list
 **/
@@ -58,6 +48,52 @@
         margin-right: 0 !important;
       }
     }
+
+  }
+}
+
+/**
+ * List horizontal
+ */
+
+.list-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  // Space
+  .space-x(25px);
+  .space-y(10px);
+
+  &__item {
+    display: inline-block;
+  }
+
+  /**
+   * Special
+   */
+  &--mark {
+    overflow: hidden;
+
+    .list-horizontal {
+
+      &__item {
+        position: relative;
+        overflow: hidden;
+        &:before {
+          content: '';
+          border-radius: 50%;
+          width: 6px;
+          height: 6px;
+          position: absolute;
+          top: calc(50% - $height);
+          left: 25px / 2 - $height / 2;
+          background-color: @color-primary;
+          transform+_: translate(-50%, -50%);
+        }
+      }
+    }
+
 
   }
 }

@@ -1,7 +1,31 @@
-// /**
-//  * Display
-//  */
+/**
+ * Display
+ */
 
-// .create-responsive-class( inline-block, {
-//     display: inline-block;
-// });
+.responsive({
+
+    .@{prefix}d {
+        &-block {
+            display: block !important;
+        }
+        &-inline {
+            display: inline !important;
+        }
+        &-inline-block {
+            display: inline-block !important;
+        }
+        &-table {
+            display: table !important;
+        }
+        &-flex {
+            display: flex !important;
+        }
+        &-table-cell {
+            display: table-cell !important;
+        }
+        &-table-row {
+            display: table-row !important;
+        }
+    }
+    
+});

@@ -2,7 +2,7 @@
 - var page_description = false
 - var page_critical_css = false
 
-include includes/header.pug
+include ../template/includes/header.pug
 
 .page-content.relative
 	.wrap
@@ -39,7 +39,7 @@ include includes/header.pug
 			.col-6
 				div
 					.debug-code.
-						.embed-youtube--16x9
+						.embed-youtube.embed-youtube--16x9
 							iframe
 			.col-6
 				div
@@ -50,7 +50,7 @@ include includes/header.pug
 			.col-6
 				div
 					.debug-code.
-						.embed-youtube--4x3
+						.embed-youtube.embed-youtube--4x3
 							iframe
 			.col-6
 				div
@@ -61,7 +61,7 @@ include includes/header.pug
 			.col-6
 				div
 					.debug-code.
-						.embed-youtube--1x1
+						.embed-youtube.embed-youtube--1x1
 							iframe
 			.col-6
 				div
@@ -69,5 +69,4 @@ include includes/header.pug
 						.embed-youtube.embed-youtube--1x1
 							iframe(src="https://www.youtube.com/embed/GRxofEmo3HA")
 
-
-include includes/end.pug
+include ../template/includes/end.pug

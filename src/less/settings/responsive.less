@@ -1,5 +1,5 @@
 /*=========================================================================
-// Screen sizes for responsive design
+|| Screen sizes for responsive design
 =========================================================================*/
 
 @responsive: {
@@ -12,6 +12,7 @@
         breakpoint: 550;
         @string: {
             default: ~"only screen and (min-width: 550px)";
+            max: ~"only screen and (max-width: 767px)";
         };
     };
     @tablet: {
@@ -20,7 +21,7 @@
         breakpoint: 768;
         @string: {
             default: ~"only screen and (min-width: 768px)";
-            max: ~"only screen and (max-width: 767px)";
+            max: ~"only screen and (max-width: 1023px)";
         };
     };
     @desktop: {
@@ -55,15 +56,16 @@
 ||   · "value":             "only screen and ()" with destination in parenthesis
 =========================================================================*/
 
-@mobile: @responsive[@mobile][@string][default];
-@fablet: @responsive[@fablet][@string][default];
-@tablet: @responsive[@tablet][@string][default];
-@tablet-only: @responsive[@tablet][@string][max];
-@desktop:@responsive[@desktop][@string][default];
+@mobile:            @responsive[@mobile][@string][default];
+@fablet:            @responsive[@fablet][@string][default];
+@fablet-only:       @responsive[@fablet][@string][max];
+@tablet:            @responsive[@tablet][@string][default];
+@tablet-only:       @responsive[@tablet][@string][max];
+@desktop:           @responsive[@desktop][@string][default];
 
 /*=========================================================================
 || Grid variables
 =========================================================================*/
 
 // Max columns in one row
-@grid-count: 12;
+@grid-count:        12;

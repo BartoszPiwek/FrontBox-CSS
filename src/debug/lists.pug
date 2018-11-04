@@ -1,0 +1,93 @@
+- var page_title = "Debug Lists | FrontBox"
+- var page_description = false
+- var page_critical_css = false
+
+include ../template/includes/header.pug
+
+.page-content.relative
+	.debug-wrap.wrap
+
+		h2.debug-title.
+			List horizontal
+
+		.row.row-space
+			.col-6
+				.debug-view.center
+					.list-horizontal
+						.list-horizontal__item
+							| Item 1
+						.list-horizontal__item
+							| Item 2
+						.list-horizontal__item
+							| Item 3
+						.list-horizontal__item
+							| Item 4
+			.col-6
+				p.debug-code.
+					.list-horizontal
+						.list-horizontal__item
+							| Item 1
+						.list-horizontal__item
+							| Item 2
+						.list-horizontal__item
+							| Item 3
+						.list-horizontal__item
+							| Item 4
+
+		h2.debug-title.
+			List horizontal with list style dot
+
+		.row.row-space
+			.col-6
+				.debug-view.center
+					.hideable.d-inline-block
+						.list-horizontal.list-horizontal--mark
+							.list-horizontal__item
+								| Item 1
+							.list-horizontal__item
+								| Item 2
+							.list-horizontal__item
+								| Item 3
+							.list-horizontal__item
+								| Item 4
+			.col-6
+				p.debug-code.
+					.center
+						.hideable.d-inline-block
+							.list-horizontal.list-horizontal--mark
+								.list-horizontal__item
+									| Item 1
+								.list-horizontal__item
+									| Item 2
+								.list-horizontal__item
+									| Item 3
+								.list-horizontal__item
+									| Item 4
+
+		.row.row-space
+			.col-6
+				.debug-view
+					.hideable
+						.list-horizontal.list-horizontal--mark
+							.list-horizontal__item
+								| Item 1
+							.list-horizontal__item
+								| Item 2
+							.list-horizontal__item
+								| Item 3
+							.list-horizontal__item
+								| Item 4
+			.col-6
+				p.debug-code.
+					.hideable
+						.list-horizontal.list-horizontal--mark
+							.list-horizontal__item
+								| Item 1
+							.list-horizontal__item
+								| Item 2
+							.list-horizontal__item
+								| Item 3
+							.list-horizontal__item
+								| Item 4
+
+include ../template/includes/end.pug
