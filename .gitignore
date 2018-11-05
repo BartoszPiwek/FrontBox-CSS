@@ -21,4 +21,3 @@ yarn.lock
 
 # Favicons
 src/images/favicon/*
-# src/template/includes/favicon.html
