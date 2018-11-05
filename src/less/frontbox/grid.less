@@ -3,53 +3,6 @@
 =========================================================================*/
 
 /**
-  * Addon row grid style for columns inside
-  * center, v-center, h-center
-**/
-
-.row {
-    &-space {
-        margin: 0 0 -1.25% -1.25%;
-        & > * {
-            padding: 0 0 1.25% 1.25%;
-        }
-    }
-    &-responsive {
-        flex-wrap: nowrap;
-        overflow: hidden;
-    }
-    // Vertical & horizontal center
-    &-center {
-        &>* {
-            align-items: center;
-            justify-content: center;
-        }
-    } 
-    // Vertical center
-    &-v-center, &-y-center {
-        &>* {
-            align-items: center;
-        }
-    } 
-    // Horizontal center
-    &-h-center, &-x-center {
-        &>* {
-            justify-content: center;
-        }
-    }
-}
-
-/**
- * Row responsive style
- */
-
-.responsive({
-    .@{prefix}row-reverse {
-        flex-direction: row-reverse;
-    }
-});
-
-/**
   * Addon col grid style
   * center, v-center, h-center
 **/
@@ -150,3 +103,41 @@
     .gridLoop();
 
 });
+
+
+/**
+  * Addon row grid style for columns inside
+  * center, v-center, h-center
+**/
+
+.row {
+    &-space {
+        margin: 0 0 -1.25% -1.25%;
+        & > * {
+            padding: 0 0 1.25% 1.25%;
+        }
+    }
+    &-responsive {
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+    // Vertical & horizontal center
+    &-center {
+        &>* {
+            align-items: center;
+            justify-content: center;
+        }
+    } 
+    // Vertical center
+    &-v-center, &-y-center {
+        &>* {
+            align-items: center;
+        }
+    } 
+    // Horizontal center
+    &-h-center, &-x-center {
+        &>* {
+            justify-content: center;
+        }
+    }
+}

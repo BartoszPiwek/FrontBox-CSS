@@ -13,81 +13,214 @@ include ../template/includes/header.pug
 		.row.row-space
 			.col-6
 				.debug-view.center
-					.list-horizontal
-						.list-horizontal__item
+					.list.list-horizontal
+						.list__item
 							| Item 1
-						.list-horizontal__item
+						.list__item
 							| Item 2
-						.list-horizontal__item
+						.list__item
 							| Item 3
-						.list-horizontal__item
+						.list__item
 							| Item 4
 			.col-6
 				p.debug-code.
-					.list-horizontal
-						.list-horizontal__item
+					.list.list-horizontal
+						.list__item
 							| Item 1
-						.list-horizontal__item
+						.list__item
 							| Item 2
-						.list-horizontal__item
+						.list__item
 							| Item 3
-						.list-horizontal__item
+						.list__item
 							| Item 4
+
+		.row.row-space
+			.col-6
+				.debug-view.center
+					.d-inline-block
+						.list.list-horizontal
+							.list__item
+								| Item 1
+							.list__item
+								| Item 2
+							.list__item
+								| Item 3
+							.list__item
+								| Item 4
+			.col-6
+				p.debug-code.
+					.center
+						.d-inline-block
+							.list.list-horizontal
+								.list__item
+									| Item 1
+								.list__item
+									| Item 2
+								.list__item
+									| Item 3
+								.list__item
+									| Item 4
 
 		h2.debug-title.
 			List horizontal with list style dot
 
 		.row.row-space
 			.col-6
+				.debug-view
+					.hideable
+						.list.list-horizontal.list-horizontal--mark
+							.list__item
+								| Item 1
+							.list__item
+								| Item 2
+							.list__item
+								| Item 3
+							.list__item
+								| Item 4
+			.col-6
+				p.debug-code.
+					.hideable
+						.list.list-horizontal.list-horizontal--mark
+							.list__item
+								| Item 1
+							.list__item
+								| Item 2
+							.list__item
+								| Item 3
+							.list__item
+								| Item 4
+
+		.row.row-space
+			.col-6
 				.debug-view.center
 					.hideable.d-inline-block
-						.list-horizontal.list-horizontal--mark
-							.list-horizontal__item
+						.list.list-horizontal.list-horizontal--mark
+							.list__item
 								| Item 1
-							.list-horizontal__item
+							.list__item
 								| Item 2
-							.list-horizontal__item
+							.list__item
 								| Item 3
-							.list-horizontal__item
+							.list__item
 								| Item 4
 			.col-6
 				p.debug-code.
 					.center
 						.hideable.d-inline-block
-							.list-horizontal.list-horizontal--mark
-								.list-horizontal__item
+							.list.list-horizontal.list-horizontal--mark
+								.list__item
 									| Item 1
-								.list-horizontal__item
+								.list__item
 									| Item 2
-								.list-horizontal__item
+								.list__item
 									| Item 3
-								.list-horizontal__item
+								.list__item
 									| Item 4
+
+
+		h2.debug-title.
+			List horizontal with list style icon
 
 		.row.row-space
 			.col-6
 				.debug-view
 					.hideable
-						.list-horizontal.list-horizontal--mark
-							.list-horizontal__item
-								| Item 1
-							.list-horizontal__item
-								| Item 2
-							.list-horizontal__item
-								| Item 3
-							.list-horizontal__item
-								| Item 4
+						.list-horizontal.list-horizontal--mark-icon
+							.list__item
+								p.list__content
+									| Item 1
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|
+							.list__item
+								p.list__content
+									| Item 2
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|							
+							.list__item
+								p.list__content
+									| Item 3
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|							
+							.list__item
+								p.list__content
+									| Item 4
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|			
 			.col-6
 				p.debug-code.
 					.hideable
-						.list-horizontal.list-horizontal--mark
-							.list-horizontal__item
-								| Item 1
-							.list-horizontal__item
-								| Item 2
-							.list-horizontal__item
-								| Item 3
-							.list-horizontal__item
-								| Item 4
+						.list-horizontal.list-horizontal--mark-icon
+							.list__item
+								p.list__content
+									| Item 1
+								svg.icon.list__icon
+							.list__item
+								p.list__content
+									| Item 2
+								svg.icon.list__icon							
+							.list__item
+								p.list__content
+									| Item 3
+								svg.icon.list__icon							
+							.list__item
+								p.list__content
+									| Item 4
+								svg.icon.list__icon	
+
+		.row.row-space
+			.col-6
+				.debug-view.center
+					.hideable.d-inline-block
+						.list-horizontal.list-horizontal--mark-icon
+							.list__item
+								p.list__content
+									| Item 1
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|
+							.list__item
+								p.list__content
+									| Item 2
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|							
+							.list__item
+								p.list__content
+									| Item 3
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|							
+							.list__item
+								p.list__content
+									| Item 4
+								|
+								| <svg inline class="icon list__icon" src="checkmark"></svg>
+								|			
+			.col-6
+				p.debug-code.
+					.debug-view.center
+						.hideable.d-inline-block
+							.list-horizontal.list-horizontal--mark-icon
+								.list__item
+									p.list__content
+										| Item 1
+									svg.list__icon
+								.list__item
+									p.list__content
+										| Item 2
+									svg.list__icon							
+								.list__item
+									p.list__content
+										| Item 3
+									svg.list__icon							
+								.list__item
+									p.list__content
+										| Item 4
+									svg.list__icon		
+
 
 include ../template/includes/end.pug

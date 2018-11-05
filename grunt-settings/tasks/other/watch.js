@@ -11,7 +11,10 @@ module.exports = {
     
     pug: {
         files: ['./src/template/*.pug'],
-        tasks: ['newer:pug:dev'],
+        tasks: [
+            'newer:pug:dev',
+            'newer:autosvg:dev',
+        ],
         options: {
             spawn: true,
         }
@@ -23,7 +26,6 @@ module.exports = {
         ],
         tasks: [
             'newer:pug:dev',
-            'newer:pug:pug_debug',
         ],
         options: {
             spawn: true,
@@ -32,7 +34,10 @@ module.exports = {
 
     pug_debug: {
         files: ['./src/debug/**/*.pug'],
-        tasks: ['newer:pug:debug'],
+        tasks: [
+            'newer:pug:debug',
+            'newer:autosvg:debug',
+        ],
         options: {
             spawn: true,
         }

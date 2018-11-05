@@ -145,6 +145,8 @@ module.exports = function(grunt) {
         'pug:debug',
         // Assets
         'svgmin',
+        'autosvg:dev',
+        'autosvg:debug',
         // JS
         'browserify:dev',
         // Other
