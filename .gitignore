@@ -7,6 +7,9 @@ logs/*
 src/template/critical-css/*
 docs
 
+# Libs
+src/js/libs/*
+
 # Generated website
 public/dev/*
 public/prod/*
