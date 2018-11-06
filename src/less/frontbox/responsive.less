@@ -1,4 +1,42 @@
-.responsive( @code ) {
+.responsive( @code, @createDefault: false ) {
+
+	/* Responsive */
+	each(@responsive, {
+
+		@name: @value[name];
+
+		
+		& when (@name = default) {
+			& when (@createDefault = true) {
+				@prefix: ~"";
+				@code();
+			}
+		}
+
+		& when not (@name = default) {
+			@name: @value[name];
+			@shortcode: @value[shortcode];
+			@breakpoint: @value[breakpoint];
+			@prefix: ~"@{shortcode}_";
+			@stringDefault: @value[@string][default];
+
+			@media @stringDefault {
+
+				@name: @value[name];
+				@shortcode: @value[shortcode];
+				@breakpoint: @value[breakpoint];
+				@prefix: ~"@{shortcode}_";
+				@stringDefault: @value[@string][default];
+
+				@code();
+			}
+		}
+
+	});
+
+}
+
+.responsiveClass( @code) {
 
 	/* Responsive */
 	each(@responsive, {
@@ -16,7 +54,7 @@
 			@shortcode: @value[shortcode];
 			@breakpoint: @value[breakpoint];
 			@prefix: ~"@{shortcode}_";
-			@stringDefault: @value[@string][default];
+			@stringDefault: @value[@string][lock];
 
 			@media @stringDefault {
 
@@ -24,7 +62,7 @@
 				@shortcode: @value[shortcode];
 				@breakpoint: @value[breakpoint];
 				@prefix: ~"@{shortcode}_";
-				@stringDefault: @value[@string][default];
+				@stringDefault: @value[@string][lock];
 
 				@code();
 			}

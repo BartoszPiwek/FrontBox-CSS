@@ -5,6 +5,7 @@
 @responsive: {
     @default: {
         name: default;
+        lock: ~"only screen and (max-width: 449px)";
     };
     @fablet: {
         name: fablet;
@@ -13,6 +14,7 @@
         @string: {
             default: ~"only screen and (min-width: 550px)";
             max: ~"only screen and (max-width: 767px)";
+            lock: ~"only screen and (min-width: 550px) and (max-width: 767px)";
         };
     };
     @tablet: {
@@ -22,6 +24,7 @@
         @string: {
             default: ~"only screen and (min-width: 768px)";
             max: ~"only screen and (max-width: 1023px)";
+            lock: ~"only screen and (min-width: 768px) and (max-width: 1023px)";
         };
     };
     @desktop: {
@@ -30,6 +33,7 @@
         breakpoint: 1024;
         @string: {
             default: ~"only screen and (min-width: 1024px)";
+            lock: ~"only screen and (min-width: 1024px)";
         };
     }
     @mobile: {
@@ -38,6 +42,7 @@
         breakpoint: @responsive[@fablet][breakpoint] - 1;
         @string: {
             default: ~"only screen and (max-width: 549px)";
+            lock: ~"only screen and (max-width: 549px)";
         };
     };
 }

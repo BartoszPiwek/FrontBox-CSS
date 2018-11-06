@@ -5,6 +5,31 @@
 =========================================================================*/
 
 
+/**
+  * Burger toggle { REQUIRED }
+  * animation { less/plugins/animations/burger/ }
+**/
+
+@burger-planks: 3;                      // Burger planks count
+@burger-animation-style: 2;             // Burger animation style { 1 - 2 }
+
+/**
+  * Burger menu
+  * Collection:
+  under-header, from-side
+**/
+
+@plugin-burger-menu-animation: from-side;
+
+//=================================================================//
+// Scrollbar
+// Assigned to elements: body | .scrollbar
+ 
+@import "../plugins/browser/scrollbar";
+@scrollbar-background: @color-primary;          // Scrollbar container background color
+@scrollbar-size: 8px;                           // Scrollbar container width size
+@scrollbar-color: @color-black;                 // Scrollbar position background color
+
 //=================================================================//
 // Others
 

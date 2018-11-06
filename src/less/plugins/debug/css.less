@@ -1,11 +1,48 @@
 .debug {
     &-title {
         font-size: 20px;
-        font-weight: 600;
         margin: 35px 0 20px;
+        position: relative;
+        padding-left: 50px;
+
+        &:before {
+            content: 'B';
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+            color: white;
+        }
+
+        &--mod {
+            font-size: 18px;
+            font-weight: 500;
+            &:before {
+                content: 'M';
+                background-color: green;
+            }
+        }
+
+        &--responsive {
+            font-size: 18px;
+            font-weight: 500;
+            &:before {
+                content: 'R';
+                background-color: red;
+            }            
+        }
+    }
+    &-header {
+        font-size: 30px;
+        font-weight: 600;
+        margin: 35px 0;
     }
     &-code {
-        margin: 15px 0;
         white-space: pre;
         font-size: 15px;
         overflow-x: auto;
@@ -25,7 +62,6 @@
         }
     }
     &-view {
-        margin: 15px 0;
         padding: 30px 15px 15px;
         border-radius: 6px;
         border: 1px dashed #dedede;

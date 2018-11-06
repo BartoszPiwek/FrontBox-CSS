@@ -7,7 +7,6 @@
 /**
   * Navigation list
 **/
-
 .list-navigation {
 
   @media @media_burger-hide {
@@ -53,9 +52,101 @@
 }
 
 /**
+ * Base
+ */
+.list {
+  &__icon {
+    display: none;
+  }
+}
+
+/**
+ * List vertical
+ */
+.responsiveClass({
+  .@{prefix}list-vertical {
+    & > .list {
+  
+      &__item {
+        margin: 20px 0;
+  
+        &:last-child {
+          margin-bottom: 0;
+        }
+  
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  
+    /**
+     * Special
+     */
+    &.@{prefix}list--mark {
+      & > .list {
+  
+        &__item {
+          position: relative;
+          padding-left: 20px;
+  
+          &:before {
+            content: '';
+            border-radius: 50%;
+            width: 6px;
+            height: 6px;
+            position: absolute;
+            top: 24 / 2 - $width / 2;
+            left: 0;
+            background-color: @color-primary;
+          }
+        }
+      }
+  
+      &-center {
+        & > .list {
+          &__item {
+            &:before {
+              top: 50%;
+              transform+_: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+  
+    &.@{prefix}list--mark-icon {
+      .list {
+        &__item {
+          position: relative;
+          padding-left: 20px;
+        }
+    
+        &__icon {
+          display: block;
+          width: 12px;
+          height: 12px;
+          position: absolute;
+          top: 24 / 2 - $width / 2;
+          left: 0;
+        }
+      }
+      
+      &.@{prefix}list--mark-center {
+        .list {
+          &__icon {
+            top: 50%;
+            transform+_: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+});
+
+/**
  * List horizontal
  */
-
 .list-horizontal {
   display: flex;
   flex-direction: row;
@@ -77,7 +168,7 @@
    * Special
    */
 
-  &--mark {
+  &.list--mark {
     overflow: hidden;
 
     .list {
@@ -101,7 +192,7 @@
     }
   }
 
-  &--mark-icon {
+  &.list--mark-icon {
 
     .list {
 
@@ -117,7 +208,6 @@
         top: calc(50% - $height);
         left: (25px / 2) - $width / 2;
         background-color: @color-primary;
-        // transform+_: translate(0, -50%);
       }
     }
   }

@@ -2,17 +2,181 @@
 - var page_description = false
 - var page_critical_css = false
 
+- var debug_item_1 = "Item 1"
+- var debug_item_2 = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum, veritatis. Error nam dolor suscipit rem corporis, vel libero quibusdam sequi autem molestias itaque maiores consectetur, quaerat mollitia est magni alias."
+- var debug_item_3 = "Item 3"
+- var debug_item_4 = "<img src='/images/cookies.png' width='40'>"
+
+- var debug_item_icon = '<svg class="list__icon" viewBox="0 0 512 512"><path d="M256 0C114.615 0 0 114.615 0 256s114.615 256 256 256 256-114.615 256-256S397.385 0 256 0zm-48 416L102 278l47-49 59 75 185-151 23 23-208 240z"/></svg>'
+
 include ../template/includes/header.pug
 
 .page-content.relative
 	.debug-wrap.wrap
 
-		h2.debug-title.
-			List horizontal
+		h1.debug-header.
+			List
 
+		//- List vertical
+		h2.debug-title.
+			List vertical <strong>.list-vertical</strong>
 		.row.row-space
 			.col-6
+				.debug-view
+					ul.list.list-vertical
+						.list__item
+							= debug_item_1
+						.list__item
+							= debug_item_2
+						.list__item
+							= debug_item_3
+						.list__item
+							p!= debug_item_4
+			.col-6
+				p.debug-code.
+					.list.list-vertical
+						.list__item*4
+
+		//- .list-vertical--mark
+		h3.debug-title.debug-title--mod.
+			List vertical with list style dot <strong>.list--mark</strong>
+		.row.row-space
+			.col-6
+				.debug-view
+					ul.list.list-vertical.list--mark
+						.list__item
+							= debug_item_1
+						.list__item
+							= debug_item_2
+						.list__item
+							= debug_item_3
+						.list__item
+							p!= debug_item_4
+			.col-6
+				p.debug-code.
+					.list.list-vertical.list--mark
+						.list__item*4
+
+		//- .list-vertical--mark-center
+		h3.debug-title.debug-title--mod.
+			List vertical with list style dot center <strong>.list--mark-center</strong>
+		.row.row-space
+			.col-6
+				.debug-view
+					ul.list.list-vertical.list--mark.list--mark-center
+						.list__item
+							= debug_item_1
+						.list__item
+							= debug_item_2
+						.list__item
+							= debug_item_3
+						.list__item
+							p!= debug_item_4
+			.col-6
+				p.debug-code.
+					.list.list-vertical.list--mark.list--mark-center
+						.list__item*4
+
+		//- .list-vertical--mark-icon
+		h3.debug-title.debug-title--mod.
+			List vertical with list style icon <strong>.list--mark-icon</strong>
+		.row.row-space
+			.col-6
+				.debug-view
+					ul.list.list-vertical.list--mark-icon
+						li.list__item
+							p.list__content
+								= debug_item_1
+							!= debug_item_icon	
+						li.list__item
+							p.list__content
+								= debug_item_2
+							!= debug_item_icon
+						li.list__item
+							p.list__content
+								= debug_item_3
+							!= debug_item_icon
+						li.list__item
+							p.list__content
+								p!= debug_item_4
+							!= debug_item_icon
+			.col-6
+				p.debug-code.
+					.list.list-vertical.list--mark-icon
+						.list__item*2>p.list__content+svg.list__icon
+
+		//- .list-vertical--mark-center
+		h3.debug-title.debug-title--mod.
+			List vertical with list style icon center <strong>.list--mark-icon.list--mark-center</strong>
+		.row.row-space
+			.col-6
+				.debug-view
+					ul.list.list-vertical.list--mark-icon.list--mark-center
+						li.list__item
+							p.list__content
+								= debug_item_1
+							!= debug_item_icon	
+						li.list__item
+							p.list__content
+								= debug_item_2
+							!= debug_item_icon
+						li.list__item
+							p.list__content
+								= debug_item_3
+							!= debug_item_icon
+						li.list__item
+							p.list__content
+								p!= debug_item_4
+							!= debug_item_icon
+			.col-6
+				p.debug-code.
+					.list.list-vertical.list--mark-icon.list--mark-center
+						.list__item*2>p.list__content+svg.list__icon
+
+		//- Responsive
+		h3.debug-title.debug-title--responsive.
+			List vertical responsive <strong>{xs, sm, md, lg}</strong><br>
+			<i>.list.lg_list-vertical.lg_list--mark-icon.md_list-vertical.md_list--mark.sm_list-vertical.sm_list--mark.sm_list--mark-center.xs_list-vertical</i>
+
+		.row.row-space
+			.col-12
+
 				.debug-view.center
+					.debug-responsive
+						iframe.debug-iframe(data-iframe="list-vertical-responsive")
+						div(data-iframe-content="list-vertical-responsive")
+							ul.list.lg_list-vertical.lg_list--mark-icon.md_list-vertical.md_list--mark.sm_list-vertical.sm_list--mark.sm_list--mark-center.xs_list-vertical
+								li.list__item
+									p.list__content
+										| Item 1
+									|
+									| <svg inline class="icon list__icon" src="checkmark"></svg>
+									|	
+								li.list__item
+									p.list__content
+										| Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illum corporis qui veritatis natus sed porro repellat ea ullam? Atque sed totam sequi cum quam, dolores perferendis aliquam nemo magni?
+									|
+									| <svg inline class="icon list__icon" src="checkmark"></svg>
+									|
+								li.list__item
+									p.list__content
+										| Item 3
+									|
+									| <svg inline class="icon list__icon" src="checkmark"></svg>
+									|
+								li.list__item
+									p.list__content
+										img(src="/images/cookies.png", alt="", width="40")
+									|
+									| <svg inline class="icon list__icon" src="checkmark"></svg>
+									|
+
+		//- List horizontal
+		h2.debug-title.
+			List horizontal
+		.row.row-space
+			.col-6
+				.debug-view
 					.list.list-horizontal
 						.list__item
 							| Item 1
