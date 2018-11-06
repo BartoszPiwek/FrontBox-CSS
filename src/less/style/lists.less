@@ -65,8 +65,12 @@
   .space-x(25px);
   .space-y(10px);
 
-  &__item {
-    display: inline-block;
+  .list {
+
+    &__item {
+      display: inline-block;
+      flex: 0 1 auto;
+    }
   }
 
   /**
@@ -91,7 +95,7 @@
           top: calc(50% - $height);
           left: 25px / 2 - $width / 2;
           background-color: @color-primary;
-          transform+_: translate(-50%, -50%);
+          transform+_: translateY(-50%);
         }
       }
     }
