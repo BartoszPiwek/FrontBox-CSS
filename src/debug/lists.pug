@@ -285,11 +285,7 @@ include ../template/includes/header.pug
 							li.list__item
 								p.list__content
 									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									!= debug_item_4
-								!= debug_item_icon		
+								!= debug_item_icon	
 			.col-6
 				p.debug-code.
 					.hideable
@@ -297,7 +293,7 @@ include ../template/includes/header.pug
 							.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
 		
 		h3.debug-title.debug-title--addon.
-			centering
+			centering ASIX X
 		.row.row-space
 			.col-6
 				.debug-view.center
@@ -325,6 +321,36 @@ include ../template/includes/header.pug
 						.hideable.d-inline-block
 							.list.list-horizontal.list--mark-icon
 								.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
+
+		h3.debug-title.debug-title--addon.
+			centering ASIX Y
+		.row.row-space
+			.col-6
+				.debug-view
+					.hideable.d-inline-block
+						ul.list.list-horizontal.list--mark-icon.list--mark-center
+							li.list__item
+								p.list__content
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
+								p.list__content
+									= debug_item_3
+								!= debug_item_icon
+							li.list__item
+								p.list__content
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
+								p.list__content
+									!= debug_item_4
+								!= debug_item_icon	
+			.col-6
+				p.debug-code.
+					.center
+						.hideable.d-inline-block
+							.list.list-horizontal.list--mark-center
+								.list__item{ | Item $}*4
 		
 		h3.debug-title.debug-title--addon.
 			same-size

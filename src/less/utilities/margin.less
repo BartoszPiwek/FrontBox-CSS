@@ -20,3 +20,36 @@
 .my {
     .generate-tool-count-y(margin, 85);
 }
+
+/* Reset */
+.responsive({
+	.@{prefix}no {
+
+		&-mt, &-margin-top {
+			margin-top: 0 !important;
+		}
+		
+		&-mb, &-margin-bottom {
+			margin-bottom: 0 !important;
+		}
+
+		&-ml, &-margin-left {
+			margin-left: 0 !important;
+		}
+
+		&-mr, &-margin-right {
+			margin-right: 0 !important;
+		}
+
+		&-mx {
+			margin-right: 0 !important;
+			margin-left: 0 !important;
+		}
+
+		&-my {
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+		}
+
+	}
+});
