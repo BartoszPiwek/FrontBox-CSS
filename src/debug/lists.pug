@@ -137,7 +137,6 @@ include ../template/includes/header.pug
 		h3.debug-title.debug-title--responsive.
 			List vertical responsive <strong>{xs, sm, md, lg}</strong><br>
 			<i>.list.lg_list-vertical.lg_list--mark-icon.md_list-vertical.md_list--mark.sm_list-vertical.sm_list--mark.sm_list--mark-center.xs_list-vertical</i>
-
 		.row.row-space
 			.col-12
 
@@ -173,7 +172,7 @@ include ../template/includes/header.pug
 
 		//- List horizontal
 		h2.debug-title.
-			List horizontal
+			List horizontal <strong>.list-horizontal</strong>
 		.row.row-space
 			.col-6
 				.debug-view
@@ -189,15 +188,10 @@ include ../template/includes/header.pug
 			.col-6
 				p.debug-code.
 					.list.list-horizontal
-						.list__item
-							| Item 1
-						.list__item
-							| Item 2
-						.list__item
-							| Item 3
-						.list__item
-							| Item 4
-
+						.list__item*4
+		
+		h3.debug-title.debug-title--addon.
+			centering
 		.row.row-space
 			.col-6
 				.debug-view.center
@@ -225,14 +219,14 @@ include ../template/includes/header.pug
 								.list__item
 									| Item 4
 
-		h2.debug-title.
-			List horizontal with list style dot
-
+		//- .list--mark
+		h2.debug-title.debug-title--mod.
+			List horizontal with list style dot <strong>.list--mark</strong>
 		.row.row-space
 			.col-6
 				.debug-view
 					.hideable
-						.list.list-horizontal.list-horizontal--mark
+						.list.list-horizontal.list--mark
 							.list__item
 								| Item 1
 							.list__item
@@ -244,52 +238,57 @@ include ../template/includes/header.pug
 			.col-6
 				p.debug-code.
 					.hideable
-						.list.list-horizontal.list-horizontal--mark
-							.list__item
-								| Item 1
-							.list__item
-								| Item 2
-							.list__item
-								| Item 3
-							.list__item
-								| Item 4
+						.list.list-horizontal.list--mark
+							.list__item*4
 
+		h3.debug-title.debug-title--addon.
+			centering ASIX X
 		.row.row-space
 			.col-6
 				.debug-view.center
 					.hideable.d-inline-block
-						.list.list-horizontal.list-horizontal--mark
+						.list.list-horizontal.list--mark
 							.list__item
-								| Item 1
+								!= debug_item_1
 							.list__item
-								| Item 2
+								!= debug_item_3
 							.list__item
-								| Item 3
-							.list__item
-								| Item 4
+								!= debug_item_4
 			.col-6
 				p.debug-code.
 					.center
 						.hideable.d-inline-block
 							.list.list-horizontal.list-horizontal--mark
-								.list__item
-									| Item 1
-								.list__item
-									| Item 2
-								.list__item
-									| Item 3
-								.list__item
-									| Item 4
+								.list__item*4
 
+		h3.debug-title.debug-title--addon.
+			centering ASIX Y
+		.row.row-space
+			.col-6
+				.debug-view
+					.hideable.d-inline-block
+						.list.list-horizontal.list--mark.list--mark-center
+							.list__item
+								!= debug_item_1
+							.list__item
+								!= debug_item_3
+							.list__item
+								!= debug_item_4
+			.col-6
+				p.debug-code.
+					.center
+						.hideable.d-inline-block
+							.list.list-horizontal.list-horizontal--mark
+								.list__item*4
 
-		h2.debug-title.
-			List horizontal with list style icon
-
+		//- .list--mark-icon
+		h2.debug-title.debug-title--mod.
+			List horizontal with list style icon <strong>.list--mark-icon</strong>
 		.row.row-space
 			.col-6
 				.debug-view
 					.hideable
-						.list-horizontal.list-horizontal--mark-icon
+						.list-horizontal.list--mark-icon
 							.list__item
 								p.list__content
 									| Item 1
@@ -317,29 +316,16 @@ include ../template/includes/header.pug
 			.col-6
 				p.debug-code.
 					.hideable
-						.list-horizontal.list-horizontal--mark-icon
-							.list__item
-								p.list__content
-									| Item 1
-								svg.icon.list__icon
-							.list__item
-								p.list__content
-									| Item 2
-								svg.icon.list__icon							
-							.list__item
-								p.list__content
-									| Item 3
-								svg.icon.list__icon							
-							.list__item
-								p.list__content
-									| Item 4
-								svg.icon.list__icon	
-
+						.list-horizontal.list--mark-icon
+							.list__item*4>p.list__content+svg.icon.list__icon
+		
+		h3.debug-title.debug-title--addon.
+			centering
 		.row.row-space
 			.col-6
 				.debug-view.center
 					.hideable.d-inline-block
-						.list-horizontal.list-horizontal--mark-icon
+						.list-horizontal.list--mark-icon
 							.list__item
 								p.list__content
 									| Item 1
@@ -366,25 +352,69 @@ include ../template/includes/header.pug
 								|			
 			.col-6
 				p.debug-code.
-					.debug-view.center
+					.center
 						.hideable.d-inline-block
-							.list-horizontal.list-horizontal--mark-icon
-								.list__item
-									p.list__content
-										| Item 1
-									svg.list__icon
-								.list__item
-									p.list__content
-										| Item 2
-									svg.list__icon							
-								.list__item
-									p.list__content
-										| Item 3
-									svg.list__icon							
-								.list__item
-									p.list__content
-										| Item 4
-									svg.list__icon		
+							.list-horizontal.list--mark-icon
+								.list__item*4>p.list__content+svg.icon.list__icon	
+		
+		h3.debug-title.debug-title--addon.
+			same-size
+		.row.row-space
+			.col-6
+				.debug-view.center
+					.hideable
+						ul.list-horizontal.list--mark-icon.list--same-size
+							li.list__item
+								p.list__content
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
+								p.list__content
+									= debug_item_3
+								!= debug_item_icon
+							li.list__item
+								p.list__content
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
+								p.list__content
+									!= debug_item_3
+								!= debug_item_icon		
+			.col-6
+				p.debug-code.
+					.center
+						.hideable.d-inline-block
+							.list-horizontal.list--mark-icon
+								.list__item*4>p.list__content+svg.icon.list__icon	
 
+		//- Responsive
+		h3.debug-title.debug-title--responsive.
+			List horizontal responsive <strong>{xs, sm, md, lg}</strong><br>
+			<i>.list.lg_list-horizontal.lg_list--mark-icon.md_list-horizontal.md_list--mark.sm_list-horizontal.sm_list--mark.sm_list--mark-center.xs_list-horizontal</i>
+		.row.row-space
+			.col-12
+
+				.debug-view.center
+					.debug-responsive
+						iframe.debug-iframe(data-iframe="list-horizontal-responsive")
+						div(data-iframe-content="list-horizontal-responsive")
+							.hideable.d-inline-block
+								ul.list.lg_list-horizontal.lg_list--mark-icon.md_list-horizontal.md_list--mark.sm_list-horizontal.sm_list--mark.sm_list--mark-center.xs_list-horizontal
+									li.list__item
+										p.list__content
+											= debug_item_1
+										!= debug_item_icon
+									li.list__item
+										p.list__content
+											= debug_item_3
+										!= debug_item_icon
+									li.list__item
+										p.list__content
+											= debug_item_1
+										!= debug_item_icon
+									li.list__item
+										p.list__content
+											!= debug_item_4
+										!= debug_item_icon
 
 include ../template/includes/end.pug

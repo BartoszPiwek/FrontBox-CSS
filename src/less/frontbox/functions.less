@@ -175,7 +175,7 @@
 	margin-left: ~"-@{size}";
 	width: calc(100% + @size);
 
-  & > div:not(.row-gap-ignore) {
+  & > *:not(.row-gap-ignore) {
 		padding-left: @size;
 	};
 }
@@ -184,7 +184,7 @@
 .space-y(@space) {
 	margin-bottom: ~'-@{space} !important';
 
-	& > div:not(.row-space-ignore) {
+	& > *:not(.row-space-ignore) {
 		padding-bottom: ~'@{space}';
 	};
 }

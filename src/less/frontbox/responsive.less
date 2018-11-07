@@ -7,10 +7,8 @@
 
 		
 		& when (@name = default) {
-			& when (@createDefault = true) {
-				@prefix: ~"";
-				@code();
-			}
+			@prefix: ~"";
+			@code();
 		}
 
 		& when not (@name = default) {
