@@ -6,8 +6,8 @@
 > <strong>HTML Preprocessor</strong>: Pug<br>
 > <strong>CSS Preprocessor</strong>: LESS<br>
 > <strong>JS Preprocessor</strong>: Browserify<br>
-> <strong>Version</strong>: 1.0.7<br>
-> <strong>Compatibility</strong>: < IE10
+> <strong>Task runner</strong>: Grunt<br>
+> <strong>Version</strong>: 1.0.8<br>
 
 ## Used programs
 
