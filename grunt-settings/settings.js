@@ -3,6 +3,11 @@ module.exports = {
     "version": null,
 
     /**
+     * Main
+     */
+    website_locale: 'pl',
+
+    /**
      * Path
      */
     "pathToMainCSS": './css', 

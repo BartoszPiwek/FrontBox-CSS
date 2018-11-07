@@ -24,14 +24,14 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view
 					ul.list.list-vertical
-						.list__item
+						li.list__item
 							= debug_item_1
-						.list__item
+						li.list__item
 							= debug_item_2
-						.list__item
+						li.list__item
 							= debug_item_3
-						.list__item
-							p!= debug_item_4
+						li.list__item
+							!= debug_item_4
 			.col-6
 				p.debug-code.
 					.list.list-vertical
@@ -44,18 +44,18 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view
 					ul.list.list-vertical.list--mark
-						.list__item
+						li.list__item
 							= debug_item_1
-						.list__item
+						li.list__item
 							= debug_item_2
-						.list__item
+						li.list__item
 							= debug_item_3
-						.list__item
+						li.list__item
 							p!= debug_item_4
 			.col-6
 				p.debug-code.
 					.list.list-vertical.list--mark
-						.list__item*4
+						.list__item{ | Item $}*4
 
 		//- .list-vertical--mark-center
 		h3.debug-title.debug-title--mod.
@@ -64,18 +64,18 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view
 					ul.list.list-vertical.list--mark.list--mark-center
-						.list__item
+						li.list__item
 							= debug_item_1
-						.list__item
+						li.list__item
 							= debug_item_2
-						.list__item
+						li.list__item
 							= debug_item_3
-						.list__item
+						li.list__item
 							p!= debug_item_4
 			.col-6
 				p.debug-code.
 					.list.list-vertical.list--mark.list--mark-center
-						.list__item*4
+						.list__item{ | Item $}*4
 
 		//- .list-vertical--mark-icon
 		h3.debug-title.debug-title--mod.
@@ -103,11 +103,11 @@ include ../template/includes/header.pug
 			.col-6
 				p.debug-code.
 					.list.list-vertical.list--mark-icon
-						.list__item*2>p.list__content+svg.list__icon
+						.list__item*4>p.list__content{ | Item $}*4+svg.list__icon
 
 		//- .list-vertical--mark-center
-		h3.debug-title.debug-title--mod.
-			List vertical with list style icon center <strong>.list--mark-icon.list--mark-center</strong>
+		h3.debug-title.debug-title--addon.
+			centering marks <strong>.list--mark-center</strong>
 		.row.row-space
 			.col-6
 				.debug-view
@@ -131,7 +131,7 @@ include ../template/includes/header.pug
 			.col-6
 				p.debug-code.
 					.list.list-vertical.list--mark-icon.list--mark-center
-						.list__item*2>p.list__content+svg.list__icon
+						.list__item*4>p.list__content{ | Item $}*4+svg.list__icon
 
 		//- Responsive
 		h3.debug-title.debug-title--responsive.
@@ -147,28 +147,20 @@ include ../template/includes/header.pug
 							ul.list.lg_list-vertical.lg_list--mark-icon.md_list-vertical.md_list--mark.sm_list-vertical.sm_list--mark.sm_list--mark-center.xs_list-vertical
 								li.list__item
 									p.list__content
-										| Item 1
-									|
-									| <svg inline class="icon list__icon" src="checkmark"></svg>
-									|	
+										= debug_item_1
+									!= debug_item_icon
 								li.list__item
 									p.list__content
-										| Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illum corporis qui veritatis natus sed porro repellat ea ullam? Atque sed totam sequi cum quam, dolores perferendis aliquam nemo magni?
-									|
-									| <svg inline class="icon list__icon" src="checkmark"></svg>
-									|
+										= debug_item_3
+									!= debug_item_icon
 								li.list__item
 									p.list__content
-										| Item 3
-									|
-									| <svg inline class="icon list__icon" src="checkmark"></svg>
-									|
+										= debug_item_1
+									!= debug_item_icon
 								li.list__item
 									p.list__content
-										img(src="/images/cookies.png", alt="", width="40")
-									|
-									| <svg inline class="icon list__icon" src="checkmark"></svg>
-									|
+										!= debug_item_4
+									!= debug_item_icon	
 
 		//- List horizontal
 		h2.debug-title.
@@ -176,19 +168,19 @@ include ../template/includes/header.pug
 		.row.row-space
 			.col-6
 				.debug-view
-					.list.list-horizontal
-						.list__item
-							| Item 1
-						.list__item
-							| Item 2
-						.list__item
-							| Item 3
-						.list__item
-							| Item 4
+					ul.list.list-horizontal
+						li.list__item
+							!= debug_item_1
+						li.list__item
+							!= debug_item_3
+						li.list__item
+							!= debug_item_1
+						li.list__item
+							!= debug_item_4
 			.col-6
 				p.debug-code.
 					.list.list-horizontal
-						.list__item*4
+						.list__item{ | Item $}*4
 		
 		h3.debug-title.debug-title--addon.
 			centering
@@ -196,28 +188,21 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view.center
 					.d-inline-block
-						.list.list-horizontal
-							.list__item
-								| Item 1
-							.list__item
-								| Item 2
-							.list__item
-								| Item 3
-							.list__item
-								| Item 4
+						ul.list.list-horizontal
+							li.list__item
+								!= debug_item_1
+							li.list__item
+								!= debug_item_3
+							li.list__item
+								!= debug_item_1
+							li.list__item
+								!= debug_item_4
 			.col-6
 				p.debug-code.
 					.center
 						.d-inline-block
 							.list.list-horizontal
-								.list__item
-									| Item 1
-								.list__item
-									| Item 2
-								.list__item
-									| Item 3
-								.list__item
-									| Item 4
+								.list__item{ | Item $}*4
 
 		//- .list--mark
 		h2.debug-title.debug-title--mod.
@@ -226,20 +211,20 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view
 					.hideable
-						.list.list-horizontal.list--mark
-							.list__item
-								| Item 1
-							.list__item
-								| Item 2
-							.list__item
-								| Item 3
-							.list__item
-								| Item 4
+						ul.list.list-horizontal.list--mark
+							li.list__item
+								!= debug_item_1
+							li.list__item
+								!= debug_item_3
+							li.list__item
+								!= debug_item_1
+							li.list__item
+								!= debug_item_4
 			.col-6
 				p.debug-code.
 					.hideable
 						.list.list-horizontal.list--mark
-							.list__item*4
+							.list__item{ | Item $}*4
 
 		h3.debug-title.debug-title--addon.
 			centering ASIX X
@@ -247,19 +232,19 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view.center
 					.hideable.d-inline-block
-						.list.list-horizontal.list--mark
-							.list__item
+						ul.list.list-horizontal.list--mark
+							li.list__item
 								!= debug_item_1
-							.list__item
+							li.list__item
 								!= debug_item_3
-							.list__item
+							li.list__item
 								!= debug_item_4
 			.col-6
 				p.debug-code.
 					.center
 						.hideable.d-inline-block
-							.list.list-horizontal.list-horizontal--mark
-								.list__item*4
+							.list.list-horizontal.list--mark
+								.list__item{ | Item $}*4
 
 		h3.debug-title.debug-title--addon.
 			centering ASIX Y
@@ -267,19 +252,19 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view
 					.hideable.d-inline-block
-						.list.list-horizontal.list--mark.list--mark-center
-							.list__item
+						ul.list.list-horizontal.list--mark.list--mark-center
+							li.list__item
 								!= debug_item_1
-							.list__item
+							li.list__item
 								!= debug_item_3
-							.list__item
+							li.list__item
 								!= debug_item_4
 			.col-6
 				p.debug-code.
 					.center
 						.hideable.d-inline-block
-							.list.list-horizontal.list-horizontal--mark
-								.list__item*4
+							.list.list-horizontal.list--mark-center
+								.list__item{ | Item $}*4
 
 		//- .list--mark-icon
 		h2.debug-title.debug-title--mod.
@@ -288,36 +273,28 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view
 					.hideable
-						.list-horizontal.list--mark-icon
-							.list__item
+						ul.list-horizontal.list--mark-icon
+							li.list__item
 								p.list__content
-									| Item 1
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|
-							.list__item
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
 								p.list__content
-									| Item 2
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|							
-							.list__item
+									= debug_item_3
+								!= debug_item_icon
+							li.list__item
 								p.list__content
-									| Item 3
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|							
-							.list__item
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
 								p.list__content
-									| Item 4
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|			
+									!= debug_item_4
+								!= debug_item_icon		
 			.col-6
 				p.debug-code.
 					.hideable
 						.list-horizontal.list--mark-icon
-							.list__item*4>p.list__content+svg.icon.list__icon
+							.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
 		
 		h3.debug-title.debug-title--addon.
 			centering
@@ -325,37 +302,29 @@ include ../template/includes/header.pug
 			.col-6
 				.debug-view.center
 					.hideable.d-inline-block
-						.list-horizontal.list--mark-icon
-							.list__item
+						ul.list.list-horizontal.list--mark-icon
+							li.list__item
 								p.list__content
-									| Item 1
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|
-							.list__item
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
 								p.list__content
-									| Item 2
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|							
-							.list__item
+									= debug_item_3
+								!= debug_item_icon
+							li.list__item
 								p.list__content
-									| Item 3
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|							
-							.list__item
+									= debug_item_1
+								!= debug_item_icon
+							li.list__item
 								p.list__content
-									| Item 4
-								|
-								| <svg inline class="icon list__icon" src="checkmark"></svg>
-								|			
+									!= debug_item_4
+								!= debug_item_icon		
 			.col-6
 				p.debug-code.
 					.center
 						.hideable.d-inline-block
-							.list-horizontal.list--mark-icon
-								.list__item*4>p.list__content+svg.icon.list__icon	
+							.list.list-horizontal.list--mark-icon
+								.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
 		
 		h3.debug-title.debug-title--addon.
 			same-size
@@ -385,7 +354,7 @@ include ../template/includes/header.pug
 					.center
 						.hideable.d-inline-block
 							.list-horizontal.list--mark-icon
-								.list__item*4>p.list__content+svg.icon.list__icon	
+								.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
 
 		//- Responsive
 		h3.debug-title.debug-title--responsive.

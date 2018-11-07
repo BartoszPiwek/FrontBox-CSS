@@ -1,4 +1,5 @@
-html.no_js(lang= website_locale itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#") 
+<!DOCTYPE html>
+  <html class="js_no" lang=#{website_locale} itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#">
   head
 
       //- Base Meta
@@ -16,8 +17,6 @@ html.no_js(lang= website_locale itemscope itemtype="http://schema.org/WebPage" d
       //- Description
       if page_description
         meta(name="description" content= page_description)
-      else
-        meta(name="description" content= website_description)
 
       //- Keywords
       if page_keywords
@@ -44,7 +43,7 @@ html.no_js(lang= website_locale itemscope itemtype="http://schema.org/WebPage" d
       //- Favicons
       include favicon.html
 
-  body#body
+  <body id="body">
 
     //- Information about off javascript
     if website_infoOffJavascript && version == "prod"
