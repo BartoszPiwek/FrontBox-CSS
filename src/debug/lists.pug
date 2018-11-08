@@ -15,7 +15,33 @@ include ../template/includes/header.pug
 	.debug-wrap.wrap
 
 		h1.debug-header.
-			List
+			.List
+		p.
+			Default template
+		.row.row-space
+			.col-6
+				.debug-code.
+					&lt;ul class=&quot;list&quot;&gt;
+						&lt;li class=&quot;list__item&quot;&gt;
+							&lt;div class=&quot;list__adddon&quot;&gt;&lt;/div&gt;
+							&lt;div class=&quot;list__conteinter&quot;&gt;
+								&lt;div class=&quot;list__content&quot;&gt;Item 1&lt;/div&gt;
+								&lt;svg class=&quot;list__icon&quot; inline src=&quot;icon&quot;&gt;&lt;/svg&gt;
+							&lt;/div&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+
+			.col-6
+				p.debug-code.
+					ul.list
+						li.list__item
+							.list__adddon
+							.list__conteinter
+								.list__content
+									| Item
+								svg.list__icon
+
+					ul.list>.list__item*4>.list__adddon+.list__container>.list__content{ | Item $}+svg.list__icon
 
 		//- List vertical
 		h2.debug-title.
@@ -23,116 +49,39 @@ include ../template/includes/header.pug
 		.row.row-space
 			.col-6
 				.debug-view
-					ul.list.list-vertical
+					ul#list-vertical.list.list-vertical
 						li.list__item
-							= debug_item_1
+							.list__adddon
+							.list__container
+								.list__content 
+									= debug_item_1
+								!= debug_item_icon
 						li.list__item
-							= debug_item_2
+							.list__adddon
+							.list__container
+								.list__content
+									= debug_item_2
+								!= debug_item_icon
 						li.list__item
-							= debug_item_3
+							.list__adddon
+							.list__container
+								.list__content
+									= debug_item_3
+								!= debug_item_icon
 						li.list__item
-							!= debug_item_4
+							.list__adddon
+							.list__container
+								.list__content
+									!= debug_item_4
+								!= debug_item_icon
 			.col-6
-				p.debug-code.
-					.list.list-vertical
-						.list__item*4
-
-		//- .list-vertical--mark
-		h3.debug-title.debug-title--mod.
-			List vertical with list style dot <strong>.list--mark</strong>
-		.row.row-space
-			.col-6
-				.debug-view
-					ul.list.list-vertical.list--mark
-						li.list__item
-							= debug_item_1
-						li.list__item
-							= debug_item_2
-						li.list__item
-							= debug_item_3
-						li.list__item
-							p!= debug_item_4
-			.col-6
-				p.debug-code.
-					.list.list-vertical.list--mark
-						.list__item{ | Item $}*4
-
-		//- .list-vertical--mark-center
-		h3.debug-title.debug-title--mod.
-			List vertical with list style dot center <strong>.list--mark-center</strong>
-		.row.row-space
-			.col-6
-				.debug-view
-					ul.list.list-vertical.list--mark.list--mark-center
-						li.list__item
-							= debug_item_1
-						li.list__item
-							= debug_item_2
-						li.list__item
-							= debug_item_3
-						li.list__item
-							p!= debug_item_4
-			.col-6
-				p.debug-code.
-					.list.list-vertical.list--mark.list--mark-center
-						.list__item{ | Item $}*4
-
-		//- .list-vertical--mark-icon
-		h3.debug-title.debug-title--mod.
-			List vertical with list style icon <strong>.list--mark-icon</strong>
-		.row.row-space
-			.col-6
-				.debug-view
-					ul.list.list-vertical.list--mark-icon
-						li.list__item
-							p.list__content
-								= debug_item_1
-							!= debug_item_icon	
-						li.list__item
-							p.list__content
-								= debug_item_2
-							!= debug_item_icon
-						li.list__item
-							p.list__content
-								= debug_item_3
-							!= debug_item_icon
-						li.list__item
-							p.list__content
-								p!= debug_item_4
-							!= debug_item_icon
-			.col-6
-				p.debug-code.
-					.list.list-vertical.list--mark-icon
-						.list__item*4>p.list__content{ | Item $}*4+svg.list__icon
-
-		//- .list-vertical--mark-center
-		h3.debug-title.debug-title--addon.
-			centering marks <strong>.list--mark-center</strong>
-		.row.row-space
-			.col-6
-				.debug-view
-					ul.list.list-vertical.list--mark-icon.list--mark-center
-						li.list__item
-							p.list__content
-								= debug_item_1
-							!= debug_item_icon	
-						li.list__item
-							p.list__content
-								= debug_item_2
-							!= debug_item_icon
-						li.list__item
-							p.list__content
-								= debug_item_3
-							!= debug_item_icon
-						li.list__item
-							p.list__content
-								p!= debug_item_4
-							!= debug_item_icon
-			.col-6
-				p.debug-code.
-					.list.list-vertical.list--mark-icon.list--mark-center
-						.list__item*4>p.list__content{ | Item $}*4+svg.list__icon
-
+				form(action="", data-change-class="list-vertical")
+					input(type="checkbox", name="list--mark") 
+					| .list--mark
+					input(type="checkbox", name="list--mark-icon") 
+					| .list--mark-icon
+					input(type="checkbox", name="list--mark-center") 
+					| .list--mark-center
 		//- Responsive
 		h3.debug-title.debug-title--responsive.
 			List vertical responsive <strong>{xs, sm, md, lg}</strong><br>
@@ -168,22 +117,36 @@ include ../template/includes/header.pug
 		.row.row-space
 			.col-6
 				.debug-view
-					ul.list.list-horizontal
+					ul#list-horizontal.list.list-horizontal
 						li.list__item
-							!= debug_item_1
+							.list__adddon
+							.list__container
+								.list__content 
+									= debug_item_1
+								!= debug_item_icon
 						li.list__item
-							!= debug_item_3
+							.list__adddon
+							.list__container
+								.list__content
+									= debug_item_3
+								!= debug_item_icon
 						li.list__item
-							!= debug_item_1
-						li.list__item
-							!= debug_item_4
+							.list__adddon
+							.list__container
+								.list__content
+									!= debug_item_4
+								!= debug_item_icon
 			.col-6
-				p.debug-code.
-					.list.list-horizontal
-						.list__item{ | Item $}*4
+				form(action="", data-change-class="list-horizontal")
+					input(type="checkbox", name="list--mark") 
+					| .list--mark
+					input(type="checkbox", name="list--mark-icon") 
+					| .list--mark-icon
+					input(type="checkbox", name="list--mark-center") 
+					| .list--mark-center
 		
 		h3.debug-title.debug-title--addon.
-			centering
+			center
 		.row.row-space
 			.col-6
 				.debug-view.center
@@ -218,8 +181,6 @@ include ../template/includes/header.pug
 								!= debug_item_3
 							li.list__item
 								!= debug_item_1
-							li.list__item
-								!= debug_item_4
 			.col-6
 				p.debug-code.
 					.hideable
@@ -227,18 +188,28 @@ include ../template/includes/header.pug
 							.list__item{ | Item $}*4
 
 		h3.debug-title.debug-title--addon.
-			centering ASIX X
+			center block
 		.row.row-space
 			.col-6
 				.debug-view.center
 					.hideable.d-inline-block
 						ul.list.list-horizontal.list--mark
 							li.list__item
-								!= debug_item_1
+								p.list__content
+									!= debug_item_1
+								!= debug_item_icon
 							li.list__item
-								!= debug_item_3
+								p.list__content
+									!= debug_item_3
+								!= debug_item_icon
 							li.list__item
-								!= debug_item_4
+								p.list__content
+									!= debug_item_1
+								!= debug_item_icon	
+							li.list__item
+								p.list__content
+									!= debug_item_4
+								!= debug_item_icon	
 			.col-6
 				p.debug-code.
 					.center
@@ -247,7 +218,7 @@ include ../template/includes/header.pug
 								.list__item{ | Item $}*4
 
 		h3.debug-title.debug-title--addon.
-			centering ASIX Y
+			center marks <strong>.list--mark-center</strong>
 		.row.row-space
 			.col-6
 				.debug-view
@@ -293,7 +264,7 @@ include ../template/includes/header.pug
 							.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
 		
 		h3.debug-title.debug-title--addon.
-			centering ASIX X
+			center ASIX X
 		.row.row-space
 			.col-6
 				.debug-view.center
@@ -323,7 +294,7 @@ include ../template/includes/header.pug
 								.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
 
 		h3.debug-title.debug-title--addon.
-			centering ASIX Y
+			center ASIX Y
 		.row.row-space
 			.col-6
 				.debug-view
@@ -353,7 +324,7 @@ include ../template/includes/header.pug
 								.list__item{ | Item $}*4
 		
 		h3.debug-title.debug-title--addon.
-			same-size
+			item same size
 		.row.row-space
 			.col-6
 				.debug-view.center
@@ -411,5 +382,37 @@ include ../template/includes/header.pug
 										p.list__content
 											!= debug_item_4
 										!= debug_item_icon
+
+include ../template/includes/scripts.pug
+
+script.
+	var
+	$debugChangerClass = $("[data-change-class]");
+
+	$debugChangerClass.each(function(){
+		var
+		$this = $(this),
+		findContent = $this.attr("data-change-class"),
+		$content = $("#"+findContent),
+		$inputs = $this.find("input");
+
+		console.log($content);
+
+		$inputs.on("change", function(){
+			var 
+			$this = $(this),
+			value = $this.attr("name");
+
+			console.log(value);
+
+			if($this.is(":checked")) {
+				$content.addClass(value);
+			}
+			else {
+				$content.removeClass(value);
+			}
+			
+		});
+	});
 
 include ../template/includes/end.pug

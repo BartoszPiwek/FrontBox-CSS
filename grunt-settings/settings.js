@@ -1,15 +1,11 @@
 module.exports = {
     
-    "version": null,
+    // Version { automatic set }
+    version: null,
+    // Lang
+    website_locale: 'pl_PL',
 
-    /**
-     * Main
-     */
-    website_locale: 'pl',
-
-    /**
-     * Path
-     */
+    /* Path */
     "pathToMainCSS": './css', 
     "pathToDev": "./public/dev",
     "pathToProd": "./public/prod",
@@ -18,19 +14,13 @@ module.exports = {
 
     "pathToFavicon": "src/template/includes/favicon.html",
 
-    /**
-     * Prefix
-     */
+    /* Prefix */
     "prefixFaviconHTML": "/images/favicon/",
 
-    /**
-     * Functions
-     */
+    /* Functions */
     "getYear": "<%= grunt.template.today('yyyy') %>",
 
-    /**
-     * Project type
-     */
+    /* Project type */
     "isWordpress": false,
 
 };

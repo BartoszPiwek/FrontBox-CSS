@@ -1,0 +1,29 @@
+.bar-image {
+
+    display: block;
+    margin: 0 auto;
+    background-repeat: repeat-x;
+    background-size: 38px auto;
+    background-position: left -7px top 0;
+    height: 40px;
+
+    @media @tablet {
+        display: inline-block;
+    }
+
+    .loop(10, {
+      &[data-fill=~"'@{value}'"] {
+        width: 38px / 1.4 * @value;
+        @media @tablet {
+          width: 38px * @value;
+        }
+      }
+    }, 1);
+
+    /**
+     * Mods
+     */
+    &--single {
+        background-image: url(../images/intensity-bar.png); 
+    }
+}
