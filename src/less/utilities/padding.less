@@ -20,3 +20,36 @@
 .py {
     .generate-tool-count-y(padding, 85);
 }
+
+/* Reset */
+.responsive({
+	.@{prefix}no {
+
+		&-pt, &-padding-top {
+			padding-top: 0 !important;
+		}
+		
+		&-pb, &-padding-bottom {
+			padding-bottom: 0 !important;
+		}
+
+		&-pl, &-padding-left {
+			padding-left: 0 !important;
+		}
+
+		&-pr, &-padding-right {
+			padding-right: 0 !important;
+		}
+
+		&-px {
+			padding-right: 0 !important;
+			padding-left: 0 !important;
+		}
+
+		&-py {
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+
+	}
+});
