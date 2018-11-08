@@ -7,27 +7,31 @@
 > <strong>CSS Preprocessor</strong>: LESS<br>
 > <strong>JS Preprocessor</strong>: Browserify<br>
 > <strong>Version</strong>: 1.0.7<br>
-> <strong>Compatibility</strong>: < IE10
 
 ## Used programs
 
-Requirements:
+### Requirements:
 - <a href="https://yarnpkg.com/en/docs/install">Yarn</a> - Fast, reliable, and secure dependency management
 - <a href="https://nodejs.org/en/">Node.js</a> - JavaScript runtime built
 - <a href="https://gruntjs.com/">Grunt</a> - The JavaScript Task Runner
 
-Additional:
-- <a href="https://github.com/google/ios-webkit-debug-proxy">iOS WebKit Debug Proxy</a> - Debug iOS device
-- <a href="https://www.apple.com/pl/itunes/download/">iTunes</a> - iOS drivers
-- <a href="https://chocolatey.org/">Chocolatey</a> - The package manager for Windows
+### Additional:
+
+#### Images
+- <a href="https://sourceforge.net/projects/nikkhokkho/">FileOptimizer</a> - Advanced file optimizer featuring a lossless (no quality loss) file size reduction
 - <a href="https://chocolatey.org/packages/imagemagick.app">imagemagick</a> & <a href="http://www.imagemagick.org/script/download.php">MS binary</a> - Software suite to create, edit, compose, or convert bitmap images
 
-Helpful:
+#### Tests
+- <a href="https://github.com/google/ios-webkit-debug-proxy">iOS WebKit Debug Proxy</a> - Debug iOS device
+- <a href="https://www.apple.com/pl/itunes/download/">iTunes</a> - iOS drivers
+
+#### Helpful
+- <a href="https://chocolatey.org/">Chocolatey</a> - The package manager for Windows
 - <a href="https://www.navicat.com/en/products/navicat-for-mysql">Navicat fo MySQL</a> - Relational database management system
 - <a href="https://winscp.net">WinSCP</a> - SFTP and FTP client for Microsoft Windows
 
-### Commands for ImageMagick
-Optimize Images (Google Pagespeed Insights image optimization guidelines)
+### Commands for ImageMagick:
+Google Pagespeed Insights image optimization guidelines
 
 - JPG
 >convert image.jpg -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB image@converted.jpg
