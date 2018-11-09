@@ -16,32 +16,38 @@ include ../template/includes/header.pug
 
 		h1.debug-header.
 			.List
-		p.
-			Default template
+
 		.row.row-space
 			.col-6
-				.debug-code.
-					&lt;ul class=&quot;list&quot;&gt;
-						&lt;li class=&quot;list__item&quot;&gt;
-							&lt;div class=&quot;list__adddon&quot;&gt;&lt;/div&gt;
-							&lt;div class=&quot;list__conteinter&quot;&gt;
-								&lt;div class=&quot;list__content&quot;&gt;Item 1&lt;/div&gt;
-								&lt;svg class=&quot;list__icon&quot; inline src=&quot;icon&quot;&gt;&lt;/svg&gt;
-							&lt;/div&gt;
-						&lt;/li&gt;
-					&lt;/ul&gt;
-
+				p.
+					Default template
+				.debug-code
+					:escape
+						<div class="d-inline-block hideable">
+							<ul class="list">
+								<li class="list__item">
+									<div class="list__adddon"></div>
+									<div class="list__container">
+										<div class="list__content">Item 1</div>
+										<svg class="list__icon"></svg>
+									</div>
+								</li>
+							</ul>
+						</div>
 			.col-6
+				p.
+					Emmet template
 				p.debug-code.
-					ul.list
-						li.list__item
-							.list__adddon
-							.list__conteinter
-								.list__content
-									| Item
-								svg.list__icon
+					.d-inline-block.hideable
+						ul.list
+							li.list__item
+								.list__adddon
+								.list__conteinter
+									.list__content
+										| Item
+									svg.list__icon
 
-					ul.list>.list__item*4>.list__adddon+.list__container>.list__content{ | Item $}+svg.list__icon
+					.d-inline-block.hideable>ul.list>.list__item*4>.list__adddon+.list__container>.list__content{ | Item $}+svg.list__icon
 
 		//- List vertical
 		h2.debug-title.
@@ -117,25 +123,26 @@ include ../template/includes/header.pug
 		.row.row-space
 			.col-6
 				.debug-view
-					ul#list-horizontal.list.list-horizontal
-						li.list__item
-							.list__adddon
-							.list__container
-								.list__content 
-									= debug_item_1
-								!= debug_item_icon
-						li.list__item
-							.list__adddon
-							.list__container
-								.list__content
-									= debug_item_3
-								!= debug_item_icon
-						li.list__item
-							.list__adddon
-							.list__container
-								.list__content
-									!= debug_item_4
-								!= debug_item_icon
+					.d-inline-block.hideable
+						ul#list-horizontal.list.list-horizontal
+							li.list__item
+								.list__adddon
+								.list__container
+									.list__content 
+										= debug_item_1
+									!= debug_item_icon
+							li.list__item
+								.list__adddon
+								.list__container
+									.list__content
+										= debug_item_3
+									!= debug_item_icon
+							li.list__item
+								.list__adddon
+								.list__container
+									.list__content
+										!= debug_item_4
+									!= debug_item_icon
 			.col-6
 				form(action="", data-change-class="list-horizontal")
 					input(type="checkbox", name="list--mark") 

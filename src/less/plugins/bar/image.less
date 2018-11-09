@@ -1,29 +1,104 @@
-.bar-image {
-
-    display: block;
+.bar {
+  position: relative;
+  font-size: 0;
+  &__content {
+    display: inline-block;
     margin: 0 auto;
     background-repeat: repeat-x;
-    background-size: 38px auto;
-    background-position: left -7px top 0;
-    height: 40px;
+    background-position: left center;
+  }
+  &__placeholder {
+    display: none;
+  }
+  &__content, &__placeholder {
+    height: 100%;
+  }
 
-    @media @tablet {
-        display: inline-block;
+  &--placeholder {
+    .bar {
+      &__placeholder {
+        display: block;
+        position: absolute;
+        opacity: 0.3;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
     }
+  }
+}
 
-    .loop(10, {
-      &[data-fill=~"'@{value}'"] {
-        width: 38px / 1.4 * @value;
-        @media @tablet {
-          width: 38px * @value;
+.bar-image {
+
+  /**
+   * Style
+   */
+  &.bar {
+
+    &--primary {
+      @count: 10;
+      @space: 9px;
+      @image: "/images/bar/primary.png";
+      @width: image-width('../images/bar/primary.png');
+      @height: image-height('../images/bar/primary.png');
+
+      height: @height;
+      
+      .loop(@count, {
+        &[data-bar=~"'@{value}'"] {
+          .bar {
+            &__content {
+              width: @width * @value;
+            }
+          }
+        }
+      }, 1);
+
+      .bar {
+        &__content, &__placeholder {
+          background-image: url(@image); 
+          background-size: @width auto;
+          & when not (@space = false) {
+            transform: translateX(~"-@{space}");
+          }
+        }
+        &__placeholder {
+          width: @width * @count;
         }
       }
-    }, 1);
-
-    /**
-     * Mods
-     */
-    &--single {
-        background-image: url(../images/intensity-bar.png); 
     }
+
+    &--secondary {
+      @count: 10;
+      @space: false;
+      @image: "/images/bar/secondary.png";
+      @width: image-width('../images/bar/secondary.png');
+      @height: image-height('../images/bar/secondary.png'); 
+      
+      height: @height;
+
+      .loop(@count, {
+        &[data-bar=~"'@{value}'"] {
+          .bar {
+            &__content {
+              width: @width * @value;
+            }
+          }
+        }
+      }, 1);
+
+      .bar {
+        &__content, &__placeholder {
+          background-image: url(@image); 
+          background-size: @width auto;
+          & when not (@space = false) {
+            transform: translateX(~"-@{space}");
+          }
+        }
+        &__placeholder {
+          width: @width * @count;
+        }
+      }
+    }
+  }
 }

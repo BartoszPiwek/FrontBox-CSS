@@ -1,12 +1,16 @@
 module.exports = function(SETTINGS){
     
-    var modifyVarsDev, modifyVarsProd;
+    var 
+    modifyVarsDev, modifyVarsProd,
+    filters;
 
     modifyVarsDev = JSON.parse(JSON.stringify(SETTINGS));
     modifyVarsProd = JSON.parse(JSON.stringify(SETTINGS));
 
     modifyVarsDev.version = 'dev';
     modifyVarsProd.version = 'prod';
+
+    filters = require("./pug-filters");
 
     return {
 
@@ -20,11 +24,7 @@ module.exports = function(SETTINGS){
             }],
             options: {
                 data: modifyVarsDev,
-                filters: {
-                    pageName: function(block) {
-                        return block;
-                    },
-                }
+                filters: filters,
             }
         },
 
@@ -38,11 +38,7 @@ module.exports = function(SETTINGS){
             }],
             options: {
                 data: modifyVarsProd,
-                filters: {
-                    pageName: function(block) {
-                        return block;
-                    },
-                }
+                filters: filters,
             }
         },
 
@@ -57,11 +53,7 @@ module.exports = function(SETTINGS){
             }],
             options: {
                 data: modifyVarsDev,
-                filters: {
-                    pageName: function(block) {
-                        return block;
-                    },
-                }
+                filters: filters,
             }
         },
 

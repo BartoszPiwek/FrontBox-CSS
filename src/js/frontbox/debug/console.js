@@ -39,7 +39,7 @@ module.exports = (data) => {
     };
     
     var add = (addString, addonClass = '') => {
-        DATA.$container.append("<p class='" + addonClass + "'>"+addString+"</p>");
+        DATA.$container.prepend("<p class='" + addonClass + "'>"+addString+"</p>");
     };
 
     start();
