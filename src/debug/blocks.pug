@@ -17,8 +17,49 @@ include ../template/includes/header.pug
 						.block-square
 			.col-6
 				div
-					.debug-view.center
+					.debug-view
 						div.block-square(style="background: red;")
+
+		//- box-flipper
+		h2.debug-title.
+			Box flipper
+		.row.row-space
+			.col-6
+				div
+					.debug-view.center
+						a.box-flipper(href="#", style="height: 120px; background-color: red;")
+							.box-flipper__container
+								.box-flipper__item.box-flipper__item--front
+									| Front
+								.box-flipper__item.box-flipper__item--back
+									| Back
+			.col-6
+				div
+					.debug-code.
+						.box-flipper>.box-flipper__container>.box-flipper__item.box-flipper__item--front{ | Front}+.box-flipper__item.box-flipper__item--back{ | Back}
+
+		//- box-timeline
+		h2.debug-title.
+			Box timeline
+		.row.row-space
+			.col-6
+				div
+					.debug-view.center
+						.box-timeline
+							.box-timeline__container
+								.box-timeline__item
+									.box-timeline__dot
+									.box-timeline__text Item 1
+								.box-timeline__item
+									.box-timeline__dot
+									.box-timeline__text Item 2
+								.box-timeline__item
+									.box-timeline__dot
+									.box-timeline__text Item 3
+			.col-6
+				div
+					.debug-code.
+						.box-timeline>.box-timeline__container>.box-timeline__item*3>.box-timeline__dot+.box-timeline__text{Item $}
 
 		//- Embed
 		h2.debug-title.
