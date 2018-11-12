@@ -25,7 +25,7 @@ module.exports = (data) => {
 
         /* test-code */
         if (!lat || !lng) {
-            DEBUG.debugConsole.add(`Add googleMapsCannot: cannot add coordinate {lat: <strong>${lat}</strong>; lng: <strong>${lng}</strong>}`, 'click');
+            DEBUG.console.add(`Add googleMapsCannot: cannot add coordinate {lat: <strong>${lat}</strong>; lng: <strong>${lng}</strong>}`, 'click');
             return false;
         }
         /* end-test-code */
@@ -55,7 +55,7 @@ module.exports = (data) => {
             mapObject = new google.maps.Map( mapElement, OPTIONS);
 
             /* test-code */
-            DEBUG.debugConsole.add("Start: googleMaps");
+            DEBUG.console.add("Start: googleMaps");
             /* end-test-code */
         }
 
@@ -100,7 +100,7 @@ module.exports = (data) => {
         markers.push(marker);
 
         /* test-code */
-        DEBUG.debugConsole.add(`(googleMaps) Add marker {lat: ${data.position.lat}; lon: ${data.position.lon}; icon: ${icon}}`);
+        DEBUG.console.add(`(googleMaps) Add marker {lat: ${data.position.lat}; lon: ${data.position.lon}; icon: ${icon}}`);
         /* end-test-code */
     };
 
@@ -133,7 +133,7 @@ module.exports = (data) => {
         cleanMarkers();
         addMarker(data);
         /* test-code */
-        DEBUG.debugConsole.add(`Click <strong>googleMaps</strong> {lat: ${data.position.lat}; lon: ${data.position.lon}}`, 'click');
+        DEBUG.console.add(`Click <strong>googleMaps</strong> {lat: ${data.position.lat}; lon: ${data.position.lon}}`, 'click');
         /* end-test-code */
     };
 

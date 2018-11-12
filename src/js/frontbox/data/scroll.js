@@ -30,7 +30,7 @@ module.exports = (data) => {
         }
 
         /* test-code */
-        DEBUG.debugVariables.add({
+        DEBUG.variable.add({
             "Scroll top ": DATA.top,
             "Scroll center ": DATA.center,
             "Scroll center last ": DATA.centerLast,

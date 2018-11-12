@@ -33,7 +33,7 @@ module.exports = (data) => {
         DATA.$burger.on("click", burgerClick);
 
         /* test-code */
-        DEBUG.debugVariables.add({
+        DEBUG.variable.add({
             'Burger active': active,
             'Burger moving': moving,
         });
@@ -43,7 +43,7 @@ module.exports = (data) => {
     var toggleOff = () => {
 
         /* test-code */
-        DEBUG.debugConsole.add("Burger toggleOff", "click");
+        DEBUG.console.add("Burger toggleOff", "click");
         /* end-test-code */
 
         moving = true;
@@ -53,7 +53,7 @@ module.exports = (data) => {
 
 
         /* test-code */
-        DEBUG.debugVariables.add({
+        DEBUG.variable.add({
             'Burger moving': moving,
             'Burger active': active,
         });
@@ -65,7 +65,7 @@ module.exports = (data) => {
             ELEMENTS.$html.removeClass('js_menu-active--end');
 
             /* test-code */
-            DEBUG.debugVariables.add({
+            DEBUG.variable.add({
                 'Burger moving': moving,
             });
             /* end-test-code */
@@ -78,7 +78,7 @@ module.exports = (data) => {
         ELEMENTS.$body.scrollDisable();
 
         /* test-code */
-        DEBUG.debugConsole.add("Burger toggleOn", "click");
+        DEBUG.console.add("Burger toggleOn", "click");
         /* end-test-code */
 
         if (SETTINGS.style) {
@@ -104,7 +104,7 @@ module.exports = (data) => {
         active = true;
 
         /* test-code */
-        DEBUG.debugVariables.add({
+        DEBUG.variable.add({
             'Burger active': active,
             'Burger moving': moving,
         });
@@ -116,7 +116,7 @@ module.exports = (data) => {
             moving = false;
 
             /* test-code */
-            DEBUG.debugVariables.add({
+            DEBUG.variable.add({
                 'Burger moving': moving,
             });
             /* end-test-code */
@@ -128,7 +128,7 @@ module.exports = (data) => {
     var toggleOverlay = () => {
 
         /* test-code */
-        DEBUG.debugConsole.add("Burger overlay toggleOff", "click");
+        DEBUG.console.add("Burger overlay toggleOff", "click");
         /* end-test-code */
 
         ELEMENTS.$overlay.off('click', toggleOverlay);
@@ -143,7 +143,7 @@ module.exports = (data) => {
         if (!moving) {
 
             /* test-code */
-            DEBUG.debugConsole.add("Burger clicked", "click");
+            DEBUG.console.add("Burger clicked", "click");
             /* end-test-code */
 
             if (active) {
@@ -155,7 +155,7 @@ module.exports = (data) => {
         }
         /* test-code */
         else {
-            DEBUG.debugConsole.add("Burger click blocked. Burger is moving");
+            DEBUG.console.add("Burger click blocked. Burger is moving");
         }
         /* end-test-code */
 

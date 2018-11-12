@@ -38,11 +38,11 @@ require('./frontbox/jquery/scrollBlock')();
      */
     global.DEBUG = {};
 
-    global.DEBUG.debugConsole = require('./frontbox/debug/console')({
+    global.DEBUG.console = require('./frontbox/debug/console')({
         open: true,
         ELEMENTS: ELEMENTS,
     });
-    global.DEBUG.debugVariables = require('./frontbox/debug/variables')({
+    global.DEBUG.variable = require('./frontbox/debug/variables')({
         open: false,
         ELEMENTS: ELEMENTS,
     });
@@ -71,6 +71,17 @@ require('./frontbox/jquery/scrollBlock')();
      */
     var transitionHeight = require('./frontbox/transitionHeight')({
         BROWSER : BROWSER,
+    });
+
+    /**
+     * Resize
+     */
+    var RESIZE = require('./frontbox/bind/resize')({
+        ELEMENTS: ELEMENTS,
+        template: {
+            loading: false,
+            // loading: `<div class="animation-donut-spinner"></div>`,
+        },
     });
 
     /**
@@ -170,6 +181,16 @@ require('./frontbox/jquery/scrollBlock')();
     });
 
     /**
+     * Show more content
+     * 
+     * !@param {TRANSITIONHEIGHT} transitionHeight
+     */
+    require('./frontbox/showMore')({
+        TRANSITIONHEIGHT: transitionHeight,
+        RESIZE: RESIZE,
+    });
+
+    /**
      * Google Maps API
      * 
      * !@param {FUNCTIONS} FUNCTIONS
@@ -225,7 +246,7 @@ require('./frontbox/jquery/scrollBlock')();
     /* end-test-code */
 
     /* test-code */
-    DEBUG.debugConsole.add("Running correct...");
+    DEBUG.console.add("Running correct...");
     /* end-test-code */
 
     // Inform stylesheed to remove style fallback for JavaScript elements

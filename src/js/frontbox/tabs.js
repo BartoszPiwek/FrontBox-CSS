@@ -37,7 +37,7 @@ module.exports = (data) => {
     }
 
     /* test-code */
-    DEBUG.debugConsole.add(`tabs : refresh {length ${$ELEMENTS.fields.length}}`);
+    DEBUG.console.add(`tabs : refresh {length ${$ELEMENTS.fields.length}}`);
     /* end-test-code */
 
   };

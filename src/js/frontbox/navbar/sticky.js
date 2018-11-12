@@ -40,7 +40,7 @@ module.exports = (data) => {
             }
 
             /* test-code */
-            DEBUG.debugConsole.add(`Start sticky.js {offset: ${DATA.offset}; }`);
+            DEBUG.console.add(`Start sticky.js {offset: ${DATA.offset}; }`);
             /* end-test-code */
         }
     };
@@ -62,7 +62,7 @@ module.exports = (data) => {
         DATA.height = $elementSpy.outerHeight(true);
 
         /* test-code */
-        DEBUG.debugVariables.add({
+        DEBUG.variable.add({
             "Header height": DATA.height,
             "Header position": position,
         });
@@ -90,7 +90,7 @@ module.exports = (data) => {
         }
 
         /* test-code */
-        DEBUG.debugVariables.add({
+        DEBUG.variable.add({
           'Header active': active,
         });
         /* end-test-code */

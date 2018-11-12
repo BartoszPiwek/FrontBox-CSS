@@ -1,35 +1,43 @@
-module.exports = {
+module.exports = (data) => {
 
-  $items: null,
+  var
+  $items = null;
 
-  refresh() {
-    var self = this;
+  var
+  TRANSITIONHEIGHT, RESIZE;
 
-    if (self.$items) {
-      self.$items.off("click", self.click);
-    }
-    self.$items = $("[data='showMore']");
+  var
+  start = () => {
 
-    if (self.$items.length) {
-      self.$items.each( self.checkVisibleSpace );
-    }
+    TRANSITIONHEIGHT = data.TRANSITIONHEIGHT;
+    RESIZE = data.RESIZE;
 
-  },
-
-  start() {
-    var self = this;
-
-    Main.bindResize.add("showMore", ()=>{
-      self.refresh();
+    RESIZE.add("showMore", () => {
+      refresh();
     });
 
-  },
+    refresh();
+  };
 
-  checkVisibleSpace() {
+  var
+  refresh = () => {
+    if ($items) {
+      $items.off("click", click);
+    }
+    $items = $(`[data='showMore']`);
 
-    var 
-    self = Main.showMore,
-    $this = $(this),
+    if ($items.length) {
+      $items.each( (index, element) => {
+        checkVisibleSpace(element);
+      });
+    }
+
+  };
+
+  var
+  checkVisibleSpace = (element) => {
+    var
+    $this = $(element),
     dataTarget = $this.attr('data-target'),
     $wrap, $container;
 
@@ -44,30 +52,32 @@ module.exports = {
         break;
     
       default:
-        $container = $this;
+        let 
+        wrapId = $this.attr(`data-target`);
+        $wrap = $(`#${wrapId}`);
+        $container = $wrap.find(".show-more__content").first();
         break;
     }
+    
+    console.log($wrap.outerHeight( true ));
+    console.log($container.outerHeight( true ));
 
-    if ($wrap.outerHeight( true ) < $container.outerHeight( true )) 
-    {
+    if ($wrap.outerHeight( true ) < $container.outerHeight( true )) {
       $this.removeClass("hide");
-      $this.on("click", self.click);          
+      $this.on("click", {$this}, click);          
     } 
-    else 
-    {
+    else {
       $this.addClass("hide");
     }
 
-  },
+  };
 
-  click(e) {
-
-    e.preventDefault();
-
+  var
+  click = (paramData) => {
     var 
-    self = Main.showMore,
-    $this = $(this),
-    dataTarget = $this.attr('data-target'),
+    param = paramData.data,
+    $this = param.$this,
+    dataTarget = $this.attr(`data-target`),
     $container,
     $wrap;
 
@@ -87,41 +97,42 @@ module.exports = {
     }
 
     if ($this.hasClass("js_active")) {
-      self.off($this, $wrap, $container);
+      off($this, $wrap, $container);
       return false;
     }
+    console.log($container);
+    on($this, $wrap, $container);
+  };
 
-    self.on($this, $wrap, $container);
-  },
-
-  on($link, $item, $container) {
-
-    var self = Main.showMore;
+  var
+  on = ($link, $item, $container) => {
 
     $link.addClass("js_active");
 
-    Main.transitionHeight.on({
+    TRANSITIONHEIGHT.on({
       $this: $item, 
+      $clicked: $link,
       $container: $container,            
       callback: () => {
         $item.addClass("show-more--active");
       },  
     });
-  },
+  };
   
-  off($link, $item, $container) {
-
-    var self = Main.showMore;
+  var
+  off = ($link, $item, $container) => {
 
     $link.removeClass("js_active");
 
-    Main.transitionHeight.off({
+    TRANSITIONHEIGHT.off({
       $this: $item, 
       $container: $container,    
       callbackBefore: () => {
         $item.removeClass("show-more--active");
       } 
     });
-  }
+  };
+
+  start();
 
 };

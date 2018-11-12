@@ -50,7 +50,7 @@ module.exports = (data) => {
     start = (data) => {
 
         /* test-code */
-        DEBUG.debugConsole.add("Start: scrollTo");
+        DEBUG.console.add("Start: scrollTo");
         /* end-test-code */
         
 
@@ -89,7 +89,7 @@ module.exports = (data) => {
             targetID = hash.substring(hash.indexOf('-')+1, hash.lenght);
 
             /* test-code */
-            DEBUG.debugConsole.add("scrollTo.js auto trigger function autoScroll().", 'auto');
+            DEBUG.console.add("scrollTo.js auto trigger function autoScroll().", 'auto');
             /* end-test-code */
             
             // Fix annoying jumping when page is still not ready
@@ -114,7 +114,7 @@ module.exports = (data) => {
         // Check event and remove default action
         if (event) {
             /* test-code */
-            DEBUG.debugConsole.add(`Click scrollTo: event.preventDefault()`, 'click');
+            DEBUG.console.add(`Click scrollTo: event.preventDefault()`, 'click');
             /* end-test-code */
             $this = $(event.currentTarget);
             event.preventDefault();
@@ -164,7 +164,7 @@ module.exports = (data) => {
                 
 
                 /* test-code */
-                DEBUG.debugConsole.add(`Click scrollTo: scroll to element {target: <strong>${targetID}</strong>; speed <strong>${scrollTime}ms</strong>; position: <strong>${scrollTo}</strong>}`, 'click');
+                DEBUG.console.add(`Click scrollTo: scroll to element {target: <strong>${targetID}</strong>; speed <strong>${scrollTime}ms</strong>; position: <strong>${scrollTo}</strong>}`, 'click');
                 /* end-test-code */
 
                 // Animate scroll
@@ -186,7 +186,7 @@ module.exports = (data) => {
             }
             else {
                 /* test-code */
-                DEBUG.debugConsole.add(`Error scrollTo: element <strong>${targetID}</strong> doesn't exist`, 'error');
+                DEBUG.console.add(`Error scrollTo: element <strong>${targetID}</strong> doesn't exist`, 'error');
                 /* end-test-code */
                 return false;
             }
@@ -194,7 +194,7 @@ module.exports = (data) => {
         /* test-code */
         else 
         {
-            DEBUG.debugConsole.add(`Warning scrollTo: scroll animation wouldn't finish`, 'warning');
+            DEBUG.console.add(`Warning scrollTo: scroll animation wouldn't finish`, 'warning');
         }
         /* end-test-code */
     };
@@ -222,7 +222,7 @@ module.exports = (data) => {
             $elements.off("click", scroll);
 
             /* test-code */
-            DEBUG.debugConsole.add("Refresh: scrollTo {length: " + $elements.length + ";}");
+            DEBUG.console.add("Refresh: scrollTo {length: " + $elements.length + ";}");
             /* end-test-code */
         }
         
@@ -231,7 +231,7 @@ module.exports = (data) => {
         $elements.on("click", scroll);
 
         /* test-code */
-        DEBUG.debugConsole.add("Data: scrollTo {length: " + $elements.length + ";}");
+        DEBUG.console.add("Data: scrollTo {length: " + $elements.length + ";}");
         /* end-test-code */
     };
 

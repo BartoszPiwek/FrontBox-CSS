@@ -2,103 +2,157 @@
  * Resize
  */
 
-module.exports = {
+module.exports = (data) => {
 
-    resizeActive: false,
-    resizeTime: 0,
+    var
+    resizeActive = false,
+    resizeTime = 0,
+    queue = {};
 
-    functionResizeTrigger() {
-        var self = Main.bindResize;
+    var
+    ACTIVE = {
+        appendTemplateLoading: false,
+        loading: false,
+    };
+
+    var
+    TIME = {
+        resize: 400,
+    };
+
+    var
+    ELEMENTS,
+    TEMPLATE = {
+        loading: null,
+    };
+
+    var
+    start = () => {
+        ELEMENTS = data.ELEMENTS;
+        TEMPLATE.loading = data.template.loading;
         
-        self.resizeActive = true;
-        self.resizeTime += 250;
-        
-        self.functionResizePage();
-    },
+        bind();
+    };
 
-    functionResizePage() {
-        var self = Main.bindResize;
+    var
+    trigger = () => {
+        resizeActive = true;
+        resizeTime += 250;
+        
+        resize();
+    };
+
+    var
+    resize = () => {
+
+        /* Append loading template */
+        if ( !ACTIVE.appendTemplateLoading && TEMPLATE.loading ) {
+            ELEMENTS.$body.append( `<div class="js_resizeLoading"><div class="js_resizeLoading__content">${TEMPLATE.loading}</div></div>` );
+            ACTIVE.appendTemplateLoading = true;
+        }
 
         window.setTimeout( () => {
             
-            if (self.resizeActive)
-            {
+            if (resizeActive) {
                 
-                if (self.resizeTime > 800)
-                {
-                    self.resizeTime = 800;
+                if (resizeTime > TIME.resize) {
+                    resizeTime = TIME.resize;
                 }
-                else
-                {
-                    self.resizeTime -= 50;
+                else {
+                    resizeTime -= 50;
                 }
 
-                if (self.resizeTime > 0) 
-                {
-                    Main.ELEMENTS.$body.addClass("js_resize");
-                    self.functionResizePage();
+                if (resizeTime > 0) {
+                    if ( !ACTIVE.loading ) {
+                        ACTIVE.loading = true;
+                        if ( TEMPLATE.loading ) {
+                            ELEMENTS.$body.addClass("js_resize");
+                        }
+                    }
+                    resize();
                 } 
-                else
-                {
-                    self.resizeTime = 0;
-                    self.resizeActive = false;
-                    self.run();
-                    Main.ELEMENTS.$body.removeClass("js_resize");
+                else {
+                    if ( ACTIVE.loading ) {
+                        ACTIVE.loading = false;
+                        if ( TEMPLATE.loading) {
+                            ELEMENTS.$body.removeClass("js_resize");
+                        }
+                    }
+                    resizeTime = 0;
+                    resizeActive = false;
+                    run();
                 }
 
                 /* test-code */
-                var debugBox = {
-                    "Resized time ": self.resizeTime,
-                    "Resized block ": self.resizeActive,
-                };
-                Main.debugVariables.add(debugBox);
+                DEBUG.variable.add({
+                    "Resize timeout": resizeTime,
+                    "Resize active ": resizeActive,
+                });
                 /* end-test-code */
             }
 
-        }, self.resizeTime);
-    },
+        }, resizeTime);
+    };
 
+    var
+    add = (name, item) => {
+        queue[name] = [item];
 
-    add(name, item) {
-        var self = Main.bindResize;
+        /* test-code */
+        DEBUG.console.add(`resize: add ${name}`);
+        /* end-test-code */
+    };
 
-        self.queue[name] = [item];
-    },
+    var
+    remove = (name) => {
+        delete queue[name];
 
-    remove(name, item) {
-        var self = Main.bindResize;
+        /* test-code */
+        DEBUG.console.add(`resize: remove ${name}`);
+        /* end-test-code */
+    };
 
-        delete self.queue[name];
-    },
+    var
+    clean = () => {
+        queue = {};
 
-    clean() {
-        var self = Main.bindResize;
+        /* test-code */
+        DEBUG.console.add(`resize: clean queue`);
+        /* end-test-code */
+    };
 
-        self.queue = {};
-    },
-
-    run() {
-        var self = Main.bindResize;
-
-        $.each(self.queue, function(index, value) {
+    var
+    run = () => {
+        $.each(queue, function(index, value) {
             (value[0])();
         }); 
- 
-    },
+    };
 
-    queue: {},
+    var
+    bind = () => {
+        ELEMENTS.$window.on('resize orientationchange', trigger);
 
+        /* test-code */
+        DEBUG.console.add(`resize: bind`);
+        /* end-test-code */
+    };
 
-    onResizeBind() {
-        var self = this;
+    unbind = () => {
+        ELEMENTS.$window.off('resize orientationchange', trigger);
 
-        Main.ELEMENTS.$window.on('resize orientationchange', self.functionResizeTrigger);
-    },
+        /* test-code */
+        DEBUG.console.add(`resize: unbind`);
+        /* end-test-code */
+    };
 
-    offResizeBind() {
-        var self = this;
+    start();
 
-        Main.ELEMENTS.$window.off('resize orientationchange', self.functionResizeTrigger);
-    },
+    return {
+        add: add,
+        remove: remove,
+        clean: clean,
+        bind: bind,
+        unbind: unbind,
+    };
   
 };

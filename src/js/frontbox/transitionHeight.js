@@ -1,20 +1,16 @@
 module.exports = (data) => {
 
-    /**
-      * Opened (transitioned on) jQuery elements
-      * @param { Array(jQuery Element) } DATA 
-      */
     var
-    DATA = [],
-    BROWSER = data.BROWSER;
+    DATA = [],      /* Opened (transitioned on) jQuery elements */
+    BROWSER;        /* browser.js data */
 
-    // start = (data) => {
-
-    // },
-
+    var
+    start = () => {
+        BROWSER = data.BROWSER;
+    };
 
     /**
-     * Trigger toggle transition height
+     * Toggle transition height
      */
     var
     toggle = (options) => {
@@ -30,7 +26,7 @@ module.exports = (data) => {
         });
 
         if (active) {
-            DATA.splice( options.$clicked , 1 );     
+            DATA.splice( options.$clicked, 1 );     
             off(options);    
         }
         else {
@@ -60,7 +56,7 @@ module.exports = (data) => {
         }
 
         /* test-code */
-        DEBUG.debugConsole.add(`Clicked "Show more" on {$container ${height}}`, "click");
+        DEBUG.console.add(`Clicked "Show more" on {$container ${height}}`, "click");
         /* end-test-code */
 
         param.$clicked
@@ -91,7 +87,7 @@ module.exports = (data) => {
         height = param.$container.outerHeight(true);
         
         /* test-code */
-        DEBUG.debugConsole.add(`Clicked "Show more" off`, "click");
+        DEBUG.console.add(`Clicked "Show more" off`, "click");
         /* end-test-code */
 
         param.$clicked
@@ -113,6 +109,8 @@ module.exports = (data) => {
             });
 
     };
+
+    start(data);
 
     return {
         toggle: toggle,

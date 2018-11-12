@@ -35,7 +35,7 @@ module.exports = () => {
             "Page height ": DATA.height,
             "Page responsive ": DATA.responsive,
         };
-        DEBUG.debugVariables.add(debugBox);
+        DEBUG.variable.add(debugBox);
         /* end-test-code */
     };
 

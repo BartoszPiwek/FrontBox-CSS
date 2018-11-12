@@ -52,7 +52,7 @@ module.exports = (data) => {
             mapObject = new google.maps.Map( mapElement, OPTIONS_MAP);
 
             /* test-code */
-            DEBUG.debugConsole.add("Start: googleMaps");
+            DEBUG.console.add("Start: googleMaps");
             /* end-test-code */
         }
 
@@ -180,7 +180,7 @@ module.exports = (data) => {
         mapObject.panToBounds(bounds); 
 
         /* test-code */
-        DEBUG.debugConsole.add(`googleMaps: change region <strong>${name}</strong>`);
+        DEBUG.console.add(`googleMaps: change region <strong>${name}</strong>`);
         /* end-test-code */
     };
 
@@ -226,7 +226,7 @@ module.exports = (data) => {
         clickMarkers(marker, data);
 
         /* test-code */
-        DEBUG.debugConsole.add(`(<strong>googleMaps</strong>) Add marker {lat: ${data.position.lat}; lon: ${data.position.lon}; icon: ${url}}`);
+        DEBUG.console.add(`(<strong>googleMaps</strong>) Add marker {lat: ${data.position.lat}; lon: ${data.position.lon}; icon: ${url}}`);
         /* end-test-code */
     };
 
@@ -246,7 +246,7 @@ module.exports = (data) => {
             delete markers[data.id];
 
             /* test-code */
-            DEBUG.debugConsole.add(`(<strong>googleMaps</strong>) delete marker {lat: ${data.position.lat}; lon: ${data.position.lon};`);
+            DEBUG.console.add(`(<strong>googleMaps</strong>) delete marker {lat: ${data.position.lat}; lon: ${data.position.lon};`);
             /* end-test-code */
         }
     };
@@ -285,7 +285,7 @@ module.exports = (data) => {
         smoothZoom(mapObject, zoom, mapObject.getZoom());
 
         /* test-code */
-        DEBUG.debugConsole.add(`Click <strong>googleMaps</strong> {lat: ${data.position.lat}; lon: ${data.position.lon}}`, 'click');
+        DEBUG.console.add(`Click <strong>googleMaps</strong> {lat: ${data.position.lat}; lon: ${data.position.lon}}`, 'click');
         /* end-test-code */
     };
 
