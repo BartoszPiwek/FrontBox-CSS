@@ -59,9 +59,6 @@ module.exports = (data) => {
         break;
     }
     
-    console.log($wrap.outerHeight( true ));
-    console.log($container.outerHeight( true ));
-
     if ($wrap.outerHeight( true ) < $container.outerHeight( true )) {
       $this.removeClass("hide");
       $this.on("click", {$this}, click);          

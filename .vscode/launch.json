@@ -9,7 +9,13 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8181",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}/public/dev",
+            "sourceMaps": true,
+            "breakOnLoad": true,
+            "trace": true,
+            // "sourceMapPathOverrides": {
+            //   "webpack:///./*": "${webRoot}/*"
+            // }
         }
     ]
 }

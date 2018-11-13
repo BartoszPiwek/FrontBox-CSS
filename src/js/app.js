@@ -1,8 +1,8 @@
 /**
  * Libs
  */
-global.$ = require('jquery');
-global.jQuery = $;
+// global.$ = require('jquery');
+// global.jQuery = $;
 // global.Cookies = require('js-cookie');
 // require('slick-carousel');
 // require('select2')();
@@ -47,7 +47,7 @@ require('./frontbox/jquery/scrollBlock')();
         ELEMENTS: ELEMENTS,
     });
     /* end-test-code */
-
+    
     /**
      * Required
      */
