@@ -62,10 +62,10 @@ module.exports = (data) => {
         DATA.height = $elementSpy.outerHeight(true);
 
         /* test-code */
-        DEBUG.variable.add({
-            "Header height": DATA.height,
-            "Header position": position,
-        });
+        // DEBUG.variable.add({
+        //     "Header height": DATA.height,
+        //     "Header position": position,
+        // });
         /* end-test-code */
     };
 
@@ -90,9 +90,9 @@ module.exports = (data) => {
         }
 
         /* test-code */
-        DEBUG.variable.add({
-          'Header active': active,
-        });
+        // DEBUG.variable.add({
+        //   'Header active': active,
+        // });
         /* end-test-code */
 
     };

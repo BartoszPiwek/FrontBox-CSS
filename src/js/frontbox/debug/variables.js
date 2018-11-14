@@ -1,81 +1,117 @@
-module.exports = (data) => {
+module.exports = (argument) => {
 
     var 
-    DATA = {
+    ELEMENTS = null;
+
+    var
+    BOX = {
         $container: null,
-        $element: null,
+        $content: null,
         $button: null,
         $body: null,
-        open: false,
     },
-    elements = {};
+    OPTIONS = {
+        open: false,
+    };
 
-    $.extend( DATA, data );
-        
-    var start = (data) => {
+    const
+    CLASS = {
+        container       : `debug-box debug-box--variables`,
+        button          : `debug-box__button`,
+        content         : `debug-box__container`,
+        item            : `debug-box__item`,
+    };
 
-        var debugBoxClass = 'debug-box debug-box--variables';
-        if (!DATA.open) {
-            debugBoxClass += ' debug-box--hide';
+    var
+    CONTENT = {};
+
+    /* Start module */
+    var 
+    start = (data) => {
+
+        /* Prepare arguments data */
+        $.extend( OPTIONS, argument.OPTIONS );
+        ELEMENTS = argument.ELEMENTS;
+
+        /* Check if container must be default open */
+        if (!OPTIONS.open) {
+            CLASS.container += ' debug-box--hide';
         }
         
-        var debugBox = $(`<div class='${debugBoxClass}' id='debug-box'></div>`);
-        var debugBoxButton = $("<div id='debug-box-button' class='debug-box__button'>FrontBox variables</div>");
-        var debugBoxContainer = $("<div id='debug-box-container' class='debug-box__container'></div>");
+        /* Create template */
+        BOX.$container      = $(`<div class='${CLASS.container}'></div>`);
+        BOX.$button         = $(`<div class='${CLASS.button}'>FrontBox variables</div>`);
+        BOX.$content        = $(`<div class='${CLASS.content}'></div>`);
         
-        DATA.ELEMENTS.$body.append(debugBox);
-        DATA.$element = $("#debug-box");
+        /* Draw template */
+        ELEMENTS.$body.append( BOX.$container );
+        BOX.$container.append( BOX.$button );
+        BOX.$container.append( BOX.$content );
         
-        DATA.$element.append(debugBoxButton);
-        DATA.$element.append(debugBoxContainer);
+        /* Bind toggle container */
+        BOX.$button.on("click", toggleContainer);
+    };
+    
+
+    /* Show data in content */
+    const
+    add = (dataName, DATA) => {
         
-        DATA.$button = $("#debug-box-button");
-        DATA.$container = $("#debug-box-container");
-        
-        var toggleDebugBox = function() {
-            DATA.$element.toggleClass("debug-box--hide");
+        CONTENT[dataName] = {
+            data: DATA,
+            name: dataName.split(" ").join("-").toLowerCase(),
         };
 
-        DATA.$button.on("click", toggleDebugBox);
-                
-    };
-            
-    var fill = () => {
-        var self = this;
+        BOX.$content.append(`<p class="${CLASS.item}">${CONTENT[dataName].name}</p>`);
+        
+        for (const key in DATA) {
+            const value = DATA[key];
 
-        $(".debug-box__container > p").off("click", self.click);
-        
-        DATA.$container.empty();
-        
-        Object.keys(elements).forEach(function(key) {
-            var idElement = key.split(" ").join("-").toLowerCase();
-            DATA.$container.append("<p>" + key + "<span id='debug-box-" + idElement + "'></p>");
-        });
+            let
+            name = key.split(" ").join("-").toLowerCase(),
+            id = `debug-variable-${CONTENT[dataName].name}-${name}`;
+            $item = $(`<p> ${key} <span id='${id}'>${value}</span> </p>`);
+            
+            BOX.$content.append($item);
 
-        $(".debug-box__container > p").on("click", self.click);
-        
-        update();
+            $item.on("click", {$item}, toggleValue);
+        }
     };
-            
-    var update = () => {        
-        Object.keys(elements).forEach(function(key) {
-            var value = elements[key],
-                idElement = key.split(" ").join("-").toLowerCase(),
-                $item = $("#debug-box-" + idElement);
-            $item.text(value);
-        });
+
+    /* Refresh data name in content */ 
+    const
+    refresh = (name) => {
+        var
+        item = CONTENT[name],
+        data = item.data;
+
+        for (const key in data) {
+            const value = data[key];
+
+            let
+            name = key.split(" ").join("-").toLowerCase(),
+            find = `debug-variable-${item.name}-${name}`;
+
+            $(`#${find}`).text(value);
+        }
     };
-            
-    var add = (addObject) => {
-        
-        $.extend(elements, addObject);
-        
-        fill();
+    
+    /* Toogle container */
+    const
+    toggleContainer = () => {
+        BOX.$container.toggleClass("debug-box--hide");
+    };
+    /* Toogle value */
+    const
+    toggleValue = (e) => {      
+        e.data.$item.toggleClass("js_focus");
     };
 
     start();
 
     return {
         add: add,
+        refresh: refresh,
     };
+
 };

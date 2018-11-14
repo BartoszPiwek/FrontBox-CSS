@@ -33,10 +33,10 @@ module.exports = (data) => {
         DATA.$burger.on("click", burgerClick);
 
         /* test-code */
-        DEBUG.variable.add({
-            'Burger active': active,
-            'Burger moving': moving,
-        });
+        // DEBUG.variable.add({
+        //     'Burger active': active,
+        //     'Burger moving': moving,
+        // });
         /* end-test-code */
     };
 
@@ -53,10 +53,10 @@ module.exports = (data) => {
 
 
         /* test-code */
-        DEBUG.variable.add({
-            'Burger moving': moving,
-            'Burger active': active,
-        });
+        // DEBUG.variable.add({
+        //     'Burger moving': moving,
+        //     'Burger active': active,
+        // });
         /* end-test-code */
 
         window.setTimeout(function() {
@@ -65,9 +65,9 @@ module.exports = (data) => {
             ELEMENTS.$html.removeClass('js_menu-active--end');
 
             /* test-code */
-            DEBUG.variable.add({
-                'Burger moving': moving,
-            });
+            // DEBUG.variable.add({
+            //     'Burger moving': moving,
+            // });
             /* end-test-code */
 
         }, SETTINGS.wait);
@@ -104,10 +104,10 @@ module.exports = (data) => {
         active = true;
 
         /* test-code */
-        DEBUG.variable.add({
-            'Burger active': active,
-            'Burger moving': moving,
-        });
+        // DEBUG.variable.add({
+        //     'Burger active': active,
+        //     'Burger moving': moving,
+        // });
         /* end-test-code */
 
         window.setTimeout(function() {
@@ -116,9 +116,9 @@ module.exports = (data) => {
             moving = false;
 
             /* test-code */
-            DEBUG.variable.add({
-                'Burger moving': moving,
-            });
+            // DEBUG.variable.add({
+            //     'Burger moving': moving,
+            // });
             /* end-test-code */
 
         }, SETTINGS.wait);

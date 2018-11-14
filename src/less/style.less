@@ -49,11 +49,3 @@ Version:    Unpublished
 & when (@version = prod) {
   @import (optional, less) "@{pathToModulesProd}/utilities.prod.css";
 }
-
-/* Pass responsive variables to JavaScript */ 
-:root {
-  --mobile: @responsive[@mobile][breakpoint];
-  --fablet: @responsive[@fablet][breakpoint];
-  --tablet: @responsive[@tablet][breakpoint];
-  --desktop: @responsive[@desktop][breakpoint];
-}

@@ -1,7 +1,13 @@
 module.exports = (data) => {
 
     var 
-    DATA = {},
+    DATA = {
+        lastCenter          : null,
+        top                 : null,
+        center              : null,
+        speed               : null,
+        direction           : null,
+    },
     DEVICE = data.DEVICE;
 
     var bind = () => {
@@ -30,15 +36,13 @@ module.exports = (data) => {
         }
 
         /* test-code */
-        DEBUG.variable.add({
-            "Scroll top ": DATA.top,
-            "Scroll center ": DATA.center,
-            "Scroll center last ": DATA.centerLast,
-            "Scroll direction ": DATA.direction,
-            "Scroll speed ": DATA.speed,
-        });
+        DEBUG.variable.refresh('scroll');
         /* end-test-code */
     };
+
+    /* test-code */
+    DEBUG.variable.add('scroll', DATA);
+    /* end-test-code */
 
     bind();
 

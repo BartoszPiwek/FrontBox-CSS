@@ -84,10 +84,10 @@ module.exports = (data) => {
                 }
 
                 /* test-code */
-                DEBUG.variable.add({
-                    "Resize timeout": resizeTime,
-                    "Resize active ": resizeActive,
-                });
+                // DEBUG.variable.add({
+                //     "Resize timeout": resizeTime,
+                //     "Resize active ": resizeActive,
+                // });
                 /* end-test-code */
             }
 

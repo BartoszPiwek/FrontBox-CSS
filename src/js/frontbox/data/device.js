@@ -1,46 +1,80 @@
-module.exports = () => {
+module.exports = (argument) => {
+    
+    var 
+    BREAKPOINTS         = null,
+    ELEMENTS            = null,
+    RESIZE              = null;
 
-    var DATA = {};
-
-    var bind = () => {
-
-        $(window).on('resize orientationchange', function() {
-            refresh();
-        });
-
-        refresh();
+    var
+    DATA = {
+        width           : null,
+        height          : null,
+        responsive      : null,
     };
 
-    var refresh = () => {
-        var $window = $(window);
+    /* Start module */
+    const
+    start = () => {
 
-        // Fill width and height value
-        DATA.prevWidth = DATA.width;
-        DATA.width = $window.width();
-        DATA.height = $window.height();
-        DATA.heightHalf = DATA.height / 2;
+        /* Prepare arguments data */
+        BREAKPOINTS = argument.BREAKPOINTS;
+        ELEMENTS = argument.ELEMENTS;
+        RESIZE = argument.RESIZE;
 
-        // Set responsive size
-        if (DATA.width > 1024) {
-            DATA.responsive = 0;
-        } else if (DATA.width > 768) {
-            DATA.responsive = 1;
-        } else {
-            DATA.responsive = 2;
+        refresh();
+
+        /* Check if user resize page */
+        // RESIZE.add('device', () => {
+        //     refresh();
+        // }, 'width');
+    };
+
+    /* Refresh module */
+    const
+    refresh = () => {
+
+        /* Prepare data */
+        let
+        width = ELEMENTS.$window.width(),
+        lastWidth = DATA.width;
+        height = ELEMENTS.$window.height();
+
+        DATA.width = width;
+        DATA.height = height;
+
+        /* Check active breakpoint */ 
+        for (const key in BREAKPOINTS) {
+            const value = BREAKPOINTS[key];
+
+            if (width > value) {
+                DATA.responsive = key;
+                break;
+            }
+        }
+        if (!DATA.responsive) {
+            DATA.responsive = 'mobile';
+        }
+
+        /* Trigger resize queue (ignore first time) */
+        if (lastWidth) {
+            if (DATA.width === lastWidth) {
+                // RESIZE.resize('width');
+            }
+            else {
+                // RESIZE.resize();
+            }
         }
 
         /* test-code */
-        var debugBox = {
-            "Page width ": DATA.width,
-            "Page height ": DATA.height,
-            "Page responsive ": DATA.responsive,
-        };
-        DEBUG.variable.add(debugBox);
+        DEBUG.variable.refresh('device');
         /* end-test-code */
     };
+    
+    /* test-code */
+    DEBUG.variable.add('device', DATA);
+    /* end-test-code */
 
-    bind();
+    start();
 
     return DATA;
-
 };

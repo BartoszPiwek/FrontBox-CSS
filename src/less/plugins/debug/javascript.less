@@ -38,6 +38,12 @@
         @media @tablet {
             width: 200px;
         }
+
+        & > * {
+            &:first-child {
+                margin-top: 0;
+            }
+        }
     }
 
     &__button {
@@ -55,24 +61,34 @@
         writing-mode: vertical-lr;
     }
 
+    &__item {
+        font-size: 14px;
+        text-transform: uppercase;
+        margin: 10px 0 5px;
+        &:before {
+            content: none !important;
+        }
+    }
+
     &--variables {
         .debug-box {
             &__container {
-                p {
+                p:not(.debug-box__item) {
                     cursor: pointer;
 
                     &:before {
                         content: "-";
                         position: absolute;
                         top: 0;
-                        right: 42px;
+                        right: 55px;
                         font-size: 12px;
                         line-height: 12px;
                     }
             
-                    .add-hover({
+                    &:hover {
                         background-color: fade(@color-primary, 35%);
-                    });
+                    }
+
                     &.js_focus {
                         background-color: fade(@color-primary, 35%);
                     }

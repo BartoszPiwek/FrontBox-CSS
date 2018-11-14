@@ -39,11 +39,13 @@ require('./frontbox/jquery/scrollBlock')();
     global.DEBUG = {};
 
     global.DEBUG.console = require('./frontbox/debug/console')({
-        open: true,
+        // open: true,
         ELEMENTS: ELEMENTS,
     });
     global.DEBUG.variable = require('./frontbox/debug/variables')({
-        open: false,
+        OPTIONS: {
+            open: true,
+        },
         ELEMENTS: ELEMENTS,
     });
     /* end-test-code */
@@ -51,20 +53,40 @@ require('./frontbox/jquery/scrollBlock')();
     /**
      * Required
      */
+
+    /* CSS Variables */
+    const
+    root = document.querySelector(':root'),
+    CSS = window.getComputedStyle(root),
+    BREAKPOINTS = {
+        desktop: Number(CSS.getPropertyValue("--desktop")),
+        tablet: Number(CSS.getPropertyValue("--tablet")),
+        fablet: Number(CSS.getPropertyValue("--fablet")),
+        mobile: Number(CSS.getPropertyValue("--mobile")),
+    };
+
+    var DEVICE = require('./frontbox/data/device')({
+        ELEMENTS: ELEMENTS,
+        RESIZE: RESIZE,
+        BREAKPOINTS: BREAKPOINTS,
+    });
+
+    /* Resize */
+    var RESIZE = require('./frontbox/bind/resize')({
+        ELEMENTS: ELEMENTS,
+        DEVICE: DEVICE,
+        template: {
+            loading: false,
+            // loading: `<div class="animation-donut-spinner"></div>`,
+        },
+    });
+
     var FUNCTIONS = require('./frontbox/functions');
-    var DEVICE = require('./frontbox/data/device')();
+
     var BROWSER = require('./frontbox/data/browser')();
     var SCROLL = require('./frontbox/data/scroll')({
         DEVICE: DEVICE
     });
-
-    /**
-     * CSS Variables
-     * 
-     * Usage CSS.getPropertyValue("--mobile")
-     */
-    const
-    CSS = getComputedStyle(document.body);
     
     /**
      * Animations
@@ -73,16 +95,7 @@ require('./frontbox/jquery/scrollBlock')();
         BROWSER : BROWSER,
     });
 
-    /**
-     * Resize
-     */
-    var RESIZE = require('./frontbox/bind/resize')({
-        ELEMENTS: ELEMENTS,
-        template: {
-            loading: false,
-            // loading: `<div class="animation-donut-spinner"></div>`,
-        },
-    });
+
 
     /**
      * Smooth scroll to target

@@ -4,6 +4,13 @@
 || Base style for page elements
 =========================================================================*/
 
+/* Pass responsive variables to JavaScript */ 
+:root {
+  --desktop: @responsive[@desktop][breakpoint];
+  --tablet: @responsive[@tablet][breakpoint];
+  --fablet: @responsive[@fablet][breakpoint];
+  --mobile: @responsive[@mobile][breakpoint];
+}
 
 html, body {
   min-height: 100%;
