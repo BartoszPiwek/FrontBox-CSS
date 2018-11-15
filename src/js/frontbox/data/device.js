@@ -39,10 +39,12 @@ module.exports = (argument) => {
 
         DATA.width = width;
         DATA.height = height;
+        DATA.responsive = null;
 
         /* Check active breakpoint */ 
         for (const key in BREAKPOINTS) {
             const value = BREAKPOINTS[key];
+            
 
             if (width > value) {
                 DATA.responsive = key;
