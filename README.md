@@ -8,6 +8,7 @@
 > <strong>JS Preprocessor</strong>: Browserify<br>
 > <strong>Task runner</strong>: Grunt<br>
 > <strong>Version</strong>: 1.0.8<br>
+> <strong>Site DEV</strong>: <a href="http://dev.frontbox.bartoszpiwek.e-kei.pl/" target="_blank">http://dev.frontbox.bartoszpiwek.e-kei.pl/</a></br>
 
 ## Used programs
 
