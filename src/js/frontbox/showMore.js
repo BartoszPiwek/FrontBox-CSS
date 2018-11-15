@@ -12,9 +12,9 @@ module.exports = (data) => {
     TRANSITIONHEIGHT = data.TRANSITIONHEIGHT;
     RESIZE = data.RESIZE;
 
-    RESIZE.add("showMore", () => {
-      refresh();
-    });
+    // RESIZE.add("showMore", () => {
+    //   refresh();
+    // });
 
     refresh();
   };

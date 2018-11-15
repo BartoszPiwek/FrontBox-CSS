@@ -23,10 +23,8 @@ module.exports = (argument) => {
 
         refresh();
 
-        /* Check if user resize page */
-        // RESIZE.add('device', () => {
-        //     refresh();
-        // }, 'width');
+        /* Trigger function if user resize page */
+        ELEMENTS.$window.on('resize orientationchange', refresh);
     };
 
     /* Refresh module */
@@ -58,10 +56,10 @@ module.exports = (argument) => {
         /* Trigger resize queue (ignore first time) */
         if (lastWidth) {
             if (DATA.width === lastWidth) {
-                // RESIZE.resize('width');
+                RESIZE.trigger('width');
             }
             else {
-                // RESIZE.resize();
+                RESIZE.trigger();
             }
         }
 
