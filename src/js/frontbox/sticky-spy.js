@@ -27,9 +27,6 @@ module.exports = (argument) => {
         DEVICE = argument.DEVICE;
         RESIZE = argument.RESIZE;
 
-        console.log(RESIZE);
-        
-
         /* Run */
         refresh();
 
