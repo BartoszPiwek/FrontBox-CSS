@@ -36,7 +36,6 @@
     "grunt-hash-res": "^0.1.4",
     "grunt-html": "^8.6.1",
     "grunt-image": "^4.2.0",
-    "grunt-imageoptim": "^1.4.1",
     "grunt-newer": "^1.2.0",
     "grunt-open": "^0.2.3",
     "grunt-phantom": "^0.2.1",
