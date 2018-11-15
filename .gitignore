@@ -12,7 +12,7 @@ src/js/libs/*
 
 # Generated website
 # public/dev/*
-public/prod/*
+# public/prod/*
 
 # Manifest
 package-lock.json
