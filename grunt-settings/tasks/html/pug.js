@@ -1,5 +1,5 @@
 module.exports = function(SETTINGS){
-    
+
     var 
     modifyVarsDev, modifyVarsProd,
     filters;
@@ -10,7 +10,7 @@ module.exports = function(SETTINGS){
     modifyVarsDev.version = 'dev';
     modifyVarsProd.version = 'prod';
 
-    filters = require("./pug-filters");
+    filters = require("./pug-filters")(SETTINGS);
 
     return {
 

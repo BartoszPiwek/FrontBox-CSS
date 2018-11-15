@@ -63,7 +63,7 @@ Version:    Unpublished
 }
 @media only screen and (min-width: 768px) {
   .debug-box__container {
-    width: 200px;
+    width: 300px;
   }
 }
 .debug-box__container > *:first-child {
@@ -87,6 +87,7 @@ Version:    Unpublished
   font-size: 14px;
   text-transform: uppercase;
   margin: 10px 0 5px;
+  padding: 0 !important;
 }
 .debug-box__item:before {
   content: none !important;
@@ -2982,55 +2983,32 @@ p.text-icon>x.icon+span{Lorem}
   transition: transform 1s 1s;
   transform: translateY(-100%);
 }
-.js-spy__container {
-  position: relative;
-}
-.js-spy__element {
+/* Item */
+.js-sticky-spy {
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
   perspective: 1000;
+  width: 100%;
 }
-.js-spy__element.run {
+.js-sticky-spy--fixed {
   position: fixed;
   top: 0;
   bottom: auto;
 }
-.js-spy__element.bottom {
-  position: absolute;
-  bottom: 0;
-  top: auto;
+.js-sticky-spy--bottom {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 0 !important;
+  left: 0 !important;
 }
-.js-spy__element.run {
+.js-sticky-spy--run {
   margin: 0 !important;
 }
-.spy-test {
-  position: absolute;
-}
-.spy-test:not(.run) {
-  top: 0 !important;
-  left: 0 !important;
-  right: auto !important;
-}
-.spy-test:not(.run).bottom {
-  bottom: 0 !important;
-  top: auto !important;
-}
-.spy-test--2:not(.run) {
-  right: 0 !important;
-  top: 0 !important;
-  left: auto !important;
-}
-.spy-test--2:not(.run).bottom {
-  bottom: 0 !important;
-  top: auto !important;
-}
-.spy-test--3:not(.run) {
-  top: 0 !important;
-  right: auto !important;
-}
-.spy-test--3:not(.run).bottom {
-  bottom: 0 !important;
-  top: auto !important;
+/* Container */
+.js-sticky-spy-container {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
 }
 /*=========================================================================
 || Plugin: collapse.less

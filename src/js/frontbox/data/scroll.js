@@ -7,8 +7,12 @@ module.exports = (data) => {
         top                 : null,
         speed               : null,
         direction           : null,
-    },
-    DEVICE = data.DEVICE;
+    };
+
+    var
+    DEVICE = data.DEVICE,
+    ELEMENTS = data.ELEMENTS;
+
 
 
     var bind = () => {
@@ -27,6 +31,13 @@ module.exports = (data) => {
 
         DATA.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
         DATA.center = DATA.top + DEVICE.height / 2;
+        DATA.begin = DATA.top;
+
+        if (ELEMENTS.$header.length) {
+            DATA.begin += ELEMENTS.$header.outerHeight( true );
+        }
+
+        DATA.bottom = DATA.top + DEVICE.height;
 
         DATA.speed = Math.abs(DATA.lastCenter - DATA.center);
 

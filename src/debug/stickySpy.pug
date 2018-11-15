@@ -1,0 +1,56 @@
+- var page_title = "Debug Sticky Spy | FrontBox"
+- var page_description = false
+- var page_critical_css = false
+
+include ../template/includes/header.pug
+
+.page-content.relative
+	.debug-wrap.wrap
+
+		div(style="height: 300px;")
+
+		div(style="border: 1px solid blue")
+
+			.row.row-space
+				.col-4
+					div#stickySpyContainer.js-sticky-spy-container
+						div#stickySpy.js-sticky-spy(style="border: 1px solid red; height: 400px;")
+							| content
+				.col-8
+					div(style="height: 1000px;")
+		
+		div(style="height: 300px;")
+
+include ../template/includes/scripts.pug
+
+script.
+	var
+	$debugChangerClass = $("[data-change-class]");
+
+	$debugChangerClass.each(function(){
+		var
+		$this = $(this),
+		findContent = $this.attr("data-change-class"),
+		$content = $("#"+findContent),
+		$inputs = $this.find("input");
+
+		console.log($content);
+
+		$inputs.on("change", function(){
+			var 
+			$this = $(this),
+			value = $this.attr("name");
+
+			console.log(value);
+
+			if($this.is(":checked")) {
+				$content.addClass(value);
+			}
+			else {
+				$content.removeClass(value);
+			}
+			
+		});
+	});
+
+include ../template/includes/end.pug

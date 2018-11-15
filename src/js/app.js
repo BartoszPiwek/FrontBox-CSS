@@ -85,7 +85,8 @@ require('./frontbox/jquery/scrollBlock')();
 
     var BROWSER = require('./frontbox/data/browser')();
     var SCROLL = require('./frontbox/data/scroll')({
-        DEVICE: DEVICE
+        DEVICE: DEVICE,
+        ELEMENTS: ELEMENTS,
     });
     
     /**
@@ -201,6 +202,21 @@ require('./frontbox/jquery/scrollBlock')();
     require('./frontbox/showMore')({
         TRANSITIONHEIGHT: transitionHeight,
         RESIZE: RESIZE,
+    });
+
+    /**
+     * Sticky Spy
+     */
+    var stickySpy = require('./frontbox/sticky-spy')({
+        SCROLL: SCROLL,
+        ELEMENTS: ELEMENTS,
+        DEVICE: DEVICE,
+        DATA: {
+            'stickySpy': {
+                $item: $(`#stickySpy`),
+                $container: $(`#stickySpyContainer`),
+            }
+        }
     });
 
     /**

@@ -1,0 +1,33 @@
+/* Item */
+.js-sticky-spy {
+
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
+  width: 100%;
+
+  &--fixed {
+    position: fixed;
+    top: 0;
+    bottom: auto;
+  }
+
+  &--bottom {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+  }
+
+  &--run {
+    margin: 0 !important;
+  }
+
+}
+
+/* Container */
+.js-sticky-spy-container {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+}

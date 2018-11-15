@@ -33,10 +33,10 @@ module.exports = (data) => {
         DATA.$burger.on("click", burgerClick);
 
         /* test-code */
-        // DEBUG.variable.add({
-        //     'Burger active': active,
-        //     'Burger moving': moving,
-        // });
+        DEBUG.variable.add(`Burger`, {
+            'active': active,
+            'moving': moving,
+        });
         /* end-test-code */
     };
 

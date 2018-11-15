@@ -56,6 +56,9 @@ module.exports = (argument) => {
     /* Show data in content */
     const
     add = (dataName, DATA) => {
+
+        /* Remove duplicate */
+        remove(dataName);
         
         CONTENT[dataName] = {
             data: DATA,
@@ -75,6 +78,14 @@ module.exports = (argument) => {
             BOX.$content.append($item);
 
             $item.on("click", {$item}, toggleValue);
+        }
+    };
+
+    /* Remove data in content */
+    const
+    remove = (dataName) => {
+        if (typeof CONTENT[dataName] != "undefined") {
+            delete CONTENT[dataName];
         }
     };
 
@@ -111,6 +122,7 @@ module.exports = (argument) => {
 
     return {
         add: add,
+        remove: remove,
         refresh: refresh,
     };
 
