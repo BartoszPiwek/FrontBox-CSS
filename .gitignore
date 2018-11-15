@@ -11,7 +11,7 @@ docs
 src/js/libs/*
 
 # Generated website
-public/dev/*
+# public/dev/*
 public/prod/*
 
 # Manifest
