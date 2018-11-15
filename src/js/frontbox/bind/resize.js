@@ -2,7 +2,7 @@
  * Resize
  */
 
-module.exports = (data) => {
+module.exports = (argument) => {
 
     var
     QUEUE = {
@@ -23,15 +23,15 @@ module.exports = (data) => {
     resizeTime = 400;
 
     var
-    ELEMENTS = null,
+    ELEMENTS            = null,
     TEMPLATE = {
         loading: null,
     };
 
     var
     start = () => {
-        ELEMENTS = data.ELEMENTS;
-        TEMPLATE.loading = data.template.loading;
+        ELEMENTS                = argument.ELEMENTS;
+        TEMPLATE.loading        = argument.template.loading;
     };
 
     var

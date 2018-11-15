@@ -212,6 +212,7 @@ require('./frontbox/jquery/scrollBlock')();
         SCROLL: SCROLL,
         ELEMENTS: ELEMENTS,
         DEVICE: DEVICE,
+        RESIZE: RESIZE,
         DATA: {
             'stickySpy': {
                 $item: $(`#stickySpy`),
