@@ -65,21 +65,21 @@ require('./frontbox/jquery/scrollBlock')();
         mobile: Number(CSS.getPropertyValue("--mobile")),
     };
 
+    /* Resize */
+    var RESIZE = require('./frontbox/bind/resize')({
+        ELEMENTS: ELEMENTS,
+        template: {
+            // loading: false,
+            loading: `<div class="animation-donut-spinner"></div>`,
+        },
+    });
+
     var DEVICE = require('./frontbox/data/device')({
         ELEMENTS: ELEMENTS,
         RESIZE: RESIZE,
         BREAKPOINTS: BREAKPOINTS,
     });
 
-    /* Resize */
-    var RESIZE = require('./frontbox/bind/resize')({
-        ELEMENTS: ELEMENTS,
-        DEVICE: DEVICE,
-        template: {
-            loading: false,
-            // loading: `<div class="animation-donut-spinner"></div>`,
-        },
-    });
 
     var FUNCTIONS = require('./frontbox/functions');
 

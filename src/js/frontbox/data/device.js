@@ -23,10 +23,8 @@ module.exports = (argument) => {
 
         refresh();
 
-        /* Check if user resize page */
-        // RESIZE.add('device', () => {
-        //     refresh();
-        // }, 'width');
+        /* Trigger function if user resize page */
+        ELEMENTS.$window.on('resize orientationchange', refresh);
     };
 
     /* Refresh module */
@@ -41,10 +39,12 @@ module.exports = (argument) => {
 
         DATA.width = width;
         DATA.height = height;
+        DATA.responsive = null;
 
         /* Check active breakpoint */ 
         for (const key in BREAKPOINTS) {
             const value = BREAKPOINTS[key];
+            
 
             if (width > value) {
                 DATA.responsive = key;
@@ -58,10 +58,10 @@ module.exports = (argument) => {
         /* Trigger resize queue (ignore first time) */
         if (lastWidth) {
             if (DATA.width === lastWidth) {
-                // RESIZE.resize('width');
+                RESIZE.trigger('width');
             }
             else {
-                // RESIZE.resize();
+                RESIZE.trigger();
             }
         }
 

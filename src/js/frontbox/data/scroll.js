@@ -3,12 +3,13 @@ module.exports = (data) => {
     var 
     DATA = {
         lastCenter          : null,
-        top                 : null,
         center              : null,
+        top                 : null,
         speed               : null,
         direction           : null,
     },
     DEVICE = data.DEVICE;
+
 
     var bind = () => {
 
@@ -22,17 +23,17 @@ module.exports = (data) => {
     };
 
     var refresh = () => {
-        DATA.centerLast = DATA.center;
+        DATA.lastCenter = DATA.center || 0;
 
         DATA.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        DATA.center = DATA.top + DEVICE.heightHalf;
+        DATA.center = DATA.top + DEVICE.height / 2;
 
-        DATA.speed = Math.abs(DATA.centerLast - DATA.center);
+        DATA.speed = Math.abs(DATA.lastCenter - DATA.center);
 
-        if (DATA.center > DATA.centerLast) {
-            DATA.direction = 0;
+        if (DATA.center > DATA.lastCenter) {
+            DATA.direction = "down";
         } else {
-            DATA.direction = 1;
+            DATA.direction = "up";
         }
 
         /* test-code */

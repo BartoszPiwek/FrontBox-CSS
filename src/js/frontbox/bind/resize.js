@@ -5,20 +5,22 @@
 module.exports = (data) => {
 
     var
-    resizeActive = false,
-    resizeTime = 0,
-    queue = {};
+    QUEUE = {
+        width: {},
+        height: {},
+        all: {},
+    };
 
     var
-    ACTIVE = {
-        appendTemplateLoading: false,
+    DATA = {
+        active: false,
+        time: 0,
         loading: false,
+        appendTemplate: false,
     };
 
     var
-    TIME = {
-        resize: 400,
-    };
+    resizeTime = 400;
 
     var
     ELEMENTS,
@@ -30,82 +32,37 @@ module.exports = (data) => {
     start = () => {
         ELEMENTS = data.ELEMENTS;
         TEMPLATE.loading = data.template.loading;
-        
-        bind();
+
+        /* Append loading template */
+        if ( !DATA.appendTemplate && TEMPLATE.loading ) {
+            ELEMENTS.$body.append( `<div class="js_resizeLoading"><div class="js_resizeLoading__content">${TEMPLATE.loading}</div></div>` );
+            DATA.appendTemplate = true;
+        }
     };
 
     var
     trigger = () => {
-        resizeActive = true;
-        resizeTime += 250;
-        
-        resize();
-    };
 
-    var
-    resize = () => {
+        DATA.time = 500;
 
-        /* Append loading template */
-        if ( !ACTIVE.appendTemplateLoading && TEMPLATE.loading ) {
-            ELEMENTS.$body.append( `<div class="js_resizeLoading"><div class="js_resizeLoading__content">${TEMPLATE.loading}</div></div>` );
-            ACTIVE.appendTemplateLoading = true;
+        if (!DATA.active) {
+            DATA.active = true;
+            resize();
         }
-
-        window.setTimeout( () => {
-            
-            if (resizeActive) {
-                
-                if (resizeTime > TIME.resize) {
-                    resizeTime = TIME.resize;
-                }
-                else {
-                    resizeTime -= 50;
-                }
-
-                if (resizeTime > 0) {
-                    if ( !ACTIVE.loading ) {
-                        ACTIVE.loading = true;
-                        if ( TEMPLATE.loading ) {
-                            ELEMENTS.$body.addClass("js_resize");
-                        }
-                    }
-                    resize();
-                } 
-                else {
-                    if ( ACTIVE.loading ) {
-                        ACTIVE.loading = false;
-                        if ( TEMPLATE.loading) {
-                            ELEMENTS.$body.removeClass("js_resize");
-                        }
-                    }
-                    resizeTime = 0;
-                    resizeActive = false;
-                    run();
-                }
-
-                /* test-code */
-                // DEBUG.variable.add({
-                //     "Resize timeout": resizeTime,
-                //     "Resize active ": resizeActive,
-                // });
-                /* end-test-code */
-            }
-
-        }, resizeTime);
     };
 
     var
-    add = (name, item) => {
-        queue[name] = [item];
-
+    add = (name, callback, type) => {
+        QUEUE[type][name] = [callback];
+        
         /* test-code */
         DEBUG.console.add(`resize: add ${name}`);
         /* end-test-code */
     };
 
     var
-    remove = (name) => {
-        delete queue[name];
+    remove = (name, type) => {
+        delete queue[type][name];
 
         /* test-code */
         DEBUG.console.add(`resize: remove ${name}`);
@@ -122,37 +79,83 @@ module.exports = (data) => {
     };
 
     var
-    run = () => {
-        $.each(queue, function(index, value) {
-            (value[0])();
-        }); 
+    run = (type) => {
+        switch (type) {
+            case 'width':
+                resizeWidth();
+                break;
+            case 'height':
+                resizeHeight();
+                break;
+            default:
+                resizeAll();
+                break;
+        }
     };
 
     var
-    bind = () => {
-        ELEMENTS.$window.on('resize orientationchange', trigger);
+    resize = (type) => {
+        window.setTimeout( () => {
 
-        /* test-code */
-        DEBUG.console.add(`resize: bind`);
-        /* end-test-code */
+            DATA.time -= 50;
+
+            if (DATA.time > 0) {
+                if ( !DATA.loading ) {
+                    DATA.loading = true;
+                    if ( TEMPLATE.loading ) {
+                        ELEMENTS.$body.addClass("js_resize");
+                    }
+                }
+                resize(type);
+            } 
+            else {
+                if ( DATA.loading ) {
+                    DATA.loading = false;
+                    if ( TEMPLATE.loading) {
+                        ELEMENTS.$body.removeClass("js_resize");
+                    }
+                }
+                DATA.active = false;
+                run(type);
+            }
+            /* test-code */
+            DEBUG.variable.refresh("Resize");
+            /* end-test-code */
+        }, 50);
+    };
+    var 
+    resizeWidth = () => {
+        $.each(QUEUE.width, function(index, value) {
+            (value[0])();
+        });
+    };
+    var
+    resizeHeight = () => {
+        $.each(QUEUE.height, function(index, value) {
+            (value[0])();
+        });
+    };
+    var
+    resizeAll = () => {
+        resizeHeight();
+        resizeWidth();
+        $.each(QUEUE.all, function(index, value) {
+            (value[0])();
+        });
     };
 
-    unbind = () => {
-        ELEMENTS.$window.off('resize orientationchange', trigger);
 
-        /* test-code */
-        DEBUG.console.add(`resize: unbind`);
-        /* end-test-code */
-    };
+    /* test-code */
+    DEBUG.variable.add("Resize", DATA);
+    /* end-test-code */
 
     start();
 
     return {
         add: add,
         remove: remove,
-        clean: clean,
-        bind: bind,
-        unbind: unbind,
+        resize: resize,
+        trigger: trigger,
     };
   
 };

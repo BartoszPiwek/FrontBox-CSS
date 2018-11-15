@@ -4,7 +4,6 @@
     z-index: -1;
 
     transition+: opacity @time-transition;
-    transition+: filter @time-transition;
 
     position: fixed;
     top: 0;
@@ -29,7 +28,7 @@
         filter: blur(4px);
     }
     .js_resizeLoading {
-        z-index: 1;
+        z-index: @zindex-first + 1;
         opacity: 1;
     }
 }

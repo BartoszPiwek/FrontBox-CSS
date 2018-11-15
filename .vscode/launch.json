@@ -13,6 +13,10 @@
             "sourceMaps": true,
             "breakOnLoad": true,
             "trace": true,
+            "skipFiles": [
+                "node_modules/**/*.js",
+                "**/*.min.js"
+            ]
         }
     ]
 }
