@@ -4,6 +4,7 @@ module.exports = (argument) => {
     SCROLL              = null;
     ELEMENTS            = null;
     DEVICE              = null;
+    RESIZE              = null;
 
     var
     DATA = {},
@@ -24,13 +25,14 @@ module.exports = (argument) => {
         ELEMENTS = argument.ELEMENTS;
         DATA = argument.DATA;
         DEVICE = argument.DEVICE;
+        RESIZE = argument.RESIZE;
 
         /* Run */
         refresh();
 
         if (activeModule) {
             /* Bind */
-            ELEMENTS.$window.on('resize orientationchange', refresh);
+            RESIZE.add('stickySpy', refresh, 'all');
             ELEMENTS.$window.scroll( scroll );
         }
     };

@@ -23,7 +23,7 @@ module.exports = (data) => {
     resizeTime = 400;
 
     var
-    ELEMENTS,
+    ELEMENTS = null,
     TEMPLATE = {
         loading: null,
     };

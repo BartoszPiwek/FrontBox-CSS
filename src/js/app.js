@@ -138,6 +138,7 @@ require('./frontbox/jquery/scrollBlock')();
     require('./frontbox/navbar/sticky')({
         ELEMENTS: ELEMENTS,
         SCROLL: SCROLL,
+        RESIZE: RESIZE,
         SETTINGS: {
             placeholder: true,
             offset: false,
