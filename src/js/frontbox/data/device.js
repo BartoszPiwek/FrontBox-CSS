@@ -10,6 +10,7 @@ module.exports = (argument) => {
         width           : null,
         height          : null,
         responsive      : null,
+        os              : null,
     };
 
     /* Start module */
@@ -21,6 +22,7 @@ module.exports = (argument) => {
         ELEMENTS = argument.ELEMENTS;
         RESIZE = argument.RESIZE;
 
+        DATA.os = getMobileOperatingSystem();
         refresh();
 
         /* Trigger function if user resize page */
@@ -45,7 +47,6 @@ module.exports = (argument) => {
         for (const key in BREAKPOINTS) {
             const value = BREAKPOINTS[key];
             
-
             if (width > value) {
                 DATA.responsive = key;
                 break;
@@ -56,7 +57,7 @@ module.exports = (argument) => {
         }
 
         /* Trigger resize queue (ignore first time) */
-        if (lastWidth) {
+        if (lastWidth && !DATA.os) {
             if (DATA.width === lastWidth) {
                 RESIZE.trigger('width');
             }
@@ -68,6 +69,28 @@ module.exports = (argument) => {
         /* test-code */
         DEBUG.variable.refresh('device');
         /* end-test-code */
+    };
+
+    /* Determine the mobile operating system */
+    const 
+    getMobileOperatingSystem = () => {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        
+        // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+            return "Windows Phone";
+        }
+      
+        if (/android/i.test(userAgent)) {
+            return "Android";
+        }
+      
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "iOS";
+        }
+      
+        return false;
     };
     
     /* test-code */

@@ -32,12 +32,6 @@ module.exports = (data) => {
     start = () => {
         ELEMENTS = data.ELEMENTS;
         TEMPLATE.loading = data.template.loading;
-
-        /* Append loading template */
-        if ( !DATA.appendTemplate && TEMPLATE.loading ) {
-            ELEMENTS.$body.append( `<div class="js_resizeLoading"><div class="js_resizeLoading__content">${TEMPLATE.loading}</div></div>` );
-            DATA.appendTemplate = true;
-        }
     };
 
     var
@@ -95,6 +89,13 @@ module.exports = (data) => {
 
     var
     resize = (type) => {
+
+        /* Append loading template */
+        if ( !DATA.appendTemplate && TEMPLATE.loading ) {
+            ELEMENTS.$body.append( `<div class="js_resizeLoading"><div class="js_resizeLoading__content">${TEMPLATE.loading}</div></div>` );
+            DATA.appendTemplate = true;
+        }
+
         window.setTimeout( () => {
 
             DATA.time -= 50;
