@@ -22,35 +22,4 @@ include ../template/includes/header.pug
 		div(style="height: 300px;")
 
 include ../template/includes/scripts.pug
-
-script.
-	var
-	$debugChangerClass = $("[data-change-class]");
-
-	$debugChangerClass.each(function(){
-		var
-		$this = $(this),
-		findContent = $this.attr("data-change-class"),
-		$content = $("#"+findContent),
-		$inputs = $this.find("input");
-
-		console.log($content);
-
-		$inputs.on("change", function(){
-			var 
-			$this = $(this),
-			value = $this.attr("name");
-
-			console.log(value);
-
-			if($this.is(":checked")) {
-				$content.addClass(value);
-			}
-			else {
-				$content.removeClass(value);
-			}
-			
-		});
-	});
-
 include ../template/includes/end.pug

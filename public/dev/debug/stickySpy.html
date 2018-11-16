@@ -17,33 +17,5 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
 <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
-<meta name="theme-color" content="#ffffff"></head><body id="body"><div class="page-content relative"><div class="debug-wrap wrap"><div style="height: 300px;"></div><div style="border: 1px solid blue"><div class="row row-space"><div class="col-4"><div class="js-sticky-spy-container" id="stickySpyContainer"><div class="js-sticky-spy" id="stickySpy" style="border: 1px solid red; height: 400px;">content</div></div></div><div class="col-8"><div style="height: 1000px;"></div></div></div></div><div style="height: 300px;"></div></div></div><div class="page__overlay" id="page-overlay"></div><script src="/js/app.dev.js"></script><script>var
-$debugChangerClass = $("[data-change-class]");
-
-$debugChangerClass.each(function(){
-	var
-	$this = $(this),
-	findContent = $this.attr("data-change-class"),
-	$content = $("#"+findContent),
-	$inputs = $this.find("input");
-
-	console.log($content);
-
-	$inputs.on("change", function(){
-		var 
-		$this = $(this),
-		value = $this.attr("name");
-
-		console.log(value);
-
-		if($this.is(":checked")) {
-			$content.addClass(value);
-		}
-		else {
-			$content.removeClass(value);
-		}
-		
-	});
-});
-</script></html>
+<meta name="theme-color" content="#ffffff"></head><body id="body"><div class="page-content relative"><div class="debug-wrap wrap"><div style="height: 300px;"></div><div style="border: 1px solid blue"><div class="row row-space"><div class="col-4"><div class="js-sticky-spy-container" id="stickySpyContainer"><div class="js-sticky-spy" id="stickySpy" style="border: 1px solid red; height: 400px;">content</div></div></div><div class="col-8"><div style="height: 1000px;"></div></div></div></div><div style="height: 300px;"></div></div></div><div class="page__overlay" id="page-overlay"></div><script src="/js/app.dev.js"></script></html>
 </body>

@@ -144,6 +144,5 @@ module.exports = (argument) => {
     };
 
     start();
-
     return DATA;
 };
