@@ -1,14 +1,15 @@
 /**
  * Libs
  */
-// global.$ = require('jquery');
-// global.jQuery = $;
+global.$ = require('jquery');
+global.jQuery = $;
 // global.Cookies = require('js-cookie');
 // require('slick-carousel');
 // require('select2')();
 // require('./frontbox/libs/getStyle');
+require('lazysizes');
 // var 
-// Sharer = require('slick-carousel'); // http://ellisonleao.github.io/sharer.js/
+// Sharer = require('sharer.js'); // http://ellisonleao.github.io/sharer.js/
 
 /**
  * jQuery plugins

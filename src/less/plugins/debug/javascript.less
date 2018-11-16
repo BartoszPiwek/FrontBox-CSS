@@ -8,10 +8,13 @@
     background-color: fade(@color-black, 90%);
     padding: 5px;  
     transition+: opacity @time-transition;
-    height: 250px;
+    z-index: 999999;
     &:extend(.fix_fixed);
 
-    z-index: 999999;
+    height: 250px;
+    @media @tablet {
+        height: 400px;        
+    }
 
     &--hide {
         transform: translateX(-100%);
