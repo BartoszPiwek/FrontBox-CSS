@@ -64,13 +64,17 @@ require('./frontbox/jquery/scrollBlock')();
         tablet: Number(CSS.getPropertyValue("--tablet")),
         fablet: Number(CSS.getPropertyValue("--fablet")),
         mobile: Number(CSS.getPropertyValue("--mobile")),
+    },
+    BREAKPOINTS_HEADER = {
+        desktop: Number(CSS.getPropertyValue("--headerDestkop")),
+        tablet: Number(CSS.getPropertyValue("--headerTablet")),
+        mobile: Number(CSS.getPropertyValue("--headerMobile")),
     };
 
     /* Resize */
     var RESIZE = require('./frontbox/bind/resize')({
         ELEMENTS: ELEMENTS,
         template: {
-            // loading: false,
             loading: `<div class="animation-donut-spinner"></div>`,
         },
     });
@@ -214,10 +218,14 @@ require('./frontbox/jquery/scrollBlock')();
         ELEMENTS: ELEMENTS,
         DEVICE: DEVICE,
         RESIZE: RESIZE,
+        BREAKPOINTS_HEADER: BREAKPOINTS_HEADER,
         DATA: {
             'stickySpy': {
                 $item: $(`#stickySpy`),
                 $container: $(`#stickySpyContainer`),
+                ignoreBreakpoints: [
+                    'mobile',
+                ],
             }
         }
     });

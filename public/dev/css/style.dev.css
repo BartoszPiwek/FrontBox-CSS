@@ -1085,6 +1085,9 @@ nav.nav>a.nav__item*x
   --tablet: 768;
   --fablet: 550;
   --mobile: 549;
+  --headerDestkop: 0;
+  --headerTablet: 0;
+  --headerMobile: 0;
 }
 html,
 body {
@@ -2997,23 +3000,22 @@ p.text-icon>x.icon+span{Lorem}
   width: 100%;
 }
 .js-sticky-spy--fixed {
-  position: fixed;
+  position: fixed !important;
+  bottom: auto !important;
   top: 0;
-  bottom: auto;
 }
 .js-sticky-spy--bottom {
   position: absolute !important;
-  top: auto !important;
   bottom: 0 !important;
-  left: 0 !important;
 }
-.js-sticky-spy--run {
-  margin: 0 !important;
+.js-sticky-spy:not(.js-sticky-spy--fixed):not(.js-sticky-spy--bottom) {
+  top: auto !important;
+  width: 100% !important;
+  left: 0 !important;
 }
 /* Container */
 .js-sticky-spy-container {
   position: relative;
-  display: flex;
   flex: 1 1 auto;
 }
 /*=========================================================================
