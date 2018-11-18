@@ -3,7 +3,7 @@ module.exports = {
     // Version { automatic set }
     version: null,
     // Lang
-    website_locale: 'pl_PL',
+    website_locale: 'pl-PL',
 
     /* Path */
     "pathToMainCSS": './css', 

@@ -220,6 +220,7 @@ module.exports = function(grunt) {
     grunt.registerTask('favicon', ['realFavicon']);
     grunt.registerTask('doc', ['dss']);
     grunt.registerTask('start', ['clean:begin']);
+    grunt.registerTask('test', 'dev');
     
     // Wordpress
     grunt.registerTask('load_sitemap_json', () => {

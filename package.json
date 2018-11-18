@@ -4,8 +4,14 @@
   "author": "Bartosz Piwek",
   "description": "Bunch of functions, snippets, templates, tasks and so on for Front-End Developer",
   "homepage": "https://github.com/BartoszPiwek/FrontBox-CSS",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt test"
+  },
+  "bugs": {
+    "url": "https://github.com/BartoszPiwek/FrontBox-CSS/issues"
   },
   "private": true,
   "devDependencies": {
