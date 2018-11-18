@@ -57,6 +57,7 @@ module.exports = function(grunt) {
     require('connect-livereload')();
     require('time-grunt')(grunt);
 
+    grunt.loadNpmTasks('grunt-w3c-html-validation');
     grunt.loadNpmTasks('grunt-css-statistics');
     grunt.loadNpmTasks('grunt-html');
     grunt.loadNpmTasks('grunt-combine-media-queries');
@@ -115,6 +116,8 @@ module.exports = function(grunt) {
          * Watch
          */
         watch: MODULES.watch,
+
+        validation: require('./grunt-settings/tasks/html/validation')(SETTINGS),
 
     });
 
@@ -192,6 +195,7 @@ module.exports = function(grunt) {
 
         // END
         'clean:end',
+        'validation',
     ]);
 
     grunt.registerTask('prod:js', [

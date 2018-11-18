@@ -14,6 +14,11 @@ src/js/libs/*
 # public/dev/*
 # public/prod/*
 
+# Logs
+lobs
+validation-report.json
+validation-status.json
+
 # Manifest
 package-lock.json
 yarn-error.log
