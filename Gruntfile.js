@@ -11,37 +11,6 @@ For:            static website
 // Variables
 var SETTINGS = require('./grunt-settings/settings');
 
-// Modules
-var MODULES = {};
-
-// HTML
-MODULES.autosvg = require('./grunt-settings/tasks/html/autosvg');
-MODULES.pug = require('./grunt-settings/tasks/html/pug')(SETTINGS);
-// JavaScript
-MODULES.uglify = require('./grunt-settings/tasks/js/uglify')(SETTINGS);
-MODULES.babel = require('./grunt-settings/tasks/js/babel')(SETTINGS);
-MODULES.requirejs = require('./grunt-settings/tasks/js/requirejs');
-MODULES.strip_code = require('./grunt-settings/tasks/js/strip_code')(SETTINGS);
-MODULES.browserify = require('./grunt-settings/tasks/js/browserify')(SETTINGS);
-// Graphic assets
-MODULES.image = require('./grunt-settings/tasks/assets/image');
-MODULES.sprite = require('./grunt-settings/tasks/assets/sprite');
-MODULES.realFavicon = require('./grunt-settings/tasks/assets/realFavicon')(SETTINGS);
-MODULES.svgmin = require('./grunt-settings/tasks/assets/svgmin');
-// CSS
-MODULES.less = require('./grunt-settings/tasks/css/less')(SETTINGS);
-MODULES.postcss = require('./grunt-settings/tasks/css/postcss')(SETTINGS);
-MODULES.uncss = require('./grunt-settings/tasks/css/uncss')(SETTINGS);
-MODULES.autocolor = require('./grunt-settings/tasks/css/autocolor');
-MODULES.cmq = require('./grunt-settings/tasks/css/cmq')(SETTINGS);
-MODULES.cssstats = require('./grunt-settings/tasks/css/cssstats');
-// Other
-MODULES.copy = require('./grunt-settings/tasks/other/copy')(SETTINGS);
-MODULES.clean = require('./grunt-settings/tasks/other/clean')(SETTINGS);
-MODULES.connect = require('./grunt-settings/tasks/other/connect');
-MODULES.watch = require('./grunt-settings/tasks/other/watch');
-MODULES.exec = require('./grunt-settings/tasks/other/exec')(SETTINGS);
-
 // END Settings
 //=========================================================================
 
@@ -69,55 +38,81 @@ module.exports = function(grunt) {
         /**
          * HTML
          */
-        htmlmin: MODULES.htmlmin, // Minify HTML files
-        processhtml: MODULES.processhtml, // Process HTML
-        pug: MODULES.pug, // Compile Pug templates
-        prettify: MODULES.prettify, // Prettify HTML files
-        autosvg: MODULES.autosvg, // Insert inline SVG
-        hash_res: MODULES.hash_res, // Hash files
+
+        // Minify HTML files
+        htmlmin             : require(`./grunt-settings/tasks/html/htmlmin`), 
+        // Compile Pug templates
+        pug                 : require('./grunt-settings/tasks/html/pug')(SETTINGS), 
+        // Prettify HTML files
+        prettify            : require('./grunt-settings/tasks/html/prettify'),
+        // Insert inline SVG
+        autosvg             : require('./grunt-settings/tasks/html/autosvg'),
+        // Hash files
+        hash_res            : require('./grunt-settings/tasks/html/hash_res'),
+        // W3C Markup Validation Service
+        validation          : require('./grunt-settings/tasks/html/validation')(SETTINGS),
 
         /**
          * JavaScript
          */
-        uglify: MODULES.uglify, // Uglify
-        babel: MODULES.babel, // The compiler for next generation JavaScript
-        requirejs: MODULES.requirejs, // JavaScript file and module loader
-        strip_code: MODULES.strip_code, // Remove dev scripts
-        browserify: MODULES.browserify,
+
+        // JavaScript parser/compressor/beautifier
+        uglify              : require('./grunt-settings/tasks/js/uglify')(SETTINGS), 
+        // The compiler for next generation JavaScript
+        babel               : require('./grunt-settings/tasks/js/babel')(SETTINGS), 
+        // JavaScript file and module loader
+        requirejs           : require('./grunt-settings/tasks/js/requirejs'), 
+        // Remove dev scripts
+        strip_code          : require('./grunt-settings/tasks/js/strip_code')(SETTINGS), 
+        // organize your browser code and load modules installed by npm
+        browserify          : require('./grunt-settings/tasks/js/browserify')(SETTINGS),
 
         /**
          * Graphic assets 
          */
-        image: MODULES.image, // Compress png,jpg,gif
-        sprite: MODULES.sprite, // Converting a set of images into a spritesheet
-        realFavicon: MODULES.realFavicon, // Generate favicons
-        svgmin: MODULES.svgmin, // Compress SVG
+
+        // Compress png,jpg,gif
+        image               : require('./grunt-settings/tasks/assets/image'), 
+        // Converting a set of images into a spritesheet
+        sprite              : require('./grunt-settings/tasks/assets/sprite'),
+        // Generate favicons
+        realFavicon         : require('./grunt-settings/tasks/assets/realFavicon')(SETTINGS), 
+        // Compress SVG
+        svgmin              : require('./grunt-settings/tasks/assets/svgmin'), 
 
         /**
          * CSS tasks
          */
-        less: MODULES.less, // LESS Compile
-        postcss: MODULES.postcss, // Add vendor prefixes to CSS rules using values from Can I Use
-        uncss: MODULES.uncss, // Delete unused css class, id
-        critical: MODULES.critical, // Create critical css
-        autocolor: MODULES.autocolor, // Colors to variables
-        cmq: MODULES.cmq, // Combine matching media queries into one media query definition
-        cssstats: MODULES.cssstats, // Create CSS statistics 
+
+         // LESS Compile
+        less                : require('./grunt-settings/tasks/css/less')(SETTINGS), 
+        // Add vendor prefixes to CSS rules using values from Can I Use
+        postcss             : require('./grunt-settings/tasks/css/postcss')(SETTINGS), 
+        // Delete unused css class, id
+        uncss               : require('./grunt-settings/tasks/css/uncss')(SETTINGS), 
+        // Create critical css
+        critical            : require('./grunt-settings/tasks/css/critical'), 
+        // Colors to variables
+        autocolor           : require('./grunt-settings/tasks/css/autocolor'),
+        // Combine matching media queries into one media query definition 
+        cmq                 : require('./grunt-settings/tasks/css/cmq')(SETTINGS), 
+        // Create CSS statistics 
+        cssstats            : require('./grunt-settings/tasks/css/cssstats'), 
 
         /**
          * Other
          */
-        connect: MODULES.connect, // VirtualHost
-        copy: MODULES.copy, // Copy
-        clean: MODULES.clean, // Remove files
-        exec: MODULES.exec,
 
-        /**
-         * Watch
-         */
-        watch: MODULES.watch,
-
-        validation: require('./grunt-settings/tasks/html/validation')(SETTINGS),
+        // Start a static web server
+        connect             : require('./grunt-settings/tasks/other/connect'), 
+        // Copy files and folders
+        copy                : require('./grunt-settings/tasks/other/copy')(SETTINGS),
+        // Clear files and folders
+        clean               : require('./grunt-settings/tasks/other/clean')(SETTINGS),
+        // Grunt plugin for executing shell commands
+        exec                : require('./grunt-settings/tasks/other/exec')(SETTINGS),
+        // Run tasks whenever watched files change
+        watch                : require('./grunt-settings/tasks/other/watch'),
 
     });
 
