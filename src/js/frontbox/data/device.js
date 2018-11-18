@@ -47,7 +47,7 @@ module.exports = (argument) => {
         for (const key in BREAKPOINTS) {
             const value = BREAKPOINTS[key];
             
-            if (width > value) {
+            if (window.matchMedia(`(min-width: ${value}px)`).matches) {
                 DATA.responsive = key;
                 break;
             }

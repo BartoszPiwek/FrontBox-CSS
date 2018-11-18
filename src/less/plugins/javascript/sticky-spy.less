@@ -7,20 +7,23 @@
   width: 100%;
 
   &--fixed {
-    position: fixed;
+    position: fixed !important;
+    bottom: auto !important;
     top: 0;
-    bottom: auto;
   }
 
   &--bottom {
     position: absolute !important;
-    top: auto !important;
     bottom: 0 !important;
-    left: 0 !important;
   }
 
-  &--run {
-    margin: 0 !important;
+  &:not(&--fixed) {
+    top: auto !important;
+    left: 0 !important;
+  }
+  &:not(&--bottom):not(&--fixed) {
+    top: 0 !important;
+    width: 100% !important;
   }
 
 }
@@ -28,6 +31,5 @@
 /* Container */
 .js-sticky-spy-container {
   position: relative;
-  display: flex;
   flex: 1 1 auto;
 }
