@@ -8,20 +8,20 @@ module.exports = function(SETTINGS) {
 
         dev: {
             options: {
-            browserifyOptions: {
-               debug: true,
+                browserifyOptions: {
+                   debug: true,
+                },
             },
-        },
             src: `src/js/app.js`,
             dest: `${SETTINGS.pathToDev}/js/app.dev.js`,
         },
 
         prod: {
             options: {
-            browserifyOptions: {
-               debug: false,
+                browserifyOptions: {
+                   debug: false,
+                },
             },
-        },
             src: `src/js/app.js`,
             dest: `${SETTINGS.pathToProd}/js/app.prod.js`,
         },
