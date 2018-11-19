@@ -4,12 +4,13 @@
 global.$ = require('jquery');
 global.jQuery = $;
 // global.Cookies = require('js-cookie');
+require('lazysizes');
+
+// var
 // require('slick-carousel');
 // require('select2')();
 // require('./frontbox/libs/getStyle');
-require('lazysizes');
-// var 
-// Sharer = require('sharer.js'); // http://ellisonleao.github.io/sharer.js/
+
 
 /**
  * jQuery plugins
@@ -213,22 +214,42 @@ require('./frontbox/jquery/scrollBlock')();
     /**
      * Sticky Spy
      */
-    var stickySpy = require('./frontbox/sticky-spy')({
+    var spyStickyElement = require('./frontbox/spy/stickyElement')({
         SCROLL: SCROLL,
         ELEMENTS: ELEMENTS,
         DEVICE: DEVICE,
         RESIZE: RESIZE,
         BREAKPOINTS_HEADER: BREAKPOINTS_HEADER,
         DATA: {
-            'stickySpy': {
-                $item: $(`#stickySpy`),
-                $container: $(`#stickySpyContainer`),
+            'spyStickyElement': {
+                $item: $(`#spyStickyElement`),
+                $container: $(`#spyStickyContainer`),
                 ignoreBreakpoints: [
                     'mobile',
                 ],
-            }
+            },
         }
     });
+
+    // var spyActiveElement = require('./frontbox/spy/activeElement')({
+    //     SCROLL: SCROLL,
+    //     ELEMENTS: ELEMENTS,
+    //     DEVICE: DEVICE,
+    //     RESIZE: RESIZE,
+    //     BREAKPOINTS_HEADER: BREAKPOINTS_HEADER,
+    //     DATA: {
+    //         'spyActiveElement': {
+    //             $item: $(`#spyActiveElement`),
+    //             $container: $(`#spyStickyElement`),
+    //             ignoreBreakpoints: [
+    //                 'mobile',
+    //             ],
+    //             offset: {
+    //                 top: -10,
+    //             },
+    //         },
+    //     }
+    // });
 
     /**
      * Google Maps API

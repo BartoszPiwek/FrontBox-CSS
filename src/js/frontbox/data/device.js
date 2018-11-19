@@ -36,8 +36,9 @@ module.exports = (argument) => {
         /* Prepare data */
         let
         width = ELEMENTS.$window.width(),
-        lastWidth = DATA.width;
-        height = ELEMENTS.$window.height();
+        lastWidth = DATA.width,
+        height = ELEMENTS.$window.height(),
+        lastOrientation = DATA.orientation;
 
         DATA.width = width;
         DATA.height = height;
@@ -56,10 +57,20 @@ module.exports = (argument) => {
             DATA.responsive = 'mobile';
         }
 
+        /* Check orientation */
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            DATA.orientation = 'portrait';
+        }
+        else {
+            DATA.orientation = 'landscape';
+        }
+
         /* Trigger resize queue (ignore first time) */
-        if (lastWidth && !DATA.os) {
-            if (DATA.width === lastWidth) {
-                RESIZE.trigger('width');
+        if (lastWidth) {
+            if ( DATA.os || DATA.responsive === 'mobile' || DATA.responsive === 'tablet' ) {
+                if ( lastOrientation != DATA.orientation ) {
+                    RESIZE.trigger('width');
+                }
             }
             else {
                 RESIZE.trigger();

@@ -4,7 +4,8 @@ module.exports = function(SETTINGS) {
 
         options: {
             sourceMap: false,
-            presets: ['env']
+            presets: ['env'],
+            compact: false,
         },
         prod: {
             src: `${SETTINGS.pathToProd}/js/app.prod.js`,

@@ -13,8 +13,6 @@ module.exports = (data) => {
     DEVICE = data.DEVICE,
     ELEMENTS = data.ELEMENTS;
 
-
-
     var bind = () => {
 
         $(window).scroll(refresh);
