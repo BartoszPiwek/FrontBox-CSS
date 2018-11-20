@@ -31,9 +31,9 @@ module.exports = (data) => {
         DATA.center = DATA.top + DEVICE.height / 2;
         DATA.begin = DATA.top;
 
-        if (ELEMENTS.$header.length) {
-            DATA.begin += ELEMENTS.$header.outerHeight( true );
-        }
+        // if (ELEMENTS.$header.length) {
+            DATA.begin += ELEMENTS.$header.outerHeight();
+        // }
 
         DATA.bottom = DATA.top + DEVICE.height;
 

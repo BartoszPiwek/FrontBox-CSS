@@ -112,7 +112,7 @@ module.exports = function(grunt) {
         // Grunt plugin for executing shell commands
         exec                : require('./grunt-settings/tasks/other/exec')(SETTINGS),
         // Run tasks whenever watched files change
-        watch                : require('./grunt-settings/tasks/other/watch'),
+        watch               : require('./grunt-settings/tasks/other/watch'),
 
     });
 

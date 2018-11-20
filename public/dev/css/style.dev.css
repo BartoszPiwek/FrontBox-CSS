@@ -776,6 +776,7 @@ body {
   z-index: 7000;
   transition: height 0.2s, box-shadow 0.2s;
   position: relative;
+  position: absolute;
   right: 0;
   top: 0;
   box-shadow: 0 1px 40px 0px transparent;
@@ -1043,8 +1044,7 @@ nav.nav>a.nav__item*x
   }
 }
 @media only screen and (min-width: 768px) {
-  html.js_sticky-element--active #sticky-element {
-    background-color: #FFFFFF;
+  html.js_sticky-element--active #header {
     position: fixed;
     top: 0;
     left: 0;
@@ -1085,9 +1085,9 @@ nav.nav>a.nav__item*x
   --tablet: 768;
   --fablet: 550;
   --mobile: 549;
-  --headerDestkop: 0;
-  --headerTablet: 0;
-  --headerMobile: 0;
+  --headerDestkop: 45;
+  --headerTablet: 45;
+  --headerMobile: 45;
 }
 html,
 body {
