@@ -1039,9 +1039,6 @@ nav.nav>a.nav__item*x
     z-index: 5000;
     width: 100%;
   }
-  html.js_sticky-element--active #body {
-    padding-top: 60px;
-  }
 }
 html.js_sticky-element--active #header {
   position: fixed;
