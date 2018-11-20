@@ -1,7 +1,7 @@
 .page__overlay#page-overlay
 
 if version == 'prod'
-    script(defer src="/js/app.prod.js")
+    script(src="/js/app.prod.js")
 if version == 'dev'
-    script(defer src="/js/app.dev.js")
+    script(src="/js/app.dev.js")
 else

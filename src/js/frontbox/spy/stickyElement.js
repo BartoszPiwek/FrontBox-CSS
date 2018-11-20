@@ -55,7 +55,7 @@ module.exports = (argument) => {
                     element.$item.removeClass(`${CLASS.bottom} ${CLASS.fixed}`);
                     
                     /* Check ignore breakpoints */
-                    if ( !element.ignoreBreakpoints.includes(DEVICE.responsive) ) {
+                    if ( !element.ignoreBreakpoints || !element.ignoreBreakpoints.includes(DEVICE.responsive) ) {
 
                         element.onScroll = true;
 
@@ -92,6 +92,7 @@ module.exports = (argument) => {
                             width               : element.container.width,
                             left				: element.container.offset.left,
                             top                 : headerHeight,
+                            'max-height'        : `calc(100vh - ${headerHeight}px)`,
                         });
 
                         if (!element.bind ) {

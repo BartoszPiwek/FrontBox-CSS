@@ -17,7 +17,7 @@ require('lazysizes');
  */
 require('./frontbox/jquery/scrollBlock')();
 
-(function($, _) {
+$(window).bind("load", function() {
     'use strict';
 
     /**
@@ -149,7 +149,7 @@ require('./frontbox/jquery/scrollBlock')();
             placeholder: true,
             offset: false,
         },
-        $elementSpy: $("#sticky-element"),
+        $elementSpy: ELEMENTS.$header,
     });
 
     /**
@@ -224,9 +224,9 @@ require('./frontbox/jquery/scrollBlock')();
             'spyStickyElement': {
                 $item: $(`#spyStickyElement`),
                 $container: $(`#spyStickyContainer`),
-                ignoreBreakpoints: [
-                    'mobile',
-                ],
+                // ignoreBreakpoints: [
+                //     'mobile',
+                // ],
             },
         }
     });
@@ -313,4 +313,4 @@ require('./frontbox/jquery/scrollBlock')();
     // Inform stylesheed to remove style fallback for JavaScript elements
     ELEMENTS.$html.removeClass("no_js");
 
-})($, window);
+});

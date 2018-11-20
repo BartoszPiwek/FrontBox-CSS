@@ -4,22 +4,26 @@
 
 include ../template/includes/header.pug
 
+include ../template/includes/navigation.pug
+
 .page-content.relative
 	.debug-wrap.wrap
 
-		div(style="height: 300px;")
+		div(style="height: 100px;")
 
 		div(style="border: 1px solid blue")
 
-			.row.row-space
+			.row.row-space(style="height: 1000px")
 				.col-4
 					div#spyStickyContainer.js-sticky-spy-container
-						div#spyStickyElement.js-sticky-spy(style="border: 1px solid red; height: 400px;")
-							| content
+						div#spyStickyElement.js-sticky-spy
+							div(style="border: 1px solid red; height: 400px; background: yellow;")
+								| content
 				.col-8
-					div(style="height: 1000px;")
+					div(style="height: 10px;")
+						| Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, beatae minima cupiditate molestiae qui doloremque quaerat aperiam repudiandae rerum, perferendis delectus, obcaecati hic. Ducimus, incidunt quia mollitia sint et quos.
 		
-		div(style="height: 300px;")
+		div(style="height: 1000px;")
 
 include ../template/includes/scripts.pug
 include ../template/includes/end.pug
