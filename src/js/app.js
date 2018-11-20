@@ -224,9 +224,9 @@ $(window).bind("load", function() {
             'spyStickyElement': {
                 $item: $(`#spyStickyElement`),
                 $container: $(`#spyStickyContainer`),
-                ignoreBreakpoints: [
-                    'mobile',
-                ],
+                // ignoreBreakpoints: [
+                //     'mobile',
+                // ],
             },
         }
     });
