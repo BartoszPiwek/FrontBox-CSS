@@ -1043,14 +1043,12 @@ nav.nav>a.nav__item*x
     padding-top: 60px;
   }
 }
-@media only screen and (min-width: 768px) {
-  html.js_sticky-element--active #header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 45px;
-    box-shadow: 0 1px 40px 0px #000000;
-  }
+html.js_sticky-element--active #header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 45px;
+  box-shadow: 0 1px 40px 0px #000000;
 }
 /*=========================================================================
 || FILE: footer.less
