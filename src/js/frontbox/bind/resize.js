@@ -120,7 +120,7 @@ module.exports = (argument) => {
                 run(type);
             }
             /* test-code */
-            DEBUG.variable.refresh("Resize");
+            DEBUG.variable.refresh("resize");
             /* end-test-code */
         }, 50);
     };
@@ -147,7 +147,7 @@ module.exports = (argument) => {
 
 
     /* test-code */
-    DEBUG.variable.add("Resize", DATA);
+    DEBUG.variable.add("resize", DATA);
     /* end-test-code */
 
     start();

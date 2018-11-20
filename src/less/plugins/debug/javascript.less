@@ -1,11 +1,13 @@
 .debug-box {
+    color: @color-white;
+    background-color: fade(@color-black, 90%);
+
     position: fixed;
     bottom: 0;
     left: 0;
     font-family: monospace;
     font-size: 12px;
     line-height: 12px;
-    background-color: fade(@color-black, 90%);
     padding: 5px;  
     transition+: opacity @time-transition;
     z-index: 999999;
@@ -64,35 +66,14 @@
         writing-mode: vertical-lr;
     }
 
-    &__item {
-        font-size: 14px;
-        text-transform: uppercase;
-        margin: 10px 0 5px;
-        padding: 0 !important;
-        &:before {
-            content: none !important;
-        }
-    }
-
     &--variables {
         .debug-box {
             &__container {
-                p:not(.debug-box__item) {
+                p {
                     cursor: pointer;
-
-                    &:before {
-                        content: "-";
-                        position: absolute;
-                        top: 0;
-                        right: 55px;
-                        font-size: 12px;
-                        line-height: 12px;
-                    }
-            
                     &:hover {
                         background-color: fade(@color-primary, 35%);
                     }
-
                     &.js_focus {
                         background-color: fade(@color-primary, 35%);
                     }
@@ -149,4 +130,15 @@
     &-variables {
 
     }
+
+    /**
+     * Container elements
+     */
+    h2 {
+        font-size: 16px;
+        letter-spacing: -1px;
+        margin: 10px 0 5px;
+        text-transform: uppercase;
+    }
+
 }

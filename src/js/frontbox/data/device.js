@@ -1,74 +1,82 @@
+/**
+ * Device module
+ * @return {object} width, height, responsive, portable
+ */
+
 module.exports = (argument) => {
     
-    var 
-    BREAKPOINTS         = null,
-    ELEMENTS            = null,
-    RESIZE              = null;
-
-    var
-    DATA = {
-        width           : null,
-        height          : null,
-        responsive      : null,
-        os              : null,
+    /* Output data */
+    var _ = {
+        width               : null,
+        height              : null,
+        responsive          : null,
+        portable            : null,
     };
 
+    /* Prepare arguments module */
+    var 
+    BREAKPOINTS             = null,
+    ELEMENTS                = null,
+    RESIZE                  = null;
+
     /* Start module */
-    const
-    start = () => {
+    const start = () => {
 
-        /* Prepare arguments data */
-        BREAKPOINTS = argument.BREAKPOINTS;
-        ELEMENTS = argument.ELEMENTS;
-        RESIZE = argument.RESIZE;
+        /* Set arguments module */
+        BREAKPOINTS     = argument.BREAKPOINTS;
+        ELEMENTS        = argument.ELEMENTS;
+        RESIZE          = argument.RESIZE;
 
-        DATA.os = getMobileOperatingSystem();
+        /* Fill once variables */
+        _.portable = getMobileOperatingSystem();
+
+        /* Run */
         refresh();
 
-        /* Trigger function if user resize page */
+        /* Bind */
         ELEMENTS.$window.on('resize orientationchange', refresh);
     };
 
     /* Refresh module */
-    const
-    refresh = () => {
+    const refresh = () => {
 
-        /* Prepare data */
+        /* Prepare variables */
         let
-        width = ELEMENTS.$window.width(),
-        lastWidth = DATA.width,
-        height = ELEMENTS.$window.height(),
-        lastOrientation = DATA.orientation;
+        width               = ELEMENTS.$window.width(),
+        lastWidth           = _.width,
+        height              = ELEMENTS.$window.height(),
+        lastOrientation     = _.orientation;
 
-        DATA.width = width;
-        DATA.height = height;
-        DATA.responsive = null;
+        /* Set variables */
+        _.width             = width;
+        _.height            = height;
+        _.responsive        = null;
 
-        /* Check active breakpoint */ 
+        /* Check breakpoint */ 
         for (const key in BREAKPOINTS) {
             const value = BREAKPOINTS[key];
             
             if (window.matchMedia(`(min-width: ${value}px)`).matches) {
-                DATA.responsive = key;
+                _.responsive = key;
                 break;
             }
         }
-        if (!DATA.responsive) {
-            DATA.responsive = 'mobile';
+        if (!_.responsive) {
+            _.responsive = 'mobile';
         }
 
         /* Check orientation */
         if (window.matchMedia("(orientation: portrait)").matches) {
-            DATA.orientation = 'portrait';
+            _.orientation = 'portrait';
         }
         else {
-            DATA.orientation = 'landscape';
+            _.orientation = 'landscape';
         }
 
         /* Trigger resize queue (ignore first time) */
         if (lastWidth) {
-            if ( DATA.os ) {
-                if ( lastOrientation != DATA.orientation ) {
+            if ( _.portable ) {
+                if ( lastOrientation != _.orientation ) {
                     RESIZE.trigger('width');
                 }
             }
@@ -83,37 +91,37 @@ module.exports = (argument) => {
     };
 
     /* Determine the mobile operating system */
-    const 
-    getMobileOperatingSystem = () => {
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const getMobileOperatingSystem = () => {
+
+        let userAgent = navigator.userAgent || navigator.vendor || window.opera;
         
         // Windows Phone must come first because its UA also contains "Android"
         if (/windows phone/i.test(userAgent)) {
-            return "Windows Phone";
+            return true;
         }
       
         if (/android/i.test(userAgent)) {
-            return "Android";
+            return true;
         }
       
         // iOS detection from: http://stackoverflow.com/a/9039885/177710
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            return "iOS";
+            return true;
         }
 
-        /* PHP user agent */
+        // PHP user agent
         if (ELEMENTS.$body.hasClass('device-portable')) {
-            return "Portable";
+            return true;
         }
       
         return false;
     };
     
     /* test-code */
-    DEBUG.variable.add('device', DATA);
+    DEBUG.variable.add('device', _);
     /* end-test-code */
 
     start();
 
-    return DATA;
+    return _;
 };

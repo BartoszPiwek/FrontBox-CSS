@@ -16,17 +16,21 @@ Version:    Unpublished
 @import "../css/base.css";
 @import "../css/utilities.css";
 .debug-box {
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   bottom: 0;
   left: 0;
   font-family: monospace;
   font-size: 12px;
   line-height: 12px;
-  background-color: rgba(0, 0, 0, 0.9);
   padding: 5px;
   transition: opacity 0.2s;
   z-index: 999999;
   height: 250px;
+  /**
+     * Container elements
+     */
 }
 @media only screen and (min-width: 768px) {
   .debug-box {
@@ -88,30 +92,13 @@ Version:    Unpublished
   color: #FFFFFF;
   writing-mode: vertical-lr;
 }
-.debug-box__item {
-  font-size: 14px;
-  text-transform: uppercase;
-  margin: 10px 0 5px;
-  padding: 0 !important;
-}
-.debug-box__item:before {
-  content: none !important;
-}
-.debug-box--variables .debug-box__container p:not(.debug-box__item) {
+.debug-box--variables .debug-box__container p {
   cursor: pointer;
 }
-.debug-box--variables .debug-box__container p:not(.debug-box__item):before {
-  content: "-";
-  position: absolute;
-  top: 0;
-  right: 55px;
-  font-size: 12px;
-  line-height: 12px;
-}
-.debug-box--variables .debug-box__container p:not(.debug-box__item):hover {
+.debug-box--variables .debug-box__container p:hover {
   background-color: rgba(231, 190, 84, 0.35);
 }
-.debug-box--variables .debug-box__container p:not(.debug-box__item).js_focus {
+.debug-box--variables .debug-box__container p.js_focus {
   background-color: rgba(231, 190, 84, 0.35);
 }
 .debug-box--console {
@@ -151,6 +138,12 @@ Version:    Unpublished
 }
 .debug-box--console p.auto {
   border-left-color: #17a80d;
+}
+.debug-box h2 {
+  font-size: 16px;
+  letter-spacing: -1px;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
 }
 /*=========================================================================
 || FILE: Variables concat
@@ -230,10 +223,6 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 ===========================================================================
 || Change FrontBox primary settings 
 =========================================================================*/
-/**
-  * Burger toggle { REQUIRED }
-  * animation { less/plugins/animations/burger/ }
-**/
 /**
   * Burger menu
   * Collection:
@@ -1080,9 +1069,9 @@ html.js_sticky-element--active #header {
   --tablet: 768;
   --fablet: 550;
   --mobile: 549;
-  --headerDestkop: 45;
-  --headerTablet: 45;
-  --headerMobile: 45;
+  --headerDesktop: headerHeight [desktop];
+  --headerTablet: headerHeight [tablet];
+  --headerMobile: headerHeight [mobile];
 }
 html,
 body {

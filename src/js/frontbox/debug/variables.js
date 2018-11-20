@@ -16,18 +16,18 @@ module.exports = (argument) => {
 
     const
     CLASS = {
-        container       : `debug-box debug-box--variables`,
-        button          : `debug-box__button`,
-        content         : `debug-box__container`,
-        item            : `debug-box__item`,
+        container           : `debug-box debug-box--variables`,
+        containerHide       : `debug-box--hide`,
+        button              : `debug-box__button`,
+        content             : `debug-box__container`,
+        item                : `debug-box__item`,
     };
 
     var
     CONTENT = {};
 
     /* Start module */
-    var 
-    start = (data) => {
+    const start = (data) => {
 
         /* Prepare arguments data */
         $.extend( OPTIONS, argument.OPTIONS );
@@ -35,7 +35,7 @@ module.exports = (argument) => {
 
         /* Check if container must be default open */
         if (!OPTIONS.open) {
-            CLASS.container += ' debug-box--hide';
+            CLASS.container += ` ${CLASS.containerHide}`;
         }
         
         /* Create template */
@@ -51,47 +51,47 @@ module.exports = (argument) => {
         /* Bind toggle container */
         BOX.$button.on("click", toggleContainer);
     };
-    
 
-    /* Show data in content */
-    const
-    add = (dataName, DATA) => {
+    /* Add data to debug variable content */
+    const _add = (dataName, DATA) => {
 
         /* Remove duplicate */
-        remove(dataName);
-        
-        CONTENT[dataName] = {
+        _remove(dataName);
+
+        /* Prepare variables */
+        let
+        name            = createName(dataName);
+
+        CONTENT[name] = {
             data: DATA,
-            name: dataName.split(" ").join("-").toLowerCase(),
+            name: name,
         };
 
-        BOX.$content.append(`<p class="${CLASS.item}">${CONTENT[dataName].name}</p>`);
+        BOX.$content.append(`<h2>${name}</h2>`);
         
         for (const key in DATA) {
             const value = DATA[key];
 
             let
-            name = key.split(" ").join("-").toLowerCase(),
-            id = `debug-variable-${CONTENT[dataName].name}-${name}`;
-            $item = $(`<p> ${key} <span id='${id}'>${value}</span> </p>`);
+            itemId          = createName(key),
+            id              = `debug-variable-${name}-${itemId}`,
+            itemTemplate    = `<p>${key}<span id='${id}'>${value}</span> </p>`,
+            $item           = $(itemTemplate);
             
             BOX.$content.append($item);
-
             $item.on("click", {$item}, toggleValue);
         }
     };
 
-    /* Remove data in content */
-    const
-    remove = (dataName) => {
+    /* Remove data in debug variable content */
+    const _remove = (dataName) => {
         if (typeof CONTENT[dataName] != "undefined") {
             delete CONTENT[dataName];
         }
     };
 
-    /* Refresh data name in content */ 
-    const
-    refresh = (name) => {
+    /* Refresh data in debug variable content */
+    const _refresh = (name) => {
         var
         item = CONTENT[name],
         data = item.data;
@@ -106,13 +106,23 @@ module.exports = (argument) => {
             $(`#${find}`).text(value);
         }
     };
+
+    /* Create name */
+    const createName = (name) => {
+        return name.toLowerCase().replace(/-|\+|:|\/|\?|\.|\@|\#|\!|\_| |\,|\$|/g, "");
+    };
     
-    /* Toogle container */
+    /**
+     * Toggle
+     */
+
+    /* container */
     const
     toggleContainer = () => {
         BOX.$container.toggleClass("debug-box--hide");
     };
-    /* Toogle value */
+
+    /* value */
     const
     toggleValue = (e) => {      
         e.data.$item.toggleClass("js_focus");
@@ -121,9 +131,9 @@ module.exports = (argument) => {
     start();
 
     return {
-        add: add,
-        remove: remove,
-        refresh: refresh,
+        add: _add,
+        remove: _remove,
+        refresh: _refresh,
     };
 
 };

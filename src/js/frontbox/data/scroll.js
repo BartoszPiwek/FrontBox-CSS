@@ -1,11 +1,10 @@
 module.exports = (argument) => {
 
     /* Output data */
-    var 
-    _ = {
-        lastCenter          : null,
-        center              : null,
+    var _ = {
         top                 : null,
+        begin               : null,
+        center              : null,
         speed               : null,
         direction           : null,
     };
@@ -16,34 +15,38 @@ module.exports = (argument) => {
     ELEMENTS                = null;
 
     /* Start module */
-    var start = () => {
+    const start = () => {
 
         /* Set arguments module */
-        ELEMENTS = argument.ELEMENTS;
-        DEVICE = argument.DEVICE;
+        ELEMENTS        = argument.ELEMENTS;
+        DEVICE          = argument.DEVICE;
 
         /* Run */
         refresh();
         
         /* Bind */
-        ELEMENTS.$window.scroll(refresh);
-        ELEMENTS.$window.on('resize orientationchange', function() {
+        ELEMENTS.$window.scroll( refresh );
+        ELEMENTS.$window.on('resize orientationchange', () => {
             refresh();
         });
 
     };
 
     /* Refresh module */
-    var refresh = () => {
+    const refresh = () => {
 
-        /* Calculate container */
-        _.lastCenter         = _.center || 0;
+        /* Prepare variables */
+        let 
+        lastCenter           = _.center || 0;
+        
+        /* Set variables */
         _.top                = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
         _.center             = _.top + DEVICE.height / 2;
         _.begin              = _.top;
         _.bottom             = _.top + DEVICE.height;
-        _.speed              = Math.abs(_.lastCenter - _.center);
+        _.speed              = Math.abs(lastCenter - _.center);
 
+        // TODO get sticky top height from module PAGE
         if (ELEMENTS.$header.length) {
             _.begin += ELEMENTS.$header.outerHeight( true );
         }

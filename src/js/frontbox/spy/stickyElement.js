@@ -92,7 +92,6 @@ module.exports = (argument) => {
                             width               : element.container.width,
                             left				: element.container.offset.left,
                             top                 : headerHeight,
-                            'max-height'        : `calc(100vh - ${headerHeight}px)`,
                         });
 
                         if (!element.bind ) {
