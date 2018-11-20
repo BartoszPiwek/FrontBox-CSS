@@ -1,0 +1,112 @@
+/*=========================================================================
+|| FILE: base.less
+===========================================================================
+|| Base style for page elements
+=========================================================================*/
+
+/* Pass responsive variables to JavaScript */ 
+:root {
+  --desktop: @responsive[@desktop][breakpoint];
+  --tablet: @responsive[@tablet][breakpoint];
+  --fablet: @responsive[@fablet][breakpoint];
+  --mobile: @responsive[@mobile][breakpoint];
+
+  --headerDestkop       : 45;
+  --headerTablet        : 45;
+  --headerMobile        : 45;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+//=========================================================================
+// Add space on body when header have fixed position
+// @header-height + space
+//=========================================================================
+
+// body {
+//   padding-top: @header-height + 20px;
+//   @media @tablet {
+//     padding-top: @header-height + 20px;
+//   }
+//   @media @desktop {
+//     padding-top: @header-height + 20px;
+//   }
+// }
+
+.code {
+  font-size: 14px;
+  background-color: @color-gray;
+  color: @color-white;
+  padding: 5px;
+  display: block;
+  margin: 5px 0;
+  font-family: @font-family-monospace;
+}
+
+.link {
+  -webkit-user-drag: none;
+}
+
+// Global Overlay
+
+.page {
+  &__overlay, &__loading {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background-color @time-transition;
+    background-color: transparent;
+
+    & > * {
+      display: none;
+    }
+  }
+
+  .js_resize &__loading {
+    z-index: @zindex-first + 1;
+    user-select: none;
+    pointer-events: none;
+    background: fade(@color-black, 40%);
+    & > * {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform+_: translate(-50%, -50%);
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+
+  &__position {
+    display: flex;
+    height: 100%;
+    &--left {
+      margin-right: auto;
+    }
+    &--right {
+      margin-left: auto;
+    }
+    &--center {
+      margin: 0 auto;
+      @media @tablet {
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        display: block;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
