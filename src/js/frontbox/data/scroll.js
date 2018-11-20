@@ -1,7 +1,8 @@
-module.exports = (data) => {
+module.exports = (argument) => {
 
+    /* Output data */
     var 
-    DATA = {
+    _ = {
         lastCenter          : null,
         center              : null,
         top                 : null,
@@ -9,40 +10,50 @@ module.exports = (data) => {
         direction           : null,
     };
 
+    /* Prepare arguments module */
     var
-    DEVICE = data.DEVICE,
-    ELEMENTS = data.ELEMENTS;
+    DEVICE                  = null,
+    ELEMENTS                = null;
 
-    var bind = () => {
+    /* Start module */
+    var start = () => {
 
-        $(window).scroll(refresh);
+        /* Set arguments module */
+        ELEMENTS = argument.ELEMENTS;
+        DEVICE = argument.DEVICE;
 
-        $(window).on('resize orientationchange', function() {
+        /* Run */
+        refresh();
+        
+        /* Bind */
+        ELEMENTS.$window.scroll(refresh);
+        ELEMENTS.$window.on('resize orientationchange', function() {
             refresh();
         });
 
-        refresh();
     };
 
+    /* Refresh module */
     var refresh = () => {
-        DATA.lastCenter = DATA.center || 0;
 
-        DATA.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        DATA.center = DATA.top + DEVICE.height / 2;
-        DATA.begin = DATA.top;
+        /* Calculate container */
+        _.lastCenter         = _.center || 0;
+        _.top                = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        _.center             = _.top + DEVICE.height / 2;
+        _.begin              = _.top;
+        _.bottom             = _.top + DEVICE.height;
+        _.speed              = Math.abs(_.lastCenter - _.center);
 
         if (ELEMENTS.$header.length) {
-            DATA.begin += ELEMENTS.$header.outerHeight( true );
+            _.begin += ELEMENTS.$header.outerHeight( true );
         }
 
-        DATA.bottom = DATA.top + DEVICE.height;
-
-        DATA.speed = Math.abs(DATA.lastCenter - DATA.center);
-
-        if (DATA.center > DATA.lastCenter) {
-            DATA.direction = "down";
-        } else {
-            DATA.direction = "up";
+        /* Check scroll direction */
+        if (_.center > _.lastCenter) {
+            _.direction = "down";
+        }
+        else {
+            _.direction = "up";
         }
 
         /* test-code */
@@ -51,10 +62,10 @@ module.exports = (data) => {
     };
 
     /* test-code */
-    DEBUG.variable.add('scroll', DATA);
+    DEBUG.variable.add('scroll', _);
     /* end-test-code */
 
-    bind();
+    start();
 
-    return DATA;
+    return _;
 };

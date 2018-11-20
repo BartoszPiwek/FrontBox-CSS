@@ -67,7 +67,7 @@ module.exports = (argument) => {
 
         /* Trigger resize queue (ignore first time) */
         if (lastWidth) {
-            if ( DATA.os || DATA.responsive === 'mobile' || DATA.responsive === 'tablet' ) {
+            if ( DATA.os ) {
                 if ( lastOrientation != DATA.orientation ) {
                     RESIZE.trigger('width');
                 }
@@ -99,6 +99,11 @@ module.exports = (argument) => {
         // iOS detection from: http://stackoverflow.com/a/9039885/177710
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
             return "iOS";
+        }
+
+        /* PHP user agent */
+        if (ELEMENTS.$body.hasClass('device-portable')) {
+            return "Portable";
         }
       
         return false;
