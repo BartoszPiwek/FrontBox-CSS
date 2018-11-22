@@ -10,12 +10,18 @@
    * @key @value
   */
   each(@headerHeight, { 
-    // @value = this element
-    color: @value;
-    @mediaBreakpoint: @responsive[@@key][@string][default];
-    @media @mediaBreakpoint {
+    
+    & when (@key = mobile) {
       max-height: calc(100% - ~"@{value}px");
     }
+
+    & when not (@key = mobile) {
+      @mediaBreakpoint: @responsive[@@key][@string][default];
+      @media @mediaBreakpoint {
+        max-height: calc(100% - ~"@{value}px");
+      }
+    }
+
   });
 
   &--fixed {

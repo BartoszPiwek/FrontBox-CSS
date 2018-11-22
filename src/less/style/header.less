@@ -289,3 +289,11 @@ html {
       }
     }
   }
+
+html {
+    &:not(.js_menu-active) {
+        .header {
+            .fix_fixed();
+        }
+    }
+}

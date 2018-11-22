@@ -526,6 +526,21 @@ img {
   top: 0;
   left: 0;
 }
+/*=========================================================================
+|| FILE: _fix.less
+===========================================================================
+|| Classes used for avoid common CSS problems
+=========================================================================*/
+/**
+ * Position fixed
+ * iOS devices have problem with fixed elements and scrolling
+ */
+.fix_fixed,
+.debug-box {
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
+}
 body {
   position: absolute;
 }
@@ -1035,6 +1050,11 @@ html.js_sticky-element--active #header {
   left: 0;
   height: 45px;
   box-shadow: 0 1px 40px 0px #000000;
+}
+html:not(.js_menu-active) .header {
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
 }
 /*=========================================================================
 || FILE: footer.less
@@ -2985,19 +3005,14 @@ p.text-icon>x.icon+span{Lorem}
   /*
    * @key @value
   */
-  color: 45;
-}
-@media only screen and (min-width: 1024px) {
-  .js-sticky-spy {
-    max-height: calc(100% - 45px);
-  }
+  max-height: calc(100% - 45px);
 }
 @media only screen and (min-width: 768px) {
   .js-sticky-spy {
     max-height: calc(100% - 45px);
   }
 }
-@media only screen and (max-width: 549px) {
+@media only screen and (min-width: 1024px) {
   .js-sticky-spy {
     max-height: calc(100% - 45px);
   }
