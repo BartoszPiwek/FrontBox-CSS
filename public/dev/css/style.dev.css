@@ -27,6 +27,7 @@ Version:    Unpublished
   padding: 5px;
   transition: opacity 0.2s;
   z-index: 999999;
+  width: calc(100% - 50px);
   height: 250px;
   /**
      * Container elements
@@ -36,9 +37,6 @@ Version:    Unpublished
   .debug-box {
     height: 400px;
   }
-}
-.debug-box--hide {
-  transform: translateX(-100%);
 }
 .debug-box p {
   color: #FFFFFF;
@@ -118,9 +116,6 @@ Version:    Unpublished
   right: auto;
   left: 0;
 }
-.debug-box--console.debug-box--hide {
-  transform: translateX(100%);
-}
 .debug-box--console p {
   border-left: 2px solid #e7be54;
   margin-bottom: 4px;
@@ -138,6 +133,12 @@ Version:    Unpublished
 }
 .debug-box--console p.auto {
   border-left-color: #17a80d;
+}
+.debug-box--console.debug-box--hide {
+  transform: translateX(100%) !important;
+}
+.debug-box--variables.debug-box--hide {
+  transform: translateX(-100%) !important;
 }
 .debug-box h2 {
   font-size: 16px;
@@ -542,7 +543,7 @@ img {
   perspective: 1000;
 }
 body {
-  position: absolute;
+  position: relative;
 }
 .list-marker {
   position: relative;
@@ -1095,7 +1096,11 @@ html:not(.js_menu-active) .header {
 }
 html,
 body {
-  min-height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body {
+  position: relative;
 }
 .code {
   font-size: 14px;
