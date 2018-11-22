@@ -98,29 +98,6 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
   * Collection:
   under-header, from-side
 **/
-/*=========================================================================
-|| Plugin: scrollbar.less
-===========================================================================
-|| Change scrollbar view ( webkit browser )
-|| Variables in: less/variables/_plugins.less "Scrollbar"
-=========================================================================*/
-body::-webkit-scrollbar,
-.scrollbar::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
-  background-color: #e7be54;
-}
-body::-webkit-scrollbar-thumb,
-.scrollbar::-webkit-scrollbar-thumb {
-  min-width: 8px;
-  max-height: 8px;
-  background-color: #000000;
-}
-body::-webkit-scrollbar-button,
-.scrollbar::-webkit-scrollbar-button {
-  display: none;
-}
 /*=======================================================================*/
 /*=======================================================================*/
 /*===================================================================
@@ -232,6 +209,7 @@ body::-webkit-scrollbar-button,
 /**
  * Responsive
  */
+/* Scrollbar */
 /*=========================================================================
 || FILE: _browser-reset.less
 ===========================================================================
@@ -772,10 +750,15 @@ ol {
 =========================================================================*/
 /**
  * Position fixed
- * iOS devices have problem with fixed elements and scrolling
+ * Change to position fixed on iOS Safari while scrolling
+ * @browser Safari
  */
 .fix_fixed {
   -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  -webkit-perspective: 1000;
   perspective: 1000;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
 }

@@ -104,6 +104,7 @@
 /**
  * Responsive
  */
+/* Scrollbar */
 /*=========================================================================
 || FILE: _variables.less
 =========================================================================*/
@@ -1921,8 +1922,12 @@
   margin-top: 85px !important;
   margin-bottom: 85px !important;
 }
-/* Reset */
 /* Responsive */
+/* Centering */
+.margin-center {
+  margin: 0 auto;
+}
+/* Reset */
 .no-mt,
 .no-margin-top {
   margin-top: 0 !important;
@@ -1948,6 +1953,11 @@
   margin-bottom: 0 !important;
 }
 @media only screen and (min-width: 550px) {
+  /* Centering */
+  .sm_margin-center {
+    margin: 0 auto;
+  }
+  /* Reset */
   .sm_no-mt,
   .sm_no-margin-top {
     margin-top: 0 !important;
@@ -1974,6 +1984,11 @@
   }
 }
 @media only screen and (min-width: 768px) {
+  /* Centering */
+  .md_margin-center {
+    margin: 0 auto;
+  }
+  /* Reset */
   .md_no-mt,
   .md_no-margin-top {
     margin-top: 0 !important;
@@ -2000,6 +2015,11 @@
   }
 }
 @media only screen and (min-width: 1024px) {
+  /* Centering */
+  .lg_margin-center {
+    margin: 0 auto;
+  }
+  /* Reset */
   .lg_no-mt,
   .lg_no-margin-top {
     margin-top: 0 !important;
@@ -2026,6 +2046,11 @@
   }
 }
 @media only screen and (max-width: 549px) {
+  /* Centering */
+  .xs_margin-center {
+    margin: 0 auto;
+  }
+  /* Reset */
   .xs_no-mt,
   .xs_no-margin-top {
     margin-top: 0 !important;
