@@ -534,12 +534,14 @@ img {
 =========================================================================*/
 /**
  * Position fixed
- * iOS devices have problem with fixed elements and scrolling
+ * iOS devices have problem with fixed elements when scrolling
  */
 .fix_fixed,
 .debug-box {
   -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  -webkit-perspective: 1000;
   perspective: 1000;
 }
 body {
@@ -1054,7 +1056,9 @@ html.js_sticky-element--active #header {
 }
 html:not(.js_menu-active) .header {
   -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  -webkit-perspective: 1000;
   perspective: 1000;
 }
 /*=========================================================================
