@@ -40,8 +40,10 @@
     &__container {
         overflow-y: auto;
         height: 100%;
-        .scrollbar;
         width: 100%;
+
+        &:extend(.scrollbar);
+
         @media @tablet {
             width: 300px;
         }

@@ -506,3 +506,21 @@
 // })()`;
 
 // @breakpoint(@name): ~"only screen and (max-width: @{responsive_mobile}px)";
+
+/* Scrollbar */
+.scrollbar(@size: @scrollbar-size, @background: @scrollbar-background, @color: @scrollbar-color) {
+  &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: @size;
+      height: @size;
+      background-color: @background;
+  }
+  &::-webkit-thumb {
+      min-width: @size;
+      max-height: @size;
+      background-color: @color;
+  }
+  &::-webkit-scrollbar-button {
+      display: none;
+  }
+};

@@ -58,20 +58,6 @@ Version:    Unpublished
   height: 100%;
   width: 100%;
 }
-.debug-box__container::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
-  background-color: #e7be54;
-}
-.debug-box__container::-webkit-scrollbar-thumb {
-  min-width: 8px;
-  max-height: 8px;
-  background-color: #000000;
-}
-.debug-box__container::-webkit-scrollbar-button {
-  display: none;
-}
 @media only screen and (min-width: 768px) {
   .debug-box__container {
     width: 300px;
@@ -229,33 +215,14 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 || Change FrontBox primary settings 
 =========================================================================*/
 /**
+  * Burger toggle { REQUIRED }
+  * animation { less/plugins/animations/burger/ }
+**/
+/**
   * Burger menu
   * Collection:
   under-header, from-side
 **/
-/*=========================================================================
-|| Plugin: scrollbar.less
-===========================================================================
-|| Change scrollbar view ( webkit browser )
-|| Variables in: less/variables/_plugins.less "Scrollbar"
-=========================================================================*/
-body::-webkit-scrollbar,
-.scrollbar::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
-  background-color: #e7be54;
-}
-body::-webkit-scrollbar-thumb,
-.scrollbar::-webkit-scrollbar-thumb {
-  min-width: 8px;
-  max-height: 8px;
-  background-color: #000000;
-}
-body::-webkit-scrollbar-button,
-.scrollbar::-webkit-scrollbar-button {
-  display: none;
-}
 /*=======================================================================*/
 /*=======================================================================*/
 /*===================================================================
@@ -473,6 +440,7 @@ img {
 /**
  * Responsive
  */
+/* Scrollbar */
 .js_expand__container--active {
   height: 100% !important;
 }
@@ -539,6 +507,7 @@ img {
   -webkit-perspective: 1000;
   perspective: 1000;
   transform: translate3d(0, 0, 0);
+  position: fixed;
 }
 .list-marker {
   position: relative;
@@ -716,7 +685,7 @@ img {
     height: 8px;
     background-color: #e7be54;
   }
-  .burger-menu::-webkit-scrollbar-thumb {
+  .burger-menu::-webkit-thumb {
     min-width: 8px;
     max-height: 8px;
     background-color: #000000;
@@ -775,7 +744,6 @@ img {
   -webkit-backface-visibility: hidden;
   z-index: 7000;
   transition: height 0.2s, box-shadow 0.2s;
-  position: relative;
   position: absolute;
   right: 0;
   top: 0;
@@ -1021,9 +989,6 @@ nav.nav>a.nav__item*x
     transform: rotate(-135deg);
     width: 100%;
   }
-  html.js_menu-active .header {
-    transform: none;
-  }
 }
 /**
  * JavaScript manipulation
@@ -1047,13 +1012,14 @@ html.js_sticky-element--active #header {
   height: 45px;
   box-shadow: 0 1px 40px 0px #000000;
 }
-html:not(.js_menu-active) .header {
+html.js_sticky-element--active:not(.js_menu-active) .header {
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-perspective: 1000;
   perspective: 1000;
   transform: translate3d(0, 0, 0);
+  position: fixed;
 }
 /*=========================================================================
 || FILE: footer.less

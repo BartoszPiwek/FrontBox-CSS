@@ -29,7 +29,7 @@ module.exports = (argument) => {
 
         /* Fill once variables */
         _.portable = getMobileOperatingSystem();
-
+        
         /* Run */
         refresh();
 
@@ -81,8 +81,6 @@ module.exports = (argument) => {
             _.responsive = 'mobile';
         }
 
-
-
         /* Trigger resize queue (ignore first time) */
         if (lastWidth) {
             if ( _.portable ) {
@@ -104,6 +102,10 @@ module.exports = (argument) => {
     const getMobileOperatingSystem = () => {
 
         let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        /* test-code */
+        DEBUG.console.add(`userAgent: ${userAgent}`);
+        /* end-test-code */
         
         // Windows Phone must come first because its UA also contains "Android"
         if (/windows phone/i.test(userAgent)) {

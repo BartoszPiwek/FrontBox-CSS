@@ -16,9 +16,7 @@
     transition+: height @time-transition;
     transition+: box-shadow @time-transition;
 
-    position: relative;
     position: absolute;
-    // position: fixed;
 
     right: 0;
     top: 0;
@@ -249,9 +247,6 @@ nav.nav>a.nav__item*x
                     .add-burger-animation();
                 }
             }
-            .header {
-                transform: none;
-            }
         }
     }
 }
@@ -291,9 +286,11 @@ html {
   }
 
 html {
-    &:not(.js_menu-active) {
-        .header {
-            .fix_fixed();
+    &.js_sticky-element--active {
+        &:not(.js_menu-active) {
+            .header {
+                .fix_fixed();
+            }
         }
     }
 }
