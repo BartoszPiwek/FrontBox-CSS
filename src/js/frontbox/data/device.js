@@ -42,15 +42,31 @@ module.exports = (argument) => {
 
         /* Prepare variables */
         let
-        width               = ELEMENTS.$window.width(),
+        width               = ELEMENTS.$window.outerWidth(),
         lastWidth           = _.width,
-        height              = ELEMENTS.$window.height(),
+        height              = ELEMENTS.$window.outerHeight(),
+        lastHeight          = _.height,
         lastOrientation     = _.orientation;
 
         /* Set variables */
         _.width             = width;
         _.height            = height;
         _.responsive        = null;
+
+        /* Check orientation */
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            _.orientation = 'portrait';
+        }
+        else {
+            _.orientation = 'landscape';
+        }
+        /**
+         * Don't refresh page if user change tab 
+         * @browser Opera
+         */ 
+        if (lastWidth === width && lastHeight === height && lastOrientation) {
+            return false;
+        }
 
         /* Check breakpoint */ 
         for (const key in BREAKPOINTS) {
@@ -65,13 +81,7 @@ module.exports = (argument) => {
             _.responsive = 'mobile';
         }
 
-        /* Check orientation */
-        if (window.matchMedia("(orientation: portrait)").matches) {
-            _.orientation = 'portrait';
-        }
-        else {
-            _.orientation = 'landscape';
-        }
+
 
         /* Trigger resize queue (ignore first time) */
         if (lastWidth) {

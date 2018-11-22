@@ -27,7 +27,6 @@ Version:    Unpublished
   padding: 5px;
   transition: opacity 0.2s;
   z-index: 999999;
-  width: calc(100% - 50px);
   height: 250px;
   /**
      * Container elements
@@ -36,6 +35,11 @@ Version:    Unpublished
 @media only screen and (min-width: 768px) {
   .debug-box {
     height: 400px;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .debug-box {
+    width: calc(100% - 50px);
   }
 }
 .debug-box p {
@@ -304,17 +308,7 @@ body {
   font-family: "Arial";
   color: #000000;
   -webkit-font-smoothing: antialiased;
-  position: relative;
   /* Add top space when <header> is position fixed */
-}
-html {
-  overflow-x: hidden;
-}
-body,
-html {
-  /* Lock page in 100% device height */
-  /* Lock page in 100% device width */
-  width: 100%;
 }
 body.page--overflow {
   overflow: hidden!important;
@@ -534,7 +528,8 @@ img {
 =========================================================================*/
 /**
  * Position fixed
- * iOS devices have problem with fixed elements when scrolling
+ * Change to position fixed on iOS Safari while scrolling
+ * @browser Safari
  */
 .fix_fixed,
 .debug-box {
@@ -543,9 +538,7 @@ img {
   transform: translateZ(0);
   -webkit-perspective: 1000;
   perspective: 1000;
-}
-body {
-  position: relative;
+  transform: translate3d(0, 0, 0);
 }
 .list-marker {
   position: relative;
@@ -1060,6 +1053,7 @@ html:not(.js_menu-active) .header {
   transform: translateZ(0);
   -webkit-perspective: 1000;
   perspective: 1000;
+  transform: translate3d(0, 0, 0);
 }
 /*=========================================================================
 || FILE: footer.less

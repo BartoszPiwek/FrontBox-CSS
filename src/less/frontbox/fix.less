@@ -6,7 +6,8 @@
 
 /**
  * Position fixed
- * iOS devices have problem with fixed elements when scrolling
+ * Change to position fixed on iOS Safari while scrolling
+ * @browser Safari
  */
 
 .fix_fixed {
@@ -15,4 +16,5 @@
   transform: translateZ(0);
   -webkit-perspective: 1000;
   perspective: 1000;
+  transform: translate3d(0,0,0);
 }

@@ -11,7 +11,7 @@
     padding: 5px;  
     transition+: opacity @time-transition;
     z-index: 999999;
-    width: calc(100% - 50px);
+    
     
     &:extend(.fix_fixed);
 
@@ -20,7 +20,9 @@
         height: 400px;        
     }
 
-
+    @media @mobile {
+        width: calc(100% - 50px);
+    }
 
     p {
         color: @color-white;
