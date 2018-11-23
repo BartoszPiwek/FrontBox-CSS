@@ -1,141 +1,16 @@
 @charset "UTF-8";
 /*!******************************************************************
-Author:     Bartosz Piwek
-Framework:  FrontBox-CSS (https://github.com/BartoszPiwek/FrontBox-CSS)
-Version:    Unpublished
+Author      : Bartosz Piwek
+Framework   : FrontBox-CSS (https://github.com/BartoszPiwek/FrontBox-CSS)
+Version     : 1.0.8
 ********************************************************************/
-/*=========================================================================
-|| FILE: Main style concat
-=========================================================================*/
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@charset */
 /**
-  * Linked for version:
-  - dev
-  - prod
-**/
+ * Concat files
+ */
+/* Grid */
 @import "../css/grid.css";
-@import "../css/base.css";
-@import "../css/utilities.css";
-.debug-box {
-  color: #FFFFFF;
-  background-color: rgba(0, 0, 0, 0.9);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  font-family: monospace;
-  font-size: 12px;
-  line-height: 12px;
-  padding: 5px;
-  transition: opacity 0.2s;
-  z-index: 999999;
-  height: 250px;
-  /**
-     * Container elements
-     */
-}
-@media only screen and (min-width: 768px) {
-  .debug-box {
-    height: 400px;
-  }
-}
-@media only screen and (max-width: 549px) {
-  .debug-box {
-    width: calc(100% - 50px);
-  }
-}
-.debug-box p {
-  color: #FFFFFF;
-  padding-right: 48px;
-  position: relative;
-}
-.debug-box span {
-  font-weight: bold;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.debug-box__container {
-  overflow-y: auto;
-  height: 100%;
-  width: 100%;
-}
-@media only screen and (min-width: 768px) {
-  .debug-box__container {
-    width: 300px;
-  }
-}
-.debug-box__container > *:first-child {
-  margin-top: 0;
-}
-.debug-box__button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20px;
-  height: 100%;
-  background-color: #e7be54;
-  transform: translateX(100%);
-  cursor: pointer;
-  text-align: center;
-  font-size: 12px;
-  color: #FFFFFF;
-  writing-mode: vertical-lr;
-}
-.debug-box--variables .debug-box__container p {
-  cursor: pointer;
-}
-.debug-box--variables .debug-box__container p:hover {
-  background-color: rgba(231, 190, 84, 0.35);
-}
-.debug-box--variables .debug-box__container p.js_focus {
-  background-color: rgba(231, 190, 84, 0.35);
-}
-.debug-box--console {
-  left: auto;
-  right: 0;
-}
-.debug-box--console .debug-box__container {
-  width: 100%;
-}
-@media only screen and (min-width: 768px) {
-  .debug-box--console .debug-box__container {
-    width: 400px;
-  }
-}
-.debug-box--console .debug-box__button {
-  transform: translateX(-100%) rotate(180deg);
-  right: auto;
-  left: 0;
-}
-.debug-box--console p {
-  border-left: 2px solid #e7be54;
-  margin-bottom: 4px;
-  padding-left: 2px;
-  padding-right: 0;
-}
-.debug-box--console p.error {
-  border-left: 4px solid #cc0000;
-}
-.debug-box--console p.click {
-  border-left-color: #00BFFF;
-}
-.debug-box--console p.warning {
-  border-left-color: #ffdf25;
-}
-.debug-box--console p.auto {
-  border-left-color: #17a80d;
-}
-.debug-box--console.debug-box--hide {
-  transform: translateX(100%) !important;
-}
-.debug-box--variables.debug-box--hide {
-  transform: translateX(-100%) !important;
-}
-.debug-box h2 {
-  font-size: 16px;
-  letter-spacing: -1px;
-  margin: 10px 0 5px;
-  text-transform: uppercase;
-}
+/* Get all settings */
 /*=========================================================================
 || FILE: Variables concat
 ===========================================================================
@@ -249,6 +124,7 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
   * Wrap navbar to burger for breakpoint
   * set breakpoint ex: only screen and (max-width: 748px)
 **/
+/* Get FrontBox style */
 /*=========================================================================
 || FILE: style.less
 ===========================================================================
@@ -271,6 +147,8 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 /**
   * Generated <body> <html> style
 **/
+@import "../css/base.css";
+@import "../css/utilities.css";
 body {
   font-family: "Arial";
   color: #000000;
@@ -725,6 +603,8 @@ img {
     @planks: 3;
     @style: 2;
 */
+/* Website base style */
+/* Website style */
 /*=========================================================================
 || FILE: Style concat
 ===========================================================================
@@ -4620,5 +4500,128 @@ p.text-icon>x.icon+span{Lorem}
   to {
     width: 320px;
   }
+}
+/* Utilities */
+/* Debug */
+.debug-box {
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px;
+  transition: opacity 0.2s;
+  z-index: 999999;
+  height: 250px;
+  /**
+     * Container elements
+     */
+}
+@media only screen and (min-width: 768px) {
+  .debug-box {
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .debug-box {
+    width: calc(100% - 50px);
+  }
+}
+.debug-box p {
+  color: #FFFFFF;
+  padding-right: 48px;
+  position: relative;
+}
+.debug-box span {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.debug-box__container {
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .debug-box__container {
+    width: 300px;
+  }
+}
+.debug-box__container > *:first-child {
+  margin-top: 0;
+}
+.debug-box__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background-color: #e7be54;
+  transform: translateX(100%);
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  color: #FFFFFF;
+  writing-mode: vertical-lr;
+}
+.debug-box--variables .debug-box__container p {
+  cursor: pointer;
+}
+.debug-box--variables .debug-box__container p:hover {
+  background-color: rgba(231, 190, 84, 0.35);
+}
+.debug-box--variables .debug-box__container p.js_focus {
+  background-color: rgba(231, 190, 84, 0.35);
+}
+.debug-box--console {
+  left: auto;
+  right: 0;
+}
+.debug-box--console .debug-box__container {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .debug-box--console .debug-box__container {
+    width: 400px;
+  }
+}
+.debug-box--console .debug-box__button {
+  transform: translateX(-100%) rotate(180deg);
+  right: auto;
+  left: 0;
+}
+.debug-box--console p {
+  border-left: 2px solid #e7be54;
+  margin-bottom: 4px;
+  padding-left: 2px;
+  padding-right: 0;
+}
+.debug-box--console p.error {
+  border-left: 4px solid #cc0000;
+}
+.debug-box--console p.click {
+  border-left-color: #00BFFF;
+}
+.debug-box--console p.warning {
+  border-left-color: #ffdf25;
+}
+.debug-box--console p.auto {
+  border-left-color: #17a80d;
+}
+.debug-box--console.debug-box--hide {
+  transform: translateX(100%) !important;
+}
+.debug-box--variables.debug-box--hide {
+  transform: translateX(-100%) !important;
+}
+.debug-box h2 {
+  font-size: 16px;
+  letter-spacing: -1px;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=style.dev.css.map */
