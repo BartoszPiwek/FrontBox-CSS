@@ -67,7 +67,7 @@ $(window).bind("load", function() {
         mobile: Number(CSS.getPropertyValue("--mobile")),
     },
     BREAKPOINTS_HEADER = {
-        desktop: Number(CSS.getPropertyValue("--headerDestkop")),
+        desktop: Number(CSS.getPropertyValue("--headerDesktop")),
         tablet: Number(CSS.getPropertyValue("--headerTablet")),
         mobile: Number(CSS.getPropertyValue("--headerMobile")),
     };

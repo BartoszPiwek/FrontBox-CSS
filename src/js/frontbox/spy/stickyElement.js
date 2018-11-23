@@ -94,6 +94,9 @@ module.exports = (argument) => {
                             top                 : headerHeight,
                         });
 
+                        console.log(BREAKPOINTS_HEADER);
+                        
+
                         if (!element.bind ) {
                             ELEMENTS.$window.scroll( `stickyElement${key}`, scroll );            
                             element.bind = true;                
