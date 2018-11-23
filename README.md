@@ -1,6 +1,12 @@
-<img src="gitfiles/logo-frontbox.jpg" style="width=100%; height: auto;">
-
-# FrontBox-CSS [![Build Status](https://travis-ci.org/BartoszPiwek/FrontBox-CSS.svg?branch=master)](https://travis-ci.org/BartoszPiwek/FrontBox-CSS)
+<div align="center">
+    <a href="https://github.com/BartoszPiwek/FrontBox-CSS">
+      <img src="gitfiles/frontbox-logo.gif" alt="FrontBox CSS" />
+    </a>
+    <h1>FrontBox-CSS</h1>
+    <p align="center">
+        Static WWW builder tool.
+    </p>
+</div>
 
 > <strong>Author</strong>: Bartosz Piwek<br>
 > <strong>HTML Preprocessor</strong>: Pug<br>
@@ -9,6 +15,7 @@
 > <strong>Task runner</strong>: Grunt<br>
 > <strong>Version</strong>: 1.0.8<br>
 > <strong>Site DEV</strong>: <a href="http://dev.frontbox.bartoszpiwek.e-kei.pl/" target="_blank">http://dev.frontbox.bartoszpiwek.e-kei.pl/</a></br>
+> <strong>Site PROD</strong>: <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/" target="_blank">http://prod.frontbox.bartoszpiwek.e-kei.pl/</a></br>
 
 ## Used programs
 
