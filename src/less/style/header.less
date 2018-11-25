@@ -4,25 +4,47 @@
 || Style for header ( logo | main navigation )
 =========================================================================*/
 
-/*
-  Main header element style (container for: navigation, brand image, etc)
-  Use "transition+:" to avoid transition overwrite problem
-*/
-
+/**
+ * Main header element style 
+ * container for: navigation, brand image, etc)
+ */
 .header {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: inherit;
+    display: flex;
     -webkit-backface-visibility: hidden;
     z-index: @zindex-menu;
 
     transition+: height @time-transition;
     transition+: box-shadow @time-transition;
 
-    position: absolute;
+    background-color: transparent;
 
-    right: 0;
-    top: 0;
+    /* First wrap set 100% height */
+    & > .wrap {
+        display: flex;
+    }
 
-    box-shadow: 0 1px 40px 0px transparent;
+    /* Header placeholder */
+    &-placeholder {
+        position: relative;
+    }
+
+    /* Header sticky */
+    .js_sticky-header & {
+        z-index: @zindex-header-sticky;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        box-shadow: 0 10px 30px -6px fade(@color-black, 60%);
+        background-color: @color-white;
+    }
 }
+
 
 /*
  * Burger button
@@ -80,17 +102,6 @@
     );
 }
 
-& when (@setting_header = spy) {
-    .js_menu-active {
-        .header:not(.header--sticky) {
-            .burger-button {
-                position: relative;
-                height: 100%;
-                z-index: @zindex-first;
-            }
-        }       
-    }
-}
 
 /**
   * Burger menu
@@ -203,37 +214,6 @@ nav.nav>a.nav__item*x
     }
 }
 
-/*
- Navbar | Header
-*/
-
-.navbar {
-    background-color: @color-black;
-    width: 100%;
-    &__homepage {
-        display: block;
-        outline: none;
-        width: 50px;
-        height: 50px;
-    }
-    &-logo {
-        width: 100%;
-        height: 100%;
-        transition: filter @time-transition;
-        filter: invert(0%);
-        @media @media_burger-hide {
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .add-hover( {
-            filter: invert(100%);
-        }
-        );
-    }
-    >.wrap {
-        height: 100%;
-    }
-}
 
 @media @media_burger-show {
     html {
@@ -251,46 +231,53 @@ nav.nav>a.nav__item*x
     }
 }
 
+
+
 /**
- * JavaScript manipulation
+ * Advanced
  */
-html {
 
-    // Navigation spy
-    &.js_sticky-element {
-      &--active {
-        @media @mobile {
-          .header-container {
-            background-color: @color-white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 58px;
-            box-shadow: 0 1px 40px 0px @color-black;
-            z-index: @zindex-header-sticky;
-            width: 100%;
-          }
-        }
-        // @media @tablet {
-          #header {
-            // background-color: @color-white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 45px;
-            box-shadow: 0 1px 40px 0px @color-black;
-        //   }
-        }
-      }
+/* Add fix when burger won't open */
+html.js_sticky-header:not(.js_menu-active) {
+    .header {
+        &:extend(.fix_fixed);
     }
-  }
+}
 
-html {
-    &.js_sticky-element--active {
-        &:not(.js_menu-active) {
-            .header {
-                .fix_fixed();
+/* Default header height */
+.header-placeholder {
+
+    each(@headerHeight, { 
+      
+        & when (@key = mobile) {
+            height: ~"@{value}px";
+        }
+  
+        & when not (@key = mobile) {
+            @mediaBreakpoint: @responsive[@@key][@string][default];
+            @media @mediaBreakpoint {
+              height: ~"@{value}px";
             }
         }
+  
+    });
+}
+
+/* Header height when is sticky */
+html.js_sticky-header .header {
+
+  each(@headerHeightSticky, { 
+    
+    & when (@key = mobile) {
+        height: ~"@{value}px";
     }
+
+    & when not (@key = mobile) {
+        @mediaBreakpoint: @responsive[@@key][@string][default];
+        @media @mediaBreakpoint {
+            height: ~"@{value}px";
+        }
+    }
+
+  });
 }

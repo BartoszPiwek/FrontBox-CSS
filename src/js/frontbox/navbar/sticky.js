@@ -4,7 +4,7 @@ module.exports = (data) => {
     SETTINGS = {
         spyTop: true,
         offset: 1,
-        spyTopClass: 'js_sticky-element--active',
+        spyTopClass: 'js_sticky-header',
     },
     ELEMENTS = data.ELEMENTS,
     SCROLL = data.SCROLL,

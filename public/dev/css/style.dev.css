@@ -377,7 +377,8 @@ img {
  * Change to position fixed on iOS Safari while scrolling
  * @browser Safari
  */
-.fix_fixed {
+.fix_fixed,
+html.js_sticky-header:not(.js_menu-active) .header {
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -615,18 +616,38 @@ img {
 ===========================================================================
 || Style for header ( logo | main navigation )
 =========================================================================*/
-/*
-  Main header element style (container for: navigation, brand image, etc)
-  Use "transition+:" to avoid transition overwrite problem
-*/
+/**
+ * Main header element style 
+ * container for: navigation, brand image, etc)
+ */
 .header {
-  -webkit-backface-visibility: hidden;
-  z-index: 7000;
-  transition: height 0.2s, box-shadow 0.2s;
   position: absolute;
   right: 0;
   top: 0;
-  box-shadow: 0 1px 40px 0px transparent;
+  width: 100%;
+  height: inherit;
+  display: flex;
+  -webkit-backface-visibility: hidden;
+  z-index: 7000;
+  transition: height 0.2s, box-shadow 0.2s;
+  background-color: transparent;
+  /* First wrap set 100% height */
+  /* Header placeholder */
+  /* Header sticky */
+}
+.header > .wrap {
+  display: flex;
+}
+.header-placeholder {
+  position: relative;
+}
+.js_sticky-header .header {
+  z-index: 5000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.6);
+  background-color: #FFFFFF;
 }
 /*
  * Burger button
@@ -689,11 +710,6 @@ img {
 .burger-button:active > .plank,
 .burger-button:focus > .plank {
   background-color: #90938F;
-}
-.js_menu-active .header:not(.header--sticky) .burger-button {
-  position: relative;
-  height: 100%;
-  z-index: 9999;
 }
 /**
   * Burger menu
@@ -809,45 +825,6 @@ nav.nav>a.nav__item*x
 .nav__container > .nav__item.active {
   color: #90938F;
 }
-/*
- Navbar | Header
-*/
-.navbar {
-  background-color: #000000;
-  width: 100%;
-}
-.navbar__homepage {
-  display: block;
-  outline: none;
-  width: 50px;
-  height: 50px;
-}
-.navbar-logo {
-  width: 100%;
-  height: 100%;
-  transition: filter 0.2s;
-  filter: invert(0%);
-}
-@media only screen and (min-width: 768px) {
-  .navbar-logo {
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-.navbar-logo--hover:hover .navbar-logo,
-.navbar-logo--hover:active .navbar-logo,
-.navbar-logo--hover:focus .navbar-logo,
-.navbar-logo--hover-active .navbar-logo,
-.navbar-logo--hover-active .navbar-logo,
-.navbar-logo--hover-active .navbar-logo,
-.navbar-logo:hover,
-.navbar-logo:active,
-.navbar-logo:focus {
-  filter: invert(100%);
-}
-.navbar > .wrap {
-  height: 100%;
-}
 @media only screen and (max-width: 549px) {
   html.js_menu-active {
     overflow: hidden;
@@ -870,35 +847,36 @@ nav.nav>a.nav__item*x
   }
 }
 /**
- * JavaScript manipulation
+ * Advanced
  */
-@media only screen and (max-width: 549px) {
-  html.js_sticky-element--active .header-container {
-    background-color: #FFFFFF;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 58px;
-    box-shadow: 0 1px 40px 0px #000000;
-    z-index: 5000;
-    width: 100%;
+/* Add fix when burger won't open */
+/* Default header height */
+.header-placeholder {
+  height: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .header-placeholder {
+    height: 40px;
   }
 }
-html.js_sticky-element--active #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 45px;
-  box-shadow: 0 1px 40px 0px #000000;
+@media only screen and (min-width: 1024px) {
+  .header-placeholder {
+    height: 50px;
+  }
 }
-html.js_sticky-element--active:not(.js_menu-active) .header {
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-perspective: 1000;
-  perspective: 1000;
-  transform: translate3d(0, 0, 0);
-  position: fixed;
+/* Header height when is sticky */
+html.js_sticky-header .header {
+  height: 30px;
+}
+@media only screen and (min-width: 768px) {
+  html.js_sticky-header .header {
+    height: 30px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  html.js_sticky-header .header {
+    height: 30px;
+  }
 }
 /*=========================================================================
 || FILE: footer.less
@@ -933,9 +911,9 @@ html.js_sticky-element--active:not(.js_menu-active) .header {
   --tablet: 768;
   --fablet: 550;
   --mobile: 549;
-  --headerDesktop: 45;
-  --headerTablet: 45;
-  --headerMobile: 45;
+  --headerDesktop: 30;
+  --headerTablet: 30;
+  --headerMobile: 30;
 }
 html,
 body {
@@ -989,7 +967,11 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 100%;
+  width: 100%;
+}
+.container__item {
+  display: flex;
+  align-items: center;
 }
 .container__position {
   display: flex;
@@ -2850,20 +2832,6 @@ p.text-icon>x.icon+span{Lorem}
   transform: translateZ(0);
   perspective: 1000;
   width: 100%;
-  /*
-   * @key @value
-  */
-  max-height: calc(100% - 45px);
-}
-@media only screen and (min-width: 768px) {
-  .js-sticky-spy {
-    max-height: calc(100% - 45px);
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .js-sticky-spy {
-    max-height: calc(100% - 45px);
-  }
 }
 .js-sticky-spy--fixed {
   position: fixed !important;

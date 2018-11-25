@@ -21,11 +21,9 @@ module.exports = {
     },
     
     pug_includes: {
-        files: [
-            './src/template/includes/*.pug'
-        ],
+        files: ['./src/template/includes/*.pug'],
         tasks: [
-            'newer:pug:dev',
+            'pug:dev',
         ],
         options: {
             spawn: true,

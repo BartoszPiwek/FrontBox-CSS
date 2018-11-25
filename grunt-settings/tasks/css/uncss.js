@@ -17,6 +17,7 @@ module.exports = function(SETTINGS) {
                 ignore: [
                     /\.select2*/,
                     /\.js_.*/,
+                    /\.js-.*/,
                     /expanded/,
                     /js/,
                     /wp-/,

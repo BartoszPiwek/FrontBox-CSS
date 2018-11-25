@@ -11,9 +11,9 @@
   --fablet: @responsive[@fablet][breakpoint];
   --mobile: @responsive[@mobile][breakpoint];
 
-  --headerDesktop       : @headerHeight[desktop];
-  --headerTablet        : @headerHeight[tablet];
-  --headerMobile        : @headerHeight[mobile];
+  --headerDesktop       : @headerHeightSticky[desktop];
+  --headerTablet        : @headerHeightSticky[tablet];
+  --headerMobile        : @headerHeightSticky[mobile];
 }
 
 html, body {
@@ -91,7 +91,12 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 100%;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
 
   &__position {
     display: flex;
