@@ -149,7 +149,7 @@ $(window).bind("load", function() {
             placeholder: true,
             offset: false,
         },
-        $elementSpy: ELEMENTS.$header,
+        $elementSpy: ELEMENTS.$headerPlaceholder,
     });
 
     /**
@@ -311,6 +311,6 @@ $(window).bind("load", function() {
     /* end-test-code */
 
     // Inform stylesheed to remove style fallback for JavaScript elements
-    ELEMENTS.$html.removeClass("no_js");
+    ELEMENTS.$html.removeClass("js_no");
 
 });
