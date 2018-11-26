@@ -76,7 +76,8 @@ $(window).bind("load", function() {
     var RESIZE = require('./frontbox/bind/resize')({
         ELEMENTS: ELEMENTS,
         template: {
-            loading: `<div class="animation-donut-spinner"></div>`,
+            // loading: `<div class="animation-donut-spinner"></div>`,
+            loading: false,
         },
     });
 
