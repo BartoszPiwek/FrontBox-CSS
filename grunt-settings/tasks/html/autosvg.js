@@ -11,7 +11,6 @@ module.exports = {
             debug_log: true,
         },
     },
-
     prod: {
         expand: true,
         src: ['*.html', "*.php"],
@@ -19,18 +18,6 @@ module.exports = {
         flatten: true,
         options: {
             output_directory: "public/prod/",
-            svg_directory: "src/images/svg/",
-            debug_log: true,
-        },
-    },
-
-    debug: {
-        expand: true,
-        src: ['*.html', "*.php"],
-        cwd: 'public/dev/debug',
-        flatten: true,
-        options: {
-            output_directory: "public/dev/debug/",
             svg_directory: "src/images/svg/",
             debug_log: true,
         },

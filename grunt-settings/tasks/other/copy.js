@@ -106,7 +106,7 @@ module.exports = function(SETTINGS){
                 {
                     expand: true,
                     cwd: 'src/template/',
-                    src: ['**/*.html', '!includes/**'],
+                    src: ['**/*.html'],
                     dest: `${SETTINGS.pathToProd}/`,
                     filter: 'isFile'
                 },

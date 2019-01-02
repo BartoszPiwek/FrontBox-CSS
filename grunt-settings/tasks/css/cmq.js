@@ -7,8 +7,8 @@ module.exports = function(SETTINGS) {
         },
         your_target: {
             files: [{
-                src: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/style.prod.css`,
-                dest: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/style.prod.css`,
+                src: `${SETTINGS.pathToMainCSS}/style.prod.css`,
+                dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
             }]
         }
 

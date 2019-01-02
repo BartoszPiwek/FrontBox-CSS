@@ -17,16 +17,11 @@ module.exports = function(SETTINGS) {
                         replace: true,
                         mediaQuery: false,
                         minPixelValue: 0
-                    }),
-                    require('postcss-momentum-scrolling')([
-                        'scroll',
-                        'auto',
-                        'inherit'
-                    ]),
+                    })
                 ],
                 map: false
             },
-            src: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/style.prod.css`
+            src: `${SETTINGS.pathToMainCSS}*.css`
         },
     
         min: {
@@ -39,7 +34,7 @@ module.exports = function(SETTINGS) {
                 ],
                 map: false
             },
-            src: `${SETTINGS.pathToProd}/${SETTINGS.pathToMainCSS}/style.prod.css`
+            src: `${SETTINGS.pathToMainCSS}*.css`
         }
     
     };
