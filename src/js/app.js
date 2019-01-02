@@ -11,6 +11,9 @@ require('lazysizes');
 // require('select2')();
 // require('./frontbox/libs/getStyle');
 
+// Implements a feature on web browsers that do not support the feature
+require('@babel/polyfill');
+
 
 /**
  * jQuery plugins
@@ -32,6 +35,7 @@ $(window).bind("load", function() {
         $overlay: $("#page-overlay"),
         $html: $('html'),
         $page: $('html, body'),
+        $document: $(document),
     };
 
     /* test-code */
@@ -69,6 +73,7 @@ $(window).bind("load", function() {
     BREAKPOINTS_HEADER = {
         desktop: Number(CSS.getPropertyValue("--headerDesktop")),
         tablet: Number(CSS.getPropertyValue("--headerTablet")),
+        fablet: Number(CSS.getPropertyValue("--headerFablet")),
         mobile: Number(CSS.getPropertyValue("--headerMobile")),
     };
 
@@ -87,7 +92,6 @@ $(window).bind("load", function() {
         BREAKPOINTS: BREAKPOINTS,
     });
 
-
     var FUNCTIONS = require('./frontbox/functions');
 
     var BROWSER = require('./frontbox/data/browser')();
@@ -102,8 +106,6 @@ $(window).bind("load", function() {
     var transitionHeight = require('./frontbox/transitionHeight')({
         BROWSER : BROWSER,
     });
-
-
 
     /**
      * Smooth scroll to target
@@ -290,22 +292,6 @@ $(window).bind("load", function() {
     //        minimumResultsForSearch: -1,
     //    });
     // }
-
-    /* test-code */
-    var
-    $iframe = $("[data-iframe]");
-    $iframe.each(function (index, element) {
-        var 
-        $this = $(this),
-        find = $this.attr("data-iframe"),
-        $content = $(`[data-iframe-content="${find}"]`);
-
-        $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
-        $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
-        $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
-        $this.contents().find("body").append( $content );
-    });
-    /* end-test-code */
 
     /* test-code */
     DEBUG.console.add("Running correct...");

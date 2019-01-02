@@ -17,5 +17,18 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
 <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
-<meta name="theme-color" content="#ffffff"></head><body id="body"><main class="page-content relative"><div class="wrap"><h2>JS showMore</h2><div class="row row-space"><div class="col-4"><div class="show-more" id="show-more-1" style="height: 77px;"><div class="show-more__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, alias fugit qui sint aliquid laborum, exercitationem provident vitae vero ratione animi et quia accusantium quibusdam voluptas, odit dolor ea ab.</div></div><a class="show-more-button" href="#" data="showMore" data-target="show-more-1"> <span class="show-more-button--less">Show less</span><span class="show-more-button--more">Show more</span></a></div><div class="col-8"><div class="show-more"><div class="show-more__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, alias fugit qui sint aliquid laborum, exercitationem provident vitae vero ratione animi et quia accusantium quibusdam voluptas, odit dolor ea ab.</div></div><a class="show-more-button" href="#" data="showMore" data-target="prevElement"> <span class="show-more-button--less">Show less</span><span class="show-more-button--more">Show more</span></a></div></div></div></main><div class="page__overlay" id="page-overlay"></div><script src="/js/app.dev.js"></script></body>
+<meta name="theme-color" content="#ffffff"></head><body id="body"><main class="page-content relative"><div class="wrap"><h2>JS showMore</h2><div class="row row-space"><div class="col-4"><div class="show-more" id="show-more-1" style="height: 77px;"><div class="show-more__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, alias fugit qui sint aliquid laborum, exercitationem provident vitae vero ratione animi et quia accusantium quibusdam voluptas, odit dolor ea ab.</div></div><a class="show-more-button" href="#" data="showMore" data-target="show-more-1"> <span class="show-more-button--less">Show less</span><span class="show-more-button--more">Show more</span></a></div><div class="col-8"><div class="show-more"><div class="show-more__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, alias fugit qui sint aliquid laborum, exercitationem provident vitae vero ratione animi et quia accusantium quibusdam voluptas, odit dolor ea ab.</div></div><a class="show-more-button" href="#" data="showMore" data-target="prevElement"> <span class="show-more-button--less">Show less</span><span class="show-more-button--more">Show more</span></a></div></div></div></main><div class="page__overlay" id="page-overlay"></div><script src="/js/app.dev.js"></script><script src="/js/app.dev.js"></script><script>var
+$iframe = $("[data-iframe]");
+$iframe.each(function (index, element) {
+    var 
+    $this = $(this),
+    find = $this.attr("data-iframe"),
+    $content = $(`[data-iframe-content="${find}"]`);
+
+    $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
+    $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
+    $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
+    $this.contents().find("body").append( $content );
+});
+</script></body>
 </html>

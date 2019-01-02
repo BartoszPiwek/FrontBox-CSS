@@ -1,9 +1,8 @@
 /*!******************************************************************
 Framework:      FrontBox 1.0.4 (github.com/BartoszPiwek/FrontBox)
 Author:         Bartosz Piwek
-For:            static website
 ********************************************************************/
-'use strict';
+
 
 //=========================================================================
 // Settings
@@ -33,7 +32,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-
 
         /**
          * HTML
@@ -72,7 +70,7 @@ module.exports = function(grunt) {
          */
 
         // Compress png,jpg,gif
-        image               : require('./grunt-settings/tasks/assets/image'), 
+        image               : require('./grunt-settings/tasks/assets/image')(SETTINGS),
         // Converting a set of images into a spritesheet
         sprite              : require('./grunt-settings/tasks/assets/sprite'),
         // Generate favicons
@@ -84,7 +82,7 @@ module.exports = function(grunt) {
          * CSS tasks
          */
 
-         // LESS Compile
+        // LESS Compile
         less                : require('./grunt-settings/tasks/css/less')(SETTINGS), 
         // Add vendor prefixes to CSS rules using values from Can I Use
         postcss             : require('./grunt-settings/tasks/css/postcss')(SETTINGS), 
@@ -204,6 +202,7 @@ module.exports = function(grunt) {
         'less:prod_style_base',
         'less:prod_style_utilities',
         'less:prod',
+        // 'exec:get_wordpress_sitemap',
         'load_sitemap_json',
         'uncss',
         'cmq',
@@ -220,7 +219,7 @@ module.exports = function(grunt) {
     grunt.registerTask('doc', ['dss']);
     grunt.registerTask('start', ['clean:begin']);
     grunt.registerTask('test', 'dev');
-    
+
     // Wordpress
     grunt.registerTask('load_sitemap_json', () => {
         if (SETTINGS.isWordpress) {

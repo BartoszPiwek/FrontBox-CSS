@@ -18,5 +18,18 @@
 <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
 <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
 <meta name="theme-color" content="#ffffff"></head><body id="body"><main class="page-content relative"><div class="wrap"><h2>text-line-truncated</h2><div class="row"><div class="col-4"><a class="hover_text-line-truncated" href="#"><span class="hover_text-line-truncated__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam error aliquid, optio perspiciatis consequuntur blanditiis vitae vero, inventore dignissimos nihil adipisci odit, dolore reiciendis facilis illum quaerat neque accusamus distinctio.
-</span></a></div></div></div></main></body>
+</span></a></div></div></div></main><script src="/js/app.dev.js"></script><script>var
+$iframe = $("[data-iframe]");
+$iframe.each(function (index, element) {
+    var 
+    $this = $(this),
+    find = $this.attr("data-iframe"),
+    $content = $(`[data-iframe-content="${find}"]`);
+
+    $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
+    $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
+    $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
+    $this.contents().find("body").append( $content );
+});
+</script></body>
 </html>

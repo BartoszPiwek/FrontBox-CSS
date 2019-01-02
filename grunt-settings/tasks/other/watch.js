@@ -1,4 +1,5 @@
 module.exports = {
+
   // HTML/PHP
   PHP: {
     files: ["*.php", "template-parts/*.php", "inc/**/*.php"],
@@ -10,6 +11,13 @@ module.exports = {
   pug: {
     files: ["./src/template/**/*.pug"],
     tasks: ["newer:pug:dev"],
+    options: {
+      spawn: true
+    }
+  },
+  pug_dev: {
+    files: ["./src/debug/**/*.pug"],
+    tasks: ["newer:pug:debug"],
     options: {
       spawn: true
     }

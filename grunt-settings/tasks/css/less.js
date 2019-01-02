@@ -10,7 +10,7 @@ module.exports = function(SETTINGS) {
     modifyVarsProd = JSON.parse(JSON.stringify(modifyVarsDev));
     modifyVarsProd.version = 'prod';
     modifyVarsDev.version = 'dev';
-
+    
     return {
 
         options: {
@@ -21,19 +21,6 @@ module.exports = function(SETTINGS) {
         /**
          * Development version
          */
-
-        dev_style_main: {
-            options: {
-                compress: false,
-                sourceMap: true,
-                sourceMapFilename: `${SETTINGS.pathToMainCSS}/style.dev.css.map`,
-                sourceMapURL: 'style.dev.css.map',
-                sourceMapBasepath: '../',
-                sourceMapRootpath: '/',
-            },
-            src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSS}/style.dev.css`,
-        },
 
         dev_style_grid: {
             options: {
@@ -74,19 +61,24 @@ module.exports = function(SETTINGS) {
             dest: `${SETTINGS.pathToDev}/css/utilities.css`,
         },
 
+        dev_style_main: {
+            options: {
+                compress: false,
+                sourceMap: true,
+                sourceMapFilename: `${SETTINGS.pathToMainCSS}/style.dev.css.map`,
+                sourceMapURL: 'style.dev.css.map',
+                sourceMapBasepath: '../',
+                sourceMapRootpath: '/',
+                modifyVars: modifyVarsDev,
+            },
+            src: `src/less/style.less`,
+            dest: `${SETTINGS.pathToMainCSS}/style.dev.css`,
+        },
+
         /**
          * Productive version
          */
 
-        prod: {
-            options: {
-                compress: false,
-                sourceMap: false,
-                modifyVars: modifyVarsProd,
-            },
-            src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
-        },
         prod_style_grid: {
             options: {
                 compress: false,
@@ -94,7 +86,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/grid.less`,
-            dest: `${SETTINGS.pathToDev}/css/grid.prod.css`,
+            dest: `${SETTINGS.pathToProd}/css/grid.prod.css`,
         },
 
         prod_style_base: {
@@ -104,7 +96,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/base.less`,
-            dest: `${SETTINGS.pathToDev}/css/base.prod.css`,
+            dest: `${SETTINGS.pathToProd}/css/base.prod.css`,
         },
 
         prod_style_utilities: {
@@ -114,7 +106,17 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/utilities.less`,
-            dest: `${SETTINGS.pathToDev}/css/utilities.prod.css`,
+            dest: `${SETTINGS.pathToProd}/css/utilities.prod.css`,
+        },
+
+        prod: {
+            options: {
+                compress: false,
+                sourceMap: false,
+                modifyVars: modifyVarsProd,
+            },
+            src: `src/less/style.less`,
+            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
         },
 
     };

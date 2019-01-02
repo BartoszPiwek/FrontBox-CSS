@@ -19,6 +19,8 @@ module.exports = (data) => {
     SCROLL = data.SCROLL,
     ELEMENTS = data.ELEMENTS,
     FUNCTIONS = data.FUNCTIONS,
+    DEVICE = data.DEVICE,
+    BREAKPOINTS_HEADER = data.BREAKPOINTS_HEADER,
     // all clickable scroll elements
     $elements = null,
     // bool page is scroll
@@ -149,10 +151,10 @@ module.exports = (data) => {
                 var
                 targetPositionTop = $target.offset().top,
                 // Scroll position
-                scrollTo = targetPositionTop;    
+                scrollTo = targetPositionTop - BREAKPOINTS_HEADER[DEVICE.responsive];    
                 
                 // Calculate scrollTime 
-                var scrollTime = Math.round(Math.abs(targetPositionTop - SCROLL.top) / SETTINGS.time);
+                var scrollTime = Math.round(Math.abs(targetPositionTop - SCROLL.begin) / SETTINGS.time);
                 if (scrollTime < SETTINGS.minTime) 
                 {
                     scrollTime = SETTINGS.minTime;
@@ -175,12 +177,6 @@ module.exports = (data) => {
                     ELEMENTS.$body.scrollDisable('undo');
                     active = false;
                 });
-                // ELEMENTS.$page.animate({
-                //     scrollTop: targetPositionTop - ELEMENTS.$header.outerHeight(true),
-                // }, scrollTime, () => {
-                //     FUNCTIONS.onUserScroll();
-                //     active = false;
-                // });
 
                 return false;
             }

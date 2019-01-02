@@ -29,5 +29,18 @@
 	.col-6 div
 	.col-6 div
 	.col-6 div</p><div class="debug-view center"><div class="row row-space"><div class="col-6"><div style="background-color: red;">.col-6</div></div><div class="col-6"><div style="background-color: blue;">.col-6</div></div><div class="col-6"><div style="background-color: blue;">.col-6</div></div><div class="col-6"><div style="background-color: red;">.col-6</div></div></div></div><h2 class="debug-title">Columns controll</h2><strong>Features</strong>: responsive {sm_, md_, lg_}<p class="debug-code">.row
-	.col-y-top .col-y-center .col-y-bottom .col-x-left .col-x-center .col-x-right</p><div class="debug-view center"><div class="row"><div class="col-2 col-y-top" style="background-color: red; height: 200px !important">.col-y-top</div><div class="col-2"></div><div class="col-2 col-y-center" style="background-color: red; height: 200px !important">.col-y-center</div><div class="col-2"></div><div class="col-2 col-y-bottom" style="background-color: red; height: 200px !important">.col-y-bottom</div><div class="col-2"></div><div class="col-2"></div><div class="col-2 col-x-left" style="background-color: red;">.col-x-left</div><div class="col-2"></div><div class="col-2 col-x-center" style="background-color: red;">.col-x-center</div><div class="col-2"></div><div class="col-2 col-x-right" style="background-color: red;">.col-x-right</div></div></div></div></div></body>
+	.col-y-top .col-y-center .col-y-bottom .col-x-left .col-x-center .col-x-right</p><div class="debug-view center"><div class="row"><div class="col-2 col-y-top" style="background-color: red; height: 200px !important">.col-y-top</div><div class="col-2"></div><div class="col-2 col-y-center" style="background-color: red; height: 200px !important">.col-y-center</div><div class="col-2"></div><div class="col-2 col-y-bottom" style="background-color: red; height: 200px !important">.col-y-bottom</div><div class="col-2"></div><div class="col-2"></div><div class="col-2 col-x-left" style="background-color: red;">.col-x-left</div><div class="col-2"></div><div class="col-2 col-x-center" style="background-color: red;">.col-x-center</div><div class="col-2"></div><div class="col-2 col-x-right" style="background-color: red;">.col-x-right</div></div></div></div></div><script src="/js/app.dev.js"></script><script>var
+$iframe = $("[data-iframe]");
+$iframe.each(function (index, element) {
+    var 
+    $this = $(this),
+    find = $this.attr("data-iframe"),
+    $content = $(`[data-iframe-content="${find}"]`);
+
+    $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
+    $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
+    $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
+    $this.contents().find("body").append( $content );
+});
+</script></body>
 </html>

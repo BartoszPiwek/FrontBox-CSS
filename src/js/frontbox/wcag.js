@@ -1,4 +1,5 @@
-initWCAG: function () {
+module.exports = (argument) => {
+
     $(document).keydown(function () {
       $('body').addClass('js_wcag-focus');
     });

@@ -22,5 +22,18 @@
 </p></div><div class="col-6"><div class="debug-view"><div><div class="animation-donut-spinner"></div></div></div></div><div class="col-6"><p class="debug-code">.animation-donut-spinner
 </p></div><div class="col-6"><div class="debug-view"><div><div class="animation-scale-lines"><span></span><span></span><span></span></div></div></div></div><div class="col-6"><p class="debug-code">.animation-scale-lines>span*3
 </p></div><div class="col-6"><div class="debug-view"><div><div class="animation-circle-rotate"></div></div></div></div><div class="col-6"><p class="debug-code">.animation-circle-rotate
-</p></div></div></div></div></body>
+</p></div></div></div></div><script src="/js/app.dev.js"></script><script>var
+$iframe = $("[data-iframe]");
+$iframe.each(function (index, element) {
+    var 
+    $this = $(this),
+    find = $this.attr("data-iframe"),
+    $content = $(`[data-iframe-content="${find}"]`);
+
+    $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
+    $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
+    $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
+    $this.contents().find("body").append( $content );
+});
+</script></body>
 </html>
