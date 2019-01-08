@@ -50,7 +50,7 @@ $(window).bind("load", function() {
     });
     global.DEBUG.variable = require('./frontbox/debug/variables')({
         OPTIONS: {
-            open: true,
+            open: false,
         },
         ELEMENTS: ELEMENTS,
     });

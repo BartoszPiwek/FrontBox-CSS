@@ -19,10 +19,8 @@
 html, body {
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-body {
   position: relative;
+  width: 100%;
 }
 
 //=========================================================================
@@ -87,36 +85,47 @@ body {
   }
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 100%;
+/**
+ * Position elements in container
+ * .container
+ * http://localhost:8181/debug/elements.html#container
+ */
+.responsive({
 
-  &__item {
+  .@{prefix}container {
     display: flex;
-    align-items: center;
-  }
-
-  &__position {
-    display: flex;
-    height: 100%;
-    &--left {
-      margin-right: auto;
-    }
-    &--right {
-      margin-left: auto;
-    }
-    &--center {
-      margin: 0 auto;
-      @media @tablet {
-        margin: 0 auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        display: block;
-        transform: translate(-50%, -50%);
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+  
+    &__item {
+      display: flex;
+      flex: 0 1 auto;
+      height: 100%;
+  
+      /* Positions */
+      &--left {
+        margin-right: auto;
       }
+      &--right {
+        margin-left: auto;
+      }
+      &--center {
+        margin: 0 auto;
+
+        &--absolute {
+          margin: 0 auto;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          display: block;
+          transform: translate(-50%, -50%);
+        }
+      }
+      /* end Positions */
+  
     }
   }
-}
+
+});

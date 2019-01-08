@@ -444,12 +444,12 @@
   * Tools generator
 **/
 
-.make-utilities (@prefix, @property, @data...) {
+.make-utilities(@prefix, @property, @data...) {
 	@length: length(@data);
 	.for(@data,{
 		@value: extract(@data, @i);
 		.@{prefix}@{value} {
-			@{property}: @value~"!important";
+			@{property}: @value ~"!important";
 		}
 	});
 }

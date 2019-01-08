@@ -1,26 +1,28 @@
 module.exports = {
     
     // Version { automatic set }
-    version: null,
+    version                 : null,
     // Lang
-    website_locale: 'pl-PL',
+    website_locale          : 'pl-PL',
 
     /* Path */
-    "pathToMainCSS": './css', 
-    "pathToDev": "./public/dev",
-    "pathToProd": "./public/prod",
-    "pathToModulesDev": "'../css'",
-    "pathToModulesProd": "'./public/prod/css'",
+    "pathToMainCSS"         : './css', 
+    "pathToMainCSSDev"      : './public/dev', 
+    "pathToMainCSSProd"     : './public/prod', 
+    "pathToDev"             : "./public/dev",
+    "pathToProd"            : "./public/prod",
+    "pathToModulesDev"      : "'../css'",
+    "pathToModulesProd"     : "'./public/prod/css'",
 
-    "pathToFavicon": "src/template/includes/favicon.html",
+    "pathToFavicon"         : "src/template/includes/favicon.html",
 
     /* Prefix */
-    "prefixFaviconHTML": "/images/favicon/",
+    "prefixFaviconHTML"     : "/images/favicon/",
 
     /* Functions */
-    "getYear": "<%= grunt.template.today('yyyy') %>",
+    "getYear"               : "<%= grunt.template.today('yyyy') %>",
 
     /* Project type */
-    "isWordpress": false,
+    "isWordpress"           : false,
 
 };

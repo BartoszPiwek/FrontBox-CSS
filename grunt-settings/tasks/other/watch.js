@@ -26,9 +26,8 @@ module.exports = {
   // Style
   dev_style_base: {
     files: [
-      "src/less/base.less",
-      "src/less/variables/*/**.less",
-      "sec/less/frontbox/*/**.less"
+      "src/less/variables/**/*.less",
+      "sec/less/frontbox/**/*.less"
     ],
     tasks: ["less:dev_style_base"],
     options: {
@@ -48,14 +47,19 @@ module.exports = {
     }
   },
   dev_style_main: {
-    files: ["src/less/**/*.less"],
-    tasks: ["less:dev_style_main"],
+    files: ["src/less/*/**.less"],
+    tasks: [
+      "less:dev_style_main"
+    ],
     options: {
       spawn: true
     }
   },
   dev_style_utilities: {
-    files: ["src/less/utilities.less", "src/less/utilities/*.less"],
+    files: [
+      "src/less/utilities.less",
+      "src/less/utilities/*.less"
+    ],
     tasks: ["less:dev_style_utilities"],
     options: {
       spawn: true
