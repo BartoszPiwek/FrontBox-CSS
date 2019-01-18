@@ -1,19 +1,19 @@
-/**
- * Libs
- */
+/* Libs */
 global.$ = require('jquery');
 global.jQuery = $;
+// global.AOS = require('aos');
 // global.Cookies = require('js-cookie');
 require('lazysizes');
 
-// var
-// require('slick-carousel');
+/* jQuery Plugins */
+// require('slick-carousel'); // https://github.com/kenwheeler/slick
+// require('jquery-validation'); // https://github.com/jquery-validation/jquery-validation
 // require('select2')();
+
+/* Support Libs */
 // require('./frontbox/libs/getStyle');
-
-// Implements a feature on web browsers that do not support the feature
-require('@babel/polyfill');
-
+require('./frontbox/jquery/scrollBlock')();
+// require('@babel/polyfill');
 
 /**
  * jQuery plugins
@@ -292,6 +292,10 @@ $(window).bind("load", function() {
     //        minimumResultsForSearch: -1,
     //    });
     // }
+
+    /* Validator */
+    require('./validator');
+    // require('./fullpage');
 
     /* test-code */
     DEBUG.console.add("Running correct...");
