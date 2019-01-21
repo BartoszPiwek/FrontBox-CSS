@@ -16,11 +16,12 @@
   --headerMobile        : @headerHeightSticky[mobile];
 }
 
-html, body {
-  min-height: 100vh;
+html {
+  background-color: @color-white;
   overflow-x: hidden;
+}
+body {
   position: relative;
-  width: 100%;
 }
 
 //=========================================================================
@@ -129,3 +130,17 @@ html, body {
   }
 
 });
+
+/**
+ * Space
+ */
+.space {
+  // Default
+  & > * {
+    margin: 20px 0;
+  }
+  // Sizes
+  &--medium > * {
+    margin: 18px 0;
+  }
+}

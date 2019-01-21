@@ -1,0 +1,14 @@
+/**
+ * Space
+ */
+
+.space-x {
+    .loop(100, {
+        &-@{value} {
+            & > * {
+                margin-top: ~'@{value}px';
+                margin-bottom: ~'@{value}px';
+            }
+        }
+    });
+}

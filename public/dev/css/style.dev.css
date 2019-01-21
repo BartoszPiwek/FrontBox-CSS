@@ -387,6 +387,12 @@ html.js_sticky-header:not(.js_menu-active) .header {
   transform: translate3d(0, 0, 0);
   position: fixed;
 }
+.space > *:first-child {
+  margin-top: 0;
+}
+.space > *:last-child {
+  margin-bottom: 0;
+}
 .list-marker {
   position: relative;
 }
@@ -915,12 +921,12 @@ html.js_sticky-header .header {
   --headerTablet: 30;
   --headerMobile: 30;
 }
-html,
-body {
-  min-height: 100vh;
+html {
+  background-color: #FFFFFF;
   overflow-x: hidden;
+}
+body {
   position: relative;
-  width: 100%;
 }
 .code {
   font-size: 14px;
@@ -1131,6 +1137,15 @@ body {
     transform: translate(-50%, -50%);
   }
 }
+/**
+ * Space
+ */
+.space > * {
+  margin: 20px 0;
+}
+.space--medium > * {
+  margin: 18px 0;
+}
 /*=========================================================================
 // BUTTON - create button elements
 // .add-button(text-color, background-color, border, hover-darken-percent)
@@ -1230,19 +1245,12 @@ body {
 label[for] {
   cursor: pointer;
 }
-input[type=checkbox]:checked {
-  background-color: red;
-}
-input[type=checkbox]:checked + * {
-  background-color: red;
-}
 /**
   * Checkbox
 **/
 .input-checkbox {
   position: relative;
   /* Hide oryginal checkbox element */
-  /* Mark color */
   /* Fake checkbox element */
   /* Clickable label toggle checkbox */
   /* Toggle checkbox element */
@@ -1266,31 +1274,6 @@ input[type=checkbox]:checked + * {
   user-select: none;
   pointer-events: none;
   opacity: 0.4;
-}
-.input-checkbox--mark-color .input-checkbox__input:before {
-  content: '';
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  opacity: 0;
-  transition: opacity 0.2s, background-color 0.2s;
-  width: 90%;
-  height: 90%;
-  background-color: #e7be54;
-}
-.input-checkbox--mark-color--hover:hover .input-checkbox--mark-color .input-checkbox__input:before,
-.input-checkbox--mark-color--hover:active .input-checkbox--mark-color .input-checkbox__input:before,
-.input-checkbox--mark-color--hover:focus .input-checkbox--mark-color .input-checkbox__input:before,
-.input-checkbox--mark-color--hover-active .input-checkbox--mark-color .input-checkbox__input:before,
-.input-checkbox--mark-color--hover-active .input-checkbox--mark-color .input-checkbox__input:before,
-.input-checkbox--mark-color--hover-active .input-checkbox--mark-color .input-checkbox__input:before,
-.input-checkbox--mark-color:hover .input-checkbox__input:before,
-.input-checkbox--mark-color:active .input-checkbox__input:before,
-.input-checkbox--mark-color:focus .input-checkbox__input:before {
-  opacity: 0.4;
-}
-.input-checkbox--mark-color input:checked + .input-checkbox__label .input-checkbox__input:before {
-  opacity: 1;
 }
 .input-checkbox__input {
   transition: border-color 0.2s;
@@ -1381,17 +1364,14 @@ input[type=checkbox]:checked + * {
 .input-checkbox__label:focus .input-checkbox__input--mark-color:before {
   opacity: 0.5;
 }
-.input-checkbox input:checked + .input-checkbox__label {
+.input-checkbox input:checked + .input-checkbox__label .input-checkbox__input {
   /* Style for using SVG for checkbox element mark */
   /* Style for using color fill for checkbox element mark */
 }
-.input-checkbox input:checked + .input-checkbox__label--mark-icon .input-checkbox__label .input-checkbox__input {
+.input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-icon .input-checkbox__mark {
   opacity: 1;
 }
-.input-checkbox input:checked + .input-checkbox__label--mark-color:before {
-  opacity: 1;
-}
-.input-checkbox--mark-color input:checked + .input-checkbox__label .input-checkbox__input:before {
+.input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-color:before {
   opacity: 1;
 }
 /**
@@ -1400,6 +1380,7 @@ input[type=checkbox]:checked + * {
 .input-radio {
   position: relative;
   /* Hide oryginal radio element */
+  /* Mark icon */
   /* Fake radio element */
   /* Clickable label toggle radio */
   /* Unhover when radio element is on */
@@ -1425,6 +1406,17 @@ input[type=checkbox]:checked + * {
   pointer-events: none;
   opacity: 0.4;
 }
+.input-radio__mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  fill: #e7be54;
+  transition: fill 0.2s;
+  opacity: 0;
+}
 .input-radio__input {
   transition: border-color 0.2s;
   width: 20px;
@@ -1435,18 +1427,20 @@ input[type=checkbox]:checked + * {
   border-radius: 50%;
   border: 1px solid #e7be54;
   /* Radio element mark fill */
+  /* Radio element mark icon */
 }
 .input-radio__input:before {
   content: '';
+  transform: translate(-50%, -50%);
   position: absolute;
-  top: 10%;
-  left: 10%;
-  opacity: 0;
+  top: 50%;
+  left: 50%;
   transition: opacity 0.2s, background-color 0.2s;
-  width: 80%;
-  height: 80%;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background-color: #e7be54;
+  opacity: 0;
 }
 .input-radio__label {
   cursor: pointer;
@@ -1487,10 +1481,14 @@ input[type=checkbox]:checked + * {
 .input-radio input:not(:checked) + .input-radio__label:focus .input-radio__input:before {
   background-color: #000000;
 }
-.input-radio input:checked + .input-radio__label .input-radio__input {
+.input-radio input:checked + .input-radio {
   /* Radio element mark fill */
+  /* Radio element mark icon */
 }
-.input-radio input:checked + .input-radio__label .input-radio__input:before {
+.input-radio input:checked + .input-radio__label .input-radio__input--mark-color:before {
+  opacity: 1;
+}
+.input-radio input:checked + .input-radio__label .input-radio__mark {
   opacity: 1;
 }
 /**

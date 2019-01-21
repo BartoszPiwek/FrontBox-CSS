@@ -13,15 +13,6 @@ label[for] {
     cursor: pointer;
 }
 
-input[type=checkbox]:checked {
-    background-color: red;
-
-    & + * {
-        background-color: red;
-
-    }
-}
-
 /**
   * Checkbox
 **/
@@ -51,43 +42,6 @@ input[type=checkbox]:checked {
                     user-select: none;
                     pointer-events: none;
                     opacity: 0.4;
-                }
-            }
-        }
-    }
-
-    /* Mark color */
-    &--mark-color {
-        .input-checkbox {
-            &__input {
-                &:before {
-                    content: '';
-                    position: absolute;
-                    top: 5%;
-                    left: 5%;
-                    opacity: 0;
-                    transition+: opacity @time-transition;
-                    transition+: background-color @time-transition; // Size
-                    width: 90%;
-                    height: 90%; // Style
-                    background-color: @color-primary;
-                }
-            }
-        }
-        .add-hover({
-            .input-checkbox {
-                &__input {
-                    &:before {
-                        opacity: 0.4;
-                    }
-                }
-            }
-        });
-
-        input:checked {
-            & + .input-checkbox__label .input-checkbox__input {
-                &:before {
-                    opacity: 1;
                 }
             }
         }
@@ -173,9 +127,9 @@ input[type=checkbox]:checked {
     /* Toggle checkbox element */
     input:checked {
         & + .input-checkbox {
-            &__label {
+            &__label .input-checkbox__input {
                 /* Style for using SVG for checkbox element mark */
-                &--mark-icon .input-checkbox__label .input-checkbox__input {
+                &--mark-icon .input-checkbox__mark {
                     opacity: 1;
                 }
                 /* Style for using color fill for checkbox element mark */
@@ -183,16 +137,6 @@ input[type=checkbox]:checked {
                     &:before {
                         opacity: 1;
                     }
-                }
-            }
-        }
-    }
-
-    &--mark-color {
-        input:checked {
-            & + .input-checkbox__label .input-checkbox__input {
-                &:before {
-                    opacity: 1;
                 }
             }
         }
@@ -205,6 +149,7 @@ input[type=checkbox]:checked {
 
 .input-radio {
     position: relative;
+
     /* Hide oryginal radio element */
     input {
         border: 0 !important;
@@ -231,29 +176,63 @@ input[type=checkbox]:checked {
             }
         }
     }
+
+    /* Mark icon */
+    &__mark {
+        // Position
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform+_: translate(-50%, -50%);
+        // Size
+        width: 16px;
+        height: 16px;
+        // Style
+        fill: @color-primary;
+        // Transition
+        transition+: fill @time-transition;
+        // Animation
+        opacity: 0;
+    }
+
     /* Fake radio element */
     &__input {
-        transition+: border-color @time-transition; // Size
+        transition+: border-color @time-transition; 
+        // Size
         width: 20px;
-        height: 20px; // Position
+        height: 20px; 
+        // Position
         position: absolute;
         top: 0;
-        left: 0; // Style
+        left: 0; 
+        // Style
         border-radius: 50%;
         border: 1px solid @color-primary;
+        
         /* Radio element mark fill */
         &:before {
             content: '';
+            // Position
+            transform+_: translate(-50%, -50%);
             position: absolute;
-            top: 10%;
-            left: 10%;
-            opacity: 0;
+            top: 50%;
+            left: 50%;
+            // Transition
             transition+: opacity @time-transition;
-            transition+: background-color @time-transition; // Size
-            width: 80%;
-            height: 80%; // Style
+            transition+: background-color @time-transition; 
+            // Size
+            width: 14px;
+            height: 14px; 
+            // Style
             border-radius: 50%;
             background-color: @color-primary;
+            // Animation
+            opacity: 0;
+        }
+
+        /* Radio element mark icon */
+        &--mark-icon {
+            
         }
     }
     /* Clickable label toggle radio */
@@ -286,12 +265,16 @@ input[type=checkbox]:checked {
     }
     /* Toggle radio element */
     input:checked {
-        &+.input-radio {
-            &__label .input-radio__input {
-                /* Radio element mark fill */
+        & + .input-radio {
+            /* Radio element mark fill */
+            &__label .input-radio__input--mark-color {
                 &:before {
                     opacity: 1;
                 }
+            }
+            /* Radio element mark icon */
+            &__label .input-radio__mark {
+                opacity: 1;
             }
         }
     }

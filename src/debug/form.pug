@@ -10,326 +10,238 @@ include ../template/includes/header.pug
 		h1.debug-header.
 			Forms
 
-		//- List vertical
+		//- Input checkbox
 		h2.debug-title.
-			Input checkbox <strong>.input-checkbox</strong>
+			Input checkbox
 		.row.row-space
 			.col-6
 				.debug-view
-					.input-checkbox.input-checkbox--mark-color
-						input(type="checkbox", id="checkbox1", name="checkbox1" required)
+					.input-checkbox
+						input(type="checkbox", id="checkbox1" name="checkbox1", required)
 						label.input-checkbox__label(for="checkbox1")
 							span.input-checkbox__input
-							| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+							span.input-checkbox__text
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
 			.col-6
-				form(action="", data-change-class="list-vertical")
-					input(type="checkbox", name="list--mark") 
-					| .list--mark
-					input(type="checkbox", name="list--mark-icon") 
-					| .list--mark-icon
-					input(type="checkbox", name="list--mark-center") 
-					| .list--mark-center
-		//- Responsive
-		h3.debug-title.debug-title--responsive.
-			List vertical responsive <strong>{xs, sm, md, lg}</strong><br>
-			<i>.list.lg_list-vertical.lg_list--mark-icon.md_list-vertical.md_list--mark.sm_list-vertical.sm_list--mark.sm_list--mark-center.xs_list-vertical</i>
+				.debug-code
+					:escape
+						<div class="input-checkbox">
+							<input type="checkbox" id="checkbox1" name="checkbox1" required="required">
+							<label class="input-checkbox__label" for="checkbox1">
+								<span class="input-checkbox__input input-checkbox__input--mark-icon">
+								<span class="input-checkbox__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+								<span>
+							</label>
+						</div>
+
+		//- Mark color
+		h3.debug-title.debug-title--mod.
+			Mark color <strong>.input-checkbox__input--mark-color</strong>
 		.row.row-space
-			.col-12
+			.col-6
+				.debug-view
+					.input-checkbox
+						input(type="checkbox", id="checkbox2" name="checkbox2", required)
+						label.input-checkbox__label(for="checkbox2")
+							span.input-checkbox__input.input-checkbox__input--mark-color
+							span.input-checkbox__text
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+			.col-6
+				.debug-code
+					:escape
+						<div class="input-checkbox">
+							<input type="checkbox" id="checkbox2" name="checkbox2" required="required">
+							<label class="input-checkbox__label" for="checkbox2">
+								<span class="input-checkbox__input input-checkbox__input--mark-icon">
+									<svg class="input-checkbox__mark" viewBox="0 0 512 512"><path d="M256 0C114.615 0 0 114.615 0 256s114.615 256 256 256 256-114.615 256-256S397.385 0 256 0zm-48 416L102 278l47-49 59 75 185-151 23 23-208 240z"></path></svg>
+								</span>
+								<span class="input-checkbox__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+								<span>
+							</label>
+						</div>
 
-				.debug-view.center
-					.debug-responsive
-						iframe.debug-iframe(data-iframe="list-vertical-responsive")
-						div(data-iframe-content="list-vertical-responsive")
-							ul.list.lg_list-vertical.lg_list--mark-icon.md_list-vertical.md_list--mark.sm_list-vertical.sm_list--mark.sm_list--mark-center.xs_list-vertical
-								li.list__item
-									p.list__content
-										= debug_item_1
-									!= debug_item_icon
-								li.list__item
-									p.list__content
-										= debug_item_3
-									!= debug_item_icon
-								li.list__item
-									p.list__content
-										= debug_item_1
-									!= debug_item_icon
-								li.list__item
-									p.list__content
-										!= debug_item_4
-									!= debug_item_icon	
+						.input-checkbox>input#checkbox[type='checkbox' name='checkbox' required]+label.input-checkbox__label[for="checkbox"]>span.input-checkbox__input.input-checkbox__input--mark-color+.input-checkbox__text>{Lorem ipsum}
+		
+		//- Mark icon
+		h3.debug-title.debug-title--mod.
+			Mark icon <strong>.input-checkbox__input--mark-icon</strong>
+		.row.row-space
+			.col-6
+				.debug-view
+					.input-checkbox
+						input(type="checkbox", id="checkbox3" name="checkbox3", required)
+						label.input-checkbox__label(for="checkbox3")
+							span.input-checkbox__input.input-checkbox__input--mark-icon
+								|
+								| <svg inline class='input-checkbox__mark' src='checkmark'></svg>
+								|
+							span.input-checkbox__text
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+			.col-6
+				.debug-code
+					:escape
+						<div class="input-checkbox">
+							<input type="checkbox" id="checkbox3" name="checkbox3" required="required">
+							<label class="input-checkbox__label" for="checkbox3">
+								<span class="input-checkbox__input input-checkbox__input--mark-icon">
+									<svg class="input-checkbox__mark">...</svg>
+								</span>
+								<span class="input-checkbox__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+								<span>
+							</label>
+						</div>
 
-		//- List horizontal
+						.input-checkbox>input#checkbox[type='checkbox' name='checkbox' required]+label.input-checkbox__label[for="checkbox"]>(span.input-checkbox__input.input-checkbox__input--mark-icon>svg)+.input-checkbox__text>{Lorem ipsum}
+
+		//- Input radio
 		h2.debug-title.
-			List horizontal <strong>.list-horizontal</strong>
+			Input radio
 		.row.row-space
 			.col-6
 				.debug-view
-					.d-inline-block.hideable
-						ul#list-horizontal.list.list-horizontal
-							li.list__item
-								.list__adddon
-								.list__container
-									.list__content 
-										= debug_item_1
-									!= debug_item_icon
-							li.list__item
-								.list__adddon
-								.list__container
-									.list__content
-										= debug_item_3
-									!= debug_item_icon
-							li.list__item
-								.list__adddon
-								.list__container
-									.list__content
-										!= debug_item_4
-									!= debug_item_icon
-			.col-6
-				form(action="", data-change-class="list-horizontal")
-					input(type="checkbox", name="list--mark") 
-					| .list--mark
-					input(type="checkbox", name="list--mark-icon") 
-					| .list--mark-icon
-					input(type="checkbox", name="list--mark-center") 
-					| .list--mark-center
-		
-		h3.debug-title.debug-title--addon.
-			center
-		.row.row-space
-			.col-6
-				.debug-view.center
-					.d-inline-block
-						ul.list.list-horizontal
-							li.list__item
-								!= debug_item_1
-							li.list__item
-								!= debug_item_3
-							li.list__item
-								!= debug_item_1
-							li.list__item
-								!= debug_item_4
-			.col-6
-				p.debug-code.
-					.center
-						.d-inline-block
-							.list.list-horizontal
-								.list__item{ | Item $}*4
+					.input-radio
+						input#inputRatio1(type="radio", name="inputName1", value="1", required)
+						label.input-radio__label(for="inputRatio1")
+							span.input-radio__input
+							span.input-radio__text
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
 
-		//- .list--mark
+			.col-6
+				.debug-code
+					:escape
+						<div class="input-checkbox">
+							<input type="checkbox" id="checkbox3" name="checkbox3" required="required">
+							<label class="input-checkbox__label" for="checkbox3">
+								<span class="input-checkbox__input input-checkbox__input--mark-icon">
+									<svg class="input-checkbox__mark">...</svg>
+								</span>
+								<span class="input-checkbox__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+								<span>
+							</label>
+						</div>
+
+						.input-checkbox>input#checkbox[type='checkbox' name='checkbox' required]+label.input-checkbox__label[for="checkbox"]>(span.input-checkbox__input.input-checkbox__input--mark-icon>svg)+.input-checkbox__text>{Lorem ipsum}
+
+		//- Mark color
 		h2.debug-title.debug-title--mod.
-			List horizontal with list style dot <strong>.list--mark</strong>
+			Mark color <strong>.input-radio__input--mark-color</strong>
 		.row.row-space
 			.col-6
 				.debug-view
-					.hideable
-						ul.list.list-horizontal.list--mark
-							li.list__item
-								!= debug_item_1
-							li.list__item
-								!= debug_item_3
-							li.list__item
-								!= debug_item_1
+					.input-radio
+						input#inputRatio2(type="radio", name="inputName2", value="1", required)
+						label.input-radio__label(for="inputRatio2")
+							span.input-radio__input.input-radio__input--mark-color
+							span.input-radio__text
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+			
 			.col-6
-				p.debug-code.
-					.hideable
-						.list.list-horizontal.list--mark
-							.list__item{ | Item $}*4
+				.debug-code
+					:escape
+						<div class="input-checkbox">
+							<input type="checkbox" id="checkbox3" name="checkbox3" required="required">
+							<label class="input-checkbox__label" for="checkbox3">
+								<span class="input-checkbox__input input-checkbox__input--mark-icon">
+									<svg class="input-checkbox__mark">...</svg>
+								</span>
+								<span class="input-checkbox__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+								<span>
+							</label>
+						</div>
 
-		h3.debug-title.debug-title--addon.
-			center block
-		.row.row-space
-			.col-6
-				.debug-view.center
-					.hideable.d-inline-block
-						ul.list.list-horizontal.list--mark
-							li.list__item
-								p.list__content
-									!= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									!= debug_item_3
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									!= debug_item_1
-								!= debug_item_icon	
-							li.list__item
-								p.list__content
-									!= debug_item_4
-								!= debug_item_icon	
-			.col-6
-				p.debug-code.
-					.center
-						.hideable.d-inline-block
-							.list.list-horizontal.list--mark
-								.list__item{ | Item $}*4
+						.input-checkbox>input#checkbox[type='checkbox' name='checkbox' required]+label.input-checkbox__label[for="checkbox"]>(span.input-checkbox__input.input-checkbox__input--mark-icon>svg)+.input-checkbox__text>{Lorem ipsum}
 
-		h3.debug-title.debug-title--addon.
-			center marks <strong>.list--mark-center</strong>
-		.row.row-space
-			.col-6
-				.debug-view
-					.hideable.d-inline-block
-						ul.list.list-horizontal.list--mark.list--mark-center
-							li.list__item
-								!= debug_item_1
-							li.list__item
-								!= debug_item_3
-							li.list__item
-								!= debug_item_4
-			.col-6
-				p.debug-code.
-					.center
-						.hideable.d-inline-block
-							.list.list-horizontal.list--mark-center
-								.list__item{ | Item $}*4
-
-		//- .list--mark-icon
+		//- Mark icon
 		h2.debug-title.debug-title--mod.
-			List horizontal with list style icon <strong>.list--mark-icon</strong>
+			Mark icon <strong>.input-radio__input--mark-icon</strong>
 		.row.row-space
 			.col-6
 				.debug-view
-					.hideable
-						ul.list-horizontal.list--mark-icon
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_3
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon	
+					.input-radio
+						input#inputRatio3(type="radio", name="inputName3", value="1", required)
+						label.input-radio__label(for="inputRatio3")
+							span.input-radio__input.input-radio__input--mark-icon
+								|
+								| <svg inline class='input-radio__mark' src='checkmark'></svg>
+								|
+							span.input-radio__text
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+			
 			.col-6
-				p.debug-code.
-					.hideable
-						.list-horizontal.list--mark-icon
-							.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
-		
-		h3.debug-title.debug-title--addon.
-			center ASIX X
-		.row.row-space
-			.col-6
-				.debug-view.center
-					.hideable.d-inline-block
-						ul.list.list-horizontal.list--mark-icon
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_3
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									!= debug_item_4
-								!= debug_item_icon		
-			.col-6
-				p.debug-code.
-					.center
-						.hideable.d-inline-block
-							.list.list-horizontal.list--mark-icon
-								.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
+				.debug-code
+					:escape
+						<div class="input-checkbox">
+							<input type="checkbox" id="checkbox3" name="checkbox3" required="required">
+							<label class="input-checkbox__label" for="checkbox3">
+								<span class="input-checkbox__input input-checkbox__input--mark-icon">
+									<svg class="input-checkbox__mark">...</svg>
+								</span>
+								<span class="input-checkbox__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+								<span>
+							</label>
+						</div>
 
-		h3.debug-title.debug-title--addon.
-			center ASIX Y
-		.row.row-space
-			.col-6
-				.debug-view
-					.hideable.d-inline-block
-						ul.list.list-horizontal.list--mark-icon.list--mark-center
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_3
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									!= debug_item_4
-								!= debug_item_icon	
-			.col-6
-				p.debug-code.
-					.center
-						.hideable.d-inline-block
-							.list.list-horizontal.list--mark-center
-								.list__item{ | Item $}*4
-		
-		h3.debug-title.debug-title--addon.
-			item same size
-		.row.row-space
-			.col-6
-				.debug-view.center
-					.hideable
-						ul.list-horizontal.list--mark-icon.list--same-size
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_3
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									= debug_item_1
-								!= debug_item_icon
-							li.list__item
-								p.list__content
-									!= debug_item_3
-								!= debug_item_icon		
-			.col-6
-				p.debug-code.
-					.center
-						.hideable.d-inline-block
-							.list-horizontal.list--mark-icon
-								.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
+						.input-checkbox>input#checkbox[type='checkbox' name='checkbox' required]+label.input-checkbox__label[for="checkbox"]>(span.input-checkbox__input.input-checkbox__input--mark-icon>svg)+.input-checkbox__text>{Lorem ipsum}
 
-		//- Responsive
-		h3.debug-title.debug-title--responsive.
-			List horizontal responsive <strong>{xs, sm, md, lg}</strong><br>
-			<i>.list.lg_list-horizontal.lg_list--mark-icon.md_list-horizontal.md_list--mark.sm_list-horizontal.sm_list--mark.sm_list--mark-center.xs_list-horizontal</i>
+		//- Space
+		h2.debug-title.debug-title--addon.
+			Input space
 		.row.row-space
-			.col-12
-
-				.debug-view.center
-					.debug-responsive
-						iframe.debug-iframe(data-iframe="list-horizontal-responsive")
-						div(data-iframe-content="list-horizontal-responsive")
-							.hideable.d-inline-block
-								ul.list.lg_list-horizontal.lg_list--mark-icon.md_list-horizontal.md_list--mark.sm_list-horizontal.sm_list--mark.sm_list--mark-center.xs_list-horizontal
-									li.list__item
-										p.list__content
-											= debug_item_1
-										!= debug_item_icon
-									li.list__item
-										p.list__content
-											= debug_item_3
-										!= debug_item_icon
-									li.list__item
-										p.list__content
-											= debug_item_1
-										!= debug_item_icon
-									li.list__item
-										p.list__content
-											!= debug_item_4
-										!= debug_item_icon
+			.col-6
+				.space
+					.input-group__item
+						.input-checkbox
+							input(type="checkbox", required)
+							label.input-checkbox__label
+								span.input-checkbox__input
+								span.input-checkbox__text
+									| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+					.input-group__item
+						.input-checkbox
+							input(type="checkbox", required)
+							label.input-checkbox__label
+								span.input-checkbox__input
+								span.input-checkbox__text
+									| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+					.input-group__item
+						.input-checkbox
+							input(type="checkbox", required)
+							label.input-checkbox__label
+								span.input-checkbox__input
+								span.input-checkbox__text
+									| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+			
+			.col-6
+				.debug-code
+					:escape
+						.space
+							.input-group__item
+								.input-checkbox
+									input(type="checkbox", required)
+									label.input-checkbox__label
+										span.input-checkbox__input
+										span.input-checkbox__text
+											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+							.input-group__item
+								.input-checkbox
+									input(type="checkbox", required)
+									label.input-checkbox__label
+										span.input-checkbox__input
+										span.input-checkbox__text
+											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+							.input-group__item
+								.input-checkbox
+									input(type="checkbox", required)
+									label.input-checkbox__label
+										span.input-checkbox__input
+										span.input-checkbox__text
+											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
 
 include ../template/includes/scripts.pug
 

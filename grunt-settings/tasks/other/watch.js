@@ -29,7 +29,10 @@ module.exports = {
 },
   pug_dev: {
     files: ["./src/debug/**/*.pug"],
-    tasks: ["newer:pug:debug"],
+    tasks: [
+      "newer:pug:debug",
+      "newer:autosvg:debug"
+    ],
     options: {
       spawn: true
     }
