@@ -9,12 +9,24 @@ module.exports = {
     }
   },
   pug: {
-    files: ["./src/template/**/*.pug"],
-    tasks: ["newer:pug:dev"],
+    files: ['./src/template/*.pug'],
+    tasks: [
+      'newer:pug:dev',
+      'newer:autosvg:dev',
+    ],
     options: {
       spawn: true
     }
   },
+  pug_includes: {
+    files: ['./src/template/includes/*.pug'],
+    tasks: [
+        'pug:dev',
+    ],
+    options: {
+        spawn: true,
+    }
+},
   pug_dev: {
     files: ["./src/debug/**/*.pug"],
     tasks: ["newer:pug:debug"],

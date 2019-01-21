@@ -1230,12 +1230,19 @@ body {
 label[for] {
   cursor: pointer;
 }
+input[type=checkbox]:checked {
+  background-color: red;
+}
+input[type=checkbox]:checked + * {
+  background-color: red;
+}
 /**
   * Checkbox
 **/
 .input-checkbox {
   position: relative;
   /* Hide oryginal checkbox element */
+  /* Mark color */
   /* Fake checkbox element */
   /* Clickable label toggle checkbox */
   /* Toggle checkbox element */
@@ -1260,6 +1267,31 @@ label[for] {
   pointer-events: none;
   opacity: 0.4;
 }
+.input-checkbox--mark-color .input-checkbox__input:before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+  width: 90%;
+  height: 90%;
+  background-color: #e7be54;
+}
+.input-checkbox--mark-color--hover:hover .input-checkbox--mark-color .input-checkbox__input:before,
+.input-checkbox--mark-color--hover:active .input-checkbox--mark-color .input-checkbox__input:before,
+.input-checkbox--mark-color--hover:focus .input-checkbox--mark-color .input-checkbox__input:before,
+.input-checkbox--mark-color--hover-active .input-checkbox--mark-color .input-checkbox__input:before,
+.input-checkbox--mark-color--hover-active .input-checkbox--mark-color .input-checkbox__input:before,
+.input-checkbox--mark-color--hover-active .input-checkbox--mark-color .input-checkbox__input:before,
+.input-checkbox--mark-color:hover .input-checkbox__input:before,
+.input-checkbox--mark-color:active .input-checkbox__input:before,
+.input-checkbox--mark-color:focus .input-checkbox__input:before {
+  opacity: 0.4;
+}
+.input-checkbox--mark-color input:checked + .input-checkbox__label .input-checkbox__input:before {
+  opacity: 1;
+}
 .input-checkbox__input {
   transition: border-color 0.2s;
   width: 20px;
@@ -1268,12 +1300,14 @@ label[for] {
   top: 0;
   left: 0;
   border: 1px solid #e7be54;
-  /* Style for using SVG for checkbox element mark 
-    * Do not use transform - bug with mark size when checkbox is set on/off
-    */
-  /* Style for using color fill for checkbox element mark 
-     * Do not use transform - bug with mark size when checkbox is set on/off
-    */
+  /**
+         * Style for using SVG for checkbox element mark 
+         * Do not use transform - bug with mark size when checkbox is set on/off
+         */
+  /**
+         * Style for using color fill for checkbox element mark 
+         * Do not use transform - bug with mark size when checkbox is set on/off
+         */
 }
 .input-checkbox__input--mark-icon .input-checkbox__mark {
   position: absolute;
@@ -1345,16 +1379,19 @@ label[for] {
 .input-checkbox__label:hover .input-checkbox__input--mark-color:before,
 .input-checkbox__label:active .input-checkbox__input--mark-color:before,
 .input-checkbox__label:focus .input-checkbox__input--mark-color:before {
-  background-color: #000000;
+  opacity: 0.5;
 }
-.input-checkbox input:checked + .input-checkbox__label .input-checkbox__input {
+.input-checkbox input:checked + .input-checkbox__label {
   /* Style for using SVG for checkbox element mark */
   /* Style for using color fill for checkbox element mark */
 }
-.input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-icon .input-checkbox__mark {
+.input-checkbox input:checked + .input-checkbox__label--mark-icon .input-checkbox__label .input-checkbox__input {
   opacity: 1;
 }
-.input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-color:before {
+.input-checkbox input:checked + .input-checkbox__label--mark-color:before {
+  opacity: 1;
+}
+.input-checkbox--mark-color input:checked + .input-checkbox__label .input-checkbox__input:before {
   opacity: 1;
 }
 /**

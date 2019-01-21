@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="js_no" lang=pl-PL itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/><meta http-equiv="X-UA-Compatible" content="IE=Edge"/><meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no"/><title>Debug Lists | FrontBox</title><link rel="stylesheet" type="text/css" href="/css/style.dev.css" media="all"/><link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="/images/favicon/site.webmanifest">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/images/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff"></head><body id="body"><div class="page-content relative"><div class="debug-wrap wrap"><h1 class="debug-header">Forms
+</h1><h2 class="debug-title">Input checkbox <strong>.input-checkbox</strong></h2><div class="row row-space"><div class="col-6"><div class="debug-view"><div class="input-checkbox input-checkbox--mark-color"><input type="checkbox" id="checkbox1" name="checkbox1" required="required"/><label class="input-checkbox__label" for="checkbox1"><span class="input-checkbox__input"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.</label></div></div></div><div class="col-6"><form action="" data-change-class="list-vertical"><input type="checkbox" name="list--mark"/>.list--mark<input type="checkbox" name="list--mark-icon"/>.list--mark-icon<input type="checkbox" name="list--mark-center"/>.list--mark-center</form></div></div><h3 class="debug-title debug-title--responsive">List vertical responsive <strong>{xs, sm, md, lg}</strong><br>
+<i>.list.lg_list-vertical.lg_list--mark-icon.md_list-vertical.md_list--mark.sm_list-vertical.sm_list--mark.sm_list--mark-center.xs_list-vertical</i></h3><div class="row row-space"><div class="col-12"><div class="debug-view center"><div class="debug-responsive"><iframe class="debug-iframe" data-iframe="list-vertical-responsive"></iframe><div data-iframe-content="list-vertical-responsive"><ul class="list lg_list-vertical lg_list--mark-icon md_list-vertical md_list--mark sm_list-vertical sm_list--mark sm_list--mark-center xs_list-vertical"><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li></ul></div></div></div></div></div><h2 class="debug-title">List horizontal <strong>.list-horizontal</strong></h2><div class="row row-space"><div class="col-6"><div class="debug-view"><div class="d-inline-block hideable"><ul class="list list-horizontal" id="list-horizontal"><li class="list__item"><div class="list__adddon"></div><div class="list__container"><div class="list__content"> </div></div></li><li class="list__item"><div class="list__adddon"></div><div class="list__container"><div class="list__content"></div></div></li><li class="list__item"><div class="list__adddon"></div><div class="list__container"><div class="list__content"></div></div></li></ul></div></div></div><div class="col-6"><form action="" data-change-class="list-horizontal"><input type="checkbox" name="list--mark"/>.list--mark<input type="checkbox" name="list--mark-icon"/>.list--mark-icon<input type="checkbox" name="list--mark-center"/>.list--mark-center</form></div></div><h3 class="debug-title debug-title--addon">center</h3><div class="row row-space"><div class="col-6"><div class="debug-view center"><div class="d-inline-block"><ul class="list list-horizontal"><li class="list__item"></li><li class="list__item"></li><li class="list__item"></li><li class="list__item"></li></ul></div></div></div><div class="col-6"><p class="debug-code">.center
+	.d-inline-block
+		.list.list-horizontal
+			.list__item{ | Item $}*4
+</p></div></div><h2 class="debug-title debug-title--mod">List horizontal with list style dot <strong>.list--mark</strong></h2><div class="row row-space"><div class="col-6"><div class="debug-view"><div class="hideable"><ul class="list list-horizontal list--mark"><li class="list__item"></li><li class="list__item"></li><li class="list__item"></li></ul></div></div></div><div class="col-6"><p class="debug-code">.hideable
+	.list.list-horizontal.list--mark
+		.list__item{ | Item $}*4
+</p></div></div><h3 class="debug-title debug-title--addon">center block</h3><div class="row row-space"><div class="col-6"><div class="debug-view center"><div class="hideable d-inline-block"><ul class="list list-horizontal list--mark"><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li></ul></div></div></div><div class="col-6"><p class="debug-code">.center
+	.hideable.d-inline-block
+		.list.list-horizontal.list--mark
+			.list__item{ | Item $}*4
+</p></div></div><h3 class="debug-title debug-title--addon">center marks <strong>.list--mark-center</strong></h3><div class="row row-space"><div class="col-6"><div class="debug-view"><div class="hideable d-inline-block"><ul class="list list-horizontal list--mark list--mark-center"><li class="list__item"></li><li class="list__item"></li><li class="list__item"></li></ul></div></div></div><div class="col-6"><p class="debug-code">.center
+	.hideable.d-inline-block
+		.list.list-horizontal.list--mark-center
+			.list__item{ | Item $}*4
+</p></div></div><h2 class="debug-title debug-title--mod">List horizontal with list style icon <strong>.list--mark-icon</strong></h2><div class="row row-space"><div class="col-6"><div class="debug-view"><div class="hideable"><ul class="list-horizontal list--mark-icon"><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li></ul></div></div></div><div class="col-6"><p class="debug-code">.hideable
+	.list-horizontal.list--mark-icon
+		.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
+</p></div></div><h3 class="debug-title debug-title--addon">center ASIX X</h3><div class="row row-space"><div class="col-6"><div class="debug-view center"><div class="hideable d-inline-block"><ul class="list list-horizontal list--mark-icon"><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li></ul></div></div></div><div class="col-6"><p class="debug-code">.center
+	.hideable.d-inline-block
+		.list.list-horizontal.list--mark-icon
+			.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
+</p></div></div><h3 class="debug-title debug-title--addon">center ASIX Y</h3><div class="row row-space"><div class="col-6"><div class="debug-view"><div class="hideable d-inline-block"><ul class="list list-horizontal list--mark-icon list--mark-center"><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li></ul></div></div></div><div class="col-6"><p class="debug-code">.center
+	.hideable.d-inline-block
+		.list.list-horizontal.list--mark-center
+			.list__item{ | Item $}*4
+</p></div></div><h3 class="debug-title debug-title--addon">item same size</h3><div class="row row-space"><div class="col-6"><div class="debug-view center"><div class="hideable"><ul class="list-horizontal list--mark-icon list--same-size"><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li></ul></div></div></div><div class="col-6"><p class="debug-code">.center
+	.hideable.d-inline-block
+		.list-horizontal.list--mark-icon
+			.list__item*4>p.list__content{ | Item $}+svg.icon.list__icon
+</p></div></div><h3 class="debug-title debug-title--responsive">List horizontal responsive <strong>{xs, sm, md, lg}</strong><br>
+<i>.list.lg_list-horizontal.lg_list--mark-icon.md_list-horizontal.md_list--mark.sm_list-horizontal.sm_list--mark.sm_list--mark-center.xs_list-horizontal</i></h3><div class="row row-space"><div class="col-12"><div class="debug-view center"><div class="debug-responsive"><iframe class="debug-iframe" data-iframe="list-horizontal-responsive"></iframe><div data-iframe-content="list-horizontal-responsive"><div class="hideable d-inline-block"><ul class="list lg_list-horizontal lg_list--mark-icon md_list-horizontal md_list--mark sm_list-horizontal sm_list--mark sm_list--mark-center xs_list-horizontal"><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li><li class="list__item"><p class="list__content"></p></li></ul></div></div></div></div></div></div></div></div><div class="page__overlay" id="page-overlay"></div><script src="/js/app.dev.js"></script><script>var
+$debugChangerClass = $("[data-change-class]");
+
+$debugChangerClass.each(function(){
+	var
+	$this = $(this),
+	findContent = $this.attr("data-change-class"),
+	$content = $("#"+findContent),
+	$inputs = $this.find("input");
+
+	console.log($content);
+
+	$inputs.on("change", function(){
+		var 
+		$this = $(this),
+		value = $this.attr("name");
+
+		console.log(value);
+
+		if($this.is(":checked")) {
+			$content.addClass(value);
+		}
+		else {
+			$content.removeClass(value);
+		}
+		
+	});
+});
+</script><script src="/js/app.dev.js"></script><script>var
+$iframe = $("[data-iframe]");
+$iframe.each(function (index, element) {
+    var 
+    $this = $(this),
+    find = $this.attr("data-iframe"),
+    $content = $(`[data-iframe-content="${find}"]`);
+
+    $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
+    $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
+    $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
+    $this.contents().find("body").append( $content );
+});
+</script></body>
+</html>
