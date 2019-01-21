@@ -189,6 +189,19 @@ include ../template/includes/header.pug
 
 						.input-checkbox>input#checkbox[type='checkbox' name='checkbox' required]+label.input-checkbox__label[for="checkbox"]>(span.input-checkbox__input.input-checkbox__input--mark-icon>svg)+.input-checkbox__text>{Lorem ipsum}
 
+		//- Input text
+		h2.debug-title.
+			Input text
+		.row.row-space
+			.col-6
+				.debug-view
+					input.input-text(type="text", required)
+			.col-6
+				.debug-code
+					:escape
+						<input type="text" class="input-text" required="required">
+						
+						input.input-text[type="text" required]
 		//- Space
 		h2.debug-title.debug-title--addon.
 			Input space
@@ -217,6 +230,46 @@ include ../template/includes/header.pug
 								span.input-checkbox__text
 									| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
 			
+			.col-6
+				.debug-code
+					:escape
+						.space
+							.input-group__item
+								.input-checkbox
+									input(type="checkbox", required)
+									label.input-checkbox__label
+										span.input-checkbox__input
+										span.input-checkbox__text
+											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+							.input-group__item
+								.input-checkbox
+									input(type="checkbox", required)
+									label.input-checkbox__label
+										span.input-checkbox__input
+										span.input-checkbox__text
+											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+							.input-group__item
+								.input-checkbox
+									input(type="checkbox", required)
+									label.input-checkbox__label
+										span.input-checkbox__input
+										span.input-checkbox__text
+											| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo.
+
+		//- Space
+		h2.debug-title.debug-title--addon.
+			Validator
+		.row.row-space
+			.col-6
+				form.js_validator.space
+
+					label(for="email")
+						| lorem ipsum
+					input#email.input-text.input-error--absolute.input-error--right(type="email" name="email" required)
+
+					button.btn.btn-block
+						| Test required information
+
 			.col-6
 				.debug-code
 					:escape

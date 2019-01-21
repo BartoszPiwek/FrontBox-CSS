@@ -3,12 +3,11 @@
 || https://jqueryvalidation.org/
 =========================================================================*/
 module.exports = () => {
-    'use strict';
 
     /* Start validator */
-    const $formValidator = $('.form-validator');
+    const $formValidator = $('.js_validator');
 
-        if ($formValidator) {
+    if ($formValidator) {
 
         /* Fix email regexe */
         $.validator.methods.email = function(value, element) {
@@ -16,14 +15,14 @@ module.exports = () => {
         };
 
         /* Change default settings */
-        jQuery.validator.setDefaults({
+        $.validator.setDefaults({
             errorClass: "input-error",
             validClass: "input-success",
         });
 
         /* Change validator messages */
         // const validatorMessages = global.validatorMessages;
-        jQuery.extend(jQuery.validator.messages, {
+        $.extend(jQuery.validator.messages, {
             required: "This field is required.",
             remote: "Please fix this field.",
             email: "Please enter a valid email address.",
@@ -44,15 +43,16 @@ module.exports = () => {
         });
 
         /* Form Newsletter */
-        var $formNewsletter = $('#form-newsletter');
+        var $formNewsletter = $('.js_validator');
+        
         if ( $formNewsletter.length ) {
             $formNewsletter.validate({
-                rules: {
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                },
+                // rules: {
+                //     email: {
+                //         required: true,
+                //         email: true
+                //     },
+                // },
             });
         }
     }

@@ -7,7 +7,7 @@ require('lazysizes');
 
 /* jQuery Plugins */
 // require('slick-carousel'); // https://github.com/kenwheeler/slick
-// require('jquery-validation'); // https://github.com/jquery-validation/jquery-validation
+require('jquery-validation'); // https://github.com/jquery-validation/jquery-validation
 // require('select2')();
 
 /* Support Libs */
@@ -294,7 +294,7 @@ $(window).bind("load", function() {
     // }
 
     /* Validator */
-    require('./validator');
+    require('./validator')();
     // require('./fullpage');
 
     /* test-code */
