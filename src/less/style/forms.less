@@ -43,6 +43,21 @@ label[for] {
                 }
             }
         }
+
+        /* Checked */
+        & + .input-radio {
+            /* Radio element mark fill */
+            &__label .input-radio__input--mark-color {
+                &:before {
+                    opacity: 1;
+                }
+            }
+            /* Radio element mark icon */
+            &__label .input-radio__mark {
+                opacity: 1;
+            }
+        }
+
     }
 }
 
@@ -211,9 +226,10 @@ label[for] {
         display: block; // Space for radio
         padding-left: 30px;
     }
-    /* Unhover when radio element is on */
+
+    /* Hover */
     input {
-        &+.input-radio {
+        & + .input-radio {
             &__label {
                 .add-hover({
                     .input-radio {
@@ -226,7 +242,8 @@ label[for] {
             }
         }
     }
-    /* Toggle radio element */
+
+    /* Toggle */
     input:checked {
         & + .input-radio {
             /* Radio element mark fill */
