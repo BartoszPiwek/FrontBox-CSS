@@ -5,22 +5,19 @@
 =========================================================================*/
 
 /**
-  * <label>
-  * Defautl styl
-**/
-
+ * Defautl style
+ */
 label[for] {
     cursor: pointer;
 }
 
 /**
-  * Checkbox
-**/
-
-.input-checkbox {
+ * Default Input
+ */
+.input {
     position: relative;
 
-    /* Hide oryginal checkbox element */
+    /* Hide oryginal radio element */
     input {
         border: 0 !important;
         clip: rect(0 0 0 0) !important;
@@ -35,9 +32,10 @@ label[for] {
         bottom: 0 !important;
         position: absolute !important;
         left: 50% !important;
-        /* Block user select when checkbox is disabled */
+
+        /* Block user select when input is disabled */
         &:disabled {
-            &+.input-checkbox {
+            & + .input-radio {
                 &__label {
                     user-select: none;
                     pointer-events: none;
@@ -46,8 +44,14 @@ label[for] {
             }
         }
     }
+}
 
-    /* Fake checkbox element */
+/**
+ * Input Checkbox
+ */
+.input-checkbox {
+
+    /* Fake checkbox input */
     &__input {
         transition+: border-color @time-transition; 
         // Size
@@ -104,21 +108,13 @@ label[for] {
         cursor: pointer;
         display: block; // Space for checkbox
         padding-left: 30px;
+
+        // Hover
         .add-hover({
             .input-checkbox {
                 /* Fake checkbox element */
                 &__input {
                     border-color: @color-black;
-                }
-                /* Style for using SVG for checkbox element mark */
-                &__mark {
-                    fill: @color-black;
-                }
-                /* Style for using color fill for checkbox element mark */
-                &__input--mark-color {
-                    &:before {
-                        opacity: 0.5;
-                    }
                 }
             }
         });
@@ -144,60 +140,12 @@ label[for] {
 }
 
 /**
-  * Radio
-**/
-
+ * Input Radio
+ */
 .input-radio {
-    position: relative;
 
-    /* Hide oryginal radio element */
-    input {
-        border: 0 !important;
-        clip: rect(0 0 0 0) !important;
-        -webkit-clip-path: inset(50%) !important;
-        clip-path: inset(50%) !important;
-        height: 1px !important;
-        overflow: hidden !important;
-        padding: 0 !important;
-        position: absolute !important;
-        width: 1px !important;
-        white-space: nowrap !important;
-        bottom: 0 !important;
-        position: absolute !important;
-        left: 50% !important;
-        /* Block user select when radio is disabled */
-        &:disabled {
-            &+.input-radio {
-                &__label {
-                    user-select: none;
-                    pointer-events: none;
-                    opacity: 0.4;
-                }
-            }
-        }
-    }
-
-    /* Mark icon */
-    &__mark {
-        // Position
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform+_: translate(-50%, -50%);
-        // Size
-        width: 16px;
-        height: 16px;
-        // Style
-        fill: @color-primary;
-        // Transition
-        transition+: fill @time-transition;
-        // Animation
-        opacity: 0;
-    }
-
-    /* Fake radio element */
+    /* Fake radio input */
     &__input {
-        transition+: border-color @time-transition; 
         // Size
         width: 20px;
         height: 20px; 
@@ -208,8 +156,10 @@ label[for] {
         // Style
         border-radius: 50%;
         border: 1px solid @color-primary;
+        // Transition
+        transition+: border-color @time-transition; 
         
-        /* Radio element mark fill */
+        /* Radio element mark color */
         &:before {
             content: '';
             // Position
@@ -235,6 +185,26 @@ label[for] {
             
         }
     }
+
+    /* Mark icon */
+    &__mark {
+        // Position
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform+_: translate(-50%, -50%);
+        // Size
+        width: 16px;
+        height: 16px;
+        // Style
+        fill: @color-primary;
+        // Transition
+        transition+: fill @time-transition;
+        // Animation
+        opacity: 0;
+    }
+
+
     /* Clickable label toggle radio */
     &__label {
         cursor: pointer;
@@ -242,24 +212,17 @@ label[for] {
         padding-left: 30px;
     }
     /* Unhover when radio element is on */
-    input:not(:checked) {
+    input {
         &+.input-radio {
             &__label {
-                .add-hover( {
+                .add-hover({
                     .input-radio {
                         /* Fake radio element */
                         &__input {
                             border-color: @color-black;
                         }
-                        /* Radio element mark fill */
-                        &__input {
-                            &:before {
-                                background-color: @color-black;
-                            }
-                        }
                     }
-                }
-                );
+                });
             }
         }
     }

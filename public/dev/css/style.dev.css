@@ -1239,23 +1239,19 @@ body {
 || Collections: checkbox, radio, input, input-group
 =========================================================================*/
 /**
-  * <label>
-  * Defautl styl
-**/
+ * Defautl style
+ */
 label[for] {
   cursor: pointer;
 }
 /**
-  * Checkbox
-**/
-.input-checkbox {
+ * Default Input
+ */
+.input {
   position: relative;
-  /* Hide oryginal checkbox element */
-  /* Fake checkbox element */
-  /* Clickable label toggle checkbox */
-  /* Toggle checkbox element */
+  /* Hide oryginal radio element */
 }
-.input-checkbox input {
+.input input {
   border: 0 !important;
   clip: rect(0 0 0 0) !important;
   -webkit-clip-path: inset(50%) !important;
@@ -1268,12 +1264,20 @@ label[for] {
   bottom: 0 !important;
   position: absolute !important;
   left: 50% !important;
-  /* Block user select when checkbox is disabled */
+  /* Block user select when input is disabled */
 }
-.input-checkbox input:disabled + .input-checkbox__label {
+.input input:disabled + .input-radio__label {
   user-select: none;
   pointer-events: none;
   opacity: 0.4;
+}
+/**
+ * Input Checkbox
+ */
+.input-checkbox {
+  /* Fake checkbox input */
+  /* Clickable label toggle checkbox */
+  /* Toggle checkbox element */
 }
 .input-checkbox__input {
   transition: border-color 0.2s;
@@ -1328,8 +1332,6 @@ label[for] {
 .input-checkbox__label:active .input-checkbox,
 .input-checkbox__label:focus .input-checkbox {
   /* Fake checkbox element */
-  /* Style for using SVG for checkbox element mark */
-  /* Style for using color fill for checkbox element mark */
 }
 .input-checkbox__label--hover:hover .input-checkbox__label .input-checkbox__input,
 .input-checkbox__label--hover:active .input-checkbox__label .input-checkbox__input,
@@ -1342,28 +1344,6 @@ label[for] {
 .input-checkbox__label:focus .input-checkbox__input {
   border-color: #000000;
 }
-.input-checkbox__label--hover:hover .input-checkbox__label .input-checkbox__mark,
-.input-checkbox__label--hover:active .input-checkbox__label .input-checkbox__mark,
-.input-checkbox__label--hover:focus .input-checkbox__label .input-checkbox__mark,
-.input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__mark,
-.input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__mark,
-.input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__mark,
-.input-checkbox__label:hover .input-checkbox__mark,
-.input-checkbox__label:active .input-checkbox__mark,
-.input-checkbox__label:focus .input-checkbox__mark {
-  fill: #000000;
-}
-.input-checkbox__label--hover:hover .input-checkbox__label .input-checkbox__input--mark-color:before,
-.input-checkbox__label--hover:active .input-checkbox__label .input-checkbox__input--mark-color:before,
-.input-checkbox__label--hover:focus .input-checkbox__label .input-checkbox__input--mark-color:before,
-.input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input--mark-color:before,
-.input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input--mark-color:before,
-.input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input--mark-color:before,
-.input-checkbox__label:hover .input-checkbox__input--mark-color:before,
-.input-checkbox__label:active .input-checkbox__input--mark-color:before,
-.input-checkbox__label:focus .input-checkbox__input--mark-color:before {
-  opacity: 0.5;
-}
 .input-checkbox input:checked + .input-checkbox__label .input-checkbox__input {
   /* Style for using SVG for checkbox element mark */
   /* Style for using color fill for checkbox element mark */
@@ -1375,50 +1355,16 @@ label[for] {
   opacity: 1;
 }
 /**
-  * Radio
-**/
+ * Input Radio
+ */
 .input-radio {
-  position: relative;
-  /* Hide oryginal radio element */
+  /* Fake radio input */
   /* Mark icon */
-  /* Fake radio element */
   /* Clickable label toggle radio */
   /* Unhover when radio element is on */
   /* Toggle radio element */
 }
-.input-radio input {
-  border: 0 !important;
-  clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  width: 1px !important;
-  white-space: nowrap !important;
-  bottom: 0 !important;
-  position: absolute !important;
-  left: 50% !important;
-  /* Block user select when radio is disabled */
-}
-.input-radio input:disabled + .input-radio__label {
-  user-select: none;
-  pointer-events: none;
-  opacity: 0.4;
-}
-.input-radio__mark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
-  fill: #e7be54;
-  transition: fill 0.2s;
-  opacity: 0;
-}
 .input-radio__input {
-  transition: border-color 0.2s;
   width: 20px;
   height: 20px;
   position: absolute;
@@ -1426,7 +1372,8 @@ label[for] {
   left: 0;
   border-radius: 50%;
   border: 1px solid #e7be54;
-  /* Radio element mark fill */
+  transition: border-color 0.2s;
+  /* Radio element mark color */
   /* Radio element mark icon */
 }
 .input-radio__input:before {
@@ -1442,44 +1389,43 @@ label[for] {
   background-color: #e7be54;
   opacity: 0;
 }
+.input-radio__mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  fill: #e7be54;
+  transition: fill 0.2s;
+  opacity: 0;
+}
 .input-radio__label {
   cursor: pointer;
   display: block;
   padding-left: 30px;
 }
-.input-radio input:not(:checked) + .input-radio__label--hover:hover .input-radio input:not(:checked) + .input-radio__label .input-radio,
-.input-radio input:not(:checked) + .input-radio__label--hover:active .input-radio input:not(:checked) + .input-radio__label .input-radio,
-.input-radio input:not(:checked) + .input-radio__label--hover:focus .input-radio input:not(:checked) + .input-radio__label .input-radio,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio,
-.input-radio input:not(:checked) + .input-radio__label:hover .input-radio,
-.input-radio input:not(:checked) + .input-radio__label:active .input-radio,
-.input-radio input:not(:checked) + .input-radio__label:focus .input-radio {
+.input-radio input + .input-radio__label--hover:hover .input-radio input + .input-radio__label .input-radio,
+.input-radio input + .input-radio__label--hover:active .input-radio input + .input-radio__label .input-radio,
+.input-radio input + .input-radio__label--hover:focus .input-radio input + .input-radio__label .input-radio,
+.input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio,
+.input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio,
+.input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio,
+.input-radio input + .input-radio__label:hover .input-radio,
+.input-radio input + .input-radio__label:active .input-radio,
+.input-radio input + .input-radio__label:focus .input-radio {
   /* Fake radio element */
-  /* Radio element mark fill */
 }
-.input-radio input:not(:checked) + .input-radio__label--hover:hover .input-radio input:not(:checked) + .input-radio__label .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label--hover:active .input-radio input:not(:checked) + .input-radio__label .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label--hover:focus .input-radio input:not(:checked) + .input-radio__label .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label:hover .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label:active .input-radio__input,
-.input-radio input:not(:checked) + .input-radio__label:focus .input-radio__input {
+.input-radio input + .input-radio__label--hover:hover .input-radio input + .input-radio__label .input-radio__input,
+.input-radio input + .input-radio__label--hover:active .input-radio input + .input-radio__label .input-radio__input,
+.input-radio input + .input-radio__label--hover:focus .input-radio input + .input-radio__label .input-radio__input,
+.input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input,
+.input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input,
+.input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input,
+.input-radio input + .input-radio__label:hover .input-radio__input,
+.input-radio input + .input-radio__label:active .input-radio__input,
+.input-radio input + .input-radio__label:focus .input-radio__input {
   border-color: #000000;
-}
-.input-radio input:not(:checked) + .input-radio__label--hover:hover .input-radio input:not(:checked) + .input-radio__label .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label--hover:active .input-radio input:not(:checked) + .input-radio__label .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label--hover:focus .input-radio input:not(:checked) + .input-radio__label .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label--hover-active .input-radio input:not(:checked) + .input-radio__label .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label:hover .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label:active .input-radio__input:before,
-.input-radio input:not(:checked) + .input-radio__label:focus .input-radio__input:before {
-  background-color: #000000;
 }
 .input-radio input:checked + .input-radio {
   /* Radio element mark fill */
