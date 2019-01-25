@@ -1,6 +1,7 @@
 /* Libs */
 global.$ = require('jquery');
 global.jQuery = $;
+global.bodyScrollLock = require('body-scroll-lock');
 // global.AOS = require('aos');
 // global.Cookies = require('js-cookie');
 require('lazysizes');
@@ -294,8 +295,8 @@ $(window).bind("load", function() {
     // }
 
     /* Validator */
-    require('./validator')();
-    // require('./fullpage');
+    require('./modules/validator')();
+    // require('./modules/fullpage');
 
     /* test-code */
     DEBUG.console.add("Running correct...");

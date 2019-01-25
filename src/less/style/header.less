@@ -9,18 +9,16 @@
  * container for: navigation, brand image, etc)
  */
 .header {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
+    // Size
     height: inherit;
     display: flex;
     -webkit-backface-visibility: hidden;
-    z-index: @zindex-menu;
-
+    // Transition
     transition+: height @time-transition;
     transition+: box-shadow @time-transition;
-
+    transition+: background-color @time-transition;
+    transition+: padding @time-transition;
+    // Style / Animations
     background-color: transparent;
 
     /* First wrap set 100% height */
@@ -30,16 +28,25 @@
 
     /* Header placeholder */
     &-placeholder {
+        // Behavior
+        box-sizing: content-box;
+        z-index: @zindex-menu;
+        // Position
         position: relative;
+        // Transition
+        transition+: background-color @time-transition;
+        // Size
+        padding: 25px 0;
     }
 
     /* Header sticky */
     .js_sticky-header & {
-        z-index: @zindex-header-sticky;
+        // Position
         position: fixed;
         top: 0;
         left: 0;
-
+        z-index: @zindex-header-sticky;
+        // Style
         box-shadow: 0 10px 30px -6px fade(@color-black, 60%);
         background-color: @color-white;
     }
@@ -49,39 +56,40 @@
 /*
  * Burger button
  */
-
 .burger-button {
-
     // Behavior
     cursor: pointer;
-    position: relative;
     .remove_click_delay();
     pointer-events: all;
-    overflow: hidden; // Style
+    z-index: @zindex-header-sticky + 1;
+    // Style
     width: 35px;
     height: 24px;
     // Position
+    position: relative;
     top: 50%;
     transform+_: translateY(-50%); // Don't display burget button for view
-
-    // Border
-    // transition+: border @time-transition;
-    // border: 1px solid black;
-    // border-radius: 5px; 
 
     @media @media_burger-hide {
         display: none;
     }
 
-    &>.plank {
+    /* Burger planks */
+    & > .plank {
+        // Behavior
         display: inline-block;
+        // Position
         position: absolute;
-        transition: all 0.2s;
+        left: 10%;
+        // Size
         width: 80%;
-        left: 10%; // centering | (100% - width) / 2
         height: 4px;
+        // Transition
+        transition: all 0.2s;
+        // Style
         background-color: @color-gray;
         border-radius: 10px; // Position
+
         &:first-child {
             top: 0;
         }
@@ -92,34 +100,36 @@
         &:last-child {
             bottom: 0;
         }
-    } // Burger hover
-    .add-hover( {
-        border-color: @color-gray;
-        & > .plank {
-            background-color: @color-gray;
-        }
-    }
-    );
+    } 
+    
+    /* Burger hover */
+    // .add-hover({
+    //     border-color: @color-gray;
+    //     & > .plank {
+    //         background-color: @color-gray;
+    //     }
+    // });
 }
 
-
 /**
-  * Burger menu
-  * Style for burger wrap items constainer
-**/
-
+ * Burger menu
+ */
 .burger-menu {
 
     @media @media_burger-show {
-
-        box-sizing: content-box;
-        bottom: 0;
-        position: absolute;
+        // Behavior
         overflow: hidden;
-
+        display: flex;
+        box-sizing: content-box;
         text-align: center;
-        padding-top: 20px;
+        // Position
+        position: absolute;
+        right: 0;
+        top: 0;
+        // Size
+        padding-top: 70px;
         width: 100%;
+        height: 100vh;
         max-width: 300px;
         background-color: @color-primary;
         box-shadow: -6px 0 10px fade(@color-black, 40%);
@@ -129,6 +139,10 @@
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+
+        &__container {
+            width: 100%;
         }
     }
 
@@ -219,7 +233,6 @@ nav.nav>a.nav__item*x
     html {
         // Active
         &.js_menu-active {
-            overflow: hidden;
             // When active burger
             .burger-button {
                 >.plank {
@@ -237,12 +250,32 @@ nav.nav>a.nav__item*x
  * Advanced
  */
 
-/* Add fix when burger won't open */
-html.js_sticky-header:not(.js_menu-active) {
-    .header {
-        &:extend(.fix_fixed);
+html {
+
+    /* Add fix when burger won't open */
+    &.js_sticky-header:not(.js_menu-active) {
+        .header {
+            &:extend(.fix_fixed);
+        }
+    }
+
+    /* Add fix to burger-menu when menu is active */
+    &.js_menu-active {
+        .burger-menu {
+            &:extend(.fix_fixed); 
+        }
+
+        .header-placeholder, .header {
+            background-color: @color-white;
+        }
+    }
+    &:not(.js_menu-active) {
+        .header-placeholder, .header {
+            background-color: @color-white;
+        }
     }
 }
+
 
 /* Default header height */
 .header-placeholder {
@@ -265,6 +298,9 @@ html.js_sticky-header:not(.js_menu-active) {
 
 /* Header height when is sticky */
 html.js_sticky-header .header {
+    right: 0;
+    top: 0;
+    width: 100%;
 
   each(@headerHeightSticky, { 
     

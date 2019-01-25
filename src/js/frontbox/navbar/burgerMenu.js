@@ -50,6 +50,7 @@ module.exports = (data) => {
         active = false;
 
         ELEMENTS.$html.removeClass('js_menu-active');
+        bodyScrollLock.enableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
 
 
         /* test-code */
@@ -98,6 +99,7 @@ module.exports = (data) => {
         }
 
         ELEMENTS.$html.addClass('js_menu-active');
+        bodyScrollLock.disableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
         ELEMENTS.$overlay.on('click', toggleOverlay);
 
         moving = true;

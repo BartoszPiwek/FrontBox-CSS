@@ -82,19 +82,17 @@ module.exports = function(grunt) {
          * CSS tasks
          */
 
-        // LESS Compile
+        /* LESS Compile */
         less                : require('./grunt-settings/tasks/css/less')(SETTINGS), 
-        // Add vendor prefixes to CSS rules using values from Can I Use
+        /* PostCSS is a tool for transforming styles with JS plugins */
         postcss             : require('./grunt-settings/tasks/css/postcss')(SETTINGS), 
-        // Delete unused css class, id
+        /* Remove unused CSS style */
         uncss               : require('./grunt-settings/tasks/css/uncss')(SETTINGS), 
-        // Create critical css
+        /* Critical extracts & inlines critical-path (above-the-fold) CSS from HTML */
         critical            : require('./grunt-settings/tasks/css/critical'), 
-        // Colors to variables
+        /* Colors to variables */
         autocolor           : require('./grunt-settings/tasks/css/autocolor'),
-        // Combine matching media queries into one media query definition 
-        cmq                 : require('./grunt-settings/tasks/css/cmq')(SETTINGS), 
-        // Create CSS statistics 
+        /* Parses stylesheets and returns an object with statistics */
         cssstats            : require('./grunt-settings/tasks/css/cssstats'), 
 
         /**
@@ -204,8 +202,7 @@ module.exports = function(grunt) {
         'less:prod',
         // 'exec:get_wordpress_sitemap',
         'load_sitemap_json',
-        'uncss',
-        'cmq',
+        // 'uncss',
         'postcss:prod',
         'postcss:min',
     ]);

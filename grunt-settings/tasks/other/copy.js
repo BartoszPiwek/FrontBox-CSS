@@ -98,7 +98,7 @@ module.exports = function(SETTINGS){
                 {
                     expand: true,
                     cwd: 'src/js/',
-                    src: ['**/*.js'],
+                    src: ['*.js'],
                     dest: `${SETTINGS.pathToProd}/js/`,
                     filter: 'isFile'
                 },

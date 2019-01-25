@@ -18,10 +18,11 @@
 
 html {
   background-color: @color-white;
-  overflow-x: hidden;
 }
 body {
   position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 //=========================================================================
@@ -97,7 +98,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    position: relative;
     width: 100%;
   
     &__item {

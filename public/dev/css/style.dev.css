@@ -378,7 +378,8 @@ img {
  * @browser Safari
  */
 .fix_fixed,
-html.js_sticky-header:not(.js_menu-active) .header {
+html.js_sticky-header:not(.js_menu-active) .header,
+html.js_menu-active .burger-menu {
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -559,9 +560,7 @@ html.js_sticky-header:not(.js_menu-active) .header {
     transition: transform 0.2s;
     transform: translate(100%, 0%);
     right: 0;
-    height: auto !important;
     overflow: auto;
-    height: 100%;
   }
   .burger-menu::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -627,15 +626,10 @@ html.js_sticky-header:not(.js_menu-active) .header {
  * container for: navigation, brand image, etc)
  */
 .header {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
   height: inherit;
   display: flex;
   -webkit-backface-visibility: hidden;
-  z-index: 7000;
-  transition: height 0.2s, box-shadow 0.2s;
+  transition: height 0.2s, box-shadow 0.2s, background-color 0.2s, padding 0.2s;
   background-color: transparent;
   /* First wrap set 100% height */
   /* Header placeholder */
@@ -645,13 +639,17 @@ html.js_sticky-header:not(.js_menu-active) .header {
   display: flex;
 }
 .header-placeholder {
+  box-sizing: content-box;
+  z-index: 7000;
   position: relative;
+  transition: background-color 0.2s;
+  padding: 25px 0;
 }
 .js_sticky-header .header {
-  z-index: 5000;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5000;
   box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.6);
   background-color: #FFFFFF;
 }
@@ -660,15 +658,17 @@ html.js_sticky-header:not(.js_menu-active) .header {
  */
 .burger-button {
   cursor: pointer;
-  position: relative;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   pointer-events: all;
-  overflow: hidden;
+  z-index: 5001;
   width: 35px;
   height: 24px;
+  position: relative;
   top: 50%;
   transform: translateY(-50%);
+  /* Burger planks */
+  /* Burger hover */
 }
 @media only screen and (min-width: 768px) {
   .burger-button {
@@ -678,10 +678,10 @@ html.js_sticky-header:not(.js_menu-active) .header {
 .burger-button > .plank {
   display: inline-block;
   position: absolute;
-  transition: all 0.2s;
-  width: 80%;
   left: 10%;
+  width: 80%;
   height: 4px;
+  transition: all 0.2s;
   background-color: #90938F;
   border-radius: 10px;
 }
@@ -695,41 +695,21 @@ html.js_sticky-header:not(.js_menu-active) .header {
 .burger-button > .plank:last-child {
   bottom: 0;
 }
-.burger-button--hover:hover .burger-button,
-.burger-button--hover:active .burger-button,
-.burger-button--hover:focus .burger-button,
-.burger-button--hover-active .burger-button,
-.burger-button--hover-active .burger-button,
-.burger-button--hover-active .burger-button,
-.burger-button:hover,
-.burger-button:active,
-.burger-button:focus {
-  border-color: #90938F;
-}
-.burger-button--hover:hover .burger-button > .plank,
-.burger-button--hover:active .burger-button > .plank,
-.burger-button--hover:focus .burger-button > .plank,
-.burger-button--hover-active .burger-button > .plank,
-.burger-button--hover-active .burger-button > .plank,
-.burger-button--hover-active .burger-button > .plank,
-.burger-button:hover > .plank,
-.burger-button:active > .plank,
-.burger-button:focus > .plank {
-  background-color: #90938F;
-}
 /**
-  * Burger menu
-  * Style for burger wrap items constainer
-**/
+ * Burger menu
+ */
 @media only screen and (max-width: 549px) {
   .burger-menu {
-    box-sizing: content-box;
-    bottom: 0;
-    position: absolute;
     overflow: hidden;
+    display: flex;
+    box-sizing: content-box;
     text-align: center;
-    padding-top: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 70px;
     width: 100%;
+    height: 100vh;
     max-width: 300px;
     background-color: #e7be54;
     box-shadow: -6px 0 10px rgba(0, 0, 0, 0.4);
@@ -739,6 +719,9 @@ html.js_sticky-header:not(.js_menu-active) .header {
   }
   .burger-menu > .burger-menu__item:last-child {
     margin-bottom: 0;
+  }
+  .burger-menu__container {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -832,9 +815,6 @@ nav.nav>a.nav__item*x
   color: #90938F;
 }
 @media only screen and (max-width: 549px) {
-  html.js_menu-active {
-    overflow: hidden;
-  }
   html.js_menu-active .burger-button > .plank:first-child {
     left: 0;
     top: 45%;
@@ -855,7 +835,18 @@ nav.nav>a.nav__item*x
 /**
  * Advanced
  */
-/* Add fix when burger won't open */
+html {
+  /* Add fix when burger won't open */
+  /* Add fix to burger-menu when menu is active */
+}
+html.js_menu-active .header-placeholder,
+html.js_menu-active .header {
+  background-color: #FFFFFF;
+}
+html:not(.js_menu-active) .header-placeholder,
+html:not(.js_menu-active) .header {
+  background-color: #FFFFFF;
+}
 /* Default header height */
 .header-placeholder {
   height: 30px;
@@ -872,6 +863,9 @@ nav.nav>a.nav__item*x
 }
 /* Header height when is sticky */
 html.js_sticky-header .header {
+  right: 0;
+  top: 0;
+  width: 100%;
   height: 30px;
 }
 @media only screen and (min-width: 768px) {
@@ -923,10 +917,11 @@ html.js_sticky-header .header {
 }
 html {
   background-color: #FFFFFF;
-  overflow-x: hidden;
 }
 body {
   position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .code {
   font-size: 14px;
@@ -978,7 +973,6 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  position: relative;
   width: 100%;
 }
 .container__item {
@@ -1010,7 +1004,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    position: relative;
     width: 100%;
   }
   .sm_container__item {
@@ -1043,7 +1036,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    position: relative;
     width: 100%;
   }
   .md_container__item {
@@ -1076,7 +1068,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    position: relative;
     width: 100%;
   }
   .lg_container__item {
@@ -1109,7 +1100,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    position: relative;
     width: 100%;
   }
   .xs_container__item {
@@ -1265,11 +1255,22 @@ label[for] {
   position: absolute !important;
   left: 50% !important;
   /* Block user select when input is disabled */
+  /* Checked */
 }
 .input input:disabled + .input-radio__label {
   user-select: none;
   pointer-events: none;
   opacity: 0.4;
+}
+.input input + .input-radio {
+  /* Radio element mark fill */
+  /* Radio element mark icon */
+}
+.input input + .input-radio__label .input-radio__input--mark-color:before {
+  opacity: 1;
+}
+.input input + .input-radio__label .input-radio__mark {
+  opacity: 1;
 }
 /**
  * Input Checkbox
@@ -1361,8 +1362,8 @@ label[for] {
   /* Fake radio input */
   /* Mark icon */
   /* Clickable label toggle radio */
-  /* Unhover when radio element is on */
-  /* Toggle radio element */
+  /* Hover */
+  /* Toggle */
 }
 .input-radio__input {
   width: 20px;

@@ -1,4 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+!function(e,t){if("function"==typeof define&&define.amd)define(["exports"],t);else if("undefined"!=typeof exports)t(exports);else{var o={};t(o),e.bodyScrollLock=o}}(this,function(exports){"use strict";function r(e){if(Array.isArray(e)){for(var t=0,o=Array(e.length);t<e.length;t++)o[t]=e[t];return o}return Array.from(e)}Object.defineProperty(exports,"__esModule",{value:!0});var l=!1;if("undefined"!=typeof window){var e={get passive(){l=!0}};window.addEventListener("testPassive",null,e),window.removeEventListener("testPassive",null,e)}var d="undefined"!=typeof window&&window.navigator&&window.navigator.platform&&/iP(ad|hone|od)/.test(window.navigator.platform),c=[],u=!1,a=-1,s=void 0,v=void 0,f=function(t){return c.some(function(e){return!(!e.options.allowTouchMove||!e.options.allowTouchMove(t))})},m=function(e){var t=e||window.event;return!!f(t.target)||(1<t.touches.length||(t.preventDefault&&t.preventDefault(),!1))},o=function(){setTimeout(function(){void 0!==v&&(document.body.style.paddingRight=v,v=void 0),void 0!==s&&(document.body.style.overflow=s,s=void 0)})};exports.disableBodyScroll=function(i,e){if(d){if(!i)return void console.error("disableBodyScroll unsuccessful - targetElement must be provided when calling disableBodyScroll on IOS devices.");if(i&&!c.some(function(e){return e.targetElement===i})){var t={targetElement:i,options:e||{}};c=[].concat(r(c),[t]),i.ontouchstart=function(e){1===e.targetTouches.length&&(a=e.targetTouches[0].clientY)},i.ontouchmove=function(e){var t,o,n,r;1===e.targetTouches.length&&(o=i,r=(t=e).targetTouches[0].clientY-a,!f(t.target)&&(o&&0===o.scrollTop&&0<r?m(t):(n=o)&&n.scrollHeight-n.scrollTop<=n.clientHeight&&r<0?m(t):t.stopPropagation()))},u||(document.addEventListener("touchmove",m,l?{passive:!1}:void 0),u=!0)}}else{n=e,setTimeout(function(){if(void 0===v){var e=!!n&&!0===n.reserveScrollBarGap,t=window.innerWidth-document.documentElement.clientWidth;e&&0<t&&(v=document.body.style.paddingRight,document.body.style.paddingRight=t+"px")}void 0===s&&(s=document.body.style.overflow,document.body.style.overflow="hidden")});var o={targetElement:i,options:e||{}};c=[].concat(r(c),[o])}var n},exports.clearAllBodyScrollLocks=function(){d?(c.forEach(function(e){e.targetElement.ontouchstart=null,e.targetElement.ontouchmove=null}),u&&(document.removeEventListener("touchmove",m,l?{passive:!1}:void 0),u=!1),c=[],a=-1):(o(),c=[])},exports.enableBodyScroll=function(t){if(d){if(!t)return void console.error("enableBodyScroll unsuccessful - targetElement must be provided when calling enableBodyScroll on IOS devices.");t.ontouchstart=null,t.ontouchmove=null,c=c.filter(function(e){return e.targetElement!==t}),u&&0===c.length&&(document.removeEventListener("touchmove",m,l?{passive:!1}:void 0),u=!1)}else 1===c.length&&c[0].targetElement===t?(o(),c=[]):c=c.filter(function(e){return e.targetElement!==t})}});
+
+},{}],2:[function(require,module,exports){
 /*!
  * jQuery Validation Plugin v1.18.0
  *
@@ -1644,7 +1647,7 @@ if ( $.ajaxPrefilter ) {
 }
 return $;
 }));
-},{"jquery":2}],2:[function(require,module,exports){
+},{"jquery":3}],3:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
@@ -12010,7 +12013,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function(window, factory) {
 	var lazySizes = factory(window, window.document);
 	window.lazySizes = lazySizes;
@@ -12715,11 +12718,12 @@ return jQuery;
 }
 ));
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function (global){
 /* Libs */
 global.$ = require('jquery');
 global.jQuery = $;
+global.bodyScrollLock = require('body-scroll-lock');
 // global.AOS = require('aos');
 // global.Cookies = require('js-cookie');
 require('lazysizes');
@@ -13013,8 +13017,8 @@ $(window).bind("load", function() {
     // }
 
     /* Validator */
-    require('./validator')();
-    // require('./fullpage');
+    require('./modules/validator')();
+    // require('./modules/fullpage');
 
     /* test-code */
     DEBUG.console.add("Running correct...");
@@ -13025,7 +13029,7 @@ $(window).bind("load", function() {
 
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./frontbox/bind/resize":5,"./frontbox/data/browser":6,"./frontbox/data/device":7,"./frontbox/data/scroll":8,"./frontbox/debug/console":9,"./frontbox/debug/variables":10,"./frontbox/functions":11,"./frontbox/jquery/scrollBlock":12,"./frontbox/navbar/burgerMenu":13,"./frontbox/navbar/sticky":14,"./frontbox/scrollTo":15,"./frontbox/showMore":16,"./frontbox/spy/stickyElement":17,"./frontbox/tabs":18,"./frontbox/transitionHeight":19,"./validator":20,"jquery":2,"jquery-validation":1,"lazysizes":3}],5:[function(require,module,exports){
+},{"./frontbox/bind/resize":6,"./frontbox/data/browser":7,"./frontbox/data/device":8,"./frontbox/data/scroll":9,"./frontbox/debug/console":10,"./frontbox/debug/variables":11,"./frontbox/functions":12,"./frontbox/jquery/scrollBlock":13,"./frontbox/navbar/burgerMenu":14,"./frontbox/navbar/sticky":15,"./frontbox/scrollTo":16,"./frontbox/showMore":17,"./frontbox/spy/stickyElement":18,"./frontbox/tabs":19,"./frontbox/transitionHeight":20,"./modules/validator":21,"body-scroll-lock":1,"jquery":3,"jquery-validation":2,"lazysizes":4}],6:[function(require,module,exports){
 /**
  * Resize
  */
@@ -13188,7 +13192,7 @@ module.exports = (argument) => {
     };
   
 };
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * Browser module
  * @return {object} transitionEvent
@@ -13239,7 +13243,7 @@ module.exports = () => {
 
     return _;
 };
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * Device module
  * @return {object} width, height, responsive, portable
@@ -13379,7 +13383,7 @@ module.exports = (argument) => {
 
     return _;
 };
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = (argument) => {
 
     /* Output data */
@@ -13454,7 +13458,7 @@ module.exports = (argument) => {
 
     return _;
 };
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = (data) => {
 
     DATA = {
@@ -13506,7 +13510,7 @@ module.exports = (data) => {
     };
 
 };
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = (argument) => {
 
     var 
@@ -13646,7 +13650,7 @@ module.exports = (argument) => {
     };
 
 };
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = {
 	/**
      * Convert string to boolean
@@ -13696,7 +13700,7 @@ module.exports = {
 	}
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = () => {
 
     /**
@@ -13815,7 +13819,7 @@ module.exports = () => {
     })(jQuery);
 
 };
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = (data) => {
 
     var
@@ -13868,6 +13872,7 @@ module.exports = (data) => {
         active = false;
 
         ELEMENTS.$html.removeClass('js_menu-active');
+        bodyScrollLock.enableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
 
 
         /* test-code */
@@ -13916,6 +13921,7 @@ module.exports = (data) => {
         }
 
         ELEMENTS.$html.addClass('js_menu-active');
+        bodyScrollLock.disableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
         ELEMENTS.$overlay.on('click', toggleOverlay);
 
         moving = true;
@@ -13983,7 +13989,7 @@ module.exports = (data) => {
     start();
 
 };
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = (data) => {
 
     var 
@@ -14090,7 +14096,7 @@ module.exports = (data) => {
     };
 
 };
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /*=========================================================================
 || Smooth scroll to target
 ===========================================================================
@@ -14327,7 +14333,7 @@ module.exports = (data) => {
     start();
   
 };
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = (data) => {
 
   var
@@ -14463,7 +14469,7 @@ module.exports = (data) => {
   start();
 
 };
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = (argument) => {
     
     var 
@@ -14623,7 +14629,7 @@ module.exports = (argument) => {
     start();
     return DATA;
 };
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = (data) => {
 
   var  
@@ -14822,7 +14828,7 @@ module.exports = (data) => {
     start();
 
 };
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = (data) => {
 
     var
@@ -14945,7 +14951,7 @@ module.exports = (data) => {
 
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /*=========================================================================
 || jQuery Validation Plugin
 || https://jqueryvalidation.org/
@@ -15005,4 +15011,4 @@ module.exports = () => {
         }
     }
 };
-},{}]},{},[4]);
+},{}]},{},[5]);

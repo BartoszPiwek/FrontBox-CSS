@@ -60,6 +60,8 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "body-scroll-lock": "^2.6.1",
+    "css-mqpacker": "^7.0.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-pug": "^1.0.0",

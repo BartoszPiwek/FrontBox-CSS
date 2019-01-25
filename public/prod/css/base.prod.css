@@ -691,7 +691,8 @@ ol {
 .font-extrabold {
   font-weight: extrabold !important;
 }
-.bold {
+.bold,
+.strong {
   font-weight: bold !important;
 }
 .italic {
