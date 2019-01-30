@@ -63,9 +63,11 @@
 
 @mobile             : @responsive[@mobile][@string][default];
 @fablet             : @responsive[@fablet][@string][default];
-@fablet-only        : @responsive[@fablet][@string][max];
+@fablet-only        : @responsive[@fablet][@string][lock];
+@fablet-down        : @responsive[@fablet][@string][max];
 @tablet             : @responsive[@tablet][@string][default];
-@tablet-only        : @responsive[@tablet][@string][max];
+@tablet-only        : @responsive[@tablet][@string][lock];
+@tablet-down        : @responsive[@tablet][@string][max];
 @desktop            : @responsive[@desktop][@string][default];
 @retina             : ~"@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
 

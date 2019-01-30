@@ -13,13 +13,7 @@ require('jquery-validation'); // https://github.com/jquery-validation/jquery-val
 
 /* Support Libs */
 // require('./frontbox/libs/getStyle');
-require('./frontbox/jquery/scrollBlock')();
 // require('@babel/polyfill');
-
-/**
- * jQuery plugins
- */
-require('./frontbox/jquery/scrollBlock')();
 
 $(window).bind("load", function() {
     'use strict';
@@ -40,19 +34,7 @@ $(window).bind("load", function() {
     };
 
     /* test-code */
-    /**
-     * Debug
-     */
-    global.DEBUG = {};
-
-    global.DEBUG.console = require('./frontbox/debug/console')({
-        // open: true,
-        ELEMENTS: ELEMENTS,
-    });
-    global.DEBUG.variable = require('./frontbox/debug/variables')({
-        OPTIONS: {
-            open: false,
-        },
+    require('./frontbox/debug')({
         ELEMENTS: ELEMENTS,
     });
     /* end-test-code */

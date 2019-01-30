@@ -420,12 +420,12 @@ html.js_menu-active .burger-menu {
 .no-wrap {
   max-width: 100% !important;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 550px) and (max-width: 767px) {
   .sm_no-wrap {
     max-width: 100% !important;
   }
 }
-@media only screen and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .md_no-wrap {
     max-width: 100% !important;
   }
@@ -555,7 +555,7 @@ html.js_menu-active .burger-menu {
 /**
   * Navigation base style
 **/
-@media only screen and (max-width: 549px) {
+@media only screen and (max-width: 767px) {
   .burger-menu {
     transition: transform 0.2s;
     transform: translate(100%, 0%);
@@ -580,7 +580,7 @@ html.js_menu-active .burger-menu {
 .page-content {
   transition: transform 0.2s;
 }
-@media only screen and (max-width: 549px) {
+@media only screen and (max-width: 767px) {
   html.js_menu-active .burger-menu {
     transform: translate(0, 0%) !important;
   }
@@ -698,7 +698,7 @@ html.js_menu-active .burger-menu {
 /**
  * Burger menu
  */
-@media only screen and (max-width: 549px) {
+@media only screen and (max-width: 767px) {
   .burger-menu {
     overflow: hidden;
     display: flex;
@@ -814,7 +814,7 @@ nav.nav>a.nav__item*x
 .nav__container > .nav__item.active {
   color: #90938F;
 }
-@media only screen and (max-width: 549px) {
+@media only screen and (max-width: 767px) {
   html.js_menu-active .burger-button > .plank:first-child {
     left: 0;
     top: 45%;
@@ -856,6 +856,11 @@ html:not(.js_menu-active) .header {
     height: 40px;
   }
 }
+@media only screen and (min-width: 550px) {
+  .header-placeholder {
+    height: 40px;
+  }
+}
 @media only screen and (min-width: 1024px) {
   .header-placeholder {
     height: 50px;
@@ -873,9 +878,14 @@ html.js_sticky-header .header {
     height: 30px;
   }
 }
+@media only screen and (min-width: 550px) {
+  html.js_sticky-header .header {
+    height: 40px;
+  }
+}
 @media only screen and (min-width: 1024px) {
   html.js_sticky-header .header {
-    height: 30px;
+    height: 50px;
   }
 }
 /*=========================================================================
@@ -911,7 +921,7 @@ html.js_sticky-header .header {
   --tablet: 768;
   --fablet: 550;
   --mobile: 549;
-  --headerDesktop: 30;
+  --headerDesktop: 50;
   --headerTablet: 30;
   --headerMobile: 30;
 }
@@ -922,6 +932,20 @@ body {
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+  background-color: #e7be54;
+}
+body::-webkit-thumb {
+  min-width: 8px;
+  max-height: 8px;
+  background-color: #000000;
+}
+body::-webkit-scrollbar-button {
+  display: none;
 }
 .code {
   font-size: 14px;
@@ -991,13 +1015,14 @@ body {
 .container__item--center {
   margin: 0 auto;
 }
-.container__item--center--absolute {
+.container__item--center-absolute {
   margin: 0 auto;
   position: absolute;
   left: 50%;
   top: 50%;
   display: block;
   transform: translate(-50%, -50%);
+  height: auto;
 }
 @media only screen and (min-width: 550px) {
   .sm_container {
@@ -1022,13 +1047,14 @@ body {
   .sm_container__item--center {
     margin: 0 auto;
   }
-  .sm_container__item--center--absolute {
+  .sm_container__item--center-absolute {
     margin: 0 auto;
     position: absolute;
     left: 50%;
     top: 50%;
     display: block;
     transform: translate(-50%, -50%);
+    height: auto;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -1054,13 +1080,14 @@ body {
   .md_container__item--center {
     margin: 0 auto;
   }
-  .md_container__item--center--absolute {
+  .md_container__item--center-absolute {
     margin: 0 auto;
     position: absolute;
     left: 50%;
     top: 50%;
     display: block;
     transform: translate(-50%, -50%);
+    height: auto;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -1086,13 +1113,14 @@ body {
   .lg_container__item--center {
     margin: 0 auto;
   }
-  .lg_container__item--center--absolute {
+  .lg_container__item--center-absolute {
     margin: 0 auto;
     position: absolute;
     left: 50%;
     top: 50%;
     display: block;
     transform: translate(-50%, -50%);
+    height: auto;
   }
 }
 @media only screen and (max-width: 549px) {
@@ -1118,13 +1146,14 @@ body {
   .xs_container__item--center {
     margin: 0 auto;
   }
-  .xs_container__item--center--absolute {
+  .xs_container__item--center-absolute {
     margin: 0 auto;
     position: absolute;
     left: 50%;
     top: 50%;
     display: block;
     transform: translate(-50%, -50%);
+    height: auto;
   }
 }
 /**
@@ -1746,8 +1775,8 @@ label[for] {
 || Style for lists
 =========================================================================*/
 /**
-  * Navigation list
-**/
+ * Burger menu navigation list
+ */
 @media only screen and (min-width: 768px) {
   .list-navigation {
     display: flex;
@@ -1757,7 +1786,7 @@ label[for] {
 }
 .list-navigation > .list-navigation__item {
   display: block;
-  color: #FFFFFF;
+  color: #000000;
   transition: color 0.2s;
   text-align: center;
   margin-bottom: 20px;

@@ -61,7 +61,6 @@ module.exports = (data) => {
         /* end-test-code */
 
         window.setTimeout(function() {
-            ELEMENTS.$body.scrollDisable("undo");
             moving = false;
             ELEMENTS.$html.removeClass('js_menu-active--end');
 
@@ -76,7 +75,6 @@ module.exports = (data) => {
     };
 
     var toggleOn = () => {
-        ELEMENTS.$body.scrollDisable();
 
         /* test-code */
         DEBUG.console.add("Burger toggleOn", "click");

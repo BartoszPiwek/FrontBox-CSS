@@ -7,7 +7,7 @@ module.exports = () => {
     /* Start validator */
     const $formValidator = $('.js_validator');
 
-    if ($formValidator) {
+    if ( $formValidator.length ) {
 
         /* Fix email regexe */
         $.validator.methods.email = function(value, element) {
@@ -42,8 +42,12 @@ module.exports = () => {
             min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
         });
 
-        /* Form Newsletter */
-        var $formNewsletter = $('.js_validator');
+        /**
+         * Forms
+         */
+        var 
+        // Newsletter
+        $formNewsletter = $('.js_validator');
         
         if ( $formNewsletter.length ) {
             $formNewsletter.validate({

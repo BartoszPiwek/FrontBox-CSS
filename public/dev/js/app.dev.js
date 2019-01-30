@@ -12735,13 +12735,7 @@ require('jquery-validation'); // https://github.com/jquery-validation/jquery-val
 
 /* Support Libs */
 // require('./frontbox/libs/getStyle');
-require('./frontbox/jquery/scrollBlock')();
 // require('@babel/polyfill');
-
-/**
- * jQuery plugins
- */
-require('./frontbox/jquery/scrollBlock')();
 
 $(window).bind("load", function() {
     'use strict';
@@ -12762,19 +12756,7 @@ $(window).bind("load", function() {
     };
 
     /* test-code */
-    /**
-     * Debug
-     */
-    global.DEBUG = {};
-
-    global.DEBUG.console = require('./frontbox/debug/console')({
-        // open: true,
-        ELEMENTS: ELEMENTS,
-    });
-    global.DEBUG.variable = require('./frontbox/debug/variables')({
-        OPTIONS: {
-            open: false,
-        },
+    require('./frontbox/debug')({
         ELEMENTS: ELEMENTS,
     });
     /* end-test-code */
@@ -13029,7 +13011,7 @@ $(window).bind("load", function() {
 
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./frontbox/bind/resize":6,"./frontbox/data/browser":7,"./frontbox/data/device":8,"./frontbox/data/scroll":9,"./frontbox/debug/console":10,"./frontbox/debug/variables":11,"./frontbox/functions":12,"./frontbox/jquery/scrollBlock":13,"./frontbox/navbar/burgerMenu":14,"./frontbox/navbar/sticky":15,"./frontbox/scrollTo":16,"./frontbox/showMore":17,"./frontbox/spy/stickyElement":18,"./frontbox/tabs":19,"./frontbox/transitionHeight":20,"./modules/validator":21,"body-scroll-lock":1,"jquery":3,"jquery-validation":2,"lazysizes":4}],6:[function(require,module,exports){
+},{"./frontbox/bind/resize":6,"./frontbox/data/browser":7,"./frontbox/data/device":8,"./frontbox/data/scroll":9,"./frontbox/debug":10,"./frontbox/functions":13,"./frontbox/navbar/burgerMenu":14,"./frontbox/navbar/sticky":15,"./frontbox/scrollTo":16,"./frontbox/showMore":17,"./frontbox/spy/stickyElement":18,"./frontbox/tabs":19,"./frontbox/transitionHeight":20,"./modules/validator":21,"body-scroll-lock":1,"jquery":3,"jquery-validation":2,"lazysizes":4}],6:[function(require,module,exports){
 /**
  * Resize
  */
@@ -13459,6 +13441,34 @@ module.exports = (argument) => {
     return _;
 };
 },{}],10:[function(require,module,exports){
+(function (global){
+/*=========================================================================
+|| FILE: Debug
+===========================================================================
+|| Debug elements
+=========================================================================*/
+
+module.exports = (argument) => {
+
+    const
+    ELEMENTS = argument.ELEMENTS;
+    
+    global.DEBUG = {};
+
+    global.DEBUG.console = require('./debug/console')({
+        // open: true,
+        ELEMENTS: ELEMENTS,
+    });
+    global.DEBUG.variable = require('./debug/variables')({
+        OPTIONS: {
+            open: false,
+        },
+        ELEMENTS: ELEMENTS,
+    });
+
+};
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./debug/console":11,"./debug/variables":12}],11:[function(require,module,exports){
 module.exports = (data) => {
 
     DATA = {
@@ -13510,7 +13520,7 @@ module.exports = (data) => {
     };
 
 };
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = (argument) => {
 
     var 
@@ -13650,7 +13660,7 @@ module.exports = (argument) => {
     };
 
 };
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = {
 	/**
      * Convert string to boolean
@@ -13700,125 +13710,6 @@ module.exports = {
 	}
 };
 
-},{}],13:[function(require,module,exports){
-module.exports = () => {
-
-    /**
-     * $.disablescroll
-     * Author: Josh Harrison - aloof.co
-     *
-     * Disables scroll events from mousewheels, touchmoves and keypresses.
-     * Use while jQuery is animating the scroll position for a guaranteed super-smooth ride!
-     */
-
-    ;(function($) {
-
-        "use strict";
-
-        var instance, proto;
-
-        function UserScrollDisabler($container, options) {
-            // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-            // left: 37, up: 38, right: 39, down: 40
-            this.opts = $.extend({
-                handleWheel : true,
-                handleScrollbar: true,
-                handleKeys : true,
-                scrollEventKeys : [32, 33, 34, 35, 36, 37, 38, 39, 40]
-            }, options);
-            
-            this.$container = $container;
-            this.$document = $(document);
-            this.lockToScrollPos = [0, 0];
-
-            this.disable();
-        }
-
-        proto = UserScrollDisabler.prototype;
-
-        proto.disable = function() {
-            var t = this;
-
-            if(t.opts.handleWheel) {
-                t.$container.on(
-                    "mousewheel.disablescroll DOMMouseScroll.disablescroll touchmove.disablescroll",
-                    t._handleWheel
-                );
-            }
-            
-            if(t.opts.handleScrollbar) {
-                t.lockToScrollPos = [
-                    t.$container.scrollLeft(),
-                    t.$container.scrollTop()
-                ];
-                t.$container.on("scroll.disablescroll", function() {
-                    t._handleScrollbar.call(t);
-                });
-            }
-
-            if(t.opts.handleKeys) {
-                t.$document.on("keydown.disablescroll", function(event) {
-                    t._handleKeydown.call(t, event);
-                });
-            }
-        };
-            
-        proto.undo = function() {
-            var t = this;
-            t.$container.off(".disablescroll");
-            if(t.opts.handleKeys) {
-                t.$document.off(".disablescroll");
-            }
-        };
-        
-        proto._handleWheel = function(event) {
-            event.preventDefault();
-        };
-        
-        proto._handleScrollbar = function() {
-            this.$container.scrollLeft(this.lockToScrollPos[0]);
-            this.$container.scrollTop(this.lockToScrollPos[1]);
-        };
-        
-        proto._handleKeydown = function(event) {
-            for (var i = 0; i < this.opts.scrollEventKeys.length; i++) {
-                if (event.keyCode === this.opts.scrollEventKeys[i]) {
-                    event.preventDefault();
-                    return;
-                }
-            }
-        };
-            
-
-        // Plugin wrapper for object
-        $.fn.scrollDisable = function(method) {
-
-            // If calling for the first time, instantiate the object and save
-            // reference. The plugin can therefore only be instantiated once per
-            // page. You can pass options object in through the method parameter.
-            if( ! instance && (typeof method === "object" || ! method)) {
-                instance = new UserScrollDisabler(this, method);
-            }
-
-            // Instance created, no method specified. Call disable again
-            if(instance && typeof method === "undefined") {
-                instance.disable();
-            }
-
-            // Instance already created, and a method is being explicitly called,
-            // e.g. .scrollDisable('undo');
-            else if(instance && instance[method]) {
-                instance[method].call(instance);
-            }
-
-        };
-
-        // Global access
-        window.UserScrollDisabler = UserScrollDisabler;
-
-    })(jQuery);
-
-};
 },{}],14:[function(require,module,exports){
 module.exports = (data) => {
 
@@ -13883,7 +13774,6 @@ module.exports = (data) => {
         /* end-test-code */
 
         window.setTimeout(function() {
-            ELEMENTS.$body.scrollDisable("undo");
             moving = false;
             ELEMENTS.$html.removeClass('js_menu-active--end');
 
@@ -13898,7 +13788,6 @@ module.exports = (data) => {
     };
 
     var toggleOn = () => {
-        ELEMENTS.$body.scrollDisable();
 
         /* test-code */
         DEBUG.console.add("Burger toggleOn", "click");
@@ -14044,7 +13933,10 @@ module.exports = (data) => {
             DATA.offset = SETTINGS.offset;
         }
         else {
-            DATA.offset = $elementSpy.offset().top;
+            let
+            paddingTop = $elementSpy.css('padding-top');
+    
+            DATA.offset = $elementSpy.offset().top + parseInt( paddingTop );
         }
     };
 

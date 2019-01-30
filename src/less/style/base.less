@@ -23,6 +23,7 @@ body {
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
+  .scrollbar();
 }
 
 //=========================================================================
@@ -115,13 +116,14 @@ body {
       &--center {
         margin: 0 auto;
 
-        &--absolute {
+        &-absolute {
           margin: 0 auto;
           position: absolute;
           left: 50%;
           top: 50%;
           display: block;
           transform: translate(-50%, -50%);
+          height: auto;
         }
       }
       /* end Positions */

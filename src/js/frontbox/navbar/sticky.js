@@ -52,7 +52,10 @@ module.exports = (data) => {
             DATA.offset = SETTINGS.offset;
         }
         else {
-            DATA.offset = $elementSpy.offset().top;
+            let
+            paddingTop = $elementSpy.css('padding-top');
+    
+            DATA.offset = $elementSpy.offset().top + parseInt( paddingTop );
         }
     };
 
