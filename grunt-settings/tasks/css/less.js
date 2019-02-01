@@ -65,14 +65,14 @@ module.exports = function(SETTINGS) {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.pathToMainCSSDev}/${SETTINGS.pathToMainCSS}/style.dev.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToMainCSS}/style.dev.css.map`,
                 sourceMapURL: 'style.dev.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
                 modifyVars: modifyVarsDev,
             },
             src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSSDev}/${SETTINGS.pathToMainCSS}/style.dev.css`,
+            dest: `${SETTINGS.pathToMainCSS}/style.dev.css`,
         },
 
         /**
@@ -116,7 +116,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVarsProd,
             },
             src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSSProd}/${SETTINGS.pathToMainCSS}/style.prod.css`,
+            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
         },
 
     };
