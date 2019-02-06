@@ -3,9 +3,8 @@ module.exports = function(SETTINGS) {
     var modifyVarsDev, modifyVarsProd;
 
     modifyVarsDev = {
-        pathToModulesDev: SETTINGS.pathToModulesDev,
-        pathToModulesProd: SETTINGS.pathToModulesProd,
-        isWordpress: SETTINGS.isWordpress,
+        isWordpress         : SETTINGS.isWordpress,
+        isDebug             : SETTINGS.isDebug,
     };
     modifyVarsProd = JSON.parse(JSON.stringify(modifyVarsDev));
     modifyVarsProd.version = 'prod';
@@ -31,7 +30,7 @@ module.exports = function(SETTINGS) {
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
-            src: `src/less/grid.less`,
+            src: `src/style/grid.less`,
             dest: `${SETTINGS.pathToDev}/css/grid.css`,
         },
 
@@ -44,7 +43,7 @@ module.exports = function(SETTINGS) {
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
-            src: `src/less/base.less`,
+            src: `src/style/base.less`,
             dest: `${SETTINGS.pathToDev}/css/base.css`,
         },
 
@@ -52,27 +51,27 @@ module.exports = function(SETTINGS) {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.pathToDev}/css/utilities.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToDev}/${SETTINGS.pathToCSS}/utilities.css.map`,
                 sourceMapURL: 'utilities.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
             },
-            src: `src/less/utilities.less`,
-            dest: `${SETTINGS.pathToDev}/css/utilities.css`,
+            src: `src/style/utilities.less`,
+            dest: `${SETTINGS.pathToDev}/${SETTINGS.pathToCSS}/utilities.css`,
         },
 
         dev_style_main: {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.pathToMainCSS}/style.dev.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToDev}/${SETTINGS.pathToCSS}/${SETTINGS.pathToMainCSS}/style.dev.css.map`,
                 sourceMapURL: 'style.dev.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
                 modifyVars: modifyVarsDev,
             },
-            src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSS}/style.dev.css`,
+            src: `src/style/style.less`,
+            dest: `${SETTINGS.pathToDev}/${SETTINGS.pathToCSS}/${SETTINGS.pathToMainCSS}/style.dev.css`,
         },
 
         /**
@@ -85,7 +84,7 @@ module.exports = function(SETTINGS) {
                 sourceMap: false,
                 modifyVars: modifyVarsProd,
             },
-            src: `src/less/grid.less`,
+            src: `src/style/grid.less`,
             dest: `${SETTINGS.pathToProd}/css/grid.prod.css`,
         },
 
@@ -95,7 +94,7 @@ module.exports = function(SETTINGS) {
                 sourceMap: false,
                 modifyVars: modifyVarsProd,
             },
-            src: `src/less/base.less`,
+            src: `src/style/base.less`,
             dest: `${SETTINGS.pathToProd}/css/base.prod.css`,
         },
 
@@ -105,7 +104,7 @@ module.exports = function(SETTINGS) {
                 sourceMap: false,
                 modifyVars: modifyVarsProd,
             },
-            src: `src/less/utilities.less`,
+            src: `src/style/utilities.less`,
             dest: `${SETTINGS.pathToProd}/css/utilities.prod.css`,
         },
 
@@ -115,7 +114,7 @@ module.exports = function(SETTINGS) {
                 sourceMap: false,
                 modifyVars: modifyVarsProd,
             },
-            src: `src/less/style.less`,
+            src: `src/style/style.less`,
             dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
         },
 

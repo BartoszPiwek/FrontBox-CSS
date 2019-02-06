@@ -30,15 +30,18 @@
 
       //- Base Style
       if version == 'dev'
-        link(rel="stylesheet" type="text/css" href="/css/style.dev.css" media="all")          
+        link(rel="stylesheet" type="text/css" href="/css/grid.css" media="all")          
+        link(rel="stylesheet" type="text/css" href="/css/base.css" media="all")          
+        link(rel="stylesheet" type="text/css" href="/css/utilities.css" media="all")          
+        link(rel="stylesheet" type="text/css" href="/style.dev.css" media="all")          
       else
         //- Load scripts asynchronic when page have Critical CSS
         if page_criticalCss && website_criticalCSS && version == "prod"
-          link(rel="stylesheet" type="text/css" href="/css/style.prod.css" media="none" onload="if(media!='all')media='all'")
+          link(rel="stylesheet" type="text/css" href="/style.prod.css" media="none" onload="if(media!='all')media='all'")
           noscript
-            link(rel="stylesheet" type="text/css" href="/css/style.prod.css" media="all")
+            link(rel="stylesheet" type="text/css" href="/style.prod.css" media="all")
         else    
-          link(rel="stylesheet" type="text/css" href="/css/style.prod.css" media="all")
+          link(rel="stylesheet" type="text/css" href="/style.prod.css" media="all")
 
       //- Critical CSS
       if page_criticalCss && website_criticalCSS && version == "prod"

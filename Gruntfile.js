@@ -125,6 +125,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', [
         // Copy
         'newer:copy:img',
+        'newer:copy:video', 
         'newer:copy:html',
         'newer:copy:static_CSS',
         'newer:copy:fonts',

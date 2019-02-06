@@ -3,11 +3,11 @@ module.exports = {
     automatic: {
         expand: true,
         src: '**',
-        cwd: 'src/less',
+        cwd: 'src/style',
         filter: 'isFile'
     },
     options: {
-        variableFile: "src/less/variables/colors.less",
+        variableFile: "src/style/variables/colors.less",
         prefix: "@"
     }
 

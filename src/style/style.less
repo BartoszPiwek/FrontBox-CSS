@@ -1,0 +1,36 @@
+/*!******************************************************************
+Author      : Bartosz Piwek
+Framework   : FrontBox-CSS (https://github.com/BartoszPiwek/FrontBox-CSS)
+Version     : 1.0.8
+********************************************************************/
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@charset */
+@charset "UTF-8";
+
+/**
+ * Concat files
+ */
+
+/* Grid */
+& when (@version = prod) {
+  @import (optional, less) "@{pathToModulesProd}/grid.prod.css";
+}
+
+/* Get all settings */
+@import "settings/_style";  
+
+/* Get FrontBox style */               
+@import "frontbox/_style";                 
+
+/* Website base style */
+& when (@version = prod) {
+  @import (optional, less) "@{pathToModulesProd}/base.prod.css";
+}
+
+/* Website style */
+@import "style/_style";
+
+/* Utilities */
+& when (@version = prod) {
+  @import (optional, less) "@{pathToModulesProd}/utilities.prod.css";
+}

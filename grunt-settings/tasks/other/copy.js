@@ -12,10 +12,10 @@ module.exports = function(SETTINGS){
                 'src/js/libs/picturefill.js': 'node_modules/picturefill/dist/picturefill.js',
                 // Select2
                 'src/js/libs/select2.js': 'node_modules/select2/dist/js/select2.js',
-                'src/less/libs/select2.less': 'node_modules/select2/dist/css/select2.css',
+                'src/style/libs/select2.less': 'node_modules/select2/dist/css/select2.css',
                 // tooltipster
                 'src/js/libs/tooltipster.js': 'node_modules/tooltipster/dist/js/tooltipster.main.js',
-                'src/less/libs/tooltipster.main.less': 'node_modules/toltipster/dist/css/tooltipster.main.css',
+                'src/style/libs/tooltipster.main.less': 'node_modules/toltipster/dist/css/tooltipster.main.css',
                 // bLazy (https://www.npmjs.com/package/blazy)
                 'src/js/libs/blazy.js': 'node_modules/blazy/blazy.js',
                 // Cookies
@@ -50,6 +50,16 @@ module.exports = function(SETTINGS){
                 cwd: 'src/template/',
                 src: ['**/*.html'],
                 dest: `${SETTINGS.pathToDev}/`,
+                filter: 'isFile'
+            }]
+        },
+        // Video
+        video: {
+            files: [{
+                expand: true,
+                cwd: 'src/video/',
+                src: ['**/*'],
+                dest: `${SETTINGS.pathToDev}/video/`,
                 filter: 'isFile'
             }]
         },

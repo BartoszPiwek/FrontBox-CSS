@@ -41,8 +41,8 @@ module.exports = {
   // Style
   dev_style_base: {
     files: [
-      "src/less/variables/**/*.less",
-      "sec/less/frontbox/**/*.less"
+      "src/style/variables/**/*.less",
+      "src/style/frontbox/**/*.less"
     ],
     tasks: ["less:dev_style_base"],
     options: {
@@ -51,10 +51,10 @@ module.exports = {
   },
   dev_style_grid: {
     files: [
-      "src/less/grid.less",
-      "src/less/frontbox/variables.less",
-      "src/less/frontbox/functions.less",
-      "src/less/frontbox/grid.less"
+      "src/style/grid.less",
+      "src/style/frontbox/variables.less",
+      "src/style/frontbox/functions.less",
+      "src/style/frontbox/grid.less"
     ],
     tasks: ["less:dev_style_grid"],
     options: {
@@ -62,7 +62,7 @@ module.exports = {
     }
   },
   dev_style_main: {
-    files: ["src/less/*/**.less"],
+    files: ["src/style/*/**.less"],
     tasks: [
       "less:dev_style_main"
     ],
@@ -72,8 +72,8 @@ module.exports = {
   },
   dev_style_utilities: {
     files: [
-      "src/less/utilities.less",
-      "src/less/utilities/*.less"
+      "src/style/utilities.less",
+      "src/style/utilities/*.less"
     ],
     tasks: ["less:dev_style_utilities"],
     options: {
@@ -85,6 +85,13 @@ module.exports = {
   images: {
     files: ["src/images/**/*"],
     tasks: ["newer:copy:img"],
+    options: {
+      spawn: false
+    }
+  },
+  video: {
+    files: ["src/video/**/*"],
+    tasks: ["newer:copy:video"],
     options: {
       spawn: false
     }
