@@ -25,4 +25,7 @@ module.exports = {
     /* Project type */
     "isWordpress"           : false,
 
+    /* Framework */
+    framework               : 'frontbox',
+
 };
