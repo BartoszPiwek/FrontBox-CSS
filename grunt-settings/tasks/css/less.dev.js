@@ -1,22 +1,13 @@
 module.exports = function(SETTINGS) {
 
-    var modifyVarsDev, modifyVarsProd;
-
-    modifyVarsDev = {
+    var modifyVars = {
         pathToModulesDev: SETTINGS.pathToModulesDev,
         pathToModulesProd: SETTINGS.pathToModulesProd,
         isWordpress: SETTINGS.isWordpress,
+        version: SETTINGS.version,
     };
-    modifyVarsProd = JSON.parse(JSON.stringify(modifyVarsDev));
-    modifyVarsProd.version = 'prod';
-    modifyVarsDev.version = 'dev';
     
     return {
-
-        options: {
-            javascriptEnabled: true,
-            modifyVars: modifyVarsDev,
-        },
 
         /**
          * Development version
@@ -30,6 +21,8 @@ module.exports = function(SETTINGS) {
                 sourceMapURL: 'grid.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
+                modifyVars: modifyVars,
+                javascriptEnabled: true,
             },
             src: `src/less/grid.less`,
             dest: `${SETTINGS.pathToDev}/css/grid.css`,
@@ -43,6 +36,8 @@ module.exports = function(SETTINGS) {
                 sourceMapURL: 'base.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
+                modifyVars: modifyVars,
+                javascriptEnabled: true,
             },
             src: `src/less/base.less`,
             dest: `${SETTINGS.pathToDev}/css/base.css`,
@@ -56,6 +51,8 @@ module.exports = function(SETTINGS) {
                 sourceMapURL: 'utilities.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
+                modifyVars: modifyVars,
+                javascriptEnabled: true,
             },
             src: `src/less/utilities.less`,
             dest: `${SETTINGS.pathToDev}/css/utilities.css`,
@@ -65,58 +62,15 @@ module.exports = function(SETTINGS) {
             options: {
                 compress: false,
                 sourceMap: true,
-                sourceMapFilename: `${SETTINGS.pathToMainCSS}/style.dev.css.map`,
+                sourceMapFilename: `${SETTINGS.pathToDev}/${SETTINGS.pathToMainCSS}/style.dev.css.map`,
                 sourceMapURL: 'style.dev.css.map',
                 sourceMapBasepath: '../',
                 sourceMapRootpath: '/',
-                modifyVars: modifyVarsDev,
+                modifyVars: modifyVars,
+                javascriptEnabled: true,
             },
             src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSS}/style.dev.css`,
-        },
-
-        /**
-         * Productive version
-         */
-
-        prod_style_grid: {
-            options: {
-                compress: false,
-                sourceMap: false,
-                modifyVars: modifyVarsProd,
-            },
-            src: `src/less/grid.less`,
-            dest: `${SETTINGS.pathToProd}/css/grid.prod.css`,
-        },
-
-        prod_style_base: {
-            options: {
-                compress: false,
-                sourceMap: false,
-                modifyVars: modifyVarsProd,
-            },
-            src: `src/less/base.less`,
-            dest: `${SETTINGS.pathToProd}/css/base.prod.css`,
-        },
-
-        prod_style_utilities: {
-            options: {
-                compress: false,
-                sourceMap: false,
-                modifyVars: modifyVarsProd,
-            },
-            src: `src/less/utilities.less`,
-            dest: `${SETTINGS.pathToProd}/css/utilities.prod.css`,
-        },
-
-        prod: {
-            options: {
-                compress: false,
-                sourceMap: false,
-                modifyVars: modifyVarsProd,
-            },
-            src: `src/less/style.less`,
-            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
+            dest: `${SETTINGS.pathToDev}/${SETTINGS.pathToMainCSS}/style.dev.css`,
         },
 
     };

@@ -1,0 +1,766 @@
+/*=========================================================================
+|| FILE: Base style concat
+=========================================================================*/
+/*=======================================================================*/
+/*=========================================================================
+|| FILE: _variables.less
+=========================================================================*/
+/**
+ * Z-index variables
+ */
+/**
+ * Transition
+ */
+/*=========================================================================
+|| FILE: Variables concat
+===========================================================================
+|| Concatenate less variables files
+=========================================================================*/
+/*=========================================================================
+|| Screen sizes for responsive design
+=========================================================================*/
+/*=========================================================================
+|| Responsive variables
+===========================================================================
+|| Easy way using @media queries
+|| @media @mobile === @media only screen and (max-width: 767px)
+||
+|| SYNTAX:
+||   "variable-name: value"
+||   · "variable-name":     width screen name
+||   · "value":             "only screen and ()" with destination in parenthesis
+=========================================================================*/
+/* Grid max columns in one row */
+/*=========================================================================
+|| FILE: Color variables
+===========================================================================
+|| Required colors
+=========================================================================*/
+/**
+ * Base
+ */
+/* Main website text color */
+/**
+ * Special
+ */
+/* Mobile tap color { set :false to off } */
+/* Text selection color { set :false to off } */
+/**
+ * Elements
+ */
+/* For <code> tag */
+/*=========================================================================
+|| FILE: _fonts.less
+===========================================================================
+|| Font family variables and functions
+|| ! All fonts must be placed in src/fonts/
+===========================================================================
+|| Best practices for using font-weights
+===========================================================================
+100    Extra Light or Ultra Light
+200    Light or Thin
+300    Book or Demi
+400    Normal or Regular
+500    Medium
+600    Semibold, Demibold
+700    Bold
+800    Black, Extra Bold or Heavy
+900    Extra Black, Fat, Poster or Ultra Black
+===========================================================================
+|| Help fallback
+===========================================================================
+font-family: Arial,Helmet,Freesans,sans-serif;
+font-family: 'Arial Narrow','Nimbus Sans L',sans-serif;
+font-family: 'Bookman Old Style',Bookman,'URW Bookman L',serif;
+font-family: 'Century Gothic',Futura,'URW Gothic L',sans-serif;
+font-family: 'Comic Sans MS',cursive;
+font-family: 'Courier New',Courier,Freemono,'Nimbus Mono L',monospace;
+font-family: Constantina,Georgia,'Nimbus Roman No9 L',serif;
+font-family: Consolas,'Lucida Console','Bitstream VeraSans Mono','DejaVu Sans Mono',monospace;
+font-family: 'Lucida Sans Unicode','Lucida Grande','Lucida Sans','DejaVu Sans Condensed',sans-serif;
+font-family: Cambria,'Palatino Linotype','Book Antiqua','URW Palladio L',serif;
+font-family: symbol,'Standard Symbols L';
+font-family: Cambria,'Times New Roman','Nimbus Roman No9 L','Freeserif',Times,serif;
+font-family: Verdana,Geneva,'Bitstream Vera Sans','DejaVu Sans',sans-serif;
+font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+=========================================================================*/
+/*=========================================================================
+|| FILE: Required variables
+===========================================================================
+|| Change FrontBox primary settings 
+=========================================================================*/
+/**
+  * Burger toggle { REQUIRED }
+  * animation { less/plugins/animations/burger/ }
+**/
+/**
+  * Burger menu
+  * Collection:
+  under-header, from-side
+**/
+/*=======================================================================*/
+/*=======================================================================*/
+/*===================================================================
+1) Body
+===================================================================*/
+/* Lock page in 100% device width */
+/* Lock page in 100% device height */
+/**
+  * Add style for lock page scroll
+**/
+/*===================================================================
+2) Header
+===================================================================*/
+/* Header addon style for script ./src/js/frontbox/header_drop-shadow.js */
+/* Set overlay when burger menu is active */
+/**
+  * Header options:
+  * spy - Spy page position to make header sticky when page is scrolled to element
+**/
+/*===================================================================
+3) Burger
+===================================================================*/
+/**
+  * Wrap navbar to burger for breakpoint
+  * set breakpoint ex: only screen and (max-width: 748px)
+**/
+/*=========================================================================
+|| FILE: _functions.less
+===========================================================================
+|-TODO
+=========================================================================*/
+/**
+ *? Set style for selectors :hover :active :focus 
+ * Set class &--hover for parent element to trigger hover
+ * 
+ ** Function:
+ *  .add-hover(@code);
+ * 
+ ** Arguments:
+ *  @code: normal CSS code
+ * 
+ ** Example:
+ *
+ *  .foo {
+ *    .add-hover({
+ *      color: red;
+ *    });
+ *  }
+ * 
+ ** Output
+ *
+ *  .foo--hover:hover .foo,
+ *  .foo--hover:hover .foo,
+ *  .foo--hover:hover .foo,
+ *  .foo:hover,
+ *  .foo:active,
+ *  .foo:focus {
+ *    background-color: red;
+ *  }
+ * 
+ */
+/**
+ *? Create color class using variables
+ * 
+ ** Function:
+ *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+ * 
+ ** Arguments:
+ *  @color-name-array: array with @colors sufix name { ex: foo, fee }
+ *  @color-variable-prefix: sufix name for variables { color }
+ *  @property: prefix class and property for color { fill }
+ * 
+ ** Example:
+ * 
+ *  @color-foo: red;
+ *  @color-fee: blue;
+ *  @color-string: foo, fee;
+ *  .color-list(@color-string, color, fill);
+ * 
+ ** Output:
+ *
+ *  fill-foo {
+ *    fill: red;
+ *  }
+ *  fill-fee {
+ *    fill: blue;
+ *  }
+ * 
+ */
+/**
+ *? Force an element to self-clear its children
+ */
+/**
+ *? Set space beetween elements in ASIX X/Y
+ *
+ ** For class: 
+ *  .row
+ */
+/**
+  * Triangle
+  * 
+  */
+/**
+  * Print @string in terminal output
+**/
+/**
+  * Tools generator
+**/
+/**
+ * Responsive
+ */
+/* Scrollbar */
+/*=========================================================================
+|| FILE: _browser-reset.less
+===========================================================================
+|| Reset browser stylesheet
+|| INCLUDE:
+||    normalize.css v7.0.0 | github.com/necolas/normalize.css
+=========================================================================*/
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-touch-callout: none;
+  font-size: 62.5%;
+}
+body {
+  margin: 0;
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+  font-size: 1.6rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+figcaption,
+figure,
+main {
+  display: block;
+}
+figure {
+  margin: 0;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+pre {
+  font-family: monospace, monospace;
+  font-size: 1.6em;
+}
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+b,
+strong {
+  font-weight: inherit;
+}
+b,
+strong {
+  font-weight: bold;
+}
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1.6em;
+}
+dfn {
+  font-style: italic;
+}
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+audio,
+video {
+  display: inline-block;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+img {
+  border-style: none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  outline: none !important;
+}
+button {
+  border: none;
+}
+button,
+input {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  border-radius: 0;
+}
+select::-ms-expand {
+  display: none;
+}
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+progress {
+  display: inline-block;
+  vertical-align: baseline;
+}
+textarea {
+  overflow: auto;
+}
+details,
+menu {
+  display: block;
+}
+summary {
+  display: list-item;
+}
+canvas {
+  display: inline-block;
+}
+template {
+  display: none;
+}
+[hidden] {
+  display: none;
+}
+iframe {
+  border: none;
+  width: 100%;
+  display: block;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=text]::-ms-clear,
+input[type=text]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+  webkit-appearance: none;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+input[type="button"]:-moz-focusring,
+input[type="reset"]:-moz-focusring,
+input[type="submit"]:-moz-focusring,
+input button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+input[type="button"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input button::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+input,
+textarea {
+  outline: none;
+}
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-weight: normal;
+}
+ul,
+ol {
+  list-style: none;
+}
+/*=========================================================================
+|| FILE: blocks.less
+===========================================================================
+|| Often used elements style
+=========================================================================*/
+/**
+ * Block square
+ * - same width and height
+ */
+.block-square {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+}
+.block-square > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/**
+ * Block transparent
+ */
+.block-transparent,
+.embed-youtube {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  vertical-align: top;
+  background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
+  background-position: 0 0,10px 10px;
+  background-size: 20px 20px;
+}
+/** 
+  * Absolute center vertical, horizostal
+**/
+.block-absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+/** 
+  * Vertical center 
+  * EMMET: 
+.group-middle>span{Text}+img{} 
+.group-middle>span{Text}+svg{} 
+**/
+.group-middle > * {
+  vertical-align: middle !important;
+  display: inline-block !important;
+}
+/**
+ * Embed YouTube Iframe
+ * - default 21/9
+ * - 
+ * .embed-youtube>iframe
+ */
+.embed-youtube {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 42.85714286%;
+  height: 0;
+  /**
+     * Size
+     */
+}
+.embed-youtube iframe {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.embed-youtube--16x9 {
+  padding-top: 56.25%;
+}
+.embed-youtube--4x3 {
+  padding-top: 75%;
+}
+.embed-youtube--1x1 {
+  padding-top: 100%;
+}
+/*=========================================================================
+|| FILE: _utilities.less
+===========================================================================
+|| Helpful basics class
+=========================================================================*/
+/*=========================================================================
+// Flow
+=========================================================================*/
+@media only screen and (max-width: 549px) {
+  .sm_no-wrap {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .md_no-wrap {
+    max-width: 100% !important;
+  }
+}
+.lg_no-wrap {
+  max-width: 100% !important;
+}
+/*=========================================================================
+// Margin & padding
+=========================================================================*/
+.no-margin-top {
+  margin-top: 0 !important;
+}
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+.no-margin-left {
+  margin-left: 0 !important;
+}
+.no-margin-right {
+  margin-right: 0 !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.no-margin-x {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.no-margin-y {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.no-padding-top {
+  padding-top: 0 !important;
+}
+.no-padding-bottom {
+  padding-bottom: 0 !important;
+}
+.no-padding-left {
+  padding-left: 0 !important;
+}
+.no-padding-right {
+  padding-right: 0 !important;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-padding-x {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.no-padding-y {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.no-before:before {
+  content: none !important;
+}
+.no-after:after {
+  content: none !important;
+}
+.no-font {
+  font-size: 0;
+}
+.margin-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.margin-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.margin-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+/*=========================================================================
+// Text
+=========================================================================*/
+.align-left {
+  text-align: left !important;
+}
+.align-right {
+  text-align: right !important;
+}
+.center {
+  text-align: center !important;
+}
+.justify {
+  text-align: justify !important;
+}
+.capitalize {
+  text-transform: capitalize !important;
+}
+.uppercase {
+  text-transform: uppercase !important;
+}
+.lowercase {
+  text-transform: lowercase !important;
+}
+.no-text-transform {
+  text-transform: none !important;
+}
+.font-semibold {
+  font-weight: semibold !important;
+}
+.font-light {
+  font-weight: light !important;
+}
+.font-normal {
+  font-weight: normal !important;
+}
+.font-extrabold {
+  font-weight: extrabold !important;
+}
+.bold,
+.strong {
+  font-weight: bold !important;
+}
+.italic {
+  font-style: italic !important;
+}
+.underline {
+  text-decoration: underline !important;
+}
+.text-no-wrap {
+  white-space: nowrap !important;
+}
+.no-font {
+  font-size: 0 !important;
+}
+/*=========================================================================
+// Change
+=========================================================================*/
+.rotate-180 {
+  transform: rotate(180deg) !important;
+}
+.rotate-90 {
+  transform: rotate(90deg) !important;
+}
+.rotate-270 {
+  transform: rotate(270deg) !important;
+}
+.round {
+  border-radius: 50%;
+}
+/**
+  * Size
+**/
+.full-height {
+  height: 100vh;
+}
+@media only screen and (max-width: 767px) {
+  .is_burger-menu--visible {
+    display: block;
+  }
+  .is_burger-menu--hide {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .is_burger-menu--visible {
+    display: none;
+  }
+  .is_burger-menu--hide {
+    display: block;
+  }
+}
+/*=========================================================================
+|| FILE: _fix.less
+===========================================================================
+|| Classes used for avoid common CSS problems
+=========================================================================*/
+/**
+ * Position fixed
+ * Change to position fixed on iOS Safari while scrolling
+ * @browser Safari
+ */
+.fix_fixed {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+}
+/*# sourceMappingURL=base.css.map */

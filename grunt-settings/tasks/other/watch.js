@@ -1,5 +1,9 @@
 module.exports = {
 
+  options: {
+    spawn: false,
+  },
+
   /* Livereload */
   livereload: {
     options: {
@@ -9,11 +13,4 @@ module.exports = {
     files: ["src/**/*"]
   },
 
-  /* Grunt */
-  grunt: { 
-    files: [
-      "Gruntfile.js",
-      "grunt-settings/**/*",
-    ] 
-  }
 };

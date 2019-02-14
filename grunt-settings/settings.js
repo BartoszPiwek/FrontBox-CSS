@@ -6,6 +6,10 @@ module.exports = {
     website_locale          : 'pl-PL',
 
     /* Path */
+    pathToPublic            : 'public',
+    pathToDev               : 'public/dev',
+    pathToProd              : 'public/prod',
+
     "pathToMainCSS"         : './css', 
     "pathToMainCSSDev"      : './public/dev', 
     "pathToMainCSSProd"     : './public/prod', 
@@ -28,5 +32,9 @@ module.exports = {
     /* Framework */
     framework               : 'frontbox',
     cssPreprocesor          : 'less',
+    htmlPreprocesor         : 'pug',
+
+    /* Debug */
+    debug                   : true,
 
 };

@@ -1,130 +1,22 @@
 /*!******************************************************************
-Framework:      FrontBox 1.0.4 (github.com/BartoszPiwek/FrontBox)
+Framework:      FrontBox 1.1.0 (github.com/BartoszPiwek/FrontBox)
 Author:         Bartosz Piwek
 ********************************************************************/
 
-/**
- * Settings
- */
+/*=========================================================================
+|| Settings
+=========================================================================*/
 var 
 SETTINGS    = require('./grunt-settings/settings'),
-TASKS       = {};
+TASKS       = {
+    watch: null,
+};
 
-/**
- * Task Runner
- */
+/*=========================================================================
+|| Register Tasks
+=========================================================================*/
 module.exports = function(grunt) {
 
-    /* Load NPM Tasks */
-    const addTask = ( taskName, tasks ) => {
-        grunt.config.merge({
-            [taskName]: tasks,
-        });
-    };
-
-    console.log(TASKS);
-    grunt.initConfig(TASKS);
-
-    // require('jit-grunt')(grunt, {
-    //     sprite: 'grunt-spritesmith',
-    //     autocolor: 'node_modules/frontbox-grunt/tasks/autocolor.js',
-    //     autoclass: 'node_modules/frontbox-grunt/tasks/autoclass.js',
-    //     autosvg: 'node_modules/frontbox-grunt/tasks/autosvg.js',
-    //     autometa: 'node_modules/frontbox-grunt/tasks/autometa.js',
-    // });
-    // require('connect-livereload')();
-    // grunt.loadNpmTasks('grunt-w3c-html-validation');
-    // grunt.loadNpmTasks('grunt-css-statistics');
-    // grunt.loadNpmTasks('grunt-html');
-    // grunt.loadNpmTasks('grunt-combine-media-queries');
-
-
-    // grunt.initConfig({
-    //     pkg: grunt.file.readJSON('package.json'),
-    // });
-
-    //     /**
-    //      * HTML
-    //      */
-
-    //     // Minify HTML files
-    //     htmlmin             : require(`./grunt-settings/tasks/html/htmlmin`), 
-    //     // Compile Pug templates
-    //     pug                 : require('./grunt-settings/tasks/html/pug')(SETTINGS), 
-    //     // Prettify HTML files
-    //     prettify            : require('./grunt-settings/tasks/html/prettify'),
-    //     // Insert inline SVG
-    //     autosvg             : require('./grunt-settings/tasks/html/autosvg'),
-    //     // Hash files
-    //     hash_res            : require('./grunt-settings/tasks/html/hash_res'),
-    //     // W3C Markup Validation Service
-    //     validation          : require('./grunt-settings/tasks/html/validation')(SETTINGS),
-
-    //     /**
-    //      * JavaScript
-    //      */
-
-    //     // JavaScript parser/compressor/beautifier
-    //     uglify              : require('./grunt-settings/tasks/js/uglify')(SETTINGS), 
-    //     // The compiler for next generation JavaScript
-    //     babel               : require('./grunt-settings/tasks/js/babel')(SETTINGS), 
-    //     // JavaScript file and module loader
-    //     requirejs           : require('./grunt-settings/tasks/js/requirejs'), 
-    //     // Remove dev scripts
-    //     strip_code          : require('./grunt-settings/tasks/js/strip_code')(SETTINGS), 
-    //     // organize your browser code and load modules installed by npm
-    //     browserify          : require('./grunt-settings/tasks/js/browserify')(SETTINGS),
-
-    //     /**
-    //      * Graphic assets 
-    //      */
-
-    //     // Compress png,jpg,gif
-    //     image               : require('./grunt-settings/tasks/assets/image')(SETTINGS),
-    //     // Converting a set of images into a spritesheet
-    //     sprite              : require('./grunt-settings/tasks/assets/sprite'),
-    //     // Generate favicons
-    //     realFavicon         : require('./grunt-settings/tasks/assets/realFavicon')(SETTINGS), 
-    //     // Compress SVG
-    //     svgmin              : require('./grunt-settings/tasks/assets/svgmin'), 
-
-    //     /**
-    //      * CSS tasks
-    //      */
-
-    //     /* LESS Compile */
-    //     less                : require('./grunt-settings/tasks/css/less')(SETTINGS), 
-    //     /* PostCSS is a tool for transforming styles with JS plugins */
-    //     postcss             : require('./grunt-settings/tasks/css/postcss')(SETTINGS), 
-    //     /* Remove unused CSS style */
-    //     uncss               : require('./grunt-settings/tasks/css/uncss')(SETTINGS), 
-    //     /* Critical extracts & inlines critical-path (above-the-fold) CSS from HTML */
-    //     critical            : require('./grunt-settings/tasks/css/critical'), 
-    //     /* Colors to variables */
-    //     autocolor           : require('./grunt-settings/tasks/css/autocolor'),
-    //     /* Parses stylesheets and returns an object with statistics */
-    //     cssstats            : require('./grunt-settings/tasks/css/cssstats'), 
-
-    //     /**
-    //      * Other
-    //      */
-
-    //     // Start a static web server
-    //     connect             : require('./grunt-settings/tasks/other/connect'), 
-    //     // Copy files and folders
-    //     copy                : require('./grunt-settings/tasks/other/copy')(SETTINGS),
-    //     // Clear files and folders
-    //     clean               : require('./grunt-settings/tasks/other/clean')(SETTINGS),
-    //     // Grunt plugin for executing shell commands
-    //     exec                : require('./grunt-settings/tasks/other/exec')(SETTINGS),
-    //     // Run tasks whenever watched files change
-    //     watch               : require('./grunt-settings/tasks/other/watch'),
-
-    // });
-
-    /**
-     * Register Tasks
-     */
     grunt.registerTask('default', [
         'run:dev',
     ]);
@@ -132,14 +24,17 @@ module.exports = function(grunt) {
 
         SETTINGS.version = 'dev';
         
-        console.log(grunt.task.current);
-
         grunt.task.run([
+            'init_watch',
             'init_server',
             'init_style',
+            'init_html',
             'watch_style',
+            'watch_html',
             'run_begin',
             'run_style',
+            'run_html',
+            'run_server',
             'run_watch',
         ]);
 
@@ -158,32 +53,15 @@ module.exports = function(grunt) {
                 grunt.loadNpmTasks('grunt-contrib-less');
 
                 if (SETTINGS.framework === 'frontbox') {
-                    TASKS.less = require('./grunt-settings/tasks/css/less')(SETTINGS);                 
+                    if (SETTINGS.version === 'dev') {
+                        TASKS.less = require('./grunt-settings/tasks/css/less.dev')(SETTINGS);
+                    }              
+                    else {
+                        // TASKS.less = require('./grunt-settings/tasks/css/less.dev')(SETTINGS);
+                    }
                 }
                 else {
-                    addTask( 'less', {
-                        dev: {
-                            options: {
-                                compress: false,
-                                sourceMap: true,
-                                sourceMapFilename: `${SETTINGS.pathToDev}/css/style.dev.css.map`,
-                                sourceMapURL: 'style.dev.css.map',
-                                sourceMapBasepath: '../',
-                                sourceMapRootpath: '/',
-                            },
-                            src: `src/less/style.less`,
-                            dest: `${SETTINGS.pathToDev}/css/style.dev.css`,
-                        },
-                        prod: {
-                            options: {
-                                compress: false,
-                                sourceMap: false,
-                                modifyVars: modifyVarsProd,
-                            },
-                            src: `src/less/style.less`,
-                            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
-                        },
-                    });
+                    
                 }
                 
                 break;
@@ -194,12 +72,75 @@ module.exports = function(grunt) {
 
     });
 
+    /* HTML */
+    grunt.registerTask('init_html', () => {
+
+        TASKS.pug = {};
+
+        switch (SETTINGS.htmlPreprocesor) {
+            case 'pug':
+
+                grunt.loadNpmTasks('grunt-contrib-pug');
+
+                if (SETTINGS.framework === 'frontbox') {
+                    TASKS.pug.init = {
+                        files: [{
+                            expand: true,
+                            cwd: 'src/template/',
+                            src: ['**/*.pug', '!includes/**'],
+                            dest: `${SETTINGS.pathToDev}/`,
+                            ext: '.html'
+                        }],
+                        options: {
+                            data: SETTINGS,
+                            filters: require("./grunt-settings/tasks/html/pug-filters")(SETTINGS),
+                        }
+                    };
+                }
+
+                else {
+                    
+                }
+                
+                break;
+        
+            default:
+                break;
+        }
+
+    });
+
+    /* Watch */
+    grunt.registerTask('init_watch', () => {
+
+        require( 'grunt-contrib-watch' )(grunt);
+        grunt.loadNpmTasks('grunt-newer');
+        
+        TASKS.watch = require('./grunt-settings/tasks/other/watch');
+
+    });
+
     /* Server */
     grunt.registerTask('init_server', () => {
 
-        require( 'grunt-contrib-watch' )(grunt);
+        require('connect-livereload')();
+        require('grunt-contrib-connect')(grunt);
 
-        TASKS.watch = require('./grunt-settings/tasks/other/watch');
+        TASKS.connect = {
+            init: {
+                options: {
+                    port: 8181,
+                    base: `${SETTINGS.pathToPublic}/${SETTINGS.version}`,
+                    hostname: 'localhost',
+                    livereload: true,
+                    open: {
+                        opn: true,
+                        target: 'http://localhost:8181',
+                        appName: 'chrome',
+                    }
+                }
+            },
+        };
 
     });
 
@@ -207,14 +148,24 @@ module.exports = function(grunt) {
      * Register Main Tasks
      */
 
+    /* Begin */
+    grunt.registerTask('run_begin', () => {
+
+        if (SETTINGS.debug) {
+            console.log(TASKS);
+        }
+
+        grunt.initConfig(TASKS);
+
+    });
+
     /* Style */
     grunt.registerTask('run_style', () => {
 
         switch (SETTINGS.cssPreprocesor) {
             case 'less':
 
-                require( 'grunt-contrib-less' )(grunt);
-
+                /* FrontBox LESS config */
                 if (SETTINGS.framework === 'frontbox') {
 
                     grunt.task.run([
@@ -226,13 +177,44 @@ module.exports = function(grunt) {
 
                 }
                 else {
-                    
-                    
-
+                    /* Non frontbox project */
                 }
                 
                 break;
-        
+            
+            /* SASS config */
+            case 'sass':  
+            
+            break;
+            
+            default:
+                break;
+        }
+
+    });
+
+    /* HTML */
+    grunt.registerTask('run_html', () => {
+
+        switch (SETTINGS.htmlPreprocesor) {
+
+            /* PUG config */
+            case 'pug':
+
+                /* FrontBox LESS config */
+                if (SETTINGS.framework === 'frontbox') {
+
+                    grunt.task.run([
+                        'pug:init',
+                    ]);  
+
+                }
+                else {
+                    /* Non frontbox project */
+                }
+                
+                break;
+
             default:
                 break;
         }
@@ -248,14 +230,14 @@ module.exports = function(grunt) {
 
     });
 
-    /* Begin */
-    grunt.registerTask('run_begin', () => {
+    /* Server */
+    grunt.registerTask('run_server', () => {
 
-        grunt.initConfig(TASKS);
+        grunt.task.run([
+            'connect:init',
+        ]);
 
     });
-
-
 
     /**
      * Register Watch Tasks
@@ -267,148 +249,106 @@ module.exports = function(grunt) {
         if ( SETTINGS.version === 'dev' ) {
             
             switch (SETTINGS.cssPreprocesor) {
+                
+                /* LESS config */
                 case 'less':
+
+                    /* FrontBox LESS config */
                     if (SETTINGS.framework === 'frontbox') {
 
-                        TASKS.watch = {
-                            options: {
-                                spawn: false,
+                        TASKS.watch = Object.assign({}, TASKS.watch, {
+
+                            dev_style_base: {
+                                files: [
+                                    "src/less/base.less",
+                                    "src/less/variables/**/*.less",
+                                    "sec/less/frontbox/**/*.less"
+                                ],
+                                tasks: ["less:dev_style_base"],
+                            },
+                            dev_style_grid: {
+                                files: [
+                                    "src/less/grid.less",
+                                    "src/less/frontbox/variables.less",
+                                    "src/less/frontbox/functions.less",
+                                    "src/less/frontbox/grid.less"
+                                ],
+                                tasks: ["less:dev_style_grid"],
                             },
                             dev_style_utilities: {
                                 files: [
                                     "src/less/utilities.less",
                                     "src/less/utilities/*.less"
                                 ],
-                                tasks: [
-                                    'less:dev_style_utilities',
+                                tasks: ["less:dev_style_utilities"],
+                            },
+                            dev_style_main: {
+                                files: [
+                                    "src/less/style.less",
+                                    "src/less/*/**.less",
                                 ],
-                            }
-                        };
+                                tasks: ["less:dev_style_main"],
+                            },
+
+                        });
+
                     }
+
                     else {
-                        
-                        
-    
+                        /* Non frontbox project */
                     }
                     
                     break;
-            
+                
+                /* SASS config */
+                case 'sass':
+                    break;
+                
                 default:
                     break;
             }
         }
 
-        console.log(grunt.config.get(['watch']));
-
     });
 
-    // // Create virtual host
-    // grunt.registerTask('up', ['connect:prod:keepalive']);
+    /* HTML */
+    grunt.registerTask('watch_html', () => {
 
-    // // Generate DEV version
-    // grunt.registerTask('dev', [
-    //     // Copy
-    //     'newer:copy:img',
-    //     'newer:copy:html',
-    //     'newer:copy:static_CSS',
-    //     'newer:copy:fonts',
-    //     'newer:copy:other', 
-    //     // CSS
-    //     'less:dev_style_grid',
-    //     'less:dev_style_base',
-    //     'less:dev_style_utilities',
-    //     'less:dev_style_main',
-    //     // HTML
-    //     'pug:dev',
-    //     'pug:debug',
-    //     // Assets
-    //     'svgmin',
-    //     'autosvg:dev',
-    //     'autosvg:debug',
-    //     // JS
-    //     'browserify:dev',
-    //     // Other
-    //     'connect:dev',
-    //     'watch'
-    // ]);
+        if ( SETTINGS.version === 'dev' ) {
+            
+            switch (SETTINGS.htmlPreprocesor) {
+                
+                /* PUG config */
+                case 'pug':
 
-    // // Generate PROD version
-    // grunt.registerTask('prod', [
+                    /* FrontBox LESS config */
+                    if (SETTINGS.framework === 'frontbox') {
 
-    //     // Begin
-    //     'clean:begin',
+                        TASKS.watch = Object.assign({}, TASKS.watch, {
 
-    //     // Images
-    //     'favicon',
-    //     // 'sprite',
+                            pug: {
+                                files: ['src/template/*.pug'],
+                                tasks: ['newer:pug:init',],
+                            },
+                            pug_includes: {
+                                files: ['src/template/includes/*.pug'],
+                                tasks: ['pug:init',],
+                            },
 
-    //     'copy:prod',
+                        });
+                    }
 
-    //     'image',
-    //     'svgmin',
+                    else {
+                        /* Non frontbox project */
+                    }
+                    
+                    break;
+                
+                default:
+                    break;
+            }
+        }
 
-    //     // HTML
-    //     'pug:prod',
-
-    //     // JavaScript
-    //     'prod:js',
-
-    //     // CSS
-    //     'prod:style',
-    //     // Critical CSS
-    //     //'critical',
-    //     //'processhtml:critical',
-
-
-
-    //     // General
-    //     // 'hash_res',
-
-    //     // HTML end
-    //     'autosvg:prod',
-    //     // 'htmlmin',
-
-    //     // END
-    //     'clean:end',
-    //     'validation',
-    // ]);
-
-    // grunt.registerTask('prod:js', [
-    //     'browserify:prod',
-    //     'strip_code:prod',
-    //     'babel',
-    //     'uglify',
-    // ]);
-    // grunt.registerTask('prod:style', [
-    //     'less:prod_style_grid',
-    //     'less:prod_style_base',
-    //     'less:prod_style_utilities',
-    //     'less:prod',
-    //     // 'exec:get_wordpress_sitemap',
-    //     'load_sitemap_json',
-    //     // 'uncss',
-    //     'postcss:prod',
-    //     'postcss:min',
-    // ]);
-
-    // // Style tasks
-    // grunt.registerTask('colors', ['autocolor']);
-
-    // // Addon tasks
-    // grunt.registerTask('libs', ['copy:libs']);
-    // grunt.registerTask('favicon', ['realFavicon']);
-    // grunt.registerTask('doc', ['dss']);
-    // grunt.registerTask('start', ['clean:begin']);
-    // grunt.registerTask('test', 'dev');
-
-    // // Wordpress
-    // grunt.registerTask('load_sitemap_json', () => {
-    //     if (SETTINGS.isWordpress) {
-    //         grunt.config.set(
-    //             'uncss.prod.options.urls',
-    //             grunt.file.readJSON('./sitemap.json')
-    //         );
-    //     }
-    // });
+    });
 
 };
