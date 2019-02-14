@@ -6,7 +6,9 @@ Author:         Bartosz Piwek
 /**
  * Settings
  */
-var SETTINGS = require('./grunt-settings/settings');
+var 
+SETTINGS    = require('./grunt-settings/settings'),
+TASKS       = {};
 
 /**
  * Task Runner
@@ -19,10 +21,6 @@ module.exports = function(grunt) {
             [taskName]: tasks,
         });
     };
-
-    /* NPM Tasks */
-    const
-    less = require('./grunt-settings/tasks/css/less')(SETTINGS);
 
     // require('jit-grunt')(grunt, {
     //     sprite: 'grunt-spritesmith',
@@ -38,8 +36,11 @@ module.exports = function(grunt) {
     // grunt.loadNpmTasks('grunt-combine-media-queries');
 
 
-    // grunt.initConfig({
-    //     pkg: grunt.file.readJSON('package.json'),
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+    });
+    grunt.loadTasks('grunt-tasks');
+
 
     //     /**
     //      * HTML
@@ -120,26 +121,194 @@ module.exports = function(grunt) {
 
     // });
 
-    // /**
-    //  * Register tasks
-    //  */
+    /**
+     * Register Tasks
+     */
+    grunt.registerTask('default', [
+        'run:dev',
+    ]);
+    grunt.registerTask('run:dev', () => {
 
-    // grunt.registerTask('default', ['dev']);
-    grunt.registerTask('default', () => {
-        console.log(grunt.task.current.name);
-    });
-
-    grunt.registerTask('style', () => {
-
-        require('grunt-contrib-less')(grunt);
-
-        addTask( 'less', less );
+        SETTINGS.version = 'dev';
+        
+        console.log(grunt.task.current);
 
         grunt.task.run([
-            'less:dev_style_base',
-            'less:dev_style_utilities',
-            'less:dev_style_main',
+            'init_server',
+            'init_style',
+            'run_style',
+            'watch_style',
+            'run_begin',
+            'run_watch',
         ]);
+
+    });
+
+    /**
+     * Register Init Tasks
+     */
+
+    /* Style */
+    grunt.registerTask('init_style', () => {
+
+        switch (SETTINGS.cssPreprocesor) {
+            case 'less':
+
+                grunt.loadNpmTasks('grunt-contrib-less');
+
+                if (SETTINGS.framework === 'frontbox') {
+                    addTask( 'less', require('./grunt-settings/tasks/css/less')(SETTINGS) );                    
+                }
+                else {
+                    addTask( 'less', {
+                        dev: {
+                            options: {
+                                compress: false,
+                                sourceMap: true,
+                                sourceMapFilename: `${SETTINGS.pathToDev}/css/style.dev.css.map`,
+                                sourceMapURL: 'style.dev.css.map',
+                                sourceMapBasepath: '../',
+                                sourceMapRootpath: '/',
+                            },
+                            src: `src/less/style.less`,
+                            dest: `${SETTINGS.pathToDev}/css/style.dev.css`,
+                        },
+                        prod: {
+                            options: {
+                                compress: false,
+                                sourceMap: false,
+                                modifyVars: modifyVarsProd,
+                            },
+                            src: `src/less/style.less`,
+                            dest: `${SETTINGS.pathToMainCSS}/style.prod.css`,
+                        },
+                    });
+                }
+                
+                break;
+        
+            default:
+                break;
+        }
+
+    });
+
+    /* Server */
+    grunt.registerTask('init_server', () => {
+
+        require( 'grunt-contrib-watch' )(grunt);
+
+        grunt.config.set(
+            "watch", 
+            require('./grunt-settings/tasks/other/watch')
+        );
+
+    });
+
+    /**
+     * Register Main Tasks
+     */
+
+    /* Style */
+    grunt.registerTask('run_style', () => {
+
+        switch (SETTINGS.cssPreprocesor) {
+            case 'less':
+
+                require( 'grunt-contrib-less' )(grunt);
+
+                if (SETTINGS.framework === 'frontbox') {
+
+                    grunt.task.run([
+                        'less:dev_style_grid',
+                        'less:dev_style_base',
+                        'less:dev_style_utilities',
+                        'less:dev_style_main',
+                    ]);  
+
+                }
+                else {
+                    
+                    
+
+                }
+                
+                break;
+        
+            default:
+                break;
+        }
+
+    });
+
+    /* Watch */
+    grunt.registerTask('run_watch', () => {
+
+        console.log(grunt.config.get(['less']));
+
+        grunt.task.run([
+            'watch',
+        ]);
+
+    });
+
+    /* Begin */
+    grunt.registerTask('run_watch', () => {
+
+        grunt.initConfig(TASKS);
+
+    });
+
+
+
+    /**
+     * Register Watch Tasks
+     */
+
+    /* Style */
+    grunt.registerTask('watch_style', () => {
+
+        if ( SETTINGS.version === 'dev' ) {
+            
+            switch (SETTINGS.cssPreprocesor) {
+                case 'less':
+                    if (SETTINGS.framework === 'frontbox') {
+    
+                        grunt.config.merge({
+                            watch: {
+                                dev_style_utilities: {
+                                    files: [
+                                        "src/less/utilities.less",
+                                        "src/less/utilities/*.less"
+                                    ],
+                                    tasks: [
+                                        'run_style',
+                                        'less:dev_style_grid',
+                                        'less:dev_style_base',
+                                        'less:dev_style_utilities',
+                                        'less:dev_style_main',
+                                    ],
+                                    options: {
+                                        spawn: true
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        
+                        
+    
+                    }
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+
+        console.log(grunt.config.get(['watch']));
 
     });
 
