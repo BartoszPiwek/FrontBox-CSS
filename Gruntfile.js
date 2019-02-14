@@ -326,7 +326,7 @@ module.exports = function(grunt) {
 
         if ( SETTINGS.version === 'dev' ) {
             
-            TASKS.copy = {
+            TASKS.watch = {
                 img: {
                     files: ["src/images/**/*"],
                     tasks: ["newer:copy:img"],
