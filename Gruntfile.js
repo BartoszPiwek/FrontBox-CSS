@@ -22,6 +22,9 @@ module.exports = function(grunt) {
         });
     };
 
+    console.log(TASKS);
+    grunt.initConfig(TASKS);
+
     // require('jit-grunt')(grunt, {
     //     sprite: 'grunt-spritesmith',
     //     autocolor: 'node_modules/frontbox-grunt/tasks/autocolor.js',
@@ -36,11 +39,9 @@ module.exports = function(grunt) {
     // grunt.loadNpmTasks('grunt-combine-media-queries');
 
 
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-    });
-    grunt.loadTasks('grunt-tasks');
-
+    // grunt.initConfig({
+    //     pkg: grunt.file.readJSON('package.json'),
+    // });
 
     //     /**
     //      * HTML
@@ -136,9 +137,9 @@ module.exports = function(grunt) {
         grunt.task.run([
             'init_server',
             'init_style',
-            'run_style',
             'watch_style',
             'run_begin',
+            'run_style',
             'run_watch',
         ]);
 
@@ -157,7 +158,7 @@ module.exports = function(grunt) {
                 grunt.loadNpmTasks('grunt-contrib-less');
 
                 if (SETTINGS.framework === 'frontbox') {
-                    addTask( 'less', require('./grunt-settings/tasks/css/less')(SETTINGS) );                    
+                    TASKS.less = require('./grunt-settings/tasks/css/less')(SETTINGS);                 
                 }
                 else {
                     addTask( 'less', {
@@ -198,10 +199,7 @@ module.exports = function(grunt) {
 
         require( 'grunt-contrib-watch' )(grunt);
 
-        grunt.config.set(
-            "watch", 
-            require('./grunt-settings/tasks/other/watch')
-        );
+        TASKS.watch = require('./grunt-settings/tasks/other/watch');
 
     });
 
@@ -244,8 +242,6 @@ module.exports = function(grunt) {
     /* Watch */
     grunt.registerTask('run_watch', () => {
 
-        console.log(grunt.config.get(['less']));
-
         grunt.task.run([
             'watch',
         ]);
@@ -253,7 +249,7 @@ module.exports = function(grunt) {
     });
 
     /* Begin */
-    grunt.registerTask('run_watch', () => {
+    grunt.registerTask('run_begin', () => {
 
         grunt.initConfig(TASKS);
 
@@ -273,27 +269,21 @@ module.exports = function(grunt) {
             switch (SETTINGS.cssPreprocesor) {
                 case 'less':
                     if (SETTINGS.framework === 'frontbox') {
-    
-                        grunt.config.merge({
-                            watch: {
-                                dev_style_utilities: {
-                                    files: [
-                                        "src/less/utilities.less",
-                                        "src/less/utilities/*.less"
-                                    ],
-                                    tasks: [
-                                        'run_style',
-                                        'less:dev_style_grid',
-                                        'less:dev_style_base',
-                                        'less:dev_style_utilities',
-                                        'less:dev_style_main',
-                                    ],
-                                    options: {
-                                        spawn: true
-                                    }
-                                }
+
+                        TASKS.watch = {
+                            options: {
+                                spawn: false,
+                            },
+                            dev_style_utilities: {
+                                files: [
+                                    "src/less/utilities.less",
+                                    "src/less/utilities/*.less"
+                                ],
+                                tasks: [
+                                    'less:dev_style_utilities',
+                                ],
                             }
-                        });
+                        };
                     }
                     else {
                         
