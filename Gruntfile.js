@@ -25,17 +25,24 @@ module.exports = function(grunt) {
         SETTINGS.version = 'dev';
         
         grunt.task.run([
+
             'init_watch',
             'init_server',
+            'init_copy',
             'init_style',
             'init_html',
+
+            'watch_copy',
             'watch_style',
             'watch_html',
+
             'run_begin',
+            'run_copy',
             'run_style',
             'run_html',
             'run_server',
             'run_watch',
+
         ]);
 
     });
@@ -44,10 +51,64 @@ module.exports = function(grunt) {
      * Register Init Tasks
      */
 
+    /* Copy */
+    grunt.registerTask('init_copy', () => {
+
+        grunt.loadNpmTasks('grunt-contrib-copy');
+
+        TASKS.copy = {
+
+            img: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/images/',
+                    src: ['**/*'],
+                    dest: `${SETTINGS.pathToDev}/images/`,
+                    filter: 'isFile'
+                }],
+            },
+
+            fonts: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/fonts/',
+                    src: '*',
+                    dest: `${SETTINGS.pathToDev}/fonts/`,
+                    filter: 'isFile'
+                }],
+            },
+
+            other: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: '*',
+                    dest: `${SETTINGS.pathToDev}/`,
+                    filter: 'isFile'
+                }],
+            },
+
+        };
+
+        /* None HTML Preprocessor */
+        if (!SETTINGS.htmlPreprocessor) {
+            TASKS.copy.html = {
+                files: [{
+                    expand: true,
+                    cwd: 'src/template/',
+                    src: ['**/*.html'],
+                    dest: `${SETTINGS.pathToDev}/`,
+                    filter: 'isFile'
+                }]
+            };
+        }
+
+    });
+
     /* Style */
     grunt.registerTask('init_style', () => {
 
-        switch (SETTINGS.cssPreprocesor) {
+        switch (SETTINGS.cssPreprocessor) {
             case 'less':
 
                 grunt.loadNpmTasks('grunt-contrib-less');
@@ -77,7 +138,7 @@ module.exports = function(grunt) {
 
         TASKS.pug = {};
 
-        switch (SETTINGS.htmlPreprocesor) {
+        switch (SETTINGS.htmlPreprocessor) {
             case 'pug':
 
                 grunt.loadNpmTasks('grunt-contrib-pug');
@@ -159,10 +220,27 @@ module.exports = function(grunt) {
 
     });
 
+    /* Copy */
+    grunt.registerTask('run_copy', () => {
+
+        grunt.task.run([
+            'newer:copy:img',
+            'newer:copy:fonts',
+            'newer:copy:other', 
+        ]);  
+
+        if (!SETTINGS.htmlPreprocessor) {
+            grunt.task.run([
+                'newer:copy:html',
+            ]);  
+        }
+
+    });
+
     /* Style */
     grunt.registerTask('run_style', () => {
 
-        switch (SETTINGS.cssPreprocesor) {
+        switch (SETTINGS.cssPreprocessor) {
             case 'less':
 
                 /* FrontBox LESS config */
@@ -196,7 +274,7 @@ module.exports = function(grunt) {
     /* HTML */
     grunt.registerTask('run_html', () => {
 
-        switch (SETTINGS.htmlPreprocesor) {
+        switch (SETTINGS.htmlPreprocessor) {
 
             /* PUG config */
             case 'pug':
@@ -243,12 +321,36 @@ module.exports = function(grunt) {
      * Register Watch Tasks
      */
 
+    /* Copy */
+    grunt.registerTask('watch_copy', () => {
+
+        if ( SETTINGS.version === 'dev' ) {
+            
+            TASKS.copy = {
+                img: {
+                    files: ["src/images/**/*"],
+                    tasks: ["newer:copy:img"],
+                },
+                fonts: {
+                    files: ["src/fonts/*"],
+                    tasks: ["newer:copy:fonts"],
+                },
+                other: {
+                    files: ["src/*"],
+                    tasks: ["newer:copy:other"],
+                },
+            };
+            
+        }
+
+    });
+
     /* Style */
     grunt.registerTask('watch_style', () => {
 
         if ( SETTINGS.version === 'dev' ) {
             
-            switch (SETTINGS.cssPreprocesor) {
+            switch (SETTINGS.cssPreprocessor) {
                 
                 /* LESS config */
                 case 'less':
@@ -316,7 +418,7 @@ module.exports = function(grunt) {
 
         if ( SETTINGS.version === 'dev' ) {
             
-            switch (SETTINGS.htmlPreprocesor) {
+            switch (SETTINGS.htmlPreprocessor) {
                 
                 /* PUG config */
                 case 'pug':

@@ -31,8 +31,8 @@ module.exports = {
 
     /* Framework */
     framework               : 'frontbox',
-    cssPreprocesor          : 'less',
-    htmlPreprocesor         : 'pug',
+    cssPreprocessor         : 'less',
+    htmlPreprocessor        : 'pug',
 
     /* Debug */
     debug                   : true,
