@@ -7,8 +7,6 @@ module.exports = {
 
     /* Path */
     pathToPublic            : 'public',
-    pathToDev               : 'public/dev',
-    pathToProd              : 'public/prod',
 
     "pathToMainCSS"         : './css', 
     "pathToMainCSSDev"      : './public/dev', 
@@ -33,6 +31,7 @@ module.exports = {
     framework               : 'frontbox',
     cssPreprocessor         : 'less',
     htmlPreprocessor        : 'pug',
+    jsPreprocessor          : 'browserify',
 
     /* Debug */
     debug                   : true,

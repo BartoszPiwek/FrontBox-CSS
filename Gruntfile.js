@@ -31,15 +31,18 @@ module.exports = function(grunt) {
             'init_copy',
             'init_style',
             'init_html',
+            'init_js',
 
             'watch_copy',
             'watch_style',
             'watch_html',
+            'watch_js',
 
             'run_begin',
             'run_copy',
             'run_style',
             'run_html',
+            'run_js',
             'run_server',
             'run_watch',
 
@@ -63,7 +66,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/images/',
                     src: ['**/*'],
-                    dest: `${SETTINGS.pathToDev}/images/`,
+                    dest: `public/${SETTINGS.version}/images/`,
                     filter: 'isFile'
                 }],
             },
@@ -73,7 +76,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/fonts/',
                     src: '*',
-                    dest: `${SETTINGS.pathToDev}/fonts/`,
+                    dest: `public/${SETTINGS.version}/fonts/`,
                     filter: 'isFile'
                 }],
             },
@@ -83,7 +86,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/',
                     src: '*',
-                    dest: `${SETTINGS.pathToDev}/`,
+                    dest: `public/${SETTINGS.version}/`,
                     filter: 'isFile'
                 }],
             },
@@ -97,7 +100,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/template/',
                     src: ['**/*.html'],
-                    dest: `${SETTINGS.pathToDev}/`,
+                    dest: `public/${SETTINGS.version}/`,
                     filter: 'isFile'
                 }]
             };
@@ -149,7 +152,7 @@ module.exports = function(grunt) {
                             expand: true,
                             cwd: 'src/template/',
                             src: ['**/*.pug', '!includes/**'],
-                            dest: `${SETTINGS.pathToDev}/`,
+                            dest: `public/${SETTINGS.version}/`,
                             ext: '.html'
                         }],
                         options: {
@@ -157,6 +160,54 @@ module.exports = function(grunt) {
                             filters: require("./grunt-settings/tasks/html/pug-filters")(SETTINGS),
                         }
                     };
+
+                    /* Debug Framework */
+                    if (SETTINGS.debug) {
+                        TASKS.pug.debug = {
+                            files: [{
+                                expand: true,
+                                cwd: 'src/debug/',
+                                src: ['**/*.pug'],
+                                dest: `public/${SETTINGS.version}/debug/`,
+                                ext: '.html'
+                            }],
+                            options: {
+                                data: SETTINGS,
+                                filters: require("./grunt-settings/tasks/html/pug-filters")(SETTINGS),
+                            }
+                        };
+                    }
+
+                }
+
+                else {
+                    
+                }
+                
+                break;
+        
+            default:
+                break;
+        }
+
+    });
+
+    /* JavaScript */
+    grunt.registerTask('init_js', () => {
+
+        TASKS.browserify = {};
+
+        switch (SETTINGS.jsPreprocessor) {
+            case 'browserify':
+
+                grunt.loadNpmTasks('grunt-browserify');
+
+                if (SETTINGS.framework === 'frontbox') {
+                    TASKS.browserify.init = {
+                        src: `src/js/app.js`,
+                        dest: `public/${SETTINGS.version}/js/app.${SETTINGS.version}.js`,
+                    };
+
                 }
 
                 else {
@@ -174,8 +225,8 @@ module.exports = function(grunt) {
     /* Watch */
     grunt.registerTask('init_watch', () => {
 
-        require( 'grunt-contrib-watch' )(grunt);
-        grunt.loadNpmTasks('grunt-newer');
+        grunt.loadNpmTasks( 'grunt-contrib-watch' );
+        grunt.loadNpmTasks( 'grunt-newer' );
         
         TASKS.watch = require('./grunt-settings/tasks/other/watch');
 
@@ -283,7 +334,35 @@ module.exports = function(grunt) {
                 if (SETTINGS.framework === 'frontbox') {
 
                     grunt.task.run([
-                        'pug:init',
+                        'pug',
+                    ]);  
+
+                }
+                else {
+                    /* Non frontbox project */
+                }
+                
+                break;
+
+            default:
+                break;
+        }
+
+    });
+
+    /* JavaScript */
+    grunt.registerTask('run_js', () => {
+
+        switch (SETTINGS.jsPreprocessor) {
+
+            /* PUG config */
+            case 'browserify':
+
+                /* FrontBox LESS config */
+                if (SETTINGS.framework === 'frontbox') {
+
+                    grunt.task.run([
+                        'browserify',
                     ]);  
 
                 }
@@ -326,7 +405,7 @@ module.exports = function(grunt) {
 
         if ( SETTINGS.version === 'dev' ) {
             
-            TASKS.watch = {
+            TASKS.watch = Object.assign({}, TASKS.watch, {
                 img: {
                     files: ["src/images/**/*"],
                     tasks: ["newer:copy:img"],
@@ -339,7 +418,7 @@ module.exports = function(grunt) {
                     files: ["src/*"],
                     tasks: ["newer:copy:other"],
                 },
-            };
+            });
             
         }
 
@@ -416,39 +495,83 @@ module.exports = function(grunt) {
     /* HTML */
     grunt.registerTask('watch_html', () => {
 
-        if ( SETTINGS.version === 'dev' ) {
+        switch (SETTINGS.htmlPreprocessor) {
             
-            switch (SETTINGS.htmlPreprocessor) {
-                
-                /* PUG config */
-                case 'pug':
+            /* PUG config */
+            case 'pug':
 
-                    /* FrontBox LESS config */
-                    if (SETTINGS.framework === 'frontbox') {
+                /* FrontBox config */
+                if (SETTINGS.framework === 'frontbox') {
 
+                    TASKS.watch = Object.assign({}, TASKS.watch, {
+
+                        pug: {
+                            files: ['src/template/*.pug'],
+                            tasks: ['newer:pug:init',],
+                        },
+                        pug_includes: {
+                            files: ['src/template/includes/*.pug'],
+                            tasks: ['pug:init',],
+                        },
+
+                    });
+
+                    if (SETTINGS.debug) {
                         TASKS.watch = Object.assign({}, TASKS.watch, {
-
-                            pug: {
-                                files: ['src/template/*.pug'],
-                                tasks: ['newer:pug:init',],
-                            },
-                            pug_includes: {
-                                files: ['src/template/includes/*.pug'],
-                                tasks: ['pug:init',],
+                            
+                            pug_debug: {
+                                files: ["./src/debug/**/*.pug"],
+                                tasks: ["newer:pug:debug"],
                             },
 
                         });
                     }
 
-                    else {
-                        /* Non frontbox project */
-                    }
-                    
-                    break;
+                }
+
+                else {
+                    /* Non frontbox project */
+                }
                 
-                default:
-                    break;
-            }
+                break;
+            
+            default:
+                break;
+        }
+
+    });
+
+    /* JavaScript */
+    grunt.registerTask('watch_js', () => {
+            
+        switch (SETTINGS.jsPreprocessor) {
+                
+            /* Browserify config */
+            case 'browserify':
+
+                /* FrontBox config */
+                if (SETTINGS.framework === 'frontbox') {
+
+                    TASKS.watch = Object.assign({}, TASKS.watch, {
+
+                        browserify: {
+                            files: ["src/js/**/*.js"],
+                            tasks: ["browserify"],
+                        }
+
+                    });
+
+                }
+
+                else {
+                    /* Non frontbox project */
+                }
+                
+                break;
+            
+            default:
+                break;
+
         }
 
     });

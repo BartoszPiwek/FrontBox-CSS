@@ -102,7 +102,7 @@ module.exports = function(grunt) {
         // Start a static web server
         connect             : require('./grunt-settings/tasks/other/connect'), 
         // Copy files and folders
-        copy                : require('./grunt-settings/tasks/other/copy')(SETTINGS),
+        copy                : require('./grunt-settings/tasks/other/copy.dev')(SETTINGS),
         // Clear files and folders
         clean               : require('./grunt-settings/tasks/other/clean')(SETTINGS),
         // Grunt plugin for executing shell commands

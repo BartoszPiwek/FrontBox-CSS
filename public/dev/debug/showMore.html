@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html class="js_no" lang=pl-PL itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/><meta http-equiv="X-UA-Compatible" content="IE=Edge"/><meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no"/><title>Debug show more</title><link rel="stylesheet" type="text/css" href="/css/style.dev.css" media="all"/><link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="/images/favicon/site.webmanifest">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/images/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff"></head><body id="body"><main class="page-content relative"><div class="wrap"><h2>JS showMore</h2><div class="row row-space"><div class="col-4"><div class="show-more" id="show-more-1" style="height: 77px;"><div class="show-more__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, alias fugit qui sint aliquid laborum, exercitationem provident vitae vero ratione animi et quia accusantium quibusdam voluptas, odit dolor ea ab.</div></div><a class="show-more-button" href="#" data="showMore" data-target="show-more-1"> <span class="show-more-button--less">Show less</span><span class="show-more-button--more">Show more</span></a></div><div class="col-8"><div class="show-more"><div class="show-more__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, alias fugit qui sint aliquid laborum, exercitationem provident vitae vero ratione animi et quia accusantium quibusdam voluptas, odit dolor ea ab.</div></div><a class="show-more-button" href="#" data="showMore" data-target="prevElement"> <span class="show-more-button--less">Show less</span><span class="show-more-button--more">Show more</span></a></div></div></div></main><div class="page__overlay" id="page-overlay"></div><script src="/js/app.dev.js"></script><script src="/js/app.dev.js"></script><script>var
+$iframe = $("[data-iframe]");
+$iframe.each(function (index, element) {
+    var 
+    $this = $(this),
+    find = $this.attr("data-iframe"),
+    $content = $(`[data-iframe-content="${find}"]`);
+
+    $this.contents().find("body").append( '<link rel="stylesheet" type="text/css" href="/css/style.dev.css">' );
+    $this.contents().find("body").append( '<meta name="viewport" content="width=device-width, initial-scale=1">' );
+    $this.contents().find("body").append( '<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>' );
+    $this.contents().find("body").append( $content );
+});
+</script></body>
+</html>

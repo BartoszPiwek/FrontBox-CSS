@@ -2,29 +2,7 @@ module.exports = function(SETTINGS){
 
     return {
 
-        // Libs
-        // TODO match witch libs_database file
-        libs: {
-            files: {
-                // jQuery
-                'src/js/libs/jquery.js': 'node_modules/jquery/dist/jquery.js',
-                // picturefill
-                'src/js/libs/picturefill.js': 'node_modules/picturefill/dist/picturefill.js',
-                // Select2
-                'src/js/libs/select2.js': 'node_modules/select2/dist/js/select2.js',
-                'src/less/libs/select2.less': 'node_modules/select2/dist/css/select2.css',
-                // tooltipster
-                'src/js/libs/tooltipster.js': 'node_modules/tooltipster/dist/js/tooltipster.main.js',
-                'src/less/libs/tooltipster.main.less': 'node_modules/toltipster/dist/css/tooltipster.main.css',
-                // bLazy (https://www.npmjs.com/package/blazy)
-                'src/js/libs/blazy.js': 'node_modules/blazy/blazy.js',
-                // Cookies
-                'src/js/libs/js-cookies.js': 'node_modules/js-cookie/src/js.cookie.js',
-                // Validator
-                'src/js/libs/validate.min.js': 'node_modules/jquery-validation/dist/jquery.validate.min.js',
-            }
-        },
-        
+       
         // img
         img: {
             expand: true,
@@ -33,16 +11,6 @@ module.exports = function(SETTINGS){
             dest: `${SETTINGS.pathToDev}/images/`,
             filter: 'isFile'
         },
-        // JS
-        // js: {
-        //     files: [{
-        //         expand: true,
-        //         cwd: 'src/js/',
-        //         src: ['**/*.js'],
-        //         dest: `${SETTINGS.pathToDev}/js/`,
-        //         filter: 'isFile',
-        //     }],
-        // },
         // HTML
         html: {
             files: [{
