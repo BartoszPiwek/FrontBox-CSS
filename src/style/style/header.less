@@ -1,0 +1,319 @@
+/*=========================================================================
+|| FILE: header.less
+===========================================================================
+|| Style for header ( logo | main navigation )
+=========================================================================*/
+
+/**
+ * Main header element style 
+ * container for: navigation, brand image, etc)
+ */
+.header {
+    // Size
+    height: inherit;
+    display: flex;
+    -webkit-backface-visibility: hidden;
+    // Transition
+    transition+: height @time-transition;
+    transition+: box-shadow @time-transition;
+    transition+: background-color @time-transition;
+    transition+: padding @time-transition;
+    // Style / Animations
+    background-color: transparent;
+
+    /* First wrap set 100% height */
+    & > .wrap {
+        display: flex;
+    }
+
+    /* Header placeholder */
+    &-placeholder {
+        // Behavior
+        box-sizing: content-box;
+        z-index: @zindex-menu;
+        // Position
+        position: relative;
+        // Transition
+        transition+: background-color @time-transition;
+        // Size
+        padding: 25px 0;
+    }
+
+    /* Header sticky */
+    .js_sticky-header & {
+        // Position
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: @zindex-header-sticky;
+        // Style
+        box-shadow: 0 10px 30px -6px fade(@color-black, 60%);
+        background-color: @color-white;
+    }
+}
+
+
+/*
+ * Burger button
+ */
+.burger-button {
+    // Behavior
+    cursor: pointer;
+    .remove_click_delay();
+    pointer-events: all;
+    z-index: @zindex-header-sticky + 1;
+    // Style
+    width: 35px;
+    height: 24px;
+    // Position
+    position: relative;
+    top: 50%;
+    transform+_: translateY(-50%); // Don't display burget button for view
+
+    @media @media_burger-hide {
+        display: none;
+    }
+
+    /* Burger planks */
+    & > .plank {
+        // Behavior
+        display: inline-block;
+        // Position
+        position: absolute;
+        left: 10%;
+        // Size
+        width: 80%;
+        height: 4px;
+        // Transition
+        transition: all 0.2s;
+        // Style
+        background-color: @color-gray;
+        border-radius: 10px; // Position
+
+        &:first-child {
+            top: 0;
+        }
+        &:nth-child(2) {
+            top: 50%;
+            transform+_: translateY(-50%);
+        }
+        &:last-child {
+            bottom: 0;
+        }
+    } 
+    
+    /* Burger hover */
+    // .add-hover({
+    //     border-color: @color-gray;
+    //     & > .plank {
+    //         background-color: @color-gray;
+    //     }
+    // });
+}
+
+/**
+ * Burger menu
+ */
+.burger-menu {
+
+    @media @media_burger-show {
+        // Behavior
+        overflow: hidden;
+        display: flex;
+        box-sizing: content-box;
+        text-align: center;
+        // Position
+        position: absolute;
+        right: 0;
+        top: 0;
+        // Size
+        padding-top: 70px;
+        width: 100%;
+        height: 100vh;
+        max-width: 300px;
+        background-color: @color-primary;
+        box-shadow: -6px 0 10px fade(@color-black, 40%);
+
+        & > &__item {
+            margin-bottom: 20px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__container {
+            width: 100%;
+        }
+    }
+
+    @media @media_burger-hide {
+        transition: height 0s ease 0s;
+        box-sizing: border-box;
+        display: flex !important;
+        position: static;
+        transform: none;
+        overflow: unset;
+
+        &__container {
+            display: flex;
+        }
+    }
+}
+
+
+
+/*
+|| Navigation
+|| EMMET
+nav.nav>a.nav__item*x
+ */
+
+.nav {
+    // Behavior
+    box-sizing: content-box;
+    bottom: 0;
+    position: absolute; // Style
+    overflow: hidden; // Postion
+
+    @media @media_burger-hide {
+        transition: height 0s ease 0s;
+        box-sizing: border-box;
+        display: flex !important;
+        position: static;
+        transform: none;
+        overflow: unset;
+    }
+    &__container {
+        background-color: @color-primary;
+        text-align: center;
+        z-index: @zindex-menu + 1;
+        position: relative;
+        @media @media_burger-hide {
+            background-color: transparent;
+            text-align: left;
+            height: 100%;
+            display: flex;
+        } // a.nav__item
+        &>.nav__item {
+            display: block;
+            color: @color-white;
+            transition: color @time-transition;
+            margin-bottom: 10px;
+            padding: 12px 0;
+            .add-hover( {
+                color: #b8b8b8;
+            }
+            );
+            &:last-child {
+                margin-bottom: 0;
+            }
+            @media @media_burger-hide {
+                margin-bottom: 0;
+                padding: 0;
+                margin-right: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            @media @desktop {
+                margin-right: 20px;
+            } // a.nav__item.active
+            &.active {
+                color: @color-gray;
+            }
+        }
+    }
+}
+
+
+@media @media_burger-show {
+    html {
+        // Active
+        &.js_menu-active {
+            // When active burger
+            .burger-button {
+                >.plank {
+                    // less/plugins/animations/burger.less
+                    // .add-burger-animation();
+                }
+            }
+        }
+    }
+}
+
+
+
+/**
+ * Advanced
+ */
+
+html {
+
+    /* Add fix when burger won't open */
+    &.js_sticky-header:not(.js_menu-active) {
+        .header {
+            &:extend(.fix_fixed);
+        }
+    }
+
+    /* Add fix to burger-menu when menu is active */
+    &.js_menu-active {
+        .burger-menu {
+            &:extend(.fix_fixed); 
+        }
+
+        .header-placeholder, .header {
+            background-color: @color-white;
+        }
+    }
+    &:not(.js_menu-active) {
+        .header-placeholder, .header {
+            background-color: @color-white;
+        }
+    }
+}
+
+
+/* Default header height */
+.header-placeholder {
+
+    each(@headerHeight, { 
+      
+        & when (@key = mobile) {
+            height: ~"@{value}px";
+        }
+  
+        & when not (@key = mobile) {
+            @mediaBreakpoint: @responsive[@@key][@string][default];
+            @media @mediaBreakpoint {
+              height: ~"@{value}px";
+            }
+        }
+  
+    });
+}
+
+/* Header height when is sticky */
+html.js_sticky-header .header {
+    right: 0;
+    top: 0;
+    width: 100%;
+
+  each(@headerHeightSticky, { 
+    
+    & when (@key = mobile) {
+        height: ~"@{value}px";
+    }
+
+    & when not (@key = mobile) {
+        @mediaBreakpoint: @responsive[@@key][@string][default];
+        @media @mediaBreakpoint {
+            height: ~"@{value}px";
+        }
+    }
+
+  });
+}

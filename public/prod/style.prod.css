@@ -9,7 +9,6 @@ Version     : 1.0.8
  * Concat files
  */
 /* Grid */
-@import "../css/grid.css";
 /* Get all settings */
 /*=========================================================================
 || FILE: Variables concat
@@ -147,8 +146,6 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 /**
   * Generated <body> <html> style
 **/
-@import "../css/base.css";
-@import "../css/utilities.css";
 body {
   font-family: "Arial";
   color: #000000;
@@ -2416,4 +2413,4 @@ label[for] {
 == SNIPPETS: make-tool
 =========================================================================*/
 /* Utilities */
-/*# sourceMappingURL=style.dev.css.map */
+/*# sourceMappingURL=style.prod.css.map */

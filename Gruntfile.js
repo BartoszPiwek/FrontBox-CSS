@@ -1,6 +1,7 @@
 /*!******************************************************************
-Framework:      FrontBox 1.1.0 (github.com/BartoszPiwek/FrontBox)
+Framework:      FrontBox 1.1.0
 Author:         Bartosz Piwek
+Repository:     https://github.com/BartoszPiwek/FrontBox
 ********************************************************************/
 
 /*=========================================================================
@@ -8,6 +9,7 @@ Author:         Bartosz Piwek
 =========================================================================*/
 var 
 SETTINGS    = require('./grunt-settings/settings'),
+NEWER       = '';
 TASKS       = {
     watch: null,
 };
@@ -18,11 +20,13 @@ TASKS       = {
 module.exports = function(grunt) {
 
     grunt.registerTask('default', [
-        'run:dev',
+        'dev',
     ]);
-    grunt.registerTask('run:dev', () => {
+
+    grunt.registerTask('dev', () => {
 
         SETTINGS.version = 'dev';
+        NEWER = 'newer:';
         
         grunt.task.run([
 
@@ -45,6 +49,27 @@ module.exports = function(grunt) {
             'run_js',
             'run_server',
             'run_watch',
+
+        ]);
+
+    });
+
+    grunt.registerTask('prod', () => {
+
+        SETTINGS.version = 'prod';
+        
+        grunt.task.run([
+
+            'init_copy',
+            'init_style',
+            'init_html',
+            'init_js',
+
+            'run_begin',
+            'run_copy',
+            'run_style',
+            'run_html',
+            'run_js',
 
         ]);
 
@@ -116,13 +141,83 @@ module.exports = function(grunt) {
 
                 grunt.loadNpmTasks('grunt-contrib-less');
 
+                var sourceMap = false;
+                if ( SETTINGS.version === 'dev' ) {
+                    sourceMap = true;
+                }
+
+                var modifyVars = {
+                    pathToModulesDev: SETTINGS.pathToModulesDev,
+                    pathToModulesProd: SETTINGS.pathToModulesProd,
+                    isWordpress: SETTINGS.isWordpress,
+                    version: SETTINGS.version,
+                };
+
                 if (SETTINGS.framework === 'frontbox') {
-                    if (SETTINGS.version === 'dev') {
-                        TASKS.less = require('./grunt-settings/tasks/css/less.dev')(SETTINGS);
-                    }              
-                    else {
-                        // TASKS.less = require('./grunt-settings/tasks/css/less.dev')(SETTINGS);
-                    }
+
+                    TASKS.less = {
+
+                        grid: {
+                            options: {
+                                compress: false,
+                                sourceMap: true,
+                                sourceMapFilename: `public/${SETTINGS.version}/css/grid.css.map`,
+                                sourceMapURL: 'grid.css.map',
+                                sourceMapBasepath: '../',
+                                sourceMapRootpath: '/',
+                                modifyVars: modifyVars,
+                                javascriptEnabled: true,
+                            },
+                            src: `src/style/grid.less`,
+                            dest: `public/${SETTINGS.version}/css/grid.css`,
+                        },
+                
+                        base: {
+                            options: {
+                                compress: false,
+                                sourceMap: true,
+                                sourceMapFilename: `public/${SETTINGS.version}/css/base.css.map`,
+                                sourceMapURL: 'base.css.map',
+                                sourceMapBasepath: '../',
+                                sourceMapRootpath: '/',
+                                modifyVars: modifyVars,
+                                javascriptEnabled: true,
+                            },
+                            src: `src/style/base.less`,
+                            dest: `public/${SETTINGS.version}/css/base.css`,
+                        },
+                
+                        utilities: {
+                            options: {
+                                compress: false,
+                                sourceMap: true,
+                                sourceMapFilename: `public/${SETTINGS.version}/css/utilities.css.map`,
+                                sourceMapURL: 'utilities.css.map',
+                                sourceMapBasepath: '../',
+                                sourceMapRootpath: '/',
+                                modifyVars: modifyVars,
+                                javascriptEnabled: true,
+                            },
+                            src: `src/style/utilities.less`,
+                            dest: `public/${SETTINGS.version}/css/utilities.css`,
+                        },
+                
+                        main: {
+                            options: {
+                                compress: false,
+                                sourceMap: true,
+                                sourceMapFilename: `public/${SETTINGS.version}/style.${SETTINGS.version}.css.map`,
+                                sourceMapURL: `style.${SETTINGS.version}.css.map`,
+                                sourceMapBasepath: '../',
+                                sourceMapRootpath: '/',
+                                modifyVars: modifyVars,
+                                javascriptEnabled: true,
+                            },
+                            src: `src/style/style.less`,
+                            dest: `public/${SETTINGS.version}/style.${SETTINGS.version}.css`,
+                        },
+                        
+                    };
                 }
                 else {
                     
@@ -225,8 +320,8 @@ module.exports = function(grunt) {
     /* Watch */
     grunt.registerTask('init_watch', () => {
 
-        grunt.loadNpmTasks( 'grunt-contrib-watch' );
         grunt.loadNpmTasks( 'grunt-newer' );
+        grunt.loadNpmTasks( 'grunt-contrib-watch' );
         
         TASKS.watch = require('./grunt-settings/tasks/other/watch');
 
@@ -275,14 +370,14 @@ module.exports = function(grunt) {
     grunt.registerTask('run_copy', () => {
 
         grunt.task.run([
-            'newer:copy:img',
-            'newer:copy:fonts',
-            'newer:copy:other', 
+            `${NEWER}copy:img`,
+            `${NEWER}copy:fonts`,
+            `${NEWER}copy:other`, 
         ]);  
 
         if (!SETTINGS.htmlPreprocessor) {
             grunt.task.run([
-                'newer:copy:html',
+                `${NEWER}copy:html`,
             ]);  
         }
 
@@ -298,10 +393,10 @@ module.exports = function(grunt) {
                 if (SETTINGS.framework === 'frontbox') {
 
                     grunt.task.run([
-                        'less:dev_style_grid',
-                        'less:dev_style_base',
-                        'less:dev_style_utilities',
-                        'less:dev_style_main',
+                        'less:grid',
+                        'less:base',
+                        'less:utilities',
+                        'less:main',
                     ]);  
 
                 }
@@ -408,15 +503,15 @@ module.exports = function(grunt) {
             TASKS.watch = Object.assign({}, TASKS.watch, {
                 img: {
                     files: ["src/images/**/*"],
-                    tasks: ["newer:copy:img"],
+                    tasks: [`${NEWER}copy:img`],
                 },
                 fonts: {
                     files: ["src/fonts/*"],
-                    tasks: ["newer:copy:fonts"],
+                    tasks: [`${NEWER}copy:fonts`],
                 },
                 other: {
                     files: ["src/*"],
-                    tasks: ["newer:copy:other"],
+                    tasks: [`${NEWER}copy:other`],
                 },
             });
             
@@ -439,36 +534,36 @@ module.exports = function(grunt) {
 
                         TASKS.watch = Object.assign({}, TASKS.watch, {
 
-                            dev_style_base: {
+                            style_base: {
                                 files: [
-                                    "src/less/base.less",
-                                    "src/less/variables/**/*.less",
-                                    "sec/less/frontbox/**/*.less"
+                                    "src/style/base.less",
+                                    "src/style/variables/**/*.less",
+                                    "sec/style/frontbox/**/*.less"
                                 ],
-                                tasks: ["less:dev_style_base"],
+                                tasks: ["less:base"],
                             },
-                            dev_style_grid: {
+                            style_grid: {
                                 files: [
-                                    "src/less/grid.less",
-                                    "src/less/frontbox/variables.less",
-                                    "src/less/frontbox/functions.less",
-                                    "src/less/frontbox/grid.less"
+                                    "src/style/grid.less",
+                                    "src/style/frontbox/variables.less",
+                                    "src/style/frontbox/functions.less",
+                                    "src/style/frontbox/grid.less"
                                 ],
-                                tasks: ["less:dev_style_grid"],
+                                tasks: ["less:grid"],
                             },
-                            dev_style_utilities: {
+                            style_utilities: {
                                 files: [
-                                    "src/less/utilities.less",
-                                    "src/less/utilities/*.less"
+                                    "src/style/utilities.less",
+                                    "src/style/utilities/*.less"
                                 ],
-                                tasks: ["less:dev_style_utilities"],
+                                tasks: ["less:utilities"],
                             },
-                            dev_style_main: {
+                            style_main: {
                                 files: [
-                                    "src/less/style.less",
-                                    "src/less/*/**.less",
+                                    "src/style/style.less",
+                                    "src/style/*/**.less",
                                 ],
-                                tasks: ["less:dev_style_main"],
+                                tasks: ["less:main"],
                             },
 
                         });
@@ -507,7 +602,7 @@ module.exports = function(grunt) {
 
                         pug: {
                             files: ['src/template/*.pug'],
-                            tasks: ['newer:pug:init',],
+                            tasks: [`${NEWER}pug:init`],
                         },
                         pug_includes: {
                             files: ['src/template/includes/*.pug'],
@@ -521,7 +616,7 @@ module.exports = function(grunt) {
                             
                             pug_debug: {
                                 files: ["./src/debug/**/*.pug"],
-                                tasks: ["newer:pug:debug"],
+                                tasks: [`${NEWER}pug:debug`],
                             },
 
                         });

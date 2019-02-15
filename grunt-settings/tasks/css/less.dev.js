@@ -24,7 +24,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVars,
                 javascriptEnabled: true,
             },
-            src: `src/less/grid.less`,
+            src: `src/style/grid.less`,
             dest: `${SETTINGS.pathToDev}/css/grid.css`,
         },
 
@@ -39,7 +39,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVars,
                 javascriptEnabled: true,
             },
-            src: `src/less/base.less`,
+            src: `src/style/base.less`,
             dest: `${SETTINGS.pathToDev}/css/base.css`,
         },
 
@@ -54,7 +54,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVars,
                 javascriptEnabled: true,
             },
-            src: `src/less/utilities.less`,
+            src: `src/style/utilities.less`,
             dest: `${SETTINGS.pathToDev}/css/utilities.css`,
         },
 
@@ -69,7 +69,7 @@ module.exports = function(SETTINGS) {
                 modifyVars: modifyVars,
                 javascriptEnabled: true,
             },
-            src: `src/less/style.less`,
+            src: `src/style/style.less`,
             dest: `${SETTINGS.pathToDev}/${SETTINGS.pathToMainCSS}/style.dev.css`,
         },
 
