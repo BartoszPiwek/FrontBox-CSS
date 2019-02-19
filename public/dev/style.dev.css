@@ -307,7 +307,6 @@ img {
  */
 /**
   * Triangle
-  * 
   */
 /**
   * Print @string in terminal output
@@ -559,10 +558,11 @@ html.js_menu-active .burger-menu {
 ===========================================================================
 || Concatenate less files
 =========================================================================*/
+/* Main */
 /*=========================================================================
-|| FILE: header.less
+|| FILE: Header
 ===========================================================================
-|| Style for header ( logo | main navigation )
+|| Style for header
 =========================================================================*/
 /**
  * Main header element style 
@@ -596,7 +596,7 @@ html.js_menu-active .burger-menu {
   box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.6);
   background-color: #FFFFFF;
 }
-/*
+/**
  * Burger button
  */
 .burger-button {
@@ -814,9 +814,9 @@ html.js_sticky-header .header {
   }
 }
 /*=========================================================================
-|| FILE: footer.less
+|| FILE: Footer
 ===========================================================================
-|| Style for footer ( links | logo | copyright )
+|| Style for footer elements
 =========================================================================*/
 /* Space for @desktop absolute footer */
 @media only screen and (min-width: 1024px) {
@@ -1090,15 +1090,11 @@ body::-webkit-scrollbar-button {
 .space--medium > * {
   margin: 18px 0;
 }
+/* Elements */
 /*=========================================================================
-// BUTTON - create button elements
-// .add-button(text-color, background-color, border, hover-darken-percent)
-// * text color
-// * background color
-// * all border property (1px solid color) {optional | default "false"}
-// * change color on darken percent {optional | default @defaul-darken}
-== SNIPPETS: add-button
-==           add-button-advance {all possibilities}
+|| FILE: Buttons style
+===========================================================================
+|| 
 =========================================================================*/
 .btn {
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
@@ -1177,6 +1173,7 @@ body::-webkit-scrollbar-button {
   background: transparent !important;
   border-color: transparent !important;
 }
+/* Other */
 /*=========================================================================
 || FILE: _forms.less
 ===========================================================================
@@ -1545,6 +1542,131 @@ label[for] {
   z-index: 1;
 }
 /*=========================================================================
+|| FILE: Tabs
+===========================================================================
+|| Style for tabs
+=========================================================================*/
+.tabs__expand {
+  display: none;
+}
+.tabs__item {
+  flex: 1 1 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #e7be54;
+}
+.tabs__view {
+  width: 100%;
+}
+.tabs__expand {
+  padding: 20px;
+  background-color: #bb8e1a;
+}
+/* Responsive */
+.tabs--horizontal .tabs__content {
+  display: flex;
+  flex-direction: row;
+}
+.tabs--vertical {
+  flex-direction: column;
+  text-align: center;
+}
+.tabs--expand {
+  flex-direction: column;
+  text-align: center;
+}
+.tabs--expand .tabs__expand {
+  display: block;
+}
+.tabs--expand .tabs__view {
+  height: 0;
+  overflow: hidden;
+}
+@media only screen and (min-width: 550px) and (max-width: 767px) {
+  .sm_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .sm_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sm_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sm_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .sm_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .md_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .md_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .md_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .md_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .md_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .lg_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .lg_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .lg_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .lg_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .lg_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .xs_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .xs_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .xs_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .xs_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .xs_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
+}
+/*=========================================================================
 || FILE: validator.less
 ===========================================================================
 || Style for jQuery Validation Plugin
@@ -1684,8 +1806,13 @@ label[for] {
 ===========================================================================
 || Style for most index elements
 =========================================================================*/
+
+            .a {
+                color: .fade(red, 0.2);
+            }
+            
 /*=========================================================================
-|| FILE: boxes.less
+|| FILE: Boxes
 ===========================================================================
 || Style for boxes ( cards | containers )
 =========================================================================*/
@@ -2350,24 +2477,26 @@ label[for] {
 .wysiwyg pre {
   font-family: monospace;
 }
+/* End */
 /*=========================================================================
 || Create class using functions
 ===========================================================================
 || TODO: documentation
 =========================================================================*/
+/*=========================================================================
+// WRAP - center element in asix x
+.add-wrap(200px,15px);
+// = max width elemnt (end calculate = max-width + padding * 2)
+// = padding for responsive view
+//=======================================================================*/
 .wrap {
-  /*=========================================================================
-  // WRAP - center element in asix x
-  .add-wrap(200px,15px);
-  // * max width elemnt (end calculate = max-width + padding * 2)
-  // * padding for responsive view
-  //=======================================================================*/
   max-width: 1064px;
   padding-left: 20px;
   padding-right: 20px;
   /**
    * Elements
    */
+  /* Navigation bar */
 }
 .wrap-navbar {
   max-width: 1064px;

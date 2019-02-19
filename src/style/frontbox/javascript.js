@@ -14,5 +14,13 @@ registerPlugin({
             return output;
         });
 
+        functions.add('aaa', function( name, arrayFind ) {
+            return `
+            .a {
+                color: .fade(red, 0.2);
+            }
+            `;
+        });
+
     },
 });

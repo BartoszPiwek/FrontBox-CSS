@@ -1,8 +1,8 @@
-/*!******************************************************************
+/*!************************************************************************
 Framework:      FrontBox 1.1.0
 Author:         Bartosz Piwek
 Repository:     https://github.com/BartoszPiwek/FrontBox
-********************************************************************/
+**************************************************************************/
 
 /*=========================================================================
 || Settings
@@ -18,6 +18,10 @@ TASKS       = {
 || Register Tasks
 =========================================================================*/
 module.exports = function(grunt) {
+
+    /**
+     * Register Main Tasks
+     */
 
     grunt.registerTask('default', [
         'dev',
@@ -352,7 +356,7 @@ module.exports = function(grunt) {
     });
 
     /**
-     * Register Main Tasks
+     * Register Run Tasks
      */
 
     /* Begin */
@@ -537,8 +541,8 @@ module.exports = function(grunt) {
                             style_base: {
                                 files: [
                                     "src/style/base.less",
-                                    "src/style/variables/**/*.less",
-                                    "sec/style/frontbox/**/*.less"
+                                    "src/style/variables/**/*",
+                                    "sec/style/frontbox/**/*"
                                 ],
                                 tasks: ["less:base"],
                             },

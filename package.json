@@ -1,6 +1,6 @@
 {
   "name": "frontbox-css",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "author": "Bartosz Piwek",
   "description": "Bunch of functions, snippets, templates, tasks and so on for Front-End Developer",
   "homepage": "https://github.com/BartoszPiwek/FrontBox-CSS",
@@ -19,7 +19,6 @@
     "autoprefixer": "^7.2.4",
     "connect-livereload": "^0.6.0",
     "cssnano": "^3.7.2",
-    "frontbox-grunt": "^1.0.62",
     "grunt": "~0.3.14",
     "grunt-babel": "^7.0.0",
     "grunt-browserify": "^5.3.0",
@@ -51,7 +50,6 @@
     "grunt-strip-code": "^1.0.6",
     "grunt-svgmin": "^5.0.0",
     "grunt-uncss": "^0.8.5",
-    "jit-grunt": "^0.10.0",
     "load-grunt-tasks": "^3.5.2",
     "postcss": "^6.0.16",
     "postcss-pxtorem": "^4.0.1",
