@@ -1,33 +1,20 @@
 /*=========================================================================
-|| FILE: style.less
+|| FILE: Concat
 ===========================================================================
-|| Frontbox-CSS concat file
+|| Concatenate files
 =========================================================================*/
 
-
-// Variables
+/* Prepare */
 @import "variables";
-
-// Base style
-@import "main";
-
-// Functions
 @import "functions";
-
-// JavaScript
 @plugin "javascript";
 @import "javascript";
 
-// Tools
-@import "buttons";
-
-// Sections
-@import "header";
-
-// Base style
+/**
+ * Files
+ */
+@import "main";
 @import "fix";
 @import "base";
-@import "responsive";
 @import "lists";
-@import "flow";
 @import "tools";

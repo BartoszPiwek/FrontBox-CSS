@@ -1,18 +1,16 @@
 /*=========================================================================
-|| FILE: blocks.less
+|| FILE: Blocks
 ===========================================================================
-|| Often used elements style
+|| Often used blocks style
 =========================================================================*/
 
-/**
- * Block square
- * - same width and height
- */
-
+/* Square block */
 .block-square {
     width: 100%;
     height: 0;
     padding-bottom: 100%;
+    position: relative;
+
     & > * {
         position: absolute;
         top: 0;
@@ -20,40 +18,21 @@
     }
 }
 
-/**
- * Block transparent
- */
-.block-transparent {
-    max-width: 100%;
-    height: auto;
-    width: auto;
-    vertical-align: top;
-    background-image: linear-gradient(45deg,#c4c4c4 25%,transparent 25%,transparent 75%,#c4c4c4 75%,#c4c4c4),linear-gradient(45deg,#c4c4c4 25%,transparent 25%,transparent 75%,#c4c4c4 75%,#c4c4c4);
-    background-position: 0 0,10px 10px;
-    background-size: 20px 20px;
-}
-
-/** 
-  * Absolute center vertical, horizostal
-**/
-
-.block-absolute-center {
+/* Absolute center element in ASIX X/Y */
+.block-center-absolute {
 	position: absolute;
 	top: 50%;
-	left: 0;
+	left: 50%;
 	transform+_: translateY(-50%);
+	transform+_: translateX(-50%);
 	text-align: center;
 	display: block;
-	width: 100%;
 }
 
-/** 
-  * Vertical center 
-  * EMMET: 
+/**
+ * Vertical center
 .group-middle>span{Text}+img{} 
-.group-middle>span{Text}+svg{} 
-**/ 
- 
+ */
 .group-middle { 
     > * { 
         vertical-align: middle !important; 
@@ -62,20 +41,16 @@
 }
 
 /**
- * Embed YouTube Iframe
- * - default 21/9
- * - 
- * .embed-youtube>iframe
+ * Embed YouTube iframe (default 21/9)
+.block-youtube>iframe
  */
-
- .embed-youtube {
+ .block-youtube {
     position: relative;
     display: block;
     width: 100%;
     overflow: hidden;
     padding-top: (9 / 21) * 100%;
     height: 0;
-    &:extend(.block-transparent);
 
     iframe {
         position: absolute;
@@ -87,9 +62,7 @@
         border: 0;
     }
 
-    /**
-     * Size
-     */
+    /* Sizes */
     &--16x9 {
         padding-top: (9 / 16) * 100%;
     }
@@ -99,4 +72,4 @@
     &--1x1 {
         padding-top: (1 / 1) * 100%;
     }
- }
+}

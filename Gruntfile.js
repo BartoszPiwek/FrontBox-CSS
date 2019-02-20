@@ -144,6 +144,7 @@ module.exports = function(grunt) {
             case 'less':
 
                 grunt.loadNpmTasks('grunt-contrib-less');
+                grunt.loadNpmTasks('less-plugin-glob');
 
                 var sourceMap = false;
                 if ( SETTINGS.version === 'dev' ) {
@@ -216,6 +217,7 @@ module.exports = function(grunt) {
                                 sourceMapRootpath: '/',
                                 modifyVars: modifyVars,
                                 javascriptEnabled: true,
+                                plugins: [require('less-plugin-glob')],
                             },
                             src: `src/style/style.less`,
                             dest: `public/${SETTINGS.version}/style.${SETTINGS.version}.css`,

@@ -1,44 +1,32 @@
 /*=========================================================================
-|| FILE: Grid concat
-=========================================================================*/
-/**
- * JavaScript functions
- * - arrayElement();
- */
-/*=========================================================================
-|| FILE: _functions.less
+|| FILE: Concat Grid
 ===========================================================================
-|-TODO
+|| Concatenate files
+/*=======================================================================*/
+/* Prepare */
+/*=========================================================================
+|| FILE: Functions
+===========================================================================
+|| Collection of useful functions
 =========================================================================*/
 /**
- *? Set style for selectors :hover :active :focus 
- * Set class &--hover for parent element to trigger hover
- * 
- ** Function:
- *  .add-hover(@code);
- * 
- ** Arguments:
- *  @code: normal CSS code
- * 
- ** Example:
- *
- *  .foo {
- *    .add-hover({
- *      color: red;
- *    });
- *  }
- * 
- ** Output
- *
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo:hover,
- *  .foo:active,
- *  .foo:focus {
- *    background-color: red;
- *  }
- * 
+ * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+ * - add class &--hover for parent element to trigger hover for child element
+ * EXAMPLE:
+    .foo {
+        .add-hover({
+            color: red;
+        });
+    }
+ * OUTPUT:
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo:hover,
+    .foo:active,
+    .foo:focus {
+        background-color: red;
+    }
  */
 /**
  *? Create color class using variables
@@ -68,166 +56,95 @@
  *  }
  * 
  */
+/*=========================================================================
+|| Fix
+=========================================================================*/
 /**
- *? Force an element to self-clear its children
+ * Force an element to self-clear its children
  */
+/*=========================================================================
+|| Space
+=========================================================================*/
 /**
  *? Set space beetween elements in ASIX X/Y
  *
  ** For class: 
  *  .row
  */
-/**
-  * Triangle
-  */
-/**
-  * Print @string in terminal output
-**/
-/**
-  * Tools generator
-**/
-/**
- * Responsive
- */
-/* Scrollbar */
 /*=========================================================================
-|| FILE: Flex grid core
+|| Shapes
 =========================================================================*/
 /**
-  * Addon col grid style
-  * center, v-center, h-center
-**/
-.col {
-  flex: 1 1 1px !important;
-}
-.col-static {
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-.col-responsive {
-  flex: 1 1 auto !important;
-}
-.col-center {
-  align-items: center;
-  justify-content: center;
-}
-.col-v-center {
-  align-items: center;
-}
-.col-h-center {
-  justify-content: center;
-}
-.col-absolute {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/**
- * Grid base style
+ * Triangle
  */
-/* Responsive */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  position: relative;
-}
-.row > * {
-  flex-grow: 0;
-  flex-shrink: 0;
-  height: auto !important;
-  min-height: 1px;
-  position: relative;
-  flex-direction: column;
-  display: flex;
-}
-.row > * > * {
-  flex: 1 1 auto;
-}
-@media only screen and (min-width: 550px) {
-  .sm_row {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    position: relative;
-  }
-  .sm_row > * {
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: auto !important;
-    min-height: 1px;
-    position: relative;
-    flex-direction: column;
-    display: flex;
-  }
-  .sm_row > * > * {
-    flex: 1 1 auto;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .md_row {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    position: relative;
-  }
-  .md_row > * {
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: auto !important;
-    min-height: 1px;
-    position: relative;
-    flex-direction: column;
-    display: flex;
-  }
-  .md_row > * > * {
-    flex: 1 1 auto;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .lg_row {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    position: relative;
-  }
-  .lg_row > * {
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: auto !important;
-    min-height: 1px;
-    position: relative;
-    flex-direction: column;
-    display: flex;
-  }
-  .lg_row > * > * {
-    flex: 1 1 auto;
-  }
-}
-@media only screen and (max-width: 549px) {
-  .xs_row {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    position: relative;
-  }
-  .xs_row > * {
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: auto !important;
-    min-height: 1px;
-    position: relative;
-    flex-direction: column;
-    display: flex;
-  }
-  .xs_row > * > * {
-    flex: 1 1 auto;
-  }
-}
+/*=========================================================================
+|| Loops
+=========================================================================*/
+/*=========================================================================
+|| Debug
+=========================================================================*/
 /**
- * Grid generator
+ * Print @string in terminal output
  */
-/* Responsive */
+/*=========================================================================
+|| Forms
+=========================================================================*/
+/**
+ * Style the placeholder text of a form element
+ */
+/**
+ * Sets the color of the highlight that appears over a link while it's being tapped
+ */
+/*=========================================================================
+|| Tools generator
+=========================================================================*/
+/*=========================================================================
+|| Browser
+=========================================================================*/
+/**
+ * Create custom themes for the browser's native scrollbars
+ */
+/*=========================================================================
+|| Responsive
+=========================================================================*/
+/*=========================================================================
+|| Flow
+=========================================================================*/
+/**
+ * Wrap
+ * Centering content in ASIX X
+ */
+/* Default style */
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+/* Function */
+/*=========================================================================
+|| Screen sizes for responsive design
+=========================================================================*/
+/*=========================================================================
+|| Responsive variables
+===========================================================================
+|| Easy way using @media queries
+|| @media @mobile === @media only screen and (max-width: 767px)
+||
+|| SYNTAX:
+||   "variable-name: value"
+||   · "variable-name":     width screen name
+||   · "value":             "only screen and ()" with destination in parenthesis
+=========================================================================*/
+/* Grid max columns in one row */
+/**
+ * Files
+ */
+/*=========================================================================
+|| FILE: Grid
+===========================================================================
+|| Generate flexbox grid
+=========================================================================*/
+/* Columns */
 .col-1 {
   flex-basis: 8.33333333%;
   max-width: 8.33333333%;
@@ -971,45 +888,103 @@
     max-width: 100%;
   }
 }
-/**
-  * Addon row grid style for columns inside
-  * center, v-center, h-center
-**/
-.row-space {
-  margin: 0 0 -1.25% -1.25%;
+/* Rows */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
 }
-.row-space > * {
-  padding: 0 0 1.25% 1.25%;
+.row > * {
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: auto !important;
+  min-height: 1px;
+  position: relative;
+  flex-direction: column;
+  display: flex;
 }
-.row-responsive {
-  flex-wrap: nowrap;
-  overflow: hidden;
+.row > * > * {
+  flex: 1 1 auto;
 }
-.row-center > * {
-  align-items: center;
-  justify-content: center;
+@media only screen and (min-width: 550px) {
+  .sm_row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+  }
+  .sm_row > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto !important;
+    min-height: 1px;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+  }
+  .sm_row > * > * {
+    flex: 1 1 auto;
+  }
 }
-.row-v-center > *,
-.row-y-center > * {
-  align-items: center;
+@media only screen and (min-width: 768px) {
+  .md_row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+  }
+  .md_row > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto !important;
+    min-height: 1px;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+  }
+  .md_row > * > * {
+    flex: 1 1 auto;
+  }
 }
-.row-h-center > *,
-.row-x-center > * {
-  justify-content: center;
+@media only screen and (min-width: 1024px) {
+  .lg_row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+  }
+  .lg_row > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto !important;
+    min-height: 1px;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+  }
+  .lg_row > * > * {
+    flex: 1 1 auto;
+  }
 }
-/*=========================================================================
-|| Screen sizes for responsive design
-=========================================================================*/
-/*=========================================================================
-|| Responsive variables
-===========================================================================
-|| Easy way using @media queries
-|| @media @mobile === @media only screen and (max-width: 767px)
-||
-|| SYNTAX:
-||   "variable-name: value"
-||   · "variable-name":     width screen name
-||   · "value":             "only screen and ()" with destination in parenthesis
-=========================================================================*/
-/* Grid max columns in one row */
+@media only screen and (max-width: 549px) {
+  .xs_row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+  }
+  .xs_row > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto !important;
+    min-height: 1px;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+  }
+  .xs_row > * > * {
+    flex: 1 1 auto;
+  }
+}
 /*# sourceMappingURL=grid.css.map */

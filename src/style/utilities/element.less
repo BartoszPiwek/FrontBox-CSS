@@ -1,0 +1,24 @@
+/**
+ * Element
+ */
+
+.responsive({
+    .@{prefix} {
+
+        &round {
+            border-radius: 50%;
+        }
+
+        &rotate {
+            &-180 { transform: rotate(180deg) !important; }
+            &-90 { transform: rotate(90deg) !important; }
+            &-270 { transform: rotate(270deg) !important; }
+        }
+
+        /* Reset */
+        &no-wrap {
+            max-width: 100% !important;
+        }
+
+    }
+});

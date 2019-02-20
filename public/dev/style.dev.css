@@ -1,21 +1,14 @@
 @charset "UTF-8";
 /*!******************************************************************
 Author      : Bartosz Piwek
-Framework   : FrontBox-CSS (https://github.com/BartoszPiwek/FrontBox-CSS)
-Version     : 1.0.8
+Framework   : FrontBox-CSS
+Url         : https://github.com/BartoszPiwek/FrontBox-CSS
+Version     : 1.1.0
 ********************************************************************/
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@charset */
-/**
- * Concat files
- */
 /* Grid */
 @import "../css/grid.css";
-/* Get all settings */
-/*=========================================================================
-|| FILE: Variables concat
-===========================================================================
-|| Concatenate less variables files
-=========================================================================*/
+/* Prepare */
 /*=========================================================================
 || Screen sizes for responsive design
 =========================================================================*/
@@ -31,6 +24,144 @@ Version     : 1.0.8
 ||   · "value":             "only screen and ()" with destination in parenthesis
 =========================================================================*/
 /* Grid max columns in one row */
+/*=========================================================================
+|| FILE: Functions
+===========================================================================
+|| Collection of useful functions
+=========================================================================*/
+/**
+ * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+ * - add class &--hover for parent element to trigger hover for child element
+ * EXAMPLE:
+    .foo {
+        .add-hover({
+            color: red;
+        });
+    }
+ * OUTPUT:
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo:hover,
+    .foo:active,
+    .foo:focus {
+        background-color: red;
+    }
+ */
+/**
+ *? Create color class using variables
+ * 
+ ** Function:
+ *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+ * 
+ ** Arguments:
+ *  @color-name-array: array with @colors sufix name { ex: foo, fee }
+ *  @color-variable-prefix: sufix name for variables { color }
+ *  @property: prefix class and property for color { fill }
+ * 
+ ** Example:
+ * 
+ *  @color-foo: red;
+ *  @color-fee: blue;
+ *  @color-string: foo, fee;
+ *  .color-list(@color-string, color, fill);
+ * 
+ ** Output:
+ *
+ *  fill-foo {
+ *    fill: red;
+ *  }
+ *  fill-fee {
+ *    fill: blue;
+ *  }
+ * 
+ */
+/*=========================================================================
+|| Fix
+=========================================================================*/
+/**
+ * Force an element to self-clear its children
+ */
+/*=========================================================================
+|| Space
+=========================================================================*/
+/**
+ *? Set space beetween elements in ASIX X/Y
+ *
+ ** For class: 
+ *  .row
+ */
+/*=========================================================================
+|| Shapes
+=========================================================================*/
+/**
+ * Triangle
+ */
+/*=========================================================================
+|| Loops
+=========================================================================*/
+/*=========================================================================
+|| Debug
+=========================================================================*/
+/**
+ * Print @string in terminal output
+ */
+/*=========================================================================
+|| Forms
+=========================================================================*/
+/**
+ * Style the placeholder text of a form element
+ */
+/**
+ * Sets the color of the highlight that appears over a link while it's being tapped
+ */
+/*=========================================================================
+|| Tools generator
+=========================================================================*/
+/*=========================================================================
+|| Browser
+=========================================================================*/
+/**
+ * Create custom themes for the browser's native scrollbars
+ */
+/*=========================================================================
+|| Responsive
+=========================================================================*/
+/*=========================================================================
+|| Flow
+=========================================================================*/
+/**
+ * Wrap
+ * Centering content in ASIX X
+ */
+/* Default style */
+@import "../css/base.css";
+@import "../css/utilities.css";
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+/* Function */
+/*=========================================================================
+|| FILE: Variables
+===========================================================================
+|| Static FrontBox-CSS variables
+=========================================================================*/
+/**
+ * Z-index
+ */
+/**
+ * Transition
+ */
+/**
+ * Files
+ */
+/*=========================================================================
+|| FILE: Variables concat
+===========================================================================
+|| Concatenate less variables files
+=========================================================================*/
 /*=========================================================================
 || FILE: Color variables
 ===========================================================================
@@ -124,31 +255,32 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
   * Wrap navbar to burger for breakpoint
   * set breakpoint ex: only screen and (max-width: 748px)
 **/
-/* Get FrontBox style */
 /*=========================================================================
-|| FILE: style.less
+|| FILE: Concat
 ===========================================================================
-|| Frontbox-CSS concat file
+|| Concatenate files
 =========================================================================*/
-/*=========================================================================
-|| FILE: _variables.less
-=========================================================================*/
+/* Prepare */
+.js_expand__container--active {
+  height: 100% !important;
+}
+.js_expand__container--close {
+  height: 0 !important;
+}
+.js_transitionHeight {
+  transition: height 0.2s !important;
+}
 /**
- * Z-index variables
- */
-/**
- * Transition
+ * Files
  */
 /*=========================================================================
-|| FILE: main.less
+|| FILE: Main
 ===========================================================================
 || Main style modyfication
 =========================================================================*/
 /**
   * Generated <body> <html> style
 **/
-@import "../css/base.css";
-@import "../css/utilities.css";
 body {
   font-family: "Arial";
   color: #000000;
@@ -200,14 +332,14 @@ html.page--overflow {
 }
 .link {
   transition: color 0.2s;
-  -webkit-tap-highlight-color: rgba(231, 190, 84, 0.2);
+  -webkit-tap-highlight-color: #e7be54;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 .click {
   transition: color 0.2s;
-  -webkit-tap-highlight-color: rgba(231, 190, 84, 0.2);
+  -webkit-tap-highlight-color: #e7be54;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -234,140 +366,7 @@ img {
   height: auto;
 }
 /*=========================================================================
-|| FILE: _functions.less
-===========================================================================
-|-TODO
-=========================================================================*/
-/**
- *? Set style for selectors :hover :active :focus 
- * Set class &--hover for parent element to trigger hover
- * 
- ** Function:
- *  .add-hover(@code);
- * 
- ** Arguments:
- *  @code: normal CSS code
- * 
- ** Example:
- *
- *  .foo {
- *    .add-hover({
- *      color: red;
- *    });
- *  }
- * 
- ** Output
- *
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo:hover,
- *  .foo:active,
- *  .foo:focus {
- *    background-color: red;
- *  }
- * 
- */
-/**
- *? Create color class using variables
- * 
- ** Function:
- *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
- * 
- ** Arguments:
- *  @color-name-array: array with @colors sufix name { ex: foo, fee }
- *  @color-variable-prefix: sufix name for variables { color }
- *  @property: prefix class and property for color { fill }
- * 
- ** Example:
- * 
- *  @color-foo: red;
- *  @color-fee: blue;
- *  @color-string: foo, fee;
- *  .color-list(@color-string, color, fill);
- * 
- ** Output:
- *
- *  fill-foo {
- *    fill: red;
- *  }
- *  fill-fee {
- *    fill: blue;
- *  }
- * 
- */
-/**
- *? Force an element to self-clear its children
- */
-/**
- *? Set space beetween elements in ASIX X/Y
- *
- ** For class: 
- *  .row
- */
-/**
-  * Triangle
-  */
-/**
-  * Print @string in terminal output
-**/
-/**
-  * Tools generator
-**/
-/**
- * Responsive
- */
-/* Scrollbar */
-.js_expand__container--active {
-  height: 100% !important;
-}
-.js_expand__container--close {
-  height: 0 !important;
-}
-.js_transitionHeight {
-  transition: height 0.2s !important;
-}
-/*=========================================================================
-|| FILE: _button.less
-===========================================================================
-|| Button style element
-|| Class:
-||              .btn
-|| Collections:
-||              -block ( 100% width, centering )
-||              -disable ( remove clickable behavior )
-=========================================================================*/
-.btn {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-.btn--block {
-  display: block;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-.btn--disable {
-  pointer-events: none;
-  position: relative;
-}
-.btn--disable:before {
-  border-radius: inherit;
-  pointer-events: none;
-  height: 100%;
-  width: 100%;
-  background: black;
-  opacity: 0.6;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/*=========================================================================
-|| FILE: _fix.less
+|| FILE: Fix
 ===========================================================================
 || Classes used for avoid common CSS problems
 =========================================================================*/
@@ -387,6 +386,12 @@ html.js_menu-active .burger-menu {
   transform: translate3d(0, 0, 0);
   position: fixed;
 }
+/*=========================================================================
+|| FILE: Base
+===========================================================================
+|| Create base class
+=========================================================================*/
+/* Space beetween elements */
 .space > *:first-child {
   margin-top: 0;
 }
@@ -398,46 +403,6 @@ html.js_menu-active .burger-menu {
 }
 .list-marker .marker {
   position: absolute;
-}
-/*=========================================================================
-|| FILE: _flow.less
-===========================================================================
-|| Base flow class for containers
-=========================================================================*/
-/**
- * Wrap
- * Centering content
- */
-.wrap {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-/**
- * Reset
- */
-.no-wrap {
-  max-width: 100% !important;
-}
-@media only screen and (min-width: 550px) and (max-width: 767px) {
-  .sm_no-wrap {
-    max-width: 100% !important;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .md_no-wrap {
-    max-width: 100% !important;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .lg_no-wrap {
-    max-width: 100% !important;
-  }
-}
-@media only screen and (max-width: 549px) {
-  .xs_no-wrap {
-    max-width: 100% !important;
-  }
 }
 .grayscale {
   -webkit-filter: grayscale(1);
@@ -480,6 +445,9 @@ html.js_menu-active .burger-menu {
   object-fit: cover;
   height: 100%;
 }
+/*=========================================================================
+|| Fix
+=========================================================================*/
 .clearfix {
   *zoom: 1;
   zoom: 1;
@@ -551,12 +519,10 @@ html.js_menu-active .burger-menu {
   vertical-align: middle;
   display: inline-block;
 }
-/* Website base style */
-/* Website style */
 /*=========================================================================
 || FILE: Style concat
 ===========================================================================
-|| Concatenate less files
+|| Concatenate files
 =========================================================================*/
 /* Main */
 /*=========================================================================
@@ -917,7 +883,6 @@ body::-webkit-scrollbar-button {
  * .container
  * http://localhost:8181/debug/elements.html#container
  */
-/* Responsive */
 .container {
   display: flex;
   flex-direction: row;
@@ -1092,9 +1057,9 @@ body::-webkit-scrollbar-button {
 }
 /* Elements */
 /*=========================================================================
-|| FILE: Buttons style
+|| FILE: Button
 ===========================================================================
-|| 
+|| Style clickable buttons
 =========================================================================*/
 .btn {
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
@@ -1403,24 +1368,9 @@ label[for] {
   width: 100%;
   /* Placeholder text style */
 }
-.input-text::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  transition: color 0.2s;
-  font-style: italic;
-  color: #e7be54;
-}
-.input-text::-moz-placeholder {
-  /* Firefox 19+ */
-  transition: color 0.2s;
-  font-style: italic;
-  color: #e7be54;
-}
-.input-text:-ms-input-placeholder {
-  /* IE 10+ */
-  transition: color 0.2s;
-  font-style: italic;
-  color: #e7be54;
-}
+.input-text::-webkit-input-placeholder,
+.input-text::-moz-placeholder,
+.input-text:-ms-input-placeholder,
 .input-text:-moz-placeholder {
   /* Firefox 18- */
   transition: color 0.2s;
@@ -1431,18 +1381,9 @@ label[for] {
   border-color: rgba(0, 0, 0, 0.6);
   color: rgba(0, 0, 0, 0.6);
 }
-.input-text:hover::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: rgba(0, 0, 0, 0.6);
-}
-.input-text:hover::-moz-placeholder {
-  /* Firefox 19+ */
-  color: rgba(0, 0, 0, 0.6);
-}
-.input-text:hover:-ms-input-placeholder {
-  /* IE 10+ */
-  color: rgba(0, 0, 0, 0.6);
-}
+.input-text:hover::-webkit-input-placeholder,
+.input-text:hover::-moz-placeholder,
+.input-text:hover:-ms-input-placeholder,
 .input-text:hover:-moz-placeholder {
   /* Firefox 18- */
   color: rgba(0, 0, 0, 0.6);
@@ -1453,20 +1394,11 @@ label[for] {
   color: #000000;
 }
 .input-text:active::-webkit-input-placeholder,
-.input-text:focus::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: #000000;
-}
+.input-text:focus::-webkit-input-placeholder,
 .input-text:active::-moz-placeholder,
-.input-text:focus::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #000000;
-}
+.input-text:focus::-moz-placeholder,
 .input-text:active:-ms-input-placeholder,
-.input-text:focus:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #000000;
-}
+.input-text:focus:-ms-input-placeholder,
 .input-text:active:-moz-placeholder,
 .input-text:focus:-moz-placeholder {
   /* Firefox 18- */
@@ -1562,7 +1494,6 @@ label[for] {
   padding: 20px;
   background-color: #bb8e1a;
 }
-/* Responsive */
 .tabs--horizontal .tabs__content {
   display: flex;
   flex-direction: row;
@@ -1786,14 +1717,14 @@ label[for] {
   display: none;
 }
 /*=========================================================================
-|| FILE: Animations Style
+|| FILE: Animation
 ===========================================================================
-|| Style for elements animation
+|| Animate transitions from one CSS style configuration to another
 =========================================================================*/
 /*=========================================================================
-|| FILE: Icons style (SVG | IMG)
+|| FILE: Icons
 ===========================================================================
-|| 
+|| Style SVG/IMG icons
 =========================================================================*/
 /**
  * Default style
@@ -1802,27 +1733,27 @@ label[for] {
   transition: fill 0.2s;
 }
 /*=========================================================================
-|| FILE: index.less
+|| FILE: Index
 ===========================================================================
 || Style for most index elements
 =========================================================================*/
-
-            .a {
-                color: .fade(red, 0.2);
-            }
-            
+/*=========================================================================
+|| FILE: Link
+===========================================================================
+|| Style for most index elements
+=========================================================================*/
 /*=========================================================================
 || FILE: Boxes
 ===========================================================================
 || Style for boxes ( cards | containers )
 =========================================================================*/
 /*=========================================================================
-|| FILE: tables.less
+|| FILE: Tables
 ===========================================================================
-|| Style for tables ( table | tr | td )
+|| Style HTML tables
 =========================================================================*/
 /*=========================================================================
-|| FILE: lists.less
+|| FILE: List
 ===========================================================================
 || Style for lists
 =========================================================================*/
@@ -1884,7 +1815,6 @@ label[for] {
 /**
  * List vertical
  */
-/* Responsive */
 .list-vertical {
   /**
      * Special
@@ -2136,7 +2066,6 @@ label[for] {
 /**
  * List horizontal
  */
-/* Responsive */
 .list-horizontal {
   display: flex;
   flex-direction: row;
@@ -2479,15 +2408,15 @@ label[for] {
 }
 /* End */
 /*=========================================================================
-|| Create class using functions
+|| FILE: Tools
 ===========================================================================
-|| TODO: documentation
+|| Create class using functions
 =========================================================================*/
 /*=========================================================================
-// WRAP - center element in asix x
+|| WRAP - center element in asix x
 .add-wrap(200px,15px);
-// = max width elemnt (end calculate = max-width + padding * 2)
-// = padding for responsive view
+|| = max width elemnt (end calculate = max-width + padding * 2)
+|| = padding for responsive view
 //=======================================================================*/
 .wrap {
   max-width: 1064px;
@@ -2535,14 +2464,31 @@ label[for] {
 // .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
 =========================================================================*/
 /*=========================================================================
-|| FILE: _utilities.less
+|| FILE: Utilities
 ===========================================================================
 || Create repeatedly utilities class using functions
-|| .make-tool(class_prefix, css_property, value_1, value_2, ..)
-|| * class_prefix - class prefix name
-|| * css_property - css property to use { margin-left, color, float etc }
-|| * value        - property value and class sufix name
-== SNIPPETS: make-tool
+@mobile      
+@fablet      
+@fablet-only 
+@fablet-down 
+@tablet      
+@tablet-only 
+@tablet-down 
+@desktop     
+@retina      
 =========================================================================*/
+/* Only mobile size */
+/* Fable size */
+/* Tablet size */
+/* Desktop size */
+/*=========================================================================
+|| FILE: Plugins
+===========================================================================
+|| Concatenate files and set variables for plugins
+=========================================================================*/
+/* Use only when working with framework */
+/* Prepare */
+/* Variables */
+/* Website base style */
 /* Utilities */
 /*# sourceMappingURL=style.dev.css.map */

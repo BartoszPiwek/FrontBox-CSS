@@ -1,24 +1,18 @@
 /*=========================================================================
-|| FILE: Base style concat
-=========================================================================*/
-// TODO
+|| FILE: Concat Base
+===========================================================================
+|| Concatenate files
 /*=======================================================================*/
 
-// Variables & Settings
+/* Prepare */
 @import "frontbox/variables";
 @import "settings/_style";  
-
-// Functions
 @import "frontbox/functions";
 
-// Reset browser behavior
-@import "frontbox/browser-reset";
-
+/**
+ * Files
+ */
+@import (less) "./node_modules/normalize.css/normalize.css"; /* Reset browser behavior */
 @import "frontbox/blocks";
-@import "frontbox/utilities";
-
-// Header
-@import "frontbox/burger";
-
-// Fix
+@import "frontbox/media-queries";
 @import "frontbox/fix";

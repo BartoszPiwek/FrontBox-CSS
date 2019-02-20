@@ -1,9 +1,9 @@
 /*=========================================================================
-|| FILE: Utilities concat
-=========================================================================*/
-/**
- * Prepare
- */
+|| FILE: Concat Utilities
+===========================================================================
+|| Concatenate files
+/*=======================================================================*/
+/* Prepare */
 /*=========================================================================
 || Screen sizes for responsive design
 =========================================================================*/
@@ -20,39 +20,28 @@
 =========================================================================*/
 /* Grid max columns in one row */
 /*=========================================================================
-|| FILE: _functions.less
+|| FILE: Functions
 ===========================================================================
-|-TODO
+|| Collection of useful functions
 =========================================================================*/
 /**
- *? Set style for selectors :hover :active :focus 
- * Set class &--hover for parent element to trigger hover
- * 
- ** Function:
- *  .add-hover(@code);
- * 
- ** Arguments:
- *  @code: normal CSS code
- * 
- ** Example:
- *
- *  .foo {
- *    .add-hover({
- *      color: red;
- *    });
- *  }
- * 
- ** Output
- *
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo:hover,
- *  .foo:active,
- *  .foo:focus {
- *    background-color: red;
- *  }
- * 
+ * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+ * - add class &--hover for parent element to trigger hover for child element
+ * EXAMPLE:
+    .foo {
+        .add-hover({
+            color: red;
+        });
+    }
+ * OUTPUT:
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo:hover,
+    .foo:active,
+    .foo:focus {
+        background-color: red;
+    }
  */
 /**
  *? Create color class using variables
@@ -82,33 +71,78 @@
  *  }
  * 
  */
+/*=========================================================================
+|| Fix
+=========================================================================*/
 /**
- *? Force an element to self-clear its children
+ * Force an element to self-clear its children
  */
+/*=========================================================================
+|| Space
+=========================================================================*/
 /**
  *? Set space beetween elements in ASIX X/Y
  *
  ** For class: 
  *  .row
  */
-/**
-  * Triangle
-  */
-/**
-  * Print @string in terminal output
-**/
-/**
-  * Tools generator
-**/
-/**
- * Responsive
- */
-/* Scrollbar */
 /*=========================================================================
-|| FILE: _variables.less
+|| Shapes
 =========================================================================*/
 /**
- * Z-index variables
+ * Triangle
+ */
+/*=========================================================================
+|| Loops
+=========================================================================*/
+/*=========================================================================
+|| Debug
+=========================================================================*/
+/**
+ * Print @string in terminal output
+ */
+/*=========================================================================
+|| Forms
+=========================================================================*/
+/**
+ * Style the placeholder text of a form element
+ */
+/**
+ * Sets the color of the highlight that appears over a link while it's being tapped
+ */
+/*=========================================================================
+|| Tools generator
+=========================================================================*/
+/*=========================================================================
+|| Browser
+=========================================================================*/
+/**
+ * Create custom themes for the browser's native scrollbars
+ */
+/*=========================================================================
+|| Responsive
+=========================================================================*/
+/*=========================================================================
+|| Flow
+=========================================================================*/
+/**
+ * Wrap
+ * Centering content in ASIX X
+ */
+/* Default style */
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+/* Function */
+/*=========================================================================
+|| FILE: Variables
+===========================================================================
+|| Static FrontBox-CSS variables
+=========================================================================*/
+/**
+ * Z-index
  */
 /**
  * Transition
@@ -117,9 +151,109 @@
  * Files
  */
 /**
+ * Element
+ */
+. {
+  /* Reset */
+}
+.round {
+  border-radius: 50%;
+}
+.rotate-180 {
+  transform: rotate(180deg) !important;
+}
+.rotate-90 {
+  transform: rotate(90deg) !important;
+}
+.rotate-270 {
+  transform: rotate(270deg) !important;
+}
+.no-wrap {
+  max-width: 100% !important;
+}
+@media only screen and (min-width: 550px) {
+  .sm_ {
+    /* Reset */
+  }
+  .sm_round {
+    border-radius: 50%;
+  }
+  .sm_rotate-180 {
+    transform: rotate(180deg) !important;
+  }
+  .sm_rotate-90 {
+    transform: rotate(90deg) !important;
+  }
+  .sm_rotate-270 {
+    transform: rotate(270deg) !important;
+  }
+  .sm_no-wrap {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .md_ {
+    /* Reset */
+  }
+  .md_round {
+    border-radius: 50%;
+  }
+  .md_rotate-180 {
+    transform: rotate(180deg) !important;
+  }
+  .md_rotate-90 {
+    transform: rotate(90deg) !important;
+  }
+  .md_rotate-270 {
+    transform: rotate(270deg) !important;
+  }
+  .md_no-wrap {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .lg_ {
+    /* Reset */
+  }
+  .lg_round {
+    border-radius: 50%;
+  }
+  .lg_rotate-180 {
+    transform: rotate(180deg) !important;
+  }
+  .lg_rotate-90 {
+    transform: rotate(90deg) !important;
+  }
+  .lg_rotate-270 {
+    transform: rotate(270deg) !important;
+  }
+  .lg_no-wrap {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .xs_ {
+    /* Reset */
+  }
+  .xs_round {
+    border-radius: 50%;
+  }
+  .xs_rotate-180 {
+    transform: rotate(180deg) !important;
+  }
+  .xs_rotate-90 {
+    transform: rotate(90deg) !important;
+  }
+  .xs_rotate-270 {
+    transform: rotate(270deg) !important;
+  }
+  .xs_no-wrap {
+    max-width: 100% !important;
+  }
+}
+/**
  * Overflow
  */
-/* Responsive */
 .hideable {
   overflow: hidden;
 }
@@ -1921,7 +2055,6 @@
   margin-top: 85px !important;
   margin-bottom: 85px !important;
 }
-/* Responsive */
 /* Centering */
 .margin-center {
   margin: 0 auto;
@@ -2078,7 +2211,6 @@
 /**
  * Display
  */
-/* Responsive */
 .block {
   display: block !important;
 }
@@ -2099,6 +2231,12 @@
 }
 .table-row {
   display: table-row !important;
+}
+.no-before:before {
+  content: none !important;
+}
+.no-after:after {
+  content: none !important;
 }
 .hidden,
 .hide,
@@ -2126,6 +2264,12 @@
   }
   .sm_table-row {
     display: table-row !important;
+  }
+  .sm_no-before:before {
+    content: none !important;
+  }
+  .sm_no-after:after {
+    content: none !important;
   }
   .sm_hidden,
   .sm_hide,
@@ -2155,6 +2299,12 @@
   .md_table-row {
     display: table-row !important;
   }
+  .md_no-before:before {
+    content: none !important;
+  }
+  .md_no-after:after {
+    content: none !important;
+  }
   .md_hidden,
   .md_hide,
   .md_none {
@@ -2183,6 +2333,12 @@
   .lg_table-row {
     display: table-row !important;
   }
+  .lg_no-before:before {
+    content: none !important;
+  }
+  .lg_no-after:after {
+    content: none !important;
+  }
   .lg_hidden,
   .lg_hide,
   .lg_none {
@@ -2210,6 +2366,12 @@
   }
   .xs_table-row {
     display: table-row !important;
+  }
+  .xs_no-before:before {
+    content: none !important;
+  }
+  .xs_no-after:after {
+    content: none !important;
   }
   .xs_hidden,
   .xs_hide,
@@ -3921,7 +4083,6 @@
   padding-bottom: 85px !important;
 }
 /* Reset */
-/* Responsive */
 .no-pt,
 .no-padding-top {
   padding-top: 0 !important;
@@ -4453,10 +4614,9 @@
   margin-top: 100px;
   margin-bottom: 100px;
 }
-/**
- * Flex
- */
-/* Responsive */
+/*=========================================================================
+|| FILE: Flex
+=========================================================================*/
 .flex-y-end {
   align-items: flex-end;
 }
@@ -4603,43 +4763,6 @@
   .xs_flex-samesize {
     display: flex;
     flex: 1 1 auto;
-  }
-}
-/**
- * Cols
- */
-/* Responsive */
-.col-absolute {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-@media only screen and (min-width: 550px) {
-  .sm_col-absolute {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .md_col-absolute {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .lg_col-absolute {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-@media only screen and (max-width: 549px) {
-  .xs_col-absolute {
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 }
 /**
@@ -4901,7 +5024,6 @@
 .fs-85 {
   font-size: 85px !important;
 }
-/* Responsive */
 /* Align */
 .center {
   text-align: center !important;
@@ -4957,6 +5079,9 @@
   white-space: nowrap !important;
 }
 .no-whitespace {
+  font-size: 0 !important;
+}
+no-font {
   font-size: 0 !important;
 }
 @media only screen and (min-width: 550px) {
@@ -5015,6 +5140,9 @@
     white-space: nowrap !important;
   }
   .sm_no-whitespace {
+    font-size: 0 !important;
+  }
+  no-font {
     font-size: 0 !important;
   }
 }
@@ -5076,6 +5204,9 @@
   .md_no-whitespace {
     font-size: 0 !important;
   }
+  no-font {
+    font-size: 0 !important;
+  }
 }
 @media only screen and (min-width: 1024px) {
   /* Align */
@@ -5133,6 +5264,9 @@
     white-space: nowrap !important;
   }
   .lg_no-whitespace {
+    font-size: 0 !important;
+  }
+  no-font {
     font-size: 0 !important;
   }
 }
@@ -5193,6 +5327,266 @@
   }
   .xs_no-whitespace {
     font-size: 0 !important;
+  }
+  no-font {
+    font-size: 0 !important;
+  }
+}
+/* Grid */
+/*=========================================================================
+|| FILE: Columns
+===========================================================================
+|| Generate flexbox grid
+=========================================================================*/
+. .col {
+  flex: 1 1 1px !important;
+}
+. .col-static {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+. .col-responsive {
+  flex: 1 1 auto !important;
+}
+. .col-center {
+  align-items: center;
+  justify-content: center;
+}
+. .col-v-center {
+  align-items: center;
+}
+. .col-h-center {
+  justify-content: center;
+}
+. .col-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media only screen and (min-width: 550px) {
+  .sm_ .col {
+    flex: 1 1 1px !important;
+  }
+  .sm_ .col-static {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  .sm_ .col-responsive {
+    flex: 1 1 auto !important;
+  }
+  .sm_ .col-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .sm_ .col-v-center {
+    align-items: center;
+  }
+  .sm_ .col-h-center {
+    justify-content: center;
+  }
+  .sm_ .col-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .md_ .col {
+    flex: 1 1 1px !important;
+  }
+  .md_ .col-static {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  .md_ .col-responsive {
+    flex: 1 1 auto !important;
+  }
+  .md_ .col-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .md_ .col-v-center {
+    align-items: center;
+  }
+  .md_ .col-h-center {
+    justify-content: center;
+  }
+  .md_ .col-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .lg_ .col {
+    flex: 1 1 1px !important;
+  }
+  .lg_ .col-static {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  .lg_ .col-responsive {
+    flex: 1 1 auto !important;
+  }
+  .lg_ .col-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .lg_ .col-v-center {
+    align-items: center;
+  }
+  .lg_ .col-h-center {
+    justify-content: center;
+  }
+  .lg_ .col-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .xs_ .col {
+    flex: 1 1 1px !important;
+  }
+  .xs_ .col-static {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  .xs_ .col-responsive {
+    flex: 1 1 auto !important;
+  }
+  .xs_ .col-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .xs_ .col-v-center {
+    align-items: center;
+  }
+  .xs_ .col-h-center {
+    justify-content: center;
+  }
+  .xs_ .col-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+.row-space {
+  margin: 0 0 -1.25% -1.25%;
+}
+.row-space > * {
+  padding: 0 0 1.25% 1.25%;
+}
+.row-responsive {
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+.row-center > * {
+  align-items: center;
+  justify-content: center;
+}
+.row-v-center > *,
+.row-y-center > * {
+  align-items: center;
+}
+.row-h-center > *,
+.row-x-center > * {
+  justify-content: center;
+}
+@media only screen and (min-width: 550px) {
+  .sm_row-space {
+    margin: 0 0 -1.25% -1.25%;
+  }
+  .sm_row-space > * {
+    padding: 0 0 1.25% 1.25%;
+  }
+  .sm_row-responsive {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .sm_row-center > * {
+    align-items: center;
+    justify-content: center;
+  }
+  .sm_row-v-center > *,
+  .sm_row-y-center > * {
+    align-items: center;
+  }
+  .sm_row-h-center > *,
+  .sm_row-x-center > * {
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .md_row-space {
+    margin: 0 0 -1.25% -1.25%;
+  }
+  .md_row-space > * {
+    padding: 0 0 1.25% 1.25%;
+  }
+  .md_row-responsive {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .md_row-center > * {
+    align-items: center;
+    justify-content: center;
+  }
+  .md_row-v-center > *,
+  .md_row-y-center > * {
+    align-items: center;
+  }
+  .md_row-h-center > *,
+  .md_row-x-center > * {
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .lg_row-space {
+    margin: 0 0 -1.25% -1.25%;
+  }
+  .lg_row-space > * {
+    padding: 0 0 1.25% 1.25%;
+  }
+  .lg_row-responsive {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .lg_row-center > * {
+    align-items: center;
+    justify-content: center;
+  }
+  .lg_row-v-center > *,
+  .lg_row-y-center > * {
+    align-items: center;
+  }
+  .lg_row-h-center > *,
+  .lg_row-x-center > * {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .xs_row-space {
+    margin: 0 0 -1.25% -1.25%;
+  }
+  .xs_row-space > * {
+    padding: 0 0 1.25% 1.25%;
+  }
+  .xs_row-responsive {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .xs_row-center > * {
+    align-items: center;
+    justify-content: center;
+  }
+  .xs_row-v-center > *,
+  .xs_row-y-center > * {
+    align-items: center;
+  }
+  .xs_row-h-center > *,
+  .xs_row-x-center > * {
+    justify-content: center;
   }
 }
 /*# sourceMappingURL=utilities.css.map */

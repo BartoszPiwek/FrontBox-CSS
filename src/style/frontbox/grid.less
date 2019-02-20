@@ -1,82 +1,10 @@
 /*=========================================================================
-|| FILE: Flex grid core
+|| FILE: Grid
+===========================================================================
+|| Generate flexbox grid
 =========================================================================*/
 
-/**
-  * Addon col grid style
-  * center, v-center, h-center
-**/
-
-.col {
-
-    flex: 1 1 1px !important;
-
-    &-static {
-        flex-grow: 0;
-        flex-shrink: 0;
-    }
-    &-responsive {
-        flex: 1 1 auto !important;
-    }
-
-    // Vertical & horizontal center
-    &-center {
-        align-items: center;
-        justify-content: center;
-    } 
-    // Vertical center
-    &-v {
-        &-center {
-            align-items: center;
-        }
-    } 
-    // Horizontal center
-    &-h {
-        &-center {
-            justify-content: center;
-        }
-    }
-
-    &-absolute {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-}
-
-/**
- * Grid base style
- */
-
-.responsive({
-
-    .@{prefix}row {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        position: relative;
-    
-        & > * {
-            flex-grow: 0;
-            flex-shrink: 0;
-            height: auto !important;
-            min-height: 1px;
-            position: relative;
-            flex-direction: column;
-            display: flex;
-    
-            & > * {
-                flex: 1 1 auto;
-            }
-        }
-    }
-
-}, true);
-
-/**
- * Grid generator
- */
-
+/* Columns */
 .responsive({
 
     .gridLoop(@i: 1) when (@i =< @grid-count) {
@@ -102,42 +30,32 @@
     }
     .gridLoop();
 
-}, true);
+});
 
+/* Rows */
+.responsive({
+    .@{prefix} {
 
-/**
-  * Addon row grid style for columns inside
-  * center, v-center, h-center
-**/
+        &row {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            position: relative;
+        
+            & > * {
+                flex-grow: 0;
+                flex-shrink: 0;
+                height: auto !important;
+                min-height: 1px;
+                position: relative;
+                flex-direction: column;
+                display: flex;
+        
+                & > * {
+                    flex: 1 1 auto;
+                }
+            }
+        }
 
-.row {
-    &-space {
-        margin: 0 0 -1.25% -1.25%;
-        & > * {
-            padding: 0 0 1.25% 1.25%;
-        }
     }
-    &-responsive {
-        flex-wrap: nowrap;
-        overflow: hidden;
-    }
-    // Vertical & horizontal center
-    &-center {
-        &>* {
-            align-items: center;
-            justify-content: center;
-        }
-    } 
-    // Vertical center
-    &-v-center, &-y-center {
-        &>* {
-            align-items: center;
-        }
-    } 
-    // Horizontal center
-    &-h-center, &-x-center {
-        &>* {
-            justify-content: center;
-        }
-    }
-}
+});

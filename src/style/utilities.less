@@ -1,26 +1,26 @@
 /*=========================================================================
-|| FILE: Utilities concat
-=========================================================================*/
+|| FILE: Concat Utilities
+===========================================================================
+|| Concatenate files
+/*=======================================================================*/
 
-/**
- * Prepare
- */
-
+/* Prepare */
 @plugin "frontbox/javascript";
 @import "settings/responsive";
 @import "frontbox/functions";
-@import "frontbox/responsive";
 @import "frontbox/variables";
 
 /**
  * Files
  */
-
+@import "utilities/element";
 @import "utilities/overflow";
 @import "utilities/margin";
 @import "utilities/display";
 @import "utilities/padding";
 @import "utilities/space";
 @import "utilities/flex";
-@import "utilities/col";
 @import "utilities/text";
+/* Grid */
+@import "utilities/col";
+@import "utilities/row";

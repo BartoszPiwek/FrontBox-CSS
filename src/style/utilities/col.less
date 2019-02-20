@@ -1,38 +1,47 @@
-/**
- * Cols
- */
+/*=========================================================================
+|| FILE: Columns
+===========================================================================
+|| Generate flexbox grid
+=========================================================================*/
 
 .responsive({
-    .@{prefix}col-absolute {
-        position: absolute;
-        top: 0;
-        left: 0;
+    .@{prefix} {
+
+        .col {
+            flex: 1 1 1px !important;
+        
+            &-static {
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+            &-responsive {
+                flex: 1 1 auto !important;
+            }
+        
+            // Vertical & horizontal center
+            &-center {
+                align-items: center;
+                justify-content: center;
+            } 
+            // Vertical center
+            &-v {
+                &-center {
+                    align-items: center;
+                }
+            } 
+            // Horizontal center
+            &-h {
+                &-center {
+                    justify-content: center;
+                }
+            }
+        
+            &-absolute {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
     }
 });
-// .create-responsive-class( col-absolute, {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-// });
-// .create-responsive-class( col-absolute-y-center, {
-//     top: 50%;
-//     transform: translateY(-50%);
-// });
-// .create-responsive-class( col-y-top, {
-//     justify-content: flex-start;
-// });
-// .create-responsive-class( col-y-center, {
-//     justify-content: center;
-// });
-// .create-responsive-class( col-y-bottom, {
-//     justify-content: flex-end;
-// });
-// .create-responsive-class( col-x-left, {
-//     align-items: flex-start;
-// });
-// .create-responsive-class( col-x-center, {
-//     align-items: center;
-// });
-// .create-responsive-class( col-x-right, {
-//     align-items: flex-end;
-// });
