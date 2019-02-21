@@ -80,6 +80,33 @@ module.exports = function(grunt) {
     });
 
     /**
+     * Register Other Tasks
+     */
+    
+    grunt.registerTask('html', () => {
+
+        SETTINGS.version = 'dev';
+        NEWER = 'newer:';
+        
+        grunt.task.run([
+
+            'init_watch',
+            'init_server',
+            'init_html',
+
+            'watch_html',
+
+            'run_begin',
+            'run_html',
+            'run_server',
+            'run_watch',
+
+        ]);
+
+    });
+
+
+    /**
      * Register Init Tasks
      */
 
@@ -150,14 +177,7 @@ module.exports = function(grunt) {
                     sourceMap = true;
                 }
 
-                var modifyVars = {
-                    pathToModulesDev: SETTINGS.pathToModulesDev,
-                    pathToModulesProd: SETTINGS.pathToModulesProd,
-                    isWordpress: SETTINGS.isWordpress,
-                    version: SETTINGS.version,
-                    debug: SETTINGS.debug,
-                    workingWithFrontbox: SETTINGS.workingWithFrontbox,
-                };
+                var modifyVars = SETTINGS;
 
                 if (SETTINGS.framework === 'frontbox') {
 
@@ -269,7 +289,7 @@ module.exports = function(grunt) {
                             files: [{
                                 expand: true,
                                 cwd: 'src/debug/',
-                                src: ['**/*.pug'],
+                                src: ['**/*.pug', '!includes/**'],
                                 dest: `public/${SETTINGS.version}/debug/`,
                                 ext: '.html'
                             }],
@@ -539,8 +559,7 @@ module.exports = function(grunt) {
                     /* FrontBox LESS config */
                     if (SETTINGS.framework === 'frontbox') {
 
-                        TASKS.watch = Object.assign({}, TASKS.watch, {
-
+                        let options = {
                             style_base: {
                                 files: [
                                     "src/style/base.less",
@@ -572,8 +591,14 @@ module.exports = function(grunt) {
                                 ],
                                 tasks: ["less:main"],
                             },
+                        };
 
-                        });
+                        /* Watch plugins when working with framework */
+                        if ( SETTINGS.workingWithFrontbox ) {
+                            options.style_main.files.push( `${SETTINGS.pathToFrontBoxPlugins}/*/**.less`  );
+                        }
+
+                        TASKS.watch = Object.assign({}, TASKS.watch, options);
 
                     }
 

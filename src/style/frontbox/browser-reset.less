@@ -1,4 +1,32 @@
-* {
+/*=========================================================================
+|| FILE: Browser Reset
+===========================================================================
+|| Normalize elements style
+=========================================================================*/
+
+/* Fix content space */
+*, *:before, *:after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* Default style elements */
+iframe {
+    border: none;
+}
+ul, ol {
+    list-style: none;
+}
+
+/* Heading */
+h1, h2, h3, h4, h5, h6 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/* Anchor */
+a {
+    text-decoration: none;
+    color: inherit;
 }

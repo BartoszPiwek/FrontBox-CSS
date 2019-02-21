@@ -1,6 +1,8 @@
 module.exports = (SETTINGS) => {
 
-    const fs = require('fs');
+    const 
+    fs = require('fs'),
+    path = require('path');
 
 
     return {
@@ -21,17 +23,17 @@ module.exports = (SETTINGS) => {
         filesDebug: () => {
 
             let
-            output = null,
-            files = [];
+            output = '';
 
-            fs.readdirSync(`./src/debug`).forEach(file => {
-                files.push(file);
+            fs.readdirSync(`./public/${SETTINGS.version}/debug`, { withFileTypes: true }).forEach(file => {
+
+                let name = file.slice(0, -5);
+
+                if ( name !== 'index' ) {
+                    output += `<a class="block mt-5 mb-5" href="./${name}.html">${name}</a>`; 
+                }
+
             });
-
-            for (const iterator of files) {
-                let name = iterator.slice(0, -4);
-                output += `<a class="block mt-5 mb-5" href="./${name}.html">${name}</a>`; 
-            }
 
             return output;
         },

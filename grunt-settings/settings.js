@@ -7,6 +7,7 @@ module.exports = {
 
     /* Path */
     pathToPublic            : 'public',
+    pathToFrontBoxPlugins   : './../FrontBox-Plugins',
 
     "pathToMainCSS"         : './css', 
     "pathToMainCSSDev"      : './public/dev', 

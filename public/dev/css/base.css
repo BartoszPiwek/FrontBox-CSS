@@ -664,4 +664,6 @@ template {
   transform: translate3d(0, 0, 0);
   position: fixed;
 }
+@path ToFavicon:src/template/includes/favicon.html;
+@path ToFavicon: src/template/includes/favicon.html;
 /*# sourceMappingURL=base.css.map */

@@ -6,10 +6,8 @@
  
 /* Use only when working with framework */
 & when (@workingWithFrontbox = true) {
-    @import "./../FrontBox-Plugins/style";
+    @import "@{pathToFrontBoxPlugins}/**/*.less";
 }
 
 /* Prepare */
-@import "./../plugins/*.less";
-
-/* Variables */
+@import "./../plugins/**/*.less";

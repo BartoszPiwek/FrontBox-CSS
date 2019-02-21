@@ -5614,4 +5614,6 @@ no-font {
     justify-content: center;
   }
 }
+@path ToFavicon:src/template/includes/favicon.html;
+@path ToFavicon: src/template/includes/favicon.html;
 /*# sourceMappingURL=utilities.css.map */

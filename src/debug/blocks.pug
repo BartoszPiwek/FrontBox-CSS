@@ -20,23 +20,23 @@ include ../template/includes/begin.pug
 					.debug-view
 						div.block-square(style="background: red;")
 
-		//- box-flipper
-		h2.debug-title.
-			Box flipper
+		//- flipper
+		h2#flipper.debug-title.
+			Flipper
 		.row.row-space
 			.col-6
 				div
 					.debug-view.center
-						a.box-flipper(href="#", style="height: 120px; background-color: red;")
-							.box-flipper__container
-								.box-flipper__item.box-flipper__item--front
+						a.flipper(href="#", style="background-color: red;")
+							.flipper__container
+								.flipper__item.flipper__item--front
 									| Front
-								.box-flipper__item.box-flipper__item--back
+								.flipper__item.flipper__item--back
 									| Back
 			.col-6
 				div
 					.debug-code.
-						.box-flipper>.box-flipper__container>.box-flipper__item.box-flipper__item--front{ | Front}+.box-flipper__item.box-flipper__item--back{ | Back}
+						.flipper>.flipper__container>.flipper__item.flipper__item--front>{ Front}+.flipper__item.flipper__item--back>{ Back}
 
 		//- box-timeline
 		h2.debug-title.

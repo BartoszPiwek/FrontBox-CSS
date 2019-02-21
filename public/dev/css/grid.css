@@ -987,4 +987,6 @@
     flex: 1 1 auto;
   }
 }
+@path ToFavicon:src/template/includes/favicon.html;
+@path ToFavicon: src/template/includes/favicon.html;
 /*# sourceMappingURL=grid.css.map */

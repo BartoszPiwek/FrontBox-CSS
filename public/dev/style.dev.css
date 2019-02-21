@@ -273,9 +273,41 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 /**
  * Files
  */
-* {
+/*=========================================================================
+|| FILE: Browser Reset
+===========================================================================
+|| Normalize elements style
+=========================================================================*/
+/* Fix content space */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+/* Default style elements */
+iframe {
+  border: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+/* Heading */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-weight: normal;
+}
+/* Anchor */
+a {
+  text-decoration: none;
+  color: inherit;
 }
 /*=========================================================================
 || FILE: Main
@@ -401,20 +433,6 @@ html.js_menu-active .burger-menu {
 }
 .space > *:last-child {
   margin-bottom: 0;
-}
-/* Fix content space */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-/* Default style elements */
-iframe {
-  border: none;
-}
-ul,
-ol {
-  list-style: none;
 }
 .list-marker {
   position: relative;
@@ -592,8 +610,6 @@ ol {
   width: 35px;
   height: 24px;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   /* Burger planks */
   /* Burger hover */
 }
@@ -2506,11 +2522,6 @@ label[for] {
 =========================================================================*/
 /* Use only when working with framework */
 /*=========================================================================
-|| FILE: Concat Plugins
-===========================================================================
-|| Concatenate files
-/*=======================================================================*/
-/*=========================================================================
 || Plugin: navigation-arrow.less
 ===========================================================================
 || Foundation style for absolute/fixed arrow navigation
@@ -3066,18 +3077,28 @@ label[for] {
   width: 94px;
   height: 61px;
 }
-.box-flipper {
+/*=========================================================================
+|| FILE: Flipper
+===========================================================================
+|| Category: Box
+|| Link: http://localhost:8181/debug/blocks.html#flipper
+|| Changlelog:
+||  21.02.19 - add comment
+/*=======================================================================*/
+.flipper {
   width: 100%;
   perspective: 1000;
   display: block;
+  height: 100px;
+  /* Rotate container when hover */
 }
-.box-flipper__container {
+.flipper__container {
   transition: 0.6s;
   position: relative;
   width: 100%;
   height: 100%;
 }
-.box-flipper__item {
+.flipper__item {
   transition: 0s;
   transition-delay: 0.2s;
   position: absolute;
@@ -3089,44 +3110,44 @@ label[for] {
   height: 100%;
   width: 100%;
 }
-.box-flipper__item--back {
+.flipper__item--back {
   opacity: 0;
   transform: rotateY(180deg);
 }
-.box-flipper__item--front {
+.flipper__item--front {
   z-index: 2;
 }
-.box-flipper--hover:hover .box-flipper .box-flipper__container,
-.box-flipper--hover:active .box-flipper .box-flipper__container,
-.box-flipper--hover:focus .box-flipper .box-flipper__container,
-.box-flipper--hover-active .box-flipper .box-flipper__container,
-.box-flipper--hover-active .box-flipper .box-flipper__container,
-.box-flipper--hover-active .box-flipper .box-flipper__container,
-.box-flipper:hover .box-flipper__container,
-.box-flipper:active .box-flipper__container,
-.box-flipper:focus .box-flipper__container {
+.flipper--hover:hover .flipper .flipper__container,
+.flipper--hover:active .flipper .flipper__container,
+.flipper--hover:focus .flipper .flipper__container,
+.flipper--hover-active .flipper .flipper__container,
+.flipper--hover-active .flipper .flipper__container,
+.flipper--hover-active .flipper .flipper__container,
+.flipper:hover .flipper__container,
+.flipper:active .flipper__container,
+.flipper:focus .flipper__container {
   transform: rotateY(180deg);
 }
-.box-flipper--hover:hover .box-flipper .box-flipper__item--front,
-.box-flipper--hover:active .box-flipper .box-flipper__item--front,
-.box-flipper--hover:focus .box-flipper .box-flipper__item--front,
-.box-flipper--hover-active .box-flipper .box-flipper__item--front,
-.box-flipper--hover-active .box-flipper .box-flipper__item--front,
-.box-flipper--hover-active .box-flipper .box-flipper__item--front,
-.box-flipper:hover .box-flipper__item--front,
-.box-flipper:active .box-flipper__item--front,
-.box-flipper:focus .box-flipper__item--front {
+.flipper--hover:hover .flipper .flipper__item--front,
+.flipper--hover:active .flipper .flipper__item--front,
+.flipper--hover:focus .flipper .flipper__item--front,
+.flipper--hover-active .flipper .flipper__item--front,
+.flipper--hover-active .flipper .flipper__item--front,
+.flipper--hover-active .flipper .flipper__item--front,
+.flipper:hover .flipper__item--front,
+.flipper:active .flipper__item--front,
+.flipper:focus .flipper__item--front {
   opacity: 0;
 }
-.box-flipper--hover:hover .box-flipper .box-flipper__item--back,
-.box-flipper--hover:active .box-flipper .box-flipper__item--back,
-.box-flipper--hover:focus .box-flipper .box-flipper__item--back,
-.box-flipper--hover-active .box-flipper .box-flipper__item--back,
-.box-flipper--hover-active .box-flipper .box-flipper__item--back,
-.box-flipper--hover-active .box-flipper .box-flipper__item--back,
-.box-flipper:hover .box-flipper__item--back,
-.box-flipper:active .box-flipper__item--back,
-.box-flipper:focus .box-flipper__item--back {
+.flipper--hover:hover .flipper .flipper__item--back,
+.flipper--hover:active .flipper .flipper__item--back,
+.flipper--hover:focus .flipper .flipper__item--back,
+.flipper--hover-active .flipper .flipper__item--back,
+.flipper--hover-active .flipper .flipper__item--back,
+.flipper--hover-active .flipper .flipper__item--back,
+.flipper:hover .flipper__item--back,
+.flipper:active .flipper__item--back,
+.flipper:focus .flipper__item--back {
   opacity: 1;
 }
 /*=========================================================================
@@ -3645,598 +3666,6 @@ label[for] {
   user-select: none;
   height: 40px;
   border: 1px solid #e7be54;
-}
-/*=========================================================================
-|| Plugin: blazy.less
-===========================================================================
-|| Style for lib bLazy.js (lazyload image script)
-=========================================================================*/
-.js_blazy {
-  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
-  background-size: cover;
-  opacity: 0.3;
-  background-color: #000000;
-  transition: opacity 0.2s;
-  display: block;
-}
-.js_blazy--active {
-  opacity: 1;
-}
-/*=========================================================================
-|| Plugin: collapse.less
-===========================================================================
-|| Style for javascript collapse toggle
-=========================================================================*/
-*[data-toggle] {
-  cursor: pointer;
-  -webkit-tap-highlight-color: #e7be54;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-}
-.collapse {
-  height: auto;
-  transition: height 0.6s;
-  pointer-events: all;
-  overflow: hidden;
-}
-.collapse.off:not(#burgerMenu) {
-  height: 0 !important;
-  pointer-events: none;
-  transition: height 0.6s;
-  margin: 0 !important;
-}
-.js_cookies-information {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  transition: transform 0.2s, opacity 0.2s;
-  opacity: 1;
-  z-index: 6999;
-  background-color: rgba(231, 190, 84, 0.85);
-  padding: 8px 0;
-  border-top: 2px solid #e7be54;
-}
-.js_cookies-information__img {
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-  .js_cookies-information__img {
-    position: absolute;
-    display: block;
-    bottom: 0;
-    left: 0;
-    width: 95px;
-    height: auto;
-  }
-}
-.js_cookies-information__text {
-  font-size: 14px;
-  text-align: justify;
-  color: #FFFFFF;
-}
-.js_cookies-information__container {
-  padding-right: 30px;
-  position: relative;
-}
-@media only screen and (min-width: 768px) {
-  .js_cookies-information__container {
-    padding-left: 115px;
-  }
-}
-.js_cookies-information__exit {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: transform 0.2s;
-}
-.js_cookies-information__exit:before,
-.js_cookies-information__exit:after {
-  content: '';
-  width: 100%;
-  height: 2px;
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 50%;
-  left: 0;
-}
-.js_cookies-information__exit:before {
-  transform: rotate(45deg);
-}
-.js_cookies-information__exit:after {
-  transform: rotate(-45deg);
-}
-.js_cookies-information__exit--hover:hover .js_cookies-information__exit,
-.js_cookies-information__exit--hover:active .js_cookies-information__exit,
-.js_cookies-information__exit--hover:focus .js_cookies-information__exit,
-.js_cookies-information__exit--hover-active .js_cookies-information__exit,
-.js_cookies-information__exit--hover-active .js_cookies-information__exit,
-.js_cookies-information__exit--hover-active .js_cookies-information__exit,
-.js_cookies-information__exit:hover,
-.js_cookies-information__exit:active,
-.js_cookies-information__exit:focus {
-  transform: rotate(90deg);
-}
-.js_cookies-information--hide {
-  transform: translate(0, 100%);
-  opacity: 0;
-}
-/*=========================================================================
-|| FILE: _dropdown.less
-===========================================================================
-|| JavaScript dropdown style
-=========================================================================*/
-.dropdown {
-  position: relative;
-}
-.dropdown__item {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.dropdown.js_active .dropdown__item {
-  opacity: 1;
-}
-:not(.js_fullslider) .fullslider__arrow {
-  display: none;
-}
-html.js_fullslider {
-  width: 100%;
-  height: 100%;
-}
-@media only screen and (min-width: 768px) {
-  html.js_fullslider {
-    width: max-content;
-    height: 100vh;
-    overflow-y: hidden;
-  }
-}
-body.js_fullslider {
-  height: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-  line-height: 1.2;
-}
-@media only screen and (min-width: 768px) {
-  body.js_fullslider {
-    width: max-content;
-    height: 100vh;
-    overflow-y: hidden;
-  }
-}
-.fullslider__container {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: auto;
-}
-@media only screen and (max-width: 549px) {
-  .fullslider__container {
-    width: 100% !important;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .fullslider__container {
-    *zoom: 1;
-    zoom: 1;
-    height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  .fullslider__container:before,
-  .fullslider__container:after {
-    content: " ";
-    display: table;
-  }
-  .fullslider__container:after {
-    clear: both;
-  }
-  .fullslider__container:before,
-  .fullslider__container:after {
-    content: " ";
-    display: table;
-  }
-  .fullslider__container:after {
-    clear: both;
-  }
-  .fullslider__container:before {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    content: "";
-    z-index: 0;
-    position: absolute;
-    transition: background-color 1s 0.2s;
-    background-color: rgba(8, 3, 86, 0.8);
-  }
-}
-.fullslider__slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  width: 100%;
-  position: relative;
-  height: 100%;
-  padding: 80px, 100px, 60px 20px;
-}
-@media only screen and (min-width: 768px) {
-  .fullslider__slide {
-    display: block;
-    width: 100vw;
-    float: left;
-    height: 100%;
-    padding: 0;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .fullslider__slide {
-    padding: 0;
-  }
-}
-.fullslider__button {
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-  .fullslider__button {
-    display: block;
-    top: 50%;
-    position: fixed;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    border: 2px solid #bea67c;
-    cursor: pointer;
-    z-index: 5;
-    transform: translateY(-50%);
-  }
-  .fullslider__button > .icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-@media only screen and (min-width: 768px) {
-  .fullslider__button--left {
-    left: 40px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .fullslider__button--left {
-    left: 60px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .fullslider__button--right {
-    right: 40px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .fullslider__button--right {
-    right: 60px;
-  }
-}
-.fullslider__dots {
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-  .fullslider__dots {
-    display: block;
-    position: fixed;
-    z-index: 4;
-    bottom: 40px;
-    left: 50%;
-    text-align: center;
-    font-size: 0;
-    transform: translateX(-50%);
-  }
-  .fullslider__dots > .fullslide__dot {
-    width: 22px;
-    height: 22px;
-    border: 2px solid #bea67c;
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-block;
-    margin-right: 11px;
-    transition: border-color 1s 0.2s, background-color 1s 0.2s;
-  }
-  .fullslider__dots > .fullslide__dot.active {
-    background-color: #FFFFFF;
-  }
-  .fullslider__dots > .fullslide__dot:last-child {
-    margin-right: 0;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .fullslider__dots {
-    bottom: 31px;
-  }
-}
-.list-vertical-scroll {
-  position: relative;
-  padding: 0 !important;
-  box-sizing: border-box;
-  /**
-     * Style
-     */
-}
-.list-vertical-scroll__nav-content {
-  width: auto !important;
-  transition: transform 0.4s;
-  display: flex;
-}
-.list-vertical-scroll__nav {
-  /* Make this scrollable when needed */
-  overflow-x: auto;
-  /* We don't want vertical scrolling */
-  overflow-y: hidden;
-  /* For WebKit implementations, provide inertia scrolling */
-  -webkit-overflow-scrolling: touch;
-  /* We don't want internal inline elements to wrap */
-  white-space: nowrap;
-  /* If JS present, let's hide the default scrollbar */
-  /* positioning context for advancers */
-  position: relative;
-  width: 100%;
-}
-.js .list-vertical-scroll__nav {
-  /* Make an auto-hiding scroller for the 3 people using a IE */
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  /* Remove the default scrollbar for WebKit implementations */
-}
-.js .list-vertical-scroll__nav::-webkit-scrollbar {
-  display: none;
-}
-.list-vertical-scroll__button {
-  /* Reset the button */
-  appearance: none;
-  background: transparent;
-  padding: 0;
-  border: 0;
-  width: 10px;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-  /* Now style it as needed */
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  /* Set the buttons invisible by default */
-  opacity: 0;
-  transition: opacity 0.3s, z-index 0s 0.3s;
-}
-.list-vertical-scroll__button:focus {
-  outline: 0;
-}
-.list-vertical-scroll__button:hover {
-  cursor: pointer;
-}
-.list-vertical-scroll__button[data-direction="left"] {
-  left: -14px;
-}
-[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="left"],
-[data-overflowing="right"] > .list-vertical-scroll__button[data-direction="left"] {
-  opacity: 1;
-  z-index: 0;
-  transition: opacity 0.3s, z-index 0s;
-  pointer-events: all;
-}
-.list-vertical-scroll__button[data-direction="right"] {
-  right: -14px;
-}
-[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="right"],
-[data-overflowing="left"] > .list-vertical-scroll__button[data-direction="right"] {
-  opacity: 1;
-  z-index: 0;
-  transition: opacity 0.3s, z-index 0s;
-  pointer-events: all;
-}
-.list-vertical-scroll__button:hover .list-vertical-scroll__icon {
-  fill: #e7be54;
-}
-.list-vertical-scroll__icon {
-  width: 9px;
-  height: 17px;
-  transition: fill 0.2s;
-  fill: #FFFFFF;
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button {
-  background-color: #191e24;
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button:before {
-  content: '';
-  width: 10px;
-  position: absolute;
-  top: 0;
-  height: 100%;
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="left"]:before {
-  right: 0;
-  background: linear-gradient(to right, #191e24 80%, transparent 100%);
-  transform: translateX(100%);
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="right"]:before {
-  left: 0;
-  background: linear-gradient(to right, transparent 0%, #191e24 100%);
-  transform: translateX(-100%);
-}
-/*=========================================================================
-|| Plugin: modals.less
-===========================================================================
-|| Style for modals
-=========================================================================*/
-.js_placeholder--active {
-  display: none;
-}
-.js_placeholder--holder {
-  background: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4) !important;
-  background-position: 0 0,10px 10px !important;
-  background-size: 20px 20px !important;
-  padding: 0 !important;
-}
-.js_placeholder--holder:before,
-.js_placeholder--holder:after {
-  content: none;
-}
-.js_resizeLoading {
-  filter: blur(0);
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.2s;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.js_resizeLoading__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-/**
- * JS Manipulation
- */
-.js_resize .page-content {
-  filter: blur(4px);
-}
-.js_resize .js_resizeLoading {
-  z-index: 10000;
-  opacity: 1;
-}
-.js-text-rotate.run {
-  display: inline-block;
-  overflow: hidden;
-}
-.js-text-rotate.run > span {
-  display: block;
-  transition: transform 1s 0s;
-}
-.js-text-rotate.run > span.hide {
-  display: none;
-}
-.js-text-rotate.run.next > span {
-  transition: transform 1s 1s;
-  transform: translateY(-100%);
-}
-.js_scroll {
-  overflow-y: scroll;
-  position: relative;
-  padding-right: 6px;
-}
-.js_scroll::-webkit-scrollbar {
-  display: none;
-}
-.js_scroll__bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 6px;
-  height: 100%;
-  background-color: #e7be54;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-}
-.js_scroll__position {
-  width: 100%;
-  height: 20px;
-  background-color: #000000;
-  border-radius: 4px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  transition: top 0.2s;
-}
-.js_scroll--hover:hover .js_scroll .js_scroll__bar,
-.js_scroll--hover:active .js_scroll .js_scroll__bar,
-.js_scroll--hover:focus .js_scroll .js_scroll__bar,
-.js_scroll--hover-active .js_scroll .js_scroll__bar,
-.js_scroll--hover-active .js_scroll .js_scroll__bar,
-.js_scroll--hover-active .js_scroll .js_scroll__bar,
-.js_scroll:hover .js_scroll__bar,
-.js_scroll:active .js_scroll__bar,
-.js_scroll:focus .js_scroll__bar {
-  opacity: 1;
-}
-.show-more {
-  overflow: hidden;
-}
-.no_js .show-more {
-  overflow: visible;
-  height: auto !important;
-}
-.show-more--active {
-  height: auto !important;
-}
-.no_js .show-more-button {
-  display: none;
-}
-.show-more-button--less {
-  display: none;
-}
-.show-more-button--more {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--less {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--more {
-  display: none;
-}
-/* Item */
-.js-sticky-spy {
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  perspective: 1000;
-  width: 100%;
-}
-.js-sticky-spy--fixed {
-  position: fixed !important;
-  bottom: auto !important;
-  top: 0;
-}
-.js-sticky-spy--bottom {
-  position: absolute !important;
-  bottom: 0 !important;
-}
-.js-sticky-spy:not(.js-sticky-spy--fixed) {
-  top: auto !important;
-  left: 0 !important;
-}
-.js-sticky-spy:not(.js-sticky-spy--bottom):not(.js-sticky-spy--fixed) {
-  top: 0 !important;
-  width: 100% !important;
-}
-/* Container */
-.js-sticky-spy-container {
-  position: relative;
-  flex: 1 1 auto;
-}
-/*=========================================================================
-|| Plugin: tabs.less
-===========================================================================
-|| Style for javascript tabs toggle
-=========================================================================*/
-.tab-switch {
-  cursor: pointer;
-}
-.tab-switch--active {
-  cursor: default;
-  pointer-events: none;
-}
-.tab-content:not(.tab-content--active) {
-  display: none !important;
 }
 /*=========================================================================
 || FILE: _progress-line.less
@@ -4879,6 +4308,598 @@ body.js_fullslider {
   margin-right: auto;
 }
 /*=========================================================================
+|| Plugin: blazy.less
+===========================================================================
+|| Style for lib bLazy.js (lazyload image script)
+=========================================================================*/
+.js_blazy {
+  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
+  background-size: cover;
+  opacity: 0.3;
+  background-color: #000000;
+  transition: opacity 0.2s;
+  display: block;
+}
+.js_blazy--active {
+  opacity: 1;
+}
+/*=========================================================================
+|| Plugin: collapse.less
+===========================================================================
+|| Style for javascript collapse toggle
+=========================================================================*/
+*[data-toggle] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: #e7be54;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+.collapse {
+  height: auto;
+  transition: height 0.6s;
+  pointer-events: all;
+  overflow: hidden;
+}
+.collapse.off:not(#burgerMenu) {
+  height: 0 !important;
+  pointer-events: none;
+  transition: height 0.6s;
+  margin: 0 !important;
+}
+.js_cookies-information {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 1;
+  z-index: 6999;
+  background-color: rgba(231, 190, 84, 0.85);
+  padding: 8px 0;
+  border-top: 2px solid #e7be54;
+}
+.js_cookies-information__img {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .js_cookies-information__img {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 95px;
+    height: auto;
+  }
+}
+.js_cookies-information__text {
+  font-size: 14px;
+  text-align: justify;
+  color: #FFFFFF;
+}
+.js_cookies-information__container {
+  padding-right: 30px;
+  position: relative;
+}
+@media only screen and (min-width: 768px) {
+  .js_cookies-information__container {
+    padding-left: 115px;
+  }
+}
+.js_cookies-information__exit {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: transform 0.2s;
+}
+.js_cookies-information__exit:before,
+.js_cookies-information__exit:after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.js_cookies-information__exit:before {
+  transform: rotate(45deg);
+}
+.js_cookies-information__exit:after {
+  transform: rotate(-45deg);
+}
+.js_cookies-information__exit--hover:hover .js_cookies-information__exit,
+.js_cookies-information__exit--hover:active .js_cookies-information__exit,
+.js_cookies-information__exit--hover:focus .js_cookies-information__exit,
+.js_cookies-information__exit--hover-active .js_cookies-information__exit,
+.js_cookies-information__exit--hover-active .js_cookies-information__exit,
+.js_cookies-information__exit--hover-active .js_cookies-information__exit,
+.js_cookies-information__exit:hover,
+.js_cookies-information__exit:active,
+.js_cookies-information__exit:focus {
+  transform: rotate(90deg);
+}
+.js_cookies-information--hide {
+  transform: translate(0, 100%);
+  opacity: 0;
+}
+/*=========================================================================
+|| FILE: _dropdown.less
+===========================================================================
+|| JavaScript dropdown style
+=========================================================================*/
+.dropdown {
+  position: relative;
+}
+.dropdown__item {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.dropdown.js_active .dropdown__item {
+  opacity: 1;
+}
+:not(.js_fullslider) .fullslider__arrow {
+  display: none;
+}
+html.js_fullslider {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (min-width: 768px) {
+  html.js_fullslider {
+    width: max-content;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+}
+body.js_fullslider {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 1.2;
+}
+@media only screen and (min-width: 768px) {
+  body.js_fullslider {
+    width: max-content;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+}
+.fullslider__container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+@media only screen and (max-width: 549px) {
+  .fullslider__container {
+    width: 100% !important;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__container {
+    *zoom: 1;
+    zoom: 1;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .fullslider__container:before,
+  .fullslider__container:after {
+    content: " ";
+    display: table;
+  }
+  .fullslider__container:after {
+    clear: both;
+  }
+  .fullslider__container:before,
+  .fullslider__container:after {
+    content: " ";
+    display: table;
+  }
+  .fullslider__container:after {
+    clear: both;
+  }
+  .fullslider__container:before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    z-index: 0;
+    position: absolute;
+    transition: background-color 1s 0.2s;
+    background-color: rgba(8, 3, 86, 0.8);
+  }
+}
+.fullslider__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  padding: 80px, 100px, 60px 20px;
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__slide {
+    display: block;
+    width: 100vw;
+    float: left;
+    height: 100%;
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__slide {
+    padding: 0;
+  }
+}
+.fullslider__button {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__button {
+    display: block;
+    top: 50%;
+    position: fixed;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid #bea67c;
+    cursor: pointer;
+    z-index: 5;
+    transform: translateY(-50%);
+  }
+  .fullslider__button > .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__button--left {
+    left: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__button--left {
+    left: 60px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__button--right {
+    right: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__button--right {
+    right: 60px;
+  }
+}
+.fullslider__dots {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__dots {
+    display: block;
+    position: fixed;
+    z-index: 4;
+    bottom: 40px;
+    left: 50%;
+    text-align: center;
+    font-size: 0;
+    transform: translateX(-50%);
+  }
+  .fullslider__dots > .fullslide__dot {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #bea67c;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 11px;
+    transition: border-color 1s 0.2s, background-color 1s 0.2s;
+  }
+  .fullslider__dots > .fullslide__dot.active {
+    background-color: #FFFFFF;
+  }
+  .fullslider__dots > .fullslide__dot:last-child {
+    margin-right: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__dots {
+    bottom: 31px;
+  }
+}
+.list-vertical-scroll {
+  position: relative;
+  padding: 0 !important;
+  box-sizing: border-box;
+  /**
+     * Style
+     */
+}
+.list-vertical-scroll__nav-content {
+  width: auto !important;
+  transition: transform 0.4s;
+  display: flex;
+}
+.list-vertical-scroll__nav {
+  /* Make this scrollable when needed */
+  overflow-x: auto;
+  /* We don't want vertical scrolling */
+  overflow-y: hidden;
+  /* For WebKit implementations, provide inertia scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* We don't want internal inline elements to wrap */
+  white-space: nowrap;
+  /* If JS present, let's hide the default scrollbar */
+  /* positioning context for advancers */
+  position: relative;
+  width: 100%;
+}
+.js .list-vertical-scroll__nav {
+  /* Make an auto-hiding scroller for the 3 people using a IE */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  /* Remove the default scrollbar for WebKit implementations */
+}
+.js .list-vertical-scroll__nav::-webkit-scrollbar {
+  display: none;
+}
+.list-vertical-scroll__button {
+  /* Reset the button */
+  appearance: none;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  width: 10px;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  /* Now style it as needed */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* Set the buttons invisible by default */
+  opacity: 0;
+  transition: opacity 0.3s, z-index 0s 0.3s;
+}
+.list-vertical-scroll__button:focus {
+  outline: 0;
+}
+.list-vertical-scroll__button:hover {
+  cursor: pointer;
+}
+.list-vertical-scroll__button[data-direction="left"] {
+  left: -14px;
+}
+[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="left"],
+[data-overflowing="right"] > .list-vertical-scroll__button[data-direction="left"] {
+  opacity: 1;
+  z-index: 0;
+  transition: opacity 0.3s, z-index 0s;
+  pointer-events: all;
+}
+.list-vertical-scroll__button[data-direction="right"] {
+  right: -14px;
+}
+[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="right"],
+[data-overflowing="left"] > .list-vertical-scroll__button[data-direction="right"] {
+  opacity: 1;
+  z-index: 0;
+  transition: opacity 0.3s, z-index 0s;
+  pointer-events: all;
+}
+.list-vertical-scroll__button:hover .list-vertical-scroll__icon {
+  fill: #e7be54;
+}
+.list-vertical-scroll__icon {
+  width: 9px;
+  height: 17px;
+  transition: fill 0.2s;
+  fill: #FFFFFF;
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button {
+  background-color: #191e24;
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button:before {
+  content: '';
+  width: 10px;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="left"]:before {
+  right: 0;
+  background: linear-gradient(to right, #191e24 80%, transparent 100%);
+  transform: translateX(100%);
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="right"]:before {
+  left: 0;
+  background: linear-gradient(to right, transparent 0%, #191e24 100%);
+  transform: translateX(-100%);
+}
+/*=========================================================================
+|| Plugin: modals.less
+===========================================================================
+|| Style for modals
+=========================================================================*/
+.js_placeholder--active {
+  display: none;
+}
+.js_placeholder--holder {
+  background: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4) !important;
+  background-position: 0 0,10px 10px !important;
+  background-size: 20px 20px !important;
+  padding: 0 !important;
+}
+.js_placeholder--holder:before,
+.js_placeholder--holder:after {
+  content: none;
+}
+.js_resizeLoading {
+  filter: blur(0);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.js_resizeLoading__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/**
+ * JS Manipulation
+ */
+.js_resize .page-content {
+  filter: blur(4px);
+}
+.js_resize .js_resizeLoading {
+  z-index: 10000;
+  opacity: 1;
+}
+.js-text-rotate.run {
+  display: inline-block;
+  overflow: hidden;
+}
+.js-text-rotate.run > span {
+  display: block;
+  transition: transform 1s 0s;
+}
+.js-text-rotate.run > span.hide {
+  display: none;
+}
+.js-text-rotate.run.next > span {
+  transition: transform 1s 1s;
+  transform: translateY(-100%);
+}
+.js_scroll {
+  overflow-y: scroll;
+  position: relative;
+  padding-right: 6px;
+}
+.js_scroll::-webkit-scrollbar {
+  display: none;
+}
+.js_scroll__bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background-color: #e7be54;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+.js_scroll__position {
+  width: 100%;
+  height: 20px;
+  background-color: #000000;
+  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  transition: top 0.2s;
+}
+.js_scroll--hover:hover .js_scroll .js_scroll__bar,
+.js_scroll--hover:active .js_scroll .js_scroll__bar,
+.js_scroll--hover:focus .js_scroll .js_scroll__bar,
+.js_scroll--hover-active .js_scroll .js_scroll__bar,
+.js_scroll--hover-active .js_scroll .js_scroll__bar,
+.js_scroll--hover-active .js_scroll .js_scroll__bar,
+.js_scroll:hover .js_scroll__bar,
+.js_scroll:active .js_scroll__bar,
+.js_scroll:focus .js_scroll__bar {
+  opacity: 1;
+}
+.show-more {
+  overflow: hidden;
+}
+.no_js .show-more {
+  overflow: visible;
+  height: auto !important;
+}
+.show-more--active {
+  height: auto !important;
+}
+.no_js .show-more-button {
+  display: none;
+}
+.show-more-button--less {
+  display: none;
+}
+.show-more-button--more {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--less {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--more {
+  display: none;
+}
+/* Item */
+.js-sticky-spy {
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
+  width: 100%;
+}
+.js-sticky-spy--fixed {
+  position: fixed !important;
+  bottom: auto !important;
+  top: 0;
+}
+.js-sticky-spy--bottom {
+  position: absolute !important;
+  bottom: 0 !important;
+}
+.js-sticky-spy:not(.js-sticky-spy--fixed) {
+  top: auto !important;
+  left: 0 !important;
+}
+.js-sticky-spy:not(.js-sticky-spy--bottom):not(.js-sticky-spy--fixed) {
+  top: 0 !important;
+  width: 100% !important;
+}
+/* Container */
+.js-sticky-spy-container {
+  position: relative;
+  flex: 1 1 auto;
+}
+/*=========================================================================
+|| Plugin: tabs.less
+===========================================================================
+|| Style for javascript tabs toggle
+=========================================================================*/
+.tab-switch {
+  cursor: pointer;
+}
+.tab-switch--active {
+  cursor: default;
+  pointer-events: none;
+}
+.tab-content:not(.tab-content--active) {
+  display: none !important;
+}
+/*=========================================================================
 || FILE: truncate.less
 ===========================================================================
 || If the text is longer than one line, it will be truncated and end with 
@@ -4973,6 +4994,21 @@ p.text-icon>x.icon+span{Lorem}
     planks: 3;
     style: 1;
 */
+.animation-burger-3-1 > *:first-child {
+  left: 0;
+  top: 45%;
+  transform: rotate(45deg);
+  width: 100%;
+}
+.animation-burger-3-1 > *:nth-child(2) {
+  opacity: 0;
+}
+.animation-burger-3-1 > *:last-child {
+  left: 0;
+  top: 45%;
+  transform: rotate(-45deg);
+  width: 100%;
+}
 /*
     Burger to icon X { first and last plank rotate 180deg; center plank slide left and hide }
     @planks: 3;
@@ -5035,21 +5071,6 @@ p.text-icon>x.icon+span{Lorem}
   width: 100%;
   transition: height 0.2s ease 0s;
   left: 0;
-}
-html.js_menu-active .navbar__button > .plank:first-child {
-  left: 0;
-  top: 45%;
-  transform: rotate(45deg);
-  width: 100%;
-}
-html.js_menu-active .navbar__button > .plank:nth-child(2) {
-  opacity: 0;
-}
-html.js_menu-active .navbar__button > .plank:last-child {
-  left: 0;
-  top: 45%;
-  transform: rotate(-45deg);
-  width: 100%;
 }
 html.js_menu-active .navbar__button > .plank:first-child {
   left: 0;
@@ -5154,6 +5175,34 @@ html.js_menu-active .nav__overlay {
   animation-delay: 0.4s;
   margin-right: 0;
 }
+/**
+* @name Donut spinner animation
+* @description .animation-donut-spinner
+* @markup
+<div class="animation-donut-spinner"></div>
+*/
+@keyframes animation-donut-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animation-donut-spinner {
+  text-align: center;
+  font-size: 0;
+}
+.animation-donut-spinner:before {
+  content: "";
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #e7be54;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: animation-donut-spinner 1.2s linear infinite;
+  display: inline-block;
+}
 /*=========================================================================
 * @name Circle rotate animation
 * @description .animation-circle-rotate
@@ -5211,41 +5260,13 @@ html.js_menu-active .nav__overlay {
   top: 0;
   left: 0;
 }
-/**
-* @name Donut spinner animation
-* @description .animation-donut-spinner
-* @markup
-<div class="animation-donut-spinner"></div>
-*/
-@keyframes animation-donut-spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.animation-donut-spinner {
-  text-align: center;
-  font-size: 0;
-}
-.animation-donut-spinner:before {
-  content: "";
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #e7be54;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: animation-donut-spinner 1.2s linear infinite;
-  display: inline-block;
-}
 /*=========================================================================
 || FILE: Drop
 ===========================================================================
-|| Category: 
-||  animation
+|| Category: Animation
+|| Link: http://localhost:8181/debug/animation-loader.html#drop
 || Changlelog:
-||  1.1.0 - add
+||  21.02.19 - add
 /*=======================================================================*/
 /* @keyframes */
 @keyframes animation-drop {
@@ -5317,7 +5338,8 @@ html.js_menu-active .nav__overlay {
   margin-left: -12px;
 }
 /* Prepare */
-/* Variables */
 /* Website base style */
 /* Utilities */
+@path ToFavicon:src/template/includes/favicon.html;
+@path ToFavicon: src/template/includes/favicon.html;
 /*# sourceMappingURL=style.dev.css.map */
