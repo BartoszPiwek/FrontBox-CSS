@@ -2,15 +2,20 @@ module.exports = {
     
     // Version { automatic set }
     version                 : null,
-    isDebug                 : true,
     // Lang
     website_locale          : 'pl-PL',
 
     /* Path */
-    "pathToCSS"             : 'css', 
-    "pathToMainCSS"         : '..', 
+    pathToPublic            : 'public',
+    pathToFrontBoxPlugins   : './../FrontBox-Plugins',
+
+    "pathToMainCSS"         : './css', 
+    "pathToMainCSSDev"      : './public/dev', 
+    "pathToMainCSSProd"     : './public/prod', 
     "pathToDev"             : "./public/dev",
     "pathToProd"            : "./public/prod",
+    "pathToModulesDev"      : "'../css'",
+    "pathToModulesProd"     : "'./public/prod/css'",
 
     "pathToFavicon"         : "src/template/includes/favicon.html",
 
@@ -21,6 +26,16 @@ module.exports = {
     "getYear"               : "<%= grunt.template.today('yyyy') %>",
 
     /* Project type */
-    "isWordpress"           : false,
+    "isWordpress"           : false, 
+
+    /* Framework */
+    framework               : 'frontbox', // false,frontbox
+    cssPreprocessor         : 'less', // false,less,sass
+    htmlPreprocessor        : 'pug', // false,pug
+    jsPreprocessor          : 'browserify', // false,browserify
+
+    /* Debug */
+    debug                   : true,
+    workingWithFrontbox     : true,
 
 };

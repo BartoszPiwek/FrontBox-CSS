@@ -1,0 +1,150 @@
+/*=========================================================================
+|| FILE: Button
+===========================================================================
+|| Style clickable buttons
+=========================================================================*/
+
+.btn {
+
+    // Behavior
+    transition+: background-color @time-transition;
+    transition+: color @time-transition;
+    transition+: border-color @time-transition;
+    transition+: transform @time-transition;
+
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    text-align: center;
+
+    // Size
+    padding: 14px 6px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    height: 100%;
+
+    // Colors
+    color: @color-black;
+    background-color: @color-primary;
+
+    // Border
+    border: 0;
+    border-radius: 5px;
+
+    // Icon
+    .icon {
+
+      // Behavior
+      transition+: transform @time-transition;
+
+    }
+
+    /**
+     * Animation
+     */
+
+    &:active {
+      transform: translateY(1px);
+    }
+    .add-hover({
+      background-color: darken(@color-primary, 20%);
+    });
+}
+
+/**
+ * Colors
+ */
+
+.btn {
+  &-primary {
+
+  }
+  &-secondary {
+
+  }
+  &-success {
+
+  }
+  &-danger {
+
+  }
+  &-warning {
+
+  }
+  &-info {
+
+  }
+  &-light {
+
+  }
+  &-dark {
+
+  }
+}
+
+/**
+ * Size
+ */
+
+.btn {
+  &-large {
+
+  }
+  &-wide {
+
+  }
+  &-big {
+
+  }
+  &-medium {
+
+  }
+  &-small {
+
+  }
+  &-tiny {
+
+  }
+}
+
+/**
+ * Default style
+ */
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &-block {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  &-disable {
+    pointer-events: none;
+    position: relative;
+
+    &:before {
+      border-radius: inherit;
+      pointer-events: none;
+      height: 100%;
+      width: 100%;
+      background: black;
+      opacity: 0.6;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  
+  &-link {
+    background: transparent !important;
+    border-color:  transparent !important;
+  }
+}

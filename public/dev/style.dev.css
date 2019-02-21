@@ -1,20 +1,14 @@
 @charset "UTF-8";
 /*!******************************************************************
 Author      : Bartosz Piwek
-Framework   : FrontBox-CSS (https://github.com/BartoszPiwek/FrontBox-CSS)
-Version     : 1.0.8
+Framework   : FrontBox-CSS
+Url         : https://github.com/BartoszPiwek/FrontBox-CSS
+Version     : 1.1.0
 ********************************************************************/
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@charset */
-/**
- * Concat files
- */
 /* Grid */
-/* Get all settings */
-/*=========================================================================
-|| FILE: Variables concat
-===========================================================================
-|| Concatenate less variables files
-=========================================================================*/
+@import "../css/grid.css";
+/* Prepare */
 /*=========================================================================
 || Screen sizes for responsive design
 =========================================================================*/
@@ -30,6 +24,144 @@ Version     : 1.0.8
 ||   · "value":             "only screen and ()" with destination in parenthesis
 =========================================================================*/
 /* Grid max columns in one row */
+/*=========================================================================
+|| FILE: Functions
+===========================================================================
+|| Collection of useful functions
+=========================================================================*/
+/**
+ * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+ * - add class &--hover for parent element to trigger hover for child element
+ * EXAMPLE:
+    .foo {
+        .add-hover({
+            color: red;
+        });
+    }
+ * OUTPUT:
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo:hover,
+    .foo:active,
+    .foo:focus {
+        background-color: red;
+    }
+ */
+/**
+ *? Create color class using variables
+ * 
+ ** Function:
+ *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+ * 
+ ** Arguments:
+ *  @color-name-array: array with @colors sufix name { ex: foo, fee }
+ *  @color-variable-prefix: sufix name for variables { color }
+ *  @property: prefix class and property for color { fill }
+ * 
+ ** Example:
+ * 
+ *  @color-foo: red;
+ *  @color-fee: blue;
+ *  @color-string: foo, fee;
+ *  .color-list(@color-string, color, fill);
+ * 
+ ** Output:
+ *
+ *  fill-foo {
+ *    fill: red;
+ *  }
+ *  fill-fee {
+ *    fill: blue;
+ *  }
+ * 
+ */
+/*=========================================================================
+|| Fix
+=========================================================================*/
+/**
+ * Force an element to self-clear its children
+ */
+/*=========================================================================
+|| Space
+=========================================================================*/
+/**
+ *? Set space beetween elements in ASIX X/Y
+ *
+ ** For class: 
+ *  .row
+ */
+/*=========================================================================
+|| Shapes
+=========================================================================*/
+/**
+ * Triangle
+ */
+/*=========================================================================
+|| Loops
+=========================================================================*/
+/*=========================================================================
+|| Debug
+=========================================================================*/
+/**
+ * Print @string in terminal output
+ */
+/*=========================================================================
+|| Forms
+=========================================================================*/
+/**
+ * Style the placeholder text of a form element
+ */
+/**
+ * Sets the color of the highlight that appears over a link while it's being tapped
+ */
+/*=========================================================================
+|| Tools generator
+=========================================================================*/
+/*=========================================================================
+|| Browser
+=========================================================================*/
+/**
+ * Create custom themes for the browser's native scrollbars
+ */
+/*=========================================================================
+|| Responsive
+=========================================================================*/
+/*=========================================================================
+|| Flow
+=========================================================================*/
+/**
+ * Wrap
+ * Centering content in ASIX X
+ */
+/* Default style */
+@import "../css/base.css";
+@import "../css/utilities.css";
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+/* Function */
+/*=========================================================================
+|| FILE: Variables
+===========================================================================
+|| Static FrontBox-CSS variables
+=========================================================================*/
+/**
+ * Z-index
+ */
+/**
+ * Transition
+ */
+/**
+ * Files
+ */
+/*=========================================================================
+|| FILE: Variables concat
+===========================================================================
+|| Concatenate less variables files
+=========================================================================*/
 /*=========================================================================
 || FILE: Color variables
 ===========================================================================
@@ -123,23 +255,62 @@ font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
   * Wrap navbar to burger for breakpoint
   * set breakpoint ex: only screen and (max-width: 748px)
 **/
-/* Get FrontBox style */
 /*=========================================================================
-|| FILE: style.less
+|| FILE: Concat
 ===========================================================================
-|| Frontbox-CSS concat file
+|| Concatenate files
 =========================================================================*/
+/* Prepare */
+.js_expand__container--active {
+  height: 100% !important;
+}
+.js_expand__container--close {
+  height: 0 !important;
+}
+.js_transitionHeight {
+  transition: height 0.2s !important;
+}
+/**
+ * Files
+ */
 /*=========================================================================
-|| FILE: _variables.less
+|| FILE: Browser Reset
+===========================================================================
+|| Normalize elements style
 =========================================================================*/
-/**
- * Z-index variables
- */
-/**
- * Transition
- */
+/* Fix content space */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Default style elements */
+iframe {
+  border: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+/* Heading */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-weight: normal;
+}
+/* Anchor */
+a {
+  text-decoration: none;
+  color: inherit;
+}
 /*=========================================================================
-|| FILE: main.less
+|| FILE: Main
 ===========================================================================
 || Main style modyfication
 =========================================================================*/
@@ -197,14 +368,14 @@ html.page--overflow {
 }
 .link {
   transition: color 0.2s;
-  -webkit-tap-highlight-color: rgba(231, 190, 84, 0.2);
+  -webkit-tap-highlight-color: #e7be54;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 .click {
   transition: color 0.2s;
-  -webkit-tap-highlight-color: rgba(231, 190, 84, 0.2);
+  -webkit-tap-highlight-color: #e7be54;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -231,141 +402,7 @@ img {
   height: auto;
 }
 /*=========================================================================
-|| FILE: _functions.less
-===========================================================================
-|-TODO
-=========================================================================*/
-/**
- *? Set style for selectors :hover :active :focus 
- * Set class &--hover for parent element to trigger hover
- * 
- ** Function:
- *  .add-hover(@code);
- * 
- ** Arguments:
- *  @code: normal CSS code
- * 
- ** Example:
- *
- *  .foo {
- *    .add-hover({
- *      color: red;
- *    });
- *  }
- * 
- ** Output
- *
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo--hover:hover .foo,
- *  .foo:hover,
- *  .foo:active,
- *  .foo:focus {
- *    background-color: red;
- *  }
- * 
- */
-/**
- *? Create color class using variables
- * 
- ** Function:
- *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
- * 
- ** Arguments:
- *  @color-name-array: array with @colors sufix name { ex: foo, fee }
- *  @color-variable-prefix: sufix name for variables { color }
- *  @property: prefix class and property for color { fill }
- * 
- ** Example:
- * 
- *  @color-foo: red;
- *  @color-fee: blue;
- *  @color-string: foo, fee;
- *  .color-list(@color-string, color, fill);
- * 
- ** Output:
- *
- *  fill-foo {
- *    fill: red;
- *  }
- *  fill-fee {
- *    fill: blue;
- *  }
- * 
- */
-/**
- *? Force an element to self-clear its children
- */
-/**
- *? Set space beetween elements in ASIX X/Y
- *
- ** For class: 
- *  .row
- */
-/**
-  * Triangle
-  * 
-  */
-/**
-  * Print @string in terminal output
-**/
-/**
-  * Tools generator
-**/
-/**
- * Responsive
- */
-/* Scrollbar */
-.js_expand__container--active {
-  height: 100% !important;
-}
-.js_expand__container--close {
-  height: 0 !important;
-}
-.js_transitionHeight {
-  transition: height 0.2s !important;
-}
-/*=========================================================================
-|| FILE: _button.less
-===========================================================================
-|| Button style element
-|| Class:
-||              .btn
-|| Collections:
-||              -block ( 100% width, centering )
-||              -disable ( remove clickable behavior )
-=========================================================================*/
-.btn {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-.btn--block {
-  display: block;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-.btn--disable {
-  pointer-events: none;
-  position: relative;
-}
-.btn--disable:before {
-  border-radius: inherit;
-  pointer-events: none;
-  height: 100%;
-  width: 100%;
-  background: black;
-  opacity: 0.6;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/*=========================================================================
-|| FILE: _fix.less
+|| FILE: Fix
 ===========================================================================
 || Classes used for avoid common CSS problems
 =========================================================================*/
@@ -385,6 +422,12 @@ html.js_menu-active .burger-menu {
   transform: translate3d(0, 0, 0);
   position: fixed;
 }
+/*=========================================================================
+|| FILE: Base
+===========================================================================
+|| Create base class
+=========================================================================*/
+/* Space beetween elements */
 .space > *:first-child {
   margin-top: 0;
 }
@@ -396,46 +439,6 @@ html.js_menu-active .burger-menu {
 }
 .list-marker .marker {
   position: absolute;
-}
-/*=========================================================================
-|| FILE: _flow.less
-===========================================================================
-|| Base flow class for containers
-=========================================================================*/
-/**
- * Wrap
- * Centering content
- */
-.wrap {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-/**
- * Reset
- */
-.no-wrap {
-  max-width: 100% !important;
-}
-@media only screen and (min-width: 550px) and (max-width: 767px) {
-  .sm_no-wrap {
-    max-width: 100% !important;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .md_no-wrap {
-    max-width: 100% !important;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .lg_no-wrap {
-    max-width: 100% !important;
-  }
-}
-@media only screen and (max-width: 549px) {
-  .xs_no-wrap {
-    max-width: 100% !important;
-  }
 }
 .grayscale {
   -webkit-filter: grayscale(1);
@@ -478,6 +481,9 @@ html.js_menu-active .burger-menu {
   object-fit: cover;
   height: 100%;
 }
+/*=========================================================================
+|| Fix
+=========================================================================*/
 .clearfix {
   *zoom: 1;
   zoom: 1;
@@ -549,248 +555,16 @@ html.js_menu-active .burger-menu {
   vertical-align: middle;
   display: inline-block;
 }
-/* Debug */
-.debug-box {
-  color: #FFFFFF;
-  background-color: rgba(0, 0, 0, 0.9);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  font-family: monospace;
-  font-size: 12px;
-  line-height: 12px;
-  padding: 5px;
-  transition: opacity 0.2s;
-  z-index: 999999;
-  height: 250px;
-  /**
-     * Container elements
-     */
-}
-@media only screen and (min-width: 768px) {
-  .debug-box {
-    height: 400px;
-  }
-}
-@media only screen and (max-width: 549px) {
-  .debug-box {
-    width: calc(100% - 50px);
-  }
-}
-.debug-box p {
-  color: #FFFFFF;
-  padding-right: 48px;
-  position: relative;
-}
-.debug-box span {
-  font-weight: bold;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.debug-box__container {
-  overflow-y: auto;
-  height: 100%;
-  width: 100%;
-}
-@media only screen and (min-width: 768px) {
-  .debug-box__container {
-    width: 300px;
-  }
-}
-.debug-box__container > *:first-child {
-  margin-top: 0;
-}
-.debug-box__button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20px;
-  height: 100%;
-  background-color: #e7be54;
-  transform: translateX(100%);
-  cursor: pointer;
-  text-align: center;
-  font-size: 12px;
-  color: #FFFFFF;
-  writing-mode: vertical-lr;
-}
-.debug-box--variables .debug-box__container p {
-  cursor: pointer;
-}
-.debug-box--variables .debug-box__container p:hover {
-  background-color: rgba(231, 190, 84, 0.35);
-}
-.debug-box--variables .debug-box__container p.js_focus {
-  background-color: rgba(231, 190, 84, 0.35);
-}
-.debug-box--console {
-  left: auto;
-  right: 0;
-}
-.debug-box--console .debug-box__container {
-  width: 100%;
-}
-@media only screen and (min-width: 768px) {
-  .debug-box--console .debug-box__container {
-    width: 400px;
-  }
-}
-.debug-box--console .debug-box__button {
-  transform: translateX(-100%) rotate(180deg);
-  right: auto;
-  left: 0;
-}
-.debug-box--console p {
-  border-left: 2px solid #e7be54;
-  margin-bottom: 4px;
-  padding-left: 2px;
-  padding-right: 0;
-}
-.debug-box--console p.error {
-  border-left: 4px solid #cc0000;
-}
-.debug-box--console p.click {
-  border-left-color: #00BFFF;
-}
-.debug-box--console p.warning {
-  border-left-color: #ffdf25;
-}
-.debug-box--console p.auto {
-  border-left-color: #17a80d;
-}
-.debug-box--console.debug-box--hide {
-  transform: translateX(100%) !important;
-}
-.debug-box--variables.debug-box--hide {
-  transform: translateX(-100%) !important;
-}
-.debug-box h2 {
-  font-size: 16px;
-  letter-spacing: -1px;
-  margin: 10px 0 5px;
-  text-transform: uppercase;
-}
-/* CSS */
-.debug-title {
-  font-size: 20px;
-  margin: 35px 0 20px;
-  position: relative;
-  padding-left: 50px;
-}
-.debug-title:before {
-  content: 'B';
-  position: absolute;
-  height: 100%;
-  top: 0;
-  left: 0;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: blue;
-  color: white;
-}
-.debug-title--mod {
-  font-size: 18px;
-  font-weight: 500;
-}
-.debug-title--mod:before {
-  content: 'M';
-  background-color: green;
-}
-.debug-title--addon {
-  font-size: 16px;
-  font-weight: 500;
-}
-.debug-title--addon:before {
-  content: 'Adddon';
-  font-size: 9px;
-  background-color: black;
-}
-.debug-title--responsive {
-  font-size: 18px;
-  font-weight: 500;
-}
-.debug-title--responsive:before {
-  content: 'R';
-  background-color: red;
-}
-.debug-header {
-  font-size: 30px;
-  font-weight: 600;
-  margin: 35px 0;
-}
-.debug-code {
-  white-space: pre;
-  font-size: 15px;
-  overflow-x: auto;
-  padding: 30px 15px 15px;
-  border-radius: 6px;
-  border: 2px solid #dedede;
-  position: relative;
-  color: #000000;
-}
-.debug-code:before {
-  content: 'code';
-  top: 5px;
-  left: 5px;
-  font-size: 12px;
-  color: #dedede;
-  position: absolute;
-  font-weight: bold;
-}
-.debug-view {
-  padding: 30px 15px 15px;
-  border-radius: 6px;
-  border: 1px dashed #dedede;
-  background-color: #fafafa;
-  position: relative;
-}
-.debug-view:before {
-  content: 'preview';
-  top: 5px;
-  left: 5px;
-  font-size: 12px;
-  color: #000000;
-  position: absolute;
-  font-weight: bold;
-  text-shadow: 0 0 5px #FFFFFF;
-}
-.debug-wrap {
-  max-width: 1400px !important;
-}
-.debug-iframe {
-  height: 400px;
-  margin: 0 auto;
-  animation-name: debug-responsive;
-  animation-duration: 4s;
-  animation-timing-function: ease-out;
-  animation-delay: 0s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-fill-mode: none;
-  animation-play-state: running;
-}
-@keyframes debug-responsive {
-  from {
-    width: 100%;
-  }
-  to {
-    width: 320px;
-  }
-}
-/* Website base style */
-/* Website style */
 /*=========================================================================
 || FILE: Style concat
 ===========================================================================
-|| Concatenate less files
+|| Concatenate files
 =========================================================================*/
+/* Main */
 /*=========================================================================
-|| FILE: header.less
+|| FILE: Header
 ===========================================================================
-|| Style for header ( logo | main navigation )
+|| Style for header
 =========================================================================*/
 /**
  * Main header element style 
@@ -824,7 +598,7 @@ html.js_menu-active .burger-menu {
   box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.6);
   background-color: #FFFFFF;
 }
-/*
+/**
  * Burger button
  */
 .burger-button {
@@ -836,8 +610,6 @@ html.js_menu-active .burger-menu {
   width: 35px;
   height: 24px;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   /* Burger planks */
   /* Burger hover */
 }
@@ -1042,9 +814,9 @@ html.js_sticky-header .header {
   }
 }
 /*=========================================================================
-|| FILE: footer.less
+|| FILE: Footer
 ===========================================================================
-|| Style for footer ( links | logo | copyright )
+|| Style for footer elements
 =========================================================================*/
 /* Space for @desktop absolute footer */
 @media only screen and (min-width: 1024px) {
@@ -1145,7 +917,6 @@ body::-webkit-scrollbar-button {
  * .container
  * http://localhost:8181/debug/elements.html#container
  */
-/* Responsive */
 .container {
   display: flex;
   flex-direction: row;
@@ -1318,15 +1089,11 @@ body::-webkit-scrollbar-button {
 .space--medium > * {
   margin: 18px 0;
 }
+/* Elements */
 /*=========================================================================
-// BUTTON - create button elements
-// .add-button(text-color, background-color, border, hover-darken-percent)
-// * text color
-// * background color
-// * all border property (1px solid color) {optional | default "false"}
-// * change color on darken percent {optional | default @defaul-darken}
-== SNIPPETS: add-button
-==           add-button-advance {all possibilities}
+|| FILE: Button
+===========================================================================
+|| Style clickable buttons
 =========================================================================*/
 .btn {
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
@@ -1405,6 +1172,7 @@ body::-webkit-scrollbar-button {
   background: transparent !important;
   border-color: transparent !important;
 }
+/* Other */
 /*=========================================================================
 || FILE: _forms.less
 ===========================================================================
@@ -1634,24 +1402,9 @@ label[for] {
   width: 100%;
   /* Placeholder text style */
 }
-.input-text::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  transition: color 0.2s;
-  font-style: italic;
-  color: #e7be54;
-}
-.input-text::-moz-placeholder {
-  /* Firefox 19+ */
-  transition: color 0.2s;
-  font-style: italic;
-  color: #e7be54;
-}
-.input-text:-ms-input-placeholder {
-  /* IE 10+ */
-  transition: color 0.2s;
-  font-style: italic;
-  color: #e7be54;
-}
+.input-text::-webkit-input-placeholder,
+.input-text::-moz-placeholder,
+.input-text:-ms-input-placeholder,
 .input-text:-moz-placeholder {
   /* Firefox 18- */
   transition: color 0.2s;
@@ -1662,18 +1415,9 @@ label[for] {
   border-color: rgba(0, 0, 0, 0.6);
   color: rgba(0, 0, 0, 0.6);
 }
-.input-text:hover::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: rgba(0, 0, 0, 0.6);
-}
-.input-text:hover::-moz-placeholder {
-  /* Firefox 19+ */
-  color: rgba(0, 0, 0, 0.6);
-}
-.input-text:hover:-ms-input-placeholder {
-  /* IE 10+ */
-  color: rgba(0, 0, 0, 0.6);
-}
+.input-text:hover::-webkit-input-placeholder,
+.input-text:hover::-moz-placeholder,
+.input-text:hover:-ms-input-placeholder,
 .input-text:hover:-moz-placeholder {
   /* Firefox 18- */
   color: rgba(0, 0, 0, 0.6);
@@ -1684,20 +1428,11 @@ label[for] {
   color: #000000;
 }
 .input-text:active::-webkit-input-placeholder,
-.input-text:focus::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: #000000;
-}
+.input-text:focus::-webkit-input-placeholder,
 .input-text:active::-moz-placeholder,
-.input-text:focus::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #000000;
-}
+.input-text:focus::-moz-placeholder,
 .input-text:active:-ms-input-placeholder,
-.input-text:focus:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #000000;
-}
+.input-text:focus:-ms-input-placeholder,
 .input-text:active:-moz-placeholder,
 .input-text:focus:-moz-placeholder {
   /* Firefox 18- */
@@ -1771,6 +1506,130 @@ label[for] {
 .js_form--msg .form__response--msg {
   opacity: 1;
   z-index: 1;
+}
+/*=========================================================================
+|| FILE: Tabs
+===========================================================================
+|| Style for tabs
+=========================================================================*/
+.tabs__expand {
+  display: none;
+}
+.tabs__item {
+  flex: 1 1 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #e7be54;
+}
+.tabs__view {
+  width: 100%;
+}
+.tabs__expand {
+  padding: 20px;
+  background-color: #bb8e1a;
+}
+.tabs--horizontal .tabs__content {
+  display: flex;
+  flex-direction: row;
+}
+.tabs--vertical {
+  flex-direction: column;
+  text-align: center;
+}
+.tabs--expand {
+  flex-direction: column;
+  text-align: center;
+}
+.tabs--expand .tabs__expand {
+  display: block;
+}
+.tabs--expand .tabs__view {
+  height: 0;
+  overflow: hidden;
+}
+@media only screen and (min-width: 550px) and (max-width: 767px) {
+  .sm_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .sm_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sm_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sm_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .sm_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .md_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .md_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .md_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .md_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .md_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .lg_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .lg_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .lg_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .lg_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .lg_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .xs_tabs--horizontal .tabs__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .xs_tabs--vertical {
+    flex-direction: column;
+    text-align: center;
+  }
+  .xs_tabs--expand {
+    flex-direction: column;
+    text-align: center;
+  }
+  .xs_tabs--expand .tabs__expand {
+    display: block;
+  }
+  .xs_tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden;
+  }
 }
 /*=========================================================================
 || FILE: validator.less
@@ -1892,14 +1751,14 @@ label[for] {
   display: none;
 }
 /*=========================================================================
-|| FILE: Animations Style
+|| FILE: Animation
 ===========================================================================
-|| Style for elements animation
+|| Animate transitions from one CSS style configuration to another
 =========================================================================*/
 /*=========================================================================
-|| FILE: Icons style (SVG | IMG)
+|| FILE: Icons
 ===========================================================================
-|| 
+|| Style SVG/IMG icons
 =========================================================================*/
 /**
  * Default style
@@ -1908,22 +1767,27 @@ label[for] {
   transition: fill 0.2s;
 }
 /*=========================================================================
-|| FILE: index.less
+|| FILE: Index
 ===========================================================================
 || Style for most index elements
 =========================================================================*/
 /*=========================================================================
-|| FILE: boxes.less
+|| FILE: Link
+===========================================================================
+|| Style for most index elements
+=========================================================================*/
+/*=========================================================================
+|| FILE: Boxes
 ===========================================================================
 || Style for boxes ( cards | containers )
 =========================================================================*/
 /*=========================================================================
-|| FILE: tables.less
+|| FILE: Tables
 ===========================================================================
-|| Style for tables ( table | tr | td )
+|| Style HTML tables
 =========================================================================*/
 /*=========================================================================
-|| FILE: lists.less
+|| FILE: List
 ===========================================================================
 || Style for lists
 =========================================================================*/
@@ -1985,7 +1849,6 @@ label[for] {
 /**
  * List vertical
  */
-/* Responsive */
 .list-vertical {
   /**
      * Special
@@ -2237,7 +2100,6 @@ label[for] {
 /**
  * List horizontal
  */
-/* Responsive */
 .list-horizontal {
   display: flex;
   flex-direction: row;
@@ -2578,24 +2440,26 @@ label[for] {
 .wysiwyg pre {
   font-family: monospace;
 }
+/* End */
 /*=========================================================================
-|| Create class using functions
+|| FILE: Tools
 ===========================================================================
-|| TODO: documentation
+|| Create class using functions
 =========================================================================*/
+/*=========================================================================
+|| WRAP - center element in asix x
+.add-wrap(200px,15px);
+|| = max width elemnt (end calculate = max-width + padding * 2)
+|| = padding for responsive view
+//=======================================================================*/
 .wrap {
-  /*=========================================================================
-  // WRAP - center element in asix x
-  .add-wrap(200px,15px);
-  // * max width elemnt (end calculate = max-width + padding * 2)
-  // * padding for responsive view
-  //=======================================================================*/
   max-width: 1064px;
   padding-left: 20px;
   padding-right: 20px;
   /**
    * Elements
    */
+  /* Navigation bar */
 }
 .wrap-navbar {
   max-width: 1064px;
@@ -2634,22 +2498,29 @@ label[for] {
 // .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
 =========================================================================*/
 /*=========================================================================
-|| FILE: _utilities.less
+|| FILE: Utilities
 ===========================================================================
 || Create repeatedly utilities class using functions
-|| .make-tool(class_prefix, css_property, value_1, value_2, ..)
-|| * class_prefix - class prefix name
-|| * css_property - css property to use { margin-left, color, float etc }
-|| * value        - property value and class sufix name
-== SNIPPETS: make-tool
+@mobile      
+@fablet      
+@fablet-only 
+@fablet-down 
+@tablet      
+@tablet-only 
+@tablet-down 
+@desktop     
+@retina      
+=========================================================================*/
+/* Only mobile size */
+/* Fable size */
+/* Tablet size */
+/* Desktop size */
+/*=========================================================================
+|| FILE: Plugins
+===========================================================================
+|| Concatenate files and set variables for plugins
 =========================================================================*/
 /* Use only when working with framework */
-/*=========================================================================
-|| FILE: Plugins variables
-===========================================================================
-|| Addons variables for plugins
-|| Uncomment to activate
-=========================================================================*/
 /*=========================================================================
 || Plugin: navigation-arrow.less
 ===========================================================================
@@ -2720,246 +2591,49 @@ label[for] {
   background-color: #e7be54;
 }
 /*=========================================================================
-|| FILE: text-in-line.less
+|| Plugin: wcag.less
 ===========================================================================
-|| Text beetween lines
-||
-|| EMMET:
-.line-text>.line-text__item>.line-text__line.line-text__line--left+.line-text__line.line-text__line--right
+|| REQUIRED frontbox/wcag.js
 =========================================================================*/
-.line-text {
-  padding: 10px 0;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
+.js_wcag-focus {
+  outline: 4px solid #0e5ca4;
 }
-.line-text__item {
-  display: inline-block;
+.js_wcag-focus--ignore {
+  outline: none !important;
+}
+.wcag-skip {
+  opacity: 0;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  font-size: 13px;
+  left: -9999px;
+  top: 0;
+  background-color: #000000;
+  transition: opacity 0.2s;
+  z-index: -10;
+  padding: 10px 20px;
   color: #e7be54;
-  padding: 0 20px;
 }
-.line-text__line {
-  height: 1px;
-  background-color: #e7be54;
-  position: absolute;
-  width: 100vw;
-  z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.line-text__line--left {
-  left: 100%;
-}
-.line-text__line--right {
-  right: 100%;
-}
-/*=========================================================================
-|| FILE: text-icon.less
-===========================================================================
-|| Text block with icon on the left
-||
-|| EMMET:
-p.text-icon>x.icon+span{Lorem}
-=========================================================================*/
-.text-icon span {
-  vertical-align: middle;
-}
-.text-icon .icon {
-  display: inline-block;
-  vertical-align: middle;
-}
-/*=========================================================================
-* @name Bouncing dots animation
-* @description .animation-boucing-dots>span*3
-* @markup
-<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
-*/
-/** 
-  * Dots animation 
-  * translate - bouncing animation offset
-**/
-@keyframes animation-boucing-dots {
-  0% {
-    opacity: 1;
-    transform: translateY(5px);
-  }
-  100% {
-    opacity: 0.1;
-    transform: translateY(-5px);
-  }
-}
-/** 
-  * Dots container 
-**/
-.animation-boucing-dots {
-  display: block;
-  text-align: center;
-  position: relative;
-  font-size: 0;
-  padding: 5px 0;
-  /**
-      * Dots elements
-    **/
-}
-.animation-boucing-dots > span {
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  background-color: #e7be54;
-  margin-right: 6px;
-  transform: translateY(-5px);
-  animation: animation-boucing-dots 0.6s infinite alternate;
-  animation-delay: 0.2s;
-  display: inline-block;
-}
-.animation-boucing-dots > span:first-child {
-  animation-delay: 0s;
-}
-.animation-boucing-dots > span:last-child {
-  animation-delay: 0.4s;
-  margin-right: 0;
-}
-/**
-* @name Donut spinner animation
-* @description .animation-donut-spinner
-* @markup
-<div class="animation-donut-spinner"></div>
-*/
-@keyframes animation-donut-spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.animation-donut-spinner {
-  text-align: center;
-  font-size: 0;
-}
-.animation-donut-spinner:before {
+.wcag-skip:before {
   content: "";
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #e7be54;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: animation-donut-spinner 1.2s linear infinite;
-  display: inline-block;
-}
-/*=========================================================================
-* @name Scale lines (height) animation
-* @description .animation-scale-lines>span*3
-* @markup
-<div class="animation-scale-lines"><span></span><span></span><span></span></div>
-*/
-/**
-  * Animation
-**/
-@keyframes animation-scale-lines {
-  from {
-    height: 60%;
-    opacity: 0.8;
-  }
-  to {
-    height: 100%;
-    opacity: 1;
-  }
-}
-.animation-scale-lines {
-  display: block;
-  text-align: center;
-  position: relative;
-  height: 40px;
-}
-.animation-scale-lines > span,
-.animation-scale-lines .v-center__content > span {
-  width: 6px;
-  height: 60%;
-  position: absolute;
-  background-color: #e7be54;
-  animation: animation-scale-lines 0.6s infinite alternate;
-  display: inline-block;
-  top: 50%;
+  bottom: 0;
   left: 50%;
+  transform: translateY(100%);
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10 solid #000000;
+  border-left: 5 solid transparent;
+  border-right: 5 solid transparent;
+}
+.js_wcag-focus .wcag-skip {
+  left: 50%;
+  top: 50%;
+  outline: 4px solid #0e5ca4;
+  z-index: 9990;
   transform: translate(-50%, -50%);
 }
-.animation-scale-lines > span:first-child,
-.animation-scale-lines .v-center__content > span:first-child {
-  margin-left: 12px;
-}
-.animation-scale-lines > span:nth-child(2),
-.animation-scale-lines .v-center__content > span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.animation-scale-lines > span:nth-child(3),
-.animation-scale-lines .v-center__content > span:nth-child(3) {
-  animation-delay: 0.4s;
-  margin-left: -12px;
-}
-/*=========================================================================
-* @name Circle rotate animation
-* @description .animation-circle-rotate
-* @markup
-<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
-*/
-/** 
-  * Dots animation 
-  * translate - bouncing animation offset
-**/
-@keyframes animation-circle-rotate {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-/** 
-  * Dots container 
-**/
-.animation-circle-rotate {
-  display: block;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  margin: 0 auto;
-}
-.animation-circle-rotate:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 2px solid rgba(231, 190, 84, 0.2);
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-}
-.animation-circle-rotate:before {
-  content: '';
-  animation: animation-circle-rotate 0.6s infinite alternate;
-  animation-timing-function: ease-out;
-  animation-delay: 0s;
-  animation-direction: normal;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  transition: transform 0.2s;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-top: 1px solid #e7be54;
-  border-left: 1px solid #e7be54;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
+.js_wcag-focus .wcag-skip:focus {
+  opacity: 1;
 }
 .animation_slider-navigation-clip {
   display: flex;
@@ -3077,564 +2751,171 @@ p.text-icon>x.icon+span{Lorem}
     background-position: 0 50%;
   }
 }
-/*=========================================================================
-|| FILE: underline-pretty.less
-===========================================================================
-|| Alternative to 'text-decoration: underline'
-||
-|| EMMET
-.text_underline
-=========================================================================*/
-.text_underline {
-  display: inline;
-  font-size: 18px;
-  text-shadow: 1px 1px 0 #f5f6f9, -1px 1px 0 #f5f6f9, -1px -1px 0 #f5f6f9, 1px -1px 0 #f5f6f9;
-  background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
-  background-position: 0 0.98em;
-  background-repeat: repeat-x;
-  background-size: 1px 1px;
+.bar {
+  position: relative;
+  font-size: 0;
 }
-.text_underline::selection {
-  text-shadow: none;
-}
-/*=========================================================================
-|| FILE: truncate.less
-===========================================================================
-|| If the text is longer than one line, it will be truncated and end with 
-|| an ellipsis …
-||
-|| EMMET
-.text_truncate
-=========================================================================*/
-.text_truncate {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.js-text-rotate.run {
+.bar__content {
   display: inline-block;
-  overflow: hidden;
+  margin: 0 auto;
+  background-repeat: repeat-x;
+  background-position: left center;
 }
-.js-text-rotate.run > span {
-  display: block;
-  transition: transform 1s 0s;
-}
-.js-text-rotate.run > span.hide {
+.bar__placeholder {
   display: none;
 }
-.js-text-rotate.run.next > span {
-  transition: transform 1s 1s;
-  transform: translateY(-100%);
+.bar__content,
+.bar__placeholder {
+  height: 100%;
 }
-/* Item */
-.js-sticky-spy {
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  perspective: 1000;
-  width: 100%;
-}
-.js-sticky-spy--fixed {
-  position: fixed !important;
-  bottom: auto !important;
-  top: 0;
-}
-.js-sticky-spy--bottom {
-  position: absolute !important;
-  bottom: 0 !important;
-}
-.js-sticky-spy:not(.js-sticky-spy--fixed) {
-  top: auto !important;
-  left: 0 !important;
-}
-.js-sticky-spy:not(.js-sticky-spy--bottom):not(.js-sticky-spy--fixed) {
-  top: 0 !important;
-  width: 100% !important;
-}
-/* Container */
-.js-sticky-spy-container {
-  position: relative;
-  flex: 1 1 auto;
-}
-/*=========================================================================
-|| Plugin: collapse.less
-===========================================================================
-|| Style for javascript collapse toggle
-=========================================================================*/
-*[data-toggle] {
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(231, 190, 84, 0.2);
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-}
-.collapse {
-  height: auto;
-  transition: height 0.6s;
-  pointer-events: all;
-  overflow: hidden;
-}
-.collapse.off:not(#burgerMenu) {
-  height: 0 !important;
-  pointer-events: none;
-  transition: height 0.6s;
-  margin: 0 !important;
-}
-/*=========================================================================
-|| Plugin: modals.less
-===========================================================================
-|| Style for modals
-=========================================================================*/
-/*=========================================================================
-|| Plugin: tabs.less
-===========================================================================
-|| Style for javascript tabs toggle
-=========================================================================*/
-.tab-switch {
-  cursor: pointer;
-}
-.tab-switch--active {
-  cursor: default;
-  pointer-events: none;
-}
-.tab-content:not(.tab-content--active) {
-  display: none !important;
-}
-/*=========================================================================
-|| Plugin: blazy.less
-===========================================================================
-|| Style for lib bLazy.js (lazyload image script)
-=========================================================================*/
-.js_blazy {
-  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
-  background-size: cover;
+.bar--placeholder .bar__placeholder {
+  display: block;
+  position: absolute;
   opacity: 0.3;
-  background-color: #000000;
-  transition: opacity 0.2s;
-  display: block;
-}
-.js_blazy--active {
-  opacity: 1;
-}
-.js_cookies-information {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  transition: transform 0.2s, opacity 0.2s;
-  opacity: 1;
-  z-index: 6999;
-  background-color: rgba(231, 190, 84, 0.85);
-  padding: 8px 0;
-  border-top: 2px solid #e7be54;
-}
-.js_cookies-information__img {
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-  .js_cookies-information__img {
-    position: absolute;
-    display: block;
-    bottom: 0;
-    left: 0;
-    width: 95px;
-    height: auto;
-  }
-}
-.js_cookies-information__text {
-  font-size: 14px;
-  text-align: justify;
-  color: #FFFFFF;
-}
-.js_cookies-information__container {
-  padding-right: 30px;
-  position: relative;
-}
-@media only screen and (min-width: 768px) {
-  .js_cookies-information__container {
-    padding-left: 115px;
-  }
-}
-.js_cookies-information__exit {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
   top: 0;
-  transition: transform 0.2s;
-}
-.js_cookies-information__exit:before,
-.js_cookies-information__exit:after {
-  content: '';
-  width: 100%;
-  height: 2px;
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 50%;
   left: 0;
-}
-.js_cookies-information__exit:before {
-  transform: rotate(45deg);
-}
-.js_cookies-information__exit:after {
-  transform: rotate(-45deg);
-}
-.js_cookies-information__exit--hover:hover .js_cookies-information__exit,
-.js_cookies-information__exit--hover:active .js_cookies-information__exit,
-.js_cookies-information__exit--hover:focus .js_cookies-information__exit,
-.js_cookies-information__exit--hover-active .js_cookies-information__exit,
-.js_cookies-information__exit--hover-active .js_cookies-information__exit,
-.js_cookies-information__exit--hover-active .js_cookies-information__exit,
-.js_cookies-information__exit:hover,
-.js_cookies-information__exit:active,
-.js_cookies-information__exit:focus {
-  transform: rotate(90deg);
-}
-.js_cookies-information--hide {
-  transform: translate(0, 100%);
-  opacity: 0;
-}
-.js_scroll {
-  overflow-y: scroll;
-  position: relative;
-  padding-right: 6px;
-}
-.js_scroll::-webkit-scrollbar {
-  display: none;
-}
-.js_scroll__bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 6px;
   height: 100%;
-  background-color: #e7be54;
-  opacity: 0.2;
-  transition: opacity 0.2s;
 }
-.js_scroll__position {
-  width: 100%;
-  height: 20px;
-  background-color: #000000;
-  border-radius: 4px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  transition: top 0.2s;
-}
-.js_scroll--hover:hover .js_scroll .js_scroll__bar,
-.js_scroll--hover:active .js_scroll .js_scroll__bar,
-.js_scroll--hover:focus .js_scroll .js_scroll__bar,
-.js_scroll--hover-active .js_scroll .js_scroll__bar,
-.js_scroll--hover-active .js_scroll .js_scroll__bar,
-.js_scroll--hover-active .js_scroll .js_scroll__bar,
-.js_scroll:hover .js_scroll__bar,
-.js_scroll:active .js_scroll__bar,
-.js_scroll:focus .js_scroll__bar {
-  opacity: 1;
-}
-.list-vertical-scroll {
-  position: relative;
-  padding: 0 !important;
-  box-sizing: border-box;
+.bar-image {
   /**
-     * Style
-     */
+   * Style
+   */
 }
-.list-vertical-scroll__nav-content {
-  width: auto !important;
-  transition: transform 0.4s;
-  display: flex;
-}
-.list-vertical-scroll__nav {
-  /* Make this scrollable when needed */
-  overflow-x: auto;
-  /* We don't want vertical scrolling */
-  overflow-y: hidden;
-  /* For WebKit implementations, provide inertia scrolling */
-  -webkit-overflow-scrolling: touch;
-  /* We don't want internal inline elements to wrap */
-  white-space: nowrap;
-  /* If JS present, let's hide the default scrollbar */
-  /* positioning context for advancers */
-  position: relative;
-  width: 100%;
-}
-.js .list-vertical-scroll__nav {
-  /* Make an auto-hiding scroller for the 3 people using a IE */
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  /* Remove the default scrollbar for WebKit implementations */
-}
-.js .list-vertical-scroll__nav::-webkit-scrollbar {
-  display: none;
-}
-.list-vertical-scroll__button {
-  /* Reset the button */
-  appearance: none;
-  background: transparent;
-  padding: 0;
-  border: 0;
-  width: 10px;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-  /* Now style it as needed */
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  /* Set the buttons invisible by default */
-  opacity: 0;
-  transition: opacity 0.3s, z-index 0s 0.3s;
-}
-.list-vertical-scroll__button:focus {
-  outline: 0;
-}
-.list-vertical-scroll__button:hover {
-  cursor: pointer;
-}
-.list-vertical-scroll__button[data-direction="left"] {
-  left: -14px;
-}
-[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="left"],
-[data-overflowing="right"] > .list-vertical-scroll__button[data-direction="left"] {
-  opacity: 1;
-  z-index: 0;
-  transition: opacity 0.3s, z-index 0s;
-  pointer-events: all;
-}
-.list-vertical-scroll__button[data-direction="right"] {
-  right: -14px;
-}
-[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="right"],
-[data-overflowing="left"] > .list-vertical-scroll__button[data-direction="right"] {
-  opacity: 1;
-  z-index: 0;
-  transition: opacity 0.3s, z-index 0s;
-  pointer-events: all;
-}
-.list-vertical-scroll__button:hover .list-vertical-scroll__icon {
-  fill: #e7be54;
-}
-.list-vertical-scroll__icon {
-  width: 9px;
-  height: 17px;
-  transition: fill 0.2s;
-  fill: #FFFFFF;
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button {
-  background-color: #191e24;
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button:before {
-  content: '';
-  width: 10px;
-  position: absolute;
-  top: 0;
-  height: 100%;
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="left"]:before {
-  right: 0;
-  background: linear-gradient(to right, #191e24 80%, transparent 100%);
-  transform: translateX(100%);
-}
-.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="right"]:before {
-  left: 0;
-  background: linear-gradient(to right, transparent 0%, #191e24 100%);
-  transform: translateX(-100%);
-}
-/*=========================================================================
-|| Plugin: wcag.less
-===========================================================================
-|| REQUIRED frontbox/wcag.js
-=========================================================================*/
-.js_wcag-focus {
-  outline: 4px solid #0e5ca4;
-}
-.js_wcag-focus--ignore {
-  outline: none !important;
-}
-.wcag-skip {
-  opacity: 0;
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  background-color: #000000;
-  transition: opacity 0.2s;
-  z-index: -10;
-  padding: 10px 20px;
-  color: #e7be54;
-}
-.wcag-skip:before {
-  content: "";
-  bottom: 0;
-  left: 50%;
-  transform: translateY(100%);
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-top: 10 solid #000000;
-  border-left: 5 solid transparent;
-  border-right: 5 solid transparent;
-}
-.js_wcag-focus .wcag-skip {
-  left: 50%;
-  top: 50%;
-  outline: 4px solid #0e5ca4;
-  z-index: 9990;
-  transform: translate(-50%, -50%);
-}
-.js_wcag-focus .wcag-skip:focus {
-  opacity: 1;
-}
-.show-more {
-  overflow: hidden;
-}
-.no_js .show-more {
-  overflow: visible;
-  height: auto !important;
-}
-.show-more--active {
-  height: auto !important;
-}
-.no_js .show-more-button {
-  display: none;
-}
-.show-more-button--less {
-  display: none;
-}
-.show-more-button--more {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--less {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--more {
-  display: none;
-}
-.js_resizeLoading {
-  filter: blur(0);
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.2s;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.js_resizeLoading__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-/**
- * JS Manipulation
- */
-.js_resize .page-content {
-  filter: blur(4px);
-}
-.js_resize .js_resizeLoading {
-  z-index: 10000;
-  opacity: 1;
-}
-.js_placeholder--active {
-  display: none;
-}
-.js_placeholder--holder {
-  background: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4) !important;
-  background-position: 0 0,10px 10px !important;
-  background-size: 20px 20px !important;
-  padding: 0 !important;
-}
-.js_placeholder--holder:before,
-.js_placeholder--holder:after {
-  content: none;
-}
-/*=========================================================================
-* @name Text underline animation
-* @description .hover_text-line-truncated>.hover_text-line-truncated__item
-* @markup
-<a class="hover_text-line-truncated" href="#"><span class="hover_text-line-truncated__item">Lorem ipsum dolor sit amet consectetur adipisicing elit</span></a>
-*/
-.hover_text-line-truncated {
-  display: block;
-}
-.hover_text-line-truncated__item {
-  width: calc(100%);
-  background-image: linear-gradient(transparent calc(100% - 3px), #e7be54 3px);
-  background-repeat: no-repeat;
-  background-size: 0 100%;
-  transition: background-size 0.2s;
-  display: inline;
-}
-.hover_text-line-truncated--hover:hover .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover:active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover:focus .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated:hover .hover_text-line-truncated__item,
-.hover_text-line-truncated:active .hover_text-line-truncated__item,
-.hover_text-line-truncated:focus .hover_text-line-truncated__item {
-  background-size: 100% 100%;
-}
-/*=========================================================================
-* @name Input counter
-* @description .animation-boucing-dots>span*3
-* @markup
-<div class="input-counter">
-  <button class="input-counter__btn input-counter__btn--disable input-counter__btn--minus" data-value="-1" type="button" title="Zmniejsz">&#150;</button>
-  <input class="input-counter__input" type="number" value="1" min="1" max="10" readonly>
-  <button class="input-counter__btn input-counter__btn--plus" data-value="1" type="button" title="Zwiększ">&#43;</button>
-</div>
-*/
-.input-counter {
-  user-select: none;
-}
-.input-counter__btn {
-  width: 30px;
-  line-height: 30px;
-  background-color: #e7be54;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  outline: none;
-  color: #FFFFFF;
-}
-.input-counter__btn--hover:hover .input-counter__btn,
-.input-counter__btn--hover:active .input-counter__btn,
-.input-counter__btn--hover:focus .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn:hover,
-.input-counter__btn:active,
-.input-counter__btn:focus {
-  background-color: #e1ad27;
-}
-.input-counter__btn--disable {
-  background-color: #614a0e !important;
-  user-select: none;
-  cursor: default;
-}
-.input-counter__input {
-  width: 50px;
-  border-radius: 0;
-  text-align: center;
-  line-height: 35px;
-  user-select: none;
+.bar-image.bar--primary {
   height: 40px;
-  border: 1px solid #e7be54;
+}
+.bar-image.bar--primary[data-bar='1'] .bar__content {
+  width: 38px;
+}
+.bar-image.bar--primary[data-bar='2'] .bar__content {
+  width: 76px;
+}
+.bar-image.bar--primary[data-bar='3'] .bar__content {
+  width: 114px;
+}
+.bar-image.bar--primary[data-bar='4'] .bar__content {
+  width: 152px;
+}
+.bar-image.bar--primary[data-bar='5'] .bar__content {
+  width: 190px;
+}
+.bar-image.bar--primary[data-bar='6'] .bar__content {
+  width: 228px;
+}
+.bar-image.bar--primary[data-bar='7'] .bar__content {
+  width: 266px;
+}
+.bar-image.bar--primary[data-bar='8'] .bar__content {
+  width: 304px;
+}
+.bar-image.bar--primary[data-bar='9'] .bar__content {
+  width: 342px;
+}
+.bar-image.bar--primary[data-bar='10'] .bar__content {
+  width: 380px;
+}
+.bar-image.bar--primary .bar__content,
+.bar-image.bar--primary .bar__placeholder {
+  background-image: url("/images/bar/primary.png");
+  background-size: 38px auto;
+  transform: translateX(-9px);
+}
+.bar-image.bar--primary .bar__placeholder {
+  width: 380px;
+}
+.bar-image.bar--secondary {
+  height: 24px;
+}
+.bar-image.bar--secondary[data-bar='1'] .bar__content {
+  width: 25px;
+}
+.bar-image.bar--secondary[data-bar='2'] .bar__content {
+  width: 50px;
+}
+.bar-image.bar--secondary[data-bar='3'] .bar__content {
+  width: 75px;
+}
+.bar-image.bar--secondary[data-bar='4'] .bar__content {
+  width: 100px;
+}
+.bar-image.bar--secondary[data-bar='5'] .bar__content {
+  width: 125px;
+}
+.bar-image.bar--secondary[data-bar='6'] .bar__content {
+  width: 150px;
+}
+.bar-image.bar--secondary[data-bar='7'] .bar__content {
+  width: 175px;
+}
+.bar-image.bar--secondary[data-bar='8'] .bar__content {
+  width: 200px;
+}
+.bar-image.bar--secondary[data-bar='9'] .bar__content {
+  width: 225px;
+}
+.bar-image.bar--secondary[data-bar='10'] .bar__content {
+  width: 250px;
+}
+.bar-image.bar--secondary .bar__content,
+.bar-image.bar--secondary .bar__placeholder {
+  background-image: url("/images/bar/secondary.png");
+  background-size: 25px auto;
+}
+.bar-image.bar--secondary .bar__placeholder {
+  width: 250px;
 }
 /*=========================================================================
-|| FILE: selection-color.less
+|| FILE: badges.less
 ===========================================================================
-|| Changes the styling of text selection.
+|| Circular element with text
 =========================================================================*/
-::selection {
+/*=========================================================================
+// BADGE - create default badge element
+// .add-badge(size, background-color, color, hover-darken-percent)
+// * badge width/height size (min-width, height)
+// * background color
+// * text color {optional | default @defaul-color}
+// * change color on darken percent {optional | default @defaul-darken}
+== SNIPPETS: add-badge
+=========================================================================*/
+.badge {
+  min-width: 20px;
+  height: 20px;
+  background-color: red;
+}
+.badge--hover:hover .badge,
+.badge--hover:active .badge,
+.badge--hover:focus .badge,
+.badge--hover-active .badge,
+.badge--hover-active .badge,
+.badge--hover-active .badge,
+.badge:hover,
+.badge:active,
+.badge:focus {
+  background-color: #990000;
+}
+.badge {
+  display: inline-flex;
+  text-align: center;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  border-radius: 50%;
   background: #e7be54;
-  color: #FFFFFF;
+}
+/*=========================================================================
+|| FILE: image-transparent.less
+===========================================================================
+|| Transparent image block
+||
+.image-transparent > img
+=========================================================================*/
+.image-transparent {
+  -webkit-user-select: none;
+  background-position: 0px 0px, 10px 10px;
+  background-size: 20px 20px;
+  background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%), linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
 }
 /*=========================================================================
 || Rosette circle
@@ -3699,6 +2980,175 @@ p.text-icon>x.icon+span{Lorem}
   border-radius: 50%;
   position: absolute;
   z-index: -1;
+}
+/*=========================================================================
+|| FILE: _alert.less
+===========================================================================
+|| Alert elements ( notification )
+=========================================================================*/
+.alert {
+  display: block;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+.alert > .text {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  position: relative;
+}
+.alert > .text > svg:not(.ignore) {
+  vertical-align: middle;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(100%, -25%);
+}
+/*=========================================================================
+|| Plugin: breadcrumbs.less
+===========================================================================
+|| Style for breadcrumbs navigation
+|| EMMET
+.breadcrumbs>.breadcrumbs__item*10>a{$}
+=========================================================================*/
+.breadcrumbs {
+  font-size: 16px;
+}
+.breadcrumbs__item {
+  display: inline-block;
+  padding-left: 15px;
+  position: relative;
+}
+.breadcrumbs__item:before {
+  content: "<";
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.breadcrumbs__item:first-child {
+  padding-left: 0;
+}
+.breadcrumbs__item:first-child:before {
+  content: none;
+}
+.breadcrumbs__item a--hover:hover .breadcrumbs__item a,
+.breadcrumbs__item a--hover:active .breadcrumbs__item a,
+.breadcrumbs__item a--hover:focus .breadcrumbs__item a,
+.breadcrumbs__item a--hover-active .breadcrumbs__item a,
+.breadcrumbs__item a--hover-active .breadcrumbs__item a,
+.breadcrumbs__item a--hover-active .breadcrumbs__item a,
+.breadcrumbs__item a:hover,
+.breadcrumbs__item a:active,
+.breadcrumbs__item a:focus {
+  color: red;
+}
+/*=========================================================================
+|| Box with two columns: responsive and static
+|| CATEGORY: Box
+||
+|| EMMET
+.column-spacer>.column-spacer__static+.column-spacer__responsive
+=========================================================================*/
+.column-spacer {
+  display: block;
+  position: relative;
+}
+.column-spacer > .column-spacer__static {
+  position: absolute;
+  left: 0;
+  width: 0;
+}
+.column-spacer--right > .column-spacer__static {
+  left: auto;
+  right: 0;
+}
+.column-spacer--small-img {
+  padding-left: 108px;
+  min-height: 61px;
+}
+.column-spacer--small-img > .column-spacer__static {
+  width: 94px;
+  height: 61px;
+}
+.column-spacer--small-img > .column-spacer__static img {
+  width: 94px;
+  height: 61px;
+}
+/*=========================================================================
+|| FILE: Flipper
+===========================================================================
+|| Category: Box
+|| Link: http://localhost:8181/debug/blocks.html#flipper
+|| Changlelog:
+||  21.02.19 - add comment
+/*=======================================================================*/
+.flipper {
+  width: 100%;
+  perspective: 1000;
+  display: block;
+  height: 100px;
+  /* Rotate container when hover */
+}
+.flipper__container {
+  transition: 0.6s;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.flipper__item {
+  transition: 0s;
+  transition-delay: 0.2s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.flipper__item--back {
+  opacity: 0;
+  transform: rotateY(180deg);
+}
+.flipper__item--front {
+  z-index: 2;
+}
+.flipper--hover:hover .flipper .flipper__container,
+.flipper--hover:active .flipper .flipper__container,
+.flipper--hover:focus .flipper .flipper__container,
+.flipper--hover-active .flipper .flipper__container,
+.flipper--hover-active .flipper .flipper__container,
+.flipper--hover-active .flipper .flipper__container,
+.flipper:hover .flipper__container,
+.flipper:active .flipper__container,
+.flipper:focus .flipper__container {
+  transform: rotateY(180deg);
+}
+.flipper--hover:hover .flipper .flipper__item--front,
+.flipper--hover:active .flipper .flipper__item--front,
+.flipper--hover:focus .flipper .flipper__item--front,
+.flipper--hover-active .flipper .flipper__item--front,
+.flipper--hover-active .flipper .flipper__item--front,
+.flipper--hover-active .flipper .flipper__item--front,
+.flipper:hover .flipper__item--front,
+.flipper:active .flipper__item--front,
+.flipper:focus .flipper__item--front {
+  opacity: 0;
+}
+.flipper--hover:hover .flipper .flipper__item--back,
+.flipper--hover:active .flipper .flipper__item--back,
+.flipper--hover:focus .flipper .flipper__item--back,
+.flipper--hover-active .flipper .flipper__item--back,
+.flipper--hover-active .flipper .flipper__item--back,
+.flipper--hover-active .flipper .flipper__item--back,
+.flipper:hover .flipper__item--back,
+.flipper:active .flipper__item--back,
+.flipper:focus .flipper__item--back {
+  opacity: 1;
 }
 /*=========================================================================
 || FILE: timeline.less
@@ -3773,106 +3223,368 @@ p.text-icon>x.icon+span{Lorem}
   position: relative;
 }
 /*=========================================================================
-|| Plugin: breadcrumbs.less
+|| FILE: selection-color.less
 ===========================================================================
-|| Style for breadcrumbs navigation
-|| EMMET
-.breadcrumbs>.breadcrumbs__item*10>a{$}
+|| Changes the styling of text selection.
 =========================================================================*/
-.breadcrumbs {
+::selection {
+  background: #e7be54;
+  color: #FFFFFF;
+}
+/*
+ Social
+*/
+.debug-title {
+  font-size: 20px;
+  margin: 35px 0 20px;
+  position: relative;
+  padding-left: 50px;
+}
+.debug-title:before {
+  content: 'B';
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
+  color: white;
+}
+.debug-title--mod {
+  font-size: 18px;
+  font-weight: 500;
+}
+.debug-title--mod:before {
+  content: 'M';
+  background-color: green;
+}
+.debug-title--addon {
+  font-size: 16px;
+  font-weight: 500;
+}
+.debug-title--addon:before {
+  content: 'Adddon';
+  font-size: 9px;
+  background-color: black;
+}
+.debug-title--responsive {
+  font-size: 18px;
+  font-weight: 500;
+}
+.debug-title--responsive:before {
+  content: 'R';
+  background-color: red;
+}
+.debug-header {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 35px 0;
+}
+.debug-code {
+  white-space: pre;
+  font-size: 15px;
+  overflow-x: auto;
+  padding: 30px 15px 15px;
+  border-radius: 6px;
+  border: 2px solid #dedede;
+  position: relative;
+  color: #000000;
+}
+.debug-code:before {
+  content: 'code';
+  top: 5px;
+  left: 5px;
+  font-size: 12px;
+  color: #dedede;
+  position: absolute;
+  font-weight: bold;
+}
+.debug-view {
+  padding: 30px 15px 15px;
+  border-radius: 6px;
+  border: 1px dashed #dedede;
+  background-color: #fafafa;
+  position: relative;
+}
+.debug-view:before {
+  content: 'preview';
+  top: 5px;
+  left: 5px;
+  font-size: 12px;
+  color: #000000;
+  position: absolute;
+  font-weight: bold;
+  text-shadow: 0 0 5px #FFFFFF;
+}
+.debug-wrap {
+  max-width: 1400px !important;
+}
+.debug-iframe {
+  height: 400px;
+  margin: 0 auto;
+  animation-name: debug-responsive;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+@keyframes debug-responsive {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 320px;
+  }
+}
+.debug-box {
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px;
+  transition: opacity 0.2s;
+  z-index: 999999;
+  height: 250px;
+  /**
+     * Container elements
+     */
+}
+@media only screen and (min-width: 768px) {
+  .debug-box {
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 549px) {
+  .debug-box {
+    width: calc(100% - 50px);
+  }
+}
+.debug-box p {
+  color: #FFFFFF;
+  padding-right: 48px;
+  position: relative;
+}
+.debug-box span {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.debug-box__container {
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .debug-box__container {
+    width: 300px;
+  }
+}
+.debug-box__container > *:first-child {
+  margin-top: 0;
+}
+.debug-box__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background-color: #e7be54;
+  transform: translateX(100%);
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  color: #FFFFFF;
+  writing-mode: vertical-lr;
+}
+.debug-box--variables .debug-box__container p {
+  cursor: pointer;
+}
+.debug-box--variables .debug-box__container p:hover {
+  background-color: rgba(231, 190, 84, 0.35);
+}
+.debug-box--variables .debug-box__container p.js_focus {
+  background-color: rgba(231, 190, 84, 0.35);
+}
+.debug-box--console {
+  left: auto;
+  right: 0;
+}
+.debug-box--console .debug-box__container {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .debug-box--console .debug-box__container {
+    width: 400px;
+  }
+}
+.debug-box--console .debug-box__button {
+  transform: translateX(-100%) rotate(180deg);
+  right: auto;
+  left: 0;
+}
+.debug-box--console p {
+  border-left: 2px solid #e7be54;
+  margin-bottom: 4px;
+  padding-left: 2px;
+  padding-right: 0;
+}
+.debug-box--console p.error {
+  border-left: 4px solid #cc0000;
+}
+.debug-box--console p.click {
+  border-left-color: #00BFFF;
+}
+.debug-box--console p.warning {
+  border-left-color: #ffdf25;
+}
+.debug-box--console p.auto {
+  border-left-color: #17a80d;
+}
+.debug-box--console.debug-box--hide {
+  transform: translateX(100%) !important;
+}
+.debug-box--variables.debug-box--hide {
+  transform: translateX(-100%) !important;
+}
+.debug-box h2 {
+  font-size: 16px;
+  letter-spacing: -1px;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
+}
+/*=========================================================================
+|| PHP debug element style
+===========================================================================
+|| Style debug var_dump content
+=========================================================================*/
+.debug_vardump {
+  height: 200px;
+  background-color: #333333;
+  opacity: 0.6;
+  padding: 8px;
+  overflow-y: scroll;
+  color: #FFFFFF;
+  transition: opacity 0.2s;
+  z-index: 10000;
+}
+.debug_vardump--hover:hover .debug_vardump,
+.debug_vardump--hover:active .debug_vardump,
+.debug_vardump--hover:focus .debug_vardump,
+.debug_vardump--hover-active .debug_vardump,
+.debug_vardump--hover-active .debug_vardump,
+.debug_vardump--hover-active .debug_vardump,
+.debug_vardump:hover,
+.debug_vardump:active,
+.debug_vardump:focus {
+  opacity: 1;
+}
+.debug_vardump * {
+  font-size: 12px;
+}
+@media only screen and (min-width: 768px) {
+  .debug_vardump {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    max-width: 300px;
+    width: 100%;
+  }
+}
+.debug_vardump > * + * {
+  margin-top: 20px;
+  padding-top: 20px;
+  position: relative;
+}
+.debug_vardump > * + *:before {
+  content: '';
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background-color: red;
+  position: absolute;
+}
+.frontbox-dump-list__title {
+  font-weight: bold;
+  color: red;
   font-size: 16px;
 }
-.breadcrumbs__item {
-  display: inline-block;
-  padding-left: 15px;
+.frontbox-dump-list__value {
+  padding-left: 10px;
   position: relative;
 }
-.breadcrumbs__item:before {
-  content: "<";
-  height: 100%;
+/*=========================================================================
+|| Create disappear overlay
+|| CATEGORY: Hover
+||
+== STRUCTURE
+.hover-background-overlay { this element have hover trigger }
+    text
+    div
+        div
+    div.hover-background-overlay__item { this element have overlay }
+        img
+
+== EMMET
+.hover-background-overlay>.hover-background-overlay__item
+=========================================================================*/
+.hover-background-overlay__item {
+  position: relative;
+}
+.hover-background-overlay__item:before {
   position: absolute;
-  left: 0;
-  top: 0;
-}
-.breadcrumbs__item:first-child {
-  padding-left: 0;
-}
-.breadcrumbs__item:first-child:before {
-  content: none;
-}
-.breadcrumbs__item a--hover:hover .breadcrumbs__item a,
-.breadcrumbs__item a--hover:active .breadcrumbs__item a,
-.breadcrumbs__item a--hover:focus .breadcrumbs__item a,
-.breadcrumbs__item a--hover-active .breadcrumbs__item a,
-.breadcrumbs__item a--hover-active .breadcrumbs__item a,
-.breadcrumbs__item a--hover-active .breadcrumbs__item a,
-.breadcrumbs__item a:hover,
-.breadcrumbs__item a:active,
-.breadcrumbs__item a:focus {
-  color: red;
-}
-.box-flipper {
+  content: "";
+  height: 100%;
   width: 100%;
-  perspective: 1000;
+  top: 0;
+  left: 0;
+  background: #333;
+  opacity: 0.1;
+  transition: opacity 0.2s;
+}
+.hover-background-overlay:hover .hover-background-overlay__item:before,
+.hover-background-overlay:focus .hover-background-overlay__item:before,
+.hover-background-overlay:active .hover-background-overlay__item:before {
+  opacity: 0;
+}
+/*=========================================================================
+* @name Text underline animation
+* @description .hover_text-line-truncated>.hover_text-line-truncated__item
+* @markup
+<a class="hover_text-line-truncated" href="#"><span class="hover_text-line-truncated__item">Lorem ipsum dolor sit amet consectetur adipisicing elit</span></a>
+*/
+.hover_text-line-truncated {
   display: block;
 }
-.box-flipper__container {
-  transition: 0.6s;
-  position: relative;
-  width: 100%;
-  height: 100%;
+.hover_text-line-truncated__item {
+  width: calc(100%);
+  background-image: linear-gradient(transparent calc(100% - 3px), #e7be54 3px);
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  transition: background-size 0.2s;
+  display: inline;
 }
-.box-flipper__item {
-  transition: 0s;
-  transition-delay: 0.2s;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-.box-flipper__item--back {
-  opacity: 0;
-  transform: rotateY(180deg);
-}
-.box-flipper__item--front {
-  z-index: 2;
-}
-.box-flipper--hover:hover .box-flipper .box-flipper__container,
-.box-flipper--hover:active .box-flipper .box-flipper__container,
-.box-flipper--hover:focus .box-flipper .box-flipper__container,
-.box-flipper--hover-active .box-flipper .box-flipper__container,
-.box-flipper--hover-active .box-flipper .box-flipper__container,
-.box-flipper--hover-active .box-flipper .box-flipper__container,
-.box-flipper:hover .box-flipper__container,
-.box-flipper:active .box-flipper__container,
-.box-flipper:focus .box-flipper__container {
-  transform: rotateY(180deg);
-}
-.box-flipper--hover:hover .box-flipper .box-flipper__item--front,
-.box-flipper--hover:active .box-flipper .box-flipper__item--front,
-.box-flipper--hover:focus .box-flipper .box-flipper__item--front,
-.box-flipper--hover-active .box-flipper .box-flipper__item--front,
-.box-flipper--hover-active .box-flipper .box-flipper__item--front,
-.box-flipper--hover-active .box-flipper .box-flipper__item--front,
-.box-flipper:hover .box-flipper__item--front,
-.box-flipper:active .box-flipper__item--front,
-.box-flipper:focus .box-flipper__item--front {
-  opacity: 0;
-}
-.box-flipper--hover:hover .box-flipper .box-flipper__item--back,
-.box-flipper--hover:active .box-flipper .box-flipper__item--back,
-.box-flipper--hover:focus .box-flipper .box-flipper__item--back,
-.box-flipper--hover-active .box-flipper .box-flipper__item--back,
-.box-flipper--hover-active .box-flipper .box-flipper__item--back,
-.box-flipper--hover-active .box-flipper .box-flipper__item--back,
-.box-flipper:hover .box-flipper__item--back,
-.box-flipper:active .box-flipper__item--back,
-.box-flipper:focus .box-flipper__item--back {
-  opacity: 1;
+.hover_text-line-truncated--hover:hover .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover:active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover:focus .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated:hover .hover_text-line-truncated__item,
+.hover_text-line-truncated:active .hover_text-line-truncated__item,
+.hover_text-line-truncated:focus .hover_text-line-truncated__item {
+  background-size: 100% 100%;
 }
 /*=========================================================================
 || Plugin: no-script.less
@@ -3907,6 +3619,53 @@ p.text-icon>x.icon+span{Lorem}
 .info-no-script__text {
   font-size: 16px;
   margin-top: 16px;
+}
+/*=========================================================================
+* @name Input counter
+* @description .animation-boucing-dots>span*3
+* @markup
+<div class="input-counter">
+  <button class="input-counter__btn input-counter__btn--disable input-counter__btn--minus" data-value="-1" type="button" title="Zmniejsz">&#150;</button>
+  <input class="input-counter__input" type="number" value="1" min="1" max="10" readonly>
+  <button class="input-counter__btn input-counter__btn--plus" data-value="1" type="button" title="Zwiększ">&#43;</button>
+</div>
+*/
+.input-counter {
+  user-select: none;
+}
+.input-counter__btn {
+  width: 30px;
+  line-height: 30px;
+  background-color: #e7be54;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  outline: none;
+  color: #FFFFFF;
+}
+.input-counter__btn--hover:hover .input-counter__btn,
+.input-counter__btn--hover:active .input-counter__btn,
+.input-counter__btn--hover:focus .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn:hover,
+.input-counter__btn:active,
+.input-counter__btn:focus {
+  background-color: #e1ad27;
+}
+.input-counter__btn--disable {
+  background-color: #614a0e !important;
+  user-select: none;
+  cursor: default;
+}
+.input-counter__input {
+  width: 50px;
+  border-radius: 0;
+  text-align: center;
+  line-height: 35px;
+  user-select: none;
+  height: 40px;
+  border: 1px solid #e7be54;
 }
 /*=========================================================================
 || FILE: _progress-line.less
@@ -4548,226 +4307,1039 @@ p.text-icon>x.icon+span{Lorem}
   margin-left: 0;
   margin-right: auto;
 }
-.bar {
-  position: relative;
-  font-size: 0;
+/*=========================================================================
+|| Plugin: blazy.less
+===========================================================================
+|| Style for lib bLazy.js (lazyload image script)
+=========================================================================*/
+.js_blazy {
+  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
+  background-size: cover;
+  opacity: 0.3;
+  background-color: #000000;
+  transition: opacity 0.2s;
+  display: block;
 }
-.bar__content {
-  display: inline-block;
-  margin: 0 auto;
-  background-repeat: repeat-x;
-  background-position: left center;
+.js_blazy--active {
+  opacity: 1;
 }
-.bar__placeholder {
+/*=========================================================================
+|| Plugin: collapse.less
+===========================================================================
+|| Style for javascript collapse toggle
+=========================================================================*/
+*[data-toggle] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: #e7be54;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+.collapse {
+  height: auto;
+  transition: height 0.6s;
+  pointer-events: all;
+  overflow: hidden;
+}
+.collapse.off:not(#burgerMenu) {
+  height: 0 !important;
+  pointer-events: none;
+  transition: height 0.6s;
+  margin: 0 !important;
+}
+.js_cookies-information {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 1;
+  z-index: 6999;
+  background-color: rgba(231, 190, 84, 0.85);
+  padding: 8px 0;
+  border-top: 2px solid #e7be54;
+}
+.js_cookies-information__img {
   display: none;
 }
-.bar__content,
-.bar__placeholder {
+@media only screen and (min-width: 768px) {
+  .js_cookies-information__img {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 95px;
+    height: auto;
+  }
+}
+.js_cookies-information__text {
+  font-size: 14px;
+  text-align: justify;
+  color: #FFFFFF;
+}
+.js_cookies-information__container {
+  padding-right: 30px;
+  position: relative;
+}
+@media only screen and (min-width: 768px) {
+  .js_cookies-information__container {
+    padding-left: 115px;
+  }
+}
+.js_cookies-information__exit {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: transform 0.2s;
+}
+.js_cookies-information__exit:before,
+.js_cookies-information__exit:after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.js_cookies-information__exit:before {
+  transform: rotate(45deg);
+}
+.js_cookies-information__exit:after {
+  transform: rotate(-45deg);
+}
+.js_cookies-information__exit--hover:hover .js_cookies-information__exit,
+.js_cookies-information__exit--hover:active .js_cookies-information__exit,
+.js_cookies-information__exit--hover:focus .js_cookies-information__exit,
+.js_cookies-information__exit--hover-active .js_cookies-information__exit,
+.js_cookies-information__exit--hover-active .js_cookies-information__exit,
+.js_cookies-information__exit--hover-active .js_cookies-information__exit,
+.js_cookies-information__exit:hover,
+.js_cookies-information__exit:active,
+.js_cookies-information__exit:focus {
+  transform: rotate(90deg);
+}
+.js_cookies-information--hide {
+  transform: translate(0, 100%);
+  opacity: 0;
+}
+/*=========================================================================
+|| FILE: _dropdown.less
+===========================================================================
+|| JavaScript dropdown style
+=========================================================================*/
+.dropdown {
+  position: relative;
+}
+.dropdown__item {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.dropdown.js_active .dropdown__item {
+  opacity: 1;
+}
+:not(.js_fullslider) .fullslider__arrow {
+  display: none;
+}
+html.js_fullslider {
+  width: 100%;
   height: 100%;
 }
-.bar--placeholder .bar__placeholder {
+@media only screen and (min-width: 768px) {
+  html.js_fullslider {
+    width: max-content;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+}
+body.js_fullslider {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 1.2;
+}
+@media only screen and (min-width: 768px) {
+  body.js_fullslider {
+    width: max-content;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+}
+.fullslider__container {
   display: block;
-  position: absolute;
-  opacity: 0.3;
-  top: 0;
-  left: 0;
-  height: 100%;
-}
-.bar-image {
-  /**
-   * Style
-   */
-}
-.bar-image.bar--primary {
-  height: 40px;
-}
-.bar-image.bar--primary[data-bar='1'] .bar__content {
-  width: 38px;
-}
-.bar-image.bar--primary[data-bar='2'] .bar__content {
-  width: 76px;
-}
-.bar-image.bar--primary[data-bar='3'] .bar__content {
-  width: 114px;
-}
-.bar-image.bar--primary[data-bar='4'] .bar__content {
-  width: 152px;
-}
-.bar-image.bar--primary[data-bar='5'] .bar__content {
-  width: 190px;
-}
-.bar-image.bar--primary[data-bar='6'] .bar__content {
-  width: 228px;
-}
-.bar-image.bar--primary[data-bar='7'] .bar__content {
-  width: 266px;
-}
-.bar-image.bar--primary[data-bar='8'] .bar__content {
-  width: 304px;
-}
-.bar-image.bar--primary[data-bar='9'] .bar__content {
-  width: 342px;
-}
-.bar-image.bar--primary[data-bar='10'] .bar__content {
-  width: 380px;
-}
-.bar-image.bar--primary .bar__content,
-.bar-image.bar--primary .bar__placeholder {
-  background-image: url("/images/bar/primary.png");
-  background-size: 38px auto;
-  transform: translateX(-9px);
-}
-.bar-image.bar--primary .bar__placeholder {
-  width: 380px;
-}
-.bar-image.bar--secondary {
-  height: 24px;
-}
-.bar-image.bar--secondary[data-bar='1'] .bar__content {
-  width: 25px;
-}
-.bar-image.bar--secondary[data-bar='2'] .bar__content {
-  width: 50px;
-}
-.bar-image.bar--secondary[data-bar='3'] .bar__content {
-  width: 75px;
-}
-.bar-image.bar--secondary[data-bar='4'] .bar__content {
-  width: 100px;
-}
-.bar-image.bar--secondary[data-bar='5'] .bar__content {
-  width: 125px;
-}
-.bar-image.bar--secondary[data-bar='6'] .bar__content {
-  width: 150px;
-}
-.bar-image.bar--secondary[data-bar='7'] .bar__content {
-  width: 175px;
-}
-.bar-image.bar--secondary[data-bar='8'] .bar__content {
-  width: 200px;
-}
-.bar-image.bar--secondary[data-bar='9'] .bar__content {
-  width: 225px;
-}
-.bar-image.bar--secondary[data-bar='10'] .bar__content {
-  width: 250px;
-}
-.bar-image.bar--secondary .bar__content,
-.bar-image.bar--secondary .bar__placeholder {
-  background-image: url("/images/bar/secondary.png");
-  background-size: 25px auto;
-}
-.bar-image.bar--secondary .bar__placeholder {
-  width: 250px;
-}
-.debug-title {
-  font-size: 20px;
-  margin: 35px 0 20px;
   position: relative;
-  padding-left: 50px;
+  width: 100%;
+  height: auto;
 }
-.debug-title:before {
-  content: 'B';
-  position: absolute;
-  height: 100%;
-  top: 0;
-  left: 0;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: blue;
-  color: white;
+@media only screen and (max-width: 549px) {
+  .fullslider__container {
+    width: 100% !important;
+  }
 }
-.debug-title--mod {
-  font-size: 18px;
-  font-weight: 500;
-}
-.debug-title--mod:before {
-  content: 'M';
-  background-color: green;
-}
-.debug-title--addon {
-  font-size: 16px;
-  font-weight: 500;
-}
-.debug-title--addon:before {
-  content: 'Adddon';
-  font-size: 9px;
-  background-color: black;
-}
-.debug-title--responsive {
-  font-size: 18px;
-  font-weight: 500;
-}
-.debug-title--responsive:before {
-  content: 'R';
-  background-color: red;
-}
-.debug-header {
-  font-size: 30px;
-  font-weight: 600;
-  margin: 35px 0;
-}
-.debug-code {
-  white-space: pre;
-  font-size: 15px;
-  overflow-x: auto;
-  padding: 30px 15px 15px;
-  border-radius: 6px;
-  border: 2px solid #dedede;
-  position: relative;
-  color: #000000;
-}
-.debug-code:before {
-  content: 'code';
-  top: 5px;
-  left: 5px;
-  font-size: 12px;
-  color: #dedede;
-  position: absolute;
-  font-weight: bold;
-}
-.debug-view {
-  padding: 30px 15px 15px;
-  border-radius: 6px;
-  border: 1px dashed #dedede;
-  background-color: #fafafa;
-  position: relative;
-}
-.debug-view:before {
-  content: 'preview';
-  top: 5px;
-  left: 5px;
-  font-size: 12px;
-  color: #000000;
-  position: absolute;
-  font-weight: bold;
-  text-shadow: 0 0 5px #FFFFFF;
-}
-.debug-wrap {
-  max-width: 1400px !important;
-}
-.debug-iframe {
-  height: 400px;
-  margin: 0 auto;
-  animation-name: debug-responsive;
-  animation-duration: 4s;
-  animation-timing-function: ease-out;
-  animation-delay: 0s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-fill-mode: none;
-  animation-play-state: running;
-}
-@keyframes debug-responsive {
-  from {
+@media only screen and (min-width: 768px) {
+  .fullslider__container {
+    *zoom: 1;
+    zoom: 1;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .fullslider__container:before,
+  .fullslider__container:after {
+    content: " ";
+    display: table;
+  }
+  .fullslider__container:after {
+    clear: both;
+  }
+  .fullslider__container:before,
+  .fullslider__container:after {
+    content: " ";
+    display: table;
+  }
+  .fullslider__container:after {
+    clear: both;
+  }
+  .fullslider__container:before {
     width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    z-index: 0;
+    position: absolute;
+    transition: background-color 1s 0.2s;
+    background-color: rgba(8, 3, 86, 0.8);
+  }
+}
+.fullslider__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  padding: 80px, 100px, 60px 20px;
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__slide {
+    display: block;
+    width: 100vw;
+    float: left;
+    height: 100%;
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__slide {
+    padding: 0;
+  }
+}
+.fullslider__button {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__button {
+    display: block;
+    top: 50%;
+    position: fixed;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid #bea67c;
+    cursor: pointer;
+    z-index: 5;
+    transform: translateY(-50%);
+  }
+  .fullslider__button > .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__button--left {
+    left: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__button--left {
+    left: 60px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__button--right {
+    right: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__button--right {
+    right: 60px;
+  }
+}
+.fullslider__dots {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .fullslider__dots {
+    display: block;
+    position: fixed;
+    z-index: 4;
+    bottom: 40px;
+    left: 50%;
+    text-align: center;
+    font-size: 0;
+    transform: translateX(-50%);
+  }
+  .fullslider__dots > .fullslide__dot {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #bea67c;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 11px;
+    transition: border-color 1s 0.2s, background-color 1s 0.2s;
+  }
+  .fullslider__dots > .fullslide__dot.active {
+    background-color: #FFFFFF;
+  }
+  .fullslider__dots > .fullslide__dot:last-child {
+    margin-right: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .fullslider__dots {
+    bottom: 31px;
+  }
+}
+.list-vertical-scroll {
+  position: relative;
+  padding: 0 !important;
+  box-sizing: border-box;
+  /**
+     * Style
+     */
+}
+.list-vertical-scroll__nav-content {
+  width: auto !important;
+  transition: transform 0.4s;
+  display: flex;
+}
+.list-vertical-scroll__nav {
+  /* Make this scrollable when needed */
+  overflow-x: auto;
+  /* We don't want vertical scrolling */
+  overflow-y: hidden;
+  /* For WebKit implementations, provide inertia scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* We don't want internal inline elements to wrap */
+  white-space: nowrap;
+  /* If JS present, let's hide the default scrollbar */
+  /* positioning context for advancers */
+  position: relative;
+  width: 100%;
+}
+.js .list-vertical-scroll__nav {
+  /* Make an auto-hiding scroller for the 3 people using a IE */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  /* Remove the default scrollbar for WebKit implementations */
+}
+.js .list-vertical-scroll__nav::-webkit-scrollbar {
+  display: none;
+}
+.list-vertical-scroll__button {
+  /* Reset the button */
+  appearance: none;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  width: 10px;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  /* Now style it as needed */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* Set the buttons invisible by default */
+  opacity: 0;
+  transition: opacity 0.3s, z-index 0s 0.3s;
+}
+.list-vertical-scroll__button:focus {
+  outline: 0;
+}
+.list-vertical-scroll__button:hover {
+  cursor: pointer;
+}
+.list-vertical-scroll__button[data-direction="left"] {
+  left: -14px;
+}
+[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="left"],
+[data-overflowing="right"] > .list-vertical-scroll__button[data-direction="left"] {
+  opacity: 1;
+  z-index: 0;
+  transition: opacity 0.3s, z-index 0s;
+  pointer-events: all;
+}
+.list-vertical-scroll__button[data-direction="right"] {
+  right: -14px;
+}
+[data-overflowing="none"] > .list-vertical-scroll__button[data-direction="right"],
+[data-overflowing="left"] > .list-vertical-scroll__button[data-direction="right"] {
+  opacity: 1;
+  z-index: 0;
+  transition: opacity 0.3s, z-index 0s;
+  pointer-events: all;
+}
+.list-vertical-scroll__button:hover .list-vertical-scroll__icon {
+  fill: #e7be54;
+}
+.list-vertical-scroll__icon {
+  width: 9px;
+  height: 17px;
+  transition: fill 0.2s;
+  fill: #FFFFFF;
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button {
+  background-color: #191e24;
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button:before {
+  content: '';
+  width: 10px;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="left"]:before {
+  right: 0;
+  background: linear-gradient(to right, #191e24 80%, transparent 100%);
+  transform: translateX(100%);
+}
+.list-vertical-scroll--dark .list-vertical-scroll__button[data-direction="right"]:before {
+  left: 0;
+  background: linear-gradient(to right, transparent 0%, #191e24 100%);
+  transform: translateX(-100%);
+}
+/*=========================================================================
+|| Plugin: modals.less
+===========================================================================
+|| Style for modals
+=========================================================================*/
+.js_placeholder--active {
+  display: none;
+}
+.js_placeholder--holder {
+  background: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4) !important;
+  background-position: 0 0,10px 10px !important;
+  background-size: 20px 20px !important;
+  padding: 0 !important;
+}
+.js_placeholder--holder:before,
+.js_placeholder--holder:after {
+  content: none;
+}
+.js_resizeLoading {
+  filter: blur(0);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.js_resizeLoading__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/**
+ * JS Manipulation
+ */
+.js_resize .page-content {
+  filter: blur(4px);
+}
+.js_resize .js_resizeLoading {
+  z-index: 10000;
+  opacity: 1;
+}
+.js-text-rotate.run {
+  display: inline-block;
+  overflow: hidden;
+}
+.js-text-rotate.run > span {
+  display: block;
+  transition: transform 1s 0s;
+}
+.js-text-rotate.run > span.hide {
+  display: none;
+}
+.js-text-rotate.run.next > span {
+  transition: transform 1s 1s;
+  transform: translateY(-100%);
+}
+.js_scroll {
+  overflow-y: scroll;
+  position: relative;
+  padding-right: 6px;
+}
+.js_scroll::-webkit-scrollbar {
+  display: none;
+}
+.js_scroll__bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background-color: #e7be54;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+.js_scroll__position {
+  width: 100%;
+  height: 20px;
+  background-color: #000000;
+  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  transition: top 0.2s;
+}
+.js_scroll--hover:hover .js_scroll .js_scroll__bar,
+.js_scroll--hover:active .js_scroll .js_scroll__bar,
+.js_scroll--hover:focus .js_scroll .js_scroll__bar,
+.js_scroll--hover-active .js_scroll .js_scroll__bar,
+.js_scroll--hover-active .js_scroll .js_scroll__bar,
+.js_scroll--hover-active .js_scroll .js_scroll__bar,
+.js_scroll:hover .js_scroll__bar,
+.js_scroll:active .js_scroll__bar,
+.js_scroll:focus .js_scroll__bar {
+  opacity: 1;
+}
+.show-more {
+  overflow: hidden;
+}
+.no_js .show-more {
+  overflow: visible;
+  height: auto !important;
+}
+.show-more--active {
+  height: auto !important;
+}
+.no_js .show-more-button {
+  display: none;
+}
+.show-more-button--less {
+  display: none;
+}
+.show-more-button--more {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--less {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--more {
+  display: none;
+}
+/* Item */
+.js-sticky-spy {
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
+  width: 100%;
+}
+.js-sticky-spy--fixed {
+  position: fixed !important;
+  bottom: auto !important;
+  top: 0;
+}
+.js-sticky-spy--bottom {
+  position: absolute !important;
+  bottom: 0 !important;
+}
+.js-sticky-spy:not(.js-sticky-spy--fixed) {
+  top: auto !important;
+  left: 0 !important;
+}
+.js-sticky-spy:not(.js-sticky-spy--bottom):not(.js-sticky-spy--fixed) {
+  top: 0 !important;
+  width: 100% !important;
+}
+/* Container */
+.js-sticky-spy-container {
+  position: relative;
+  flex: 1 1 auto;
+}
+/*=========================================================================
+|| Plugin: tabs.less
+===========================================================================
+|| Style for javascript tabs toggle
+=========================================================================*/
+.tab-switch {
+  cursor: pointer;
+}
+.tab-switch--active {
+  cursor: default;
+  pointer-events: none;
+}
+.tab-content:not(.tab-content--active) {
+  display: none !important;
+}
+/*=========================================================================
+|| FILE: truncate.less
+===========================================================================
+|| If the text is longer than one line, it will be truncated and end with 
+|| an ellipsis …
+||
+|| EMMET
+.text_truncate
+=========================================================================*/
+.text_truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*=========================================================================
+|| FILE: underline-pretty.less
+===========================================================================
+|| Alternative to 'text-decoration: underline'
+||
+|| EMMET
+.text_underline
+=========================================================================*/
+.text_underline {
+  display: inline;
+  font-size: 18px;
+  text-shadow: 1px 1px 0 #f5f6f9, -1px 1px 0 #f5f6f9, -1px -1px 0 #f5f6f9, 1px -1px 0 #f5f6f9;
+  background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
+  background-position: 0 0.98em;
+  background-repeat: repeat-x;
+  background-size: 1px 1px;
+}
+.text_underline::selection {
+  text-shadow: none;
+}
+/*=========================================================================
+|| FILE: text-icon.less
+===========================================================================
+|| Text block with icon on the left
+||
+|| EMMET:
+p.text-icon>x.icon+span{Lorem}
+=========================================================================*/
+.text-icon span {
+  vertical-align: middle;
+}
+.text-icon .icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+/*=========================================================================
+|| FILE: text-in-line.less
+===========================================================================
+|| Text beetween lines
+||
+|| EMMET:
+.line-text>.line-text__item>.line-text__line.line-text__line--left+.line-text__line.line-text__line--right
+=========================================================================*/
+.line-text {
+  padding: 10px 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.line-text__item {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 13px;
+  color: #e7be54;
+  padding: 0 20px;
+}
+.line-text__line {
+  height: 1px;
+  background-color: #e7be54;
+  position: absolute;
+  width: 100vw;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.line-text__line--left {
+  left: 100%;
+}
+.line-text__line--right {
+  right: 100%;
+}
+/*
+    Burger to icon X { first and last plank rotate; center plank hide }
+    planks: 3;
+    style: 1;
+*/
+.animation-burger-3-1 > *:first-child {
+  left: 0;
+  top: 45%;
+  transform: rotate(45deg);
+  width: 100%;
+}
+.animation-burger-3-1 > *:nth-child(2) {
+  opacity: 0;
+}
+.animation-burger-3-1 > *:last-child {
+  left: 0;
+  top: 45%;
+  transform: rotate(-45deg);
+  width: 100%;
+}
+/*
+    Burger to icon X { first and last plank rotate 180deg; center plank slide left and hide }
+    @planks: 3;
+    @style: 2;
+*/
+/**
+  * Navigation base style
+**/
+@media only screen and (max-width: 767px) {
+  .burger-menu {
+    transition: transform 0.2s;
+    transform: translate(100%, 0%);
+    right: 0;
+    overflow: auto;
+  }
+  .burger-menu::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 8px;
+    background-color: #e7be54;
+  }
+  .burger-menu::-webkit-thumb {
+    min-width: 8px;
+    max-height: 8px;
+    background-color: #000000;
+  }
+  .burger-menu::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+.page-content {
+  transition: transform 0.2s;
+}
+@media only screen and (max-width: 767px) {
+  html.js_menu-active .burger-menu {
+    transform: translate(0, 0%) !important;
+  }
+  html.js_menu-active .header.header--sticky .burger-menu {
+    transform: translate(0, 100%) !important;
+  }
+  html.js_menu-active .page-content {
+    transform: translateX(-300px);
+  }
+  html.js_menu-active .page__overlay {
+    z-index: 6999;
+    background-color: rgba(0, 0, 0, 0.88);
+  }
+  html:not(.js_menu-active) .burger-menu {
+    transform: translate(100%, 0);
+  }
+  html:not(.js_menu-active) .header--sticky .burger-menu {
+    transform: translate(100%, 100%);
+  }
+  html:not(.js_menu-active) .burger-menu {
+    box-shadow: 0 0 0 transparent !important;
+  }
+}
+.nav {
+  transform: translate(0, 100%);
+  width: 100%;
+  transition: height 0.2s ease 0s;
+  left: 0;
+}
+html.js_menu-active .navbar__button > .plank:first-child {
+  left: 0;
+  top: 45%;
+  transform: rotate(135deg);
+  width: 100%;
+}
+html.js_menu-active .navbar__button > .plank:nth-child(2) {
+  opacity: 0;
+  left: -20px;
+}
+html.js_menu-active .navbar__button > .plank:last-child {
+  left: 0;
+  top: 45%;
+  transform: rotate(-135deg);
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  html.js_menu-active .nav {
+    padding: 0;
+  }
+}
+html.js_menu-active--end .nav {
+  height: calc(100vh - 60px) !important;
+  overflow-y: auto;
+}
+@media only screen and (min-width: 768px) {
+  html.js_menu-active--end .nav {
+    height: 100% !important;
+  }
+}
+html.js_menu-active .page__overlay {
+  z-index: 6999;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+html.js_menu-active .nav__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px) !important;
+  z-index: 6999;
+}
+@media only screen and (min-width: 768px) {
+  html.js_menu-active .nav__overlay {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  html:not(.js_menu-active) .nav {
+    height: 0 !important;
+  }
+}
+/*=========================================================================
+* @name Bouncing dots animation
+* @description .animation-boucing-dots>span*3
+* @markup
+<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
+*/
+/** 
+  * Dots animation 
+  * translate - bouncing animation offset
+**/
+@keyframes animation-boucing-dots {
+  0% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateY(-5px);
+  }
+}
+/** 
+  * Dots container 
+**/
+.animation-boucing-dots {
+  display: block;
+  text-align: center;
+  position: relative;
+  font-size: 0;
+  padding: 5px 0;
+  /**
+      * Dots elements
+    **/
+}
+.animation-boucing-dots > span {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #e7be54;
+  margin-right: 6px;
+  transform: translateY(-5px);
+  animation: animation-boucing-dots 0.6s infinite alternate;
+  animation-delay: 0.2s;
+  display: inline-block;
+}
+.animation-boucing-dots > span:first-child {
+  animation-delay: 0s;
+}
+.animation-boucing-dots > span:last-child {
+  animation-delay: 0.4s;
+  margin-right: 0;
+}
+/**
+* @name Donut spinner animation
+* @description .animation-donut-spinner
+* @markup
+<div class="animation-donut-spinner"></div>
+*/
+@keyframes animation-donut-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animation-donut-spinner {
+  text-align: center;
+  font-size: 0;
+}
+.animation-donut-spinner:before {
+  content: "";
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #e7be54;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: animation-donut-spinner 1.2s linear infinite;
+  display: inline-block;
+}
+/*=========================================================================
+* @name Circle rotate animation
+* @description .animation-circle-rotate
+* @markup
+<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
+*/
+/** 
+  * Dots animation 
+  * translate - bouncing animation offset
+**/
+@keyframes animation-circle-rotate {
+  from {
+    transform: rotate(0);
   }
   to {
-    width: 320px;
+    transform: rotate(360deg);
   }
 }
+/** 
+  * Dots container 
+**/
+.animation-circle-rotate {
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin: 0 auto;
+}
+.animation-circle-rotate:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(231, 190, 84, 0.2);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+}
+.animation-circle-rotate:before {
+  content: '';
+  animation: animation-circle-rotate 0.6s infinite alternate;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  transition: transform 0.2s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #e7be54;
+  border-left: 1px solid #e7be54;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+}
+/*=========================================================================
+|| FILE: Drop
+===========================================================================
+|| Category: Animation
+|| Link: http://localhost:8181/debug/animation-loader.html#drop
+|| Changlelog:
+||  21.02.19 - add
+/*=======================================================================*/
+/* @keyframes */
+@keyframes animation-drop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+/* Element */
+.animation-drop {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #e7be54;
+  border-radius: 100%;
+  animation: animation-drop 1s infinite ease-in-out;
+}
+/*=========================================================================
+* @name Scale lines (height) animation
+* @description .animation-scale-lines>span*3
+* @markup
+<div class="animation-scale-lines"><span></span><span></span><span></span></div>
+*/
+/**
+  * Animation
+**/
+@keyframes animation-scale-lines {
+  from {
+    height: 60%;
+    opacity: 0.8;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+.animation-scale-lines {
+  display: block;
+  text-align: center;
+  position: relative;
+  height: 40px;
+}
+.animation-scale-lines > span,
+.animation-scale-lines .v-center__content > span {
+  width: 6px;
+  height: 60%;
+  position: absolute;
+  background-color: #e7be54;
+  animation: animation-scale-lines 0.6s infinite alternate;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.animation-scale-lines > span:first-child,
+.animation-scale-lines .v-center__content > span:first-child {
+  margin-left: 12px;
+}
+.animation-scale-lines > span:nth-child(2),
+.animation-scale-lines .v-center__content > span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.animation-scale-lines > span:nth-child(3),
+.animation-scale-lines .v-center__content > span:nth-child(3) {
+  animation-delay: 0.4s;
+  margin-left: -12px;
+}
+/* Prepare */
+/* Website base style */
 /* Utilities */
+@path ToFavicon:src/template/includes/favicon.html;
+@path ToFavicon: src/template/includes/favicon.html;
 /*# sourceMappingURL=style.dev.css.map */

@@ -3,7 +3,7 @@
 
 },{}],2:[function(require,module,exports){
 /*!
- * jQuery Validation Plugin v1.18.0
+ * jQuery Validation Plugin v1.19.0
  *
  * https://jqueryvalidation.org/
  *
@@ -147,6 +147,7 @@ $.extend( $.fn, {
 	// https://jqueryvalidation.org/rules/
 	rules: function( command, argument ) {
 		var element = this[ 0 ],
+			isContentEditable = typeof this.attr( "contenteditable" ) !== "undefined" && this.attr( "contenteditable" ) !== "false",
 			settings, staticRules, existingRules, data, param, filtered;
 
 		// If nothing is selected, return empty object; can't chain anyway
@@ -154,7 +155,7 @@ $.extend( $.fn, {
 			return;
 		}
 
-		if ( !element.form && element.isContentEditable ) {
+		if ( !element.form && isContentEditable ) {
 			element.form = this.closest( "form" )[ 0 ];
 			element.name = this.attr( "name" );
 		}
@@ -415,9 +416,10 @@ $.extend( $.validator, {
 			} );
 
 			function delegate( event ) {
+				var isContentEditable = typeof $( this ).attr( "contenteditable" ) !== "undefined" && $( this ).attr( "contenteditable" ) !== "false";
 
 				// Set form expando on contenteditable
-				if ( !this.form && this.isContentEditable ) {
+				if ( !this.form && isContentEditable ) {
 					this.form = $( this ).closest( "form" )[ 0 ];
 					this.name = $( this ).attr( "name" );
 				}
@@ -651,12 +653,14 @@ $.extend( $.validator, {
 			.not( this.settings.ignore )
 			.filter( function() {
 				var name = this.name || $( this ).attr( "name" ); // For contenteditable
+				var isContentEditable = typeof $( this ).attr( "contenteditable" ) !== "undefined" && $( this ).attr( "contenteditable" ) !== "false";
+
 				if ( !name && validator.settings.debug && window.console ) {
 					console.error( "%o has no name assigned", this );
 				}
 
 				// Set form expando on contenteditable
-				if ( this.isContentEditable ) {
+				if ( isContentEditable ) {
 					this.form = $( this ).closest( "form" )[ 0 ];
 					this.name = name;
 				}
@@ -711,6 +715,7 @@ $.extend( $.validator, {
 		elementValue: function( element ) {
 			var $element = $( element ),
 				type = element.type,
+				isContentEditable = typeof $element.attr( "contenteditable" ) !== "undefined" && $element.attr( "contenteditable" ) !== "false",
 				val, idx;
 
 			if ( type === "radio" || type === "checkbox" ) {
@@ -719,7 +724,7 @@ $.extend( $.validator, {
 				return element.validity.badInput ? "NaN" : $element.val();
 			}
 
-			if ( element.isContentEditable ) {
+			if ( isContentEditable ) {
 				val = $element.text();
 			} else {
 				val = $element.val();
@@ -12304,9 +12309,7 @@ return jQuery;
 	var loader = (function(){
 		var preloadElems, isCompleted, resetPreloadingTimer, loadMode, started;
 
-		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom;
-
-		var defaultExpand, preloadExpand, hFac;
+		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom, isBodyHidden;
 
 		var regImg = /^img$/i;
 		var regIframe = /^iframe$/i;
@@ -12330,10 +12333,18 @@ return jQuery;
 			}
 		};
 
+		var isVisible = function (elem) {
+			if (isBodyHidden == null) {
+				isBodyHidden = getCSS(document.body, 'visibility') == 'hidden';
+			}
+
+			return isBodyHidden || (getCSS(elem.parentNode, 'visibility') != 'hidden' && getCSS(elem, 'visibility') != 'hidden');
+		};
+
 		var isNestedVisible = function(elem, elemExpand){
 			var outerRect;
 			var parent = elem;
-			var visible = getCSS(document.body, 'visibility') == 'hidden' || (getCSS(elem.parentNode, 'visibility') != 'hidden' && getCSS(elem, 'visibility') != 'hidden');
+			var visible = isVisible(elem);
 
 			eLtop -= elemExpand;
 			eLbottom += elemExpand;
@@ -12357,8 +12368,8 @@ return jQuery;
 		};
 
 		var checkElements = function() {
-			var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal, beforeExpandVal;
-
+			var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal,
+				beforeExpandVal, defaultExpand, preloadExpand, hFac;
 			var lazyloadElems = lazysizes.elements;
 
 			if((loadMode = lazySizesConfig.loadMode) && isLoading < 8 && (eLlen = lazyloadElems.length)){
@@ -12367,14 +12378,13 @@ return jQuery;
 
 				lowRuns++;
 
-				if(preloadExpand == null){
-					if(!('expand' in lazySizesConfig)){
-						lazySizesConfig.expand = docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370;
-					}
+				defaultExpand = (!lazySizesConfig.expand || lazySizesConfig.expand < 1) ?
+					docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370 :
+					lazySizesConfig.expand;
 
-					defaultExpand = lazySizesConfig.expand;
-					preloadExpand = defaultExpand * lazySizesConfig.expFactor;
-				}
+				preloadExpand = defaultExpand * lazySizesConfig.expFactor;
+				hFac = lazySizesConfig.hFac;
+				isBodyHidden = null;
 
 				if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 2 && loadMode > 2 && !document.hidden){
 					currentExpand = preloadExpand;
@@ -12409,7 +12419,7 @@ return jQuery;
 						(eLright = rect.right) >= elemNegativeExpand * hFac &&
 						(eLleft = rect.left) <= eLvW &&
 						(eLbottom || eLright || eLleft || eLtop) &&
-						(lazySizesConfig.loadHidden || getCSS(lazyloadElems[i], 'visibility') != 'hidden') &&
+						(lazySizesConfig.loadHidden || isVisible(lazyloadElems[i])) &&
 						((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
 						unveilElement(lazyloadElems[i]);
 						loadedSomething = true;
@@ -12587,7 +12597,6 @@ return jQuery;
 
 				lazysizes.elements = document.getElementsByClassName(lazySizesConfig.lazyClass);
 				preloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass + ' ' + lazySizesConfig.preloadClass);
-				hFac = lazySizesConfig.hFac;
 
 				addEventListener('scroll', throttledCheckElements, true);
 

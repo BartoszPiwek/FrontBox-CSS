@@ -1,16 +1,11 @@
 # Node
 node_modules/
 
-src/style/automatic/*less
+src/less/automatic/*less
 logs/*html
 logs/*
 src/template/critical-css/*
 docs
-
-# Modules
-*.mp4
-*.ogg
-*.webm
 
 # Libs
 src/js/libs/*

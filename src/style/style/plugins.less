@@ -1,4 +1,13 @@
+/*=========================================================================
+|| FILE: Plugins
+===========================================================================
+|| Concatenate files and set variables for plugins
+=========================================================================*/
+ 
 /* Use only when working with framework */
-& when (@isDebug = true) {
-    @import "./../FrontBox-Plugins/style";
+& when (@workingWithFrontbox = true) {
+    @import "@{pathToFrontBoxPlugins}/**/*.less";
 }
+
+/* Prepare */
+@import "./../plugins/**/*.less";

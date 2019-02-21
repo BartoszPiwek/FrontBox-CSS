@@ -1,21 +1,39 @@
 module.exports = (SETTINGS) => {
 
-    const fs = require('fs');
+    const 
+    fs = require('fs'),
+    path = require('path');
 
-    var files = [];
 
-    fs.readdirSync(`./src/debug`).forEach(file => {
-        files.push(file);
-    });
-    
     return {
-        filesDebug: () => {
-            let output = ``;
 
-            for (const iterator of files) {
-                let name = iterator.slice(0, -4);
-                output += `<a class="block mt-5 mb-5" href="./${name}.html">${name}</a>`; 
-            }
+        /* Insert inline SVG */
+        // svg: (block) => {
+        //     let output = null;
+
+        //     console.log(block);
+
+        //     fs.readFile(`./src/images/svg/${block}.svg`, 'utf8', (err, data) => {
+        //         output = data;
+        //     });
+
+        //     return output;
+        // },
+
+        filesDebug: () => {
+
+            let
+            output = '';
+
+            fs.readdirSync(`./public/${SETTINGS.version}/debug`, { withFileTypes: true }).forEach(file => {
+
+                let name = file.slice(0, -5);
+
+                if ( name !== 'index' ) {
+                    output += `<a class="block mt-5 mb-5" href="./${name}.html">${name}</a>`; 
+                }
+
+            });
 
             return output;
         },
@@ -30,7 +48,7 @@ module.exports = (SETTINGS) => {
             .replace( /"/g, '&quot;' )
             .replace( /#/g, '&#35;'  )
             .replace( /\\/g, '\\\\'  )
-            .replace( /\n/g, '<br>'   );
+            .replace( /\n/g, '<br>'  );
         }
     };
 

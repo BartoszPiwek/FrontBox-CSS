@@ -1,0 +1,75 @@
+/*=========================================================================
+|| FILE: Tabs
+===========================================================================
+|| Style for tabs
+=========================================================================*/
+
+.tabs {
+
+    &__expand {
+        display: none;
+    }
+
+    &__item {
+        flex: 1 1 auto;
+        padding: 20px;
+        text-align: center;
+        background-color: @color-primary;
+    }
+
+    &__view {
+        width: 100%;
+    }
+
+    &__expand {
+        padding: 20px;
+        background-color: darken(@color-primary, 20%);
+    }
+}
+
+.responsiveClass({
+
+    .@{prefix}tabs--horizontal {
+
+        .tabs {
+            &__item {
+
+            }
+            &__content {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+    }
+
+    .@{prefix}tabs--vertical {
+
+        flex-direction: column;
+        text-align: center;
+        .tabs {
+            &__item {
+            }
+        }
+
+    }
+
+    .@{prefix}tabs--expand {
+
+        flex-direction: column;
+        text-align: center;
+        .tabs {
+            &__item {
+            }
+            &__expand {
+                display: block;
+            }
+            &__view {
+                height: 0;
+                overflow: hidden;
+            }
+        }
+
+    }
+
+});
