@@ -144,7 +144,6 @@ module.exports = function(grunt) {
             case 'less':
 
                 grunt.loadNpmTasks('grunt-contrib-less');
-                grunt.loadNpmTasks('less-plugin-glob');
 
                 var sourceMap = false;
                 if ( SETTINGS.version === 'dev' ) {
@@ -156,6 +155,8 @@ module.exports = function(grunt) {
                     pathToModulesProd: SETTINGS.pathToModulesProd,
                     isWordpress: SETTINGS.isWordpress,
                     version: SETTINGS.version,
+                    debug: SETTINGS.debug,
+                    workingWithFrontbox: SETTINGS.workingWithFrontbox,
                 };
 
                 if (SETTINGS.framework === 'frontbox') {

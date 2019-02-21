@@ -5472,10 +5472,15 @@ no-font {
   }
 }
 .row-space {
-  margin: 0 0 -1.25% -1.25%;
+  margin-left: -15px;
+  width: calc(100% + 15px);
+  margin-bottom: -15px !important;
 }
-.row-space > * {
-  padding: 0 0 1.25% 1.25%;
+.row-space > *:not(.row-gap-ignore) {
+  padding-left: 15px;
+}
+.row-space > *:not(.row-space-ignore) {
+  padding-bottom: 15px;
 }
 .row-responsive {
   flex-wrap: nowrap;
@@ -5495,10 +5500,15 @@ no-font {
 }
 @media only screen and (min-width: 550px) {
   .sm_row-space {
-    margin: 0 0 -1.25% -1.25%;
+    margin-left: -15px;
+    width: calc(100% + 15px);
+    margin-bottom: -15px !important;
   }
-  .sm_row-space > * {
-    padding: 0 0 1.25% 1.25%;
+  .sm_row-space > *:not(.row-gap-ignore) {
+    padding-left: 15px;
+  }
+  .sm_row-space > *:not(.row-space-ignore) {
+    padding-bottom: 15px;
   }
   .sm_row-responsive {
     flex-wrap: nowrap;
@@ -5519,10 +5529,15 @@ no-font {
 }
 @media only screen and (min-width: 768px) {
   .md_row-space {
-    margin: 0 0 -1.25% -1.25%;
+    margin-left: -15px;
+    width: calc(100% + 15px);
+    margin-bottom: -15px !important;
   }
-  .md_row-space > * {
-    padding: 0 0 1.25% 1.25%;
+  .md_row-space > *:not(.row-gap-ignore) {
+    padding-left: 15px;
+  }
+  .md_row-space > *:not(.row-space-ignore) {
+    padding-bottom: 15px;
   }
   .md_row-responsive {
     flex-wrap: nowrap;
@@ -5543,10 +5558,15 @@ no-font {
 }
 @media only screen and (min-width: 1024px) {
   .lg_row-space {
-    margin: 0 0 -1.25% -1.25%;
+    margin-left: -15px;
+    width: calc(100% + 15px);
+    margin-bottom: -15px !important;
   }
-  .lg_row-space > * {
-    padding: 0 0 1.25% 1.25%;
+  .lg_row-space > *:not(.row-gap-ignore) {
+    padding-left: 15px;
+  }
+  .lg_row-space > *:not(.row-space-ignore) {
+    padding-bottom: 15px;
   }
   .lg_row-responsive {
     flex-wrap: nowrap;
@@ -5567,10 +5587,15 @@ no-font {
 }
 @media only screen and (max-width: 549px) {
   .xs_row-space {
-    margin: 0 0 -1.25% -1.25%;
+    margin-left: -15px;
+    width: calc(100% + 15px);
+    margin-bottom: -15px !important;
   }
-  .xs_row-space > * {
-    padding: 0 0 1.25% 1.25%;
+  .xs_row-space > *:not(.row-gap-ignore) {
+    padding-left: 15px;
+  }
+  .xs_row-space > *:not(.row-space-ignore) {
+    padding-bottom: 15px;
   }
   .xs_row-responsive {
     flex-wrap: nowrap;

@@ -25,15 +25,16 @@ module.exports = {
     "getYear"               : "<%= grunt.template.today('yyyy') %>",
 
     /* Project type */
-    "isWordpress"           : false,
+    "isWordpress"           : false, 
 
     /* Framework */
-    framework               : 'frontbox',
-    cssPreprocessor         : 'less',
-    htmlPreprocessor        : 'pug',
-    jsPreprocessor          : 'browserify',
+    framework               : 'frontbox', // false,frontbox
+    cssPreprocessor         : 'less', // false,less,sass
+    htmlPreprocessor        : 'pug', // false,pug
+    jsPreprocessor          : 'browserify', // false,browserify
 
     /* Debug */
     debug                   : true,
+    workingWithFrontbox     : true,
 
 };

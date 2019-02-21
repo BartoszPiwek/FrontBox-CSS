@@ -2,10 +2,8 @@
     .@{prefix}row {
 
         &-space {
-            margin: 0 0 -1.25% -1.25%;
-            & > * {
-                padding: 0 0 1.25% 1.25%;
-            }
+            .space-x(15px);
+            .space-y(15px);
         }
         &-responsive {
             flex-wrap: nowrap;
@@ -23,7 +21,7 @@
             &>* {
                 align-items: center;
             }
-        } 
+        }
         // Horizontal center
         &-h-center, &-x-center {
             &>* {
