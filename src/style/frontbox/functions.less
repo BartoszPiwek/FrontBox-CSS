@@ -164,43 +164,6 @@
 	};
 }
 
-
-/*=========================================================================
-|| Shapes
-=========================================================================*/
-
-/**
- * Triangle
- */
-.add-triangle(@width, @height, @position, @color: "") {
-
-    @bool: if((@position = top) or (@position = bottom), true, false);  
-    width: 0;
-    height: 0;
-    @widthHalf: @width / 2;
-
-    & when (@position = top) {
-        border-bottom: @height solid @color;
-    }
-    & when (@position = bottom) {
-        border-top: @height solid @color;
-    }
-    & when (@position = left) {
-        border-right: @height solid @color;
-    }
-    & when (@position = right) {
-        border-left: @height solid @color;
-    }   
-    & when (@bool = true) {
-        border-left: @widthHalf solid transparent;
-        border-right: @widthHalf solid transparent;
-    }
-    & when not (@bool = true) {
-        border-top: @widthHalf solid transparent;
-        border-bottom: @widthHalf solid transparent;
-    }
-}
-
 /*=========================================================================
 || Loops
 =========================================================================*/
