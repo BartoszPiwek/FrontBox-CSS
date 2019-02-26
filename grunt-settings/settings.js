@@ -4,6 +4,9 @@ module.exports = {
     version                 : null,
     // Lang
     website_locale          : 'pl-PL',
+    /* Show information about disable javascript */
+    website_info_off_javascript     : true, 
+    website_info_old_browser        : true, 
 
     /* Path */
     pathToPublic            : 'public',
@@ -33,6 +36,13 @@ module.exports = {
     cssPreprocessor         : 'less', // false,less,sass
     htmlPreprocessor        : 'pug', // false,pug
     jsPreprocessor          : 'browserify', // false,browserify
+
+    /**
+     * Productive options 
+     * css-mqpacker|
+     */
+    cssTasks                : ['css-mqpacker'],
+    jsTasks                 : ['babel', 'strip_code', 'uglify'],
 
     /* Debug */
     debug                   : true,

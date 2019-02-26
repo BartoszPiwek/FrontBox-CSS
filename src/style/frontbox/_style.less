@@ -17,3 +17,7 @@
 @import "main";
 @import "fix";
 @import "tools";
+
+& when (@version = dev) {
+    @import "debug";
+}

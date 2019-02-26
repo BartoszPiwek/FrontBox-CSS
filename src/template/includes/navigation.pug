@@ -8,15 +8,18 @@
                 .container__item.container__item--center
                     .flex.flex-y-center
                         | Center container
-                .container__item.container__item--right
+                .container__item.container__item--right.flex-y-center
+
                     //- Burger button
                     #burger-button.burger-button
                         .plank
                         .plank
                         .plank
+
                     //- Burger menu container
                     #burger-menu.burger-menu
                         #burger-menu-container.burger-menu__container
+
                             //- Navigation items
                             nav.burger-menu__item.list-navigation
                                 a.list-navigation__item(href="/")
@@ -29,5 +32,6 @@
                                     | Other 3
                                 a.list-navigation__item(href="/help.html")
                                     | Contact
+
                             .burger-menu__item.is_burger-menu--visible
                                 | Visible only when burger is visible

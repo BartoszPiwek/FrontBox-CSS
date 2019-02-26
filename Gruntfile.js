@@ -14,6 +14,15 @@ TASKS       = {
     watch: null,
 };
 
+/* Style run tasks */
+var RUN = {
+    STYLE   : [],
+    JS      : [],
+    HTML    : [],
+    END     : [],
+};
+
+
 /*=========================================================================
 || Register Tasks
 =========================================================================*/
@@ -75,6 +84,8 @@ module.exports = function(grunt) {
             'run_html',
             'run_js',
 
+            'run_end',
+
         ]);
 
     });
@@ -82,7 +93,7 @@ module.exports = function(grunt) {
     /**
      * Register Other Tasks
      */
-    
+
     grunt.registerTask('html', () => {
 
         SETTINGS.version = 'dev';
@@ -104,7 +115,6 @@ module.exports = function(grunt) {
         ]);
 
     });
-
 
     /**
      * Register Init Tasks
@@ -170,6 +180,7 @@ module.exports = function(grunt) {
         switch (SETTINGS.cssPreprocessor) {
             case 'less':
 
+                /* Load tasks */
                 grunt.loadNpmTasks('grunt-contrib-less');
 
                 var sourceMap = false;
@@ -182,56 +193,11 @@ module.exports = function(grunt) {
                 if (SETTINGS.framework === 'frontbox') {
 
                     TASKS.less = {
-
-                        grid: {
-                            options: {
-                                compress: false,
-                                sourceMap: true,
-                                sourceMapFilename: `public/${SETTINGS.version}/css/grid.css.map`,
-                                sourceMapURL: 'grid.css.map',
-                                sourceMapBasepath: '../',
-                                sourceMapRootpath: '/',
-                                modifyVars: modifyVars,
-                                javascriptEnabled: true,
-                            },
-                            src: `src/style/grid.less`,
-                            dest: `public/${SETTINGS.version}/css/grid.css`,
-                        },
-                
-                        base: {
-                            options: {
-                                compress: false,
-                                sourceMap: true,
-                                sourceMapFilename: `public/${SETTINGS.version}/css/base.css.map`,
-                                sourceMapURL: 'base.css.map',
-                                sourceMapBasepath: '../',
-                                sourceMapRootpath: '/',
-                                modifyVars: modifyVars,
-                                javascriptEnabled: true,
-                            },
-                            src: `src/style/base.less`,
-                            dest: `public/${SETTINGS.version}/css/base.css`,
-                        },
-                
-                        utilities: {
-                            options: {
-                                compress: false,
-                                sourceMap: true,
-                                sourceMapFilename: `public/${SETTINGS.version}/css/utilities.css.map`,
-                                sourceMapURL: 'utilities.css.map',
-                                sourceMapBasepath: '../',
-                                sourceMapRootpath: '/',
-                                modifyVars: modifyVars,
-                                javascriptEnabled: true,
-                            },
-                            src: `src/style/utilities.less`,
-                            dest: `public/${SETTINGS.version}/css/utilities.css`,
-                        },
                 
                         main: {
                             options: {
                                 compress: false,
-                                sourceMap: true,
+                                sourceMap: sourceMap,
                                 sourceMapFilename: `public/${SETTINGS.version}/style.${SETTINGS.version}.css.map`,
                                 sourceMapURL: `style.${SETTINGS.version}.css.map`,
                                 sourceMapBasepath: '../',
@@ -245,6 +211,69 @@ module.exports = function(grunt) {
                         },
                         
                     };
+
+                    /* Development version */
+                    if ( SETTINGS.version === 'dev' ) {
+
+                        TASKS.less = Object.assign( TASKS.less, {
+                            grid: {
+                                options: {
+                                    compress: false,
+                                    sourceMap: true,
+                                    sourceMapFilename: `public/${SETTINGS.version}/css/grid.css.map`,
+                                    sourceMapURL: 'grid.css.map',
+                                    sourceMapBasepath: '../',
+                                    sourceMapRootpath: '/',
+                                    modifyVars: modifyVars,
+                                    javascriptEnabled: true,
+                                },
+                                src: `src/style/grid.less`,
+                                dest: `public/${SETTINGS.version}/css/grid.css`,
+                            },
+                    
+                            base: {
+                                options: {
+                                    compress: false,
+                                    sourceMap: true,
+                                    sourceMapFilename: `public/${SETTINGS.version}/css/base.css.map`,
+                                    sourceMapURL: 'base.css.map',
+                                    sourceMapBasepath: '../',
+                                    sourceMapRootpath: '/',
+                                    modifyVars: modifyVars,
+                                    javascriptEnabled: true,
+                                },
+                                src: `src/style/base.less`,
+                                dest: `public/${SETTINGS.version}/css/base.css`,
+                            },
+                    
+                            utilities: {
+                                options: {
+                                    compress: false,
+                                    sourceMap: true,
+                                    sourceMapFilename: `public/${SETTINGS.version}/css/utilities.css.map`,
+                                    sourceMapURL: 'utilities.css.map',
+                                    sourceMapBasepath: '../',
+                                    sourceMapRootpath: '/',
+                                    modifyVars: modifyVars,
+                                    javascriptEnabled: true,
+                                },
+                                src: `src/style/utilities.less`,
+                                dest: `public/${SETTINGS.version}/css/utilities.css`,
+                            },
+                        });
+
+                        RUN.STYLE = RUN.STYLE.concat([
+                            'less:grid',
+                            'less:base',
+                            'less:utilities',
+                        ]);
+
+                    }
+
+                    /* Style run tasks */
+                    RUN.STYLE = RUN.STYLE.concat([
+                        'less:main',
+                    ]);
                 }
                 else {
                     
@@ -254,6 +283,84 @@ module.exports = function(grunt) {
         
             default:
                 break;
+        }
+
+        /* Production mode configuration */
+        if (SETTINGS.version === 'prod') {
+
+            grunt.loadNpmTasks('grunt-postcss');
+
+            let 
+            postCSS = { 
+                init: { 
+                    options: { processors: [], map: false },
+                    src: `public/${SETTINGS.version}/style.${SETTINGS.version}.css`,
+                },
+            },
+            initProcessors = [
+                /**
+                 * Parse CSS and add vendor prefixes to rules by Can I Use
+                 * https://github.com/postcss/autoprefixer
+                 */
+                require('autoprefixer')({
+                    browsers: ['last 2 versions', 'ie >= 8', 'Android >= 4.0.0', 'Safari >= 7.1', 'iOS >= 6']
+                }),
+                /**
+                 * Convert pixel units to rem (root em) units
+                 * https://github.com/cuth/postcss-pxtorem
+                 */
+                require('postcss-pxtorem')({
+                    rootValue: 16,
+                    unitPrecision: 5,
+                    propWhiteList: [],
+                    selectorBlackList: [],
+                    replace: true,
+                    mediaQuery: false,
+                    minPixelValue: 0
+                }),
+            ];
+
+            /**
+             * Pack same CSS media query rules into one
+             * https://github.com/hail2u/node-css-mqpacker
+             */
+            if ( SETTINGS.cssTasks.includes('css-mqpacker') ) {
+                initProcessors.push(
+                    require("css-mqpacker")
+                );
+            }
+
+            RUN.STYLE = RUN.STYLE.concat([
+                'postcss:init'
+            ]);
+
+            /**
+             * Takes your nicely formatted CSS and runs it through many focused optimisations, 
+             * to ensure that the final result is as small as possible for a production 
+             * environment.
+             * https://github.com/cssnano/cssnano
+             */
+            postCSS.min = {
+                options: {
+                    processors: [
+                        require('cssnano')({
+                            zindex: false,
+                            autoprefixer: false
+                        })
+                    ],
+                    map: false
+                },
+                src: `public/${SETTINGS.version}/style.${SETTINGS.version}.css`,
+            };
+
+            RUN.END = RUN.END.concat([
+                'postcss:min'
+            ]);
+
+            /* Concat configuration */
+            postCSS.init.options.processors = initProcessors;
+            TASKS.postcss = postCSS;
+
         }
 
     });
@@ -268,7 +375,7 @@ module.exports = function(grunt) {
 
                 grunt.loadNpmTasks('grunt-contrib-pug');
 
-                if (SETTINGS.framework === 'frontbox') {
+                if ( SETTINGS.framework === 'frontbox' ) {
                     TASKS.pug.init = {
                         files: [{
                             expand: true,
@@ -284,7 +391,7 @@ module.exports = function(grunt) {
                     };
 
                     /* Debug Framework */
-                    if (SETTINGS.debug) {
+                    if ( SETTINGS.debug ) {
                         TASKS.pug.debug = {
                             files: [{
                                 expand: true,
@@ -335,11 +442,96 @@ module.exports = function(grunt) {
                 else {
                     
                 }
+
+                RUN.JS = RUN.JS.concat([
+                    'browserify'
+                ]);
                 
                 break;
         
             default:
                 break;
+        }
+
+        /* Production mode configuration */
+        if ( SETTINGS.version === 'prod' ) {
+
+            /**
+             * Remove sections of code from production builds that are only needed in development and test environments
+             * https://github.com/nuzzio/grunt-strip-code
+             */
+            if ( SETTINGS.jsTasks.includes('strip_code') ) {
+
+                grunt.loadNpmTasks('grunt-strip-code');
+
+                TASKS.strip_code = {
+                    options: {
+                        blocks: [{
+                            start_block: "/* test-code */",
+                            end_block: "/* end-test-code */"
+                        }]
+                    },
+                    init: {
+                        src: `${SETTINGS.pathToProd}/js/app.prod.js`,
+                    },
+                };
+
+                RUN.JS = RUN.JS.concat([
+                    'strip_code'
+                ]);
+
+            }
+            
+            /**
+             * The compiler for next generation JavaScript
+             * https://github.com/babel/babel
+             */
+            if ( SETTINGS.jsTasks.includes('babel') ) {
+
+                grunt.loadNpmTasks('grunt-babel');
+
+                TASKS.babel = {
+                    options: {
+                        sourceMap: false,
+                        presets: ['env']
+                    },
+                    init: {
+                        src: `${SETTINGS.pathToProd}/js/app.prod.js`,
+                        dest: `${SETTINGS.pathToProd}/js/app.prod.js`,
+                    },
+                };
+
+                RUN.JS = RUN.JS.concat([
+                    'babel'
+                ]);
+
+            }
+            
+            /**
+             * UglifyJS is a JavaScript parser, minifier, compressor and beautifier toolkit.
+             * https://github.com/mishoo/UglifyJS2
+             */
+            if ( SETTINGS.jsTasks.includes('uglify') ) {
+
+                grunt.loadNpmTasks('grunt-contrib-uglify');
+
+                TASKS.uglify = {
+                    options: {
+                        preserveComments: false,
+                        drop_console: true,
+                    },
+                    init: {
+                        src: `${SETTINGS.pathToProd}/js/app.prod.js`,
+                        dest: `${SETTINGS.pathToProd}/js/app.prod.js`,
+                    },
+                };
+
+                RUN.JS = RUN.JS.concat([
+                    'uglify'
+                ]);
+
+            }
+
         }
 
     });
@@ -413,34 +605,7 @@ module.exports = function(grunt) {
     /* Style */
     grunt.registerTask('run_style', () => {
 
-        switch (SETTINGS.cssPreprocessor) {
-            case 'less':
-
-                /* FrontBox LESS config */
-                if (SETTINGS.framework === 'frontbox') {
-
-                    grunt.task.run([
-                        'less:grid',
-                        'less:base',
-                        'less:utilities',
-                        'less:main',
-                    ]);  
-
-                }
-                else {
-                    /* Non frontbox project */
-                }
-                
-                break;
-            
-            /* SASS config */
-            case 'sass':  
-            
-            break;
-            
-            default:
-                break;
-        }
+        grunt.task.run( RUN.STYLE );  
 
     });
 
@@ -475,28 +640,7 @@ module.exports = function(grunt) {
     /* JavaScript */
     grunt.registerTask('run_js', () => {
 
-        switch (SETTINGS.jsPreprocessor) {
-
-            /* PUG config */
-            case 'browserify':
-
-                /* FrontBox LESS config */
-                if (SETTINGS.framework === 'frontbox') {
-
-                    grunt.task.run([
-                        'browserify',
-                    ]);  
-
-                }
-                else {
-                    /* Non frontbox project */
-                }
-                
-                break;
-
-            default:
-                break;
-        }
+        grunt.task.run( RUN.JS );  
 
     });
 
@@ -515,6 +659,13 @@ module.exports = function(grunt) {
         grunt.task.run([
             'connect:init',
         ]);
+
+    });
+
+    /* End */
+    grunt.registerTask('run_end', () => {
+
+        grunt.task.run( RUN.END );
 
     });
 

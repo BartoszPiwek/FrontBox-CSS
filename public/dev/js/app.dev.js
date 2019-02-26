@@ -13480,7 +13480,7 @@ module.exports = (argument) => {
 },{"./debug/console":11,"./debug/variables":12}],11:[function(require,module,exports){
 module.exports = (data) => {
 
-    DATA = {
+    var DATA = {
         $container: null,
         $element: null,
         $button: null,

@@ -1,6 +1,6 @@
 module.exports = (data) => {
 
-    DATA = {
+    var DATA = {
         $container: null,
         $element: null,
         $button: null,

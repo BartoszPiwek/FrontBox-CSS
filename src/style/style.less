@@ -12,7 +12,7 @@ Version     : 1.1.0
     @import "@{pathToModulesDev}/grid.css";
 }
 & when (@version = prod) {
-    @import (optional, less) "@{pathToModulesProd}/grid.prod.css";
+    @import (less) "grid";
 }
 
 /* Prepare */
@@ -33,7 +33,7 @@ Version     : 1.1.0
     @import "@{pathToModulesDev}/base.css";
 }
 & when (@version = prod) {
-    @import (optional, less) "@{pathToModulesProd}/base.prod.css";
+    @import (less) "base";
 }
 
 /* Utilities */
@@ -41,5 +41,5 @@ Version     : 1.1.0
     @import "@{pathToModulesDev}/utilities.css";
 }
 & when (@version = prod) {
-    @import (optional, less) "@{pathToModulesProd}/utilities.prod.css";
+    @import (less) "utilities";
 }

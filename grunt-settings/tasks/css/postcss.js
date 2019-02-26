@@ -17,7 +17,7 @@ module.exports = function(SETTINGS) {
                      * https://github.com/cuth/postcss-pxtorem
                      */
                     require('postcss-pxtorem')({
-                        rootValue: 10,
+                        rootValue: 16,
                         unitPrecision: 5,
                         propWhiteList: [],
                         selectorBlackList: [],
