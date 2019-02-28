@@ -5,42 +5,60 @@
 =========================================================================*/
 
 .responsive({
-    .@{prefix} {
 
-        .col {
-            flex: 1 1 1px !important;
-        
-            &-static {
-                flex-grow: 0;
-                flex-shrink: 0;
-            }
-            &-responsive {
-                flex: 1 1 auto !important;
-            }
-        
-            // Vertical & horizontal center
+    .@{prefix}col {
+        flex: 1 1 1px !important;
+    
+        &-static {
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        &-responsive {
+            flex: 1 1 auto !important;
+        }
+    
+        // Vertical & horizontal center
+        &-center {
+            align-items: center;
+            justify-content: center;
+        } 
+        // Vertical center
+        &-v {
             &-center {
                 align-items: center;
+            }
+        } 
+        // Horizontal center
+        &-h {
+            &-center {
                 justify-content: center;
-            } 
-            // Vertical center
-            &-v {
-                &-center {
-                    align-items: center;
-                }
-            } 
-            // Horizontal center
-            &-h {
-                &-center {
-                    justify-content: center;
-                }
             }
-        
-            &-absolute {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
+        }
+    
+        &-absolute {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &-y-center {
+            justify-content: center;
+        }
+        &-y-top {
+            justify-content: flex-start;
+        }
+        &-y-bottom {
+            justify-content: flex-end;
+        }
+
+        &-x-center {
+            align-items: center;
+        }
+        &-x-left {
+            align-items: flex-start;
+        }
+        &-x-right {
+            align-items: flex-end;
         }
 
     }

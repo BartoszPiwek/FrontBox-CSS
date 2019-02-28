@@ -5,7 +5,10 @@
 include ../template/includes/begin.pug
 
 .page-content.relative
-	.debug-wrap.wrap
+	.wrap.debug-wrap
+
+		h1.debug-header.
+			Grid
 
 		//- Columns
 		h2.debug-title.
@@ -101,29 +104,29 @@ include ../template/includes/begin.pug
 				iframe.debug-iframe(data-iframe="row-responsive-static")
 				div(data-iframe-content="row-responsive-static")
 					.row.row-responsive
-						.col-static(style="background-color: red; flex-basis: 300px")
+						.col-static(style="background-color: red; flex-basis: 300px !important")
 							| .col-static (flex-basis: 300px)
 						.col-responsive(style="background-color: blue")
 							| .col-responsive
 					br
 					.row.row-responsive#js_testPlaceholder
-						.col-static(style="background-color: red; flex-basis: 120px")
+						.col-static(style="background-color: red; flex-basis: 120px !important")
 							| .col-static (flex-basis: 120px)
 						.col-responsive(style="background-color: blue")
 							| .col-responsive
 					br
 					.row.row-responsive#js_testPlaceholder
-						.col-static(style="background-color: red; flex-basis: 50px")
+						.col-static(style="background-color: red; flex-basis: 50px !important")
 							| .col-static (flex-basis: 50px)
 						.col-responsive(style="background-color: blue")
 							| .col-responsive
-						.col-static(style="background-color: red; flex-basis: 50px")
+						.col-static(style="background-color: red; flex-basis: 50px !important")
 							| .col-static (flex-basis: 50px)
 					br
 					.row.row-responsive#js_testPlaceholder
 						.col-responsive(style="background-color: blue")
 							| .col-responsive
-						.col-static(style="background-color: red; flex-basis: 200px")
+						.col-static(style="background-color: red; flex-basis: 200px !important")
 							| .col-static (flex-basis: 200px)
 						.col-responsive(style="background-color: blue")
 							| .col-responsive
@@ -177,7 +180,7 @@ include ../template/includes/begin.pug
 		p.debug-code.
 			.row
 				.col-y-top .col-y-center .col-y-bottom .col-x-left .col-x-center .col-x-right
-		.debug-view.center
+		.debug-view
 			.row
 				.col-2.col-y-top(style="background-color: red; height: 200px !important")
 					| .col-y-top

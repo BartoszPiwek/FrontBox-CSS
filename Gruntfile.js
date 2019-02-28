@@ -147,6 +147,16 @@ module.exports = function(grunt) {
                 }],
             },
 
+            video: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/video/',
+                    src: '*',
+                    dest: `public/${SETTINGS.version}/`,
+                    filter: 'isFile'
+                }],
+            },
+
             other: {
                 files: [{
                     expand: true,
@@ -622,6 +632,7 @@ module.exports = function(grunt) {
 
                     grunt.task.run([
                         'pug',
+                        'pug:debug',
                     ]);  
 
                 }
