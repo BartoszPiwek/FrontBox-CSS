@@ -22,7 +22,7 @@ src/js/libs/*
 *.map
 
 # Logs
-lobs
+logs
 validation-report.json
 validation-status.json
 

@@ -2,7 +2,7 @@
 Framework:      FrontBox 1.1.0
 Author:         Bartosz Piwek
 Repository:     https://github.com/BartoszPiwek/FrontBox
-**************************************************************************/
+************************************************************************!*/
 
 /*=========================================================================
 || Settings
@@ -112,6 +112,59 @@ module.exports = function(grunt) {
             'run_server',
             'run_watch',
 
+        ]);
+
+    });
+
+    grunt.registerTask('favicon', () => {
+
+        grunt.loadNpmTasks('grunt-real-favicon');
+
+        TASKS.realFavicon = {
+            init: {
+                options: {
+                    iconsPath: `${SETTINGS.prefixFaviconHTML}`,
+                    html: [`${SETTINGS.pathToFavicon}`],
+                    design: {
+                      ios: {
+                        pictureAspect: 'noChange'
+                      },
+                      desktopBrowser: {},
+                      windows: {
+                        pictureAspect: 'noChange',
+                        backgroundColor: '#da532c',
+                        onConflict: 'override'
+                      },
+                      androidChrome: {
+                        pictureAspect: 'noChange',
+                        themeColor: '#ffffff',
+                        manifest: {
+                          name: 'example.com',
+                          display: 'browser',
+                          orientation: 'notSet',
+                          onConflict: 'override'
+                        }
+                      },
+                      safariPinnedTab: {
+                        pictureAspect: 'blackAndWhite',
+                        threshold: 73.4375,
+                        themeColor: '#5bbad5'
+                      }
+                    },
+                    settings: {
+                      compression: 1,
+                      scalingAlgorithm: 'Mitchell',
+                      errorOnImageTooSmall: false
+                    },
+                },
+                src: './src/images/favicon.png',
+                dest: './src/images/favicon'
+            }
+        };
+        
+        grunt.task.run([
+            'run_begin',
+            'realFavicon',
         ]);
 
     });
