@@ -1013,18 +1013,23 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-body::-webkit-scrollbar {
+/* Scrollbar */
+body::-webkit-scrollbar,
+.scrollbar::-webkit-scrollbar {
   -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
+  background-color: #FFFFFF;
+  border-left: 1px solid #e7be54;
+}
+body::-webkit-scrollbar-thumb,
+.scrollbar::-webkit-scrollbar-thumb {
+  min-width: 12px;
+  max-height: 12px;
   background-color: #e7be54;
 }
-body::-webkit-thumb {
-  min-width: 8px;
-  max-height: 8px;
-  background-color: #000000;
-}
-body::-webkit-scrollbar-button {
+body::-webkit-scrollbar-track,
+.scrollbar::-webkit-scrollbar-track {
   display: none;
 }
 .code {
@@ -5008,16 +5013,17 @@ p.text-icon>x.icon+span{Lorem}
   }
   .burger-menu::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: #FFFFFF;
+    border-left: 1px solid #e7be54;
+  }
+  .burger-menu::-webkit-scrollbar-thumb {
+    min-width: 12px;
+    max-height: 12px;
     background-color: #e7be54;
   }
-  .burger-menu::-webkit-thumb {
-    min-width: 8px;
-    max-height: 8px;
-    background-color: #000000;
-  }
-  .burger-menu::-webkit-scrollbar-button {
+  .burger-menu::-webkit-scrollbar-track {
     display: none;
   }
 }

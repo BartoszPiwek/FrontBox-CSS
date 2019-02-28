@@ -24,7 +24,11 @@ body {
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
-  .scrollbar();
+}
+
+/* Scrollbar */
+body, .scrollbar {
+    .scrollbar( 12px, @color-primary, @color-white );
 }
 
 //=========================================================================

@@ -333,19 +333,20 @@
 /**
  * Create custom themes for the browser's native scrollbars
  */
-.scrollbar(@size: @scrollbar-size, @background: @scrollbar-background, @color: @scrollbar-color) {
+.scrollbar(@size, @background, @color) {
     &::-webkit-scrollbar {
         -webkit-appearance: none;
         width: @size;
         height: @size;
-        background-color: @background;
+        background-color: @color;
+        border-left: 1px solid @background;
     }
-    &::-webkit-thumb {
+    &::-webkit-scrollbar-thumb {
         min-width: @size;
         max-height: @size;
-        background-color: @color;
+        background-color: @background;
     }
-    &::-webkit-scrollbar-button {
+    &::-webkit-scrollbar-track {
         display: none;
     }
 };
