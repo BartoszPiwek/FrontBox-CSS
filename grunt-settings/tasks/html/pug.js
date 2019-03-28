@@ -1,8 +1,6 @@
 module.exports = function(SETTINGS){
-
-    var 
-    modifyVarsDev, modifyVarsProd,
-    filters;
+    
+    var modifyVarsDev, modifyVarsProd;
 
     modifyVarsDev = JSON.parse(JSON.stringify(SETTINGS));
     modifyVarsProd = JSON.parse(JSON.stringify(SETTINGS));
@@ -10,50 +8,40 @@ module.exports = function(SETTINGS){
     modifyVarsDev.version = 'dev';
     modifyVarsProd.version = 'prod';
 
-    filters = require("./pug-filters")(SETTINGS);
-
     return {
 
         dev: {
             files: [{
                 expand: true,
                 cwd: 'src/template/',
-                src: ['**/*.pug', '!includes/**'],
+                src: ['**/*.pug'],
                 dest: `${SETTINGS.pathToDev}/`,
                 ext: '.html'
             }],
             options: {
                 data: modifyVarsDev,
-                filters: filters,
+                filters: {
+                    pageName: function(block) {
+                        return block;
+                    },
+                }
             }
         },
-
         prod: {
             files: [{
                 expand: true,
                 cwd: 'src/template/',
-                src: ['**/*.pug', '!includes/**'],
+                src: ['**/*.pug'],
                 dest: `${SETTINGS.pathToProd}/`,
                 ext: '.html'
             }],
             options: {
                 data: modifyVarsProd,
-                filters: filters,
-            }
-        },
-
-        // Debug
-        debug: {
-            files: [{
-                expand: true,
-                cwd: 'src/debug/',
-                src: ['**/*.pug'],
-                dest: `${SETTINGS.pathToDev}/debug/`,
-                ext: '.html'
-            }],
-            options: {
-                data: modifyVarsDev,
-                filters: filters,
+                filters: {
+                    pageName: function(block) {
+                        return block;
+                    },
+                }
             }
         },
 
