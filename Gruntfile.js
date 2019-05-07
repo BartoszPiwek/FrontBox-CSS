@@ -10,6 +10,7 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 var 
 SETTINGS    = require('./grunt-settings/settings'),
 NEWER       = '';
+KEEPALIVE   = false;
 TASKS       = {
     watch: null,
 };
@@ -169,6 +170,17 @@ module.exports = function(grunt) {
 
     });
 
+    grunt.registerTask('up', () => {
+        SETTINGS.version = 'prod';
+        KEEPALIVE = true;
+        
+        grunt.task.run([
+            'init_server',
+            'run_begin',
+            'run_server',
+        ]);
+    });
+
     /**
      * Register Init Tasks
      */
@@ -205,7 +217,17 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/video/',
                     src: '*',
-                    dest: `public/${SETTINGS.version}/`,
+                    dest: `public/${SETTINGS.version}/video/`,
+                    filter: 'isFile'
+                }],
+            },
+
+            audio: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/audio/',
+                    src: '*',
+                    dest: `public/${SETTINGS.version}/audio/`,
                     filter: 'isFile'
                 }],
             },
@@ -222,7 +244,7 @@ module.exports = function(grunt) {
 
         };
 
-        /* None HTML Preprocessor */
+        /* No HTML Preprocessor */
         if (!SETTINGS.htmlPreprocessor) {
             TASKS.copy.html = {
                 files: [{
@@ -332,15 +354,37 @@ module.exports = function(grunt) {
                         ]);
 
                     }
+                }
 
+                /* No FrontBox-CSS project */
+                else {
+                    TASKS.less = {
+                        main: {
+                            options: {
+                                compress: false,
+                                sourceMap: sourceMap,
+                                sourceMapFilename: `public/${SETTINGS.version}/style.${SETTINGS.version}.css.map`,
+                                sourceMapURL: `style.${SETTINGS.version}.css.map`,
+                                sourceMapBasepath: '../',
+                                sourceMapRootpath: '/',
+                                modifyVars: modifyVars,
+                                javascriptEnabled: true,
+                                plugins: [require('less-plugin-glob')],
+                            },
+                            src: `src/style/style.less`,
+                            dest: `public/${SETTINGS.version}/style.${SETTINGS.version}.css`,
+                        },
+                        
+                    };
+                    
                     /* Style run tasks */
+                    
                     RUN.STYLE = RUN.STYLE.concat([
                         'less:main',
                     ]);
                 }
-                else {
-                    
-                }
+
+
                 
                 break;
         
@@ -431,14 +475,14 @@ module.exports = function(grunt) {
     /* HTML */
     grunt.registerTask('init_html', () => {
 
-        TASKS.pug = {};
-
         switch (SETTINGS.htmlPreprocessor) {
             case 'pug':
+            
+                TASKS.pug = {};
 
                 grunt.loadNpmTasks('grunt-contrib-pug');
 
-                if ( SETTINGS.framework === 'frontbox' ) {
+                // if ( SETTINGS.framework === 'frontbox' ) {
                     TASKS.pug.init = {
                         files: [{
                             expand: true,
@@ -468,14 +512,11 @@ module.exports = function(grunt) {
                                 filters: require("./grunt-settings/tasks/html/pug-filters")(SETTINGS),
                             }
                         };
+
                     }
 
-                }
-
-                else {
+                // else {
                     
-                }
-                
                 break;
         
             default:
@@ -494,16 +535,31 @@ module.exports = function(grunt) {
 
                 grunt.loadNpmTasks('grunt-browserify');
 
-                if (SETTINGS.framework === 'frontbox') {
+                // if (SETTINGS.framework === 'frontbox') {
                     TASKS.browserify.init = {
-                        src: `src/js/app.js`,
-                        dest: `public/${SETTINGS.version}/js/app.${SETTINGS.version}.js`,
+                        // src: `src/js/app.${SETTINGS.jsExtension}`,
+                        // dest: `public/${SETTINGS.version}/js/app.${SETTINGS.version}.js`,
+                        options: {
+                            plugin: []
+                        },
+                        files: [{
+                            expand: true,
+                            cwd: `src/js/`,
+                            src: '*',
+                            dest: `public/${SETTINGS.version}/js/`,
+                            filter: `isFile`,
+                            ext: `.${SETTINGS.version}.js`,
+                        }],
                     };
 
-                }
+                // }
 
-                else {
+                // else {
                     
+                // }
+
+                if (SETTINGS.jsExtension === 'ts') {
+                    TASKS.browserify.init.options.plugin.push('tsify');
                 }
 
                 RUN.JS = RUN.JS.concat([
@@ -556,11 +612,18 @@ module.exports = function(grunt) {
                 TASKS.babel = {
                     options: {
                         sourceMap: false,
-                        presets: ['env']
+                        presets: [
+                            'env',
+                        ]
                     },
                     init: {
-                        src: `${SETTINGS.pathToProd}/js/app.prod.js`,
-                        dest: `${SETTINGS.pathToProd}/js/app.prod.js`,
+                        files: [{
+                            expand: true,
+                            cwd: `${SETTINGS.pathToProd}/js/`,
+                            src: '*.js',
+                            dest: `public/${SETTINGS.version}/js/`,
+                            filter: `isFile`,
+                        }],
                     },
                 };
 
@@ -584,8 +647,13 @@ module.exports = function(grunt) {
                         drop_console: true,
                     },
                     init: {
-                        src: `${SETTINGS.pathToProd}/js/app.prod.js`,
-                        dest: `${SETTINGS.pathToProd}/js/app.prod.js`,
+                        files: [{
+                            expand: true,
+                            cwd: `${SETTINGS.pathToProd}/js/`,
+                            src: '*.js',
+                            dest: `public/${SETTINGS.version}/js/`,
+                            filter: `isFile`,
+                        }],
                     },
                 };
 
@@ -626,7 +694,8 @@ module.exports = function(grunt) {
                         opn: true,
                         target: 'http://localhost:8181',
                         appName: 'chrome',
-                    }
+                    },
+                    keepalive: KEEPALIVE,
                 }
             },
         };
@@ -655,6 +724,8 @@ module.exports = function(grunt) {
             `${NEWER}copy:img`,
             `${NEWER}copy:fonts`,
             `${NEWER}copy:other`, 
+            `${NEWER}copy:video`, 
+            `${NEWER}copy:audio`, 
         ]);  
 
         if (!SETTINGS.htmlPreprocessor) {
@@ -681,17 +752,16 @@ module.exports = function(grunt) {
             case 'pug':
 
                 /* FrontBox LESS config */
-                if (SETTINGS.framework === 'frontbox') {
+                // if (SETTINGS.framework === 'frontbox') {
 
                     grunt.task.run([
                         'pug',
-                        'pug:debug',
                     ]);  
 
-                }
-                else {
-                    /* Non frontbox project */
-                }
+                // }
+                // else {
+                //     /* Non frontbox project */
+                // }
                 
                 break;
 
@@ -746,14 +816,23 @@ module.exports = function(grunt) {
                 img: {
                     files: ["src/images/**/*"],
                     tasks: [`${NEWER}copy:img`],
+                    options: {
+                        spawn: false,
+                    }
                 },
                 fonts: {
                     files: ["src/fonts/*"],
                     tasks: [`${NEWER}copy:fonts`],
+                    options: {
+                        spawn: false,
+                    }
                 },
                 other: {
                     files: ["src/*"],
                     tasks: [`${NEWER}copy:other`],
+                    options: {
+                        spawn: false,
+                    }
                 },
             });
             
@@ -782,6 +861,9 @@ module.exports = function(grunt) {
                                     "sec/style/frontbox/**/*"
                                 ],
                                 tasks: ["less:base"],
+                                options: {
+                                    spawn: false,
+                                }
                             },
                             style_grid: {
                                 files: [
@@ -791,6 +873,9 @@ module.exports = function(grunt) {
                                     "src/style/frontbox/grid.less"
                                 ],
                                 tasks: ["less:grid"],
+                                options: {
+                                    spawn: false,
+                                }
                             },
                             style_utilities: {
                                 files: [
@@ -798,6 +883,9 @@ module.exports = function(grunt) {
                                     "src/style/utilities/*.less"
                                 ],
                                 tasks: ["less:utilities"],
+                                options: {
+                                    spawn: false,
+                                }
                             },
                             style_main: {
                                 files: [
@@ -805,6 +893,9 @@ module.exports = function(grunt) {
                                     "src/style/*/**.less",
                                 ],
                                 tasks: ["less:main"],
+                                options: {
+                                    spawn: false,
+                                }
                             },
                         };
 
@@ -818,7 +909,19 @@ module.exports = function(grunt) {
                     }
 
                     else {
-                        /* Non frontbox project */
+                        let options = {
+                            init: {
+                                files: [
+                                    "src/style/*.less",
+                                ],
+                                tasks: ["less"],
+                                options: {
+                                    spawn: false,
+                                }
+                            },
+                        };
+                        TASKS.watch = Object.assign({}, TASKS.watch, options);
+
                     }
                     
                     break;
@@ -843,17 +946,24 @@ module.exports = function(grunt) {
             case 'pug':
 
                 /* FrontBox config */
-                if (SETTINGS.framework === 'frontbox') {
+                // if (SETTINGS.framework === 'frontbox') {
 
                     TASKS.watch = Object.assign({}, TASKS.watch, {
 
                         pug: {
                             files: ['src/template/*.pug'],
                             tasks: [`${NEWER}pug:init`],
+                            options: {
+                                spawn: false,
+                            }
                         },
+
                         pug_includes: {
                             files: ['src/template/includes/*.pug'],
                             tasks: ['pug:init',],
+                            options: {
+                                spawn: false,
+                            }
                         },
 
                     });
@@ -864,12 +974,15 @@ module.exports = function(grunt) {
                             pug_debug: {
                                 files: ["./src/debug/**/*.pug"],
                                 tasks: [`${NEWER}pug:debug`],
+                                options: {
+                                    spawn: false,
+                                }
                             },
 
                         });
                     }
 
-                }
+                // }
 
                 else {
                     /* Non frontbox project */
@@ -892,22 +1005,25 @@ module.exports = function(grunt) {
             case 'browserify':
 
                 /* FrontBox config */
-                if (SETTINGS.framework === 'frontbox') {
+                // if (SETTINGS.framework === 'frontbox') {
 
                     TASKS.watch = Object.assign({}, TASKS.watch, {
 
                         browserify: {
-                            files: ["src/js/**/*.js"],
-                            tasks: ["browserify"],
+                            files: [`src/js/**/*`],
+                            tasks: [`browserify`],
+                            options: {
+                                spawn: false,
+                            }
                         }
 
                     });
 
-                }
+                // }
 
-                else {
-                    /* Non frontbox project */
-                }
+                // else {
+                //     /* Non frontbox project */
+                // }
                 
                 break;
             

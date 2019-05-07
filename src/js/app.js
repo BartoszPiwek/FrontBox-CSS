@@ -286,5 +286,4 @@ $(window).bind("load", function() {
 
     // Inform stylesheed to remove style fallback for JavaScript elements
     ELEMENTS.$html.removeClass("js_no");
-
 });
