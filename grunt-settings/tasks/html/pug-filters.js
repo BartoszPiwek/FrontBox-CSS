@@ -20,23 +20,37 @@ module.exports = (SETTINGS) => {
         //     return output;
         // },
 
-        filesDebug: () => {
+        printFilesLink: (path) => {
 
-            let
-            output = '';
+            let output = '';
 
-            fs.readdirSync(`./public/${SETTINGS.version}/debug`, { withFileTypes: true }).forEach(file => {
+            fs.readdirSync(`./public/${SETTINGS.version}/${path}`, { withFileTypes: true }).forEach(file => {
 
                 let name = file.slice(0, -5);
 
-                if ( name !== 'index' ) {
+                if ( name !== 'index' && file.endsWith(".html") ) {
                     output += `<a class="block mt-5 mb-5" href="./${name}.html">${name}</a>`; 
                 }
 
             });
-
             return output;
         },
+
+        svg: ( pug, args ) => {
+
+            console.log(args);
+
+            let 
+            svg = fs.readFileSync(`./src/images/svg/${args.path}.svg`,'utf8'),
+            output = '';
+
+
+            output = svg.replace(`<svg `, `<svg class="svg ${args.className}" `);
+
+            return output;
+
+        },
+
         pageName: (block) => {
             return block;
         },

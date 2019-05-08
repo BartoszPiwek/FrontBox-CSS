@@ -348,9 +348,7 @@ module.exports = function(grunt) {
                         });
 
                         RUN.STYLE = RUN.STYLE.concat([
-                            'less:grid',
-                            'less:base',
-                            'less:utilities',
+                            'less',
                         ]);
 
                     }
