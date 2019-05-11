@@ -1,15 +1,31 @@
-- var page_title = "FrontBox Starter!"
-- var page_description = "FrontBox Description"
-- var page_keywords = "hello, word, page"
-- var page_critical_css = false
+//- Include bootstrap template
+    blocks: 
+        - variables
+        - content
+        - assets_head
+        - assets_footer
+extends includes/bootstrap.pug
 
-include includes/begin.pug
-include includes/navigation.pug
+block variables
+    - var title = 'FrontBox-CSS Starter'
+    - var description = 'Starter Page'
+    - var keywords = false
+    - var page_critical_css = false
 
-main.page-content.relative
+//- Main content
+block append content
 
-    .wrap
+    include includes/navigation.pug
 
-include includes/footer.pug
-include includes/scripts.pug
-include includes/end.pug
+    main.page-content.relative
+
+        .wrap
+            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, ad? Ullam asperiores et labore dolores deleniti, ipsam eligendi quibusdam accusantium debitis consectetur soluta harum ab repellendus minus! Nam, in cum.s
+
+    include includes/footer.pug
+
+//- Append addon assets {js/css}
+    assets_head - on top
+    assets_footer - on bottom
+block append assets_footer
+block append assets_head

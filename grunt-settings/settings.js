@@ -1,12 +1,22 @@
 module.exports = {
-    
-    // Version { automatic set }
-    version                 : null,
-    // Lang
+
+    /**
+     * Main
+     */
+    // Declare the language of a Web page
     website_locale          : 'pl-PL',
-    /* Show information about disable javascript */
-    website_info_off_javascript     : true, 
+    website_color           : '#e7be54',
+    website_author          : 'Bartosz Piwek',
+
+    /**
+     * Informations
+     */
+    // Disable javascripts
+    website_info_off_javascript     : true,
+    // Using old browser
     website_info_old_browser        : true, 
+
+    version                 : null,
 
     /* Path */
     pathToPublic            : 'public',

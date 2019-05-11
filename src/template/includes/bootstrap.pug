@@ -1,3 +1,4 @@
+block variables
 <!DOCTYPE html>
   <html class="js_no" lang=#{website_locale} itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#">
     head
@@ -26,12 +27,9 @@
         if website_author
             meta(name="author" content= website_author)
 
-        //- Head style
-        block style_head
+        //- Assets
+        block assets_head
             link(rel="stylesheet" type="text/css" href="/style." + version + ".css" media="all")
-
-        //- Head javascript 
-        block js_head
 
         //- Critical CSS
         if page_critical_css && version == "prod"
@@ -42,9 +40,9 @@
         //- Favicons
         include favicon.html
 
-    <body id="body">
+    body#body
 
-        //- Information about off javascript
+        //- Informations: Disable javascripts
         if website_info_off_javascript
             noscript
                 link(rel="stylesheet" type="text/css" href="/css/info-off-favascipt.css")
@@ -54,11 +52,19 @@
                             Przeglądarka zablokowała wykonywanie kodu <strong>JavaScript</strong>.
                         p.info-no-script__text.
                             Do pełnej funkcjonalności strony potrzebujesz włączonej obsługi skryptów. <a class="underline" href="https://www.enable-javascript.com/pl/" rel="nofollow" target="_blank">Tu znajdziesz instrukcje</a>, które pozwolą Ci włączyć skrypty w Twojej przeglądarce.
-
-        //- Information about old browser
+        //- Informations: Using old browser
         if website_info_old_browser
             <!--[if lte IE 9]>
                 .info-old-browser
                     p.
                         Korzystasz z <strong>przestarzałej</strong> przeglądarki. Proszę <a class="underline" ref="nofollow" target="_blank" href="http://browsehappy.com/">uaktualnij ją</a>.
             <![endif]-->
+
+        //- Main content
+        block content
+
+        .page__overlay#page-overlay
+
+        //- Assets
+        block assets_footer 
+            script(src="js/app." + version + ".js")
