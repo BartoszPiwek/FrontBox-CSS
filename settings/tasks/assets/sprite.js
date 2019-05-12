@@ -12,7 +12,7 @@ module.exports = {
         src: 'src/images/sprite-patroni/*.png',
         dest: 'src/images/sprite-patroni.png',
         destCss: 'src/less/automatic/sprite-patroni.less',
-        cssTemplate: 'grunt-settings/template/spritesmith.handlebars',
+        cssTemplate: 'settings/template/spritesmith.handlebars',
         imgPath: '@spritePatroniPath',
         padding: 2,
         cssSpritesheetName: 'sprite-patroni',

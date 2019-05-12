@@ -19,7 +19,7 @@
     transition+: background-color @time-transition;
     transition+: padding @time-transition;
     // Style / Animations
-    background-color: transparent;
+    background-color: @color-secondary;
 
     /* First wrap set 100% height */
     & > .wrap {
@@ -266,12 +266,12 @@ html {
         }
 
         .header-placeholder, .header {
-            background-color: @color-white;
+            background-color: transparent;
         }
     }
     &:not(.js_menu-active) {
         .header-placeholder, .header {
-            background-color: @color-white;
+            background-color: transparent;
         }
     }
 }

@@ -8,7 +8,7 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 || Settings
 =========================================================================*/
 var 
-SETTINGS    = require('./grunt-settings/settings'),
+SETTINGS    = require('./settings/settings'),
 NEWER       = '';
 KEEPALIVE   = false;
 TASKS       = {
@@ -491,7 +491,7 @@ module.exports = function(grunt) {
                         }],
                         options: {
                             data: SETTINGS,
-                            filters: require("./grunt-settings/tasks/html/pug-filters")(SETTINGS),
+                            filters: require("./settings/tasks/html/pug-filters")(SETTINGS),
                         }
                     };
 
@@ -507,7 +507,7 @@ module.exports = function(grunt) {
                             }],
                             options: {
                                 data: SETTINGS,
-                                filters: require("./grunt-settings/tasks/html/pug-filters")(SETTINGS),
+                                filters: require("./settings/tasks/html/pug-filters")(SETTINGS),
                             }
                         };
 
@@ -671,7 +671,7 @@ module.exports = function(grunt) {
         grunt.loadNpmTasks( 'grunt-newer' );
         grunt.loadNpmTasks( 'grunt-contrib-watch' );
         
-        TASKS.watch = require('./grunt-settings/tasks/other/watch');
+        TASKS.watch = require('./settings/tasks/other/watch');
 
     });
 

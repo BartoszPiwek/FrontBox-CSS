@@ -1,0 +1,71 @@
+//- Include bootstrap template
+    blocks: 
+        - variables
+        - content
+        - assets_head
+        - assets_footer
+extends ../template/includes/bootstrap.pug
+
+block variables
+    - var title = 'Debug Animation Loader | FrontBox'
+
+block append content
+
+    .page-content.relative
+        .wrap.debug-wrap
+
+            h1.debug-header.
+                Animation Loader
+        
+            .row.row-space
+
+                //- animation-boucing-dots
+                .col-6
+                    .debug-view
+                        div
+                            div.animation-boucing-dots
+                                span
+                                span
+                                span
+                .col-6
+                    p.debug-code.
+                        .animation-boucing-dots>span*3
+
+                //- animation-donut-spinner
+                .col-6
+                    .debug-view
+                        div
+                            div.animation-donut-spinner
+                .col-6
+                    p.debug-code.
+                        .animation-donut-spinner
+
+                //- animation-scale-lines
+                .col-6
+                    .debug-view
+                        div
+                            div.animation-scale-lines
+                                span
+                                span
+                                span
+                .col-6
+                    p.debug-code.
+                        .animation-scale-lines>span*3
+
+                //- animation-circle-rotate
+                .col-6
+                    .debug-view
+                        div
+                            div.animation-circle-rotate
+                .col-6
+                    p.debug-code.
+                        .animation-circle-rotate
+
+                //- animation-drop
+                .col-6#drop
+                    .debug-view
+                        div
+                            div.animation-drop
+                .col-6
+                    p.debug-code.
+                        .animation-drop

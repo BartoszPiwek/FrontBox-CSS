@@ -284,6 +284,29 @@ $(window).bind("load", function() {
     DEBUG.console.add("Running correct...");
     /* end-test-code */
 
+    const 
+    $item = $('.js_expand');
+
+    $item.on('click', function() {
+
+        const
+        $item = $(this),
+        $link = $item.find('.expand__link'),
+        $container = $item.find('.expand__content');
+
+        console.log($item);
+        
+
+        transitionHeight.toggle({
+            $this: $item, 
+            $clicked: $link,
+            $container: $container,            
+            callback: () => {
+              $item.addClass("show-more--active");
+            },  
+        });
+    
+    });
     // Inform stylesheed to remove style fallback for JavaScript elements
     ELEMENTS.$html.removeClass("js_no");
 });
