@@ -277,7 +277,7 @@ $(window).bind("load", function() {
     // }
 
     /* Validator */
-    require('./modules/validator')();
+    // require('./modules/validator')();
     // require('./modules/fullpage');
 
     /* test-code */
