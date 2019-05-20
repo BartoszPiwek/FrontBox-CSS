@@ -46,7 +46,7 @@ module.exports = {
     cssPreprocessor         : 'less', // false,less,sass
     htmlPreprocessor        : 'pug', // false,pug
     jsPreprocessor          : 'browserify', // false,browserify
-    jsExtension             : 'js',
+    jsExtension             : 'ts',
 
     /**
      * Productive options 
