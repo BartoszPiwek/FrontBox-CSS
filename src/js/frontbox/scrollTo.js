@@ -113,6 +113,10 @@ module.exports = (data) => {
         var
         targetID, $target, $this;
 
+        console.log(BREAKPOINTS_HEADER);
+        console.log(DEVICE.responsive);
+        
+
         // Check event and remove default action
         if (event) {
             /* test-code */
@@ -232,5 +236,9 @@ module.exports = (data) => {
     };
 
     start();
+
+    return {
+        on: on,
+    };
   
 };

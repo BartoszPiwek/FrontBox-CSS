@@ -4,6 +4,7 @@ global.jQuery = $;
 global.bodyScrollLock = require('body-scroll-lock');
 // global.AOS = require('aos');
 // global.Cookies = require('js-cookie');
+require('./frontbox/jquery/scrollBlock')();
 require('lazysizes');
 
 /* jQuery Plugins */
@@ -100,7 +101,9 @@ $(window).bind("load", function() {
     var scrollTo = require('./frontbox/scrollTo')({
         ELEMENTS: ELEMENTS,
         SCROLL: SCROLL,
+        DEVICE: DEVICE,
         FUNCTIONS: FUNCTIONS,
+        BREAKPOINTS_HEADER: BREAKPOINTS_HEADER,
         SETTINGS: {
             // active automatic scroll page to element via URL hash
             autoScroll: false,
@@ -114,6 +117,8 @@ $(window).bind("load", function() {
             prefixAutoScroll: 'scroll-'
         },
      });
+    scrollTo.on('footer');
+    console.log(scrollTo);
 
     /**
      * Create fixed element when page is scroll
