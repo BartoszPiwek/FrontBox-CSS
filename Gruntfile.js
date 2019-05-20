@@ -533,28 +533,29 @@ module.exports = function(grunt) {
 
                 grunt.loadNpmTasks('grunt-browserify');
 
-                // if (SETTINGS.framework === 'frontbox') {
+                if (SETTINGS.framework === 'frontbox') {
                     TASKS.browserify.init = {
-                        // src: `src/js/app.${SETTINGS.jsExtension}`,
-                        // dest: `public/${SETTINGS.version}/js/app.${SETTINGS.version}.js`,
                         options: {
                             plugin: []
                         },
                         files: [{
                             expand: true,
                             cwd: `src/js/`,
-                            src: '*',
+                            src: `*.${SETTINGS.jsExtension}`,
                             dest: `public/${SETTINGS.version}/js/`,
                             filter: `isFile`,
                             ext: `.${SETTINGS.version}.js`,
                         }],
                     };
 
-                // }
-
-                // else {
+                    console.log(TASKS.browserify.init);
                     
-                // }
+
+                }
+
+                else {
+                    
+                }
 
                 if (SETTINGS.jsExtension === 'ts') {
                     TASKS.browserify.init.options.plugin.push('tsify');
