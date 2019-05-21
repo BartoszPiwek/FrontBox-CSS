@@ -11,10 +11,12 @@ window.onload = () => {
     * Forms
     */
    new InputCounter({
-      wrap: `input-counter`,
-      input: `input-counter__input`,
-      buttons: `input-counter__btn`,
-      disable: `--disable`,
+      cssClass: {
+        wrap: `[data-bind="input-counter"]`,
+        input: `.input-counter__input`,
+        button: `.input-counter__btn`,
+        disable: `--disable`,
+      }
    });
 
    /**

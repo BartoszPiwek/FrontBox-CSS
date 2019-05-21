@@ -20,16 +20,20 @@ export class Browser {
         console.log(`Browser`);
         
         this.transitionEvent = this.getTransitionEvent();
-        /* test-code */
-        console.log(`- transitionEvent: ${this.transitionEvent}`);
-        /* end-test-code */
-
         this.portable = this.getMobileOperatingSystem();
-        /* test-code */
-        console.log(`- portable: ${this.portable}`);
-        /* end-test-code */
 
         this.refresh();
+
+        /* test-code */
+        console.table({
+            width: this.width,
+            height: this.height,
+            responsive: this.responsive,
+            orientation: this.orientation,
+            portable: this.portable,
+        })
+        /* end-test-code */
+
     };
 
     private getTransitionEvent() {
@@ -93,13 +97,6 @@ export class Browser {
         this.width             = width;
         this.height            = height;
         this.responsive        = this.getResponsive();
-
-        /* test-code */
-        console.log(`Browser`);
-        console.log(`- width: ${this.width}`);
-        console.log(`- height: ${this.height}`);
-        console.log(`- orientation: ${this.orientation}`);
-        /* end-test-code */
 
         /**
          * Don't refresh page if user change tab 
