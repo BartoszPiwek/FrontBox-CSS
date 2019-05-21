@@ -1,30 +1,25 @@
 /**
+ * Inform users that your site uses cookies 
+ *
  * @class Cookie
- * TODO: Content from html file
+ * @version 1.0
+ * @require
+ * JavaScript Cookie - https://github.com/js-cookie/js-cookie
+ *
+ * 21.05.2019 Convert jQuery code to vanilla JS
  */
 
 import * as Cookies from "js-cookie";
-import * as $ from "jquery";
-import { $body } from "../data/elements";
-
-interface InformationCookieData {
-    imageSrc: string,
-    content: string,
-}
+import { body } from "../data/elements";
 
 export class InformationCookie {
 
-    private imageSrc: string;
-    private content: string;
+    private cookie: HTMLElement;
+    private accept: NodeList;
 
-    private $cookie: JQuery<HTMLElement>;
-    private $accept: JQuery<HTMLElement>;
-
-    constructor( data: InformationCookieData ) {
+    constructor( ) {
 
         if (!Cookies.get('using_cookies')) {
-            this.imageSrc   = data.imageSrc;
-            this.content    = data.content;
             this.show();
 
             /* test-code */
@@ -39,45 +34,51 @@ export class InformationCookie {
 
     }
 
-    private createElement(): JQuery<HTMLElement> {
-        return $(`
-            <div class="js_cookies-information" id="js_cookies-information">
-                <div class="wrap">
-                    <div class="js_cookies-information__container">
-                        <img src="${this.imageSrc}" class="js_cookies-information__img" alt="Ciasteczka">
-                        <p class="js_cookies-information__text">
-                            ${this.content}
-                        </p>
-                        <p class="js_cookies-information__exit js_cookies-close"></p>
-                    </div>
-                </div>
-            </div>
-        `);
+    /**
+     * Show information
+     */
+    private show = async() => {
+
+        const cookiesContent = await fetch('cookies.html', {
+            headers: {
+                'Content-Type': 'text/html'
+            },
+        });
+        const cookiesContentHTML = await cookiesContent.text();
+
+        body.insertAdjacentHTML('beforeend', cookiesContentHTML );
+
+        this.cookie = document.getElementById('js_cookies-information');
+        this.accept = document.querySelectorAll('.js_cookies-close');
+
+        this.bindClick();
+
     }
 
-    private accept(e: JQuery.Event): void {
+    private bindClick() {
+
+        this.accept.forEach( ( item ) => {
+
+            item.addEventListener('click', () => {
+                this.onClick();
+            });
+
+        });
         
+    }
+
+    private onClick() {
+
         Cookies.set('using_cookies', 1);
-        this.$cookie.addClass("js_cookies-information--hide");
+        
+        this.cookie.classList.add("js_cookies-information--hide");
 
         /* test-code */
         console.log(`Cookie\n - accepted cookies`);
         /* end-test-code */
 
-        e.preventDefault();
+        return false;
+
     }
 
-    /**
-     * Show information
-     */
-    private show(): void {
-
-        let $element = this.createElement();
-        $body.append( $element ); 
-
-        this.$cookie = $("#js_cookies-information");
-        this.$accept = this.$cookie.find(".js_cookies-close");
-
-        this.$accept.on('click', (e) => this.accept(e) );
-    }
 }

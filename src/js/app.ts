@@ -22,13 +22,7 @@ window.onload = () => {
    /**
     * Informations
     */
-   // Site using cookies
-   new InformationCookie({
-      imageSrc: `/images/cookies.png`,
-      content: `
-      W naszym serwisie wykorzystujemy pliki Cookies. Są one zapisywane na dysku urządzenia końcowego użytkownika w celach statystycznych oraz ułatwienia korzystania z serwisu. Ustawienia te zawsze można zmienić. Szczegółowe informacje o plikach Cookies znajdują się w <a href="#" target="_blank">Polityce Prywatności</a>
-      `,
-   });
+   new InformationCookie();
 
    /* Inform stylesheed to remove style fallback for JavaScript elements */
    $html.removeClass("js_no");

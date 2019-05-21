@@ -9,11 +9,12 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 =========================================================================*/
 var 
 SETTINGS    = require('./settings/settings'),
-NEWER       = '';
-KEEPALIVE   = false;
+NEWER       = '',
+KEEPALIVE   = false,
 TASKS       = {
     watch: null,
-};
+},
+DEV         = true;
 
 /* Style run tasks */
 var RUN = {
@@ -71,6 +72,7 @@ module.exports = function(grunt) {
     grunt.registerTask('prod', () => {
 
         SETTINGS.version = 'prod';
+        DEV = true;
         
         grunt.task.run([
 
@@ -536,7 +538,10 @@ module.exports = function(grunt) {
                 if (SETTINGS.framework === 'frontbox') {
                     TASKS.browserify.init = {
                         options: {
-                            plugin: []
+                            plugin: [],
+                            browserifyOptions: {
+                                debug: DEV
+                            }
                         },
                         files: [{
                             expand: true,
