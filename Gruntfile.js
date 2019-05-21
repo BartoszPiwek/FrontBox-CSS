@@ -270,11 +270,6 @@ module.exports = function(grunt) {
                 /* Load tasks */
                 grunt.loadNpmTasks('grunt-contrib-less');
 
-                var sourceMap = false;
-                if ( SETTINGS.version === 'dev' ) {
-                    sourceMap = true;
-                }
-
                 var modifyVars = SETTINGS;
 
                 if (SETTINGS.framework === 'frontbox') {
@@ -284,7 +279,7 @@ module.exports = function(grunt) {
                         main: {
                             options: {
                                 compress: false,
-                                sourceMap: sourceMap,
+                                sourceMap: DEV,
                                 sourceMapFilename: `public/${SETTINGS.version}/style.${SETTINGS.version}.css.map`,
                                 sourceMapURL: `style.${SETTINGS.version}.css.map`,
                                 sourceMapBasepath: '../',
@@ -349,11 +344,12 @@ module.exports = function(grunt) {
                             },
                         });
 
-                        RUN.STYLE = RUN.STYLE.concat([
-                            'less',
-                        ]);
-
                     }
+
+                    RUN.STYLE = RUN.STYLE.concat([
+                        'less',
+                    ]);
+
                 }
 
                 /* No FrontBox-CSS project */
@@ -616,9 +612,29 @@ module.exports = function(grunt) {
                 TASKS.babel = {
                     options: {
                         sourceMap: false,
-                        presets: [
-                            'env',
-                        ]
+                        "presets": [
+                            ["env", {
+                              "targets": {
+                                "browsers": [
+                                  "Chrome >= 52",
+                                  "FireFox >= 44",
+                                  "Safari >= 7",
+                                  "Explorer 11",
+                                  "last 4 Edge versions"
+                                ]
+                              },
+                              "useBuiltIns": 'usage'
+                            }],
+                            "react",
+                          ],
+                          "ignore": [
+                            "node_modules"
+                          ],
+                          "plugins": [
+                            "transform-decorators-legacy",
+                            "transform-class-properties",
+                            "syntax-class-properties"
+                          ]
                     },
                     init: {
                         files: [{
