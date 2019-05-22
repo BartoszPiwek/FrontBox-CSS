@@ -1,8 +1,11 @@
-import * as config from "./../config";
+/* Import libs */
 import { src, dest } from "gulp";
+import { less } from 'gulp-less';
+import { rename } from "gulp-rename";
+
+/* Import config */
 import { browserSync } from "./../gulpfile.babel";
-var less = require('gulp-less');
-var rename = require("gulp-rename");
+import * as config from "./../config";
 
 let DEV = true;
 
@@ -15,7 +18,7 @@ function getModeName() {
    }
 }
 
-export function styleMain() {
+export function main() {
 
       const element = config.path.style.main;
 
@@ -37,8 +40,7 @@ export function styleMain() {
          ))
          .pipe( browserSync.stream() );
 }
-
-export function styleBase() {
+export function base() {
 
       const element = config.path.style.base;
       
@@ -61,8 +63,7 @@ export function styleBase() {
          ))
          .pipe( browserSync.stream() );
 }
-
-export function styleGrid() {
+export function grid() {
 
       const element = config.path.style.grid;
       
@@ -85,8 +86,7 @@ export function styleGrid() {
          ))
          .pipe( browserSync.stream() );
 }
-
-export function styleUtilities() {
+export function utilities() {
 
       const element = config.path.style.utilities;
       

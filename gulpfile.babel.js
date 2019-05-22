@@ -1,20 +1,18 @@
-import { src, dest, watch, series, parallel, task } from "gulp";
-// import { less } from "gulp-less";
+/*!************************************************************************
+Framework:      FrontBox 1.2.0
+Author:         Bartosz Piwek
+Repository:     https://github.com/BartoszPiwek/FrontBox
+************************************************************************!*/
+
+/* Import libs */
+import { src, dest, watch, series, parallel } from "gulp";
+import { pug } from 'gulp-pug';
+import { rename } from 'gulp-rename';
+import { browserify } from 'browserify';
+import { source } from 'vinyl-source-stream';
 const browserSync = require('browser-sync').create();
-var pug = require('gulp-pug');
-var rename = require("gulp-rename");
-var config = require("./config");
-var typescript = require('gulp-typescript');
-var browserify = require("browserify");
-var source = require('vinyl-source-stream');
-
-var tsify = require('tsify');
-
-// var babel = require('gulp-babel');
-// var concat = require('gulp-concat');
-// var uglify = require('gulp-uglify');
-// var cleanCSS = require('gulp-clean-css');
-// var del = require('del');
+/* Import config */
+import * as config from './config';
 
 let DEV = true;
 
@@ -79,30 +77,33 @@ export function html() {
         .pipe( browserSync.stream() );
 }
 
-import { styleMain, styleBase, styleGrid, styleUtilities } from "./gulp/style";
-export const buildStyle = parallel( styleMain, styleBase, styleGrid, styleUtilities );
-// export { styleMain, styleBase };
+/* Style */
+import * as styleTasks from "./gulp/style";
+export const buildStyle = parallel( styleTasks.main, styleTasks.base, styleTasks.grid, styleTasks.utilities );
 
+/* Main watch function */
 export function watchFiles() {
 
+    /* Style */
     const styleObject = config.path.style;
-    
-    watch( styleObject.main.watch, styleMain );
-    watch( styleObject.base.watch, styleBase );
-    watch( styleObject.grid.watch, styleGrid );
-    watch( styleObject.utilities.watch, styleUtilities );
+    watch( styleObject.main.watch, styleTasks.main );
+    watch( styleObject.base.watch, styleTasks.base );
+    watch( styleObject.grid.watch, styleTasks.grid );
+    watch( styleObject.utilities.watch, styleTasks.utilities );
 
-    // /* HTML */
+    /* HTML */
     const htmlObject = config.path.pug;
     watch( htmlObject.base.watch, html );
+
+    /* Scripts */
 }
 
 
 const build = series( parallel( javascript, buildStyle, html ), server, watchFiles );
 
-export { browserSync };
-
 /* Export */
+export { browserSync };
 exports.default = () => {
     build();
 };
+exports.style = series( buildStyle, server, watchFiles );
