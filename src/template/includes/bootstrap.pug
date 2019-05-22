@@ -29,7 +29,12 @@ block variables
 
         //- Assets
         block assets_head
+            if version == "dev"
+                link(rel="stylesheet" type="text/css" href="/css/utilities." + version + ".css" media="all")
+                link(rel="stylesheet" type="text/css" href="/css/grid." + version + ".css" media="all")
+                link(rel="stylesheet" type="text/css" href="/css/base." + version + ".css" media="all")
             link(rel="stylesheet" type="text/css" href="/style." + version + ".css" media="all")
+
 
         //- Critical CSS
         if page_critical_css && version == "prod"
@@ -67,4 +72,4 @@ block variables
 
         //- Assets
         block assets_footer 
-            script(src="/js/app." + version + ".js")
+            script(src="/scripts/app." + version + ".js")

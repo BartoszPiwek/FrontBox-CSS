@@ -7,19 +7,6 @@ module.exports = (SETTINGS) => {
 
     return {
 
-        /* Insert inline SVG */
-        // svg: (block) => {
-        //     let output = null;
-
-        //     console.log(block);
-
-        //     fs.readFile(`./src/images/svg/${block}.svg`, 'utf8', (err, data) => {
-        //         output = data;
-        //     });
-
-        //     return output;
-        // },
-
         printFilesLink: (path) => {
 
             let output = '';

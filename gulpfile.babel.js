@@ -1,9 +1,14 @@
-import { src, dest, watch, series, parallel } from "gulp";
+import { src, dest, watch, series, parallel, task } from "gulp";
 // import { less } from "gulp-less";
 const browserSync = require('browser-sync').create();
-var less = require('gulp-less');
+var pug = require('gulp-pug');
 var rename = require("gulp-rename");
 var config = require("./config");
+var typescript = require('gulp-typescript');
+var browserify = require("browserify");
+var source = require('vinyl-source-stream');
+
+var tsify = require('tsify');
 
 // var babel = require('gulp-babel');
 // var concat = require('gulp-concat');
@@ -22,7 +27,8 @@ function getModeName() {
     }
 }
 
-// function server() {
+
+export function server( done ) {
     browserSync.init({
         open: config.browsersync.open,
         host: config.browsersync.host,
@@ -32,19 +38,40 @@ function getModeName() {
             baseDir: `./public/${getModeName()}/`
         }
     });
-// }
 
-function style() {
-    return src( `src/style/style.less` )
-        .pipe( less({
-            modifyVars: config,
-            plugins: [
-                require('less-plugin-glob'),
-            ]
-        }))
+    done();
+}
+
+
+/* JavaScript */
+export function javascript() {
+
+    return browserify({ entries: `src/scripts/app.ts` }, {
+            plugin: [
+                'tsify'
+            ],
+            browserifyOptions: {
+                debug: DEV
+            }
+        })
+        .bundle()
+        .pipe(source('app.js'))
         .pipe( rename({
-            basename: 'style',
             suffix: `.${getModeName()}`,
+        }))
+        .pipe( dest(
+            `public/${getModeName()}/scripts/`
+        ))
+        .pipe( browserSync.stream() );
+
+}
+
+/* HTML */
+export function html() {
+    return src('src/template/*.pug')
+        .pipe( pug({
+            data: config,
+            filters: require("./settings/tasks/html/pug-filters")( config ),
         }))
         .pipe( dest(
             `public/${getModeName()}/`
@@ -52,19 +79,30 @@ function style() {
         .pipe( browserSync.stream() );
 }
 
-function watchFiles() {
-    watch( `src/style/*.less`, styles);
-}
-export { watchFiles as watch };
+import { styleMain, styleBase, styleGrid, styleUtilities } from "./gulp/style";
+export const buildStyle = parallel( styleMain, styleBase, styleGrid, styleUtilities );
+// export { styleMain, styleBase };
 
-const dev = series( parallel( style ) );
+export function watchFiles() {
+
+    const styleObject = config.path.style;
+    
+    watch( styleObject.main.watch, styleMain );
+    watch( styleObject.base.watch, styleBase );
+    watch( styleObject.grid.watch, styleGrid );
+    watch( styleObject.utilities.watch, styleUtilities );
+
+    // /* HTML */
+    const htmlObject = config.path.pug;
+    watch( htmlObject.base.watch, html );
+}
+
+
+const build = series( parallel( javascript, buildStyle, html ), server, watchFiles );
+
+export { browserSync };
 
 /* Export */
-exports.style = style;
-
-exports.dev = dev;
-
 exports.default = () => {
-    dev();
-    return watch('src/style/*.less', series('style'));
+    build();
 };

@@ -25,7 +25,64 @@ module.exports = {
 
     version                 : 'dev',
 
-    /* Path */
+    /* Tasks */
+    path: {
+        style: {
+            main: {
+                files: 'src/style/style.less',
+                dest: '',
+                watch: [
+                    'src/style/style.less',
+                    'src/style/*/**.less',
+                ]
+            },
+            base: {
+                files: 'src/style/base.less',
+                dest: 'css/',
+                watch: [
+                    'src/style/base.less',
+                    "src/style/variables/**/*",
+                    "sec/style/frontbox/**/*"
+                ]
+            },
+            grid: {
+                files: 'src/style/grid.less',
+                dest: 'css/',
+                watch: [
+                    'src/style/grid.less',
+                    "src/style/frontbox/variables.less",
+                    "src/style/frontbox/functions.less",
+                    "src/style/frontbox/grid.less"
+                ]
+            },
+            utilities: {
+                files: 'src/style/utilities.less',
+                dest: 'css/',
+                watch: [
+                    'src/style/utilities.less',
+                    "src/style/utilities/*.less"
+                ]
+            },
+        },
+        javascript: {
+            name: 'main',
+            files: 'src/scripts/app.*',
+            dest: '',
+            watch: [
+                'src/scripts/frontbox/**/*.ts',
+            ]  
+        },
+        pug: {
+            base: {
+                files: 'src/template/*.pug',
+                dest: '',
+                watch: [
+                    'src/template/*.pug',
+                ]  
+            }
+        },
+    },
+
     pathToPublic            : 'public',
     pathToFrontBoxPlugins   : './../FrontBox-Plugins',
 
