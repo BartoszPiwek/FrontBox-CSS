@@ -64,23 +64,63 @@ module.exports = {
                 ]
             },
         },
-        javascript: {
-            name: 'main',
-            files: 'src/scripts/app.*',
-            dest: '',
-            watch: [
-                'src/scripts/frontbox/**/*.ts',
-            ]  
+        script: {
+            main: {
+                files: 'src/scripts/app.ts',
+                dest: '',
+                watch: [
+                    'src/scripts/app.ts',
+                    'src/scripts/frontbox/**/*.ts',
+                ] 
+            } 
         },
         pug: {
-            base: {
+            main: {
                 files: 'src/template/*.pug',
                 dest: '',
                 watch: [
                     'src/template/*.pug',
+                    'src/template/includes/*.pug'
                 ]  
-            }
+            },
         },
+        copy: {
+            image: {
+                files: 'src/images/**/*',
+                dest: 'images',
+                watch: [
+                    'src/images/**/*',
+                ]  
+            },
+            fonts: {
+                files: 'src/fonts/*',
+                dest: 'fonts',
+                watch: [
+                    'src/fonts/*',
+                ]  
+            },
+            other: {
+                files: 'src/other/*',
+                dest: 'other',
+                watch: [
+                    'src/other/*',
+                ]  
+            },
+            video: {
+                files: 'src/video/*',
+                dest: 'video',
+                watch: [
+                    'src/video/*',
+                ]  
+            },
+            audio: {
+                files: 'src/audio/*',
+                dest: 'audio',
+                watch: [
+                    'src/audio/*',
+                ]  
+            },
+        }
     },
 
     pathToPublic            : 'public',
