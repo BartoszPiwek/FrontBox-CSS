@@ -7,9 +7,6 @@ logs/*
 src/template/critical-css/*
 docs
 
-# Dev
-public/dev
-
 # Libs
 src/js/libs/*
 
