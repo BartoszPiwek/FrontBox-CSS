@@ -63,15 +63,9 @@ export class InputCounter {
         $input = $wrap.find( this.cssClass.input ),
         $button = $wrap.find( this.cssClass.button );
 
-        console.log($input);
-        console.log($button);
-
         this.$input.append( $input );
         this.$button.append( $button );
     });
-
-    console.log(this.$input);
-    console.log(this.$button);
 
     this.active = true;
   }

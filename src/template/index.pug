@@ -17,9 +17,18 @@ block append content
 
     include includes/navigation.pug
 
-    .hero.hero-main.js_full-height(style="background: #6c757d")
 
     main.page-content.relative
+
+        .hero.hero-main.js_full-height(style="background: #6c757d")
+
+        //- Loop
+        .wrap
+            .row.row-space
+                each item in [{color: 'red', background: 'blue'}, {color: 'blue', background: 'red'}]
+                    .col-4
+                        div(style="color: " + item.color + "; background-color: " + item.background ) 
+                            | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente itaque, exercitationem dolores minima unde nihil quod? Eveniet consectetur labore, ad ducimus natus maiores, veniam minima doloribus vel odio dolores fuga.
 
         .wrap
             | Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, ad? Ullam asperiores et labore dolores deleniti, ipsam eligendi quibusdam accusantium debitis consectetur soluta harum ab repellendus minus! Nam, in cum.s

@@ -12,14 +12,24 @@
 import * as Cookies from "js-cookie";
 import { body } from "../data/elements";
 
+interface InformationCookieData {
+    template?: string | boolean;
+}
+
 export class InformationCookie {
 
     private cookie: HTMLElement;
     private accept: NodeList;
+    private data: InformationCookieData = {
+        template: false,
+    }
 
-    constructor( ) {
+    constructor( data?: InformationCookieData ) {
 
         if (!Cookies.get('using_cookies')) {
+
+            this.data = Object.assign(this.data, data);
+
             this.show();
 
             /* test-code */
@@ -39,50 +49,47 @@ export class InformationCookie {
         xhr.open('GET', 'cookies.html');
         xhr.send();
         xhr.onreadystatechange = function () {
-
-            // Only run if the request is complete
             if (xhr.readyState !== 4) return;
-
-            // Process our return data
             if (xhr.status >= 200 && xhr.status < 300) {
-                // What do when the request is successful
-                console.log('success', xhr.responseText);
                 callback.apply( this, [xhr.responseText]);
-            } else {
-                // What to do when the request has failed
-                console.log('error', xhr);
             }
-
         };
     };
 
     /**
      * Show information
      */
+    private mount = ( cookiesContentHTML ) => {
+
+        body.insertAdjacentHTML('beforeend', cookiesContentHTML );
+    
+        this.cookie = document.getElementById('js_cookies-information');
+        this.accept = document.querySelectorAll('.js_cookies-close');
+        
+        this.bindClick();
+
+    }
+
     private show = () => {
 
-        this.getContent(
-            ( cookiesContentHTML ) => {
-                body.insertAdjacentHTML('beforeend', cookiesContentHTML );
-
-                this.cookie = document.getElementById('js_cookies-information');
-                this.accept = document.querySelectorAll('.js_cookies-close');
-        
-                this.bindClick();
-            }
-        );
+        if ( this.data.template ) {
+            this.mount( this.data.template );
+        }
+        else {
+            this.getContent(
+                ( cookiesContentHTML ) => {
+                    this.mount( cookiesContentHTML );
+                }
+            );
+        }
     }
 
     private bindClick() {
-
         this.accept.forEach( ( item ) => {
-
             item.addEventListener('click', () => {
                 this.onClick();
             });
-
         });
-        
     }
 
     private onClick() {
@@ -96,7 +103,5 @@ export class InformationCookie {
         /* end-test-code */
 
         return false;
-
     }
-
 }
