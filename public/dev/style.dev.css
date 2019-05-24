@@ -6,6 +6,7 @@ Url         : https://github.com/BartoszPiwek/FrontBox-CSS
 Version     : 1.1.0
 ********************************************************************/
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@charset */
+/* Grid */
 /* Prepare */
 /*=========================================================================
 || Screen sizes for responsive design
@@ -955,150 +956,6 @@ body {
 || Animate transitions from one CSS style configuration to another
 =========================================================================*/
 /*=========================================================================
-|| FILE: Base
-===========================================================================
-|| Base style for page elements
-=========================================================================*/
-/* Pass responsive variables to JavaScript */
-:root {
-  --desktop: 1024;
-  --tablet: 768;
-  --fablet: 550;
-  --mobile: 549;
-  --headerDesktop: 50;
-  --headerTablet: 30;
-  --headerMobile: 30;
-}
-html {
-  background-color: #FFFFFF;
-}
-/* Scrollbar */
-body::-webkit-scrollbar,
-.scrollbar::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  background-color: #FFFFFF;
-  border-left: 1px solid #e7be54;
-}
-body::-webkit-scrollbar-thumb,
-.scrollbar::-webkit-scrollbar-thumb {
-  min-width: 12px;
-  max-height: 12px;
-  background-color: #e7be54;
-}
-body::-webkit-scrollbar-track,
-.scrollbar::-webkit-scrollbar-track {
-  display: none;
-}
-.code {
-  font-size: 14px;
-  background-color: #90938F;
-  color: #FFFFFF;
-  padding: 5px;
-  display: block;
-  margin: 5px 0;
-  font-family: monospace;
-}
-.link {
-  -webkit-user-drag: none;
-}
-.page__overlay,
-.page__loading {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: background-color 0.2s;
-  background-color: transparent;
-}
-.page__overlay > *,
-.page__loading > * {
-  display: none;
-}
-.js_resize .page__loading {
-  z-index: 10000;
-  user-select: none;
-  pointer-events: none;
-  background: rgba(0, 0, 0, 0.4);
-}
-.js_resize .page__loading > * {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-/*=========================================================================
-|| FILE: Button
-===========================================================================
-|| Style clickable buttons
-=========================================================================*/
-.btn {
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
-  box-sizing: border-box;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-  text-align: center;
-  padding: 14px 6px;
-  font-size: 14px;
-  letter-spacing: 0.4px;
-  height: 100%;
-  color: #000000;
-  background-color: #e7be54;
-  border: 0;
-  border-radius: 5px;
-  /**
-     * Animation
-     */
-  /**
-     * Collection
-     */
-}
-.btn .icon {
-  transition: transform 0.2s;
-}
-.btn:active {
-  transform: translateY(1px);
-}
-.btn--hover:hover .btn,
-.btn--hover:active .btn,
-.btn--hover:focus .btn,
-.btn--hover-active .btn,
-.btn--hover-active .btn,
-.btn--hover-active .btn,
-.btn:hover,
-.btn:active,
-.btn:focus {
-  background-color: #bb8e1a;
-}
-.btn-disable:before {
-  border-radius: inherit;
-  pointer-events: none;
-  height: 100%;
-  width: 100%;
-  background: black;
-  opacity: 0.6;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/**
- * Colors
- */
-/**
- * Size
- */
-/*=========================================================================
-|| FILE: Boxes
-===========================================================================
-|| Style for boxes ( cards | containers )
-=========================================================================*/
-/*=========================================================================
 // BUTTON - create button elements
 // .add-button(text-color, background-color, border, hover-darken-percent)
 // * text color
@@ -1186,6 +1043,91 @@ body::-webkit-scrollbar-track,
   border-color: transparent !important;
 }
 /*=========================================================================
+|| FILE: Boxes
+===========================================================================
+|| Style for boxes ( cards | containers )
+=========================================================================*/
+/*=========================================================================
+|| FILE: Base
+===========================================================================
+|| Base style for page elements
+=========================================================================*/
+/* Pass responsive variables to JavaScript */
+:root {
+  --desktop: 1024;
+  --tablet: 768;
+  --fablet: 550;
+  --mobile: 549;
+  --headerDesktop: 50;
+  --headerTablet: 30;
+  --headerMobile: 30;
+}
+html {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='red' font-size='20'>I love SVG!</text></svg>");
+}
+body {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='blue' font-size='20'>I hate SVG!</text></svg>");
+}
+/* Scrollbar */
+body::-webkit-scrollbar,
+.scrollbar::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: #FFFFFF;
+  border-left: 1px solid #e7be54;
+}
+body::-webkit-scrollbar-thumb,
+.scrollbar::-webkit-scrollbar-thumb {
+  min-width: 12px;
+  max-height: 12px;
+  background-color: #e7be54;
+}
+body::-webkit-scrollbar-track,
+.scrollbar::-webkit-scrollbar-track {
+  display: none;
+}
+.code {
+  font-size: 14px;
+  background-color: #90938F;
+  color: #FFFFFF;
+  padding: 5px;
+  display: block;
+  margin: 5px 0;
+  font-family: monospace;
+}
+.link {
+  -webkit-user-drag: none;
+}
+.page__overlay,
+.page__loading {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.2s;
+  background-color: transparent;
+}
+.page__overlay > *,
+.page__loading > * {
+  display: none;
+}
+.js_resize .page__loading {
+  z-index: 10000;
+  user-select: none;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.4);
+}
+.js_resize .page__loading > * {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*=========================================================================
 || FILE: Footer
 ===========================================================================
 || Style for footer elements
@@ -1261,6 +1203,68 @@ body::-webkit-scrollbar-track,
     padding-bottom: 45px;
   }
 }
+/*=========================================================================
+|| FILE: Button
+===========================================================================
+|| Style clickable buttons
+=========================================================================*/
+.btn {
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  text-align: center;
+  padding: 14px 6px;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  height: 100%;
+  color: #000000;
+  background-color: #e7be54;
+  border: 0;
+  border-radius: 5px;
+  /**
+     * Animation
+     */
+  /**
+     * Collection
+     */
+}
+.btn .icon {
+  transition: transform 0.2s;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn--hover:hover .btn,
+.btn--hover:active .btn,
+.btn--hover:focus .btn,
+.btn--hover-active .btn,
+.btn--hover-active .btn,
+.btn--hover-active .btn,
+.btn:hover,
+.btn:active,
+.btn:focus {
+  background-color: #bb8e1a;
+}
+.btn-disable:before {
+  border-radius: inherit;
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: 0.6;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/**
+ * Colors
+ */
+/**
+ * Size
+ */
 /*=========================================================================
 || FILE: _forms.less
 ===========================================================================
@@ -1596,7 +1600,18 @@ label[for] {
   z-index: 1;
 }
 /*=========================================================================
-|| FILE: Index
+|| FILE: Icons
+===========================================================================
+|| Style SVG/IMG icons
+=========================================================================*/
+/**
+ * Default style
+ */
+.icon {
+  transition: fill 0.2s;
+}
+/*=========================================================================
+|| FILE: Link
 ===========================================================================
 || Style for most index elements
 =========================================================================*/
@@ -1852,22 +1867,6 @@ html.js_sticky-header .header {
     height: 50px;
   }
 }
-/*=========================================================================
-|| FILE: Icons
-===========================================================================
-|| Style SVG/IMG icons
-=========================================================================*/
-/**
- * Default style
- */
-.icon {
-  transition: fill 0.2s;
-}
-/*=========================================================================
-|| FILE: Link
-===========================================================================
-|| Style for most index elements
-=========================================================================*/
 /*=========================================================================
 || FILE: List
 ===========================================================================
@@ -3089,6 +3088,11 @@ html.js_sticky-header .header {
   }
 }
 /*=========================================================================
+|| FILE: Index
+===========================================================================
+|| Style for most index elements
+=========================================================================*/
+/*=========================================================================
 || FILE: Plugins
 ===========================================================================
 || Concatenate files and set variables for plugins
@@ -3208,6 +3212,23 @@ html.js_sticky-header .header {
 .js_wcag-focus .wcag-skip:focus {
   opacity: 1;
 }
+/*=========================================================================
+|| FILE: Transparent
+===========================================================================
+|| Category: Background
+|| Link: http://localhost:8181/debug/background.html#transparent
+|| Changlelog:
+||  22.02.19 - add
+/*=======================================================================*/
+.background-transparent {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  vertical-align: top;
+  background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+}
 .bar {
   position: relative;
   font-size: 0;
@@ -3320,122 +3341,6 @@ html.js_sticky-header .header {
 }
 .bar-image.bar--secondary .bar__placeholder {
   width: 250px;
-}
-.animation_slider-navigation-clip {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  height: 40px;
-  /* Base style for resized overflow animation */
-}
-.animation_slider-navigation-clip__clip {
-  top: 50%;
-  left: 0;
-  position: absolute;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 100%;
-  background-image: -webkit-linear-gradient(left, #000000 0%, #000000 50%, #000000 51%, #000000 100%);
-  background-size: 200% 200%;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  filter: drop-shadow(0px 0px 1px transparent) invert(0%);
-  image-rendering: -webkit-optimize-contrast;
-  font-size: 13px;
-  padding: 0 20px;
-}
-@media only screen and (min-width: 768px) {
-  .animation_slider-navigation-clip__clip {
-    font-size: 9px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .animation_slider-navigation-clip__clip {
-    font-size: 13px;
-  }
-}
-.animation_slider-navigation-clip__item {
-  position: relative;
-  transform: translateZ(0);
-  transition: background-color 0.2s, color 0.2s;
-  cursor: pointer;
-  text-align: center;
-  overflow: hidden;
-  flex: 1 1 auto;
-  margin-right: 5px;
-  /* Item content */
-  /* Style for items */
-  /* Run animation on active item */
-}
-.animation_slider-navigation-clip__item:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: background-color 0.2s;
-  width: 100%;
-  height: 100%;
-  background-color: #FFFFFF;
-  border: 2px solid #e7be54;
-}
-.animation_slider-navigation-clip__item:first-child {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-}
-.animation_slider-navigation-clip__item:first-child:before {
-  border-top-left-radius: inherit;
-  border-bottom-left-radius: inherit;
-}
-.animation_slider-navigation-clip__item:last-child {
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-right: 0;
-}
-.animation_slider-navigation-clip__item:last-child:before {
-  border-top-right-radius: inherit;
-  border-bottom-right-radius: inherit;
-}
-.animation_slider-navigation-clip__item--active {
-  cursor: default;
-}
-.animation_slider-navigation-clip__item--active .animation_slider-navigation-clip__overflow {
-  animation-duration: 8s;
-  animation-name: animation_slider-navigation-clip-background;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-.animation_slider-navigation-clip__item--active .animation_slider-navigation-clip__clip {
-  animation-duration: 16s;
-  animation-name: animation_slider-navigation-clip;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  background-image: -webkit-linear-gradient(left, #ffffff 0%, #ffffff 50%, #000000 51%, #000000 100%);
-}
-.animation_slider-navigation-clip__overflow {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: #e7be54;
-  width: 0%;
-  height: 100%;
-}
-/* Animation for background animation */
-@keyframes animation_slider-navigation-clip-background {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-/* Animation for clip color animation */
-@keyframes animation_slider-navigation-clip {
-  0% {
-    background-position: 100% 50%;
-  }
-  50% {
-    background-position: 0 50%;
-  }
 }
 /*=========================================================================
 || FILE: badges.less
@@ -3555,23 +3460,6 @@ html.js_sticky-header .header {
   z-index: -1;
 }
 /*=========================================================================
-|| FILE: Transparent
-===========================================================================
-|| Category: Background
-|| Link: http://localhost:8181/debug/background.html#transparent
-|| Changlelog:
-||  22.02.19 - add
-/*=======================================================================*/
-.background-transparent {
-  max-width: 100%;
-  height: auto;
-  width: auto;
-  vertical-align: top;
-  background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
-  background-position: 0 0, 10px 10px;
-  background-size: 20px 20px;
-}
-/*=========================================================================
 || FILE: _alert.less
 ===========================================================================
 || Alert elements ( notification )
@@ -3634,6 +3522,38 @@ html.js_sticky-header .header {
 .breadcrumbs__item a:active,
 .breadcrumbs__item a:focus {
   color: red;
+}
+/*=========================================================================
+|| Box with two columns: responsive and static
+|| CATEGORY: Box
+||
+|| EMMET
+.column-spacer>.column-spacer__static+.column-spacer__responsive
+=========================================================================*/
+.column-spacer {
+  display: block;
+  position: relative;
+}
+.column-spacer > .column-spacer__static {
+  position: absolute;
+  left: 0;
+  width: 0;
+}
+.column-spacer--right > .column-spacer__static {
+  left: auto;
+  right: 0;
+}
+.column-spacer--small-img {
+  padding-left: 108px;
+  min-height: 61px;
+}
+.column-spacer--small-img > .column-spacer__static {
+  width: 94px;
+  height: 61px;
+}
+.column-spacer--small-img > .column-spacer__static img {
+  width: 94px;
+  height: 61px;
 }
 /*=========================================================================
 || FILE: Flipper
@@ -3709,38 +3629,6 @@ html.js_sticky-header .header {
   opacity: 1;
 }
 /*=========================================================================
-|| Box with two columns: responsive and static
-|| CATEGORY: Box
-||
-|| EMMET
-.column-spacer>.column-spacer__static+.column-spacer__responsive
-=========================================================================*/
-.column-spacer {
-  display: block;
-  position: relative;
-}
-.column-spacer > .column-spacer__static {
-  position: absolute;
-  left: 0;
-  width: 0;
-}
-.column-spacer--right > .column-spacer__static {
-  left: auto;
-  right: 0;
-}
-.column-spacer--small-img {
-  padding-left: 108px;
-  min-height: 61px;
-}
-.column-spacer--small-img > .column-spacer__static {
-  width: 94px;
-  height: 61px;
-}
-.column-spacer--small-img > .column-spacer__static img {
-  width: 94px;
-  height: 61px;
-}
-/*=========================================================================
 || FILE: timeline.less
 ===========================================================================
 || Create timeline box
@@ -3812,6 +3700,125 @@ html.js_sticky-header .header {
   margin: 0 auto;
   position: relative;
 }
+.animation_slider-navigation-clip {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  height: 40px;
+  /* Base style for resized overflow animation */
+}
+.animation_slider-navigation-clip__clip {
+  top: 50%;
+  left: 0;
+  position: absolute;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 100%;
+  background-image: -webkit-linear-gradient(left, #000000 0%, #000000 50%, #000000 51%, #000000 100%);
+  background-size: 200% 200%;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0px 0px 1px transparent) invert(0%);
+  image-rendering: -webkit-optimize-contrast;
+  font-size: 13px;
+  padding: 0 20px;
+}
+@media only screen and (min-width: 768px) {
+  .animation_slider-navigation-clip__clip {
+    font-size: 9px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .animation_slider-navigation-clip__clip {
+    font-size: 13px;
+  }
+}
+.animation_slider-navigation-clip__item {
+  position: relative;
+  transform: translateZ(0);
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  flex: 1 1 auto;
+  margin-right: 5px;
+  /* Item content */
+  /* Style for items */
+  /* Run animation on active item */
+}
+.animation_slider-navigation-clip__item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: background-color 0.2s;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  border: 2px solid #e7be54;
+}
+.animation_slider-navigation-clip__item:first-child {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.animation_slider-navigation-clip__item:first-child:before {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.animation_slider-navigation-clip__item:last-child {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-right: 0;
+}
+.animation_slider-navigation-clip__item:last-child:before {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.animation_slider-navigation-clip__item--active {
+  cursor: default;
+}
+.animation_slider-navigation-clip__item--active .animation_slider-navigation-clip__overflow {
+  animation-duration: 8s;
+  animation-name: animation_slider-navigation-clip-background;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.animation_slider-navigation-clip__item--active .animation_slider-navigation-clip__clip {
+  animation-duration: 16s;
+  animation-name: animation_slider-navigation-clip;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  background-image: -webkit-linear-gradient(left, #ffffff 0%, #ffffff 50%, #000000 51%, #000000 100%);
+}
+.animation_slider-navigation-clip__overflow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #e7be54;
+  width: 0%;
+  height: 100%;
+}
+/* Animation for background animation */
+@keyframes animation_slider-navigation-clip-background {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+/* Animation for clip color animation */
+@keyframes animation_slider-navigation-clip {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0 50%;
+  }
+}
+/*
+ Social
+*/
 /*=========================================================================
 || FILE: selection-color.less
 ===========================================================================
@@ -3882,17 +3889,6 @@ html.js_sticky-header .header {
   padding-left: 10px;
   position: relative;
 }
-/*
- Social
-*/
-canvas#game {
-  width: 400px;
-  height: 400px;
-  border: 1px dashed black;
-  box-sizing: border-box;
-  display: block;
-  margin: 0 auto;
-}
 /*=========================================================================
 || Create disappear overlay
 || CATEGORY: Hover
@@ -3955,39 +3951,13 @@ canvas#game {
 .hover_text-line-truncated:focus .hover_text-line-truncated__item {
   background-size: 100% 100%;
 }
-/*=========================================================================
-|| Plugin: no-script.less
-===========================================================================
-|| Information about disabled javascript
-=========================================================================*/
-.info-no-script {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  top: 0;
-  left: 0;
-  z-index: 9999;
-}
-.info-no-script__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 500px;
-  padding: 25px 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #FFFFFF;
-  border-radius: 10px;
-}
-.info-no-script__header {
-  font-size: 18px;
-  text-align: center;
-}
-.info-no-script__text {
-  font-size: 16px;
-  margin-top: 16px;
+canvas#game {
+  width: 400px;
+  height: 400px;
+  border: 1px dashed black;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
 }
 /*=========================================================================
 * @name Input counter
@@ -4350,6 +4320,11 @@ body.js_fullslider {
     bottom: 31px;
   }
 }
+/*=========================================================================
+|| Plugin: modals.less
+===========================================================================
+|| Style for modals
+=========================================================================*/
 .list-vertical-scroll {
   position: relative;
   padding: 0 !important;
@@ -4458,11 +4433,6 @@ body.js_fullslider {
   background: linear-gradient(to right, transparent 0%, #191e24 100%);
   transform: translateX(-100%);
 }
-/*=========================================================================
-|| Plugin: modals.less
-===========================================================================
-|| Style for modals
-=========================================================================*/
 .js_placeholder--active {
   display: none;
 }
@@ -4519,31 +4489,6 @@ body.js_fullslider {
   transition: transform 1s 1s;
   transform: translateY(-100%);
 }
-.show-more {
-  overflow: hidden;
-}
-.no_js .show-more {
-  overflow: visible;
-  height: auto !important;
-}
-.show-more--active {
-  height: auto !important;
-}
-.no_js .show-more-button {
-  display: none;
-}
-.show-more-button--less {
-  display: none;
-}
-.show-more-button--more {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--less {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--more {
-  display: none;
-}
 .js_scroll {
   overflow-y: scroll;
   position: relative;
@@ -4583,6 +4528,31 @@ body.js_fullslider {
 .js_scroll:active .js_scroll__bar,
 .js_scroll:focus .js_scroll__bar {
   opacity: 1;
+}
+.show-more {
+  overflow: hidden;
+}
+.no_js .show-more {
+  overflow: visible;
+  height: auto !important;
+}
+.show-more--active {
+  height: auto !important;
+}
+.no_js .show-more-button {
+  display: none;
+}
+.show-more-button--less {
+  display: none;
+}
+.show-more-button--more {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--less {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--more {
+  display: none;
 }
 /* Item */
 .js-sticky-spy {
@@ -4627,6 +4597,40 @@ body.js_fullslider {
 }
 .tab-content:not(.tab-content--active) {
   display: none !important;
+}
+/*=========================================================================
+|| Plugin: no-script.less
+===========================================================================
+|| Information about disabled javascript
+=========================================================================*/
+.info-no-script {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+.info-no-script__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
+  padding: 25px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+.info-no-script__header {
+  font-size: 18px;
+  text-align: center;
+}
+.info-no-script__text {
+  font-size: 16px;
+  margin-top: 16px;
 }
 /*=========================================================================
 || FILE: _progress-line.less
@@ -5306,14 +5310,6 @@ body.js_fullslider {
 || FILE: Square
 ===========================================================================
 || Category: Shape
-|| Link: http://localhost:8181/debug/shape.html#triangle
-|| Changlelog:
-||  22.02.19 - add
-/*=======================================================================*/
-/*=========================================================================
-|| FILE: Square
-===========================================================================
-|| Category: Shape
 || Link: http://localhost:8181/debug/shape.html#square
 || Changlelog:
 ||  22.02.19 - add
@@ -5343,6 +5339,14 @@ body.js_fullslider {
   vertical-align: middle;
   display: inline-block;
 }
+/*=========================================================================
+|| FILE: Square
+===========================================================================
+|| Category: Shape
+|| Link: http://localhost:8181/debug/shape.html#triangle
+|| Changlelog:
+||  22.02.19 - add
+/*=======================================================================*/
 /*=========================================================================
 || FILE: truncate.less
 ===========================================================================
@@ -5434,6 +5438,11 @@ p.text-icon>x.icon+span{Lorem}
   right: 100%;
 }
 /*
+    Burger to icon X { first and last plank rotate 180deg; center plank slide left and hide }
+    @planks: 3;
+    @style: 2;
+*/
+/*
     Burger to icon X { first and last plank rotate; center plank hide }
     planks: 3;
     style: 1;
@@ -5453,11 +5462,6 @@ p.text-icon>x.icon+span{Lorem}
   transform: rotate(-45deg);
   width: 100%;
 }
-/*
-    Burger to icon X { first and last plank rotate 180deg; center plank slide left and hide }
-    @planks: 3;
-    @style: 2;
-*/
 /*=========================================================================
 * @name Bouncing dots animation
 * @description .animation-boucing-dots>span*3
@@ -5508,221 +5512,6 @@ p.text-icon>x.icon+span{Lorem}
 .animation-boucing-dots > span:last-child {
   animation-delay: 0.4s;
   margin-right: 0;
-}
-/*=========================================================================
-* @name Circle rotate animation
-* @description .animation-circle-rotate
-* @markup
-<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
-*/
-/** 
-  * Dots animation 
-  * translate - bouncing animation offset
-**/
-@keyframes animation-circle-rotate {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-/** 
-  * Dots container 
-**/
-.animation-circle-rotate {
-  display: block;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  margin: 0 auto;
-}
-.animation-circle-rotate:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 2px solid rgba(231, 190, 84, 0.2);
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-}
-.animation-circle-rotate:before {
-  content: '';
-  animation: animation-circle-rotate 0.6s infinite alternate;
-  animation-timing-function: ease-out;
-  animation-delay: 0s;
-  animation-direction: normal;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  transition: transform 0.2s;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-top: 1px solid #e7be54;
-  border-left: 1px solid #e7be54;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-}
-/*=========================================================================
-|| FILE: Drop
-===========================================================================
-|| Category: Animation
-|| Link: http://localhost:8181/debug/animation-loader.html#drop
-|| Changlelog:
-||  21.02.19 - add
-/*=======================================================================*/
-/* @keyframes */
-@keyframes animation-drop {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
-/* Element */
-.animation-drop {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto;
-  background-color: #e7be54;
-  border-radius: 100%;
-  animation: animation-drop 1s infinite ease-in-out;
-}
-/**
-* @name Donut spinner animation
-* @description .animation-donut-spinner
-* @markup
-<div class="animation-donut-spinner"></div>
-*/
-@keyframes animation-donut-spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.animation-donut-spinner {
-  text-align: center;
-  font-size: 0;
-}
-.animation-donut-spinner:before {
-  content: "";
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #e7be54;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: animation-donut-spinner 1.2s linear infinite;
-  display: inline-block;
-}
-/*=========================================================================
-* @name Scale lines (height) animation
-* @description .animation-scale-lines>span*3
-* @markup
-<div class="animation-scale-lines"><span></span><span></span><span></span></div>
-*/
-/**
-  * Animation
-**/
-@keyframes animation-scale-lines {
-  from {
-    height: 60%;
-    opacity: 0.8;
-  }
-  to {
-    height: 100%;
-    opacity: 1;
-  }
-}
-.animation-scale-lines {
-  display: block;
-  text-align: center;
-  position: relative;
-  height: 40px;
-}
-.animation-scale-lines > span,
-.animation-scale-lines .v-center__content > span {
-  width: 6px;
-  height: 60%;
-  position: absolute;
-  background-color: #e7be54;
-  animation: animation-scale-lines 0.6s infinite alternate;
-  display: inline-block;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.animation-scale-lines > span:first-child,
-.animation-scale-lines .v-center__content > span:first-child {
-  margin-left: 12px;
-}
-.animation-scale-lines > span:nth-child(2),
-.animation-scale-lines .v-center__content > span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.animation-scale-lines > span:nth-child(3),
-.animation-scale-lines .v-center__content > span:nth-child(3) {
-  animation-delay: 0.4s;
-  margin-left: -12px;
-}
-/**
-  * Navigation base style
-**/
-@media only screen and (max-width: 767px) {
-  .burger-menu {
-    transition: transform 0.2s;
-    transform: translate(100%, 0%);
-    right: 0;
-    overflow: auto;
-  }
-  .burger-menu::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
-    background-color: #FFFFFF;
-    border-left: 1px solid #e7be54;
-  }
-  .burger-menu::-webkit-scrollbar-thumb {
-    min-width: 12px;
-    max-height: 12px;
-    background-color: #e7be54;
-  }
-  .burger-menu::-webkit-scrollbar-track {
-    display: none;
-  }
-}
-.page-content {
-  transition: transform 0.2s;
-}
-@media only screen and (max-width: 767px) {
-  html.js_menu-active .burger-menu {
-    transform: translate(0, 0%) !important;
-  }
-  html.js_menu-active .header.header--sticky .burger-menu {
-    transform: translate(0, 100%) !important;
-  }
-  html.js_menu-active .page-content {
-    transform: translateX(-300px);
-  }
-  html.js_menu-active .page__overlay {
-    z-index: 6999;
-    background-color: rgba(0, 0, 0, 0.88);
-  }
-  html:not(.js_menu-active) .burger-menu {
-    transform: translate(100%, 0);
-  }
-  html:not(.js_menu-active) .header--sticky .burger-menu {
-    transform: translate(100%, 100%);
-  }
-  html:not(.js_menu-active) .burger-menu {
-    box-shadow: 0 0 0 transparent !important;
-  }
 }
 .nav {
   transform: translate(0, 100%);
@@ -5781,6 +5570,221 @@ html.js_menu-active .nav__overlay {
   html:not(.js_menu-active) .nav {
     height: 0 !important;
   }
+}
+/**
+  * Navigation base style
+**/
+@media only screen and (max-width: 767px) {
+  .burger-menu {
+    transition: transform 0.2s;
+    transform: translate(100%, 0%);
+    right: 0;
+    overflow: auto;
+  }
+  .burger-menu::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: #FFFFFF;
+    border-left: 1px solid #e7be54;
+  }
+  .burger-menu::-webkit-scrollbar-thumb {
+    min-width: 12px;
+    max-height: 12px;
+    background-color: #e7be54;
+  }
+  .burger-menu::-webkit-scrollbar-track {
+    display: none;
+  }
+}
+.page-content {
+  transition: transform 0.2s;
+}
+@media only screen and (max-width: 767px) {
+  html.js_menu-active .burger-menu {
+    transform: translate(0, 0%) !important;
+  }
+  html.js_menu-active .header.header--sticky .burger-menu {
+    transform: translate(0, 100%) !important;
+  }
+  html.js_menu-active .page-content {
+    transform: translateX(-300px);
+  }
+  html.js_menu-active .page__overlay {
+    z-index: 6999;
+    background-color: rgba(0, 0, 0, 0.88);
+  }
+  html:not(.js_menu-active) .burger-menu {
+    transform: translate(100%, 0);
+  }
+  html:not(.js_menu-active) .header--sticky .burger-menu {
+    transform: translate(100%, 100%);
+  }
+  html:not(.js_menu-active) .burger-menu {
+    box-shadow: 0 0 0 transparent !important;
+  }
+}
+/*=========================================================================
+* @name Circle rotate animation
+* @description .animation-circle-rotate
+* @markup
+<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
+*/
+/** 
+  * Dots animation 
+  * translate - bouncing animation offset
+**/
+@keyframes animation-circle-rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/** 
+  * Dots container 
+**/
+.animation-circle-rotate {
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin: 0 auto;
+}
+.animation-circle-rotate:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(231, 190, 84, 0.2);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+}
+.animation-circle-rotate:before {
+  content: '';
+  animation: animation-circle-rotate 0.6s infinite alternate;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  transition: transform 0.2s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #e7be54;
+  border-left: 1px solid #e7be54;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+}
+/**
+* @name Donut spinner animation
+* @description .animation-donut-spinner
+* @markup
+<div class="animation-donut-spinner"></div>
+*/
+@keyframes animation-donut-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animation-donut-spinner {
+  text-align: center;
+  font-size: 0;
+}
+.animation-donut-spinner:before {
+  content: "";
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #e7be54;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: animation-donut-spinner 1.2s linear infinite;
+  display: inline-block;
+}
+/*=========================================================================
+|| FILE: Drop
+===========================================================================
+|| Category: Animation
+|| Link: http://localhost:8181/debug/animation-loader.html#drop
+|| Changlelog:
+||  21.02.19 - add
+/*=======================================================================*/
+/* @keyframes */
+@keyframes animation-drop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+/* Element */
+.animation-drop {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #e7be54;
+  border-radius: 100%;
+  animation: animation-drop 1s infinite ease-in-out;
+}
+/*=========================================================================
+* @name Scale lines (height) animation
+* @description .animation-scale-lines>span*3
+* @markup
+<div class="animation-scale-lines"><span></span><span></span><span></span></div>
+*/
+/**
+  * Animation
+**/
+@keyframes animation-scale-lines {
+  from {
+    height: 60%;
+    opacity: 0.8;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+.animation-scale-lines {
+  display: block;
+  text-align: center;
+  position: relative;
+  height: 40px;
+}
+.animation-scale-lines > span,
+.animation-scale-lines .v-center__content > span {
+  width: 6px;
+  height: 60%;
+  position: absolute;
+  background-color: #e7be54;
+  animation: animation-scale-lines 0.6s infinite alternate;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.animation-scale-lines > span:first-child,
+.animation-scale-lines .v-center__content > span:first-child {
+  margin-left: 12px;
+}
+.animation-scale-lines > span:nth-child(2),
+.animation-scale-lines .v-center__content > span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.animation-scale-lines > span:nth-child(3),
+.animation-scale-lines .v-center__content > span:nth-child(3) {
+  animation-delay: 0.4s;
+  margin-left: -12px;
 }
 /* Prepare */
 /*=========================================================================
