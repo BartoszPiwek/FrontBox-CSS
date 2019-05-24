@@ -3,24 +3,20 @@ Framework:      FrontBox 1.2.0
 Author:         Bartosz Piwek
 Repository:     https://github.com/BartoszPiwek/FrontBox
 ************************************************************************!*/
-
+import removeCode from 'gulp-remove-code';
+import stripCode from 'gulp-strip-code';
 /* Import libs */
 import { src, dest, watch, series, parallel } from "gulp";
 import rename from 'gulp-rename';
+import gulpif from 'gulp-if';
+import changed from 'gulp-changed';
+import del from 'del';
+const argv = require('yargs').argv;
 export const browserSync = require('browser-sync').create();
+
 /* Import config */
 import * as config from './config';
-
-let DEV = true;
-
-function getModeName() {
-    if ( DEV ) {
-        return 'dev';
-    }
-    else {
-        return 'prod';
-    }
-}
+import { getModeName } from "./gulp/index";
 
 export function server( done ) {
     browserSync.init({
@@ -36,11 +32,15 @@ export function server( done ) {
     done();
 }
 
+export function clean() {
+    return del(`public/${getModeName()}`);
+}
+
 /* Style */
 import { style_main, style_base, style_grid, style_utilities } from "./gulp/style";
 export const buildStyle = parallel( style_main, style_base, style_grid, style_utilities );
 /* HTML */
-import { html_main } from "./gulp/html";
+import { html_main, html_include } from "./gulp/html";
 export const buildHTML = parallel( html_main );
 /* Script */
 import { script_main } from "./gulp/script";
@@ -62,6 +62,7 @@ export function watchFiles() {
     /* HTML */
     const htmlObject = config.path.pug;
     watch( htmlObject.main.watch, html_main );
+    watch( htmlObject.include.watch, html_include );
 
     /* Script */
     const scriptObject = config.path.script;
@@ -77,11 +78,23 @@ export function watchFiles() {
 }
 
 const build = series( parallel( buildCopy, buildScript, buildStyle, buildHTML ), server, watchFiles );
+const cleanBuild = series( clean, build );
 
 /* Export */
 exports.default = () => {
-    build();
+    if (argv.prod || argv.clean) {
+        cleanBuild();
+    }
+    else {
+        build();
+    }
 };
+
 exports.style = series( buildStyle, server, watchFiles );
 exports.script = series( buildScript, server, watchFiles );
 exports.html = series( buildHTML, server, watchFiles );
+
+/* Test task */
+exports.test = () => {
+    parallel( script_main )
+};

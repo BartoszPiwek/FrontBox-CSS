@@ -2,28 +2,17 @@
 import { src, dest } from "gulp";
 import copy from 'gulp-copy';
 import { browserSync } from "./../gulpfile.babel";
-
+import changed from 'gulp-changed';
 /* Import config */
 import * as config from "./../config";
-
-let DEV = true;
-
-function getModeName() {
-   if ( DEV ) {
-       return 'dev';
-   }
-   else {
-       return 'prod';
-   }
-}
+import { getModeName } from './index';
 
 export function copy_image() {
 
     const element = config.path.copy.image;
 
-    return src( `${element.files}`, {
-        allowEmpty: true,
-        })
+    return src( `${element.files}` )
+        .pipe( changed( `public/${getModeName()}/${element.dest}` ) )
         .pipe( dest(`public/${getModeName()}/${element.dest}`) );
 }
 export function copy_fonts() {
@@ -33,7 +22,8 @@ export function copy_fonts() {
     return src( `${element.files}`, {
         allowEmpty: true,
         })
-        .pipe( dest(`public/${getModeName()}/${element.dest}`) );
+        .pipe( changed( `public/${getModeName()}/${element.dest}`) )
+        .pipe( dest( `public/${getModeName()}/${element.dest}`) );
 }
 export function copy_other() {
 
@@ -42,6 +32,7 @@ export function copy_other() {
     return src( `${element.files}`, {
         allowEmpty: true,
         })
+        .pipe( changed( `public/${getModeName()}/${element.dest}`) )
         .pipe( dest(`public/${getModeName()}/${element.dest}`) );
 }
 export function copy_video() {
@@ -51,6 +42,7 @@ export function copy_video() {
     return src( `${element.files}`, {
         allowEmpty: true,
         })
+        .pipe( changed( `public/${getModeName()}/${element.dest}`) )
         .pipe( dest(`public/${getModeName()}/${element.dest}`) );
 }
 export function copy_audio() {
@@ -60,5 +52,6 @@ export function copy_audio() {
     return src( `${element.files}`, {
         allowEmpty: true,
         })
+        .pipe( changed( `public/${getModeName()}/${element.dest}`) )
         .pipe( dest(`public/${getModeName()}/${element.dest}`) );
 }

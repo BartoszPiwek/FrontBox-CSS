@@ -1,6 +1,6 @@
 block variables
 <!DOCTYPE html>
-  <html class="js_no" lang=#{website_locale} itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#">
+  <html class="js_no" lang=#{data.website_locale} itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#">
     head
 
         //- Base Meta
@@ -10,34 +10,34 @@ block variables
         meta(name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no")
         
         //- Title
-        if page_title
-            title #{page_title}
+        if title
+            title #{title}
 
         //- Description
-        if page_description
-            meta(name="description" content= page_description)
+        if description
+            meta(name="description" content= description)
 
         //- Keywords
-        if page_keywords
-            meta(name="keywords" content= page_keywords)
+        if keywords
+            meta(name="keywords" content= keywords)
 
         //- Addon Meta
-        if website_color
-            meta(name="theme-color" content= website_color)
-        if website_author
-            meta(name="author" content= website_author)
+        if data.website_color
+            meta(name="theme-color" content= data.website_color)
+        if data.website_author
+            meta(name="author" content= data.website_author)
 
         //- Assets
         block assets_head
-            if version == "dev"
-                link(rel="stylesheet" type="text/css" href="/css/utilities." + version + ".css" media="all")
-                link(rel="stylesheet" type="text/css" href="/css/grid." + version + ".css" media="all")
-                link(rel="stylesheet" type="text/css" href="/css/base." + version + ".css" media="all")
-            link(rel="stylesheet" type="text/css" href="/style." + version + ".css" media="all")
+            if data.dev
+                link(rel="stylesheet" type="text/css" href="/css/utilities." + getModeName() + ".css" media="all")
+                link(rel="stylesheet" type="text/css" href="/css/grid." + getModeName() + ".css" media="all")
+                link(rel="stylesheet" type="text/css" href="/css/base." + getModeName() + ".css" media="all")
+            link(rel="stylesheet" type="text/css" href="/style." + getModeName() + ".css" media="all")
 
 
         //- Critical CSS
-        if page_critical_css && version == "prod"
+        if data.page_critical_css && !data.dev
             <!-- build:css:critical inline -->
             <link rel="stylesheet" href="../critical-css/#{page_critical_css}.css">
             <!-- /build -->
@@ -48,7 +48,7 @@ block variables
     body#body
 
         //- Informations: Disable javascripts
-        if website_info_off_javascript
+        if data.website_info_off_javascript
             noscript
                 link(rel="stylesheet" type="text/css" href="/css/info-off-favascipt.css")
                 .info-no-script
@@ -58,7 +58,7 @@ block variables
                         p.info-no-script__text.
                             Do pełnej funkcjonalności strony potrzebujesz włączonej obsługi skryptów. <a class="underline" href="https://www.enable-javascript.com/pl/" rel="nofollow" target="_blank">Tu znajdziesz instrukcje</a>, które pozwolą Ci włączyć skrypty w Twojej przeglądarce.
         //- Informations: Using old browser
-        if website_info_old_browser
+        if data.website_info_old_browser
             <!--[if lte IE 9]>
                 .info-old-browser
                     p.
@@ -72,4 +72,4 @@ block variables
 
         //- Assets
         block assets_footer 
-            script(src="/scripts/app." + version + ".js")
+            script(src="/scripts/app." + getModeName() + ".js")

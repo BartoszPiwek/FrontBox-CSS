@@ -25,8 +25,6 @@ module.exports = (SETTINGS) => {
 
         svg: ( pug, args ) => {
 
-            console.log(args);
-
             let 
             svg = fs.readFileSync(`./src/images/svg/${args.path}.svg`,'utf8'),
             output = '';

@@ -34,25 +34,43 @@ export class InformationCookie {
 
     }
 
+    private getContent = ( callback: Function ) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'cookies.html');
+        xhr.send();
+        xhr.onreadystatechange = function () {
+
+            // Only run if the request is complete
+            if (xhr.readyState !== 4) return;
+
+            // Process our return data
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // What do when the request is successful
+                console.log('success', xhr.responseText);
+                callback.apply( this, [xhr.responseText]);
+            } else {
+                // What to do when the request has failed
+                console.log('error', xhr);
+            }
+
+        };
+    };
+
     /**
      * Show information
      */
-    private show = async() => {
+    private show = () => {
 
-        const cookiesContent = await fetch('cookies.html', {
-            headers: {
-                'Content-Type': 'text/html'
-            },
-        });
-        const cookiesContentHTML = await cookiesContent.text();
+        this.getContent(
+            ( cookiesContentHTML ) => {
+                body.insertAdjacentHTML('beforeend', cookiesContentHTML );
 
-        body.insertAdjacentHTML('beforeend', cookiesContentHTML );
-
-        this.cookie = document.getElementById('js_cookies-information');
-        this.accept = document.querySelectorAll('.js_cookies-close');
-
-        this.bindClick();
-
+                this.cookie = document.getElementById('js_cookies-information');
+                this.accept = document.querySelectorAll('.js_cookies-close');
+        
+                this.bindClick();
+            }
+        );
     }
 
     private bindClick() {

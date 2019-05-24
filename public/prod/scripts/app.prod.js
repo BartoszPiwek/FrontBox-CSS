@@ -10807,15 +10807,7 @@ var Browser = /** @class */ (function () {
         this.transitionEvent = this.getTransitionEvent();
         this.portable = this.getMobileOperatingSystem();
         this.refresh();
-        /* test-code */
-        console.table({
-            width: this.width,
-            height: this.height,
-            responsive: this.responsive,
-            orientation: this.orientation,
-            portable: this.portable,
-        });
-        /* end-test-code */
+
     }
     ;
     Browser.prototype.getTransitionEvent = function () {
@@ -11020,15 +11012,9 @@ var InformationCookie = /** @class */ (function () {
         };
         if (!Cookies.get('using_cookies')) {
             this.show();
-            /* test-code */
-            console.log("Cookie\n - show information about using cookies");
-            /* end-test-code */
+
         }
-        /* test-code */
-        else {
-            console.log("Cookie\n - information already showed");
-        }
-        /* end-test-code */
+
     }
     InformationCookie.prototype.bindClick = function () {
         var _this = this;
@@ -11041,9 +11027,7 @@ var InformationCookie = /** @class */ (function () {
     InformationCookie.prototype.onClick = function () {
         Cookies.set('using_cookies', 1);
         this.cookie.classList.add("js_cookies-information--hide");
-        /* test-code */
-        console.log("Cookie\n - accepted cookies");
-        /* end-test-code */
+
         return false;
     };
     return InformationCookie;
