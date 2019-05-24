@@ -2,12 +2,15 @@
 import { src, dest } from "gulp";
 import less from 'gulp-less';
 import rename from "gulp-rename";
+import gulpif from 'gulp-if';
+import sourcemaps from 'gulp-sourcemaps';
 import { browserSync } from "./../gulpfile.babel";
 const argv = require('yargs').argv;
 
 /* Import config */
 import * as config from "./../config";
 import { getModeName } from './index';
+
 
 export function style_main() {
 
@@ -18,6 +21,9 @@ export function style_main() {
       return src( `${element.files}`, {
             allowEmpty: true,
          })
+         .pipe(gulpif(!argv.prod,
+            sourcemaps.init({ loadMaps: true })
+          ))
          .pipe( less({
                modifyVars: config,
                plugins: [
@@ -28,6 +34,9 @@ export function style_main() {
                basename: 'style',
                suffix: `.${getModeName()}`,
          }))
+         .pipe(gulpif(!argv.prod,
+            sourcemaps.write(`./`, { sourceRoot: './' })
+          ))
          .pipe( dest(
                `public/${getModeName()}/${element.dest}`
          ))

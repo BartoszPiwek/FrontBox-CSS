@@ -10555,6 +10555,8 @@ window.onload = function () {
      * Informations
      */
     new cookie_1.InformationCookie();
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', vh + "px");
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
@@ -10611,7 +10613,7 @@ var Browser = /** @class */ (function () {
             return 'iOS';
         }
         // PHP user agent
-        if (elements_1.$body.hasClass('device-portable')) {
+        if (elements_1.body.classList.contains('device-portable')) {
             return true;
         }
         return false;
@@ -10619,7 +10621,7 @@ var Browser = /** @class */ (function () {
     ;
     Browser.prototype.refresh = function () {
         /* Prepare variables */
-        var width = elements_1.$window.outerWidth(), lastWidth = this.width, height = elements_1.$window.outerHeight(), lastHeight = this.height, orientation = this.getOrientation(), lastOrientation = this.orientation;
+        var width = window.innerWidth, lastWidth = this.width, height = window.innerHeight, lastHeight = this.height, orientation = this.getOrientation(), lastOrientation = this.orientation;
         /* Set variables */
         this.width = width;
         this.height = height;
@@ -10673,18 +10675,9 @@ exports.breakpointsHeader = {
 },{}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var $ = require("jquery");
 exports.body = document.getElementById('body');
 exports.html = document.getElementsByTagName('html')[0];
-exports.$body = $("body");
-exports.$header = $("header");
-exports.$headerPlaceholder = $("headerPlaceholder");
-exports.$window = $(window);
-exports.$overlay = $("overlay");
-exports.$html = $("html");
-exports.$page = $("page");
-exports.$document = $("document");
-},{"jquery":1}],7:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var $ = require("jquery");

@@ -1,4 +1,4 @@
-import { $body } from "./../data/elements";
+import { body } from "./../data/elements";
 
 /**
  * Resize

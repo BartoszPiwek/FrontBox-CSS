@@ -1,5 +1,5 @@
 import * as $ from "jquery";
-import { $body, $window } from "./../data/elements";
+import { body } from "./../data/elements";
 import { breakpointsDefault } from "./../data/css";
 
 /**
@@ -75,7 +75,7 @@ export class Browser {
         }
 
         // PHP user agent
-        if ($body.hasClass('device-portable')) {
+        if (body.classList.contains('device-portable')) {
             return true;
         }
       
@@ -86,9 +86,9 @@ export class Browser {
 
         /* Prepare variables */
         let
-        width               = $window.outerWidth(),
+        width               = window.innerWidth,
         lastWidth           = this.width,
-        height              = $window.outerHeight(),
+        height              = window.innerHeight,
         lastHeight          = this.height,
         orientation         = this.getOrientation(),
         lastOrientation     = this.orientation;

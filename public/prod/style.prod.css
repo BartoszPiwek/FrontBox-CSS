@@ -2048,7 +2048,7 @@ a {
 **/
 body {
   font-family: "Arial";
-  color: #000000;
+  color: #05386B;
   -webkit-font-smoothing: antialiased;
   /* Add top space when <header> is position fixed */
 }
@@ -2097,14 +2097,14 @@ html.page--overflow {
 }
 .link {
   transition: color 0.2s;
-  -webkit-tap-highlight-color: #e7be54;
+  -webkit-tap-highlight-color: #05386B;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 .click {
   transition: color 0.2s;
-  -webkit-tap-highlight-color: #e7be54;
+  -webkit-tap-highlight-color: #05386B;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -2428,11 +2428,6 @@ body {
   font-family: "Arial";
 }
 /*=========================================================================
-|| FILE: Animation
-===========================================================================
-|| Animate transitions from one CSS style configuration to another
-=========================================================================*/
-/*=========================================================================
 || FILE: Base
 ===========================================================================
 || Base style for page elements
@@ -2457,14 +2452,13 @@ body::-webkit-scrollbar,
   -webkit-appearance: none;
   width: 12px;
   height: 12px;
-  background-color: #FFFFFF;
-  border-left: 1px solid #e7be54;
+  background-color: #EDF5E1;
 }
 body::-webkit-scrollbar-thumb,
 .scrollbar::-webkit-scrollbar-thumb {
   min-width: 12px;
   max-height: 12px;
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 body::-webkit-scrollbar-track,
 .scrollbar::-webkit-scrollbar-track {
@@ -2473,7 +2467,7 @@ body::-webkit-scrollbar-track,
 .code {
   font-size: 14px;
   background-color: #90938F;
-  color: #FFFFFF;
+  color: #EDF5E1;
   padding: 5px;
   display: block;
   margin: 5px 0;
@@ -2516,6 +2510,11 @@ body::-webkit-scrollbar-track,
 || Style for boxes ( cards | containers )
 =========================================================================*/
 /*=========================================================================
+|| FILE: Animation
+===========================================================================
+|| Animate transitions from one CSS style configuration to another
+=========================================================================*/
+/*=========================================================================
 || FILE: Button
 ===========================================================================
 || Style clickable buttons
@@ -2532,7 +2531,7 @@ body::-webkit-scrollbar-track,
   letter-spacing: 0.4px;
   height: 100%;
   color: #000000;
-  background-color: #e7be54;
+  background-color: #05386B;
   border: 0;
   border-radius: 5px;
   /**
@@ -2557,7 +2556,7 @@ body::-webkit-scrollbar-track,
 .btn:hover,
 .btn:active,
 .btn:focus {
-  background-color: #bb8e1a;
+  background-color: #00050a;
 }
 .btn-disable:before {
   border-radius: inherit;
@@ -2598,7 +2597,7 @@ body::-webkit-scrollbar-track,
   letter-spacing: 0.4px;
   height: 100%;
   color: #000000;
-  background-color: #e7be54;
+  background-color: #05386B;
   border: 0;
   border-radius: 5px;
   /**
@@ -2620,7 +2619,7 @@ body::-webkit-scrollbar-track,
 .btn:hover,
 .btn:active,
 .btn:focus {
-  background-color: #bb8e1a;
+  background-color: #00050a;
 }
 /**
  * Colors
@@ -2672,7 +2671,7 @@ body::-webkit-scrollbar-track,
 .footer {
   overflow: hidden;
   padding: 35px 0;
-  background-color: #6c757d;
+  background-color: #379683;
 }
 .footer__item > *:first-child {
   margin-top: 0 !important;
@@ -2682,7 +2681,7 @@ body::-webkit-scrollbar-track,
 }
 .footer__title {
   font-size: 28px;
-  color: #FFFFFF;
+  color: #EDF5E1;
   margin: 20px 0;
   font-weight: 200;
 }
@@ -2804,7 +2803,7 @@ label[for] {
   position: absolute;
   top: 0;
   left: 0;
-  border: 1px solid #e7be54;
+  border: 1px solid #05386B;
   /**
          * Style for using SVG for checkbox element mark 
          * Do not use transform - bug with mark size when checkbox is set on/off
@@ -2822,7 +2821,7 @@ label[for] {
   transition: opacity 0.2s, fill 0.2s;
   width: 80%;
   height: 80%;
-  fill: #e7be54;
+  fill: #05386B;
 }
 .input-checkbox__input--mark-color:before {
   content: '';
@@ -2833,7 +2832,7 @@ label[for] {
   transition: opacity 0.2s, background-color 0.2s;
   width: 90%;
   height: 90%;
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 .input-checkbox__label {
   cursor: pointer;
@@ -2889,7 +2888,7 @@ label[for] {
   top: 0;
   left: 0;
   border-radius: 50%;
-  border: 1px solid #e7be54;
+  border: 1px solid #05386B;
   transition: border-color 0.2s;
   /* Radio element mark color */
   /* Radio element mark icon */
@@ -2904,7 +2903,7 @@ label[for] {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: #e7be54;
+  background-color: #05386B;
   opacity: 0;
 }
 .input-radio__mark {
@@ -2914,7 +2913,7 @@ label[for] {
   transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
-  fill: #e7be54;
+  fill: #05386B;
   transition: fill 0.2s;
   opacity: 0;
 }
@@ -2963,9 +2962,9 @@ label[for] {
   height: 38px;
   padding: 4px 12px;
   font-size: 18px;
-  border: 1px solid #e7be54;
+  border: 1px solid #05386B;
   border-radius: 8px;
-  color: #e7be54;
+  color: #05386B;
   width: 100%;
   /* Placeholder text style */
 }
@@ -2976,7 +2975,7 @@ label[for] {
   /* Firefox 18- */
   transition: color 0.2s;
   font-style: italic;
-  color: #e7be54;
+  color: #05386B;
 }
 .input-text:hover {
   border-color: rgba(0, 0, 0, 0.6);
@@ -3088,7 +3087,7 @@ label[for] {
   display: flex;
   -webkit-backface-visibility: hidden;
   transition: height 0.2s, box-shadow 0.2s, background-color 0.2s, padding 0.2s;
-  background-color: #6c757d;
+  background-color: #05386B;
   /* First wrap set 100% height */
   /* Header placeholder */
   /* Header sticky */
@@ -3102,6 +3101,10 @@ label[for] {
   position: relative;
   transition: background-color 0.2s;
   padding: 25px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 .js_sticky-header .header {
   position: fixed;
@@ -3109,7 +3112,7 @@ label[for] {
   left: 0;
   z-index: 5000;
   box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.6);
-  background-color: #FFFFFF;
+  background-color: #EDF5E1;
 }
 /**
  * Burger button
@@ -3167,7 +3170,7 @@ label[for] {
     width: 100%;
     height: 100vh;
     max-width: 300px;
-    background-color: #e7be54;
+    background-color: #05386B;
     box-shadow: -6px 0 10px rgba(0, 0, 0, 0.4);
   }
   .burger-menu > .burger-menu__item {
@@ -3215,7 +3218,7 @@ nav.nav>a.nav__item*x
   }
 }
 .nav__container {
-  background-color: #e7be54;
+  background-color: #05386B;
   text-align: center;
   z-index: 7001;
   position: relative;
@@ -3230,7 +3233,7 @@ nav.nav>a.nav__item*x
 }
 .nav__container > .nav__item {
   display: block;
-  color: #FFFFFF;
+  color: #EDF5E1;
   transition: color 0.2s;
   margin-bottom: 10px;
   padding: 12px 0;
@@ -3382,7 +3385,7 @@ html.js_sticky-header .header {
 .list-navigation > .list-navigation__item:hover,
 .list-navigation > .list-navigation__item:active,
 .list-navigation > .list-navigation__item:focus {
-  color: #e7be54;
+  color: #05386B;
 }
 @media only screen and (min-width: 768px) {
   .list-navigation > .list-navigation__item {
@@ -3436,7 +3439,7 @@ html.js_sticky-header .header {
   position: absolute;
   top: 9px;
   left: 0;
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 .list-vertical.list--mark-center > .list__item:before {
   top: 50%;
@@ -3485,7 +3488,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .sm_list-vertical.sm_list--mark-center > .list__item:before {
     top: 50%;
@@ -3535,7 +3538,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .md_list-vertical.md_list--mark-center > .list__item:before {
     top: 50%;
@@ -3585,7 +3588,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .lg_list-vertical.lg_list--mark-center > .list__item:before {
     top: 50%;
@@ -3635,7 +3638,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .xs_list-vertical.xs_list--mark-center > .list__item:before {
     top: 50%;
@@ -3685,7 +3688,7 @@ html.js_sticky-header .header {
   position: absolute;
   top: 9px;
   left: 0;
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 .list-vertical.list--mark-center > .list__item:before {
   top: 50%;
@@ -3734,7 +3737,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .sm_list-vertical.sm_list--mark-center > .list__item:before {
     top: 50%;
@@ -3784,7 +3787,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .md_list-vertical.md_list--mark-center > .list__item:before {
     top: 50%;
@@ -3834,7 +3837,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .lg_list-vertical.lg_list--mark-center > .list__item:before {
     top: 50%;
@@ -3884,7 +3887,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: 9px;
     left: 0;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .xs_list-vertical.xs_list--mark-center > .list__item:before {
     top: 50%;
@@ -3946,7 +3949,7 @@ html.js_sticky-header .header {
   position: absolute;
   top: calc(50% - 6px);
   left: 9.5px;
-  background-color: #e7be54;
+  background-color: #05386B;
   transform: translateY(-50%);
 }
 .list-horizontal.list--mark .list__content {
@@ -3972,7 +3975,7 @@ html.js_sticky-header .header {
   position: absolute;
   top: calc(50% - 12px);
   left: 6.5px;
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 @media only screen and (min-width: 550px) and (max-width: 767px) {
   .sm_list-horizontal {
@@ -4011,7 +4014,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .sm_list-horizontal.sm_list--mark .list__content {
@@ -4037,7 +4040,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -4077,7 +4080,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .md_list-horizontal.md_list--mark .list__content {
@@ -4103,7 +4106,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -4143,7 +4146,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .lg_list-horizontal.lg_list--mark .list__content {
@@ -4169,7 +4172,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 @media only screen and (max-width: 549px) {
@@ -4209,7 +4212,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .xs_list-horizontal.xs_list--mark .list__content {
@@ -4235,7 +4238,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 /* Responsive */
@@ -4275,7 +4278,7 @@ html.js_sticky-header .header {
   position: absolute;
   top: calc(50% - 6px);
   left: 9.5px;
-  background-color: #e7be54;
+  background-color: #05386B;
   transform: translateY(-50%);
 }
 .list-horizontal.list--mark .list__content {
@@ -4301,7 +4304,7 @@ html.js_sticky-header .header {
   position: absolute;
   top: calc(50% - 12px);
   left: 6.5px;
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 @media only screen and (min-width: 550px) and (max-width: 767px) {
   .sm_list-horizontal {
@@ -4340,7 +4343,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .sm_list-horizontal.sm_list--mark .list__content {
@@ -4366,7 +4369,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -4406,7 +4409,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .md_list-horizontal.md_list--mark .list__content {
@@ -4432,7 +4435,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -4472,7 +4475,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .lg_list-horizontal.lg_list--mark .list__content {
@@ -4498,7 +4501,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 @media only screen and (max-width: 549px) {
@@ -4538,7 +4541,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 6px);
     left: 9.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
     transform: translateY(-50%);
   }
   .xs_list-horizontal.xs_list--mark .list__content {
@@ -4564,7 +4567,7 @@ html.js_sticky-header .header {
     position: absolute;
     top: calc(50% - 12px);
     left: 6.5px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
 }
 /*=========================================================================
@@ -4597,7 +4600,7 @@ html.js_sticky-header .header {
   right: 0;
 }
 .navigation-arrow > .icon {
-  fill: #FFFFFF;
+  fill: #EDF5E1;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -4637,10 +4640,10 @@ html.js_sticky-header .header {
 .navigation-dot > .item:hover,
 .navigation-dot > .item:active,
 .navigation-dot > .item:focus {
-  background-color: #FFFFFF;
+  background-color: #EDF5E1;
 }
 .navigation-dot > .item.active {
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 /*=========================================================================
 || Plugin: wcag.less
@@ -4662,7 +4665,7 @@ html.js_sticky-header .header {
   transition: opacity 0.2s;
   z-index: -10;
   padding: 10px 20px;
-  color: #e7be54;
+  color: #05386B;
 }
 .wcag-skip:before {
   content: "";
@@ -4741,8 +4744,8 @@ html.js_sticky-header .header {
   transition: background-color 0.2s;
   width: 100%;
   height: 100%;
-  background-color: #FFFFFF;
-  border: 2px solid #e7be54;
+  background-color: #EDF5E1;
+  border: 2px solid #05386B;
 }
 .animation_slider-navigation-clip__item:first-child {
   border-top-left-radius: 30px;
@@ -4781,7 +4784,7 @@ html.js_sticky-header .header {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #e7be54;
+  background-color: #05386B;
   width: 0%;
   height: 100%;
 }
@@ -4819,6 +4822,123 @@ html.js_sticky-header .header {
   background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
   background-position: 0 0, 10px 10px;
   background-size: 20px 20px;
+}
+/*=========================================================================
+|| FILE: badges.less
+===========================================================================
+|| Circular element with text
+=========================================================================*/
+/*=========================================================================
+// BADGE - create default badge element
+// .add-badge(size, background-color, color, hover-darken-percent)
+// * badge width/height size (min-width, height)
+// * background color
+// * text color {optional | default @defaul-color}
+// * change color on darken percent {optional | default @defaul-darken}
+== SNIPPETS: add-badge
+=========================================================================*/
+.badge {
+  min-width: 20px;
+  height: 20px;
+  background-color: red;
+}
+.badge--hover:hover .badge,
+.badge--hover:active .badge,
+.badge--hover:focus .badge,
+.badge--hover-active .badge,
+.badge--hover-active .badge,
+.badge--hover-active .badge,
+.badge:hover,
+.badge:active,
+.badge:focus {
+  background-color: #990000;
+}
+.badge {
+  display: inline-flex;
+  text-align: center;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  border-radius: 50%;
+  background: #05386B;
+}
+/*=========================================================================
+|| FILE: image-transparent.less
+===========================================================================
+|| Transparent image block
+||
+.image-transparent > img
+=========================================================================*/
+.image-transparent {
+  -webkit-user-select: none;
+  background-position: 0px 0px, 10px 10px;
+  background-size: 20px 20px;
+  background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%), linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
+}
+/*=========================================================================
+|| Rosette circle
+===========================================================================
+|| Create nested circles
+|| TODO Function to create n nested circle
+=========================================================================*/
+.rosette-circle {
+  /**
+      * Function
+    **/
+  /**
+      * Begin style
+    **/
+  width: 60px;
+  height: 60px;
+  position: relative;
+  line-height: 60px;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  /**
+      * 
+    **/
+}
+.rosette-circle--blue {
+  background-color: rgba(0, 0, 255, 0.1);
+}
+.rosette-circle--blue span:nth-child(1) {
+  color: red;
+}
+.rosette-circle--blue span:nth-child(1) {
+  color: red;
+}
+.rosette-circle--blue span:nth-child(1) {
+  color: red;
+}
+.rosette-circle--white {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.rosette-circle--white span:nth-child(2) {
+  color: red;
+}
+.rosette-circle--white span:nth-child(2) {
+  color: red;
+}
+.rosette-circle--white span:nth-child(2) {
+  color: red;
+}
+.rosette-circle .icon {
+  width: 28px;
+  height: 27px;
+}
+.rosette-circle:before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
 }
 .bar {
   position: relative;
@@ -4932,123 +5052,6 @@ html.js_sticky-header .header {
 }
 .bar-image.bar--secondary .bar__placeholder {
   width: 250px;
-}
-/*=========================================================================
-|| FILE: badges.less
-===========================================================================
-|| Circular element with text
-=========================================================================*/
-/*=========================================================================
-// BADGE - create default badge element
-// .add-badge(size, background-color, color, hover-darken-percent)
-// * badge width/height size (min-width, height)
-// * background color
-// * text color {optional | default @defaul-color}
-// * change color on darken percent {optional | default @defaul-darken}
-== SNIPPETS: add-badge
-=========================================================================*/
-.badge {
-  min-width: 20px;
-  height: 20px;
-  background-color: red;
-}
-.badge--hover:hover .badge,
-.badge--hover:active .badge,
-.badge--hover:focus .badge,
-.badge--hover-active .badge,
-.badge--hover-active .badge,
-.badge--hover-active .badge,
-.badge:hover,
-.badge:active,
-.badge:focus {
-  background-color: #990000;
-}
-.badge {
-  display: inline-flex;
-  text-align: center;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-  font-family: monospace;
-  border-radius: 50%;
-  background: #e7be54;
-}
-/*=========================================================================
-|| FILE: image-transparent.less
-===========================================================================
-|| Transparent image block
-||
-.image-transparent > img
-=========================================================================*/
-.image-transparent {
-  -webkit-user-select: none;
-  background-position: 0px 0px, 10px 10px;
-  background-size: 20px 20px;
-  background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%), linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
-}
-/*=========================================================================
-|| Rosette circle
-===========================================================================
-|| Create nested circles
-|| TODO Function to create n nested circle
-=========================================================================*/
-.rosette-circle {
-  /**
-      * Function
-    **/
-  /**
-      * Begin style
-    **/
-  width: 60px;
-  height: 60px;
-  position: relative;
-  line-height: 60px;
-  text-align: center;
-  margin: 0 auto;
-  border-radius: 50%;
-  /**
-      * 
-    **/
-}
-.rosette-circle--blue {
-  background-color: rgba(0, 0, 255, 0.1);
-}
-.rosette-circle--blue span:nth-child(1) {
-  color: red;
-}
-.rosette-circle--blue span:nth-child(1) {
-  color: red;
-}
-.rosette-circle--blue span:nth-child(1) {
-  color: red;
-}
-.rosette-circle--white {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.rosette-circle--white span:nth-child(2) {
-  color: red;
-}
-.rosette-circle--white span:nth-child(2) {
-  color: red;
-}
-.rosette-circle--white span:nth-child(2) {
-  color: red;
-}
-.rosette-circle .icon {
-  width: 28px;
-  height: 27px;
-}
-.rosette-circle:before {
-  content: '';
-  width: 40px;
-  height: 40px;
-  display: block;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  position: absolute;
-  z-index: -1;
 }
 /*=========================================================================
 || FILE: _alert.less
@@ -5244,7 +5247,7 @@ html.js_sticky-header .header {
   width: 40%;
   height: 40%;
   border-radius: 50%;
-  background-color: #FFFFFF;
+  background-color: #EDF5E1;
 }
 .box-timeline__container > .box-timeline__item:before {
   height: 7px;
@@ -5297,12 +5300,74 @@ html.js_sticky-header .header {
 || Changes the styling of text selection.
 =========================================================================*/
 ::selection {
-  background: #e7be54;
-  color: #FFFFFF;
+  background: #05386B;
+  color: #EDF5E1;
 }
 /*
  Social
 */
+/*=========================================================================
+|| Create disappear overlay
+|| CATEGORY: Hover
+||
+== STRUCTURE
+.hover-background-overlay { this element have hover trigger }
+    text
+    div
+        div
+    div.hover-background-overlay__item { this element have overlay }
+        img
+
+== EMMET
+.hover-background-overlay>.hover-background-overlay__item
+=========================================================================*/
+.hover-background-overlay__item {
+  position: relative;
+}
+.hover-background-overlay__item:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #333;
+  opacity: 0.1;
+  transition: opacity 0.2s;
+}
+.hover-background-overlay:hover .hover-background-overlay__item:before,
+.hover-background-overlay:focus .hover-background-overlay__item:before,
+.hover-background-overlay:active .hover-background-overlay__item:before {
+  opacity: 0;
+}
+/*=========================================================================
+* @name Text underline animation
+* @description .hover_text-line-truncated>.hover_text-line-truncated__item
+* @markup
+<a class="hover_text-line-truncated" href="#"><span class="hover_text-line-truncated__item">Lorem ipsum dolor sit amet consectetur adipisicing elit</span></a>
+*/
+.hover_text-line-truncated {
+  display: block;
+}
+.hover_text-line-truncated__item {
+  width: calc(100%);
+  background-image: linear-gradient(transparent calc(100% - 3px), #05386B 3px);
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  transition: background-size 0.2s;
+  display: inline;
+}
+.hover_text-line-truncated--hover:hover .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover:active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover:focus .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
+.hover_text-line-truncated:hover .hover_text-line-truncated__item,
+.hover_text-line-truncated:active .hover_text-line-truncated__item,
+.hover_text-line-truncated:focus .hover_text-line-truncated__item {
+  background-size: 100% 100%;
+}
 /*=========================================================================
 || PHP debug element style
 ===========================================================================
@@ -5314,7 +5379,7 @@ html.js_sticky-header .header {
   opacity: 0.6;
   padding: 8px;
   overflow-y: scroll;
-  color: #FFFFFF;
+  color: #EDF5E1;
   transition: opacity 0.2s;
   z-index: 10000;
 }
@@ -5365,68 +5430,6 @@ html.js_sticky-header .header {
   position: relative;
 }
 /*=========================================================================
-|| Create disappear overlay
-|| CATEGORY: Hover
-||
-== STRUCTURE
-.hover-background-overlay { this element have hover trigger }
-    text
-    div
-        div
-    div.hover-background-overlay__item { this element have overlay }
-        img
-
-== EMMET
-.hover-background-overlay>.hover-background-overlay__item
-=========================================================================*/
-.hover-background-overlay__item {
-  position: relative;
-}
-.hover-background-overlay__item:before {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: #333;
-  opacity: 0.1;
-  transition: opacity 0.2s;
-}
-.hover-background-overlay:hover .hover-background-overlay__item:before,
-.hover-background-overlay:focus .hover-background-overlay__item:before,
-.hover-background-overlay:active .hover-background-overlay__item:before {
-  opacity: 0;
-}
-/*=========================================================================
-* @name Text underline animation
-* @description .hover_text-line-truncated>.hover_text-line-truncated__item
-* @markup
-<a class="hover_text-line-truncated" href="#"><span class="hover_text-line-truncated__item">Lorem ipsum dolor sit amet consectetur adipisicing elit</span></a>
-*/
-.hover_text-line-truncated {
-  display: block;
-}
-.hover_text-line-truncated__item {
-  width: calc(100%);
-  background-image: linear-gradient(transparent calc(100% - 3px), #e7be54 3px);
-  background-repeat: no-repeat;
-  background-size: 0 100%;
-  transition: background-size 0.2s;
-  display: inline;
-}
-.hover_text-line-truncated--hover:hover .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover:active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover:focus .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated--hover-active .hover_text-line-truncated .hover_text-line-truncated__item,
-.hover_text-line-truncated:hover .hover_text-line-truncated__item,
-.hover_text-line-truncated:active .hover_text-line-truncated__item,
-.hover_text-line-truncated:focus .hover_text-line-truncated__item {
-  background-size: 100% 100%;
-}
-/*=========================================================================
 || Plugin: no-script.less
 ===========================================================================
 || Information about disabled javascript
@@ -5449,7 +5452,7 @@ html.js_sticky-header .header {
   max-width: 500px;
   padding: 25px 20px;
   background-color: rgba(0, 0, 0, 0.8);
-  color: #FFFFFF;
+  color: #EDF5E1;
   border-radius: 10px;
 }
 .info-no-script__header {
@@ -5459,6 +5462,53 @@ html.js_sticky-header .header {
 .info-no-script__text {
   font-size: 16px;
   margin-top: 16px;
+}
+/*=========================================================================
+* @name Input counter
+* @description .animation-boucing-dots>span*3
+* @markup
+<div class="input-counter">
+  <button class="input-counter__btn input-counter__btn--disable input-counter__btn--minus" data-value="-1" type="button" title="Zmniejsz">&#150;</button>
+  <input class="input-counter__input" type="number" value="1" min="1" max="10" readonly>
+  <button class="input-counter__btn input-counter__btn--plus" data-value="1" type="button" title="Zwiększ">&#43;</button>
+</div>
+*/
+.input-counter {
+  user-select: none;
+}
+.input-counter__btn {
+  width: 30px;
+  line-height: 30px;
+  background-color: #05386B;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  outline: none;
+  color: #EDF5E1;
+}
+.input-counter__btn--hover:hover .input-counter__btn,
+.input-counter__btn--hover:active .input-counter__btn,
+.input-counter__btn--hover:focus .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn:hover,
+.input-counter__btn:active,
+.input-counter__btn:focus {
+  background-color: #031e3a;
+}
+.input-counter__btn--disable {
+  background-color: #000000 !important;
+  user-select: none;
+  cursor: default;
+}
+.input-counter__input {
+  width: 50px;
+  border-radius: 0;
+  text-align: center;
+  line-height: 35px;
+  user-select: none;
+  height: 40px;
+  border: 1px solid #05386B;
 }
 /*=========================================================================
 || Plugin: blazy.less
@@ -5483,7 +5533,7 @@ html.js_sticky-header .header {
 =========================================================================*/
 *[data-toggle] {
   cursor: pointer;
-  -webkit-tap-highlight-color: #e7be54;
+  -webkit-tap-highlight-color: #05386B;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
@@ -5507,9 +5557,9 @@ html.js_sticky-header .header {
   transition: transform 0.2s, opacity 0.2s;
   opacity: 1;
   z-index: 6999;
-  background-color: rgba(231, 190, 84, 0.85);
+  background-color: rgba(5, 56, 107, 0.85);
   padding: 8px 0;
-  border-top: 2px solid #e7be54;
+  border-top: 2px solid #05386B;
 }
 .js_cookies-information__img {
   display: none;
@@ -5527,7 +5577,7 @@ html.js_sticky-header .header {
 .js_cookies-information__text {
   font-size: 14px;
   text-align: justify;
-  color: #FFFFFF;
+  color: #EDF5E1;
 }
 .js_cookies-information__container {
   padding-right: 30px;
@@ -5552,7 +5602,7 @@ html.js_sticky-header .header {
   content: '';
   width: 100%;
   height: 2px;
-  background-color: #FFFFFF;
+  background-color: #EDF5E1;
   position: absolute;
   top: 50%;
   left: 0;
@@ -5763,7 +5813,7 @@ body.js_fullslider {
     transition: border-color 1s 0.2s, background-color 1s 0.2s;
   }
   .fullslider__dots > .fullslide__dot.active {
-    background-color: #FFFFFF;
+    background-color: #EDF5E1;
   }
   .fullslider__dots > .fullslide__dot:last-child {
     margin-right: 0;
@@ -5854,13 +5904,13 @@ body.js_fullslider {
   pointer-events: all;
 }
 .list-vertical-scroll__button:hover .list-vertical-scroll__icon {
-  fill: #e7be54;
+  fill: #05386B;
 }
 .list-vertical-scroll__icon {
   width: 9px;
   height: 17px;
   transition: fill 0.2s;
-  fill: #FFFFFF;
+  fill: #EDF5E1;
 }
 .list-vertical-scroll--dark .list-vertical-scroll__button {
   background-color: #191e24;
@@ -5957,7 +6007,7 @@ body.js_fullslider {
   right: 0;
   width: 6px;
   height: 100%;
-  background-color: #e7be54;
+  background-color: #05386B;
   opacity: 0.2;
   transition: opacity 0.2s;
 }
@@ -6051,53 +6101,6 @@ body.js_fullslider {
 }
 .tab-content:not(.tab-content--active) {
   display: none !important;
-}
-/*=========================================================================
-* @name Input counter
-* @description .animation-boucing-dots>span*3
-* @markup
-<div class="input-counter">
-  <button class="input-counter__btn input-counter__btn--disable input-counter__btn--minus" data-value="-1" type="button" title="Zmniejsz">&#150;</button>
-  <input class="input-counter__input" type="number" value="1" min="1" max="10" readonly>
-  <button class="input-counter__btn input-counter__btn--plus" data-value="1" type="button" title="Zwiększ">&#43;</button>
-</div>
-*/
-.input-counter {
-  user-select: none;
-}
-.input-counter__btn {
-  width: 30px;
-  line-height: 30px;
-  background-color: #e7be54;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  outline: none;
-  color: #FFFFFF;
-}
-.input-counter__btn--hover:hover .input-counter__btn,
-.input-counter__btn--hover:active .input-counter__btn,
-.input-counter__btn--hover:focus .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn:hover,
-.input-counter__btn:active,
-.input-counter__btn:focus {
-  background-color: #e1ad27;
-}
-.input-counter__btn--disable {
-  background-color: #614a0e !important;
-  user-select: none;
-  cursor: default;
-}
-.input-counter__input {
-  width: 50px;
-  border-radius: 0;
-  text-align: center;
-  line-height: 35px;
-  user-select: none;
-  height: 40px;
-  border: 1px solid #e7be54;
 }
 /*=========================================================================
 || FILE: _progress-line.less
@@ -6886,12 +6889,12 @@ p.text-icon>x.icon+span{Lorem}
   transform: translate(-50%, -50%);
   z-index: 2;
   font-size: 13px;
-  color: #e7be54;
+  color: #05386B;
   padding: 0 20px;
 }
 .line-text__line {
   height: 1px;
-  background-color: #e7be54;
+  background-color: #05386B;
   position: absolute;
   width: 100vw;
   z-index: 1;
@@ -6943,13 +6946,12 @@ p.text-icon>x.icon+span{Lorem}
     -webkit-appearance: none;
     width: 12px;
     height: 12px;
-    background-color: #FFFFFF;
-    border-left: 1px solid #e7be54;
+    background-color: #EDF5E1;
   }
   .burger-menu::-webkit-scrollbar-thumb {
     min-width: 12px;
     max-height: 12px;
-    background-color: #e7be54;
+    background-color: #05386B;
   }
   .burger-menu::-webkit-scrollbar-track {
     display: none;
@@ -7077,7 +7079,7 @@ html.js_menu-active .nav__overlay {
   height: 10px;
   width: 10px;
   border-radius: 50%;
-  background-color: #e7be54;
+  background-color: #05386B;
   margin-right: 6px;
   transform: translateY(-5px);
   animation: animation-boucing-dots 0.6s infinite alternate;
@@ -7124,7 +7126,7 @@ html.js_menu-active .nav__overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 2px solid rgba(231, 190, 84, 0.2);
+  border: 2px solid rgba(5, 56, 107, 0.2);
   border-radius: 50%;
   top: 0;
   left: 0;
@@ -7142,8 +7144,8 @@ html.js_menu-active .nav__overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-top: 1px solid #e7be54;
-  border-left: 1px solid #e7be54;
+  border-top: 1px solid #05386B;
+  border-left: 1px solid #05386B;
   border-radius: 50%;
   top: 0;
   left: 0;
@@ -7169,7 +7171,7 @@ html.js_menu-active .nav__overlay {
 .animation-donut-spinner:before {
   content: "";
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #e7be54;
+  border-left-color: #05386B;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -7199,7 +7201,7 @@ html.js_menu-active .nav__overlay {
   width: 40px;
   height: 40px;
   margin: 0 auto;
-  background-color: #e7be54;
+  background-color: #05386B;
   border-radius: 100%;
   animation: animation-drop 1s infinite ease-in-out;
 }
@@ -7233,7 +7235,7 @@ html.js_menu-active .nav__overlay {
   width: 6px;
   height: 60%;
   position: absolute;
-  background-color: #e7be54;
+  background-color: #05386B;
   animation: animation-scale-lines 0.6s infinite alternate;
   display: inline-block;
   top: 50%;
@@ -7276,14 +7278,14 @@ html.js_menu-active .nav__overlay {
   flex: 1 1 auto;
   padding: 20px;
   text-align: center;
-  background-color: #e7be54;
+  background-color: #05386B;
 }
 .tabs__view {
   width: 100%;
 }
 .tabs__expand {
   padding: 20px;
-  background-color: #bb8e1a;
+  background-color: #00050a;
 }
 .tabs--horizontal .tabs__content {
   display: flex;
@@ -7626,7 +7628,7 @@ html.js_menu-active .nav__overlay {
   border-radius: 4px;
   position: relative;
   font-size: 13px;
-  background-color: #FFFFFF;
+  background-color: #EDF5E1;
   /**
               * Base arrow style
             **/

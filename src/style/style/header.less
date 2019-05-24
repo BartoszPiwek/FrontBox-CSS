@@ -19,7 +19,7 @@
     transition+: background-color @time-transition;
     transition+: padding @time-transition;
     // Style / Animations
-    background-color: @color-secondary;
+    background-color: @color-primary;
 
     /* First wrap set 100% height */
     & > .wrap {
@@ -37,6 +37,11 @@
         transition+: background-color @time-transition;
         // Size
         padding: 25px 0;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
 
     /* Header sticky */

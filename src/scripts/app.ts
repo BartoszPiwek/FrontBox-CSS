@@ -24,6 +24,9 @@ window.onload = () => {
    */
   new InformationCookie();
 
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   /* Inform stylesheed to remove style fallback for JavaScript elements */
   html.classList.remove('js_no');
 };
