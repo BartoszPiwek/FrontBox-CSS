@@ -1,6 +1,7 @@
 import * as $ from "jquery";
 
 export const body: HTMLElement = document.getElementById('body');
+export const html: HTMLElement = document.getElementsByTagName('html')[0];
 
 export const $body               : JQuery<HTMLElement> = $("body");
 export const $header             : JQuery<HTMLElement> = $("header");

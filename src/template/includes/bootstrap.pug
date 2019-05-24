@@ -1,75 +1,77 @@
 block variables
 <!DOCTYPE html>
-  <html class="js_no" lang=#{data.website_locale} itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#">
-    head
+	<html class="js_no" lang=#{data.website_locale} itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#">
+		head
 
-        //- Base Meta
-        meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1")
-        meta(http-equiv="X-UA-Compatible" content="IE=Edge")
-        meta(name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no")
-        
-        //- Title
-        if title
-            title #{title}
+			//- Base Meta
+			meta(charset="utf-8")
+			meta(name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1")
+			meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+			meta(name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no")
 
-        //- Description
-        if description
-            meta(name="description" content= description)
+			//- Title
+			if title
+				title #{title}
 
-        //- Keywords
-        if keywords
-            meta(name="keywords" content= keywords)
+			//- Description
+			if description
+				meta(name="description" content= description)
 
-        //- Addon Meta
-        if data.website_color
-            meta(name="theme-color" content= data.website_color)
-        if data.website_author
-            meta(name="author" content= data.website_author)
+			//- Keywords
+			if keywords
+				meta(name="keywords" content= keywords)
 
-        //- Assets
-        block assets_head
-            if data.dev
-                link(rel="stylesheet" type="text/css" href="/css/utilities." + getModeName() + ".css" media="all")
-                link(rel="stylesheet" type="text/css" href="/css/grid." + getModeName() + ".css" media="all")
-                link(rel="stylesheet" type="text/css" href="/css/base." + getModeName() + ".css" media="all")
-            link(rel="stylesheet" type="text/css" href="/style." + getModeName() + ".css" media="all")
+			//- Addon Meta
+			if data.website_color
+				meta(name="theme-color" content= data.website_color)
+			if data.website_author
+				meta(name="author" content= data.website_author)
+			if data.website_ios_app
+				meta(name="apple-itunes-app" content= data.website_ios_app)
+
+			//- Assets
+			block assets_head
+				if data.dev
+					link(rel="stylesheet" type="text/css" href="/css/utilities." + getModeName() + ".css" media="all")
+					link(rel="stylesheet" type="text/css" href="/css/grid." + getModeName() + ".css" media="all")
+					link(rel="stylesheet" type="text/css" href="/css/base." + getModeName() + ".css" media="all")
+				link(rel="stylesheet" type="text/css" href="/style." + getModeName() + ".css" media="all")
 
 
-        //- Critical CSS
-        if data.page_critical_css && !data.dev
-            <!-- build:css:critical inline -->
-            <link rel="stylesheet" href="../critical-css/#{page_critical_css}.css">
-            <!-- /build -->
+			//- Critical CSS
+			if data.page_critical_css && !data.dev
+				<!-- build:css:critical inline -->
+				<link rel="stylesheet" href="../critical-css/#{page_critical_css}.css">
+				<!-- /build -->
 
-        //- Favicons
-        include favicon.html
+			//- Favicons
+			include favicon.html
 
-    body#body
+		body#body
 
-        //- Informations: Disable javascripts
-        if data.website_info_off_javascript
-            noscript
-                link(rel="stylesheet" type="text/css" href="/css/info-off-favascipt.css")
-                .info-no-script
-                    .info-no-script__content
-                        p.info-no-script__header.
-                            Przeglądarka zablokowała wykonywanie kodu <strong>JavaScript</strong>.
-                        p.info-no-script__text.
-                            Do pełnej funkcjonalności strony potrzebujesz włączonej obsługi skryptów. <a class="underline" href="https://www.enable-javascript.com/pl/" rel="nofollow" target="_blank">Tu znajdziesz instrukcje</a>, które pozwolą Ci włączyć skrypty w Twojej przeglądarce.
-        //- Informations: Using old browser
-        if data.website_info_old_browser
-            <!--[if lte IE 9]>
-                .info-old-browser
-                    p.
-                        Korzystasz z <strong>przestarzałej</strong> przeglądarki. Proszę <a class="underline" ref="nofollow" target="_blank" href="http://browsehappy.com/">uaktualnij ją</a>.
-            <![endif]-->
+			//- Informations: Disable javascripts
+			if data.website_info_off_javascript
+				noscript
+					link(rel="stylesheet" type="text/css" href="/css/info-off-favascipt.css")
+					.info-no-script
+						.info-no-script__content
+							p.info-no-script__header.
+								Przeglądarka zablokowała wykonywanie kodu <strong>JavaScript</strong>.
+							p.info-no-script__text.
+								Do pełnej funkcjonalności strony potrzebujesz włączonej obsługi skryptów. <a class="underline" href="https://www.enable-javascript.com/pl/" rel="nofollow" target="_blank">Tu znajdziesz instrukcje</a>, które pozwolą Ci włączyć skrypty w Twojej przeglądarce.
+			//- Informations: Using old browser
+			if data.website_info_old_browser
+				<!--[if lte IE 9]>
+					.info-old-browser
+						p.
+							Korzystasz z <strong>przestarzałej</strong> przeglądarki. Proszę <a class="underline" ref="nofollow" target="_blank" href="http://browsehappy.com/">uaktualnij ją</a>.
+				<![endif]-->
 
-        //- Main content
-        block content
+			//- Main content
+			block content
 
-        .page__overlay#page-overlay
+			.page__overlay#page-overlay
 
-        //- Assets
-        block assets_footer 
-            script(src="/scripts/app." + getModeName() + ".js")
+			//- Assets
+			block assets_footer
+				script(src="/scripts/app." + getModeName() + ".js")

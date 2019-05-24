@@ -3,14 +3,9 @@ Framework:      FrontBox 1.2.0
 Author:         Bartosz Piwek
 Repository:     https://github.com/BartoszPiwek/FrontBox
 ************************************************************************!*/
-import removeCode from 'gulp-remove-code';
-import stripCode from 'gulp-strip-code';
+
 /* Import libs */
-import { src, dest, watch, series, parallel } from "gulp";
-import rename from 'gulp-rename';
-import gulpif from 'gulp-if';
-import changed from 'gulp-changed';
-import del from 'del';
+import { watch, series, parallel, task } from "gulp";
 const argv = require('yargs').argv;
 export const browserSync = require('browser-sync').create();
 
@@ -33,7 +28,17 @@ export function server( done ) {
 }
 
 export function clean() {
-    return del(`public/${getModeName()}`);
+  const del = require('del');
+  return del(`public/${getModeName()}`);
+}
+export function begin() {
+  const del = require('del');
+  return del([
+    `public`,
+    `*.md`,
+    `LICENSE`,
+    `gitfiles`,
+  ]);
 }
 
 /* Style */
@@ -48,6 +53,9 @@ export const buildScript = parallel( script_main );
 /* Copy */
 import { copy_image, copy_fonts, copy_other, copy_video, copy_audio } from "./gulp/copy";
 export const buildCopy = parallel( copy_image, copy_fonts, copy_other, copy_video, copy_audio );
+/* Other */
+import { svg } from "./gulp/assets";
+export const buildAssets = parallel( svg );
 
 /* Main watch function */
 export function watchFiles() {
@@ -75,6 +83,7 @@ export function watchFiles() {
     watch( copyObject.other.watch, copy_other );
     watch( copyObject.video.watch, copy_video );
     watch( copyObject.audio.watch, copy_audio );
+
 }
 
 const build = series( parallel( buildCopy, buildScript, buildStyle, buildHTML ), server, watchFiles );
@@ -96,5 +105,5 @@ exports.html = series( buildHTML, server, watchFiles );
 
 /* Test task */
 exports.test = () => {
-    parallel( script_main )
+    parallel( script_main );
 };

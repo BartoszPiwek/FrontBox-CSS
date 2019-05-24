@@ -1,5 +1,5 @@
 module.exports = {
-    
+
     "browsersync": {
         "open": false,
         "host": "localhost",
@@ -14,6 +14,7 @@ module.exports = {
     website_locale          : 'pl-PL',
     website_color           : '#e7be54',
     website_author          : 'Bartosz Piwek',
+    website_ios_app         : false,
 
     /**
      * Informations
@@ -21,7 +22,7 @@ module.exports = {
     // Disable javascripts
     website_info_off_javascript     : true,
     // Using old browser
-    website_info_old_browser        : true, 
+    website_info_old_browser        : true,
 
 
     /* Tasks */
@@ -70,8 +71,8 @@ module.exports = {
                 watch: [
                     'src/scripts/app.ts',
                     'src/scripts/frontbox/**/*.ts',
-                ] 
-            } 
+                ]
+            }
         },
         pug: {
             main: {
@@ -79,14 +80,14 @@ module.exports = {
                 dest: '',
                 watch: [
                     './src/template/*.pug',
-                ]  
+                ]
             },
             include: {
                 files: './src/template/*.pug',
                 dest: '',
                 watch: [
                     './src/template/includes/*.pug'
-                ]  
+                ]
             },
         },
         copy: {
@@ -95,45 +96,58 @@ module.exports = {
                 dest: 'images',
                 watch: [
                     './src/images/**/*',
-                ]  
+                ]
             },
             fonts: {
                 files: './src/fonts/*.{eot|woff2|woff|ttf|svg}',
                 dest: 'fonts',
                 watch: [
                     './src/fonts/*.{eot|woff2|woff|ttf|svg}',
-                ]  
+                ]
             },
             other: {
                 files: './src/other/*',
                 dest: 'other',
                 watch: [
                     './src/other/*',
-                ]  
+                ]
             },
             video: {
                 files: './src/video/*',
                 dest: 'video',
                 watch: [
                     './src/video/*',
-                ]  
+                ]
             },
             audio: {
                 files: './src/audio/*',
                 dest: 'audio',
                 watch: [
                     './src/audio/*',
-                ]  
+                ]
             },
+        },
+        assets: {
+          svg: {
+            files: [
+              'src/images/svg/*.svg',
+              '!src/images/svg/*_.svg',
+            ],
+            dest: 'src/images/svg',
+            watch: [
+              'src/images/svg/*.svg',
+              '!src/images/svg/*_.svg',
+            ]
+          }
         }
     },
 
     pathToPublic            : 'public',
     pathToFrontBoxPlugins   : './../FrontBox-Plugins',
 
-    "pathToMainCSS"         : './css', 
-    "pathToMainCSSDev"      : './public/dev', 
-    "pathToMainCSSProd"     : './public/prod', 
+    "pathToMainCSS"         : './css',
+    "pathToMainCSSDev"      : './public/dev',
+    "pathToMainCSSProd"     : './public/prod',
     "pathToDev"             : "./public/dev",
     "pathToProd"            : "./public/prod",
     "pathToModulesDev"      : "'../css'",
@@ -148,7 +162,7 @@ module.exports = {
     "getYear"               : "<%= grunt.template.today('yyyy') %>",
 
     /* Project type */
-    "isWordpress"           : false, 
+    "isWordpress"           : false,
 
     /* Framework */
     framework               : 'frontbox', // false,frontbox
@@ -158,7 +172,7 @@ module.exports = {
     jsExtension             : 'ts',
 
     /**
-     * Productive options 
+     * Productive options
      * css-mqpacker|
      */
     cssTasks                : ['css-mqpacker'],
@@ -167,5 +181,5 @@ module.exports = {
     /* Debug */
     debug                   : true,
     workingWithFrontbox     : true,
-    
+
 }

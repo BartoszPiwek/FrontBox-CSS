@@ -21,7 +21,7 @@ export class InputCounter {
 
   private active: boolean = false;
 
-  constructor( data: InputCounterData ) {
+  constructor(data: InputCounterData) {
 
     this.cssClass = data.cssClass;
     this.refresh();
@@ -41,30 +41,30 @@ export class InputCounter {
 
   }
 
-  loopElement() {}
+  loopElement() { }
 
   refresh() {
 
     /* Off previous bind clicks */
     if (this.active) {
-        this.$input.off("click");
-        this.$button.off("input");
-        this.active = false;
+      this.$input.off("click");
+      this.$button.off("input");
+      this.active = false;
     };
 
     /* Select elements */
-    this.$wrap      = $( this.cssClass.wrap );
+    this.$wrap = $(this.cssClass.wrap);
 
     /* Loop elements */
-    this.$wrap.each( (i, element)=> {
+    this.$wrap.each((i, element) => {
 
-        const
+      const
         $wrap = $(element),
-        $input = $wrap.find( this.cssClass.input ),
-        $button = $wrap.find( this.cssClass.button );
+        $input = $wrap.find(this.cssClass.input),
+        $button = $wrap.find(this.cssClass.button);
 
-        this.$input.append( $input );
-        this.$button.append( $button );
+      this.$input.append($input);
+      this.$button.append($button);
     });
 
     this.active = true;

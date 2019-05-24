@@ -444,12 +444,19 @@ img {
 html.js_sticky-header:not(.js_menu-active) .header,
 html.js_menu-active .burger-menu {
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-perspective: 1000;
   perspective: 1000;
   transform: translate3d(0, 0, 0);
   position: fixed;
+}
+/* Turn Off Number Input Spinners */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 /*=========================================================================
 || FILE: Base
@@ -972,10 +979,7 @@ body {
 }
 html,
 body {
-  background-image: url(./images/logo.jpg);
-  background-position: bottom center;
-  background-size: 50px 50px;
-  background-repeat: no-repeat;
+  background-color: #000000;
 }
 /* Scrollbar */
 body::-webkit-scrollbar,
@@ -1189,6 +1193,82 @@ body::-webkit-scrollbar-track,
 .btn-link {
   background: transparent !important;
   border-color: transparent !important;
+}
+/*=========================================================================
+|| FILE: Footer
+===========================================================================
+|| Style for footer elements
+=========================================================================*/
+.footer {
+  overflow: hidden;
+  padding: 35px 0;
+  background-color: #6c757d;
+}
+.footer__item > *:first-child {
+  margin-top: 0 !important;
+}
+.footer__item > *:last-child {
+  margin-bottom: 0 !important;
+}
+.footer__title {
+  font-size: 28px;
+  color: #FFFFFF;
+  margin: 20px 0;
+  font-weight: 200;
+}
+.footer__content {
+  font-size: 16px;
+  color: #000000;
+}
+.row-footer {
+  margin-left: -20px;
+  width: calc(100% + 20px);
+  margin-bottom: -20px !important;
+}
+.row-footer > *:not(.row-gap-ignore) {
+  padding-left: 20px;
+}
+.row-footer > *:not(.row-space-ignore) {
+  padding-bottom: 20px;
+}
+@media only screen and (min-width: 550px) {
+  .row-footer {
+    margin-left: -25px;
+    width: calc(100% + 25px);
+    margin-bottom: -25px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 25px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 25px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .row-footer {
+    margin-left: -35px;
+    width: calc(100% + 35px);
+    margin-bottom: -35px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 35px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 35px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .row-footer {
+    margin-left: -45px;
+    width: calc(100% + 45px);
+    margin-bottom: -45px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 45px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 45px;
+  }
 }
 /*=========================================================================
 || FILE: _forms.less
@@ -1774,82 +1854,6 @@ html.js_sticky-header .header {
 @media only screen and (min-width: 1024px) {
   html.js_sticky-header .header {
     height: 50px;
-  }
-}
-/*=========================================================================
-|| FILE: Footer
-===========================================================================
-|| Style for footer elements
-=========================================================================*/
-.footer {
-  overflow: hidden;
-  padding: 35px 0;
-  background-color: #6c757d;
-}
-.footer__item > *:first-child {
-  margin-top: 0 !important;
-}
-.footer__item > *:last-child {
-  margin-bottom: 0 !important;
-}
-.footer__title {
-  font-size: 28px;
-  color: #FFFFFF;
-  margin: 20px 0;
-  font-weight: 200;
-}
-.footer__content {
-  font-size: 16px;
-  color: #000000;
-}
-.row-footer {
-  margin-left: -20px;
-  width: calc(100% + 20px);
-  margin-bottom: -20px !important;
-}
-.row-footer > *:not(.row-gap-ignore) {
-  padding-left: 20px;
-}
-.row-footer > *:not(.row-space-ignore) {
-  padding-bottom: 20px;
-}
-@media only screen and (min-width: 550px) {
-  .row-footer {
-    margin-left: -25px;
-    width: calc(100% + 25px);
-    margin-bottom: -25px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 25px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 25px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .row-footer {
-    margin-left: -35px;
-    width: calc(100% + 35px);
-    margin-bottom: -35px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 35px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 35px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .row-footer {
-    margin-left: -45px;
-    width: calc(100% + 45px);
-    margin-bottom: -45px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 45px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 45px;
   }
 }
 /*=========================================================================
@@ -4034,22 +4038,6 @@ html.js_sticky-header .header {
   border: 1px solid #e7be54;
 }
 /*=========================================================================
-|| Plugin: blazy.less
-===========================================================================
-|| Style for lib bLazy.js (lazyload image script)
-=========================================================================*/
-.js_blazy {
-  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
-  background-size: cover;
-  opacity: 0.3;
-  background-color: #000000;
-  transition: opacity 0.2s;
-  display: block;
-}
-.js_blazy--active {
-  opacity: 1;
-}
-/*=========================================================================
 || Plugin: collapse.less
 ===========================================================================
 || Style for javascript collapse toggle
@@ -4071,6 +4059,22 @@ html.js_sticky-header .header {
   pointer-events: none;
   transition: height 0.6s;
   margin: 0 !important;
+}
+/*=========================================================================
+|| Plugin: blazy.less
+===========================================================================
+|| Style for lib bLazy.js (lazyload image script)
+=========================================================================*/
+.js_blazy {
+  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
+  background-size: cover;
+  opacity: 0.3;
+  background-color: #000000;
+  transition: opacity 0.2s;
+  display: block;
+}
+.js_blazy--active {
+  opacity: 1;
 }
 .js_cookies-information {
   position: fixed;
