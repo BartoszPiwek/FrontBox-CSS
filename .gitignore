@@ -18,6 +18,9 @@ src/js/libs/*
 *.map.*
 *.map
 
+# Generated
+src/images/favicon
+
 # Logs
 logs
 validation-report.json
@@ -27,6 +30,3 @@ validation-status.json
 package-lock.json
 yarn-error.log
 yarn.lock
-
-# Favicons
-src/images/favicon/*
