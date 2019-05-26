@@ -106,7 +106,6 @@ exports.style = series( buildStyle, server, watchFiles );
 exports.script = series( buildScript, server, watchFiles );
 exports.html = series( buildHTML, server, watchFiles );
 exports.favicon = favicon;
-exports.watch = series( server, watchFiles );
 
 /* Test task */
 exports.test = () => {

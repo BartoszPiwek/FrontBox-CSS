@@ -77,7 +77,8 @@ export function favicon(done) {
 			scalingAlgorithm: 'Lanczos', //'Mitchell', 'Cubic', 'Bilinear', 'Spline', 'Nearest Neighbor'
 			errorOnImageTooSmall: false,
 			readmeFile: false,
-			usePathAsIs: true
+      usePathAsIs: true,
+      htmlCodeFile: true,
 		},
 		markupFile: `${element.log}`
 

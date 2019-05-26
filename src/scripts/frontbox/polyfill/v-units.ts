@@ -11,7 +11,9 @@ export class vUnits {
 		if ( this.test() ) {
 			this.CSS = root.style;
 			this.refresh();
-			window.onresize = this.onResize;
+			window.onresize = () => {
+        this.onResize();
+      };
 		}
 	}
 

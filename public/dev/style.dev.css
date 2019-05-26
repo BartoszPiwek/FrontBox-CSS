@@ -466,6 +466,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Page wrapper */
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 body {
   position: relative;
@@ -963,11 +964,6 @@ body {
 || Animate transitions from one CSS style configuration to another
 =========================================================================*/
 /*=========================================================================
-|| FILE: Boxes
-===========================================================================
-|| Style for boxes ( cards | containers )
-=========================================================================*/
-/*=========================================================================
 || FILE: Base
 ===========================================================================
 || Base style for page elements
@@ -1193,6 +1189,90 @@ body::-webkit-scrollbar-track,
   background: transparent !important;
   border-color: transparent !important;
 }
+/*=========================================================================
+|| FILE: Footer
+===========================================================================
+|| Style for footer elements
+=========================================================================*/
+.footer {
+  overflow: hidden;
+  padding: 35px 0;
+  background-color: #379683;
+}
+.footer__item > *:first-child {
+  margin-top: 0 !important;
+}
+.footer__item > *:last-child {
+  margin-bottom: 0 !important;
+}
+.footer__title {
+  font-size: 28px;
+  color: #EDF5E1;
+  margin: 20px 0;
+  font-weight: 200;
+}
+.footer__content {
+  font-size: 16px;
+  color: #000000;
+}
+/**
+ * Row
+ */
+.row-footer {
+  margin-left: -20px;
+  width: calc(100% + 20px);
+  margin-bottom: -20px !important;
+}
+.row-footer > *:not(.row-gap-ignore) {
+  padding-left: 20px;
+}
+.row-footer > *:not(.row-space-ignore) {
+  padding-bottom: 20px;
+}
+@media only screen and (min-width: 550px) {
+  .row-footer {
+    margin-left: -25px;
+    width: calc(100% + 25px);
+    margin-bottom: -25px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 25px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 25px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .row-footer {
+    margin-left: -35px;
+    width: calc(100% + 35px);
+    margin-bottom: -35px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 35px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 35px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .row-footer {
+    margin-left: -45px;
+    width: calc(100% + 45px);
+    margin-bottom: -45px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 45px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 45px;
+  }
+}
+/*=========================================================================
+|| FILE: Boxes
+===========================================================================
+|| Style for boxes ( cards | containers )
+=========================================================================*/
 /*=========================================================================
 || FILE: _forms.less
 ===========================================================================
@@ -1528,85 +1608,6 @@ label[for] {
   z-index: 1;
 }
 /*=========================================================================
-|| FILE: Footer
-===========================================================================
-|| Style for footer elements
-=========================================================================*/
-.footer {
-  overflow: hidden;
-  padding: 35px 0;
-  background-color: #379683;
-}
-.footer__item > *:first-child {
-  margin-top: 0 !important;
-}
-.footer__item > *:last-child {
-  margin-bottom: 0 !important;
-}
-.footer__title {
-  font-size: 28px;
-  color: #EDF5E1;
-  margin: 20px 0;
-  font-weight: 200;
-}
-.footer__content {
-  font-size: 16px;
-  color: #000000;
-}
-/**
- * Row
- */
-.row-footer {
-  margin-left: -20px;
-  width: calc(100% + 20px);
-  margin-bottom: -20px !important;
-}
-.row-footer > *:not(.row-gap-ignore) {
-  padding-left: 20px;
-}
-.row-footer > *:not(.row-space-ignore) {
-  padding-bottom: 20px;
-}
-@media only screen and (min-width: 550px) {
-  .row-footer {
-    margin-left: -25px;
-    width: calc(100% + 25px);
-    margin-bottom: -25px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 25px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 25px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .row-footer {
-    margin-left: -35px;
-    width: calc(100% + 35px);
-    margin-bottom: -35px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 35px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 35px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .row-footer {
-    margin-left: -45px;
-    width: calc(100% + 45px);
-    margin-bottom: -45px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 45px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 45px;
-  }
-}
-/*=========================================================================
 || FILE: Header
 ===========================================================================
 || Style for header
@@ -1874,12 +1875,12 @@ html.js_sticky-header .header {
   transition: fill 0.2s;
 }
 /*=========================================================================
-|| FILE: Index
+|| FILE: Link
 ===========================================================================
 || Style for most index elements
 =========================================================================*/
 /*=========================================================================
-|| FILE: Link
+|| FILE: Index
 ===========================================================================
 || Style for most index elements
 =========================================================================*/
@@ -3339,6 +3340,119 @@ html.js_sticky-header .header {
     background-position: 0 50%;
   }
 }
+.bar {
+  position: relative;
+  font-size: 0;
+}
+.bar__content {
+  display: inline-block;
+  margin: 0 auto;
+  background-repeat: repeat-x;
+  background-position: left center;
+}
+.bar__placeholder {
+  display: none;
+}
+.bar__content,
+.bar__placeholder {
+  height: 100%;
+}
+.bar--placeholder .bar__placeholder {
+  display: block;
+  position: absolute;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.bar-image {
+  /**
+   * Style
+   */
+}
+.bar-image.bar--primary {
+  height: 40px;
+}
+.bar-image.bar--primary[data-bar='1'] .bar__content {
+  width: 38px;
+}
+.bar-image.bar--primary[data-bar='2'] .bar__content {
+  width: 76px;
+}
+.bar-image.bar--primary[data-bar='3'] .bar__content {
+  width: 114px;
+}
+.bar-image.bar--primary[data-bar='4'] .bar__content {
+  width: 152px;
+}
+.bar-image.bar--primary[data-bar='5'] .bar__content {
+  width: 190px;
+}
+.bar-image.bar--primary[data-bar='6'] .bar__content {
+  width: 228px;
+}
+.bar-image.bar--primary[data-bar='7'] .bar__content {
+  width: 266px;
+}
+.bar-image.bar--primary[data-bar='8'] .bar__content {
+  width: 304px;
+}
+.bar-image.bar--primary[data-bar='9'] .bar__content {
+  width: 342px;
+}
+.bar-image.bar--primary[data-bar='10'] .bar__content {
+  width: 380px;
+}
+.bar-image.bar--primary .bar__content,
+.bar-image.bar--primary .bar__placeholder {
+  background-image: url("/images/bar/primary.png");
+  background-size: 38px auto;
+  transform: translateX(-9px);
+}
+.bar-image.bar--primary .bar__placeholder {
+  width: 380px;
+}
+.bar-image.bar--secondary {
+  height: 24px;
+}
+.bar-image.bar--secondary[data-bar='1'] .bar__content {
+  width: 25px;
+}
+.bar-image.bar--secondary[data-bar='2'] .bar__content {
+  width: 50px;
+}
+.bar-image.bar--secondary[data-bar='3'] .bar__content {
+  width: 75px;
+}
+.bar-image.bar--secondary[data-bar='4'] .bar__content {
+  width: 100px;
+}
+.bar-image.bar--secondary[data-bar='5'] .bar__content {
+  width: 125px;
+}
+.bar-image.bar--secondary[data-bar='6'] .bar__content {
+  width: 150px;
+}
+.bar-image.bar--secondary[data-bar='7'] .bar__content {
+  width: 175px;
+}
+.bar-image.bar--secondary[data-bar='8'] .bar__content {
+  width: 200px;
+}
+.bar-image.bar--secondary[data-bar='9'] .bar__content {
+  width: 225px;
+}
+.bar-image.bar--secondary[data-bar='10'] .bar__content {
+  width: 250px;
+}
+.bar-image.bar--secondary .bar__content,
+.bar-image.bar--secondary .bar__placeholder {
+  background-image: url("/images/bar/secondary.png");
+  background-size: 25px auto;
+}
+.bar-image.bar--secondary .bar__placeholder {
+  width: 250px;
+}
 /*=========================================================================
 || FILE: Transparent
 ===========================================================================
@@ -3473,119 +3587,6 @@ html.js_sticky-header .header {
   position: absolute;
   z-index: -1;
 }
-.bar {
-  position: relative;
-  font-size: 0;
-}
-.bar__content {
-  display: inline-block;
-  margin: 0 auto;
-  background-repeat: repeat-x;
-  background-position: left center;
-}
-.bar__placeholder {
-  display: none;
-}
-.bar__content,
-.bar__placeholder {
-  height: 100%;
-}
-.bar--placeholder .bar__placeholder {
-  display: block;
-  position: absolute;
-  opacity: 0.3;
-  top: 0;
-  left: 0;
-  height: 100%;
-}
-.bar-image {
-  /**
-   * Style
-   */
-}
-.bar-image.bar--primary {
-  height: 40px;
-}
-.bar-image.bar--primary[data-bar='1'] .bar__content {
-  width: 38px;
-}
-.bar-image.bar--primary[data-bar='2'] .bar__content {
-  width: 76px;
-}
-.bar-image.bar--primary[data-bar='3'] .bar__content {
-  width: 114px;
-}
-.bar-image.bar--primary[data-bar='4'] .bar__content {
-  width: 152px;
-}
-.bar-image.bar--primary[data-bar='5'] .bar__content {
-  width: 190px;
-}
-.bar-image.bar--primary[data-bar='6'] .bar__content {
-  width: 228px;
-}
-.bar-image.bar--primary[data-bar='7'] .bar__content {
-  width: 266px;
-}
-.bar-image.bar--primary[data-bar='8'] .bar__content {
-  width: 304px;
-}
-.bar-image.bar--primary[data-bar='9'] .bar__content {
-  width: 342px;
-}
-.bar-image.bar--primary[data-bar='10'] .bar__content {
-  width: 380px;
-}
-.bar-image.bar--primary .bar__content,
-.bar-image.bar--primary .bar__placeholder {
-  background-image: url("/images/bar/primary.png");
-  background-size: 38px auto;
-  transform: translateX(-9px);
-}
-.bar-image.bar--primary .bar__placeholder {
-  width: 380px;
-}
-.bar-image.bar--secondary {
-  height: 24px;
-}
-.bar-image.bar--secondary[data-bar='1'] .bar__content {
-  width: 25px;
-}
-.bar-image.bar--secondary[data-bar='2'] .bar__content {
-  width: 50px;
-}
-.bar-image.bar--secondary[data-bar='3'] .bar__content {
-  width: 75px;
-}
-.bar-image.bar--secondary[data-bar='4'] .bar__content {
-  width: 100px;
-}
-.bar-image.bar--secondary[data-bar='5'] .bar__content {
-  width: 125px;
-}
-.bar-image.bar--secondary[data-bar='6'] .bar__content {
-  width: 150px;
-}
-.bar-image.bar--secondary[data-bar='7'] .bar__content {
-  width: 175px;
-}
-.bar-image.bar--secondary[data-bar='8'] .bar__content {
-  width: 200px;
-}
-.bar-image.bar--secondary[data-bar='9'] .bar__content {
-  width: 225px;
-}
-.bar-image.bar--secondary[data-bar='10'] .bar__content {
-  width: 250px;
-}
-.bar-image.bar--secondary .bar__content,
-.bar-image.bar--secondary .bar__placeholder {
-  background-image: url("/images/bar/secondary.png");
-  background-size: 25px auto;
-}
-.bar-image.bar--secondary .bar__placeholder {
-  width: 250px;
-}
 /*=========================================================================
 || FILE: _alert.less
 ===========================================================================
@@ -3610,6 +3611,38 @@ html.js_sticky-header .header {
   top: 0;
   right: 0;
   transform: translate(100%, -25%);
+}
+/*=========================================================================
+|| Box with two columns: responsive and static
+|| CATEGORY: Box
+||
+|| EMMET
+.column-spacer>.column-spacer__static+.column-spacer__responsive
+=========================================================================*/
+.column-spacer {
+  display: block;
+  position: relative;
+}
+.column-spacer > .column-spacer__static {
+  position: absolute;
+  left: 0;
+  width: 0;
+}
+.column-spacer--right > .column-spacer__static {
+  left: auto;
+  right: 0;
+}
+.column-spacer--small-img {
+  padding-left: 108px;
+  min-height: 61px;
+}
+.column-spacer--small-img > .column-spacer__static {
+  width: 94px;
+  height: 61px;
+}
+.column-spacer--small-img > .column-spacer__static img {
+  width: 94px;
+  height: 61px;
 }
 /*=========================================================================
 || Plugin: breadcrumbs.less
@@ -3649,110 +3682,6 @@ html.js_sticky-header .header {
 .breadcrumbs__item a:active,
 .breadcrumbs__item a:focus {
   color: red;
-}
-/*=========================================================================
-|| Box with two columns: responsive and static
-|| CATEGORY: Box
-||
-|| EMMET
-.column-spacer>.column-spacer__static+.column-spacer__responsive
-=========================================================================*/
-.column-spacer {
-  display: block;
-  position: relative;
-}
-.column-spacer > .column-spacer__static {
-  position: absolute;
-  left: 0;
-  width: 0;
-}
-.column-spacer--right > .column-spacer__static {
-  left: auto;
-  right: 0;
-}
-.column-spacer--small-img {
-  padding-left: 108px;
-  min-height: 61px;
-}
-.column-spacer--small-img > .column-spacer__static {
-  width: 94px;
-  height: 61px;
-}
-.column-spacer--small-img > .column-spacer__static img {
-  width: 94px;
-  height: 61px;
-}
-/*=========================================================================
-|| FILE: timeline.less
-===========================================================================
-|| Create timeline box
-||
-|| EMMET:
-.box-timeline>.box-timeline__container>.box-timeline__item*3>.box-timeline__dot+.box-timeline__text{$}
-||
-|| MODIFIER
-|| - for .box-timeline__item
-|| -- .active 
-=========================================================================*/
-.box-timeline__text {
-  font-size: 14px;
-}
-.box-timeline__dot {
-  width: 20px;
-  height: 20px;
-  background-color: #000000;
-  border-radius: 50%;
-}
-.box-timeline__item.active .box-timeline__dot:before {
-  width: 40%;
-  height: 40%;
-  border-radius: 50%;
-  background-color: #EDF5E1;
-}
-.box-timeline__container > .box-timeline__item:before {
-  height: 7px;
-  top: 6.5px;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.box-timeline__item {
-  flex: 1 0 0px;
-  position: relative;
-}
-.box-timeline__item.active .box-timeline__dot:before {
-  content: '';
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
-.box-timeline__container {
-  display: flex;
-  text-align: center;
-}
-.box-timeline__container > .box-timeline__item {
-  z-index: 1;
-}
-.box-timeline__container > .box-timeline__item:before {
-  z-index: -1;
-  content: '';
-  width: 100%;
-  left: 0;
-  position: absolute;
-  display: block;
-}
-.box-timeline__container > .box-timeline__item:first-child:before {
-  left: 50%;
-  width: 50%;
-}
-.box-timeline__container > .box-timeline__item:last-child:before {
-  left: 0;
-  width: 50%;
-}
-.box-timeline__dot {
-  display: block;
-  margin: 0 auto;
-  position: relative;
 }
 /*=========================================================================
 || FILE: Flipper
@@ -3828,6 +3757,78 @@ html.js_sticky-header .header {
   opacity: 1;
 }
 /*=========================================================================
+|| FILE: timeline.less
+===========================================================================
+|| Create timeline box
+||
+|| EMMET:
+.box-timeline>.box-timeline__container>.box-timeline__item*3>.box-timeline__dot+.box-timeline__text{$}
+||
+|| MODIFIER
+|| - for .box-timeline__item
+|| -- .active 
+=========================================================================*/
+.box-timeline__text {
+  font-size: 14px;
+}
+.box-timeline__dot {
+  width: 20px;
+  height: 20px;
+  background-color: #000000;
+  border-radius: 50%;
+}
+.box-timeline__item.active .box-timeline__dot:before {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: #EDF5E1;
+}
+.box-timeline__container > .box-timeline__item:before {
+  height: 7px;
+  top: 6.5px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.box-timeline__item {
+  flex: 1 0 0px;
+  position: relative;
+}
+.box-timeline__item.active .box-timeline__dot:before {
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.box-timeline__container {
+  display: flex;
+  text-align: center;
+}
+.box-timeline__container > .box-timeline__item {
+  z-index: 1;
+}
+.box-timeline__container > .box-timeline__item:before {
+  z-index: -1;
+  content: '';
+  width: 100%;
+  left: 0;
+  position: absolute;
+  display: block;
+}
+.box-timeline__container > .box-timeline__item:first-child:before {
+  left: 50%;
+  width: 50%;
+}
+.box-timeline__container > .box-timeline__item:last-child:before {
+  left: 0;
+  width: 50%;
+}
+.box-timeline__dot {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+/*=========================================================================
 || FILE: selection-color.less
 ===========================================================================
 || Changes the styling of text selection.
@@ -3900,14 +3901,6 @@ html.js_sticky-header .header {
 /*
  Social
 */
-canvas#game {
-  width: 400px;
-  height: 400px;
-  border: 1px dashed black;
-  box-sizing: border-box;
-  display: block;
-  margin: 0 auto;
-}
 /*=========================================================================
 || Create disappear overlay
 || CATEGORY: Hover
@@ -3969,6 +3962,14 @@ canvas#game {
 .hover_text-line-truncated:active .hover_text-line-truncated__item,
 .hover_text-line-truncated:focus .hover_text-line-truncated__item {
   background-size: 100% 100%;
+}
+canvas#game {
+  width: 400px;
+  height: 400px;
+  border: 1px dashed black;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
 }
 /*=========================================================================
 || Plugin: no-script.less
@@ -4042,25 +4043,6 @@ canvas#game {
   pointer-events: none;
   transition: height 0.6s;
   margin: 0 !important;
-}
-/*=========================================================================
-|| FILE: _dropdown.less
-===========================================================================
-|| JavaScript dropdown style
-=========================================================================*/
-.dropdown {
-  position: relative;
-}
-.dropdown__item {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.dropdown.js_active .dropdown__item {
-  opacity: 1;
 }
 .js_cookies-information {
   position: fixed;
@@ -4140,6 +4122,25 @@ canvas#game {
 .js_cookies-information--hide {
   transform: translate(0, 100%);
   opacity: 0;
+}
+/*=========================================================================
+|| FILE: _dropdown.less
+===========================================================================
+|| JavaScript dropdown style
+=========================================================================*/
+.dropdown {
+  position: relative;
+}
+.dropdown__item {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.dropdown.js_active .dropdown__item {
+  opacity: 1;
 }
 :not(.js_fullslider) .fullslider__arrow {
   display: none;
@@ -4459,6 +4460,34 @@ body.js_fullslider {
   transition: transform 1s 1s;
   transform: translateY(-100%);
 }
+.js_resizeLoading {
+  filter: blur(0);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.js_resizeLoading__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/**
+ * JS Manipulation
+ */
+.js_resize .page-content {
+  filter: blur(4px);
+}
+.js_resize .js_resizeLoading {
+  z-index: 10000;
+  opacity: 1;
+}
 .js_scroll {
   overflow-y: scroll;
   position: relative;
@@ -4499,33 +4528,30 @@ body.js_fullslider {
 .js_scroll:focus .js_scroll__bar {
   opacity: 1;
 }
-.js_resizeLoading {
-  filter: blur(0);
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.2s;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+.show-more {
+  overflow: hidden;
 }
-.js_resizeLoading__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.no_js .show-more {
+  overflow: visible;
+  height: auto !important;
 }
-/**
- * JS Manipulation
- */
-.js_resize .page-content {
-  filter: blur(4px);
+.show-more--active {
+  height: auto !important;
 }
-.js_resize .js_resizeLoading {
-  z-index: 10000;
-  opacity: 1;
+.no_js .show-more-button {
+  display: none;
+}
+.show-more-button--less {
+  display: none;
+}
+.show-more-button--more {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--less {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--more {
+  display: none;
 }
 /* Item */
 .js-sticky-spy {
@@ -4555,31 +4581,6 @@ body.js_fullslider {
 .js-sticky-spy-container {
   position: relative;
   flex: 1 1 auto;
-}
-.show-more {
-  overflow: hidden;
-}
-.no_js .show-more {
-  overflow: visible;
-  height: auto !important;
-}
-.show-more--active {
-  height: auto !important;
-}
-.no_js .show-more-button {
-  display: none;
-}
-.show-more-button--less {
-  display: none;
-}
-.show-more-button--more {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--less {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--more {
-  display: none;
 }
 /*=========================================================================
 || Plugin: tabs.less
@@ -5284,39 +5285,6 @@ body.js_fullslider {
   margin-right: auto;
 }
 /*=========================================================================
-|| FILE: Square
-===========================================================================
-|| Category: Shape
-|| Link: http://localhost:8181/debug/shape.html#square
-|| Changlelog:
-||  22.02.19 - add
-/*=======================================================================*/
-.square {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-top: 100%;
-}
-.square__wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-.square__wrap:before {
-  content: '';
-  vertical-align: middle;
-  display: inline-block;
-  width: 0;
-  height: 100%;
-}
-.square__content {
-  vertical-align: middle;
-  display: inline-block;
-}
-/*=========================================================================
 || FILE: Circle
 ===========================================================================
 || Category: Shape
@@ -5347,6 +5315,39 @@ body.js_fullslider {
   height: 100%;
 }
 .circle__content {
+  vertical-align: middle;
+  display: inline-block;
+}
+/*=========================================================================
+|| FILE: Square
+===========================================================================
+|| Category: Shape
+|| Link: http://localhost:8181/debug/shape.html#square
+|| Changlelog:
+||  22.02.19 - add
+/*=======================================================================*/
+.square {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+}
+.square__wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.square__wrap:before {
+  content: '';
+  vertical-align: middle;
+  display: inline-block;
+  width: 0;
+  height: 100%;
+}
+.square__content {
   vertical-align: middle;
   display: inline-block;
 }
@@ -5393,21 +5394,6 @@ body.js_fullslider {
   text-shadow: none;
 }
 /*=========================================================================
-|| FILE: text-icon.less
-===========================================================================
-|| Text block with icon on the left
-||
-|| EMMET:
-p.text-icon>x.icon+span{Lorem}
-=========================================================================*/
-.text-icon span {
-  vertical-align: middle;
-}
-.text-icon .icon {
-  display: inline-block;
-  vertical-align: middle;
-}
-/*=========================================================================
 || FILE: text-in-line.less
 ===========================================================================
 || Text beetween lines
@@ -5448,6 +5434,26 @@ p.text-icon>x.icon+span{Lorem}
 .line-text__line--right {
   right: 100%;
 }
+/*=========================================================================
+|| FILE: text-icon.less
+===========================================================================
+|| Text block with icon on the left
+||
+|| EMMET:
+p.text-icon>x.icon+span{Lorem}
+=========================================================================*/
+.text-icon span {
+  vertical-align: middle;
+}
+.text-icon .icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+/*
+    Burger to icon X { first and last plank rotate 180deg; center plank slide left and hide }
+    @planks: 3;
+    @style: 2;
+*/
 /*
     Burger to icon X { first and last plank rotate; center plank hide }
     planks: 3;
@@ -5468,11 +5474,6 @@ p.text-icon>x.icon+span{Lorem}
   transform: rotate(-45deg);
   width: 100%;
 }
-/*
-    Burger to icon X { first and last plank rotate 180deg; center plank slide left and hide }
-    @planks: 3;
-    @style: 2;
-*/
 /**
   * Navigation base style
 **/
@@ -5584,6 +5585,57 @@ html.js_menu-active .nav__overlay {
   }
 }
 /*=========================================================================
+* @name Bouncing dots animation
+* @description .animation-boucing-dots>span*3
+* @markup
+<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
+*/
+/** 
+  * Dots animation 
+  * translate - bouncing animation offset
+**/
+@keyframes animation-boucing-dots {
+  0% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateY(-5px);
+  }
+}
+/** 
+  * Dots container 
+**/
+.animation-boucing-dots {
+  display: block;
+  text-align: center;
+  position: relative;
+  font-size: 0;
+  padding: 5px 0;
+  /**
+      * Dots elements
+    **/
+}
+.animation-boucing-dots > span {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #05386B;
+  margin-right: 6px;
+  transform: translateY(-5px);
+  animation: animation-boucing-dots 0.6s infinite alternate;
+  animation-delay: 0.2s;
+  display: inline-block;
+}
+.animation-boucing-dots > span:first-child {
+  animation-delay: 0s;
+}
+.animation-boucing-dots > span:last-child {
+  animation-delay: 0.4s;
+  margin-right: 0;
+}
+/*=========================================================================
 * @name Circle rotate animation
 * @description .animation-circle-rotate
 * @markup
@@ -5640,34 +5692,6 @@ html.js_menu-active .nav__overlay {
   top: 0;
   left: 0;
 }
-/**
-* @name Donut spinner animation
-* @description .animation-donut-spinner
-* @markup
-<div class="animation-donut-spinner"></div>
-*/
-@keyframes animation-donut-spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.animation-donut-spinner {
-  text-align: center;
-  font-size: 0;
-}
-.animation-donut-spinner:before {
-  content: "";
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #05386B;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: animation-donut-spinner 1.2s linear infinite;
-  display: inline-block;
-}
 /*=========================================================================
 || FILE: Drop
 ===========================================================================
@@ -5695,56 +5719,33 @@ html.js_menu-active .nav__overlay {
   border-radius: 100%;
   animation: animation-drop 1s infinite ease-in-out;
 }
-/*=========================================================================
-* @name Bouncing dots animation
-* @description .animation-boucing-dots>span*3
+/**
+* @name Donut spinner animation
+* @description .animation-donut-spinner
 * @markup
-<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
+<div class="animation-donut-spinner"></div>
 */
-/** 
-  * Dots animation 
-  * translate - bouncing animation offset
-**/
-@keyframes animation-boucing-dots {
+@keyframes animation-donut-spinner {
   0% {
-    opacity: 1;
-    transform: translateY(5px);
+    transform: rotate(0deg);
   }
   100% {
-    opacity: 0.1;
-    transform: translateY(-5px);
+    transform: rotate(360deg);
   }
 }
-/** 
-  * Dots container 
-**/
-.animation-boucing-dots {
-  display: block;
+.animation-donut-spinner {
   text-align: center;
-  position: relative;
   font-size: 0;
-  padding: 5px 0;
-  /**
-      * Dots elements
-    **/
 }
-.animation-boucing-dots > span {
-  height: 10px;
-  width: 10px;
+.animation-donut-spinner:before {
+  content: "";
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #05386B;
   border-radius: 50%;
-  background-color: #05386B;
-  margin-right: 6px;
-  transform: translateY(-5px);
-  animation: animation-boucing-dots 0.6s infinite alternate;
-  animation-delay: 0.2s;
+  width: 30px;
+  height: 30px;
+  animation: animation-donut-spinner 1.2s linear infinite;
   display: inline-block;
-}
-.animation-boucing-dots > span:first-child {
-  animation-delay: 0s;
-}
-.animation-boucing-dots > span:last-child {
-  animation-delay: 0.4s;
-  margin-right: 0;
 }
 /*=========================================================================
 * @name Scale lines (height) animation
@@ -6105,24 +6106,6 @@ html.js_menu-active .nav__overlay {
 // .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
 =========================================================================*/
 /*=========================================================================
-|| FILE: Utilities
-===========================================================================
-|| Create repeatedly utilities class using functions
-@mobile      
-@fablet      
-@fablet-only 
-@fablet-down 
-@tablet      
-@tablet-only 
-@tablet-down 
-@desktop     
-@retina      
-=========================================================================*/
-/* Only mobile size */
-/* Fable size */
-/* Tablet size */
-/* Desktop size */
-/*=========================================================================
 || FILE: validator.less
 ===========================================================================
 || Style for jQuery Validation Plugin
@@ -6226,6 +6209,24 @@ html.js_menu-active .nav__overlay {
 .input-success + *:not([class]) {
   display: none;
 }
+/*=========================================================================
+|| FILE: Utilities
+===========================================================================
+|| Create repeatedly utilities class using functions
+@mobile      
+@fablet      
+@fablet-only 
+@fablet-down 
+@tablet      
+@tablet-only 
+@tablet-down 
+@desktop     
+@retina      
+=========================================================================*/
+/* Only mobile size */
+/* Fable size */
+/* Tablet size */
+/* Desktop size */
 /*=========================================================================
 || FILE: WYSIWYG HTML output formatting
 =========================================================================*/

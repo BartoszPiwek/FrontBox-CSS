@@ -11048,11 +11048,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("../data/elements");
 var vUnits = /** @class */ (function () {
     function vUnits() {
+        var _this = this;
         this.template = "<p id='test-v-units' style='width: 50vw; opacity: 0;'></p>";
         if (this.test()) {
             this.CSS = elements_1.root.style;
             this.refresh();
-            window.onresize = this.onResize;
+            window.onresize = function () {
+                _this.onResize();
+            };
         }
     }
     vUnits.prototype.test = function () {
