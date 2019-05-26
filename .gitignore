@@ -2,8 +2,8 @@
 node_modules/
 
 src/less/automatic/*less
-logs/*html
-logs/*
+log
+.tscache
 src/template/critical-css/*
 docs
 

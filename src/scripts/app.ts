@@ -2,6 +2,7 @@ import { Browser } from "./frontbox/data/browser";
 import { InformationCookie } from "./frontbox/information/cookie";
 import { html } from "./frontbox/data/elements";
 import { InputCounter } from "./frontbox/form/input-counter";
+import { vUnits } from "./frontbox/polyfill/v-units";
 
 window.onload = () => {
 
@@ -24,8 +25,10 @@ window.onload = () => {
    */
   new InformationCookie();
 
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  /**
+   * Polyfill
+   */
+  new vUnits();
 
   /* Inform stylesheed to remove style fallback for JavaScript elements */
   html.classList.remove('js_no');

@@ -54,8 +54,8 @@ export const buildScript = parallel( script_main );
 import { copy_image, copy_fonts, copy_other, copy_video, copy_audio } from "./gulp/copy";
 export const buildCopy = parallel( copy_image, copy_fonts, copy_other, copy_video, copy_audio );
 /* Other */
-import { svg } from "./gulp/assets";
-export const buildAssets = parallel( svg );
+import { svg, favicon } from "./gulp/assets";
+export const buildAssets = parallel( svg, favicon );
 
 /* Main watch function */
 export function watchFiles() {
@@ -99,9 +99,14 @@ exports.default = () => {
     }
 };
 
+/**
+ * Tasks
+ */
 exports.style = series( buildStyle, server, watchFiles );
 exports.script = series( buildScript, server, watchFiles );
 exports.html = series( buildHTML, server, watchFiles );
+exports.favicon = favicon;
+exports.watch = series( server, watchFiles );
 
 /* Test task */
 exports.test = () => {

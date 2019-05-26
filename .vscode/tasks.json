@@ -4,13 +4,13 @@
         {
             "label": "Compile DEV version",
             "type": "shell",
-            "command": "grunt",
+            "command": "gulp",
             "group": "build"
         },
         {
             "label": "Compile PROD version",
             "type": "shell",
-            "command": "grunt prod",
+            "command": "gulp --prod",
             "group": "build"
         }
     ]

@@ -963,6 +963,11 @@ body {
 || Animate transitions from one CSS style configuration to another
 =========================================================================*/
 /*=========================================================================
+|| FILE: Boxes
+===========================================================================
+|| Style for boxes ( cards | containers )
+=========================================================================*/
+/*=========================================================================
 || FILE: Base
 ===========================================================================
 || Base style for page elements
@@ -1039,11 +1044,6 @@ body::-webkit-scrollbar-track,
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/*=========================================================================
-|| FILE: Boxes
-===========================================================================
-|| Style for boxes ( cards | containers )
-=========================================================================*/
 /*=========================================================================
 || FILE: Button
 ===========================================================================
@@ -1192,82 +1192,6 @@ body::-webkit-scrollbar-track,
 .btn-link {
   background: transparent !important;
   border-color: transparent !important;
-}
-/*=========================================================================
-|| FILE: Footer
-===========================================================================
-|| Style for footer elements
-=========================================================================*/
-.footer {
-  overflow: hidden;
-  padding: 35px 0;
-  background-color: #379683;
-}
-.footer__item > *:first-child {
-  margin-top: 0 !important;
-}
-.footer__item > *:last-child {
-  margin-bottom: 0 !important;
-}
-.footer__title {
-  font-size: 28px;
-  color: #EDF5E1;
-  margin: 20px 0;
-  font-weight: 200;
-}
-.footer__content {
-  font-size: 16px;
-  color: #000000;
-}
-.row-footer {
-  margin-left: -20px;
-  width: calc(100% + 20px);
-  margin-bottom: -20px !important;
-}
-.row-footer > *:not(.row-gap-ignore) {
-  padding-left: 20px;
-}
-.row-footer > *:not(.row-space-ignore) {
-  padding-bottom: 20px;
-}
-@media only screen and (min-width: 550px) {
-  .row-footer {
-    margin-left: -25px;
-    width: calc(100% + 25px);
-    margin-bottom: -25px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 25px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 25px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .row-footer {
-    margin-left: -35px;
-    width: calc(100% + 35px);
-    margin-bottom: -35px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 35px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 35px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .row-footer {
-    margin-left: -45px;
-    width: calc(100% + 45px);
-    margin-bottom: -45px !important;
-  }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 45px;
-  }
-  .row-footer > *:not(.row-space-ignore) {
-    padding-bottom: 45px;
-  }
 }
 /*=========================================================================
 || FILE: _forms.less
@@ -1602,6 +1526,85 @@ label[for] {
 .js_form--msg .form__response--msg {
   opacity: 1;
   z-index: 1;
+}
+/*=========================================================================
+|| FILE: Footer
+===========================================================================
+|| Style for footer elements
+=========================================================================*/
+.footer {
+  overflow: hidden;
+  padding: 35px 0;
+  background-color: #379683;
+}
+.footer__item > *:first-child {
+  margin-top: 0 !important;
+}
+.footer__item > *:last-child {
+  margin-bottom: 0 !important;
+}
+.footer__title {
+  font-size: 28px;
+  color: #EDF5E1;
+  margin: 20px 0;
+  font-weight: 200;
+}
+.footer__content {
+  font-size: 16px;
+  color: #000000;
+}
+/**
+ * Row
+ */
+.row-footer {
+  margin-left: -20px;
+  width: calc(100% + 20px);
+  margin-bottom: -20px !important;
+}
+.row-footer > *:not(.row-gap-ignore) {
+  padding-left: 20px;
+}
+.row-footer > *:not(.row-space-ignore) {
+  padding-bottom: 20px;
+}
+@media only screen and (min-width: 550px) {
+  .row-footer {
+    margin-left: -25px;
+    width: calc(100% + 25px);
+    margin-bottom: -25px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 25px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 25px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .row-footer {
+    margin-left: -35px;
+    width: calc(100% + 35px);
+    margin-bottom: -35px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 35px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 35px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .row-footer {
+    margin-left: -45px;
+    width: calc(100% + 45px);
+    margin-bottom: -45px !important;
+  }
+  .row-footer > *:not(.row-gap-ignore) {
+    padding-left: 45px;
+  }
+  .row-footer > *:not(.row-space-ignore) {
+    padding-bottom: 45px;
+  }
 }
 /*=========================================================================
 || FILE: Header
@@ -3220,23 +3223,6 @@ html.js_sticky-header .header {
 .js_wcag-focus .wcag-skip:focus {
   opacity: 1;
 }
-/*=========================================================================
-|| FILE: Transparent
-===========================================================================
-|| Category: Background
-|| Link: http://localhost:8181/debug/background.html#transparent
-|| Changlelog:
-||  22.02.19 - add
-/*=======================================================================*/
-.background-transparent {
-  max-width: 100%;
-  height: auto;
-  width: auto;
-  vertical-align: top;
-  background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
-  background-position: 0 0, 10px 10px;
-  background-size: 20px 20px;
-}
 .animation_slider-navigation-clip {
   display: flex;
   flex-wrap: nowrap;
@@ -3353,118 +3339,22 @@ html.js_sticky-header .header {
     background-position: 0 50%;
   }
 }
-.bar {
-  position: relative;
-  font-size: 0;
-}
-.bar__content {
-  display: inline-block;
-  margin: 0 auto;
-  background-repeat: repeat-x;
-  background-position: left center;
-}
-.bar__placeholder {
-  display: none;
-}
-.bar__content,
-.bar__placeholder {
-  height: 100%;
-}
-.bar--placeholder .bar__placeholder {
-  display: block;
-  position: absolute;
-  opacity: 0.3;
-  top: 0;
-  left: 0;
-  height: 100%;
-}
-.bar-image {
-  /**
-   * Style
-   */
-}
-.bar-image.bar--primary {
-  height: 40px;
-}
-.bar-image.bar--primary[data-bar='1'] .bar__content {
-  width: 38px;
-}
-.bar-image.bar--primary[data-bar='2'] .bar__content {
-  width: 76px;
-}
-.bar-image.bar--primary[data-bar='3'] .bar__content {
-  width: 114px;
-}
-.bar-image.bar--primary[data-bar='4'] .bar__content {
-  width: 152px;
-}
-.bar-image.bar--primary[data-bar='5'] .bar__content {
-  width: 190px;
-}
-.bar-image.bar--primary[data-bar='6'] .bar__content {
-  width: 228px;
-}
-.bar-image.bar--primary[data-bar='7'] .bar__content {
-  width: 266px;
-}
-.bar-image.bar--primary[data-bar='8'] .bar__content {
-  width: 304px;
-}
-.bar-image.bar--primary[data-bar='9'] .bar__content {
-  width: 342px;
-}
-.bar-image.bar--primary[data-bar='10'] .bar__content {
-  width: 380px;
-}
-.bar-image.bar--primary .bar__content,
-.bar-image.bar--primary .bar__placeholder {
-  background-image: url("/images/bar/primary.png");
-  background-size: 38px auto;
-  transform: translateX(-9px);
-}
-.bar-image.bar--primary .bar__placeholder {
-  width: 380px;
-}
-.bar-image.bar--secondary {
-  height: 24px;
-}
-.bar-image.bar--secondary[data-bar='1'] .bar__content {
-  width: 25px;
-}
-.bar-image.bar--secondary[data-bar='2'] .bar__content {
-  width: 50px;
-}
-.bar-image.bar--secondary[data-bar='3'] .bar__content {
-  width: 75px;
-}
-.bar-image.bar--secondary[data-bar='4'] .bar__content {
-  width: 100px;
-}
-.bar-image.bar--secondary[data-bar='5'] .bar__content {
-  width: 125px;
-}
-.bar-image.bar--secondary[data-bar='6'] .bar__content {
-  width: 150px;
-}
-.bar-image.bar--secondary[data-bar='7'] .bar__content {
-  width: 175px;
-}
-.bar-image.bar--secondary[data-bar='8'] .bar__content {
-  width: 200px;
-}
-.bar-image.bar--secondary[data-bar='9'] .bar__content {
-  width: 225px;
-}
-.bar-image.bar--secondary[data-bar='10'] .bar__content {
-  width: 250px;
-}
-.bar-image.bar--secondary .bar__content,
-.bar-image.bar--secondary .bar__placeholder {
-  background-image: url("/images/bar/secondary.png");
-  background-size: 25px auto;
-}
-.bar-image.bar--secondary .bar__placeholder {
-  width: 250px;
+/*=========================================================================
+|| FILE: Transparent
+===========================================================================
+|| Category: Background
+|| Link: http://localhost:8181/debug/background.html#transparent
+|| Changlelog:
+||  22.02.19 - add
+/*=======================================================================*/
+.background-transparent {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  vertical-align: top;
+  background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
 }
 /*=========================================================================
 || FILE: badges.less
@@ -3583,9 +3473,119 @@ html.js_sticky-header .header {
   position: absolute;
   z-index: -1;
 }
-/*
- Social
-*/
+.bar {
+  position: relative;
+  font-size: 0;
+}
+.bar__content {
+  display: inline-block;
+  margin: 0 auto;
+  background-repeat: repeat-x;
+  background-position: left center;
+}
+.bar__placeholder {
+  display: none;
+}
+.bar__content,
+.bar__placeholder {
+  height: 100%;
+}
+.bar--placeholder .bar__placeholder {
+  display: block;
+  position: absolute;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.bar-image {
+  /**
+   * Style
+   */
+}
+.bar-image.bar--primary {
+  height: 40px;
+}
+.bar-image.bar--primary[data-bar='1'] .bar__content {
+  width: 38px;
+}
+.bar-image.bar--primary[data-bar='2'] .bar__content {
+  width: 76px;
+}
+.bar-image.bar--primary[data-bar='3'] .bar__content {
+  width: 114px;
+}
+.bar-image.bar--primary[data-bar='4'] .bar__content {
+  width: 152px;
+}
+.bar-image.bar--primary[data-bar='5'] .bar__content {
+  width: 190px;
+}
+.bar-image.bar--primary[data-bar='6'] .bar__content {
+  width: 228px;
+}
+.bar-image.bar--primary[data-bar='7'] .bar__content {
+  width: 266px;
+}
+.bar-image.bar--primary[data-bar='8'] .bar__content {
+  width: 304px;
+}
+.bar-image.bar--primary[data-bar='9'] .bar__content {
+  width: 342px;
+}
+.bar-image.bar--primary[data-bar='10'] .bar__content {
+  width: 380px;
+}
+.bar-image.bar--primary .bar__content,
+.bar-image.bar--primary .bar__placeholder {
+  background-image: url("/images/bar/primary.png");
+  background-size: 38px auto;
+  transform: translateX(-9px);
+}
+.bar-image.bar--primary .bar__placeholder {
+  width: 380px;
+}
+.bar-image.bar--secondary {
+  height: 24px;
+}
+.bar-image.bar--secondary[data-bar='1'] .bar__content {
+  width: 25px;
+}
+.bar-image.bar--secondary[data-bar='2'] .bar__content {
+  width: 50px;
+}
+.bar-image.bar--secondary[data-bar='3'] .bar__content {
+  width: 75px;
+}
+.bar-image.bar--secondary[data-bar='4'] .bar__content {
+  width: 100px;
+}
+.bar-image.bar--secondary[data-bar='5'] .bar__content {
+  width: 125px;
+}
+.bar-image.bar--secondary[data-bar='6'] .bar__content {
+  width: 150px;
+}
+.bar-image.bar--secondary[data-bar='7'] .bar__content {
+  width: 175px;
+}
+.bar-image.bar--secondary[data-bar='8'] .bar__content {
+  width: 200px;
+}
+.bar-image.bar--secondary[data-bar='9'] .bar__content {
+  width: 225px;
+}
+.bar-image.bar--secondary[data-bar='10'] .bar__content {
+  width: 250px;
+}
+.bar-image.bar--secondary .bar__content,
+.bar-image.bar--secondary .bar__placeholder {
+  background-image: url("/images/bar/secondary.png");
+  background-size: 25px auto;
+}
+.bar-image.bar--secondary .bar__placeholder {
+  width: 250px;
+}
 /*=========================================================================
 || FILE: _alert.less
 ===========================================================================
@@ -3683,6 +3683,78 @@ html.js_sticky-header .header {
   height: 61px;
 }
 /*=========================================================================
+|| FILE: timeline.less
+===========================================================================
+|| Create timeline box
+||
+|| EMMET:
+.box-timeline>.box-timeline__container>.box-timeline__item*3>.box-timeline__dot+.box-timeline__text{$}
+||
+|| MODIFIER
+|| - for .box-timeline__item
+|| -- .active 
+=========================================================================*/
+.box-timeline__text {
+  font-size: 14px;
+}
+.box-timeline__dot {
+  width: 20px;
+  height: 20px;
+  background-color: #000000;
+  border-radius: 50%;
+}
+.box-timeline__item.active .box-timeline__dot:before {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: #EDF5E1;
+}
+.box-timeline__container > .box-timeline__item:before {
+  height: 7px;
+  top: 6.5px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.box-timeline__item {
+  flex: 1 0 0px;
+  position: relative;
+}
+.box-timeline__item.active .box-timeline__dot:before {
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.box-timeline__container {
+  display: flex;
+  text-align: center;
+}
+.box-timeline__container > .box-timeline__item {
+  z-index: 1;
+}
+.box-timeline__container > .box-timeline__item:before {
+  z-index: -1;
+  content: '';
+  width: 100%;
+  left: 0;
+  position: absolute;
+  display: block;
+}
+.box-timeline__container > .box-timeline__item:first-child:before {
+  left: 50%;
+  width: 50%;
+}
+.box-timeline__container > .box-timeline__item:last-child:before {
+  left: 0;
+  width: 50%;
+}
+.box-timeline__dot {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+/*=========================================================================
 || FILE: Flipper
 ===========================================================================
 || Category: Box
@@ -3756,78 +3828,6 @@ html.js_sticky-header .header {
   opacity: 1;
 }
 /*=========================================================================
-|| FILE: timeline.less
-===========================================================================
-|| Create timeline box
-||
-|| EMMET:
-.box-timeline>.box-timeline__container>.box-timeline__item*3>.box-timeline__dot+.box-timeline__text{$}
-||
-|| MODIFIER
-|| - for .box-timeline__item
-|| -- .active 
-=========================================================================*/
-.box-timeline__text {
-  font-size: 14px;
-}
-.box-timeline__dot {
-  width: 20px;
-  height: 20px;
-  background-color: #000000;
-  border-radius: 50%;
-}
-.box-timeline__item.active .box-timeline__dot:before {
-  width: 40%;
-  height: 40%;
-  border-radius: 50%;
-  background-color: #EDF5E1;
-}
-.box-timeline__container > .box-timeline__item:before {
-  height: 7px;
-  top: 6.5px;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.box-timeline__item {
-  flex: 1 0 0px;
-  position: relative;
-}
-.box-timeline__item.active .box-timeline__dot:before {
-  content: '';
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
-.box-timeline__container {
-  display: flex;
-  text-align: center;
-}
-.box-timeline__container > .box-timeline__item {
-  z-index: 1;
-}
-.box-timeline__container > .box-timeline__item:before {
-  z-index: -1;
-  content: '';
-  width: 100%;
-  left: 0;
-  position: absolute;
-  display: block;
-}
-.box-timeline__container > .box-timeline__item:first-child:before {
-  left: 50%;
-  width: 50%;
-}
-.box-timeline__container > .box-timeline__item:last-child:before {
-  left: 0;
-  width: 50%;
-}
-.box-timeline__dot {
-  display: block;
-  margin: 0 auto;
-  position: relative;
-}
-/*=========================================================================
 || FILE: selection-color.less
 ===========================================================================
 || Changes the styling of text selection.
@@ -3835,74 +3835,6 @@ html.js_sticky-header .header {
 ::selection {
   background: #05386B;
   color: #EDF5E1;
-}
-/*=========================================================================
-|| Create disappear overlay
-|| CATEGORY: Hover
-||
-== STRUCTURE
-.hover-background-overlay { this element have hover trigger }
-    text
-    div
-        div
-    div.hover-background-overlay__item { this element have overlay }
-        img
-
-== EMMET
-.hover-background-overlay>.hover-background-overlay__item
-=========================================================================*/
-.hover-background-overlay__item {
-  position: relative;
-}
-.hover-background-overlay__item:before {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: #333;
-  opacity: 0.1;
-  transition: opacity 0.2s;
-}
-.hover-background-overlay:hover .hover-background-overlay__item:before,
-.hover-background-overlay:focus .hover-background-overlay__item:before,
-.hover-background-overlay:active .hover-background-overlay__item:before {
-  opacity: 0;
-}
-/*=========================================================================
-|| Plugin: no-script.less
-===========================================================================
-|| Information about disabled javascript
-=========================================================================*/
-.info-no-script {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  top: 0;
-  left: 0;
-  z-index: 9999;
-}
-.info-no-script__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 500px;
-  padding: 25px 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #EDF5E1;
-  border-radius: 10px;
-}
-.info-no-script__header {
-  font-size: 18px;
-  text-align: center;
-}
-.info-no-script__text {
-  font-size: 16px;
-  margin-top: 16px;
 }
 /*=========================================================================
 || PHP debug element style
@@ -3965,68 +3897,50 @@ html.js_sticky-header .header {
   padding-left: 10px;
   position: relative;
 }
-/*=========================================================================
-* @name Input counter
-* @description .animation-boucing-dots>span*3
-* @markup
-<div class="input-counter">
-  <button class="input-counter__btn input-counter__btn--disable input-counter__btn--minus" data-value="-1" type="button" title="Zmniejsz">&#150;</button>
-  <input class="input-counter__input" type="number" value="1" min="1" max="10" readonly>
-  <button class="input-counter__btn input-counter__btn--plus" data-value="1" type="button" title="Zwiększ">&#43;</button>
-</div>
+/*
+ Social
 */
-.input-counter {
-  user-select: none;
-}
-.input-counter__btn {
-  width: 30px;
-  line-height: 30px;
-  background-color: #05386B;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  outline: none;
-  color: #EDF5E1;
-}
-.input-counter__btn--hover:hover .input-counter__btn,
-.input-counter__btn--hover:active .input-counter__btn,
-.input-counter__btn--hover:focus .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn--hover-active .input-counter__btn,
-.input-counter__btn:hover,
-.input-counter__btn:active,
-.input-counter__btn:focus {
-  background-color: #031e3a;
-}
-.input-counter__btn--disable {
-  background-color: #000000 !important;
-  user-select: none;
-  cursor: default;
-}
-.input-counter__input {
-  width: 50px;
-  border-radius: 0;
-  text-align: center;
-  line-height: 35px;
-  user-select: none;
-  height: 40px;
-  border: 1px solid #05386B;
+canvas#game {
+  width: 400px;
+  height: 400px;
+  border: 1px dashed black;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
 }
 /*=========================================================================
-|| Plugin: blazy.less
-===========================================================================
-|| Style for lib bLazy.js (lazyload image script)
+|| Create disappear overlay
+|| CATEGORY: Hover
+||
+== STRUCTURE
+.hover-background-overlay { this element have hover trigger }
+    text
+    div
+        div
+    div.hover-background-overlay__item { this element have overlay }
+        img
+
+== EMMET
+.hover-background-overlay>.hover-background-overlay__item
 =========================================================================*/
-.js_blazy {
-  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
-  background-size: cover;
-  opacity: 0.3;
-  background-color: #000000;
-  transition: opacity 0.2s;
-  display: block;
+.hover-background-overlay__item {
+  position: relative;
 }
-.js_blazy--active {
-  opacity: 1;
+.hover-background-overlay__item:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #333;
+  opacity: 0.1;
+  transition: opacity 0.2s;
+}
+.hover-background-overlay:hover .hover-background-overlay__item:before,
+.hover-background-overlay:focus .hover-background-overlay__item:before,
+.hover-background-overlay:active .hover-background-overlay__item:before {
+  opacity: 0;
 }
 /*=========================================================================
 * @name Text underline animation
@@ -4057,6 +3971,56 @@ html.js_sticky-header .header {
   background-size: 100% 100%;
 }
 /*=========================================================================
+|| Plugin: no-script.less
+===========================================================================
+|| Information about disabled javascript
+=========================================================================*/
+.info-no-script {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+.info-no-script__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
+  padding: 25px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #EDF5E1;
+  border-radius: 10px;
+}
+.info-no-script__header {
+  font-size: 18px;
+  text-align: center;
+}
+.info-no-script__text {
+  font-size: 16px;
+  margin-top: 16px;
+}
+/*=========================================================================
+|| Plugin: blazy.less
+===========================================================================
+|| Style for lib bLazy.js (lazyload image script)
+=========================================================================*/
+.js_blazy {
+  background: #c8c8c8 url(/images/other/image-placeholder.jpg) no-repeat scroll center;
+  background-size: cover;
+  opacity: 0.3;
+  background-color: #000000;
+  transition: opacity 0.2s;
+  display: block;
+}
+.js_blazy--active {
+  opacity: 1;
+}
+/*=========================================================================
 || Plugin: collapse.less
 ===========================================================================
 || Style for javascript collapse toggle
@@ -4078,6 +4042,25 @@ html.js_sticky-header .header {
   pointer-events: none;
   transition: height 0.6s;
   margin: 0 !important;
+}
+/*=========================================================================
+|| FILE: _dropdown.less
+===========================================================================
+|| JavaScript dropdown style
+=========================================================================*/
+.dropdown {
+  position: relative;
+}
+.dropdown__item {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.dropdown.js_active .dropdown__item {
+  opacity: 1;
 }
 .js_cookies-information {
   position: fixed;
@@ -4157,25 +4140,6 @@ html.js_sticky-header .header {
 .js_cookies-information--hide {
   transform: translate(0, 100%);
   opacity: 0;
-}
-/*=========================================================================
-|| FILE: _dropdown.less
-===========================================================================
-|| JavaScript dropdown style
-=========================================================================*/
-.dropdown {
-  position: relative;
-}
-.dropdown__item {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.dropdown.js_active .dropdown__item {
-  opacity: 1;
 }
 :not(.js_fullslider) .fullslider__arrow {
   display: none;
@@ -4480,34 +4444,6 @@ body.js_fullslider {
 .js_placeholder--holder:after {
   content: none;
 }
-.js_resizeLoading {
-  filter: blur(0);
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.2s;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.js_resizeLoading__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-/**
- * JS Manipulation
- */
-.js_resize .page-content {
-  filter: blur(4px);
-}
-.js_resize .js_resizeLoading {
-  z-index: 10000;
-  opacity: 1;
-}
 .js-text-rotate.run {
   display: inline-block;
   overflow: hidden;
@@ -4522,31 +4458,6 @@ body.js_fullslider {
 .js-text-rotate.run.next > span {
   transition: transform 1s 1s;
   transform: translateY(-100%);
-}
-.show-more {
-  overflow: hidden;
-}
-.no_js .show-more {
-  overflow: visible;
-  height: auto !important;
-}
-.show-more--active {
-  height: auto !important;
-}
-.no_js .show-more-button {
-  display: none;
-}
-.show-more-button--less {
-  display: none;
-}
-.show-more-button--more {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--less {
-  display: block;
-}
-.show-more-button.js_active .show-more-button--more {
-  display: none;
 }
 .js_scroll {
   overflow-y: scroll;
@@ -4588,6 +4499,34 @@ body.js_fullslider {
 .js_scroll:focus .js_scroll__bar {
   opacity: 1;
 }
+.js_resizeLoading {
+  filter: blur(0);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.js_resizeLoading__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/**
+ * JS Manipulation
+ */
+.js_resize .page-content {
+  filter: blur(4px);
+}
+.js_resize .js_resizeLoading {
+  z-index: 10000;
+  opacity: 1;
+}
 /* Item */
 .js-sticky-spy {
   -webkit-backface-visibility: hidden;
@@ -4617,6 +4556,31 @@ body.js_fullslider {
   position: relative;
   flex: 1 1 auto;
 }
+.show-more {
+  overflow: hidden;
+}
+.no_js .show-more {
+  overflow: visible;
+  height: auto !important;
+}
+.show-more--active {
+  height: auto !important;
+}
+.no_js .show-more-button {
+  display: none;
+}
+.show-more-button--less {
+  display: none;
+}
+.show-more-button--more {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--less {
+  display: block;
+}
+.show-more-button.js_active .show-more-button--more {
+  display: none;
+}
 /*=========================================================================
 || Plugin: tabs.less
 ===========================================================================
@@ -4633,18 +4597,51 @@ body.js_fullslider {
   display: none !important;
 }
 /*=========================================================================
-|| FILE: truncate.less
-===========================================================================
-|| If the text is longer than one line, it will be truncated and end with 
-|| an ellipsis …
-||
-|| EMMET
-.text_truncate
-=========================================================================*/
-.text_truncate {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+* @name Input counter
+* @description .animation-boucing-dots>span*3
+* @markup
+<div class="input-counter">
+  <button class="input-counter__btn input-counter__btn--disable input-counter__btn--minus" data-value="-1" type="button" title="Zmniejsz">&#150;</button>
+  <input class="input-counter__input" type="number" value="1" min="1" max="10" readonly>
+  <button class="input-counter__btn input-counter__btn--plus" data-value="1" type="button" title="Zwiększ">&#43;</button>
+</div>
+*/
+.input-counter {
+  user-select: none;
+}
+.input-counter__btn {
+  width: 30px;
+  line-height: 30px;
+  background-color: #05386B;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  outline: none;
+  color: #EDF5E1;
+}
+.input-counter__btn--hover:hover .input-counter__btn,
+.input-counter__btn--hover:active .input-counter__btn,
+.input-counter__btn--hover:focus .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn--hover-active .input-counter__btn,
+.input-counter__btn:hover,
+.input-counter__btn:active,
+.input-counter__btn:focus {
+  background-color: #031e3a;
+}
+.input-counter__btn--disable {
+  background-color: #000000 !important;
+  user-select: none;
+  cursor: default;
+}
+.input-counter__input {
+  width: 50px;
+  border-radius: 0;
+  text-align: center;
+  line-height: 35px;
+  user-select: none;
+  height: 40px;
+  border: 1px solid #05386B;
 }
 /*=========================================================================
 || FILE: _progress-line.less
@@ -5287,24 +5284,37 @@ body.js_fullslider {
   margin-right: auto;
 }
 /*=========================================================================
-|| FILE: underline-pretty.less
+|| FILE: Square
 ===========================================================================
-|| Alternative to 'text-decoration: underline'
-||
-|| EMMET
-.text_underline
-=========================================================================*/
-.text_underline {
-  display: inline;
-  font-size: 18px;
-  text-shadow: 1px 1px 0 #f5f6f9, -1px 1px 0 #f5f6f9, -1px -1px 0 #f5f6f9, 1px -1px 0 #f5f6f9;
-  background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
-  background-position: 0 0.98em;
-  background-repeat: repeat-x;
-  background-size: 1px 1px;
+|| Category: Shape
+|| Link: http://localhost:8181/debug/shape.html#square
+|| Changlelog:
+||  22.02.19 - add
+/*=======================================================================*/
+.square {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
 }
-.text_underline::selection {
-  text-shadow: none;
+.square__wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.square__wrap:before {
+  content: '';
+  vertical-align: middle;
+  display: inline-block;
+  width: 0;
+  height: 100%;
+}
+.square__content {
+  vertical-align: middle;
+  display: inline-block;
 }
 /*=========================================================================
 || FILE: Circle
@@ -5344,43 +5354,44 @@ body.js_fullslider {
 || FILE: Square
 ===========================================================================
 || Category: Shape
-|| Link: http://localhost:8181/debug/shape.html#square
-|| Changlelog:
-||  22.02.19 - add
-/*=======================================================================*/
-.square {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-top: 100%;
-}
-.square__wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-.square__wrap:before {
-  content: '';
-  vertical-align: middle;
-  display: inline-block;
-  width: 0;
-  height: 100%;
-}
-.square__content {
-  vertical-align: middle;
-  display: inline-block;
-}
-/*=========================================================================
-|| FILE: Square
-===========================================================================
-|| Category: Shape
 || Link: http://localhost:8181/debug/shape.html#triangle
 || Changlelog:
 ||  22.02.19 - add
 /*=======================================================================*/
+/*=========================================================================
+|| FILE: truncate.less
+===========================================================================
+|| If the text is longer than one line, it will be truncated and end with 
+|| an ellipsis …
+||
+|| EMMET
+.text_truncate
+=========================================================================*/
+.text_truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*=========================================================================
+|| FILE: underline-pretty.less
+===========================================================================
+|| Alternative to 'text-decoration: underline'
+||
+|| EMMET
+.text_underline
+=========================================================================*/
+.text_underline {
+  display: inline;
+  font-size: 18px;
+  text-shadow: 1px 1px 0 #f5f6f9, -1px 1px 0 #f5f6f9, -1px -1px 0 #f5f6f9, 1px -1px 0 #f5f6f9;
+  background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
+  background-position: 0 0.98em;
+  background-repeat: repeat-x;
+  background-size: 1px 1px;
+}
+.text_underline::selection {
+  text-shadow: none;
+}
 /*=========================================================================
 || FILE: text-icon.less
 ===========================================================================
@@ -5573,57 +5584,6 @@ html.js_menu-active .nav__overlay {
   }
 }
 /*=========================================================================
-* @name Bouncing dots animation
-* @description .animation-boucing-dots>span*3
-* @markup
-<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
-*/
-/** 
-  * Dots animation 
-  * translate - bouncing animation offset
-**/
-@keyframes animation-boucing-dots {
-  0% {
-    opacity: 1;
-    transform: translateY(5px);
-  }
-  100% {
-    opacity: 0.1;
-    transform: translateY(-5px);
-  }
-}
-/** 
-  * Dots container 
-**/
-.animation-boucing-dots {
-  display: block;
-  text-align: center;
-  position: relative;
-  font-size: 0;
-  padding: 5px 0;
-  /**
-      * Dots elements
-    **/
-}
-.animation-boucing-dots > span {
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  background-color: #05386B;
-  margin-right: 6px;
-  transform: translateY(-5px);
-  animation: animation-boucing-dots 0.6s infinite alternate;
-  animation-delay: 0.2s;
-  display: inline-block;
-}
-.animation-boucing-dots > span:first-child {
-  animation-delay: 0s;
-}
-.animation-boucing-dots > span:last-child {
-  animation-delay: 0.4s;
-  margin-right: 0;
-}
-/*=========================================================================
 * @name Circle rotate animation
 * @description .animation-circle-rotate
 * @markup
@@ -5709,6 +5669,84 @@ html.js_menu-active .nav__overlay {
   display: inline-block;
 }
 /*=========================================================================
+|| FILE: Drop
+===========================================================================
+|| Category: Animation
+|| Link: http://localhost:8181/debug/animation-loader.html#drop
+|| Changlelog:
+||  21.02.19 - add
+/*=======================================================================*/
+/* @keyframes */
+@keyframes animation-drop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+/* Element */
+.animation-drop {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #05386B;
+  border-radius: 100%;
+  animation: animation-drop 1s infinite ease-in-out;
+}
+/*=========================================================================
+* @name Bouncing dots animation
+* @description .animation-boucing-dots>span*3
+* @markup
+<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
+*/
+/** 
+  * Dots animation 
+  * translate - bouncing animation offset
+**/
+@keyframes animation-boucing-dots {
+  0% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateY(-5px);
+  }
+}
+/** 
+  * Dots container 
+**/
+.animation-boucing-dots {
+  display: block;
+  text-align: center;
+  position: relative;
+  font-size: 0;
+  padding: 5px 0;
+  /**
+      * Dots elements
+    **/
+}
+.animation-boucing-dots > span {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #05386B;
+  margin-right: 6px;
+  transform: translateY(-5px);
+  animation: animation-boucing-dots 0.6s infinite alternate;
+  animation-delay: 0.2s;
+  display: inline-block;
+}
+.animation-boucing-dots > span:first-child {
+  animation-delay: 0s;
+}
+.animation-boucing-dots > span:last-child {
+  animation-delay: 0.4s;
+  margin-right: 0;
+}
+/*=========================================================================
 * @name Scale lines (height) animation
 * @description .animation-scale-lines>span*3
 * @markup
@@ -5758,43 +5796,16 @@ html.js_menu-active .nav__overlay {
   animation-delay: 0.4s;
   margin-left: -12px;
 }
-/*=========================================================================
-|| FILE: Drop
-===========================================================================
-|| Category: Animation
-|| Link: http://localhost:8181/debug/animation-loader.html#drop
-|| Changlelog:
-||  21.02.19 - add
-/*=======================================================================*/
-/* @keyframes */
-@keyframes animation-drop {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
-/* Element */
-.animation-drop {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto;
-  background-color: #05386B;
-  border-radius: 100%;
-  animation: animation-drop 1s infinite ease-in-out;
-}
 /* Prepare */
-/*=========================================================================
-|| FILE: Tables
-===========================================================================
-|| Style HTML tables
-=========================================================================*/
 /*=========================================================================
 || FILE: tables.less
 ===========================================================================
 || Style for tables ( table | tr | td )
+=========================================================================*/
+/*=========================================================================
+|| FILE: Tables
+===========================================================================
+|| Style HTML tables
 =========================================================================*/
 /*=========================================================================
 || FILE: Tabs
@@ -6094,6 +6105,24 @@ html.js_menu-active .nav__overlay {
 // .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
 =========================================================================*/
 /*=========================================================================
+|| FILE: Utilities
+===========================================================================
+|| Create repeatedly utilities class using functions
+@mobile      
+@fablet      
+@fablet-only 
+@fablet-down 
+@tablet      
+@tablet-only 
+@tablet-down 
+@desktop     
+@retina      
+=========================================================================*/
+/* Only mobile size */
+/* Fable size */
+/* Tablet size */
+/* Desktop size */
+/*=========================================================================
 || FILE: validator.less
 ===========================================================================
 || Style for jQuery Validation Plugin
@@ -6197,24 +6226,6 @@ html.js_menu-active .nav__overlay {
 .input-success + *:not([class]) {
   display: none;
 }
-/*=========================================================================
-|| FILE: Utilities
-===========================================================================
-|| Create repeatedly utilities class using functions
-@mobile      
-@fablet      
-@fablet-only 
-@fablet-down 
-@tablet      
-@tablet-only 
-@tablet-down 
-@desktop     
-@retina      
-=========================================================================*/
-/* Only mobile size */
-/* Fable size */
-/* Tablet size */
-/* Desktop size */
 /*=========================================================================
 || FILE: WYSIWYG HTML output formatting
 =========================================================================*/

@@ -14,6 +14,8 @@ export function html_main() {
     const element = config.path.pug.main;
 
     config.dev = !argv.prod;
+    console.log(config.dev);
+    
 
     return src( `${element.files}`, {
         allowEmpty: true,
