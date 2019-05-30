@@ -1,0 +1,15 @@
+{
+	"scssFormatter.singleQuote": true,
+	"[scss]": {
+		"editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+	},
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.tabSize": 2,
+	"files.exclude": {
+		"node_modules/": true,
+		"yarn*": true,
+		"*lock.json": true,
+		"validation*.json": true
+	}
+}

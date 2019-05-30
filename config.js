@@ -46,13 +46,10 @@ module.exports = {
 				]
 			},
 			grid: {
-				files: './src/style/grid.less',
+				files: './src/style/grid.scss',
 				dest: 'css/',
 				watch: [
-					'./src/style/grid.less',
-					"./src/style/frontbox/variables.less",
-					"./src/style/frontbox/functions.less",
-					"./src/style/frontbox/grid.less"
+					'./src/style/grid.scss',
 				]
 			},
 			utilities: {
