@@ -3,10 +3,13 @@ import { InformationCookie } from "./frontbox/information/cookie";
 import { html } from "./frontbox/data/elements";
 import { InputCounter } from "./frontbox/form/input-counter";
 import { vUnits } from "./frontbox/polyfill/v-units";
+import { Resize } from "./frontbox/bind/resize";
 
 window.onload = () => {
 
-  const browser = new Browser();
+  const 
+  browser = new Browser(),
+  resize = new Resize();
 
   /**
    * Forms

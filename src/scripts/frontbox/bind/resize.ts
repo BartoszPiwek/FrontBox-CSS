@@ -3,32 +3,55 @@ import { body } from "./../data/elements";
 /**
  * Resize
  */
-interface ResizeTemplate {
-    loading: string
+interface ResizeData {
+	template: string | boolean
 }
 
 interface QueueItem {
-    name: string
-    callback: Function
+	name: string
+	callback: Function
 }
 
 interface Queue {
-    width: Array<QueueItem>
-    height: Array<QueueItem>
+	width: Array<QueueItem>
+	height: Array<QueueItem>
+	all: Array<QueueItem>
 }
 
 export class Resize {
 
-    /* HTML template */
-    template: {ResizeTemplate}
-    /* Queue with all binds */
-    queue: Queue;
-    /* Time to fire resize */
-    resizeTime: number = 400;
+	/* Arguments */
+	data: ResizeData = {
+		template: false,
+	}
+	/* Queue with all binds */
+	queue: Queue;
+	/* Time to fire resize */
+	resizeTime: number = 400;
 
-    /* Constructor */
-    constructor() {
-        
-    }
+	/* Constructor */
+	constructor(data?: ResizeData) {
+		
+	}
+
+	trigger() {
+
+	}
+
+	add() {
+
+	}
+
+	clean() {
+
+	}
+
+	run() {
+
+	}
+
+	resize() {
+
+	}
 
 }
