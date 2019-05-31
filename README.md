@@ -1,28 +1,66 @@
 <div align="center">
     <a href="https://github.com/BartoszPiwek/FrontBox-CSS">
-      <img src="gitfiles/frontbox-logo.gif" alt="FrontBox CSS" />
+      <img src="gitfiles/frontbox-logo.gif" alt="FrontBox CSS" width="100" height="100" />
     </a>
-    <h1>FrontBox-CSS</h1>
-    <p align="center">
-        Static WWW builder tool.
-    </p>
 </div>
 
-> <strong>Author</strong>: Bartosz Piwek<br>
-> <strong>HTML Preprocessor</strong>: Pug<br>
-> <strong>CSS Preprocessor</strong>: LESS<br>
-> <strong>JS Preprocessor</strong>: Browserify<br>
-> <strong>Task runner</strong>: Gulp<br>
-> <strong>Version</strong>: 1.2.0<br>
-> <strong>Site DEV</strong>: <a href="http://dev.frontbox.bartoszpiwek.e-kei.pl/" target="_blank">http://dev.frontbox.bartoszpiwek.e-kei.pl/</a></br>
-> <strong>Site PROD</strong>: <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/" target="_blank">http://prod.frontbox.bartoszpiwek.e-kei.pl/</a></br>
+<h2 align="center">
+	<strong>FrontBox CSS</strong> <small>by Bartosz Piwek</small>
+</h2>
+<p align="center">
+  Open-source static site builder tool.
+</p>
+
+<p align="center">
+	<span>Test framework</span>
+	·
+  <a href="http://dev.frontbox.bartoszpiwek.e-kei.pl/">Development</a>
+  ·
+  <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/">Productive</a>
+</p>
+<br>
+<hr>
+<br>
+
+## Information
+
+<table>
+	<tr>
+		<td>HTML Preprocessor</td>
+		<td><a href="https://pugjs.org/">Pug</a></td>
+	</td>
+	<tr>
+		<td>CSS Preprocessor</td>
+		<td><a href="https://sass-lang.com">SCSS</a></td>
+	</td>
+	<tr>
+		<td>JS Preprocessor</td>
+		<td><a href="http://browserify.org">Browserify</a>/<a href="https://www.typescriptlang.org">TypeScript</a></td>
+	</td>
+	<tr>
+		<td>Task runner</td>
+		<td><a href="https://gulpjs.com">Gulp</a></td>
+	</td>
+	<tr>
+		<td>Version</td>
+		<td>1.2.0</td>
+	</td>
+</table>
+
+<br>
 
 ## Used programs
 
 ### Requirements:
+- <a href="https://nodejs.org/en/">Node.js</a> - JavaScript run-time environment
+- <a href="https://gulpjs.com">Gulp</a> - The streaming build system
 - <a href="https://yarnpkg.com/en/docs/install">Yarn</a> - Fast, reliable, and secure dependency management
-- <a href="https://nodejs.org/en/">Node.js</a> - JavaScript runtime built
-- <a href="https://gruntjs.com/">Grunt</a> - The JavaScript Task Runner
+- <a href="https://code.visualstudio.com">Visual Studio Code</a> - IDE
+- <a href="https://github.com/sds/scss-lint">scss-lint</a> - Configurable tool for writing clean, consistent SCSS
+
+### Visual Studio Code extensions:
+- <a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a>
+- <a href="scss-lint">SCSS Formatter</a>
 
 ### Additional:
 
@@ -203,25 +241,6 @@ TinyPNG uses smart lossy compression techniques to reduce the file size of your 
 <br>
 <img src="gitfiles/logo-html.jpg" style="width=100%; height: auto;">
 
-## HTML 
-TODO
-<br>
-
-<img src="gitfiles/logo-vc-studio.jpg" style="width=100%; height: auto;">
-
-## <a href="https://code.visualstudio.com/">Visual Studio Code</a> settings
-Sync IDE settings, snippets, packages between computers
-<br>
-
-- Download package
-> https://marketplace.visualstudio.com/items?itemName=nonoroazoro.syncing
-- Create new access tokens (settings>Developer>Personal access tokens) and download settings
-> Syncing: Download Settings<br>
-> Syncing: Upload Settings
-
-<br>
-<img src="gitfiles/logo-develop.jpg" style="width=100%; height: auto;">
-
 ## Development
 For new project create symbolic links with function <a target="_blank" href="https://www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/">mklink</a>
 > mklink /J "C:\Projects\{project-folder}\src\less\frontbox" "C:\Projects\Frontbox-CSS\src\less\frontbox"
@@ -230,6 +249,3 @@ For new project create symbolic links with function <a target="_blank" href="htt
 
 Feel free to report:
 > https://github.com/BartoszPiwek/FrontBox-CSS/issues
-
-## Changelog
-> https://github.com/BartoszPiwek/FrontBox-CSS/blob/master/CHANGELOG.md
