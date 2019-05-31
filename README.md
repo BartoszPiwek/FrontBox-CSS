@@ -4,9 +4,9 @@
     </a>
 </div>
 
-<h2 align="center">
+<h3 align="center">
 	<strong>FrontBox CSS</strong> <small>by Bartosz Piwek</small>
-</h2>
+</h3>
 <p align="center">
   Open-source static site builder tool.
 </p>
@@ -18,7 +18,6 @@
   ·
   <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/">Productive</a>
 </p>
-<br>
 <hr>
 <br>
 
