@@ -13,12 +13,11 @@
 
 <p align="center">
 	<span>Test framework</span>
-	·
+	:
   <a href="http://dev.frontbox.bartoszpiwek.e-kei.pl/">Development</a>
   ·
   <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/">Productive</a>
 </p>
-<hr>
 <br>
 
 ## Information
