@@ -1,9 +1,22 @@
+@charset "UTF-8";
 /*!******************************************************************
 Author      : Bartosz Piwek
 Framework   : FrontBox-CSS
 Url         : https://github.com/BartoszPiwek/FrontBox-CSS
 Version     : 1.1.0
 ********************************************************************/
+
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@charset */
 
-/*# sourceMappingURL=style.dev.css.map */
+// // /* Prepare */
+// // @plugin "frontbox/javascript";
+// // @import 'settings/responsive';
+// // @import 'frontbox/functions';
+// // @import 'frontbox/variables';
+
+// // /**
+// //  * Files
+// //  */
+// // @import 'settings/_style';
+// // @import 'frontbox/_style';
+// // @import 'style/*.less';

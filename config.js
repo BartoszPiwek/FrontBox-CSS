@@ -29,20 +29,18 @@ module.exports = {
 	path: {
 		style: {
 			main: {
-				files: './src/style/style.less',
+				files: './src/style/style.scss',
 				dest: '',
 				watch: [
-					'./src/style/style.less',
-					'./src/style/*/**.less',
+					'./src/style/style.scss',
 				]
 			},
 			base: {
-				files: './src/style/base.less',
+				files: './src/style/base.scss',
 				dest: 'css/',
 				watch: [
-					'./src/style/base.less',
-					"./src/style/variables/**/*",
-					"./src/style/frontbox/**/*"
+					'./src/style/base.scss',
+					'./src/style/modules/browser-reset'
 				]
 			},
 			grid: {
@@ -50,14 +48,18 @@ module.exports = {
 				dest: 'css/',
 				watch: [
 					'./src/style/grid.scss',
+					'./src/style/tools/_media.scss',
+					'./src/style/variables/_media.scss',
+					'./src/style/modules/_grid.scss',
+					'./src/style/modules/_row.scss',
 				]
 			},
 			utilities: {
-				files: './src/style/utilities.less',
+				files: './src/style/utilities.scss',
 				dest: 'css/',
 				watch: [
-					'./src/style/utilities.less',
-					"./src/style/utilities/*.less"
+					'./src/style/utilities.scss',
+					"./src/style/utilities/*.scss"
 				]
 			},
 		},

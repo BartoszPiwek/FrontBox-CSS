@@ -1,0 +1,21 @@
+/* Reset browser behavior */
+@import './node_modules/normalize.css/normalize';
+@import 'modules/browser-reset';
+
+/*=========================================================================
+|| FILE: Concat Base
+===========================================================================
+|| Concatenate files
+/*=======================================================================*/
+
+/* Prepare */
+// @import "frontbox/variables.less";
+// @import "settings/_style.less";
+// @import "frontbox/functions.less";
+
+/**
+ * Files
+ */
+// @import "frontbox/blocks.less";
+// @import "frontbox/media-queries.less";
+// @import "frontbox/fix.less";

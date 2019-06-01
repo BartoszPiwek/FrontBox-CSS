@@ -1,0 +1,19 @@
+@include responsive($breakpoints) {
+  $prefix: &;
+
+  @at-root .#{$prefix}relative {
+    position: relative !important;
+  }
+
+  @at-root .#{$prefix}absolute {
+    position: absolute !important;
+  }
+
+  @at-root .#{$prefix}static {
+    position: static !important;
+  }
+
+  @at-root .#{$prefix}fixed {
+    position: fixed !important;
+  }
+}

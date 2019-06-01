@@ -1,0 +1,75 @@
+@include responsive($breakpoints) {
+  $prefix: &;
+
+  @at-root .#{$prefix}center {
+    text-align: center !important;
+  }
+
+  @at-root .#{$prefix}left {
+    text-align: left !important;
+  }
+
+  @at-root .#{$prefix}right {
+    text-align: right !important;
+  }
+
+  @at-root .#{$prefix}justify {
+    text-align: justify !important;
+  }
+
+  @at-root .#{$prefix}light {
+    font-weight: 200 !important;
+  }
+
+  @at-root .#{$prefix}normal {
+    font-weight: 400 !important;
+  }
+
+  @at-root .#{$prefix}medium {
+    font-weight: 500 !important;
+  }
+
+  @at-root .#{$prefix}semibold {
+    font-weight: 600 !important;
+  }
+
+  @at-root .#{$prefix}bold {
+    font-weight: 700 !important;
+  }
+
+  @at-root .#{$prefix}italic {
+    font-style: italic !important;
+  }
+
+  @at-root .#{$prefix}capitalize {
+    text-transform: capitalize !important;
+  }
+
+  @at-root .#{$prefix}lowercase {
+    text-transform: lowercase !important;
+  }
+
+  @at-root .#{$prefix}uppercase {
+    text-transform: uppercase !important;
+  }
+
+  @at-root .#{$prefix}no-text-transform {
+    text-transform: capitalize !important;
+  }
+
+  @at-root .#{$prefix}underline {
+    text-decoration: underline !important;
+  }
+
+  @at-root .#{$prefix}text-wrap {
+    white-space: nowrap !important;
+  }
+
+  @at-root .#{$prefix}no-whitespace {
+    font-size: 0 !important;
+  }
+
+  @at-root .#{$prefix}no-font {
+    font-size: 0 !important;
+  }
+}

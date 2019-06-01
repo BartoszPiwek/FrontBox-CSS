@@ -1,0 +1,21 @@
+@mixin media($name) {
+  $width: map-get($breakpoints, $name);
+  @if $width {
+    @media screen and (min-width: $width) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-max($name) {
+  $width: map-get($breakpoints, $name);
+  @if $width {
+    @media screen and (max-width: $width - 1) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

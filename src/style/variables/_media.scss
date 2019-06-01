@@ -7,3 +7,5 @@ $breakpoints: (
   hd: 1366px,
   whd: 1440px
 );
+
+$media-retina: '@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';

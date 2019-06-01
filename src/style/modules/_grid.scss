@@ -1,0 +1,26 @@
+@mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
+  @include responsive($grid-breakpoints) {
+    @for $i from 1 through $grid-count {
+      $prefix: &;
+
+      @at-root .#{$prefix}col-#{$i} {
+        flex-basis: 100% / ($grid-count / $i);
+        max-width: 100% / ($grid-count / $i);
+      }
+
+      @if $i != $grid-count {
+        @at-root .#{$prefix}pull-#{$i} {
+          right: 100% / ($grid-count / $i) !important;
+        }
+
+        @at-root .#{$prefix}push-#{$i} {
+          left: 100% / ($grid-count / $i) !important;
+        }
+
+        @at-root .#{$prefix}order-#{$i} {
+          order: $i;
+        }
+      }
+    }
+  }
+}

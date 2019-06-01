@@ -1,0 +1,43 @@
+@include responsive($breakpoints) {
+  $prefix: &;
+
+  @at-root .#{$prefix}block {
+    display: block !important;
+  }
+
+  @at-root .#{$prefix}inline {
+    display: inline !important;
+  }
+
+  @at-root .#{$prefix}inline-block {
+    display: inline-block !important;
+  }
+
+  @at-root .#{$prefix}table {
+    display: table !important;
+  }
+
+  @at-root .#{$prefix}flex {
+    display: flex !important;
+  }
+
+  @at-root .#{$prefix}table-cell {
+    display: table-cell !important;
+  }
+
+  @at-root .#{$prefix}table-row {
+    display: table-row !important;
+  }
+
+  @at-root .#{$prefix}no-before:before {
+    content: none !important;
+  }
+
+  @at-root .#{$prefix}no-after:after {
+    content: none !important;
+  }
+
+  @at-root .#{$prefix}hide {
+    display: none !important;
+  }
+}

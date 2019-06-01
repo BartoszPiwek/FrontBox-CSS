@@ -1,0 +1,31 @@
+@include responsive($breakpoints) {
+  $prefix: &;
+
+  @at-root .#{$prefix}row {
+    &-responsive {
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+
+    &-center {
+      > * {
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &-v-center,
+    &-y-center {
+      > * {
+        align-items: center;
+      }
+    }
+
+    &-h-center,
+    &-x-center {
+      > * {
+        justify-content: center;
+      }
+    }
+  }
+}

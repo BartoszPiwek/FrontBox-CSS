@@ -1,0 +1,39 @@
+@include responsive($breakpoints) {
+  $prefix: &;
+
+  @at-root .#{$prefix}hideable {
+    overflow: hidden;
+
+    &-x {
+      overflow-x: hidden;
+    }
+
+    &-y {
+      overflow-y: hidden;
+    }
+  }
+
+  @at-root .#{$prefix}visible {
+    overflow: visible;
+
+    &-x {
+      overflow-x: visible;
+    }
+
+    &-y {
+      overflow-y: visible;
+    }
+  }
+
+  @at-root .#{$prefix}visible-reset {
+    overflow: unset;
+
+    &-x {
+      overflow-x: unset;
+    }
+
+    &-y {
+      overflow-y: unset;
+    }
+  }
+}

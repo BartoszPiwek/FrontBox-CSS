@@ -1,0 +1,25 @@
+@include responsive($breakpoints) {
+  $prefix: &;
+
+  @at-root .#{$prefix}round {
+    border-radius: 50%;
+  }
+
+  @at-root .#{$prefix}rotate {
+    &-180 {
+      transform: rotate(180deg) !important;
+    }
+
+    &-90 {
+      transform: rotate(90deg) !important;
+    }
+
+    &-270 {
+      transform: rotate(270deg) !important;
+    }
+  }
+
+  @at-root .#{$prefix}no-wrap {
+    max-width: 100% !important;
+  }
+}

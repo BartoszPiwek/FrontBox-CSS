@@ -1,5 +1,7 @@
 // Concatenate variables
 
+@import 'tools/media';
+
 @import 'tools/color';
 @import 'variables/color';
 
@@ -9,3 +11,5 @@
 @import 'variables/index';
 
 @include define-index($index);
+
+@import 'variables/breakpoint';
