@@ -57,8 +57,9 @@
 - <a href="https://github.com/sds/scss-lint">scss-lint</a> - Configurable tool for writing clean, consistent SCSS
 
 ### Visual Studio Code extensions:
-- <a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a>
-- <a href="scss-lint">SCSS Formatter</a>
+- <a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a> - Linter SCSS
+- <a href="https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter">SCSS Formatter</a> - Format SCSS.
+- <a href="https://marketplace.visualstudio.com/items?itemName=rebornix.project-snippets">Project Snippets</a> - Provide workspace/project level code snippets.
 
 ### Additional:
 
