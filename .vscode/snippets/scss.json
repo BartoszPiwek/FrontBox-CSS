@@ -2,19 +2,33 @@
 	"Guard: if": {
 		"prefix": "if",
 		"body": [
-			"@if ($1 == true) {",
+			"@if ($${1:value} == true) {",
 			"\t$2",
 			"}"
 		]
 	},
 	"Guard: if/else": {
-		"prefix": "ifelse",
+		"prefix": "if/else",
 		"body": [
 			"@if ($1 == true) {",
 			"\t$2",
 			"} @else {",
 			"\t$3",
 			"}"
+		]
+	},
+	"Loop: for": {
+		"prefix": "for",
+		"body": [
+			"@for $i from 1 through ${1:10}",
+			"\t$2",
+			"}"
+		]
+	},
+	"Tool: color": {
+		"prefix": "color",
+		"body": [
+			"color('$1')",
 		]
 	}
 }

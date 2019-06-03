@@ -1,0 +1,139 @@
+// Collection of useful functions
+
+/**
+ * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+ * - add class &--hover for parent element to trigger hover for child element
+ * EXAMPLE:
+    .foo {
+        .add-hover({
+            color: red;
+        });
+    }
+ * OUTPUT:
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo:hover,
+    .foo:active,
+    .foo:focus {
+        background-color: red;
+    }
+ */
+
+@mixin hover {
+  &--hover:hover &,
+  &--hover:active &,
+  &--hover:focus &,
+  &--hover-active &,
+  &--hover-active &,
+  &--hover-active &,
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+/**
+ *? Create color class using variables
+ * 
+ ** Function:
+ *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+ * 
+ ** Arguments:
+ *  @color-name-array: array with @colors sufix name { ex: foo, fee }
+ *  @color-variable-prefix: sufix name for variables { color }
+ *  @property: prefix class and property for color { fill }
+ * 
+ ** Example:
+ * 
+ *  @color-foo: red;
+ *  @color-fee: blue;
+ *  @color-string: foo, fee;
+ *  .color-list(@color-string, color, fill);
+ * 
+ ** Output:
+ *
+ *  fill-foo {
+ *    fill: red;
+ *  }
+ *  fill-fee {
+ *    fill: blue;
+ *  }
+ * 
+ */
+
+$list: aaa bbb ccc;
+
+@mixin colors() {
+}
+
+/*=========================================================================
+|| ANCHOR Fix
+=========================================================================*/
+
+/**
+ * Force an element to self-clear its children
+ */
+@mixin clearfix {
+  *zoom: 1;
+  zoom: 1;
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/*=========================================================================
+|| Browser
+=========================================================================*/
+
+/**
+ * Create custom themes for the browser's native scrollbars
+ */
+@mixin scrollbar($size, $background, $color) {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: $size;
+    height: $size;
+    background-color: $color;
+  }
+  &::-webkit-scrollbar-thumb {
+    min-width: $size;
+    max-height: $size;
+    background-color: $background;
+  }
+  &::-webkit-scrollbar-track {
+    display: none;
+  }
+}
+
+/*=========================================================================
+|| Flow
+=========================================================================*/
+
+/**
+ * Wrap
+ * Centering content in ASIX X
+ */
+
+/* Default style */
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Function */
+@mixin wrap($width, $padding: 0) {
+  max-width: $width + $padding * 2;
+
+  @if $padding {
+    padding-left: $padding;
+    padding-right: $padding;
+  }
+}

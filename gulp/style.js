@@ -48,6 +48,9 @@ export function style_base() {
 	return src(`${element.files}`, {
 		allowEmpty: true,
 	})
+		.pipe(header(
+			`$dev: ${config.dev};`
+		))
 		.pipe(gulpif(!argv.prod,
 			sourcemaps.init({ loadMaps: true })
 		))

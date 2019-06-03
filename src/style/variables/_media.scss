@@ -1,11 +1,16 @@
 $breakpoints: (
   xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  hd: 1366px,
-  whd: 1440px
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  hd: 1366,
+  whd: 1440
+);
+
+$breakpoints-special: (
+  /* Change header style when burger is showed */ burger-show: breakpoints('md'),
+  burger-hide: breakpoints('md') - 1
 );
 
 $media-retina: '@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';

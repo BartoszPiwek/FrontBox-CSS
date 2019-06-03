@@ -1,6 +1,6 @@
 {
 	"name": "frontbox-css",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"author": "Bartosz Piwek",
 	"description": "Bunch of functions, snippets, templates, tasks and so on for Front-End Developer",
 	"homepage": "https://github.com/BartoszPiwek/FrontBox-CSS",
@@ -89,14 +89,6 @@
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"vnu-jar": "^18.4.9"
-	},
-	"contributes": {
-		"snippets": [
-			{
-				"language": "scss",
-				"path": "./.vscode/scss.json"
-			}
-		]
 	},
 	"repository": "https://github.com/BartoszPiwek/FrontBox.git",
 	"license": "MIT"

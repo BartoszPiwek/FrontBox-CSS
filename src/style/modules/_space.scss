@@ -1,0 +1,30 @@
+// Horizontal space
+@mixin space-x($space) {
+  width: calc(100% + #{$space});
+  margin-left: -#{$space} !important;
+
+  > *:not(.row-gap-ignore) {
+    padding-left: $space !important;
+  }
+}
+
+// Vertical space
+@mixin space-y($space) {
+  margin-bottom: -#{$space} !important;
+
+  > *:not(.row-space-ignore) {
+    padding-bottom: $space !important;
+  }
+}
+
+// Vertical space
+@mixin space($space-x: 0, $space-y: $space-x) {
+  width: calc(100% + #{$space-x});
+  margin-left: -#{$space-x} !important;
+  margin-bottom: -#{$space-y} !important;
+
+  > *:not(.row-space-ignore) {
+    padding-bottom: $space-y !important;
+    padding-left: $space-x !important;
+  }
+}

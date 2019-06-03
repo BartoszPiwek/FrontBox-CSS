@@ -2,6 +2,17 @@
   $prefix: &;
 
   @at-root .#{$prefix}row {
+    &-reverse {
+      flex-direction: row-reverse;
+    }
+
+    &-justify {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
     &-responsive {
       flex-wrap: nowrap;
       overflow: hidden;

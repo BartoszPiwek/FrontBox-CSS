@@ -1,0 +1,51 @@
+/*=========================================================================
+|| FILE: Footer
+===========================================================================
+|| Style for footer elements
+=========================================================================*/
+
+.footer {
+  padding: 35px 0;
+  overflow: hidden;
+  background-color: color('secondary');
+
+  &__item {
+    > * {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__title {
+    margin: 20px 0;
+    color: color('white');
+    font-size: 28px;
+    font-weight: 200;
+  }
+
+  &__content {
+    color: color('black');
+    font-size: 16px;
+  }
+}
+
+/* Row */
+.row-footer {
+  @include space-x(25px);
+  @include media('md') {
+    @include space(25px);
+  }
+
+  @include media('lg') {
+    @include space(35px);
+  }
+
+  @include media('xl') {
+    @include space(45px);
+  }
+}
