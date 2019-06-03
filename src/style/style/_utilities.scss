@@ -1,0 +1,21 @@
+/*=========================================================================
+|| Create responsive utilities
+=========================================================================*/
+
+// Default size
+
+/* Only mobile size */
+@include media-max('sm') {
+}
+
+/* Fable size */
+@include media('md') {
+}
+
+/* Tablet size */
+@include media('lg') {
+}
+
+/* Desktop size */
+@include media('xl') {
+}

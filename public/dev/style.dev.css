@@ -14,6 +14,7 @@ Version     : 1.1.0
   --headerStickyTablet: 40;
   --headerStickyMobile: 30; }
 
+/* Text */
 /* Fix content space */
 *,
 *:before,
@@ -70,6 +71,25 @@ input[type='number']::-webkit-outer-spin-button {
 
 /*  */
 /*=========================================================================
+|| FILE: Animation
+===========================================================================
+|| Animate transitions from one CSS style configuration to another
+=========================================================================*/
+@keyframes animation_name {
+  0% { }
+  25% { }
+  50% { }
+  75% { }
+  100% { } }
+
+@keyframes animation_name {
+  from { }
+  to { } }
+
+/*=========================================================================
+|| Boxes
+=========================================================================*/
+/*=========================================================================
 || FILE: Footer
 ===========================================================================
 || Style for footer elements
@@ -121,5 +141,117 @@ input[type='number']::-webkit-outer-spin-button {
       .row-footer > *:not(.row-space-ignore) {
         padding-bottom: 45px !important;
         padding-left: 45px !important; } }
+
+/*=========================================================================
+|| Style SVG/IMG icons
+=========================================================================*/
+/**
+ * Default style
+ */
+.icon {
+  transition: fill 0.2s; }
+
+/*=========================================================================
+|| FILE: Index
+===========================================================================
+|| Style for most index elements
+=========================================================================*/
+/*=========================================================================
+|| Links
+=========================================================================*/
+/*=========================================================================
+|| Import plugins
+=========================================================================*/
+/*=========================================================================
+|| Style HTML tables
+=========================================================================*/
+/*=========================================================================
+|| FILE: Tools
+===========================================================================
+|| Create class using functions
+=========================================================================*/
+/*=========================================================================
+|| WRAP - center element in asix x
+|| = max width elemnt (end calculate = max-width + padding * 2)
+|| = padding for responsive view
+//=======================================================================*/
+.wrap {
+  width: calc(100% + 1024px);
+  margin-left: -1024px !important;
+  margin-bottom: -20px !important;
+  /**
+   * Elements
+   */
+  /* Navigation bar */ }
+  .wrap > *:not(.row-space-ignore) {
+    padding-bottom: 20px !important;
+    padding-left: 1024px !important; }
+  .wrap-navbar {
+    width: calc(100% + 1024px);
+    margin-left: -1024px !important;
+    margin-bottom: -20px !important; }
+    .wrap-navbar > *:not(.row-space-ignore) {
+      padding-bottom: 20px !important;
+      padding-left: 1024px !important; }
+
+.row {
+  /*=========================================================================
+  // ROW GAP
+  // Set space beetween columns in ASIX X
+  .space-x(20px);
+  // * space beetween columns
+  //=========================================================================
+  // ROW SPACE
+  // Set space beetween columns in ASIX Y
+  .space-y(20px);
+  // * space beetween columns
+  == WARNING: row will have 'overflow: hidden'
+  //=======================================================================*/ }
+
+.col {
+  /*=========================================================================
+  // COLUMN SIZE - set single column size (.row > .col-x) {variables without px}
+  // .add-col(column-size, parent-width, gap-size) {
+  // * columns size
+  // * parent element width (most .wrap)
+  // * space beetween columns {optional | default "0"}
+  == SNIPPETS: add-column
+  =========================================================================*/ }
+  .col-static--test {
+    flex-basis: 300px; }
+
+/**
+ * Space
+ */
+.space {
+  /* Default */
+  /* Sizes */ }
+  .space > * {
+    margin: 20px 0; }
+  .space--medium > * {
+    margin: 18px 0; }
+
+/*=========================================================================
+// Generate color list class { _functions.less }
+// .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+=========================================================================*/
+/*=========================================================================
+|| Create responsive utilities
+=========================================================================*/
+/* Only mobile size */
+/* Fable size */
+/* Tablet size */
+/* Desktop size */
+/*=========================================================================
+|| WYSIWYG HTML output formatting
+=========================================================================*/
+.wysiwyg > *:first-child {
+  margin-top: 0 !important; }
+
+.wysiwyg > *:last-child {
+  margin-bottom: 0 !important; }
+
+.wysiwyg pre {
+  font-family: monospace; }
 
 /*# sourceMappingURL=style.dev.css.map */

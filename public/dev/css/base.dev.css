@@ -432,10 +432,10 @@ input[type='number']::-webkit-outer-spin-button {
   /**
      * Container elements
      */ }
-  @media screen and (min-width: 768pxpx) {
+  @media screen and (min-width: 768px) {
     .frontbox-debug-box {
       height: 400px; } }
-  @media screen and (max-width: 576px - 1) {
+  @media screen and (max-width: 576 - 1) {
     .frontbox-debug-box {
       width: calc(100% - 50px); } }
   .frontbox-debug-box p {
@@ -451,7 +451,7 @@ input[type='number']::-webkit-outer-spin-button {
     overflow-y: auto;
     height: 100%;
     width: 100%; }
-    @media screen and (min-width: 768pxpx) {
+    @media screen and (min-width: 768px) {
       .frontbox-debug-box__container {
         width: 300px; } }
     .frontbox-debug-box__container > *:first-child {
@@ -480,7 +480,7 @@ input[type='number']::-webkit-outer-spin-button {
     right: 0; }
     .frontbox-debug-box--console .debug-box__container {
       width: 100%; }
-      @media screen and (min-width: 768pxpx) {
+      @media screen and (min-width: 768px) {
         .frontbox-debug-box--console .debug-box__container {
           width: 400px; } }
     .frontbox-debug-box--console .debug-box__button {

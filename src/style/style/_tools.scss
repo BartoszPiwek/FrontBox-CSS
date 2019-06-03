@@ -6,13 +6,11 @@
 
 /*=========================================================================
 || WRAP - center element in asix x
-.add-wrap(200px,15px);
 || = max width elemnt (end calculate = max-width + padding * 2)
 || = padding for responsive view
 //=======================================================================*/
 .wrap {
-
-  .add-wrap(1024px, 20px);
+  @include space(1024px, 20px);
 
   /**
    * Elements
@@ -20,9 +18,8 @@
 
   /* Navigation bar */
   &-navbar {
-    .add-wrap(1024px, 20px);
+    @include space(1024px, 20px);
   }
-
 }
 
 .row {
@@ -40,12 +37,11 @@
   //=======================================================================*/
 
   &- {
-    
   }
-
 }
 
-.col { // tools {col-static}
+.col {
+  // tools {col-static}
   /*=========================================================================
   // COLUMN SIZE - set single column size (.row > .col-x) {variables without px}
   // .add-col(column-size, parent-width, gap-size) {
@@ -55,27 +51,26 @@
   == SNIPPETS: add-column
   =========================================================================*/
 
-    &-static {
-      &--test {
-        flex-basis: 300px;
-      }
+  &-static {
+    &--test {
+      flex-basis: 300px;
     }
+  }
 }
 
 /**
  * Space
  */
 .space {
-    
-    /* Default */
-    & > * {
-        margin: 20px 0;
-    }
-    
-    /* Sizes */
-    &--medium > * {
-        margin: 18px 0;
-    }
+  /* Default */
+  > * {
+    margin: 20px 0;
+  }
+
+  /* Sizes */
+  &--medium > * {
+    margin: 18px 0;
+  }
 }
 
 /*=========================================================================

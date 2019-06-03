@@ -33,6 +33,11 @@ module.exports = {
 				dest: '',
 				watch: [
 					'./src/style/style.scss',
+					'./src/style/variables.scss',
+					'./src/style/variables/*.scss',
+					'./src/style/tools/*.scss',
+					'./src/style/modules/*.scss',
+					'./src/style/style/*.scss',
 				]
 			},
 			base: {

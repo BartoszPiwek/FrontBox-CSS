@@ -1,0 +1,70 @@
+/*=========================================================================
+|| WYSIWYG HTML output formatting
+=========================================================================*/
+
+.wysiwyg {
+  & > * {
+    &:first-child {
+      margin-top: 0 !important;
+    }
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  ul {
+    li {
+    }
+  }
+
+  ol {
+    li {
+    }
+  }
+
+  p {
+  }
+
+  div {
+  }
+
+  strong {
+  }
+
+  u {
+  }
+
+  blockquote {
+  }
+
+  hr {
+  }
+
+  img {
+  }
+
+  a {
+  }
+
+  h1 {
+  }
+
+  h2 {
+  }
+
+  h3 {
+  }
+
+  h4 {
+  }
+
+  h5 {
+  }
+
+  h6 {
+  }
+
+  pre {
+    font-family: $font-family-monospace;
+  }
+}
