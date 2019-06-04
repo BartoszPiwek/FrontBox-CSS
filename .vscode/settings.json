@@ -11,5 +11,6 @@
 		"yarn*": true,
 		"*lock.json": true,
 		"validation*.json": true
-	}
+	},
+	"editor.tabCompletion": "on",
 }

@@ -1,0 +1,37 @@
+/*=========================================================================
+|| FILE: Base
+===========================================================================
+|| Create base class
+=========================================================================*/
+
+/* Page wrapper */
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+/* Space beetween elements */
+.space {
+  & > * {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

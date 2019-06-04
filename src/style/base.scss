@@ -1,13 +1,14 @@
 /* Reset browser behavior */
-@import 'tools/media';
-@import 'variables/base';
-@import 'variables/media';
 @import './node_modules/normalize.css/normalize';
-@import 'modules/browser-reset';
-@import 'modules/debug';
+@import 'variables';
+@import 'modules/responsive';
 
 @import 'bootstrap/*';
 
+// Debug
+@import 'modules/debug';
 @if ($dev == true) {
   @include frontbox-debug;
 }
+
+@import '../../../FrontBox-Plugins/**/*.scss';

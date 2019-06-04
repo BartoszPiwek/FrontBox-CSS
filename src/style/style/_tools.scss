@@ -10,7 +10,7 @@
 || = padding for responsive view
 //=======================================================================*/
 .wrap {
-  @include space(1024px, 20px);
+  @include wrap(1024px, 20px);
 
   /**
    * Elements
@@ -18,7 +18,7 @@
 
   /* Navigation bar */
   &-navbar {
-    @include space(1024px, 20px);
+    @include wrap(1024px, 20px);
   }
 }
 

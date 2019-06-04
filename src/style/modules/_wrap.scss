@@ -1,0 +1,14 @@
+/**
+ * Wrap
+ * Centering content in ASIX X
+ */
+
+/* Function */
+@mixin wrap($width, $padding: 0) {
+  max-width: $width + $padding * 2;
+
+  @if $padding {
+    padding-left: $padding;
+    padding-right: $padding;
+  }
+}

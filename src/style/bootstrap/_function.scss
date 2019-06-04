@@ -111,29 +111,3 @@ $list: aaa bbb ccc;
     display: none;
   }
 }
-
-/*=========================================================================
-|| Flow
-=========================================================================*/
-
-/**
- * Wrap
- * Centering content in ASIX X
- */
-
-/* Default style */
-.wrap {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-/* Function */
-@mixin wrap($width, $padding: 0) {
-  max-width: $width + $padding * 2;
-
-  @if $padding {
-    padding-left: $padding;
-    padding-right: $padding;
-  }
-}

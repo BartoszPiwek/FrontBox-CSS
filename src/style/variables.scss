@@ -1,17 +1,11 @@
 // Concatenate variables
-
 @import './tools/media';
-
 @import './tools/color';
 @import './variables/color';
-
 @include define-colors($color);
-
 @import './tools/index';
 @import './variables/index';
-
 @include define-index($index);
-
 @import './variables/media';
 @import './variables/passing';
 @import './variables/base';

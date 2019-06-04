@@ -45,7 +45,7 @@ module.exports = {
 				dest: 'css/',
 				watch: [
 					'./src/style/base.scss',
-					'./src/style/modules/browser-reset'
+					'./src/style/bootstrap/*.scss'
 				]
 			},
 			grid: {

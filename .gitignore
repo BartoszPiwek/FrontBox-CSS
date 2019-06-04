@@ -2,7 +2,6 @@
 node_modules/
 
 src/less/automatic/*less
-log
 .tscache
 src/template/critical-css/*
 docs
@@ -22,9 +21,7 @@ src/js/libs/*
 src/images/favicon
 
 # Logs
-logs
-validation-report.json
-validation-status.json
+log/*.json
 
 # Manifest
 package-lock.json
