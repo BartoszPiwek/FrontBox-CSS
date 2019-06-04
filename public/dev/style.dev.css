@@ -215,4 +215,98 @@ Version     : 1.1.0
 .wysiwyg pre {
   font-family: monospace; }
 
+.js_cookies-information {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 1;
+  z-index: 6999;
+  background-color: rgba(5, 56, 107, 0.9);
+  padding: 8px 0;
+  border-top: 2px solid #05386b; }
+  .js_cookies-information__img {
+    display: none; }
+    @media screen and (min-width: 768px) {
+      .js_cookies-information__img {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        width: 95px;
+        height: auto; } }
+  .js_cookies-information__text {
+    font-size: 14px;
+    text-align: justify;
+    color: #fff; }
+  .js_cookies-information__container {
+    padding-right: 30px;
+    position: relative; }
+    @media screen and (min-width: 768px) {
+      .js_cookies-information__container {
+        padding-left: 115px; } }
+  .js_cookies-information__exit {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: transform 0.2s; }
+    .js_cookies-information__exit:before, .js_cookies-information__exit:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 0; }
+    .js_cookies-information__exit:before {
+      transform: rotate(45deg); }
+    .js_cookies-information__exit:after {
+      transform: rotate(-45deg); }
+    .js_cookies-information__exit:hover, .js_cookies-information__exit:focus, .js_cookies-information__exit:active {
+      transform: rotate(90deg); }
+  .js_cookies-information--hide {
+    transform: translate(0, 100%);
+    opacity: 0; }
+
+/*=========================================================================
+|| Plugin: wcag.less
+===========================================================================
+|| REQUIRED frontbox/wcag.js
+=========================================================================*/
+.js_wcag-focus {
+  outline: 4px solid #0e5ca4; }
+  .js_wcag-focus--ignore {
+    outline: none !important; }
+
+.wcag-skip {
+  opacity: 0;
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background-color: #000;
+  transition: opacity 0.2s;
+  z-index: -10;
+  padding: 10px 20px;
+  color: #05386b; }
+  .wcag-skip:before {
+    content: '';
+    bottom: 0;
+    left: 50%;
+    transform: translateY(100%);
+    display: block;
+    position: absolute; }
+
+.js_wcag-focus .wcag-skip {
+  left: 50%;
+  top: 50%;
+  outline: 4px solid #05386b;
+  z-index: 9990;
+  transform: translate(-50%, -50%); }
+  .js_wcag-focus .wcag-skip:focus {
+    opacity: 1; }
+
 /*# sourceMappingURL=style.dev.css.map */

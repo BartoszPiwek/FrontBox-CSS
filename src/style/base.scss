@@ -10,5 +10,3 @@
 @if ($dev == true) {
   @include frontbox-debug;
 }
-
-@import '../../../FrontBox-Plugins/**/*.scss';

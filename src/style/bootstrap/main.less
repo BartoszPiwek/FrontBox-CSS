@@ -92,24 +92,7 @@ body {
   * Text and elements
 **/
 
-* {
-	// Mobile tap color highlight
-	& when not (@color-tap = false) {
-		-webkit-tap-highlight-color: @color-tap;
-	}
-	& when (@color-tap = false) {
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
-	}
-	// Text selection color
-	& when not (@color-selection = false) {
-		&::selection {
-			background: @color-selection;
-		}
-		&::-moz-selection {
-			background: @color-selection;
-		}
-	}
-}
+
 
 //=========================================================================
 // Clickable elements

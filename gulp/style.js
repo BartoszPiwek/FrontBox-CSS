@@ -3,6 +3,7 @@ import { src, dest } from "gulp";
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
 import header from 'gulp-header';
+import footer from 'gulp-footer';
 import rename from "gulp-rename";
 import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
@@ -24,6 +25,11 @@ export function style_main() {
 	})
 		.pipe(header(
 			`$dev: ${config.dev};`
+		))
+		.pipe(gulpif(!argv.prod,
+			footer(
+				`@import '../../../FrontBox-Plugins/**/*.scss';`
+			)
 		))
 		.pipe(gulpif(!argv.prod,
 			sourcemaps.init({ loadMaps: true })

@@ -1,13 +1,9 @@
 /*=========================================================================
-|| FILE: Base
-===========================================================================
-|| Create base class
+|| Base style
 =========================================================================*/
 
-/* Page wrapper */
 html {
   height: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -32,6 +28,22 @@ body {
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+
+* {
+  // Mobile tap color highlight
+  @if ($color-tap != false) {
+    -webkit-tap-highlight-color: $color-tap;
+  }
+  // Text selection color
+  @if ($color-text-selection != false) {
+    &::selection {
+      background: $color-text-selection;
+    }
+    &::-moz-selection {
+      background: $color-text-selection;
     }
   }
 }
