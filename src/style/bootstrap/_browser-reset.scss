@@ -1,4 +1,4 @@
-/* Fix content space */
+// Fix content space
 *,
 *:after,
 *:before {
@@ -7,18 +7,18 @@
   padding: 0;
 }
 
-/* Default style elements */
+// Default style elements
 iframe {
   border: 0;
 }
 
-/* Remove list style */
+// Remove list style
 ol,
 ul {
   list-style: none;
 }
 
-/* Heading */
+// Heading
 h1,
 h2,
 h3,
@@ -29,16 +29,24 @@ h6 {
   font-weight: normal;
 }
 
-/* Anchor */
+// Anchor
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Forms */
 // Turn Off Number Input Spinners
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input {
+  &[type='number'] {
+    -moz-appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+}
+
+label[for] {
+  cursor: pointer;
 }

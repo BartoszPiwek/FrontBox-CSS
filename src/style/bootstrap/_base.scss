@@ -7,21 +7,21 @@ html {
 }
 
 body {
-  position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
-  min-height: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .footer {
   margin-top: auto;
 }
 
-/* Space beetween elements */
+// Space beetween elements
 .space {
-  & > * {
+  > * {
     &:first-child {
       margin-top: 0;
     }
@@ -40,9 +40,6 @@ body {
   // Text selection color
   @if ($color-text-selection != false) {
     &::selection {
-      background: $color-text-selection;
-    }
-    &::-moz-selection {
       background: $color-text-selection;
     }
   }

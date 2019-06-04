@@ -7,7 +7,7 @@
 @include responsive($breakpoints) {
   $prefix: &;
 
-  @at-root .#{$prefix}col {
+  @at-root .#{$prefix}container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -18,7 +18,7 @@
       flex: 0 1 auto;
       height: 100%;
 
-      /* Positions */
+      // Positions
       &--left {
         margin-right: auto;
       }
@@ -31,13 +31,13 @@
         margin: 0 auto;
 
         &-absolute {
-          margin: 0 auto;
-          position: absolute;
-          left: 50%;
-          top: 50%;
           display: block;
-          transform: translate(-50%, -50%);
+          position: absolute;
+          top: 50%;
+          left: 50%;
           height: auto;
+          margin: 0 auto;
+          transform: translate(-50%, -50%);
         }
       }
     }

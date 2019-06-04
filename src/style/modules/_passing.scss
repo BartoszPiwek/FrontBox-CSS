@@ -1,0 +1,11 @@
+// Pass variables to JavaScript
+:root {
+  --desktop: #{breakpoint('xl')};
+  --tablet: #{breakpoint('lg')};
+  --fablet: #{breakpoint('md')};
+  --mobile: #{breakpoint('sm')};
+
+  --headerStickyDesktop: 50;
+  --headerStickyTablet: 40;
+  --headerStickyMobile: 30;
+}

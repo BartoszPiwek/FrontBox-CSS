@@ -9,7 +9,8 @@ $breakpoints: (
 );
 
 $breakpoints-special: (
-  /* Change header style when burger is showed */ burger-show: breakpoints('md'),
+	/* Change header style when burger is showed */ 
+	burger-show: breakpoints('md'),
   burger-hide: breakpoints('md') - 1
 );
 
