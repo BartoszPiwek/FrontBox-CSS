@@ -110,6 +110,8 @@ exports.docs = () => {
 		source: [
 			`src/style/`
 		],
+		builder: 'handlebars/kss/',
+		title: 'FrontBox-CSS Style Guide'
 	});
 };
 

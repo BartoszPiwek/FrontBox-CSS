@@ -19,6 +19,7 @@ src/js/libs/*
 
 # Generated
 src/images/favicon
+styleguide
 
 # Logs
 log/*.json
