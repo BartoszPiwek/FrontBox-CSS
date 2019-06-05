@@ -305,6 +305,46 @@ template {
 
 /* Text */
 /**
+ *? Create color class using variables
+ * 
+ ** Function:
+ *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+ * 
+ ** Arguments:
+ *  @color-name-array: array with @colors sufix name { ex: foo, fee }
+ *  @color-variable-prefix: sufix name for variables { color }
+ *  @property: prefix class and property for color { fill }
+ * 
+ ** Example:
+ * 
+ *  @color-foo: red;
+ *  @color-fee: blue;
+ *  @color-string: foo, fee;
+ *  .color-list(@color-string, color, fill);
+ * 
+ ** Output:
+ *
+ *  fill-foo {
+ *    fill: red;
+ *  }
+ *  fill-fee {
+ *    fill: blue;
+ *  }
+ * 
+ */
+/*=========================================================================
+|| ANCHOR Fix
+=========================================================================*/
+/**
+ * Force an element to self-clear its children
+ */
+/*=========================================================================
+|| Browser
+=========================================================================*/
+/**
+ * Create custom themes for the browser's native scrollbars
+ */
+/**
  * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
  * - add class &--hover for parent element to trigger hover for child element
  * EXAMPLE:
@@ -351,12 +391,19 @@ template {
 /*
 Wrap
 
-Centers the content in  specify width
+Center the content in specify width.<br>
+Add space around content (padding left/right)
 
 Markup:
 <div class="wrap">
-<div style="background:red;">content</div>
+ <div>content</div>
 </div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
 
 Style guide: Flow.wrap
 */
@@ -590,50 +637,10 @@ label [for] {
           margin: 0 auto;
           transform: translate(-50%, -50%); } }
 
-/**
- *? Create color class using variables
- * 
- ** Function:
- *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
- * 
- ** Arguments:
- *  @color-name-array: array with @colors sufix name { ex: foo, fee }
- *  @color-variable-prefix: sufix name for variables { color }
- *  @property: prefix class and property for color { fill }
- * 
- ** Example:
- * 
- *  @color-foo: red;
- *  @color-fee: blue;
- *  @color-string: foo, fee;
- *  .color-list(@color-string, color, fill);
- * 
- ** Output:
- *
- *  fill-foo {
- *    fill: red;
- *  }
- *  fill-fee {
- *    fill: blue;
- *  }
- * 
- */
-/*=========================================================================
-|| ANCHOR Fix
-=========================================================================*/
-/**
- * Force an element to self-clear its children
- */
-/*=========================================================================
-|| Browser
-=========================================================================*/
-/**
- * Create custom themes for the browser's native scrollbars
- */
 .wrap {
-  width: 100%;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+  width: 100%; }
 
 @media screen and (min-width: breakpoints("md") px) {
   .is_burger-menu--visible {

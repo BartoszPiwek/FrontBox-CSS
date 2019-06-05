@@ -1,0 +1,27 @@
+@import './../src/style/variables/base';
+@import './../src/style/variables/index';
+@import './../src/style/variables/media';
+@import './../src/style/tools/index';
+@import './../src/style/tools/media';
+@import './../src/style/modules/**/*';
+
+$color-primary: red;
+
+// Functions
+.triangle {
+  &-up {
+    @include triangle(30px, 20px, 'up', $color-primary);
+  }
+
+  &-right {
+    @include triangle(30px, 20px, 'right', $color-primary);
+  }
+
+  &-down {
+    @include triangle(30px, 20px, 'down', $color-primary);
+  }
+
+  &-left {
+    @include triangle(30px, 20px, 'left', $color-primary);
+  }
+}

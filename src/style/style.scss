@@ -9,7 +9,7 @@ Version     : 1.1.0
 @charset "UTF-8";
 
 @import 'variables';
-@import 'tools/*.scss';
-@import 'modules/*.scss';
+@import 'tools/*';
+@import 'modules/*';
 
-@import 'style/*.scss';
+@import 'style/*';

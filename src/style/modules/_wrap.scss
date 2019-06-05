@@ -29,10 +29,10 @@ Style guide: Flow.wrap
 }
 
 // Style
-@mixin wrap-style() {
+@mixin wrap-style {
   .wrap {
-    width: 100%;
     margin-right: auto;
     margin-left: auto;
+    width: 100%;
   }
 }

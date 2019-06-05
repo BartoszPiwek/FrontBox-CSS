@@ -1,12 +1,12 @@
 // Reset browser behavior
 @import './node_modules/normalize.css/normalize';
-@import 'variables';
-@import 'modules/*';
+@import './variables';
+@import './modules/*';
 
-@import 'bootstrap/*';
+@import './bootstrap/*';
 
 // Debug
-@import 'modules/debug';
+@import './modules/debug';
 @if ($dev == true) {
   @include frontbox-debug;
 }

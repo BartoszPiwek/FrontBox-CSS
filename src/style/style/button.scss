@@ -48,7 +48,7 @@ Style guide: Component.Buttons
   }
 
   //=========================================================================
-  // ANCHOR Default collection
+  // ANCHOR Elements
   //=========================================================================
 
   &-disable,
@@ -113,10 +113,10 @@ Markup:
 
 Style guide: Component.Buttons.colors
 */
-
 .btn {
   &--primary {
     background-color: color('primary');
+
     @include hover {
       background-color: darken(color('primary'), 0.8);
     }

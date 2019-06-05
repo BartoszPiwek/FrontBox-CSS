@@ -8,7 +8,6 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 import { watch, series, parallel } from "gulp";
 const argv = require('yargs').argv;
 export const browserSync = require('browser-sync').create();
-import kss from "kss";
 /* Import config */
 import * as config from './config';
 import { getModeName } from "./gulp/index";
@@ -55,6 +54,8 @@ export const buildCopy = parallel(copy_image, copy_fonts, copy_other, copy_video
 /* Other */
 import { svg, favicon } from "./gulp/assets";
 export const buildAssets = parallel(svg, favicon);
+/* Docs */
+import { docs_style, docs_watch, docs_run } from "./gulp/docs";
 
 /* Main watch function */
 export function watchFiles() {
@@ -105,25 +106,7 @@ exports.style = series(buildStyle, server, watchFiles);
 exports.script = series(buildScript, server, watchFiles);
 exports.html = series(buildHTML, server, watchFiles);
 exports.favicon = favicon;
-exports.docs = () => {
-	kss({
-		source: [
-			`src/style/`
-		],
-		builder: 'handlebars/kss/',
-		title: 'FrontBox-CSS Style Guide',
-		css: [
-			'../public/dev/style.dev.css',
-			'../public/dev/css/base.dev.css',
-			'../public/dev/css/grid.dev.css',
-			'../public/dev/css/utilities.dev.css',
-		],
-		custom: [
-			'Emmet',
-			'Mixin'
-		]
-	});
-};
+exports.docs = series(docs_style, docs_run, docs_watch);
 
 /* Test task */
 exports.test = () => {

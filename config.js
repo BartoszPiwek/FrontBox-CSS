@@ -149,7 +149,8 @@ module.exports = {
 				iconsPath: '/images/favicon',
 				log: 'log/faviconData.json'
 			}
-		}
+		},
+		plugins: `../../FrontBox - Plugins;`
 	},
 
 	pathToPublic: 'public',

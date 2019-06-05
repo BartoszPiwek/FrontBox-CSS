@@ -1,0 +1,112 @@
+/*
+Validator
+
+Style for jQuery Validation Plugin
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: JavaScript.validator
+*/
+
+.input-error {
+  color: color('danger') !important;
+  border-color: color('danger') !important;
+
+  &--absolute + *:not([class]) {
+    padding-top: 20px;
+
+    @include media('md') {
+      position: absolute;
+      z-index: 20;
+      top: 50%;
+      padding-left: 10px;
+    }
+
+    label {
+      display: block;
+      position: relative;
+      padding: 6px;
+      border: 1px solid color('danger');
+      border-radius: 4px;
+      background-color: color('white');
+      font-size: 13px;
+      text-align: center;
+
+      // Arrow
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        // .add-triangle( 10, 10, top, color('danger'));
+      }
+    }
+  }
+  /**
+      * Absolute validator information
+      - right style
+    **/
+  &--right + *:not([class]) {
+    @include media('md') {
+      transform: translate(100%, -50%);
+      right: 0;
+    }
+    label {
+      &:before {
+      }
+    }
+  }
+  /**
+      * Absolute validator information
+      - left style
+    **/
+  &--left + *:not([class]) {
+    @include media('md') {
+      left: 0;
+      transform: translate(-100%, -50%);
+      padding-left: 0;
+      padding-right: 10px;
+    }
+    label {
+      &:before {
+        @include media('md') {
+          top: 50%;
+          right: 0;
+          left: auto;
+          transform: translate(100%, -50%);
+          // .add-triangle( 10, 10, right, color('danger'));
+        }
+      }
+    }
+  }
+  /**
+      * Default validator information
+    **/
+  label.input-error {
+    text-align: center;
+    display: block;
+    padding: 6px;
+  }
+}
+
+/**
+  * Validator class
+  - success
+**/
+.input-success {
+  border-color: color('success') !important;
+  color: color('success') !important;
+  & + *:not([class]) {
+    display: none;
+  }
+}

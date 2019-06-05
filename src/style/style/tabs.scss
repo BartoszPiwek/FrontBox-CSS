@@ -1,0 +1,73 @@
+/*
+Tabs
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: Elements.tabs
+*/
+
+.tabs {
+  &__expand {
+    display: none;
+  }
+
+  &__item {
+    flex: 1 1 auto;
+    padding: 20px;
+    background-color: color('primary');
+    text-align: center;
+  }
+
+  &__view {
+    width: 100%;
+  }
+
+  &__expand {
+    padding: 20px;
+    background-color: darken(color('primary'), 20%);
+  }
+}
+
+@include responsive($breakpoints) {
+  $prefix: &;
+
+  @at-root .#{$prefix}tabs {
+    &__content {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &--vertical {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &--expand {
+      flex-direction: column;
+      text-align: center;
+
+      .tabs {
+        &__item {
+        }
+
+        &__expand {
+          display: block;
+        }
+
+        &__view {
+          height: 0;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

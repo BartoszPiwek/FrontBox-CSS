@@ -79,3 +79,57 @@ $list: aaa bbb ccc;
     display: none;
   }
 }
+
+/*
+Triangle
+
+Markup:
+<div class="triangle-up"></div>
+<div class="triangle-right"></div>
+<div class="triangle-down"></div>
+<div class="triangle-left"></div>
+
+Mixin:
+triangle($width, $height, $position, $color: '');
+
+Mixin usage:
+triangle(40px, 50px, 'up', color('primary'));
+
+Mixin arguments:
+$width: number
+$height: number
+$position: ['up','right','down','left'];
+$color: color
+
+Style guide: Functions.triangle
+*/
+
+@function is-position-x($position) {
+  @return ($position != 'left' and $position != 'right');
+}
+
+@mixin triangle($width, $height, $position: 'down', $color: color('primary')) {
+  $width-half: $width / 2;
+  $bool: is-position-x($position);
+
+  width: 0;
+  height: 0;
+
+  @if ($position == 'left') {
+    border-right: $height solid $color;
+  } @else if ($position == 'up') {
+    border-bottom: $height solid $color;
+  } @else if ($position == 'right') {
+    border-left: $height solid $color;
+  } @else if ($position == 'down') {
+    border-top: $height solid $color;
+  }
+
+  @if ($bool == true) {
+    border-right: $width-half solid transparent;
+    border-left: $width-half solid transparent;
+  } @else {
+    border-top: $width-half solid transparent;
+    border-bottom: $width-half solid transparent;
+  }
+}

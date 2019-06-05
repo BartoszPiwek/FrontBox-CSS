@@ -3,18 +3,18 @@
 	"Guard: if": {
 		"prefix": "if",
 		"body": [
-			"@if ($${1:value} == true) {",
-			"\t$2",
+			"@if ($${1:value} == ${2:'true'}) {",
+			"\t$3",
 			"}"
 		]
 	},
 	"Guard: if/else": {
 		"prefix": "if/else",
 		"body": [
-			"@if ($1 == true) {",
-			"\t$2",
-			"} @else {",
+			"@if ($1 == ${2:'true'}) {",
 			"\t$3",
+			"} @else {",
+			"\t$4",
 			"}"
 		]
 	},
@@ -71,6 +71,13 @@
 			"@include media-special-max ('$1') {",
 			"\t$2",
 			"}"
+		]
+	},
+	// Functions
+	"Functions: scrollbar": {
+		"prefix": "include_scrollbar",
+		"body": [
+			"@include scrollbar();"
 		]
 	},
 }
