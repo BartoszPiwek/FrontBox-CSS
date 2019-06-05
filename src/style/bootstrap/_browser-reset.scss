@@ -36,6 +36,10 @@ a {
   text-decoration: none;
 }
 
+iframe {
+  border: 0;
+}
+
 // Turn Off Number Input Spinners
 input {
   &[type='number'] {

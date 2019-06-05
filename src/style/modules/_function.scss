@@ -83,17 +83,7 @@ $list: aaa bbb ccc;
 /*
 Triangle
 
-Markup:
-<div class="triangle-up"></div>
-<div class="triangle-right"></div>
-<div class="triangle-down"></div>
-<div class="triangle-left"></div>
-
-Mixin:
-triangle($width, $height, $position, $color: '');
-
-Mixin usage:
-triangle(40px, 50px, 'up', color('primary'));
+Generate triangle style
 
 Mixin arguments:
 $width: number
@@ -101,16 +91,23 @@ $height: number
 $position: ['up','right','down','left'];
 $color: color
 
+mixin:
+triangle($width, $height, $position, $color: '');
+
+mixin_usage:
+triangle(40px, 50px, 'up', color('primary'));
+triangle(20px, 80px, 'left', color('secondary'));
+
+mixin_output:
+<div class="triangle-up"></div>
+<div class="triangle-left"></div>
+
 Style guide: Functions.triangle
 */
 
-@function is-position-x($position) {
-  @return ($position != 'left' and $position != 'right');
-}
-
 @mixin triangle($width, $height, $position: 'down', $color: color('primary')) {
   $width-half: $width / 2;
-  $bool: is-position-x($position);
+  $bool: ($position != 'left' and $position != 'right');
 
   width: 0;
   height: 0;

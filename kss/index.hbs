@@ -8,8 +8,8 @@
 	<meta name="description" content="">
 	<meta name="generator" content="kss-node">
 	<meta name="viewport" content="width=device-width">
-
-	<link rel="stylesheet" href="kss-assets/kss.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	{{{styles}}}
 </head>
 
@@ -207,8 +207,10 @@
 					{{/if}}
 
 					<div class="kss-modifier__example">
-						<div class="row">{{{example}}}</div>
-						<div class="kss-modifier__example-footer"></div>
+						<iframe class="debug-iframe" data-iframe="list-vertical-responsive"></iframe>
+						<div data-iframe-content="list-vertical-responsive">
+							{{{example}}}
+						</div>
 					</div>
 
 					{{#each modifiers}}
@@ -281,6 +283,22 @@
 
 				{{/if}}
 
+				{{!-- Mixin --}}
+				{{#if mixin}}
+				<h3 class="kss-h3">Function</h3>
+				<pre class="hljs"><code class="language-handlebars">{{{hljs mixin 'handlebars'}}}</code></pre>
+				{{/if}}
+
+				{{!-- Mixin Usage --}}
+				{{#if mixin_usage}}
+				<details class="kss-markup kss-style">
+					<summary>
+						Mixin usage
+					</summary>
+					<pre class="hljs"><code class="language-handlebars">{{{hljs mixin_usage 'handlebars'}}}</code></pre>
+				</details>
+				{{/if}}
+
 				{{#if source.filename}}
 				<div class="kss-source kss-style">
 					Source: <code>{{source.filename}}</code>, line {{source.line}}
@@ -329,6 +347,23 @@
 	{{/if}}
 
 	<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+
+	<script>
+		var
+			$iframe = $("[data-iframe]");
+		$iframe.each(function (index, element) {
+			var
+				$this = $(this),
+				find = $this.attr("data-iframe"),
+				$content = $(`[data-iframe-content="${find}"]`);
+
+			$this.contents().find("body").append('<link rel="stylesheet" type="text/css" href="kss-assets/style.css">');
+			$this.contents().find("body").append('<meta name="viewport" content="width=device-width, initial-scale=1">');
+			$this.contents().find("body").addClass('debug-iframe-content');
+			$this.contents().find("body").append('<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>');
+			$this.contents().find("body").append($content);
+		});
+	</script>
 </body>
 
 </html>

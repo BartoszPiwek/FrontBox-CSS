@@ -589,7 +589,7 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
 
   .kss-modifier__wrapper {
     border: 1px solid #ccc;
-    padding: 0 10px 10px;
+    padding: 0;
   }
   .is-fullscreen .kss-modifier__wrapper {
     // Un-do padding on .kss-section.
@@ -601,7 +601,6 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     border: none;
   }
   .kss-modifier__heading {
-    margin: 0 -10px 10px -10px;
     padding: 10px;
     border-bottom: 1px solid #ccc;
     background-color: #eee;
@@ -638,7 +637,15 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     border: 2px dashed transparent;
     position: relative; // Contain the example's absolute positioning.
     z-index: 0; // Establishes a local stacking context.
-    margin: -2px -2px ($kss-vertical-rhythm - 2px);
+    padding: 10px;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    vertical-align: top;
+    background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4),
+      linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
 
     &:last-child {
       margin-bottom: 0;
@@ -808,4 +815,37 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 
   @import '../node_modules/highlight.js/styles/vs2015';
+}
+
+.debug-iframe {
+  background-color: #ffffff;
+  margin: 0 auto;
+  border: 0;
+  animation-name: debug-responsive;
+  animation-duration: 4s;
+  animation-play-state: running; // running|paused
+  animation-timing-function: ease-out; // ease|ease-in|ease-out|ease-in-out|linear|step-start|step-end|cubic-bezier()
+  animation-delay: 0s;
+  animation-iteration-count: infinite; // number|infinite
+  animation-direction: alternate; // normal|reverse|alternate|alternate-reverse
+  animation-fill-mode: none; // none|backwards|forwards|both
+}
+
+.debug-iframe-content {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes debug-responsive {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 320px;
+  }
 }

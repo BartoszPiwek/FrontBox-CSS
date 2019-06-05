@@ -130,7 +130,8 @@ class KssBuilderHandlebars extends KssBuilderBaseHandlebars {
 				});
 			}
 
-			this.Handlebars.registerHelper('kssIcons', function (doc, block) {
+			// Mixin
+			this.Handlebars.registerHelper('mixin', function (doc, block) {
 				var output = [];
 				var regex = /^(\S+)\s*:\s*(\S+)(?:\s*-\s*(.*))?$/gm;
 				var test;
@@ -150,7 +151,7 @@ class KssBuilderHandlebars extends KssBuilderBaseHandlebars {
 			});
 
 			// Mixin
-			this.Handlebars.registerHelper('@mixin', function (doc, block) {
+			this.Handlebars.registerHelper('mixin_usage', function (doc, block) {
 				var output = [];
 				var regex = /^(\S+)\s*:\s*(\S+)(?:\s*-\s*(.*))?$/gm;
 				var test;

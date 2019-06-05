@@ -25,14 +25,15 @@ export function docs_run(done) {
 			'kss-assets/style.css',
 		],
 		custom: [
-			'Emmet',
-			'Mixin'
+			'emmet',
+			'mixin',
+			'mixin_usage'
 		]
 	}, done());
 }
 
 export function docs_watch() {
-	watch(['src/style/**/*', `${config.path.plugins}/**/*.scss`, 'kss/*.scss'], series(docs_style, docs_run));
+	watch(['src/style/**/*', `${config.path.plugins}/**/*.scss`, 'kss/**/*.(scss|hbs)'], series(docs_style, docs_run));
 }
 
 export function docs_style() {
