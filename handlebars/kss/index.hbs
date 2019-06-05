@@ -238,18 +238,47 @@
 				</details>
 				{{/if}}
 
+				{{!-- Function --}}
+				{{#if mixin}}
+				<div class="kss-modifier__wrapper">
+					<div class="kss-modifier__heading kss-style">
+						Mixin{{#if modifiers}}s{{/if}}
+					</div>
+
+					<div class="kss-modifier__example">
+						@include {{{mixin}}}
+						<div class="kss-modifier__example-footer"></div>
+					</div>
+
+					{{#each modifiers}}
+					<div class="kss-modifier__name kss-style">
+						{{name}}
+					</div>
+					<div class="kss-modifier__description kss-style">
+						{{{description}}}
+					</div>
+					<div class="kss-modifier__example">
+						{{{markup}}}
+						<div class="kss-modifier__example-footer"></div>
+					</div>
+					{{/each}}
+				</div>
+				{{/if}}
+
+				{{!-- Emmet --}}
 				{{#if emmet }}
-				<details class="kss-emmet kss-style">
+				<details class="kss-markup kss-style">
 					<summary>
-						{{#if emmetFile }}
-						Emmet: <code>{{emmetFile}}</code>
+						{{#if markupFile }}
+						Emmet: <code>{{markupFile}}</code>
 						{{else}}
 						Emmet
 						{{/if}}
-					</summary>markup
+					</summary>
 					<pre class="hljs"><code class="language-handlebars">{{{hljs emmet 'handlebars'}}}</code></pre>
 				</details>
 				{{/if}}
+
 				{{/if}}
 
 				{{#if source.filename}}

@@ -304,6 +304,62 @@ template {
   display: none; }
 
 /* Text */
+/**
+ * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+ * - add class &--hover for parent element to trigger hover for child element
+ * EXAMPLE:
+    .foo {
+        .add-hover({
+            color: red;
+        });
+    }
+ * OUTPUT:
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo:hover,
+    .foo:active,
+    .foo:focus {
+        background-color: red;
+    }
+ */
+:root {
+  --desktop: 1200;
+  --tablet: 992;
+  --fablet: 768;
+  --mobile: 576;
+  --headerStickyDesktop: 50;
+  --headerStickyTablet: 40;
+  --headerStickyMobile: 30; }
+
+.row {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .row > * {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto !important;
+    min-height: 1px; }
+    .row > * > * {
+      flex: 1 1 auto; }
+
+/*
+Wrap
+
+Centers the content in  specify width
+
+Markup:
+<div class="wrap">
+<div style="background:red;">content</div>
+</div>
+
+Style guide: Flow.wrap
+*/
 html {
   height: 100%; }
 
@@ -534,25 +590,6 @@ label [for] {
           margin: 0 auto;
           transform: translate(-50%, -50%); } }
 
-/**
- * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
- * - add class &--hover for parent element to trigger hover for child element
- * EXAMPLE:
-    .foo {
-        .add-hover({
-            color: red;
-        });
-    }
- * OUTPUT:
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo:hover,
-    .foo:active,
-    .foo:focus {
-        background-color: red;
-    }
- */
 /**
  *? Create color class using variables
  * 

@@ -111,7 +111,17 @@ exports.docs = () => {
 			`src/style/`
 		],
 		builder: 'handlebars/kss/',
-		title: 'FrontBox-CSS Style Guide'
+		title: 'FrontBox-CSS Style Guide',
+		css: [
+			'../public/dev/style.dev.css',
+			'../public/dev/css/base.dev.css',
+			'../public/dev/css/grid.dev.css',
+			'../public/dev/css/utilities.dev.css',
+		],
+		custom: [
+			'Emmet',
+			'Mixin'
+		]
 	});
 };
 

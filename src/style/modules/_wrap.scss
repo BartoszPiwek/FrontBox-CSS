@@ -1,14 +1,38 @@
-/**
- * Wrap
- * Centering content in ASIX X
- */
+/*
+Wrap
 
-/* Function */
-@mixin wrap($width, $padding: 0) {
-  max-width: $width + $padding * 2;
+Center the content in specify width.<br>
+Add space around content (padding left/right)
 
-  @if $padding {
-    padding-left: $padding;
-    padding-right: $padding;
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: Flow.wrap
+*/
+
+// Function
+@mixin wrap($max-width, $padding-x: 0) {
+  max-width: $max-width + $padding-x * 2;
+
+  @if $padding-x {
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+  }
+}
+
+// Style
+@mixin wrap-style() {
+  .wrap {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
   }
 }

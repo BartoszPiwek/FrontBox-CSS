@@ -1,40 +1,6 @@
 // Collection of useful functions
 
 /**
- * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
- * - add class &--hover for parent element to trigger hover for child element
- * EXAMPLE:
-    .foo {
-        .add-hover({
-            color: red;
-        });
-    }
- * OUTPUT:
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo:hover,
-    .foo:active,
-    .foo:focus {
-        background-color: red;
-    }
- */
-
-@mixin hover {
-  &--hover:hover &,
-  &--hover:active &,
-  &--hover:focus &,
-  &--hover-active &,
-  &--hover-active &,
-  &--hover-active &,
-  &:hover,
-  &:active,
-  &:focus {
-    @content;
-  }
-}
-
-/**
  *? Create color class using variables
  * 
  ** Function:
@@ -97,16 +63,18 @@ $list: aaa bbb ccc;
  */
 @mixin scrollbar($size, $background, $color) {
   &::-webkit-scrollbar {
-    -webkit-appearance: none;
     width: $size;
     height: $size;
     background-color: $color;
+    -webkit-appearance: none;
   }
+
   &::-webkit-scrollbar-thumb {
     min-width: $size;
     max-height: $size;
     background-color: $background;
   }
+
   &::-webkit-scrollbar-track {
     display: none;
   }

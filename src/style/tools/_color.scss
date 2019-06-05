@@ -12,7 +12,8 @@
 @function color($name) {
   $color-var: map-get($colors, $name);
   @if not $color-var {
-    @error 'undefined color name: ' + $name;
+    @warn 'undefined color name: ' + $name;
+    @return false;
   }
   @return $color-var;
 }

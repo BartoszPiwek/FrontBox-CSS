@@ -5,6 +5,25 @@ Url         : https://github.com/BartoszPiwek/FrontBox-CSS
 Version     : 1.1.0
 ********************************************************************/
 /* Text */
+/**
+ * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+ * - add class &--hover for parent element to trigger hover for child element
+ * EXAMPLE:
+    .foo {
+        .add-hover({
+            color: red;
+        });
+    }
+ * OUTPUT:
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo--hover:hover .foo,
+    .foo:hover,
+    .foo:active,
+    .foo:focus {
+        background-color: red;
+    }
+ */
 :root {
   --desktop: 1200;
   --tablet: 992;
@@ -30,11 +49,25 @@ Version     : 1.1.0
     .row > * > * {
       flex: 1 1 auto; }
 
-/**
- * Wrap
- * Centering content in ASIX X
- */
-/* Function */
+/*
+Wrap
+
+Center the content in specify width.<br>
+Add space around content (padding left/right)
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: Flow.wrap
+*/
 /*=========================================================================
 || FILE: Animation
 ===========================================================================
@@ -107,9 +140,6 @@ Version     : 1.1.0
         padding-bottom: 45px !important;
         padding-left: 45px !important; } }
 
-/*=========================================================================
-|| Style SVG/IMG icons
-=========================================================================*/
 /**
  * Default style
  */
@@ -142,16 +172,16 @@ Version     : 1.1.0
 //=======================================================================*/
 .wrap {
   max-width: 1064px;
-  padding-left: 20px;
   padding-right: 20px;
+  padding-left: 20px;
   /**
    * Elements
    */
   /* Navigation bar */ }
   .wrap-navbar {
     max-width: 1064px;
-    padding-left: 20px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    padding-left: 20px; }
 
 .row {
   /*=========================================================================
@@ -212,6 +242,163 @@ Version     : 1.1.0
 
 .wysiwyg pre {
   font-family: monospace; }
+
+/*
+Buttons
+
+Clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality
+
+.btn-block - grow element width to 100%
+.btn-disable - disables the button, it cannot be clicked
+.btn-link - display only text without decorations
+
+Markup:
+<a class="btn {{modifier_class}}">Anchor element</a>
+<button class="btn {{modifier_class}}">Button element</button>
+<input class="btn {{modifier_class}}" type="button" value="Input Button" />
+
+Style guide: Component.Buttons
+*/
+.btn {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 14px 6px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  border: 0;
+  border-radius: 5px;
+  background-color: #05386b;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none; }
+  .btn--hover:hover .btn,
+  .btn--hover:active .btn,
+  .btn--hover:focus .btn,
+  .btn--hover-active .btn,
+  .btn--hover-active .btn,
+  .btn--hover-active .btn, .btn:hover, .btn:active, .btn:focus {
+    background-color: #053666; }
+  .btn .icon {
+    transition: transform 0.2s; }
+  .btn:active {
+    transform: translateY(1px); }
+  .btn-disable, .btn[disabled] {
+    pointer-events: none; }
+    .btn-disable:before, .btn[disabled]:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      opacity: 0.6;
+      background: #000;
+      pointer-events: none; }
+  .btn-block {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important; }
+  .btn-link {
+    border-color: transparent !important;
+    background: transparent !important;
+    color: #000 !important; }
+    .btn-link:before, .btn-link:after {
+      background: transparent !important; }
+
+/*
+Colors
+
+Clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality
+
+.btn--primary - colors
+.btn--primary:hover - colors
+.btn--secondary - colors
+.btn--success - colors
+.btn--danger - colors
+.btn--warning - colors
+.btn--info - colors
+.btn--light - colors
+.btn--dark - colors
+
+Markup:
+<a class="btn {{modifier_class}}">Anchor element</a>
+<button class="btn {{modifier_class}}">Button element</button>
+<input class="btn {{modifier_class}}" type="button" value="Input Button" />
+
+Style guide: Component.Buttons.colors
+*/
+.btn--primary {
+  background-color: #05386b; }
+  .btn--primary--hover:hover .btn--primary,
+  .btn--primary--hover:active .btn--primary,
+  .btn--primary--hover:focus .btn--primary,
+  .btn--primary--hover-active .btn--primary,
+  .btn--primary--hover-active .btn--primary,
+  .btn--primary--hover-active .btn--primary, .btn--primary:hover, .btn--primary:active, .btn--primary:focus {
+    background-color: #053667; }
+
+.btn--secondary {
+  background-color: #379683; }
+
+.btn--success {
+  background-color: #28a745; }
+
+.btn--danger {
+  background-color: #dc3545; }
+
+.btn--warning {
+  background-color: #ffc107; }
+
+.btn--info {
+  background-color: #17a2b8; }
+
+.btn--light {
+  background-color: #f8f9fa; }
+
+.btn--dark {
+  background-color: false; }
+
+/*
+Size
+
+.btn--large - size
+.btn--wide - size
+.btn--big - size
+.btn--medium - size
+.btn--small - size
+.btn--tiny - size
+
+Markup:
+<a class="btn {{modifier_class}}">Anchor element</a>
+<button class="btn {{modifier_class}}">Button element</button>
+<input class="btn {{modifier_class}}" type="button" value="Input Button" />
+
+Style guide: Component.Buttons.colors
+*/
+.btn--large {
+  padding: 30px 50px; }
+
+.btn--wide {
+  padding-right: 60px;
+  padding-left: 60px; }
+
+.btn--big {
+  padding: 30px 45px; }
+
+.btn--medium {
+  padding: 20px 20px; }
+
+.btn--small {
+  padding: 15px 20px; }
+
+.btn--tiny {
+  padding: 14px 12px; }
 
 .js_cookies-information {
   position: fixed;
