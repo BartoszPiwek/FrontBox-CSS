@@ -1,8 +1,7 @@
-/*=========================================================================
-|| Media queries class
-=========================================================================*/
+// Media queries class
+//
 
-// Burger
+// NOTE Burger
 .is_burger-menu {
   &--visible {
     @include media-special('burger-show') {

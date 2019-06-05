@@ -39,6 +39,7 @@ a {
 input {
   &[type='number'] {
     -moz-appearance: textfield;
+
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
       margin: 0;
@@ -47,6 +48,8 @@ input {
   }
 }
 
-label[for] {
-  cursor: pointer;
+label {
+  [for] {
+    cursor: pointer;
+  }
 }

@@ -1,8 +1,6 @@
-/**
- * Position elements in container
- * .container
- * http://localhost:8181/debug/elements.html#container
- */
+// Position elements in container
+// .container
+// http://localhost:8181/debug/elements.html#container
 
 @include responsive($breakpoints) {
   $prefix: &;

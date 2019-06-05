@@ -5,14 +5,13 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 ************************************************************************!*/
 
 /* Import libs */
-import { watch, series, parallel, task } from "gulp";
+import { watch, series, parallel } from "gulp";
 const argv = require('yargs').argv;
 export const browserSync = require('browser-sync').create();
-
+import kss from "kss";
 /* Import config */
 import * as config from './config';
 import { getModeName } from "./gulp/index";
-
 export function server(done) {
 	browserSync.init({
 		open: config.browsersync.open,
@@ -42,8 +41,6 @@ export function begin() {
 }
 
 /* Style */
-// import { style_main, style_base, style_grid, style_utilities } from "./gulp/style";
-// export const buildStyle = parallel( style_main, style_base, style_grid, style_utilities );
 import { style_main, style_base, style_grid, style_utilities } from "./gulp/style";
 export const buildStyle = parallel(style_main, style_base, style_grid, style_utilities);
 /* HTML */
@@ -108,6 +105,13 @@ exports.style = series(buildStyle, server, watchFiles);
 exports.script = series(buildScript, server, watchFiles);
 exports.html = series(buildHTML, server, watchFiles);
 exports.favicon = favicon;
+exports.docs = () => {
+	kss({
+		source: [
+			`src/style/`
+		],
+	});
+};
 
 /* Test task */
 exports.test = () => {

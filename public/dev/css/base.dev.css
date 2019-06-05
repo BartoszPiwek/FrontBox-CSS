@@ -303,20 +303,7 @@ template {
 [hidden] {
   display: none; }
 
-/* Pass variables to JavaScript */
-:root {
-  --desktop: $breakpoints('xl');
-  --tablet: $breakpoints('lg');
-  --fablet: $breakpoints('md');
-  --mobile: $breakpoints('sm');
-  --headerStickyDesktop: 50;
-  --headerStickyTablet: 40;
-  --headerStickyMobile: 30; }
-
 /* Text */
-/*=========================================================================
-|| Base style
-=========================================================================*/
 html {
   height: 100%; }
 
@@ -370,14 +357,9 @@ input[type='number'] {
     margin: 0;
     -webkit-appearance: none; }
 
-label[for] {
+label [for] {
   cursor: pointer; }
 
-/**
- * Position elements in container
- * .container
- * http://localhost:8181/debug/elements.html#container
- */
 .container {
   display: flex;
   flex-direction: row;
@@ -616,9 +598,6 @@ label[for] {
   margin-right: auto;
   margin-left: auto; }
 
-/*=========================================================================
-|| Media queries class
-=========================================================================*/
 @media screen and (min-width: breakpoints("md") px) {
   .is_burger-menu--visible {
     display: block; } }
