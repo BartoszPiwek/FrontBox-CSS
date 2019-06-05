@@ -1,37 +1,37 @@
 .header-placeholder#header-placeholder
-    header.header#header
-        .wrap.wrap-navbar
-            .container
-                .container__item.container__item--left
-                    .flex.flex-y-center
-                        | Logo
-                .container__item.container__item--center
-                    .flex.flex-y-center
-                        | Center container
-                .container__item.container__item--right.flex-y-center
+		header.header#header
+				.wrap.wrap-navbar
+						.container
+								.container__item.container__item--left
+										.flex.flex-y-center
+												a.flex.flex-y-center(href="/")
+													img.header__logo(src="/images/logo.jpg", alt="FrontBox-CSS Logo")
+													span.header__logo-text
+														| FrontBox-CSS Starter Site
+								.container__item.container__item--right.flex-y-center
 
-                    //- Burger button
-                    #burger-button.burger-button
-                        .plank
-                        .plank
-                        .plank
+										//- Burger button
+										#burger-button.burger-button
+												.plank
+												.plank
+												.plank
 
-                    //- Burger menu container
-                    #burger-menu.burger-menu
-                        #burger-menu-container.burger-menu__container
+										//- Burger menu container
+										#burger-menu.burger-menu
+												#burger-menu-container.burger-menu__container
 
-                            //- Navigation items
-                            nav.burger-menu__item.list-navigation
-                                a.list-navigation__item(href="/")
-                                    | Home
-                                a.list-navigation__item(href="/help.html")
-                                    | Other 1
-                                a.list-navigation__item(href="/Other.html")
-                                    | Other 2
-                                a.list-navigation__item(href="/Other.html")
-                                    | Other 3
-                                a.list-navigation__item(href="/help.html")
-                                    | Contact
+														//- Navigation items
+														nav.burger-menu__item.list-navigation
+																a.list-navigation__item(href="/")
+																		| Home
+																a.list-navigation__item(href="/help.html")
+																		| Other 1
+																a.list-navigation__item(href="/Other.html")
+																		| Other 2
+																a.list-navigation__item(href="/Other.html")
+																		| Other 3
+																a.list-navigation__item(href="/help.html")
+																		| Contact
 
-                            .burger-menu__item.is_burger-menu--visible
-                                | Visible only when burger is visible
+														.burger-menu__item.is_burger-menu--visible
+																| Visible only when burger is visible

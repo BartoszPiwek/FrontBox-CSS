@@ -22,10 +22,6 @@ export function docs_run(done) {
 		builder: './kss/',
 		title: 'FrontBox-CSS Debug Style Guide',
 		css: [
-			'../public/dev/style.dev.css',
-			'../public/dev/css/base.dev.css',
-			'../public/dev/css/grid.dev.css',
-			'../public/dev/css/utilities.dev.css',
 			'kss-assets/style.css',
 		],
 		custom: [

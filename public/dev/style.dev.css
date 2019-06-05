@@ -49,38 +49,16 @@ Version     : 1.1.0
 Triangle
 
 Markup:
-<div class="col-12 col-6 col-4">
-<div class="triangle-up">
-</div></div>
-<div class="col-12 col-6 col-4">
+<div class="triangle-up"></div>
 <div class="triangle-right"></div>
-</div></div>
-<div class="col-12 col-6 col-4">
 <div class="triangle-down"></div>
-</div></div>
-<div class="col-12 col-6 col-4">
 <div class="triangle-left"></div>
-</div></div>
 
 Mixin:
 triangle($width, $height, $position, $color: '');
 
 Mixin usage:
 triangle(40px, 50px, 'up', color('primary'));
-
-Mixin output:
-<div class="col-12 col-6 col-4">
-<div class="triangle-up">
-</div></div>
-<div class="col-12 col-6 col-4">
-<div class="triangle-right"></div>
-</div></div>
-<div class="col-12 col-6 col-4">
-<div class="triangle-down"></div>
-</div></div>
-<div class="col-12 col-6 col-4">
-<div class="triangle-left"></div>
-</div></div>
 
 Mixin arguments:
 $width: number
@@ -180,7 +158,7 @@ Style guide: Flow.wrap
 .footer {
   padding: 35px 0;
   overflow: hidden;
-  background-color: #379683; }
+  background-color: #05386b; }
   .footer__item > *:first-child {
     margin-top: 0; }
   .footer__item > *:last-child {
@@ -335,7 +313,7 @@ Style guide: Flow.wrap
 =========================================================================*/
 body,
 html {
-  background-color: #05386b; }
+  background-color: #379683; }
 
 .scrollbar::-webkit-scrollbar,
 body::-webkit-scrollbar {
@@ -353,6 +331,37 @@ body::-webkit-scrollbar-thumb {
 .scrollbar::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track {
   display: none; }
+
+* {
+  color: #fff; }
+
+svg {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  fill: #fff; }
+
+.link {
+  transition: color 0.2s;
+  cursor: pointer; }
+  .link--primary {
+    color: #fff; }
+    .link--primary .icon {
+      fill: #fff; }
+    .link--primary--hover:hover .link--primary,
+    .link--primary--hover:active .link--primary,
+    .link--primary--hover:focus .link--primary,
+    .link--primary--hover-active .link--primary,
+    .link--primary--hover-active .link--primary,
+    .link--primary--hover-active .link--primary, .link--primary:hover, .link--primary:active, .link--primary:focus {
+      color: #379683; }
+      .link--primary--hover:hover .link--primary .icon,
+      .link--primary--hover:active .link--primary .icon,
+      .link--primary--hover:focus .link--primary .icon,
+      .link--primary--hover-active .link--primary .icon,
+      .link--primary--hover-active .link--primary .icon,
+      .link--primary--hover-active .link--primary .icon, .link--primary:hover .icon, .link--primary:active .icon, .link--primary:focus .icon {
+        fill: #379683; }
 
 .page__loading, .page__overlay {
   position: fixed;
@@ -535,6 +544,181 @@ Style guide: Component.Buttons.colors
 .btn--tiny {
   padding: 14px 12px; }
 
+/*=========================================================================
+|| FILE: Header
+===========================================================================
+|| Style for header
+=========================================================================*/
+/**
+ * Main header element style 
+ * container for: navigation, brand image, etc)
+ */
+.header {
+  height: inherit;
+  display: flex;
+  -webkit-backface-visibility: hidden;
+  transition: height 0.2s;
+  transition: box-shadow 0.2s;
+  transition: background-color 0.2s;
+  transition: padding 0.2s;
+  background-color: #05386b;
+  /* Header sticky */ }
+  .header > .wrap {
+    display: flex; }
+  .header-placeholder {
+    box-sizing: content-box;
+    z-index: 7000;
+    transition: background-color 0.2s;
+    padding: 25px 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #05386b; }
+  .js_sticky-header .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8000;
+    box-shadow: 0 10px 30px -6px fade(#000, 60%);
+    background-color: #fff; }
+  .header__logo {
+    width: 50px;
+    height: 50px; }
+    .header__logo-text {
+      font-size: 18px;
+      margin-left: 10px; }
+
+/**
+ * Burger button
+ */
+.burger-button {
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 8001;
+  width: 35px;
+  height: 24px;
+  position: relative;
+  /* Burger planks */
+  /* Burger hover */ }
+  @media screen and (max-width: breakpoints("md") - 1 - 1) {
+    .burger-button {
+      display: none; } }
+  .burger-button > .plank {
+    display: inline-block;
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 4px;
+    transition: all 0.2s;
+    background-color: #90938f;
+    border-radius: 10px; }
+    .burger-button > .plank:first-child {
+      top: 0; }
+    .burger-button > .plank:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%); }
+    .burger-button > .plank:last-child {
+      bottom: 0; }
+
+/**
+ * Burger menu
+ */
+@media screen and (min-width: breakpoints("md") px) {
+  .burger-menu {
+    overflow: hidden;
+    display: flex;
+    box-sizing: content-box;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 70px;
+    width: 100%;
+    height: 100vh;
+    max-width: 300px;
+    background-color: #05386b;
+    box-shadow: -6px 0 10px fade(#000, 40%); }
+    .burger-menu > .burger-menu__item {
+      margin-bottom: 20px; }
+      .burger-menu > .burger-menu__item:last-child {
+        margin-bottom: 0; }
+    .burger-menu__container {
+      width: 100%; } }
+
+@media screen and (max-width: breakpoints("md") - 1 - 1) {
+  .burger-menu {
+    transition: height 0s ease 0s;
+    box-sizing: border-box;
+    display: flex !important;
+    position: static;
+    transform: none;
+    overflow: unset; }
+    .burger-menu__container {
+      display: flex; } }
+
+/*
+|| Navigation
+|| EMMET
+nav.nav>a.nav__item*x
+ */
+.nav {
+  box-sizing: content-box;
+  bottom: 0;
+  position: absolute;
+  overflow: hidden; }
+  @media screen and (max-width: breakpoints("md") - 1 - 1) {
+    .nav {
+      transition: height 0s ease 0s;
+      box-sizing: border-box;
+      display: flex !important;
+      position: static;
+      transform: none;
+      overflow: unset; } }
+  .nav__container {
+    background-color: #05386b;
+    text-align: center;
+    z-index: 7001;
+    position: relative; }
+    @media screen and (max-width: breakpoints("md") - 1 - 1) {
+      .nav__container {
+        background-color: transparent;
+        text-align: left;
+        height: 100%;
+        display: flex; } }
+    .nav__container > .nav__item {
+      display: block;
+      color: #fff;
+      transition: color 0.2s;
+      margin-bottom: 10px;
+      padding: 12px 0; }
+      .nav__container > .nav__item--hover:hover .nav__container > .nav__item,
+      .nav__container > .nav__item--hover:active .nav__container > .nav__item,
+      .nav__container > .nav__item--hover:focus .nav__container > .nav__item,
+      .nav__container > .nav__item--hover-active .nav__container > .nav__item,
+      .nav__container > .nav__item--hover-active .nav__container > .nav__item,
+      .nav__container > .nav__item--hover-active .nav__container > .nav__item, .nav__container > .nav__item:hover, .nav__container > .nav__item:active, .nav__container > .nav__item:focus {
+        color: #b8b8b8; }
+      .nav__container > .nav__item:last-child {
+        margin-bottom: 0; }
+      @media screen and (max-width: breakpoints("md") - 1 - 1) {
+        .nav__container > .nav__item {
+          margin-bottom: 0;
+          padding: 0;
+          margin-right: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          .nav__container > .nav__item:last-child {
+            margin-right: 0; } }
+      @media screen and (min-width: 992px) {
+        .nav__container > .nav__item {
+          margin-right: 20px; } }
+      .nav__container > .nav__item.active {
+        color: #90938f; }
+
+/**
+ * Advanced
+ */
 /*
 Tabs
 

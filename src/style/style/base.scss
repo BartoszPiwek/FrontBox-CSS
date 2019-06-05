@@ -6,13 +6,46 @@
 
 body,
 html {
-  background-color: color('primary');
+  background-color: color('secondary');
 }
 
 // Scrollbar
 .scrollbar,
 body {
   @include scrollbar(5px, color('primary'), color('secondary'));
+}
+
+* {
+  color: color('white');
+}
+
+svg {
+	display: inline;
+	width: 20px;
+	height: 20px;
+	fill: color('white');
+}
+
+.link {
+	transition: color $time-transition;
+	// .add-tap();
+	cursor: pointer;
+	// .remove_click_delay();
+
+	&--primary {
+		color: color('white');
+
+		.icon {
+			fill: color('white');
+		}
+
+		@include hover {
+			color: color('secondary');
+			.icon {
+				fill: color('secondary');
+			}
+		}
+	}
 }
 
 // Global Overlay
