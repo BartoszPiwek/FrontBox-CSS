@@ -4,21 +4,21 @@
 // NOTE Burger
 .is_burger-menu {
   &--visible {
-    @include media-special('burger-show') {
+    @media #{$media_burger-show} {
       display: block;
     }
 
-    @include media-special('burger-hide') {
+    @media #{$media_burger-hide} {
       display: none;
     }
   }
 
   &--hide {
-    @include media-special('burger-show') {
+    @media #{$media_burger-show} {
       display: none;
     }
 
-    @include media-special('burger-hide') {
+    @media #{$media_burger-hide} {
       display: block;
     }
   }

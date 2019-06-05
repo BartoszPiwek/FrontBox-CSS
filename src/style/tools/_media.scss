@@ -23,25 +23,3 @@
     @content;
   }
 }
-
-@mixin media-special($name) {
-  $width: map-get($breakpoints-special, $name);
-  @if $width {
-    @media screen and (min-width: #{$width}px) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
-}
-
-@mixin media-special-max($name) {
-  $width: map-get($breakpoints-special, $name);
-  @if $width {
-    @media screen and (max-width: #{$width} - 1) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
-}

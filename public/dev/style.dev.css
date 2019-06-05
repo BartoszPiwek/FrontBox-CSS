@@ -48,23 +48,24 @@ Version     : 1.1.0
 /*
 Triangle
 
-Markup:
-<div class="triangle-up"></div>
-<div class="triangle-right"></div>
-<div class="triangle-down"></div>
-<div class="triangle-left"></div>
-
-Mixin:
-triangle($width, $height, $position, $color: '');
-
-Mixin usage:
-triangle(40px, 50px, 'up', color('primary'));
+Generate triangle style
 
 Mixin arguments:
 $width: number
 $height: number
 $position: ['up','right','down','left'];
 $color: color
+
+mixin:
+triangle($width, $height, $position, $color: '');
+
+mixin_usage:
+triangle(40px, 50px, 'up', color('primary'));
+triangle(20px, 80px, 'left', color('secondary'));
+
+mixin_output:
+<div class="triangle-up"></div>
+<div class="triangle-left"></div>
 
 Style guide: Functions.triangle
 */
@@ -313,7 +314,10 @@ Style guide: Flow.wrap
 =========================================================================*/
 body,
 html {
-  background-color: #379683; }
+  background-color: #379683;
+  color: #fff;
+  font-family: Arial, Helmet, Freesans, sans-serif;
+  -webkit-font-smoothing: antialiased; }
 
 .scrollbar::-webkit-scrollbar,
 body::-webkit-scrollbar {
@@ -332,14 +336,30 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
   display: none; }
 
-* {
-  color: #fff; }
+svg,
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  overflow: visible;
+  transition: color 0.2s;
+  fill: currentColor;
+  color: currentColor;
+  vertical-align: middle;
+  pointer-events: none; }
 
-svg {
-  display: inline;
-  width: 20px;
-  height: 20px;
-  fill: #fff; }
+img {
+  max-width: 100%;
+  height: auto;
+  image-rendering: -webkit-optimize-contrast; }
+
+* {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
+
+.background {
+  pointer-events: none;
+  user-select: none; }
 
 .link {
   transition: color 0.2s;
@@ -600,7 +620,7 @@ Style guide: Component.Buttons.colors
   position: relative;
   /* Burger planks */
   /* Burger hover */ }
-  @media screen and (max-width: breakpoints("md") - 1 - 1) {
+  @media screen and (min-width: 768px) {
     .burger-button {
       display: none; } }
   .burger-button > .plank {
@@ -623,7 +643,7 @@ Style guide: Component.Buttons.colors
 /**
  * Burger menu
  */
-@media screen and (min-width: breakpoints("md") px) {
+@media screen and (max-width: 767px) {
   .burger-menu {
     overflow: hidden;
     display: flex;
@@ -645,7 +665,7 @@ Style guide: Component.Buttons.colors
     .burger-menu__container {
       width: 100%; } }
 
-@media screen and (max-width: breakpoints("md") - 1 - 1) {
+@media screen and (min-width: 768px) {
   .burger-menu {
     transition: height 0s ease 0s;
     box-sizing: border-box;
@@ -666,7 +686,7 @@ nav.nav>a.nav__item*x
   bottom: 0;
   position: absolute;
   overflow: hidden; }
-  @media screen and (max-width: breakpoints("md") - 1 - 1) {
+  @media screen and (min-width: 768px) {
     .nav {
       transition: height 0s ease 0s;
       box-sizing: border-box;
@@ -679,7 +699,7 @@ nav.nav>a.nav__item*x
     text-align: center;
     z-index: 7001;
     position: relative; }
-    @media screen and (max-width: breakpoints("md") - 1 - 1) {
+    @media screen and (min-width: 768px) {
       .nav__container {
         background-color: transparent;
         text-align: left;
@@ -700,7 +720,7 @@ nav.nav>a.nav__item*x
         color: #b8b8b8; }
       .nav__container > .nav__item:last-child {
         margin-bottom: 0; }
-      @media screen and (max-width: breakpoints("md") - 1 - 1) {
+      @media screen and (min-width: 768px) {
         .nav__container > .nav__item {
           margin-bottom: 0;
           padding: 0;

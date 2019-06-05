@@ -74,7 +74,7 @@
   // top: 50%;
   // transform: translateY(-50%); // Don't display burget button for view
 
-  @include media-special-max('burger-hide') {
+  @media #{$media_burger-hide} {
     display: none;
   }
 
@@ -119,7 +119,7 @@
  * Burger menu
  */
 .burger-menu {
-  @include media-special('burger-show') {
+  @media #{$media_burger-show} {
     // Behavior
     overflow: hidden;
     display: flex;
@@ -149,7 +149,7 @@
     }
   }
 
-  @include media-special-max('burger-hide') {
+  @media #{$media_burger-hide} {
     transition: height 0s ease 0s;
     box-sizing: border-box;
     display: flex !important;
@@ -176,7 +176,7 @@ nav.nav>a.nav__item*x
   position: absolute; // Style
   overflow: hidden; // Postion
 
-  @include media-special-max('burger-hide') {
+  @media #{$media_burger-hide} {
     transition: height 0s ease 0s;
     box-sizing: border-box;
     display: flex !important;
@@ -189,7 +189,7 @@ nav.nav>a.nav__item*x
     text-align: center;
     z-index: index('menu') + 1;
     position: relative;
-    @include media-special-max('burger-hide') {
+    @media #{$media_burger-hide} {
       background-color: transparent;
       text-align: left;
       height: 100%;
@@ -207,7 +207,7 @@ nav.nav>a.nav__item*x
       &:last-child {
         margin-bottom: 0;
       }
-      @include media-special-max('burger-hide') {
+      @media #{$media_burger-hide} {
         margin-bottom: 0;
         padding: 0;
         margin-right: 10px;
@@ -228,7 +228,7 @@ nav.nav>a.nav__item*x
   }
 }
 
-@include media-special('burger-show') {
+@media #{$media_burger-show} {
   html {
     // Active
     &.js_menu-active {

@@ -347,23 +347,24 @@ template {
 /*
 Triangle
 
-Markup:
-<div class="triangle-up"></div>
-<div class="triangle-right"></div>
-<div class="triangle-down"></div>
-<div class="triangle-left"></div>
-
-Mixin:
-triangle($width, $height, $position, $color: '');
-
-Mixin usage:
-triangle(40px, 50px, 'up', color('primary'));
+Generate triangle style
 
 Mixin arguments:
 $width: number
 $height: number
 $position: ['up','right','down','left'];
 $color: color
+
+mixin:
+triangle($width, $height, $position, $color: '');
+
+mixin_usage:
+triangle(40px, 50px, 'up', color('primary'));
+triangle(20px, 80px, 'left', color('secondary'));
+
+mixin_output:
+<div class="triangle-up"></div>
+<div class="triangle-left"></div>
 
 Style guide: Functions.triangle
 */
@@ -477,6 +478,9 @@ a {
   display: inline;
   color: inherit;
   text-decoration: none; }
+
+iframe {
+  border: 0; }
 
 input[type='number'] {
   -moz-appearance: textfield; }
@@ -666,19 +670,19 @@ label [for] {
   margin-left: auto;
   width: 100%; }
 
-@media screen and (min-width: breakpoints("md") px) {
+@media screen and (max-width: 767px) {
   .is_burger-menu--visible {
     display: block; } }
 
-@media screen and (min-width: breakpoints("md") - 1px) {
+@media screen and (min-width: 768px) {
   .is_burger-menu--visible {
     display: none; } }
 
-@media screen and (min-width: breakpoints("md") px) {
+@media screen and (max-width: 767px) {
   .is_burger-menu--hide {
     display: none; } }
 
-@media screen and (min-width: breakpoints("md") - 1px) {
+@media screen and (min-width: 768px) {
   .is_burger-menu--hide {
     display: block; } }
 
@@ -855,21 +859,3 @@ label [for] {
 
 .debug-wrap {
   max-width: 1400px !important; }
-
-.debug-iframe {
-  height: 400px;
-  margin: 0 auto;
-  animation-name: debug-responsive;
-  animation-duration: 4s;
-  animation-play-state: running;
-  animation-timing-function: ease-out;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-fill-mode: none; }
-
-@keyframes debug-responsive {
-  from {
-    width: 100%; }
-  to {
-    width: 320px; } }
