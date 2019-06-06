@@ -29,7 +29,9 @@ export function docs_run(done) {
 			'mixin',
 			'mixin_usage'
 		]
-	}, done());
+	},
+		browserSync.stream(),
+		done());
 }
 
 export function docs_watch() {
@@ -60,4 +62,18 @@ export function docs_style() {
 		.pipe(dest(
 			`kss/kss-assets/`
 		));
+}
+
+export function docs_server(done) {
+	browserSync.init({
+		open: config.browsersync.open,
+		host: config.browsersync.host,
+		proxy: config.browsersync.proxy,
+		port: config.browsersync.port,
+		server: {
+			baseDir: `./styleguide/`
+		}
+	});
+
+	done();
 }

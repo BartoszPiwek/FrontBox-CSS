@@ -55,7 +55,7 @@ export const buildCopy = parallel(copy_image, copy_fonts, copy_other, copy_video
 import { svg, favicon } from "./gulp/assets";
 export const buildAssets = parallel(svg, favicon);
 /* Docs */
-import { docs_style, docs_watch, docs_run } from "./gulp/docs";
+import { docs_style, docs_watch, docs_run, docs_server } from "./gulp/docs";
 
 /* Main watch function */
 export function watchFiles() {
@@ -106,7 +106,7 @@ exports.style = series(buildStyle, server, watchFiles);
 exports.script = series(buildScript, server, watchFiles);
 exports.html = series(buildHTML, server, watchFiles);
 exports.favicon = favicon;
-exports.docs = series(docs_style, docs_run, docs_watch);
+exports.docs = series(docs_style, docs_run, docs_server, docs_watch);
 
 /* Test task */
 exports.test = () => {
