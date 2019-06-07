@@ -1,3 +1,39 @@
+/*
+Grid
+
+Grid CSS using flex
+
+Mixin:
+grid($grid-count, $breakpoints)
+
+Mixin arguments:
+$grid-count: number? : 12
+$grid-breakpoints: { [key: string]: any }? : $breakpoints
+
+Mixin example:
+$breakpoint(
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  hd: 1366,
+	whd: 1440
+}
+@include grid(12, $breakpoints);
+
+Output:
+<div class="row">
+<div class="col-12 kss-item"></div>
+</div>
+<div class="row">
+<div class="col-11 kss-item"></div>
+<div class="col-1 kss-item"></div>
+</div>
+
+Style guide: Generator.grid
+*/
+
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
   @include responsive($grid-breakpoints) {
     @for $i from 1 through $grid-count {

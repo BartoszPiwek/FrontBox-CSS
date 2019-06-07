@@ -83,3 +83,8 @@
 // @color-3: @color-white;
 // @color-list-string: 1, 2, 3;
 // .color-list(@color-list-string, color, fill);
+
+// vh-unit
+.height-full {
+  @include add_vh-unit(100);
+}

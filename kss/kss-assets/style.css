@@ -63,6 +63,41 @@ mixin_output:
 
 Style guide: Functions.triangle
 */
+/*
+Grid
+
+Grid CSS using flex
+
+Mixin:
+grid($grid-count, $breakpoints)
+
+Mixin arguments:
+$grid-count: number? : 12
+$grid-breakpoints: { [key: string]: any }? : $breakpoints
+
+Mixin example:
+$breakpoint(
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  hd: 1366,
+	whd: 1440
+}
+@include grid(12, $breakpoints);
+
+Output:
+<div class="row">
+<div class="col-12 kss-item"></div>
+</div>
+<div class="row">
+<div class="col-11 kss-item"></div>
+<div class="col-1 kss-item"></div>
+</div>
+
+Style guide: Generator.grid
+*/
 /**
  * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
  * - add class &--hover for parent element to trigger hover for child element
@@ -107,6 +142,23 @@ Style guide: Functions.triangle
     .row > * > * {
       flex: 1 1 auto; }
 
+/*
+VH Unit 
+
+Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
+
+Mixin:
+add_vh-unit($size, $property);
+
+Mixin arguments:
+$size : number? : 100
+$property : CSSProperty? : 'height'
+
+Mixin example:
+add_vh-unit(50, 'height')
+
+Style guide: Libs.vh-unit
+*/
 /*
 Wrap
 

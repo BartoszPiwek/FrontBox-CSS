@@ -1,0 +1,22 @@
+/*
+VH Unit 
+
+Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
+
+Mixin:
+add_vh-unit($size, $property);
+
+Mixin arguments:
+$size : number? : 100
+$property : CSSProperty? : 'height'
+
+Mixin example:
+add_vh-unit(50, 'height')
+
+Style guide: Libs.vh-unit
+*/
+
+@mixin add_vh-unit($size: 100, $property: 'height') {
+  #{$property}: #{$size}vh;
+  #{$property}: calc(#{$size}vh - var(--vh-offset, 0px));
+}

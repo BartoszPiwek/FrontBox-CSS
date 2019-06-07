@@ -347,7 +347,7 @@ template {
 /*
 Triangle
 
-Generate triangle style
+// Generate triangle style
 
 Mixin arguments:
 $width: number
@@ -412,6 +412,22 @@ Style guide: Functions.triangle
     .row > * > * {
       flex: 1 1 auto; }
 
+/*
+V Unit 
+
+Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
+
+Mixin:
+add_vh-unit($size, $property);
+
+Mixin arguments:
+$size : number? : 100
+$property : CSSProperty? : 'height'
+
+Mixin example:
+add_vh-unit(50, 'height')
+
+*/
 /*
 Wrap
 

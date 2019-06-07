@@ -48,7 +48,7 @@ Version     : 1.1.0
 /*
 Triangle
 
-Generate triangle style
+// Generate triangle style
 
 Mixin arguments:
 $width: number
@@ -113,6 +113,22 @@ Style guide: Functions.triangle
     .row > * > * {
       flex: 1 1 auto; }
 
+/*
+V Unit 
+
+Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
+
+Mixin:
+add_vh-unit($size, $property);
+
+Mixin arguments:
+$size : number? : 100
+$property : CSSProperty? : 'height'
+
+Mixin example:
+add_vh-unit(50, 'height')
+
+*/
 /*
 Wrap
 
@@ -288,6 +304,10 @@ Style guide: Flow.wrap
 // Generate color list class { _functions.less }
 // .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
 =========================================================================*/
+.height-full {
+  height: 100vh;
+  height: calc(100vh - var(--vh-offset, 0px)); }
+
 /*=========================================================================
 || Create responsive utilities
 =========================================================================*/
