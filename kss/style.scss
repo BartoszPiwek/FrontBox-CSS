@@ -4,12 +4,49 @@
 @import './../src/style/tools/index';
 @import './../src/style/tools/media';
 @import './../src/style/modules/**/*';
-@import 'kss-assets/kss.scss';
+@import './kss-assets/kss.scss';
 
 $color-primary: red;
-$color-secondary: red;
+$color-secondary: blue;
+
+// Blocks
+.block-square {
+  background-color: $color-primary;
+
+  * > {
+    color: $color-secondary;
+  }
+}
 
 // Functions
+@include add_holder-style;
+
+.holder {
+  background-color: $color-primary;
+  color: $color-secondary;
+
+  @include add_holder(100px, 50px);
+}
+
+.placeholder {
+  color: $color-secondary;
+
+  @include add_placeholder {
+    color: $color-primary;
+  }
+}
+
+.scrollbar {
+  width: 100%;
+  height: 200px;
+  overflow: scroll;
+  @include scrollbar('20px', $color-primary, $color-secondary);
+
+  &__content {
+    width: 200%;
+    height: 200%;
+  }
+}
 .triangle {
   &-up {
     @include triangle(30px, 20px, 'up', $color-primary);

@@ -1,0 +1,16 @@
+/*
+Group middle
+
+Vertical center elements in content 
+
+Emmet:
+.group-middle>span{Text}+img{}
+
+Style guide: Flow.group-middle
+*/
+.group-middle {
+  > * {
+    vertical-align: middle !important;
+    display: inline-block !important;
+  }
+}

@@ -1,67 +1,13 @@
 /* Text */
-/**
- *? Create color class using variables
- * 
- ** Function:
- *  .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
- * 
- ** Arguments:
- *  @color-name-array: array with @colors sufix name { ex: foo, fee }
- *  @color-variable-prefix: sufix name for variables { color }
- *  @property: prefix class and property for color { fill }
- * 
- ** Example:
- * 
- *  @color-foo: red;
- *  @color-fee: blue;
- *  @color-string: foo, fee;
- *  .color-list(@color-string, color, fill);
- * 
- ** Output:
- *
- *  fill-foo {
- *    fill: red;
- *  }
- *  fill-fee {
- *    fill: blue;
- *  }
- * 
- */
-/*=========================================================================
-|| ANCHOR Fix
-=========================================================================*/
-/**
- * Force an element to self-clear its children
- */
-/*=========================================================================
-|| Browser
-=========================================================================*/
-/**
- * Create custom themes for the browser's native scrollbars
- */
 /*
-Triangle
+Clearfix
 
-// Generate triangle style
+Force an element to self-clear its children
 
-Mixin arguments:
-$width: number
-$height: number
-$position: ['up','right','down','left'];
-$color: color
+Mixin:
+cleartfix;
 
-mixin:
-triangle($width, $height, $position, $color: '');
-
-mixin_usage:
-triangle(40px, 50px, 'up', color('primary'));
-triangle(20px, 80px, 'left', color('secondary'));
-
-mixin_output:
-<div class="triangle-up"></div>
-<div class="triangle-left"></div>
-
-Style guide: Functions.triangle
+Style guide: Functions.clearfix
 */
 /*
 Grid
@@ -81,13 +27,10 @@ $breakpoint(
   sm: 576,
   md: 768,
   lg: 992,
-  xl: 1200,
-  hd: 1366,
-	whd: 1440
 }
 @include grid(12, $breakpoints);
 
-Output:
+Mixin output:
 <div class="row">
 <div class="col-12 kss-item"></div>
 </div>
@@ -96,7 +39,68 @@ Output:
 <div class="col-1 kss-item"></div>
 </div>
 
-Style guide: Generator.grid
+Style guide: Grid.generate
+*/
+/*
+Row
+
+Style guide: Grid.row
+*/
+.row {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .row > * {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto !important;
+    min-height: 1px; }
+    .row > * > * {
+      flex: 1 1 auto; }
+
+/*
+Group middle
+
+Vertical center elements in content 
+
+Emmet:
+.group-middle>span{Text}+img{}
+
+Style guide: Flow.group-middle
+*/
+.group-middle > * {
+  vertical-align: middle !important;
+  display: inline-block !important; }
+
+/*
+
+Holder
+
+Mixin:
+add_holder($width, $height);
+
+Mixin arguments:
+$width: number
+$height: number
+
+Mixin example:
+.holder {
+	@include add_holder(500, 1000);
+}
+
+Mixin output:
+<div class="holder">
+	<div class="holder__content">Content</div>
+</div>
+
+Mixin style:
+@include add_holder-style;
+
+Style guide: Functions.holder
 */
 /**
  * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
@@ -117,6 +121,31 @@ Style guide: Generator.grid
         background-color: red;
     }
  */
+/*
+Input Placeholder
+
+Mixin:
+@inlcude add_placeholder { @content };
+
+Mixin example:
+.placeholder {
+	color: $color-secondary;
+	@inlcude add_placeholder {
+		color: $color-primary;
+	}
+}
+
+Mixin output:
+<input class="placeholder" placeholder="Simple input element">
+
+Compatybility:
+Chrome/Opera/Safari
+Firefox 19+
+Firefox 18-
+IE 10+
+
+Style guide: Functions.input-placeholder
+*/
 :root {
   --desktop: 1200;
   --tablet: 992;
@@ -126,22 +155,91 @@ Style guide: Generator.grid
   --headerStickyTablet: 40;
   --headerStickyMobile: 30; }
 
-.row {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  flex-wrap: wrap; }
-  .row > * {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: auto !important;
-    min-height: 1px; }
-    .row > * > * {
-      flex: 1 1 auto; }
+/*
 
+Position Center
+
+Absolute center element in ASIX X/Y
+
+Style guide: Blocks.position.center
+*/
+.block-center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%), translateX(-50%);
+  text-align: center;
+  display: block; }
+
+/*
+Scrollbar
+
+Create custom themes for the browser's native scrollbars
+
+Mixin:
+scrollbar($size, $color-background, $color-thumb;
+
+Mixin arguments:
+$size : numberPixel : 10px
+$color-background: color : color('black')
+$color-thumb: color : color('primary')
+
+Mixin example:
+scrollbar('20px', $color-primary, $color-secondary);
+
+Mixin output:
+<div class="scrollbar">
+	<div class="scrollbar__content"></div>
+</div>
+
+Style guide: Functions.clearfix
+*/
+/*
+Square
+
+Block square
+
+Markup:
+<div class="block-square">
+	Content
+</div>
+
+Style guide: Blocks.square
+*/
+.block-square {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; }
+  .block-square > * {
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+/*
+Triangle
+
+Generate triangle style
+
+Mixin arguments:
+$width: number
+$height: number
+$position: ['up','right','down','left'];
+$color: color
+
+mixin:
+triangle($width, $height, $position, $color: '');
+
+mixin_usage:
+triangle(40px, 50px, 'up', color('primary'));
+triangle(20px, 80px, 'left', color('secondary'));
+
+mixin_output:
+<div class="triangle-up"></div>
+<div class="triangle-left"></div>
+
+Style guide: Functions.triangle
+*/
 /*
 VH Unit 
 
@@ -178,6 +276,35 @@ wrap($max-width, $paddin-x);
 
 Style guide: Flow.wrap
 */
+/*
+YouTube
+
+Embed YouTube iframe (default 21/9)
+
+Style guide: Blocks.youtube
+*/
+.block-youtube {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 42.85714%;
+  overflow: hidden; }
+  .block-youtube iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; }
+  .block-youtube--16x9 {
+    padding-top: 56.25%; }
+  .block-youtube--4x3 {
+    padding-top: 75%; }
+  .block-youtube--1x1 {
+    padding-top: 100%; }
+
 .kss-style {
   color: #444;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
@@ -830,6 +957,54 @@ Style guide: Flow.wrap
   to {
     width: 320px; } }
 
+.block-square {
+  background-color: red; }
+  .block-square * > {
+    color: blue; }
+
+.holder {
+  position: relative; }
+  .holder__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+.holder {
+  background-color: red;
+  color: blue;
+  position: relative; }
+  .holder:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: 50%; }
+
+.placeholder {
+  color: blue; }
+  .placeholder::placeholder, .placeholder::-webkit-input-placeholder, .placeholder::-moz-placeholder, .placeholder:-ms-input-placeholder, .placeholder:-moz-placeholder {
+    color: red; }
+
+.scrollbar {
+  width: 100%;
+  height: 200px;
+  overflow: scroll; }
+  .scrollbar::-webkit-scrollbar {
+    width: "20px";
+    height: "20px";
+    background-color: blue;
+    -webkit-appearance: none; }
+  .scrollbar::-webkit-scrollbar-thumb {
+    min-width: "20px";
+    max-height: "20px";
+    background-color: red; }
+  .scrollbar::-webkit-scrollbar-track {
+    display: none; }
+  .scrollbar__content {
+    width: 200%;
+    height: 200%; }
+
 .triangle-up {
   width: 0;
   height: 0;
@@ -854,7 +1029,7 @@ Style guide: Flow.wrap
 .triangle-left {
   width: 0;
   height: 0;
-  border-right: 10px solid red;
+  border-right: 10px solid blue;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent; }
 

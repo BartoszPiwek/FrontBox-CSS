@@ -1,0 +1,194 @@
+/**
+ * Base
+ */
+.list {
+  &__icon {
+    display: none;
+  }
+
+  &--same-size {
+    .list {
+      &__item {
+        flex: 1 0 auto !important;
+      }
+    }
+  }
+}
+
+// /**
+//  * List vertical
+//  */
+// .responsiveClass({
+
+//   .@{prefix}list-vertical {
+//     & > .list {
+
+//       &__item {
+//         margin: 20px 0;
+
+//         &:last-child {
+//           margin-bottom: 0;
+//         }
+
+//         &:first-child {
+//           margin-top: 0;
+//         }
+//       }
+//     }
+
+//     /**
+//      * Special
+//      */
+//     &.@{prefix}list--mark {
+//       & > .list {
+
+//         &__item {
+//           position: relative;
+//           padding-left: 20px;
+
+//           &:before {
+//             content: '';
+//             border-radius: 50%;
+//             width: 6px;
+//             height: 6px;
+//             position: absolute;
+//             top: 24 / 2 - $width / 2;
+//             left: 0;
+//             background-color: color('primary');
+//           }
+//         }
+//       }
+
+//       &-center {
+//         & > .list {
+//           &__item {
+//             &:before {
+//               top: 50%;
+//               transform+_: translateY(-50%);
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//     &.@{prefix}list--mark-icon {
+//       .list {
+//         &__item {
+//           position: relative;
+//           padding-left: 20px;
+//         }
+
+//         &__icon {
+//           display: block;
+//           width: 12px;
+//           height: 12px;
+//           position: absolute;
+//           top: 24 / 2 - $width / 2;
+//           left: 0;
+//         }
+//       }
+
+//       &.@{prefix}list--mark-center {
+//         .list {
+//           &__icon {
+//             top: 50%;
+//             transform+_: translateY(-50%);
+//           }
+//         }
+//       }
+//     }
+//   }
+// });
+
+// /**
+//  * List horizontal
+//  */
+// .responsiveClass({
+//   .@{prefix}list-horizontal {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+
+//     // Space
+//     .space-x(25px);
+//     .space-y(10px);
+
+//     .list {
+
+//       &__item {
+//         display: inline-block;
+//         flex: 0 1 auto;
+//       }
+//     }
+
+//     /**
+//      * Special
+//      */
+
+//     &.@{prefix}list--mark {
+//       overflow: hidden;
+
+//       .list {
+
+//         &__item {
+//           position: relative;
+//           overflow: hidden;
+
+//           &:before {
+//             content: '';
+//             border-radius: 50%;
+//             width: 6px;
+//             height: 6px;
+//             position: absolute;
+//             top: calc(50% - $height);
+//             left: 25px / 2 - $width / 2;
+//             background-color: color('primary');
+//             transform+_: translateY(-50%);
+//           }
+//         }
+
+//         &__content {
+//           align-items: center;
+//           display: flex;
+//         }
+//       }
+
+//       &-center {
+
+//         & > .list {
+//           &__item {
+//             align-items: center;
+//             display: flex;
+
+//             &:before {
+//               top: calc(50% - (10px - 6px / 2));
+//               transform+_: translateY(-50%);
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//     &.@{prefix}list--mark-icon {
+
+//       .list {
+
+//         &__item {
+//           position: relative;
+//         }
+
+//         &__icon {
+//           display: block;
+//           border-radius: 50%;
+//           width: 12px;
+//           height: 12px;
+//           position: absolute;
+//           top: calc(50% - $height);
+//           left: (25px / 2) - $width / 2;
+//           background-color: color('primary');
+//         }
+//       }
+//     }
+
+//   }
+// });

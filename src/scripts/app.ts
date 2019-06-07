@@ -4,6 +4,7 @@ import { html } from "./frontbox/data/elements";
 import { InputCounter } from "./frontbox/form/input-counter";
 import { vUnits } from "./frontbox/polyfill/v-units";
 import { Resize } from "./frontbox/bind/resize";
+// Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 require('vh-check')();
 
 window.onload = () => {

@@ -1,0 +1,50 @@
+/*
+Triangle
+
+Generate triangle style
+
+Mixin arguments:
+$width: number
+$height: number
+$position: ['up','right','down','left'];
+$color: color
+
+mixin:
+triangle($width, $height, $position, $color: '');
+
+mixin_usage:
+triangle(40px, 50px, 'up', color('primary'));
+triangle(20px, 80px, 'left', color('secondary'));
+
+mixin_output:
+<div class="triangle-up"></div>
+<div class="triangle-left"></div>
+
+Style guide: Functions.triangle
+*/
+
+@mixin triangle($width, $height, $position: 'down', $color: color('primary')) {
+  $width-half: $width / 2;
+  $bool: ($position != 'left' and $position != 'right');
+
+  width: 0;
+  height: 0;
+
+  @if ($position == 'left') {
+    border-right: $height solid $color;
+  } @else if ($position == 'up') {
+    border-bottom: $height solid $color;
+  } @else if ($position == 'right') {
+    border-left: $height solid $color;
+  } @else if ($position == 'down') {
+    border-top: $height solid $color;
+  }
+
+  @if ($bool == true) {
+    border-right: $width-half solid transparent;
+    border-left: $width-half solid transparent;
+  } @else {
+    border-top: $width-half solid transparent;
+    border-bottom: $width-half solid transparent;
+  }
+}

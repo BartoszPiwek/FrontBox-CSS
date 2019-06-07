@@ -16,13 +16,10 @@ $breakpoint(
   sm: 576,
   md: 768,
   lg: 992,
-  xl: 1200,
-  hd: 1366,
-	whd: 1440
 }
 @include grid(12, $breakpoints);
 
-Output:
+Mixin output:
 <div class="row">
 <div class="col-12 kss-item"></div>
 </div>
@@ -31,7 +28,7 @@ Output:
 <div class="col-1 kss-item"></div>
 </div>
 
-Style guide: Generator.grid
+Style guide: Grid.generate
 */
 
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
@@ -56,6 +53,34 @@ Style guide: Generator.grid
         @at-root .#{$prefix}order-#{$i} {
           order: $i;
         }
+      }
+    }
+  }
+}
+
+/*
+Row
+
+Style guide: Grid.row
+*/
+@mixin grid-style {
+  .row {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    > * {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      flex-grow: 0;
+      flex-shrink: 0;
+      height: auto !important;
+      min-height: 1px;
+
+      > * {
+        flex: 1 1 auto;
       }
     }
   }

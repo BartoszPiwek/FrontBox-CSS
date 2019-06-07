@@ -1,0 +1,42 @@
+/*
+Scrollbar
+
+Create custom themes for the browser's native scrollbars
+
+Mixin:
+scrollbar($size, $color-background, $color-thumb;
+
+Mixin arguments:
+$size : numberPixel : 10px
+$color-background: color : color('black')
+$color-thumb: color : color('primary')
+
+Mixin example:
+scrollbar('20px', $color-primary, $color-secondary);
+
+Mixin output:
+<div class="scrollbar">
+	<div class="scrollbar__content"></div>
+</div>
+
+Style guide: Functions.clearfix
+*/
+
+@mixin scrollbar($size: '10px', $color-background: color('black'), $color-thumb: color('primary')) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+    background-color: $color-thumb;
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    min-width: $size;
+    max-height: $size;
+    background-color: $color-background;
+  }
+
+  &::-webkit-scrollbar-track {
+    display: none;
+  }
+}

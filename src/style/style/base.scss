@@ -60,7 +60,7 @@ img {
       fill: color('white');
     }
 
-    @include hover {
+    @include add_hover {
       color: color('secondary');
       .icon {
         fill: color('secondary');

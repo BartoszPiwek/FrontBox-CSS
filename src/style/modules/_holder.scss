@@ -1,0 +1,51 @@
+/*
+
+Holder
+
+Mixin:
+add_holder($width, $height);
+
+Mixin arguments:
+$width: number
+$height: number
+
+Mixin example:
+.holder {
+	@include add_holder(500, 1000);
+}
+
+Mixin output:
+<div class="holder">
+	<div class="holder__content">Content</div>
+</div>
+
+Mixin style:
+@include add_holder-style;
+
+Style guide: Functions.holder
+*/
+
+@mixin add_holder($width, $height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+}
+
+@mixin add_holder-style {
+  .holder {
+    position: relative;
+
+    &__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

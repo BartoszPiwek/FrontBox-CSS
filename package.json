@@ -8,6 +8,7 @@
 		"node": ">= 0.8.0"
 	},
 	"scripts": {
+		"start": "gulp",
 		"test": "grunt test"
 	},
 	"bugs": {

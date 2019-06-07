@@ -1,0 +1,34 @@
+/*
+Input Placeholder
+
+Mixin:
+@inlcude add_placeholder { @content };
+
+Mixin example:
+.placeholder {
+	color: $color-secondary;
+	@inlcude add_placeholder {
+		color: $color-primary;
+	}
+}
+
+Mixin output:
+<input class="placeholder" placeholder="Simple input element">
+
+Compatybility:
+Chrome/Opera/Safari
+Firefox 19+
+Firefox 18-
+IE 10+
+
+Style guide: Functions.input-placeholder
+*/
+@mixin add_placeholder {
+  &::placeholder,
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &:-moz-placeholder {
+    @content;
+  }
+}

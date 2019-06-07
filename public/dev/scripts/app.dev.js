@@ -374,6 +374,7 @@ var elements_1 = require("./frontbox/data/elements");
 var input_counter_1 = require("./frontbox/form/input-counter");
 var v_units_1 = require("./frontbox/polyfill/v-units");
 var resize_1 = require("./frontbox/bind/resize");
+// Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 require('vh-check')();
 window.onload = function () {
     var browser = new browser_1.Browser(), resize = new resize_1.Resize();

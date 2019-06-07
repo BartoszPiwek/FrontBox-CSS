@@ -1,0 +1,17 @@
+/*
+
+Position Center
+
+Absolute center element in ASIX X/Y
+
+Style guide: Blocks.position.center
+*/
+
+.block-center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%), translateX(-50%);
+  text-align: center;
+  display: block;
+}

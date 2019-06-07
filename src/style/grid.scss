@@ -2,6 +2,6 @@
 @import 'variables/media';
 @import 'modules/responsive';
 @import 'modules/grid';
-@import 'modules/row';
 
+@include grid-style;
 @include grid($grid-count: 12, $grid-breakpoints: $breakpoints);
