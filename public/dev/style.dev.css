@@ -16,6 +16,23 @@ cleartfix;
 Style guide: Functions.clearfix
 */
 /*
+Fixed
+
+Change to position fixed on iOS Safari while scrolling
+
+Style guide: Fix.fixed
+*/
+.fix_fixed, html.js_sticky-header:not(.js_menu-active) .header, html.js_menu-active .burger-menu {
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  transform: translateZ(0);
+  perspective: 1000; }
+
+/*
 Grid
 
 Grid CSS using flex
@@ -779,6 +796,269 @@ Style guide: Component.Buttons.colors
 .btn--tiny {
   padding: 14px 12px; }
 
+/*
+Input
+
+Style guide: Forms.input-default
+*/
+.input {
+  position: relative; }
+  .input input {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+    bottom: 0 !important;
+    position: absolute !important;
+    left: 50% !important;
+    /* Block user select when input is disabled */
+    /* Checked */ }
+    .input input:disabled + .input-radio__label {
+      user-select: none;
+      pointer-events: none;
+      opacity: 0.4; }
+    .input input + .input-radio {
+      /* Radio element mark fill */
+      /* Radio element mark icon */ }
+      .input input + .input-radio__label .input-radio__input--mark-color:before {
+        opacity: 1; }
+      .input input + .input-radio__label .input-radio__mark {
+        opacity: 1; }
+
+/**
+ * Input Checkbox
+ */
+.input-checkbox {
+  /* Fake checkbox input */
+  /* Clickable label toggle checkbox */
+  /* Toggle checkbox element */ }
+  .input-checkbox__input {
+    transition: border-color 0.2s;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #05386b;
+    /**
+         * Style for using SVG for checkbox element mark 
+         * Do not use transform - bug with mark size when checkbox is set on/off
+         */
+    /**
+         * Style for using color fill for checkbox element mark 
+         * Do not use transform - bug with mark size when checkbox is set on/off
+         */ }
+    .input-checkbox__input--mark-icon .input-checkbox__mark {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      opacity: 0;
+      transition: opacity 0.2s, fill 0.2s;
+      width: 80%;
+      height: 80%;
+      fill: #05386b; }
+    .input-checkbox__input--mark-color:before {
+      content: '';
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      opacity: 0;
+      transition: opacity 0.2s, background-color 0.2s;
+      width: 90%;
+      height: 90%;
+      background-color: #05386b; }
+  .input-checkbox__label {
+    cursor: pointer;
+    display: block;
+    padding-left: 30px; }
+    .input-checkbox__label--hover:hover .input-checkbox__label .input-checkbox,
+    .input-checkbox__label--hover:active .input-checkbox__label .input-checkbox,
+    .input-checkbox__label--hover:focus .input-checkbox__label .input-checkbox,
+    .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox,
+    .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox,
+    .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox, .input-checkbox__label:hover .input-checkbox, .input-checkbox__label:active .input-checkbox, .input-checkbox__label:focus .input-checkbox {
+      /* Fake checkbox element */ }
+      .input-checkbox__label--hover:hover .input-checkbox__label .input-checkbox__input,
+      .input-checkbox__label--hover:active .input-checkbox__label .input-checkbox__input,
+      .input-checkbox__label--hover:focus .input-checkbox__label .input-checkbox__input,
+      .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input,
+      .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input,
+      .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input, .input-checkbox__label:hover .input-checkbox__input, .input-checkbox__label:active .input-checkbox__input, .input-checkbox__label:focus .input-checkbox__input {
+        border-color: #000; }
+  .input-checkbox input:checked + .input-checkbox__label .input-checkbox__input {
+    /* Style for using SVG for checkbox element mark */
+    /* Style for using color fill for checkbox element mark */ }
+    .input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-icon .input-checkbox__mark {
+      opacity: 1; }
+    .input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-color:before {
+      opacity: 1; }
+
+/**
+ * Input Radio
+ */
+.input-radio {
+  /* Fake radio input */
+  /* Mark icon */
+  /* Clickable label toggle radio */
+  /* Hover */
+  /* Toggle */ }
+  .input-radio__input {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid #05386b;
+    transition: border-color 0.2s;
+    /* Radio element mark color */
+    /* Radio element mark icon */ }
+    .input-radio__input:before {
+      content: '';
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: opacity 0.2s, background-color 0.2s;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: #05386b;
+      opacity: 0; }
+  .input-radio__mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    fill: #05386b;
+    transition: fill 0.2s;
+    opacity: 0; }
+  .input-radio__label {
+    cursor: pointer;
+    display: block;
+    padding-left: 30px; }
+  .input-radio input + .input-radio__label--hover:hover .input-radio input + .input-radio__label .input-radio,
+  .input-radio input + .input-radio__label--hover:active .input-radio input + .input-radio__label .input-radio,
+  .input-radio input + .input-radio__label--hover:focus .input-radio input + .input-radio__label .input-radio,
+  .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio,
+  .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio,
+  .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio, .input-radio input + .input-radio__label:hover .input-radio, .input-radio input + .input-radio__label:active .input-radio, .input-radio input + .input-radio__label:focus .input-radio {
+    /* Fake radio element */ }
+    .input-radio input + .input-radio__label--hover:hover .input-radio input + .input-radio__label .input-radio__input,
+    .input-radio input + .input-radio__label--hover:active .input-radio input + .input-radio__label .input-radio__input,
+    .input-radio input + .input-radio__label--hover:focus .input-radio input + .input-radio__label .input-radio__input,
+    .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input,
+    .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input,
+    .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input, .input-radio input + .input-radio__label:hover .input-radio__input, .input-radio input + .input-radio__label:active .input-radio__input, .input-radio input + .input-radio__label:focus .input-radio__input {
+      border-color: #000; }
+  .input-radio input:checked + .input-radio {
+    /* Radio element mark fill */
+    /* Radio element mark icon */ }
+    .input-radio input:checked + .input-radio__label .input-radio__input--mark-color:before {
+      opacity: 1; }
+    .input-radio input:checked + .input-radio__label .input-radio__mark {
+      opacity: 1; }
+
+/**
+  * Input
+**/
+.input-text {
+  transition: border-color 0.2s color 0.2s;
+  height: 38px;
+  padding: 4px 12px;
+  font-size: 18px;
+  border: 1px solid #05386b;
+  border-radius: 8px;
+  color: #05386b;
+  width: 100%;
+  /* Placeholder text style */ }
+  .input-text::placeholder, .input-text::-webkit-input-placeholder, .input-text::-moz-placeholder, .input-text:-ms-input-placeholder, .input-text:-moz-placeholder {
+    transition: color 0.2s;
+    font-style: italic;
+    color: #05386b; }
+  .input-text:hover {
+    border-color: fade(#000, 60%);
+    color: fade(#000, 60%); }
+    .input-text:hover::placeholder, .input-text:hover::-webkit-input-placeholder, .input-text:hover::-moz-placeholder, .input-text:hover:-ms-input-placeholder, .input-text:hover:-moz-placeholder {
+      color: fade(#000, 60%); }
+  .input-text:active, .input-text:focus {
+    border-color: #000;
+    color: #000; }
+    .input-text:active::placeholder, .input-text:active::-webkit-input-placeholder, .input-text:active::-moz-placeholder, .input-text:active:-ms-input-placeholder, .input-text:active:-moz-placeholder, .input-text:focus::placeholder, .input-text:focus::-webkit-input-placeholder, .input-text:focus::-moz-placeholder, .input-text:focus:-ms-input-placeholder, .input-text:focus:-moz-placeholder {
+      color: #000; }
+  .input-text--block {
+    display: block;
+    width: 100%; }
+
+/**
+  * Input group
+**/
+.input-group > .input-group__item {
+  position: relative;
+  margin-bottom: 10px; }
+  .input-group > .input-group__item:last-child {
+    margin-bottom: 0; }
+
+.input-group--block .input-group__item > * {
+  display: block;
+  width: 100%; }
+
+.form {
+  position: relative;
+  padding: 10px; }
+  .form__response-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.2s, opacity 0.2s 0.2s; }
+  .form__response {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s, opacity 0.2s 0.2s;
+    z-index: -1;
+    opacity: 0; }
+    .form__response--msg {
+      width: 100%;
+      font-size: 16px;
+      text-align: center;
+      font-weight: 700; }
+
+/**
+ * JavaScript form class 
+*/
+.js_form--run .form__content {
+  user-select: none;
+  pointer-events: none;
+  filter: blur(2px);
+  opacity: 0.3; }
+
+.js_form--run .form__response-content {
+  opacity: 1;
+  z-index: 1; }
+
+.js_form--wait .form__response--wait {
+  opacity: 1;
+  z-index: 1; }
+
+.js_form--msg .form__response--msg {
+  opacity: 1;
+  z-index: 1; }
+
 /*=========================================================================
 || FILE: Header
 ===========================================================================
@@ -872,7 +1152,8 @@ Style guide: Component.Buttons.colors
     height: 100vh;
     max-width: 300px;
     background-color: #05386b;
-    box-shadow: -6px 0 10px fade(#000, 40%); }
+    box-shadow: -6px 0 10px rgba(0, 0, 0, 0.4);
+    transform: translateX(100%); }
     .burger-menu > .burger-menu__item {
       margin-bottom: 20px; }
       .burger-menu > .burger-menu__item:last-child {
@@ -954,6 +1235,16 @@ nav.nav>a.nav__item*x
 /**
  * Advanced
  */
+html {
+  /* Add fix when burger won't open */
+  /* Add fix to burger-menu when menu is active */ }
+  html.js_menu-active .header-placeholder,
+  html.js_menu-active .header {
+    background-color: transparent; }
+  html:not(.js_menu-active) .header-placeholder,
+  html:not(.js_menu-active) .header {
+    background-color: transparent; }
+
 /*
 Tabs
 

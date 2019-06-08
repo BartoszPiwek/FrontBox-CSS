@@ -6,7 +6,6 @@
 @import './bootstrap/*';
 
 // Debug
-@import './modules/debug';
 @if ($dev == true) {
   @include frontbox-debug;
 }

@@ -8,8 +8,8 @@ Version     : 1.1.0
 // https://developer.mozilla.org/en-US/docs/Web/CSS/@charset
 @charset "UTF-8";
 
-@import 'variables';
-@import 'tools/*';
-@import 'modules/*';
+@import './variables';
+@import './tools/*';
+@import './modules/*';
 
-@import 'style/*';
+@import './style/*';
