@@ -47,49 +47,85 @@
 
 <br>
 
-## Used programs
+[<img src="gitfiles/section-requirements.png" style="width=100%; height: auto;">]()
+## Requirements
 
-### Requirements:
-- <a href="https://nodejs.org/en/">Node.js</a> - JavaScript run-time environment
-- <a href="https://gulpjs.com">Gulp</a> - The streaming build system
-- <a href="https://yarnpkg.com/en/docs/install">Yarn</a> - Fast, reliable, and secure dependency management
-- <a href="https://code.visualstudio.com">Visual Studio Code</a> - IDE
-- <a href="https://github.com/sds/scss-lint">scss-lint</a> - Configurable tool for writing clean, consistent SCSS
+<table>
+	<tr>
+		<td><a href="https://nodejs.org/en/">Node.js</a></td>
+		<td>JavaScript run-time environment</td>
+	</td>
+	<tr>
+		<td><a href="https://gulpjs.com">Gulp</a></td>
+		<td>The streaming build system</td>
+	</td>
+	<tr>
+		<td><a href="https://yarnpkg.com/en/docs/install">Yarn</a></td>
+		<td>Fast, reliable, and secure dependency</td>
+	</td>
+	<tr>
+		<td><a href="https://code.visualstudio.com">Visual Studio Code</a></td>
+		<td>IDE</td>
+	</td>
+	<tr>
+		<td><a href="https://github.com/sds/scss-lint">scss-lint</a></td>
+		<td> Configurable tool for writing clean, consistent SCSS</td>
+	</td>
+</table>
 
 ### Visual Studio Code extensions:
-- <a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a> - Linter SCSS
-- <a href="https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter">SCSS Formatter</a> - Format SCSS.
-- <a href="https://marketplace.visualstudio.com/items?itemName=rebornix.project-snippets">Project Snippets</a> - Provide workspace/project level code snippets.
+
+<table>
+	<tr>
+		<td><a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a></td>
+		<td>Linter SCSS</td>
+	</td>
+	<tr>
+		<td><a href="https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter">SCSS Formatter</a></td>
+		<td>Format SCSS</td>
+	</td>
+	<tr>
+		<td><a href="https://marketplace.visualstudio.com/items?itemName=rebornix.project-snippets">Project Snippets</a></td>
+		<td>Provide workspace/project level code snippets.</td>
+	</td>
+</table>
 
 ### Additional:
 
-#### Images
-- <a href="https://sourceforge.net/projects/nikkhokkho/">FileOptimizer</a> - Advanced file optimizer featuring a lossless (no quality loss) file size reduction
-- <a href="https://chocolatey.org/packages/imagemagick.app">imagemagick</a> & <a href="http://www.imagemagick.org/script/download.php">MS binary</a> - Software suite to create, edit, compose, or convert bitmap images
+<table>
+	<tr>
+		<td><a href="https://sourceforge.net/projects/nikkhokkho/">FileOptimizer</a></td>
+		<td>Advanced file optimizer featuring a lossless (no quality loss) file size reduction</td>
+	</td>
+	<tr>
+		<td><a href="http://www.imagemagick.org/script/download.php">ImageMagick</a></td>
+		<td>Software suite to create, edit, compose, or convert bitmap images</td>
+	</td>
+	<tr>
+		<td><a href="https://github.com/google/ios-webkit-debug-proxy">iOS WebKit Debug Proxy</a></td>
+		<td>Debug iOS device</td>
+	</td>
+	<tr>
+		<td><a href="https://www.apple.com/pl/itunes/download/">iTunes</a></td>
+		<td>iOS drivers</td>
+	</td>
+	<tr>
+		<td><a href="https://chocolatey.org/">Chocolatey</a></td>
+		<td>The package manager for Windows</td>
+	</td>
+	<tr>
+		<td><a href="https://www.navicat.com/en/products/navicat-for-mysql">Navicat fo MySQL</a></td>
+		<td>Relational database management system</td>
+	</td>
+	<tr>
+		<td><a href="https://winscp.net">WinSCP</a></td>
+		<td>SFTP and FTP client for Microsoft Windows</td>
+	</td>
+</table>
 
-#### Tests
-- <a href="https://github.com/google/ios-webkit-debug-proxy">iOS WebKit Debug Proxy</a> - Debug iOS device
-- <a href="https://www.apple.com/pl/itunes/download/">iTunes</a> - iOS drivers
-
-#### Helpful
-- <a href="https://chocolatey.org/">Chocolatey</a> - The package manager for Windows
-- <a href="https://www.navicat.com/en/products/navicat-for-mysql">Navicat fo MySQL</a> - Relational database management system
-- <a href="https://winscp.net">WinSCP</a> - SFTP and FTP client for Microsoft Windows
-
-### Commands for ImageMagick:
-Google Pagespeed Insights image optimization guidelines
-
-- JPG
->convert image.jpg -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB image@converted.jpg
-
-- PNG
->convert image.png -strip image@converted.png
-
-<h2>
 <br>
 
 [<img src="gitfiles/section-gulp.png" style="width=100%; height: auto;">](https://gulpjs.com")
-
 ## Gulp
 
 ### Terminal tasks:
@@ -251,7 +287,6 @@ For new project create symbolic links with function <a target="_blank" href="htt
 <br>
 
 [<img src="gitfiles/section-bugs.png" style="width=100%; height: auto;">](https://github.com/BartoszPiwek/FrontBox-CSS/issues")
-
 ## Bugs
 
 Feel free to report:
