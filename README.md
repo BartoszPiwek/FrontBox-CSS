@@ -247,7 +247,10 @@ TinyPNG uses smart lossy compression techniques to reduce the file size of your 
 For new project create symbolic links with function <a target="_blank" href="https://www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/">mklink</a>
 > mklink /J "C:\Projects\{project-folder}\src\less\frontbox" "C:\Projects\Frontbox-CSS\src\less\frontbox"
 
-## Bugs 
+<br>
+
+[<img src="gitfiles/section-bugs.png" style="width=100%; height: auto;">](https://github.com/BartoszPiwek/FrontBox-CSS/issues")
+## Bugs
 
 Feel free to report:
-> https://github.com/BartoszPiwek/FrontBox-CSS/issues
+<a href="https://github.com/BartoszPiwek/FrontBox-CSS/issues/new?labels=bug">create bug issues</a>
