@@ -89,6 +89,7 @@ Google Pagespeed Insights image optimization guidelines
 <br>
 
 [<img src="gitfiles/section-gulp.png" style="width=100%; height: auto;">](https://gulpjs.com")
+
 ## Gulp
 
 ### Terminal tasks:
@@ -250,6 +251,7 @@ For new project create symbolic links with function <a target="_blank" href="htt
 <br>
 
 [<img src="gitfiles/section-bugs.png" style="width=100%; height: auto;">](https://github.com/BartoszPiwek/FrontBox-CSS/issues")
+
 ## Bugs
 
 Feel free to report:
