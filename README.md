@@ -88,7 +88,7 @@ Google Pagespeed Insights image optimization guidelines
 <h2>
 <br>
 
-[<img src="gitfiles/logo-gulp.png" style="width=100%; height: auto;">](https://gulpjs.com")
+[<img src="gitfiles/section-gulp.png" style="width=100%; height: auto;">](https://gulpjs.com")
 ## Gulp
 
 ### Terminal tasks:
