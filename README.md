@@ -86,6 +86,7 @@ Google Pagespeed Insights image optimization guidelines
 >convert image.png -strip image@converted.png
 
 <h2>
+<br>
 
 [<img src="gitfiles/logo-gulp.png" style="width=100%; height: auto;">](https://gulpjs.com")
 ## Gulp
