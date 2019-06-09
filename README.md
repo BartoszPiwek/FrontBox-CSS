@@ -1,23 +1,18 @@
-<div align="center">
-    <a href="https://github.com/BartoszPiwek/FrontBox-CSS">
-      <img src="gitfiles/frontbox-logo.gif" alt="FrontBox CSS" width="100" height="100" />
-    </a>
-</div>
 
-<h3 align="center">
+[<img src="gitfiles/section-frontbox.png" style="width=100%; height: auto;">]()
+<h1>
 	<strong>FrontBox CSS</strong> <small>by Bartosz Piwek</small>
-</h3>
-<p align="center">
-  Open-source static site builder tool.
-</p>
+</h1>
+Open-source static site builder tool.
 
-<p align="center">
+<p>
 	<span>Test framework</span>
 	:
   <a href="http://dev.frontbox.bartoszpiwek.e-kei.pl/">Development</a>
   ·
   <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/">Productive</a>
 </p>
+
 <br>
 
 ## Information
@@ -158,41 +153,30 @@
 </table>
 
 <br>
-<img src="gitfiles/logo-tree.jpg" style="width=100%; height: auto;">
 
-## Assets:
+[<img src="gitfiles/section-tree.png" style="width=100%; height: auto;">]()
+## Projekt Tree
 
-<strong>images</strong>
-
-- src/images/favicon.png - used to generate multi favicons<br>
-- src/images/logo.png - meta SEO logo
-
-<strong>grunt configuration file (<i>settings/</i>)</strong>
-
-- html_variables.json<br>
-- javascript_variables.json
-
-## Project tree:
-
-### LESS Files
-
-#### Version
+### Version
 <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
-├─── public/                   | Compiled website
-    ├─── prod/                  | Production
-    └─── dev/                   | Development
+├─── public/  	| Output generated website
+    ├─── prod/	| Production
+    └─── dev/ 	| Development
 </pre>
 
-#### Settings
+### Settings
 <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
-├─── base.less                | Base settings
-├─── responsive.less          | Screen sizes for responsive design & grid count
-├─── colors.less              | Base & required colors
-├─── fonts.less               | Fonts variables & declarations
-├─── plugins.less             | Addon components
+├─── config.js                | Main tasks config
+├─── src/
+    ├─── style/
+				├─── variables/
+						├─── _base.scss
+						├─── _color.scss
+						├─── _index.scss
+						├─── _media.scss
 </pre>
 
-#### Source
+### Source
 <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
 └─── src/                     | Source code
     ├─── fonts/                 | Generated fonts (https://www.fontsquirrel.com/tools/webfont-generator)
@@ -229,7 +213,7 @@
 </pre>
 
 <br>
-<img src="gitfiles/logo-testing.jpg" style="width=100%; height: auto;">
+<img src="gitfiles/section-testing.png" style="width=100%; height: auto;">
 
 ## Testing tools:
 
