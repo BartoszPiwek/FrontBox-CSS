@@ -87,9 +87,10 @@ Google Pagespeed Insights image optimization guidelines
 
 <br>
 
-<img src="gitfiles/logo-gulp.png" style="width=100%; height: auto;">
-
-## <p align="center">Gulp</p>
+[<img src="gitfiles/logo-gulp.png" style="width=100%; height: auto;">](https://gulpjs.com")
+<div style="max-width: 700px">
+<h2 align="center">Gulp</h2>
+</div>
 
 ### Terminal tasks:
 <table>
