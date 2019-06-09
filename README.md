@@ -24,15 +24,15 @@
 
 <table>
 	<tr>
-		<td>HTML Preprocessor</td>
+		<td>HTML</td>
 		<td><a href="https://pugjs.org/">Pug</a></td>
 	</td>
 	<tr>
-		<td>CSS Preprocessor</td>
+		<td>CSS</td>
 		<td><a href="https://sass-lang.com">SCSS</a></td>
 	</td>
 	<tr>
-		<td>JS Preprocessor</td>
+		<td>JavaScript</td>
 		<td><a href="http://browserify.org">Browserify</a>/<a href="https://www.typescriptlang.org">TypeScript</a></td>
 	</td>
 	<tr>
@@ -87,35 +87,38 @@ Google Pagespeed Insights image optimization guidelines
 
 <br>
 
-<img src="gitfiles/logo-grunt.jpg" style="width=100%; height: auto;">
+<img src="gitfiles/logo-gulp.png" style="width=100%; height: auto;">
 
-### Main commands:
-- <strong>Install packages and libraries:</strong>
-> $ yarn install
-- <strong>Insert libraries in project</strong><br>
-CSS/LESS to src/less/libs<br>
-JavaScript to scr/js/libs
+## <p align="center">Gulp</p>
 
-> $ grunt libs
+### Terminal tasks:
+<table>
+	<tr>
+		<td>Generate website with server and automatic update after modifying files</td>
+		<td>gulp</td>
+	</td>
+	<tr>
+		<td>Generate favicons</td>
+		<td>gulp favicon</td>
+	</td>
+	<tr>
+		<td>Create docs (<a href="https://github.com/kneath/kss" target="_blank">KSS</a>)</td>
+		<td>gulp docs</td>
+	</td>
+	<tr>
+		<td>Remove FrontBox-CSS development files</td>
+		<td>gulp clean</td>
+	</td>
+	<tr>
+		<td>Debug task</td>
+		<td>gulp test</td>
+	</td>
+	<tr>
+		<td>Change version to productive</td>
+		<td>--prod</td>
+	</td>
 
-### Build commands:
-
-- <strong>Create DEV</strong><br>
-  Build development website version
-> $ grunt
-- <strong>Create PROD</strong><br>
-  Build production website version
-> $ grunt prod
-- <strong>Generate favicons</strong><br>
-  Grab image from src/images/favicon.png and insert output to folder src/images/favicon<br>
-  Output HTML tags insert in src/template/includes/favicon.html
-> $ grunt favicon
-- <strong>Virtual host</strong><br>
-  Create easy virtual host for website (<i>localhost:8000</i>)<br>
-  <strong>up</strong> - for dev version, automatic update after modifying files<br>
-  <strong>up_prod</strong> - for prod version
-> $ grunt up<br>
-> $ grunt up_prod
+</table>
 
 <br>
 <img src="gitfiles/logo-tree.jpg" style="width=100%; height: auto;">
