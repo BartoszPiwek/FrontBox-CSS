@@ -13,6 +13,17 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
+## Table of contents
+
+- [Information](#information)
+- [Requirements](#requirements)
+- [Gulp](#gulp)
+- [Projekt Tree](#projekt-tree)
+- [Testing Tools](#testing-tools)
+- [Bugs](#bugs)
+
+<br>
+
 ## Information
 
 <table>
@@ -177,7 +188,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <br>
 
 [<img src="gitfiles/section-testing.png" style="width=100%; height: auto;">]()
-## Testing tools
+## Testing Tools
 
 <table>
 	<tr>
@@ -194,7 +205,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 	</tr>
 </table>
 
-## Browser extensions:
+### Browser extensions
 <table>
 	<tr>
 		<td><a href="https://chrome.google.com/webstore/detail/pixelparallel-by-htmlburg/iffnoibnepbcloaaagchjonfplimpkob">Pixel Perfect HTML</a></td>

@@ -353,7 +353,6 @@ Style guide: Blocks.youtube
     color: #000;
     font-size: 16px; }
 
-/* Row */
 .row-footer {
   width: calc(100% + 25px);
   margin-left: -25px !important; }
@@ -797,7 +796,18 @@ Style guide: Component.Buttons.colors
   padding: 14px 12px; }
 
 /*
-Input
+SECTION Input
+
+Example:
+<div class="input" tabindex="0">
+	<input id="input-default" name="input-default" required="required" tabindex="-1">
+		<label class="input__label" for="input-default">
+		<span class="input__input"></span>
+		<span class="input__text">
+			Label
+		</span>
+	</label>
+</div>
 
 Style guide: Forms.input-default
 */
@@ -816,54 +826,27 @@ Style guide: Forms.input-default
     white-space: nowrap !important;
     bottom: 0 !important;
     position: absolute !important;
-    left: 50% !important;
-    /* Block user select when input is disabled */
-    /* Checked */ }
+    left: 50% !important; }
     .input input:disabled + .input-radio__label {
       user-select: none;
       pointer-events: none;
       opacity: 0.4; }
-    .input input + .input-radio {
-      /* Radio element mark fill */
-      /* Radio element mark icon */ }
-      .input input + .input-radio__label .input-radio__input--mark-color:before {
+    .input input:checked + .input__label .input__input {
+      /* Style for using SVG for checkbox element mark */
+      /* Style for using color fill for checkbox element mark */ }
+      .input input:checked + .input__label .input__input--mark-icon .input__mark {
         opacity: 1; }
-      .input input + .input-radio__label .input-radio__mark {
+      .input input:checked + .input__label .input__input--mark-color:before {
         opacity: 1; }
-
-/**
- * Input Checkbox
- */
-.input-checkbox {
-  /* Fake checkbox input */
-  /* Clickable label toggle checkbox */
-  /* Toggle checkbox element */ }
-  .input-checkbox__input {
-    transition: border-color 0.2s;
+  .input__input {
     width: 20px;
     height: 20px;
     position: absolute;
     top: 0;
     left: 0;
-    border: 1px solid #05386b;
-    /**
-         * Style for using SVG for checkbox element mark 
-         * Do not use transform - bug with mark size when checkbox is set on/off
-         */
-    /**
-         * Style for using color fill for checkbox element mark 
-         * Do not use transform - bug with mark size when checkbox is set on/off
-         */ }
-    .input-checkbox__input--mark-icon .input-checkbox__mark {
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      opacity: 0;
-      transition: opacity 0.2s, fill 0.2s;
-      width: 80%;
-      height: 80%;
-      fill: #05386b; }
-    .input-checkbox__input--mark-color:before {
+    transition: border-color 0.2s;
+    border: 1px solid #05386b; }
+    .input__input--mark-color:before {
       content: '';
       position: absolute;
       top: 5%;
@@ -873,122 +856,134 @@ Style guide: Forms.input-default
       width: 90%;
       height: 90%;
       background-color: #05386b; }
-  .input-checkbox__label {
+  .input__mark {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    opacity: 0;
+    transition: opacity 0.2s, fill 0.2s;
+    width: 80%;
+    height: 80%;
+    fill: #05386b; }
+  .input__label {
     cursor: pointer;
     display: block;
     padding-left: 30px; }
-    .input-checkbox__label--hover:hover .input-checkbox__label .input-checkbox,
-    .input-checkbox__label--hover:active .input-checkbox__label .input-checkbox,
-    .input-checkbox__label--hover:focus .input-checkbox__label .input-checkbox,
-    .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox,
-    .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox,
-    .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox, .input-checkbox__label:hover .input-checkbox, .input-checkbox__label:active .input-checkbox, .input-checkbox__label:focus .input-checkbox {
-      /* Fake checkbox element */ }
-      .input-checkbox__label--hover:hover .input-checkbox__label .input-checkbox__input,
-      .input-checkbox__label--hover:active .input-checkbox__label .input-checkbox__input,
-      .input-checkbox__label--hover:focus .input-checkbox__label .input-checkbox__input,
-      .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input,
-      .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input,
-      .input-checkbox__label--hover-active .input-checkbox__label .input-checkbox__input, .input-checkbox__label:hover .input-checkbox__input, .input-checkbox__label:active .input-checkbox__input, .input-checkbox__label:focus .input-checkbox__input {
-        border-color: #000; }
-  .input-checkbox input:checked + .input-checkbox__label .input-checkbox__input {
-    /* Style for using SVG for checkbox element mark */
-    /* Style for using color fill for checkbox element mark */ }
-    .input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-icon .input-checkbox__mark {
-      opacity: 1; }
-    .input-checkbox input:checked + .input-checkbox__label .input-checkbox__input--mark-color:before {
-      opacity: 1; }
-
-/**
- * Input Radio
- */
-.input-radio {
-  /* Fake radio input */
-  /* Mark icon */
-  /* Clickable label toggle radio */
-  /* Hover */
-  /* Toggle */ }
-  .input-radio__input {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    border: 1px solid #05386b;
-    transition: border-color 0.2s;
-    /* Radio element mark color */
-    /* Radio element mark icon */ }
-    .input-radio__input:before {
-      content: '';
-      transform: translate(-50%, -50%);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transition: opacity 0.2s, background-color 0.2s;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background-color: #05386b;
-      opacity: 0; }
-  .input-radio__mark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 16px;
-    height: 16px;
-    fill: #05386b;
-    transition: fill 0.2s;
-    opacity: 0; }
-  .input-radio__label {
-    cursor: pointer;
-    display: block;
-    padding-left: 30px; }
-  .input-radio input + .input-radio__label--hover:hover .input-radio input + .input-radio__label .input-radio,
-  .input-radio input + .input-radio__label--hover:active .input-radio input + .input-radio__label .input-radio,
-  .input-radio input + .input-radio__label--hover:focus .input-radio input + .input-radio__label .input-radio,
-  .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio,
-  .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio,
-  .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio, .input-radio input + .input-radio__label:hover .input-radio, .input-radio input + .input-radio__label:active .input-radio, .input-radio input + .input-radio__label:focus .input-radio {
-    /* Fake radio element */ }
-    .input-radio input + .input-radio__label--hover:hover .input-radio input + .input-radio__label .input-radio__input,
-    .input-radio input + .input-radio__label--hover:active .input-radio input + .input-radio__label .input-radio__input,
-    .input-radio input + .input-radio__label--hover:focus .input-radio input + .input-radio__label .input-radio__input,
-    .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input,
-    .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input,
-    .input-radio input + .input-radio__label--hover-active .input-radio input + .input-radio__label .input-radio__input, .input-radio input + .input-radio__label:hover .input-radio__input, .input-radio input + .input-radio__label:active .input-radio__input, .input-radio input + .input-radio__label:focus .input-radio__input {
+    .input__label--hover:hover .input__label .input-checkbox__input,
+    .input__label--hover:active .input__label .input-checkbox__input,
+    .input__label--hover:focus .input__label .input-checkbox__input,
+    .input__label--hover-active .input__label .input-checkbox__input,
+    .input__label--hover-active .input__label .input-checkbox__input,
+    .input__label--hover-active .input__label .input-checkbox__input, .input__label:hover .input-checkbox__input, .input__label:active .input-checkbox__input, .input__label:focus .input-checkbox__input {
       border-color: #000; }
-  .input-radio input:checked + .input-radio {
-    /* Radio element mark fill */
-    /* Radio element mark icon */ }
-    .input-radio input:checked + .input-radio__label .input-radio__input--mark-color:before {
-      opacity: 1; }
-    .input-radio input:checked + .input-radio__label .input-radio__mark {
-      opacity: 1; }
 
-/**
-  * Input
-**/
+/*
+SECTION Checkbox
+
+Example: 
+<div class="input input-checkbox" tabindex="0">
+	<input type="checkbox" id="checkbox1" name="checkbox1" required="required" tabindex="-1">
+		<label class="input__label" for="checkbox1">
+		<span class="input__input"></span>
+		<span class="input__text">
+			Label
+		</span>
+	</label>
+</div>
+
+<div class="input input-checkbox" tabindex="0">
+	<input type="checkbox" id="checkbox2" name="checkbox2" required="required" tabindex="-1">
+	<label class="input__label" for="checkbox2">
+		<span class="input__input input__input--mark-icon">
+			<svg class="input__mark" viewBox="0 0 512 512"><path d="M256 0C114.615 0 0 114.615 0 256s114.615 256 256 256 256-114.615 256-256S397.385 0 256 0zm-48 416L102 278l47-49 59 75 185-151 23 23-208 240z"></path></svg>
+		</span>
+		<span class="input__text">
+			Label
+		<span>
+	</label>
+</div>
+
+<div class="input input-checkbox" tabindex="0">
+	<input type="checkbox" id="checkbox3" name="checkbox3" required="required" tabindex="-1">
+	<label class="input__label" for="checkbox3">
+		<span class="input__input input__input--mark-color"></span>
+		<span class="input__text">
+			Label
+		<span>
+	</label>
+</div>
+
+Style guide: Forms.input-checkbox
+*/
+/*
+SECTION Radio
+
+Example: 
+<div class="input input-radio" tabindex="0">
+	<input type="radio" id="radio-default" name="input-radio" required="required" tabindex="-1">
+	<label class="input__label" for="radio-default">
+		<span class="input__input"></span>
+		<span class="input__text">Label<span>
+	</label>
+</div>
+
+<div class="input input-radio" tabindex="0">
+	<input type="radio" id="radio-mark-color" name="input-radio" required="required" tabindex="-1">
+	<label class="input__label" for="radio-mark-color">
+		<span class="input__input input__input--mark-color"></span>
+		<span class="input__text">
+			Label
+		<span>
+	</label>
+</div>
+
+<div class="input input-radio" tabindex="0">
+	<input type="radio" id="radio-mark-icon" name="input-radio" required="required" tabindex="-1">
+	<label class="input__label" for="radio-mark-icon">
+		<span class="input__input input__input--mark-icon">
+			<svg class="input__mark" viewBox="0 0 512 512"><path d="M256 0C114.615 0 0 114.615 0 256s114.615 256 256 256 256-114.615 256-256S397.385 0 256 0zm-48 416L102 278l47-49 59 75 185-151 23 23-208 240z"></path></svg>
+		</span>
+		<span class="input__text">
+			Label
+		<span>
+	</label>
+</div>
+
+
+
+Style guide: Forms.input-radio
+*/
+.input-radio .input__input {
+  border-radius: 50%; }
+  .input-radio .input__input--mark-color:before {
+    border-radius: 50%; }
+
+/*
+SECTION Text
+
+Example:
+<input type="text" class="input-text" required="required">
+
+Style guide: Forms.input-text
+*/
 .input-text {
-  transition: border-color 0.2s color 0.2s;
+  width: 100%;
   height: 38px;
   padding: 4px 12px;
   font-size: 18px;
   border: 1px solid #05386b;
   border-radius: 8px;
   color: #05386b;
-  width: 100%;
-  /* Placeholder text style */ }
+  transition: border-color 0.2s, color 0.2s; }
   .input-text::placeholder, .input-text::-webkit-input-placeholder, .input-text::-moz-placeholder, .input-text:-ms-input-placeholder, .input-text:-moz-placeholder {
     transition: color 0.2s;
     font-style: italic;
     color: #05386b; }
   .input-text:hover {
-    border-color: fade(#000, 60%);
-    color: fade(#000, 60%); }
+    border-color: rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6); }
     .input-text:hover::placeholder, .input-text:hover::-webkit-input-placeholder, .input-text:hover::-moz-placeholder, .input-text:hover:-ms-input-placeholder, .input-text:hover:-moz-placeholder {
-      color: fade(#000, 60%); }
+      color: rgba(0, 0, 0, 0.6); }
   .input-text:active, .input-text:focus {
     border-color: #000;
     color: #000; }
