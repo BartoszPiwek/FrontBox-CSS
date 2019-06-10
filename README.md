@@ -77,7 +77,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 	</tr>
 </table>
 
-### Visual Studio Code extensions:
+### Visual Studio Code extensions
 
 <table>
 	<tr>
@@ -94,7 +94,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 	</tr>
 </table>
 
-### Additional:
+### Additional
 
 <table>
 	<tr>
