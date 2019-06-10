@@ -1,5 +1,5 @@
 
-[<img src="gitfiles/section-frontbox.png" style="width=100%; height: auto;">]()
+[![](gitfiles/section-frontbox.png)](#)
 <h1>
 	<strong>FrontBox CSS</strong> <small>by Bartosz Piwek</small>
 </h1>
@@ -51,7 +51,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[<img src="gitfiles/section-requirements.png" style="width=100%; height: auto;">]()
+[![](gitfiles/section-requirements.png)](#)
 ## Requirements
 
 <table>
@@ -129,7 +129,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[<img src="gitfiles/section-gulp.png" style="width=100%; height: auto;">](https://gulpjs.com")
+[![](gitfiles/section-gulp.png)](#)
 ## Gulp
 
 ### Terminal tasks:
@@ -163,7 +163,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[<img src="gitfiles/section-tree.png" style="width=100%; height: auto;">]()
+[![](gitfiles/section-tree.png)](#)
 ## Projekt Tree
 
 ### Version
@@ -187,7 +187,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[<img src="gitfiles/section-testing.png" style="width=100%; height: auto;">]()
+[![](gitfiles/section-testing.png)](#)
 ## Testing Tools
 
 <table>
@@ -232,7 +232,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[<img src="gitfiles/section-bugs.png" style="width=100%; height: auto;">](https://github.com/BartoszPiwek/FrontBox-CSS/issues")
+[![](gitfiles/section-bugs.png)](#)
 ## Bugs
 
 Feel free to report:
