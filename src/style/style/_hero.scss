@@ -1,5 +1,58 @@
+/*
+Hero
+
+Markup:
+<div class="hero">
+    <div class="hero__wrapper">
+        <div class="wrap">
+            <header class="hero__header">
+                <h1 class="hero__title">Hero Title</h1>
+            </header>
+            <div class="hero__body">Hero body</div>
+            <footer class="hero__footer">Hero footer</footer>
+        </div>
+    </div>
+</div>
+
+Mix class:
+.height-full
+
+Style guide: Elements.hero
+*/
 .hero {
+  position: relative;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  &__wrapper {
+    padding: 100px 0;
+  }
+
+  &__header {
+    margin-bottom: 50px;
+  }
+
+  &__body {
+    font-size: 30px;
+  }
+
+  &__footer {
+    font-size: 22px;
+    margin-top: 50px;
+  }
+
+  &__title {
+    font-size: 45px;
+  }
+
+  /* Mix class */
+  &.height-full {
+    display: flex;
+    align-items: center;
+
+    > * {
+      flex: 1 1 auto;
+    }
+  }
 }

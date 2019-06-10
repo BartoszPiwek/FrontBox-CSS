@@ -1029,10 +1029,49 @@ Style guide: Blocks.youtube
         padding-bottom: 45px !important;
         padding-left: 45px !important; } }
 
+/*
+Hero
+
+Markup:
+<div class="hero">
+    <div class="hero__wrapper">
+        <div class="wrap">
+            <header class="hero__header">
+                <h1 class="hero__title">Hero Title</h1>
+            </header>
+            <div class="hero__body">Hero body</div>
+            <footer class="hero__footer">Hero footer</footer>
+        </div>
+    </div>
+</div>
+
+Mix class:
+.height-full
+
+Style guide: Elements.hero
+*/
 .hero {
+  position: relative;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover; }
+  background-size: cover;
+  /* Mix class */ }
+  .hero__wrapper {
+    padding: 100px 0; }
+  .hero__header {
+    margin-bottom: 50px; }
+  .hero__body {
+    font-size: 30px; }
+  .hero__footer {
+    font-size: 22px;
+    margin-top: 50px; }
+  .hero__title {
+    font-size: 45px; }
+  .hero.height-full {
+    display: flex;
+    align-items: center; }
+    .hero.height-full > * {
+      flex: 1 1 auto; }
 
 /**
  * Default style
@@ -1090,6 +1129,36 @@ Style guide: Blocks.youtube
   .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item,
   .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item, .nav-header-menu > .nav-header-menu__item:hover, .nav-header-menu > .nav-header-menu__item:active, .nav-header-menu > .nav-header-menu__item:focus {
     color: #05386b; }
+
+.overlay {
+  position: relative;
+  z-index: 1; }
+  .overlay--default:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: #05386b;
+    content: '';
+    z-index: -1; }
+  .overlay--side:before, .overlay--side:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    opacity: 0.5;
+    content: '';
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(5, 56, 107, 0) 0, #05386b 100%); }
+  .overlay--side:after {
+    top: 0; }
+  .overlay--side:before {
+    bottom: 0;
+    transform: rotate(180deg); }
 
 /*=========================================================================
 || Import plugins

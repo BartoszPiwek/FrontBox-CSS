@@ -372,15 +372,11 @@ var browser_1 = require("./frontbox/data/browser");
 var cookie_1 = require("./frontbox/information/cookie");
 var elements_1 = require("./frontbox/data/elements");
 var input_counter_1 = require("./frontbox/form/input-counter");
-var v_units_1 = require("./frontbox/polyfill/v-units");
 var resize_1 = require("./frontbox/bind/resize");
-// Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
-require('vh-check')();
+require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 window.onload = function () {
     var browser = new browser_1.Browser(), resize = new resize_1.Resize();
-    /**
-     * Forms
-     */
+    /* Forms */
     new input_counter_1.InputCounter({
         cssClass: {
             wrap: "[data-bind=\"input-counter\"]",
@@ -389,18 +385,13 @@ window.onload = function () {
             disable: "--disable",
         }
     });
-    /**
-     * Informations
-     */
+    /* Informations */
     new cookie_1.InformationCookie();
-    /**
-     * Polyfill
-     */
-    new v_units_1.vUnits();
+    /* Polyfill */
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./frontbox/bind/resize":4,"./frontbox/data/browser":5,"./frontbox/data/elements":7,"./frontbox/form/input-counter":8,"./frontbox/information/cookie":9,"./frontbox/polyfill/v-units":10,"vh-check":2}],4:[function(require,module,exports){
+},{"./frontbox/bind/resize":4,"./frontbox/data/browser":5,"./frontbox/data/elements":7,"./frontbox/form/input-counter":8,"./frontbox/information/cookie":9,"vh-check":2}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Resize = /** @class */ (function () {
@@ -641,7 +632,7 @@ var InformationCookie = /** @class */ (function () {
     function InformationCookie(data) {
         var _this = this;
         this.data = {
-            template: false,
+            template: null,
         };
         this.getContent = function (callback) {
             var xhr = new XMLHttpRequest();
@@ -706,43 +697,6 @@ var InformationCookie = /** @class */ (function () {
     return InformationCookie;
 }());
 exports.InformationCookie = InformationCookie;
-},{"../data/elements":7,"js-cookie":1}],10:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("../data/elements");
-var vUnits = /** @class */ (function () {
-    function vUnits() {
-        var _this = this;
-        this.template = "<p id='test-v-units' style='width: 50vw; opacity: 0;'></p>";
-        if (this.test()) {
-            this.CSS = elements_1.root.style;
-            this.refresh();
-            window.onresize = function () {
-                _this.onResize();
-            };
-        }
-    }
-    vUnits.prototype.test = function () {
-        elements_1.body.insertAdjacentHTML('beforeend', this.template);
-        var vUnitTest = document.getElementById("test-v-units");
-        var elemWidth = Number(getComputedStyle(vUnitTest, null).width);
-        var halfWidth = Number(window.innerWidth / 2);
-        vUnitTest.parentNode.removeChild(vUnitTest);
-        return elemWidth !== halfWidth;
-    };
-    vUnits.prototype.onResize = function () {
-        var active = document.getElementsByClassName('full-height');
-        if (active.length) {
-            this.refresh();
-        }
-    };
-    vUnits.prototype.refresh = function () {
-        this.heightSize = window.innerHeight * 0.01;
-        this.CSS.setProperty('--vh', this.heightSize + "px");
-    };
-    return vUnits;
-}());
-exports.vUnits = vUnits;
-},{"../data/elements":7}]},{},[3])
+},{"../data/elements":7,"js-cookie":1}]},{},[3])
 
 //# sourceMappingURL=app.dev.js.map

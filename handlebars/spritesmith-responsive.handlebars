@@ -1,7 +1,13 @@
 {{#block "sprites-comment"}}
-/*=========================================================================
-|| FILE: Sprite Responsive - {{spritesheet_info.strings.name}}
-=========================================================================*/
+/*
+Sprite Responsive '{{spritesheet_info.strings.name}}'
+
+{{#sprites}}
+.{{name}}
+{{/sprites}}
+
+Style guide: Spritesmith.{{spritesheet_info.strings.name}}
+*/
 {{/block}}
 {{#block "spritesheet"}}
 @{{spritesheet_info.strings.name_width}}: {{spritesheet.px.width}};
@@ -12,13 +18,14 @@
 
 {{#sprites}}
 .{{name}}{
-    padding-bottom: {{px.height}} /{{px.width}} * 100%;
-    background-image: url({{{escaped_image}}}2x);
-    background-size: ({{px.total_width}} / {{px.width}} * 100%) ({{px.total_height}} / {{px.height}} * 100%);
-    background-position: ({{px.offset_x}} / ({{px.total_width}} - {{px.width}}) * -100%) ({{px.offset_y}} / ({{px.total_height}} - {{px.height}}) * -100%);
+padding-bottom: {{px.height}} /{{px.width}} * 100%;
+background-image: url({{{escaped_image}}}2x);
+background-size: ({{px.total_width}} / {{px.width}} * 100%) ({{px.total_height}} / {{px.height}} * 100%);
+background-position: ({{px.offset_x}} / ({{px.total_width}} - {{px.width}}) * -100%) ({{px.offset_y}} /
+({{px.total_height}} - {{px.height}}) * -100%);
 
-    @media @desktop {
-        background-image: url({{{escaped_image}}});
-    }
+@media @desktop {
+background-image: url({{{escaped_image}}});
+}
 }
 {{/sprites}}

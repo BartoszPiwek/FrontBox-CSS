@@ -2,10 +2,8 @@ import { Browser } from "./frontbox/data/browser";
 import { InformationCookie } from "./frontbox/information/cookie";
 import { html } from "./frontbox/data/elements";
 import { InputCounter } from "./frontbox/form/input-counter";
-import { vUnits } from "./frontbox/polyfill/v-units";
 import { Resize } from "./frontbox/bind/resize";
-// Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
-require('vh-check')();
+require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 
 window.onload = () => {
 
@@ -14,9 +12,7 @@ window.onload = () => {
 		browser = new Browser(),
 		resize = new Resize();
 
-  /**
-   * Forms
-   */
+	/* Forms */
 	new InputCounter({
 		cssClass: {
 			wrap: `[data-bind="input-counter"]`,
@@ -26,15 +22,10 @@ window.onload = () => {
 		}
 	});
 
-  /**
-   * Informations
-   */
+	/* Informations */
 	new InformationCookie();
 
-  /**
-   * Polyfill
-   */
-	new vUnits();
+	/* Polyfill */
 
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');

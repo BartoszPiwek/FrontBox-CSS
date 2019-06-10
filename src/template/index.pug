@@ -2,7 +2,7 @@
 	blocks:
 		- variables
 		- content
-		- assets_head
+		- assets_header
 		- assets_footer
 extends includes/bootstrap.pug
 
@@ -19,30 +19,13 @@ block append content
 
 	main.page-content.relative
 
-		.hero.hero-main.height-full(style="background-image: url(https://via.placeholder.com/2000/000000/FFFFFF/?text=FrontBox-CSS);")
-
-		//- Loop
 		.wrap
-			.row.row-space
-				each item in [{color: 'red', background: 'blue'}, {color: 'blue', background: 'red'}]
-					.col-4
-						div(style="color: " + item.color + "; background-color: " + item.background )
-							| Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente itaque, exercitationem dolores minima unde nihil quod? Eveniet consectetur labore, ad ducimus natus maiores, veniam minima doloribus vel odio dolores fuga.
-
-		.wrap
-			| Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, ad? Ullam asperiores et labore dolores deleniti, ipsam eligendi quibusdam accusantium debitis consectetur soluta harum ab repellendus minus! Nam, in cum.s
-
-			.input-counter(data-bind="input-counter")
-				button.input-counter__btn.input-counter__btn--disable.input-counter__btn--minus(data-value="-1" type="button" title="Zmniejsz")
-					| &#150;
-				input.input-counter__input(type="number" value="1" min="1" max="10")
-				button.input-counter__btn.input-counter__btn--plus(data-value="1" type="button" title="Zwiększ")
-					| &#43;
+			| Change me!
 
 	include includes/footer.pug
 
 //- Append addon assets {js/css}
-	assets_head - on top
+	assets_header - on top
 	assets_footer - on bottom
+block append assets_header
 block append assets_footer
-block append assets_head
