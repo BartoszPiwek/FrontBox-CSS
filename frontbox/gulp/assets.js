@@ -2,7 +2,7 @@
 import { src, dest } from "gulp";
 import realFavicon from 'gulp-real-favicon';
 /* Import config */
-import * as config from "./../config";
+import * as config from "./../../config";
 import { getModeName } from './index';
 
 
@@ -77,8 +77,8 @@ export function favicon(done) {
 			scalingAlgorithm: 'Lanczos', //'Mitchell', 'Cubic', 'Bilinear', 'Spline', 'Nearest Neighbor'
 			errorOnImageTooSmall: false,
 			readmeFile: false,
-      usePathAsIs: true,
-      htmlCodeFile: true,
+			usePathAsIs: true,
+			htmlCodeFile: true,
 		},
 		markupFile: `${element.log}`
 

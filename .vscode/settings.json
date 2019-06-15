@@ -13,4 +13,6 @@
 		"validation*.json": true
 	},
 	"editor.tabCompletion": "on",
+	"scssLint.runOnTextChange": true,
+	"scssLint.showHighlights": true,
 }
