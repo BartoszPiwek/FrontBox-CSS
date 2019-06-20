@@ -154,7 +154,8 @@ Style guide: Functions.input-placeholder
   --mobile: 576;
   --headerStickyDesktop: 50;
   --headerStickyTablet: 40;
-  --headerStickyMobile: 30; }
+  --headerStickyMobile: 30;
+  --scrollbarWidth: 0; }
 
 /*
 
@@ -306,6 +307,14 @@ Style guide: Blocks.youtube
   .block-youtube--1x1 {
     padding-top: 100%; }
 
+html.js_scroll-lock {
+  position: fixed; }
+  html.js_scroll-lock body {
+    overflow: hidden; }
+
+html:not(.js_scroll-lock) body {
+  top: 0 !important; }
+
 html {
   height: 100%; }
 
@@ -362,6 +371,9 @@ input[type='number'] {
   input[type='number']::-webkit-inner-spin-button, input[type='number']::-webkit-outer-spin-button {
     margin: 0;
     -webkit-appearance: none; }
+
+input[type='password']::-ms-reveal, input[type='password']::-ms-clear {
+  display: none; }
 
 label [for] {
   cursor: pointer; }

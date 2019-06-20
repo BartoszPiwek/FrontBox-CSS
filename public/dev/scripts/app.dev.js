@@ -368,14 +368,15 @@
 },{}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var elements_1 = require("./frontbox/data/elements");
 var browser_1 = require("./frontbox/data/browser");
 var cookie_1 = require("./frontbox/information/cookie");
-var elements_1 = require("./frontbox/data/elements");
 var input_counter_1 = require("./frontbox/form/input-counter");
 var resize_1 = require("./frontbox/bind/resize");
+var scrollLock_1 = require("./frontbox/browser/scrollLock");
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 window.onload = function () {
-    var browser = new browser_1.Browser(), resize = new resize_1.Resize();
+    var browser = new browser_1.Browser(), scrollLock = new scrollLock_1.ScrollLock(), resize = new resize_1.Resize();
     /* Forms */
     new input_counter_1.InputCounter({
         cssClass: {
@@ -387,11 +388,17 @@ window.onload = function () {
     });
     /* Informations */
     new cookie_1.InformationCookie();
+    var scrollLockToggle = document.getElementById('scrollLock');
+    scrollLockToggle.onclick = function (e) {
+        scrollLock.change();
+        e.preventDefault();
+        return false;
+    };
     /* Polyfill */
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./frontbox/bind/resize":4,"./frontbox/data/browser":5,"./frontbox/data/elements":7,"./frontbox/form/input-counter":8,"./frontbox/information/cookie":9,"vh-check":2}],4:[function(require,module,exports){
+},{"./frontbox/bind/resize":4,"./frontbox/browser/scrollLock":5,"./frontbox/data/browser":6,"./frontbox/data/elements":8,"./frontbox/form/input-counter":9,"./frontbox/information/cookie":10,"vh-check":2}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Resize = /** @class */ (function () {
@@ -420,8 +427,57 @@ exports.Resize = Resize;
 },{}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var elements_1 = require("../data/elements");
+var browser_1 = require("../data/browser");
+var ScrollLock = /** @class */ (function () {
+    function ScrollLock() {
+    }
+    ScrollLock.prototype.on = function () {
+        this.positionTop = browser_1.getScrollPosition();
+        elements_1.body.style.top = "-" + this.positionTop + "px";
+        elements_1.html.classList.add('js_scroll-lock');
+        this.state = true;
+    };
+    ScrollLock.prototype.off = function () {
+        elements_1.html.classList.remove('js_scroll-lock');
+        elements_1.html.scrollTop(this.positionTop);
+        this.positionTop = 0;
+        this.state = false;
+    };
+    ScrollLock.prototype.change = function (state) {
+        if (state && this.state === state) {
+            /* test-code */
+            console.info("ScrollLock\n-fired scrollLock() function with parameter '" + state + "', but state is already '" + this.state + "'");
+            /* end-test-code */
+            return false;
+        }
+        browser_1.getScrollbarWidth();
+        if (state === true || this.state) {
+            this.off();
+        }
+        else {
+            this.on();
+        }
+    };
+    return ScrollLock;
+}());
+exports.ScrollLock = ScrollLock;
+},{"../data/browser":6,"../data/elements":8}],6:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./../data/elements");
 var css_1 = require("./../data/css");
+function getScrollbarWidth() {
+    var output = window.innerWidth - document.documentElement.clientWidth;
+    elements_1.html.style.setProperty('--scrollbarWidth', String(output) + "px");
+    return output;
+}
+exports.getScrollbarWidth = getScrollbarWidth;
+function getScrollPosition() {
+    var output = window.pageYOffset || elements_1.html.scrollTop;
+    return output;
+}
+exports.getScrollPosition = getScrollPosition;
 /**
  * @class Browser
  */
@@ -512,7 +568,7 @@ var Browser = /** @class */ (function () {
 }());
 exports.Browser = Browser;
 ;
-},{"./../data/css":6,"./../data/elements":7}],6:[function(require,module,exports){
+},{"./../data/css":7,"./../data/elements":8}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var root = document.querySelector(':root');
@@ -529,13 +585,13 @@ exports.breakpointsHeader = {
     fablet: Number(CSS.getPropertyValue("--headerFablet")),
     mobile: Number(CSS.getPropertyValue("--headerMobile")),
 };
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.body = document.getElementById('body');
-exports.html = document.getElementsByTagName('html')[0];
-exports.root = document.documentElement;
-},{}],8:[function(require,module,exports){
+exports.body = document.body;
+exports.html = document.documentElement;
+exports.CSS = window.getComputedStyle(exports.html);
+},{}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var InputCounter = /** @class */ (function () {
@@ -613,7 +669,7 @@ var InputCounter = /** @class */ (function () {
     return InputCounter;
 }());
 exports.InputCounter = InputCounter;
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -697,6 +753,6 @@ var InformationCookie = /** @class */ (function () {
     return InformationCookie;
 }());
 exports.InformationCookie = InformationCookie;
-},{"../data/elements":7,"js-cookie":1}]},{},[3])
+},{"../data/elements":8,"js-cookie":1}]},{},[3])
 
 //# sourceMappingURL=app.dev.js.map

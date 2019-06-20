@@ -160,7 +160,8 @@ Style guide: Functions.input-placeholder
   --mobile: 576;
   --headerStickyDesktop: 50;
   --headerStickyTablet: 40;
-  --headerStickyMobile: 30; }
+  --headerStickyMobile: 30;
+  --scrollbarWidth: 0; }
 
 /*
 
@@ -311,6 +312,17 @@ Style guide: Blocks.youtube
     padding-top: 75%; }
   .block-youtube--1x1 {
     padding-top: 100%; }
+
+body {
+  border-right: var(--scrollbarWidth, 0) solid #05386b; }
+
+html.js_scroll-lock {
+  position: fixed; }
+  html.js_scroll-lock body {
+    overflow: hidden; }
+
+html:not(.js_scroll-lock) body {
+  top: 0 !important; }
 
 /*=========================================================================
 || FILE: Animation
