@@ -31,6 +31,13 @@ export function style_main() {
 				`@import '../../../FrontBox-Plugins/**/*.scss';`
 			)
 		))
+		.pipe(gulpif(argv.prod,
+			footer(`
+				@import 'base';
+				@import 'grid';
+				@import 'utilities';
+			`)
+		))
 		.pipe(gulpif(!argv.prod,
 			sourcemaps.init({ loadMaps: true })
 		))

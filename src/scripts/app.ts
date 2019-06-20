@@ -4,6 +4,7 @@ import { InformationCookie } from "./frontbox/information/cookie";
 import { InputCounter } from "./frontbox/form/input-counter";
 import { Resize } from "./frontbox/bind/resize";
 import { ScrollLock } from "./frontbox/browser/scrollLock";
+import { BurgerMenu } from "./frontbox/navbar/burger-menu";
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 
 window.onload = () => {
@@ -12,7 +13,12 @@ window.onload = () => {
 	const
 		browser = new Browser(),
 		scrollLock = new ScrollLock(),
-		resize = new Resize();
+		resize = new Resize(),
+		burger = new BurgerMenu({
+			scrollLock: scrollLock,
+			$burger: document.getElementById('burger-button'),
+			cssClassActive: 'js_menu-active',
+		});
 
 	/* Forms */
 	new InputCounter({
@@ -34,6 +40,8 @@ window.onload = () => {
 		e.preventDefault();
 		return false;
 	};
+
+
 
 	/* Polyfill */
 

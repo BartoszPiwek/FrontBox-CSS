@@ -315,14 +315,12 @@ html.js_scroll-lock {
 html:not(.js_scroll-lock) body {
   top: 0 !important; }
 
-html {
-  height: 100%; }
+html,
+body {
+  width: 100%; }
 
 body {
-  display: flex;
   position: relative;
-  flex-direction: column;
-  min-height: 100%;
   overflow-x: hidden;
   overflow-y: auto; }
 

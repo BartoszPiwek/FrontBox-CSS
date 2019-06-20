@@ -374,9 +374,14 @@ var cookie_1 = require("./frontbox/information/cookie");
 var input_counter_1 = require("./frontbox/form/input-counter");
 var resize_1 = require("./frontbox/bind/resize");
 var scrollLock_1 = require("./frontbox/browser/scrollLock");
+var burger_menu_1 = require("./frontbox/navbar/burger-menu");
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 window.onload = function () {
-    var browser = new browser_1.Browser(), scrollLock = new scrollLock_1.ScrollLock(), resize = new resize_1.Resize();
+    var browser = new browser_1.Browser(), scrollLock = new scrollLock_1.ScrollLock(), resize = new resize_1.Resize(), burger = new burger_menu_1.BurgerMenu({
+        scrollLock: scrollLock,
+        $burger: document.getElementById('burger-button'),
+        cssClassActive: 'js_menu-active',
+    });
     /* Forms */
     new input_counter_1.InputCounter({
         cssClass: {
@@ -398,7 +403,7 @@ window.onload = function () {
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./frontbox/bind/resize":4,"./frontbox/browser/scrollLock":5,"./frontbox/data/browser":6,"./frontbox/data/elements":8,"./frontbox/form/input-counter":9,"./frontbox/information/cookie":10,"vh-check":2}],4:[function(require,module,exports){
+},{"./frontbox/bind/resize":4,"./frontbox/browser/scrollLock":5,"./frontbox/data/browser":6,"./frontbox/data/elements":8,"./frontbox/form/input-counter":9,"./frontbox/information/cookie":10,"./frontbox/navbar/burger-menu":11,"vh-check":2}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Resize = /** @class */ (function () {
@@ -429,6 +434,19 @@ exports.Resize = Resize;
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("../data/elements");
 var browser_1 = require("../data/browser");
+/**
+ * Toggle scroll lock for body element
+ * Export "%scrollbar-placeholder" to include scrollbar space
+ *
+ * @class ScrollLock
+ * @version 1.0
+ * @css
+ * scroll-lock.scss
+ * @require
+ * getScrollbarWidth, getScrollPosition
+ *
+ * 20.06.2019 Add
+ */
 var ScrollLock = /** @class */ (function () {
     function ScrollLock() {
     }
@@ -440,15 +458,15 @@ var ScrollLock = /** @class */ (function () {
     };
     ScrollLock.prototype.off = function () {
         elements_1.html.classList.remove('js_scroll-lock');
-        elements_1.html.scrollTop(this.positionTop);
+        window.scrollTo(0, this.positionTop);
         this.positionTop = 0;
         this.state = false;
     };
     ScrollLock.prototype.change = function (state) {
         if (state && this.state === state) {
             /* test-code */
-            console.info("ScrollLock\n-fired scrollLock() function with parameter '" + state + "', but state is already '" + this.state + "'");
-            /* end-test-code */
+            console.info("ScrollLock\n- fired scrollLock() function with parameter '" + state + "', but state is already '" + this.state + "'");
+            /* end-tst-code */
             return false;
         }
         browser_1.getScrollbarWidth();
@@ -458,6 +476,9 @@ var ScrollLock = /** @class */ (function () {
         else {
             this.on();
         }
+        /* test-code */
+        console.info("ScrollLock\n- fired scrollLock() function with parameter '" + state + "', state is '" + this.state + "'");
+        /* end-test-code */
     };
     return ScrollLock;
 }());
@@ -478,13 +499,30 @@ function getScrollPosition() {
     return output;
 }
 exports.getScrollPosition = getScrollPosition;
+function getTransitionEvent() {
+    var element = document.createElement("getTransitionEvent"), transitions = {
+        "transition": "transitionend",
+        "OTransition": "oTransitionEnd",
+        "MozTransition": "transitionend",
+        "WebkitTransition": "webkitTransitionEnd"
+    };
+    for (var key in transitions) {
+        if (element.style[key] !== undefined) {
+            return transitions[key];
+        }
+    }
+    /* test-code */
+    console.error("Browser\n-fired getTransitionEvent() function and return undefined transition");
+    /* end-test-code */
+}
+exports.getTransitionEvent = getTransitionEvent;
 /**
  * @class Browser
  */
 var Browser = /** @class */ (function () {
     function Browser() {
         console.log("Browser");
-        this.transitionEvent = this.getTransitionEvent();
+        this.transitionEvent = getTransitionEvent();
         this.portable = this.getMobileOperatingSystem();
         this.refresh();
         /* test-code */
@@ -498,19 +536,6 @@ var Browser = /** @class */ (function () {
         /* end-test-code */
     }
     ;
-    Browser.prototype.getTransitionEvent = function () {
-        var element = document.createElement("getTransitionEvent"), transitions = {
-            "transition": "transitionend",
-            "OTransition": "oTransitionEnd",
-            "MozTransition": "transitionend",
-            "WebkitTransition": "webkitTransitionEnd"
-        };
-        for (var key in transitions) {
-            if (element.style[key] !== undefined) {
-                return transitions[key];
-            }
-        }
-    };
     /* Determine the mobile operating system */
     Browser.prototype.getMobileOperatingSystem = function () {
         var userAgent = navigator.userAgent || navigator.vendor;
@@ -753,6 +778,48 @@ var InformationCookie = /** @class */ (function () {
     return InformationCookie;
 }());
 exports.InformationCookie = InformationCookie;
-},{"../data/elements":8,"js-cookie":1}]},{},[3])
+},{"../data/elements":8,"js-cookie":1}],11:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var elements_1 = require("../data/elements");
+var BurgerMenu = /** @class */ (function () {
+    function BurgerMenu(param) {
+        this.active = false;
+        this.moving = false;
+        this.expandTime = 300;
+        this.expandStyle = 'from-right';
+        this.$button = param.$burger;
+        this.cssClassActive = param.cssClassActive;
+        this.scrollLock = param.scrollLock;
+        this.refresh();
+    }
+    BurgerMenu.prototype.refresh = function () {
+        var _this = this;
+        this.$button.onclick = function () {
+            if (_this.moving) {
+                return false;
+            }
+            _this.moving = true;
+            _this.toggle({
+                end: function () {
+                    _this.scrollLock.change();
+                    _this.moving = false;
+                }
+            });
+        };
+    };
+    BurgerMenu.prototype.toggle = function (callback) {
+        if (callback.begin) {
+            callback.begin();
+        }
+        elements_1.html.classList.toggle(this.cssClassActive);
+        if (callback.end) {
+            callback.end();
+        }
+    };
+    return BurgerMenu;
+}());
+exports.BurgerMenu = BurgerMenu;
+},{"../data/elements":8}]},{},[3])
 
 //# sourceMappingURL=app.dev.js.map
