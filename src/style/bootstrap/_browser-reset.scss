@@ -40,8 +40,8 @@ iframe {
   border: 0;
 }
 
-// Turn Off Number Input Spinners
 input {
+  // Turn Off Number Input Spinners
   &[type='number'] {
     -moz-appearance: textfield;
 
@@ -49,6 +49,13 @@ input {
     &::-webkit-outer-spin-button {
       margin: 0;
       -webkit-appearance: none;
+    }
+  }
+  // Removin reveal password icons from IE10
+  &[type='password'] {
+    &::-ms-reveal,
+    &::-ms-clear {
+      display: none;
     }
   }
 }
