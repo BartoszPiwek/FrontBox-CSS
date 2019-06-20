@@ -7,11 +7,11 @@ import footer from 'gulp-footer';
 import rename from "gulp-rename";
 import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
-import { browserSync } from "./../gulpfile.babel";
+import { browserSync } from "./../../gulpfile.babel";
 const argv = require('yargs').argv;
 
 /* Import config */
-import * as config from "./../config";
+import * as config from "./../../config";
 import { getModeName } from './index';
 
 export function style_main() {

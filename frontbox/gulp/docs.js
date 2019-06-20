@@ -7,12 +7,11 @@ import rename from "gulp-rename";
 import kss from "kss";
 import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
-import { browserSync } from "./../gulpfile.babel";
+import { browserSync } from "./../../gulpfile.babel";
 const argv = require('yargs').argv;
 
 /* Import config */
-import * as config from "./../config";
-import { getModeName } from './index';
+import * as config from "./../../config";
 
 export function docs_run(done) {
 	kss({

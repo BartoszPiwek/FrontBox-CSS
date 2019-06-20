@@ -10,7 +10,7 @@ const argv = require('yargs').argv;
 export const browserSync = require('browser-sync').create();
 /* Import config */
 import * as config from './config';
-import { getModeName } from "./gulp/index";
+import { getModeName } from "./frontbox/gulp/index";
 export function server(done) {
 	browserSync.init({
 		open: config.browsersync.open,
@@ -40,22 +40,22 @@ export function begin() {
 }
 
 /* Style */
-import { style_main, style_base, style_grid, style_utilities } from "./gulp/style";
+import { style_main, style_base, style_grid, style_utilities } from "./frontbox/gulp/style";
 export const buildStyle = parallel(style_main, style_base, style_grid, style_utilities);
 /* HTML */
-import { html_main, html_include } from "./gulp/html";
+import { html_main, html_include } from "./frontbox/gulp/html";
 export const buildHTML = parallel(html_main);
 /* Script */
-import { script_main } from "./gulp/script";
+import { script_main } from "./frontbox/gulp/script";
 export const buildScript = parallel(script_main);
 /* Copy */
-import { copy_image, copy_fonts, copy_other, copy_video, copy_audio } from "./gulp/copy";
+import { copy_image, copy_fonts, copy_other, copy_video, copy_audio } from "./frontbox/gulp/copy";
 export const buildCopy = parallel(copy_image, copy_fonts, copy_other, copy_video, copy_audio);
 /* Other */
-import { svg, favicon } from "./gulp/assets";
+import { svg, favicon } from "./frontbox/gulp/assets";
 export const buildAssets = parallel(svg, favicon);
 /* Docs */
-import { docs_style, docs_watch, docs_run, docs_server } from "./gulp/docs";
+import { docs_style, docs_watch, docs_run, docs_server } from "./frontbox/gulp/docs";
 
 /* Main watch function */
 export function watchFiles() {
