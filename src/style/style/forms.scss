@@ -4,7 +4,7 @@ SECTION Input
 Example:
 <div class="input" tabindex="0">
 	<input id="input-default" name="input-default" required="required" tabindex="-1">
-		<label class="input__label" for="input-default">
+	<label class="input__label" for="input-default">
 		<span class="input__input"></span>
 		<span class="input__text">
 			Label
@@ -30,7 +30,6 @@ Style guide: Forms.input-default
     width: 1px !important;
     white-space: nowrap !important;
     bottom: 0 !important;
-    position: absolute !important;
     left: 50% !important;
 
     // Block user select when input is disabled

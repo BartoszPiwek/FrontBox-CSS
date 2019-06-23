@@ -1,30 +1,71 @@
+/*
+Space
+
+Add padding space in asix x/y
+
+Mixin:
+space-x($size);
+space-y($size);
+space($size, $size-y);
+
+Mixin arguments:
+$size 		: numberPixel
+$size-y 	: numberPixel? : $size
+
+Mixin example:
+space-x(10px);
+space-y(30px);
+space(5px, 10px);
+
+Mixin output:
+<div class="row row-space-x">
+	<div class="col-6"></div>
+	<div class="col-6"></div>
+</div>
+<div class="row row-space-y">
+	<div class="col-12"></div>
+	<div class="col-12"></div>
+</div>
+<div class="row row-space">
+	<div class="col-12"></div>
+	<div class="col-12"></div>
+	<div class="col-6"></div>
+	<div class="col-6"></div>
+</div>
+
+Changelog:
+2019.06-21 - Init
+
+Style guide: Funcions.space
+*/
+
 // Horizontal space
-@mixin space-x($space) {
-  width: calc(100% + #{$space});
-  margin-left: -#{$space} !important;
+@mixin space-x($size) {
+  width: calc(100% + #{$size});
+  margin-left: -#{$size} !important;
 
-  > *:not(.row-gap-ignore) {
-    padding-left: $space !important;
+  > *:not(.space-ignore) {
+    padding-left: $size !important;
   }
 }
 
 // Vertical space
-@mixin space-y($space) {
-  margin-bottom: -#{$space} !important;
+@mixin space-y($size) {
+  margin-bottom: -#{$size} !important;
 
-  > *:not(.row-space-ignore) {
-    padding-bottom: $space !important;
+  > *:not(.space-ignore) {
+    padding-bottom: $size !important;
   }
 }
 
-// Vertical space
-@mixin space($space-x: 0, $space-y: $space-x) {
-  width: calc(100% + #{$space-x});
-  margin-left: -#{$space-x} !important;
-  margin-bottom: -#{$space-y} !important;
+// Vertical/horizontal space
+@mixin space($size: 0, $size-y: $size) {
+  width: calc(100% + #{$size});
+  margin-left: -#{$size} !important;
+  margin-bottom: -#{$size-y} !important;
 
-  > *:not(.row-space-ignore) {
-    padding-bottom: $space-y !important;
-    padding-left: $space-x !important;
+  > *:not(.space-ignore) {
+    padding-bottom: $size-y !important;
+    padding-left: $size !important;
   }
 }

@@ -1,8 +1,8 @@
-@import './../src/style/variables';
-@import './../src/style/tools/*';
-@import './../src/style/modules/*';
+@import './../../src/style/variables';
+@import './../../src/style/tools/*';
+@import './../../src/style/modules/*';
 @import './kss-assets/kss.scss';
-@import './../src/style/style/*';
+// @import './../../src/style/style/*';
 
 $color-primary: red;
 $color-secondary: blue;
@@ -60,5 +60,18 @@ $color-secondary: blue;
 
   &-left {
     @include triangle(20px, 10px, 'left', $color-secondary);
+  }
+}
+
+// Space
+.row {
+  &.space-x {
+    @include space-x(10px);
+  }
+  &.space-y {
+    @include space-y(30px);
+  }
+  &.space {
+    @include space(5px, 10px);
   }
 }

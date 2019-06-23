@@ -18,10 +18,10 @@ export function docs_run(done) {
 		source: [
 			`src/style/`
 		],
-		builder: './kss/',
+		builder: './frontbox/kss/',
 		title: 'FrontBox-CSS Debug Style Guide',
 		css: [
-			'kss-assets/style.css',
+			'./kss-assets/style.css',
 		],
 		custom: [
 			'emmet',
@@ -34,14 +34,14 @@ export function docs_run(done) {
 }
 
 export function docs_watch() {
-	watch(['src/style/**/*', `${config.path.plugins}/**/*.scss`, 'kss/**/*.(scss|hbs)'], series(docs_style, docs_run));
+	watch(['src/style/**/*', `${config.path.plugins}/**/*.scss`, 'frontbox/kss/**/*.(scss|hbs)'], series(docs_style, docs_run));
 }
 
 export function docs_style() {
 
 	config.dev = !argv.prod;
 
-	return src(`kss/style.scss`, {
+	return src(`frontbox/kss/style.scss`, {
 		allowEmpty: true,
 	})
 		.pipe(header(
@@ -59,7 +59,7 @@ export function docs_style() {
 			sourcemaps.write(`./`, { sourceRoot: './' })
 		))
 		.pipe(dest(
-			`kss/kss-assets/`
+			`frontbox/kss/kss-assets/`
 		));
 }
 
