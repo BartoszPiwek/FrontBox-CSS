@@ -178,11 +178,24 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 ├─── config.js                | Main tasks config
 ├─── src/
     ├─── style/
-        ├─── variables/
-            ├─── _base.scss
-            ├─── _color.scss
-            ├─── _index.scss
-            ├─── _media.scss
+        ├─── variables/				| Folder with SCSS variables
+
+</pre>
+
+### Style
+<pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
+├─── src/
+    ├─── style/
+				├─── bootstrap/
+				├─── utilities/
+				├─── plugins/
+				├─── tools/
+				├─── style.scss 									| Page style
+				├─── grid.scss 										| Grid style
+				├─── utilities.scss 							| Utilities style
+				├─── _animations.scss
+				├─── _footer.scss
+				├─── <i>other SCSS files</i>
 </pre>
 
 <br>

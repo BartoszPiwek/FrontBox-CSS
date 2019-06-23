@@ -5,12 +5,10 @@ Url         : https://github.com/BartoszPiwek/FrontBox-CSS
 Version     : 1.1.0
 ********************************************************************/
 
-// https://developer.mozilla.org/en-US/docs/Web/CSS/@charset
-@charset "UTF-8";
+@charset "UTF-8"; // https://developer.mozilla.org/en-US/docs/Web/CSS/@charset
 
-@import './variables';
+@import './variables/*';
 @import './tools/*';
 @import './modules/*';
 @import './plugins/*';
-
-@import './style/*';
+@import '_*';

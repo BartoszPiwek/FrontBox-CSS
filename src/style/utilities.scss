@@ -1,8 +1,7 @@
-// Concatenate utilities
-@import 'modules/generate-utilities';
+// Utilities style
+@import 'variables/*';
 
-@import 'tools/media';
-@import 'variables/media';
+@import 'modules/generate-utilities';
 @import 'modules/responsive';
 
 @import 'utilities/overflow';

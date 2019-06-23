@@ -34,7 +34,7 @@ Style guide: Component.Buttons
   user-select: none;
   -webkit-user-drag: none;
 
-  @include add_hover {
+  @include add-hover {
     background-color: darken(color('primary'), 0.95);
   }
 
@@ -117,7 +117,7 @@ Style guide: Component.Buttons.colors
   &--primary {
     background-color: color('primary');
 
-    @include add_hover {
+    @include add-hover {
       background-color: darken(color('primary'), 0.8);
     }
   }

@@ -1,7 +1,0 @@
-@import 'tools/media';
-@import 'variables/media';
-@import 'modules/responsive';
-@import 'modules/grid';
-
-@include grid-style;
-@include grid($grid-count: 12, $grid-breakpoints: $breakpoints);

@@ -44,7 +44,7 @@
 	"Media queries: default": {
 		"prefix": "media",
 		"body": [
-			"@include media ('$1') {",
+			"@include media('$1') {",
 			"\t$2",
 			"}"
 		]
@@ -52,7 +52,7 @@
 	"Media queries: default max": {
 		"prefix": "media-max",
 		"body": [
-			"@include media-max ('$1') {",
+			"@include media-max('$1') {",
 			"\t$2",
 			"}"
 		]
@@ -60,15 +60,7 @@
 	"Media queries: special": {
 		"prefix": "media-special",
 		"body": [
-			"@include media-special ('$1') {",
-			"\t$2",
-			"}"
-		]
-	},
-	"Media queries: special max": {
-		"prefix": "media-special-max",
-		"body": [
-			"@include media-special-max ('$1') {",
+			"@include media-special('$1') {",
 			"\t$2",
 			"}"
 		]

@@ -33,21 +33,19 @@ module.exports = {
 				dest: '',
 				watch: [
 					'./src/style/style.scss',
-					'./src/style/variables.scss',
+					'./src/style/_*.scss',
 					'./src/style/variables/*.scss',
 					'./src/style/tools/*.scss',
 					'./src/style/modules/*.scss',
-					'./src/style/style/*.scss',
 				]
 			},
-			base: {
-				files: './src/style/base.scss',
+			bootstrap: {
+				files: './src/style/bootstrap.scss',
 				dest: 'css/',
 				watch: [
-					'./src/style/base.scss',
+					'./src/style/bootstrap.scss',
 					'./src/style/bootstrap/*.scss',
 					'./src/style/variables/*.scss',
-					'./src/style/variables.scss',
 					'./src/style/tools/*.scss',
 					'./src/style/modules/*.scss',
 				]

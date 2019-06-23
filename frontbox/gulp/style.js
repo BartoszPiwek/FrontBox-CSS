@@ -33,9 +33,9 @@ export function style_main() {
 		))
 		.pipe(gulpif(argv.prod,
 			footer(`
-				@import 'base';
-				@import 'grid';
+				@import 'bootstrap';
 				@import 'utilities';
+				@import 'settings';
 			`)
 		))
 		.pipe(gulpif(!argv.prod,
@@ -54,15 +54,15 @@ export function style_main() {
 		))
 		.pipe(browserSync.stream());
 }
-export function style_base() {
+export function style_bootstrap() {
 
-	const element = config.path.style.base;
+	const element = config.path.style.bootstrap;
 
 	return src(`${element.files}`, {
 		allowEmpty: true,
 	})
 		.pipe(header(
-			`$dev: ${config.dev};`
+			`$dev: ${config.dev};\n`
 		))
 		.pipe(gulpif(!argv.prod,
 			sourcemaps.init({ loadMaps: true })
@@ -72,31 +72,6 @@ export function style_base() {
 		.pipe(rename({
 			suffix: `.${getModeName()}`,
 		}))
-		.pipe(dest(
-			`public/${getModeName()}/${element.dest}`
-		))
-		.pipe(browserSync.stream());
-}
-export function style_grid() {
-
-	const element = config.path.style.grid;
-
-	config.dev = !argv.prod;
-
-	return src(`${element.files}`, {
-		allowEmpty: true,
-	})
-		.pipe(gulpif(!argv.prod,
-			sourcemaps.init({ loadMaps: true })
-		))
-		.pipe(sassGlob())
-		.pipe(sass())
-		.pipe(rename({
-			suffix: `.${getModeName()}`,
-		}))
-		.pipe(gulpif(!argv.prod,
-			sourcemaps.write(`./`, { sourceRoot: './' })
-		))
 		.pipe(dest(
 			`public/${getModeName()}/${element.dest}`
 		))

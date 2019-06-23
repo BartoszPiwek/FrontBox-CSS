@@ -8,6 +8,42 @@ $breakpoints: (
   whd: 1440
 );
 
-$media_burger-show: 'screen and (max-width: 767px)';
-$media_burger-hide: 'screen and (min-width: 768px)';
-$media-retina: '@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+$media: (
+  burger-show: 'screen and (max-width: 767px)',
+  burger-hide: 'screen and (min-width: 768px)',
+  retuna: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+);
+
+// Functions
+@mixin media($name) {
+  $width: map-get($breakpoints, $name);
+  @if $width {
+    @media screen and (min-width: #{$width}px) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-max($name) {
+  $width: map-get($breakpoints, $name);
+  @if $width {
+    @media screen and (max-width: #{$width} - 1) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-special($name) {
+  $queries: map-get($media, $name);
+  @if $queries {
+    @media #{$queries} {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

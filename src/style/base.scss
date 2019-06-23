@@ -1,9 +1,0 @@
-@import './variables';
-@import './modules/*';
-
-@import './bootstrap/*';
-
-// Debug
-@if ($dev == true) {
-  @include frontbox-debug;
-}

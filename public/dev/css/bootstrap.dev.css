@@ -606,11 +606,6 @@ label [for] {
   .is_burger-menu--hide {
     display: block; } }
 
-.wrap {
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%; }
-
 .col-1 {
   flex-basis: 8.33333%;
   max-width: 8.33333%; }
@@ -1397,6 +1392,11 @@ label [for] {
     min-height: 1px; }
     .row > * > * {
       flex: 1 1 auto; }
+
+.wrap {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%; }
 
 .frontbox-debug-box {
   color: #fff;

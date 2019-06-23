@@ -1,8 +1,4 @@
-/*=========================================================================
-|| FILE: Base
-===========================================================================
-|| Base style for page elements
-=========================================================================*/
+// Base
 
 body,
 html {
@@ -13,7 +9,7 @@ html {
 }
 
 body {
-  @extend %scrollbar-placeholder;
+  // @extend %scrollbar-placeholder;
 }
 
 // Scrollbar
@@ -42,7 +38,6 @@ img {
 }
 
 * {
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 
@@ -60,15 +55,16 @@ img {
   &--primary {
     color: color('white');
 
-    .icon {
-      fill: color('white');
-    }
-
-    @include add_hover {
+    @include add-hover {
       color: color('secondary');
+
       .icon {
         fill: color('secondary');
       }
+    }
+
+    .icon {
+      fill: color('white');
     }
   }
 }

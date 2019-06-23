@@ -1,5 +1,5 @@
 .nav-header-menu {
-  @media #{$media_burger-hide} {
+  @include media-special('burger-hide') {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -17,7 +17,7 @@
       margin-bottom: 0 !important;
     }
 
-    @media #{$media_burger-hide} {
+    @include media-special('burger-hide') {
       display: flex;
       flex: 1 1 auto;
       align-items: center;
@@ -31,7 +31,7 @@
       }
     }
 
-    @include add_hover {
+    @include add-hover {
       color: color('primary');
     }
   }

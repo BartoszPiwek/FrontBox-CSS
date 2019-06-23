@@ -100,7 +100,7 @@ Style guide: Forms.input-default
     display: block; // Space for checkbox
     padding-left: 30px;
 
-    @include add_hover {
+    @include add-hover {
       .input-checkbox {
         // Fake checkbox element
         &__input {

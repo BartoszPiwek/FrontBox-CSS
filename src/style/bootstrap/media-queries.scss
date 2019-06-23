@@ -1,24 +1,23 @@
 // Media queries class
-//
 
 // NOTE Burger
 .is_burger-menu {
   &--visible {
-    @media #{$media_burger-show} {
+    @include media-special('burger-show') {
       display: block;
     }
 
-    @media #{$media_burger-hide} {
+    @include media-special('burger-hide') {
       display: none;
     }
   }
 
   &--hide {
-    @media #{$media_burger-show} {
+    @include media-special('burger-show') {
       display: none;
     }
 
-    @media #{$media_burger-hide} {
+    @include media-special('burger-hide') {
       display: block;
     }
   }

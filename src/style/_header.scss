@@ -12,10 +12,8 @@
   height: inherit;
   display: flex;
   -webkit-backface-visibility: hidden;
-  transition: height $time-transition;
-  transition: box-shadow $time-transition;
-  transition: background-color $time-transition;
-  transition: padding $time-transition;
+  transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
+    padding $time-transition;
   background-color: color('primary');
 
   & > .wrap {
@@ -74,7 +72,7 @@
   // top: 50%;
   // transform: translateY(-50%); // Don't display burget button for view
 
-  @media #{$media_burger-hide} {
+  @include media-special('burger-hide') {
     display: none;
   }
 
@@ -119,7 +117,7 @@
  * Burger menu
  */
 .burger-menu {
-  @media #{$media_burger-show} {
+  @include media-special('burger-show') {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
@@ -148,7 +146,7 @@
     }
   }
 
-  @media #{$media_burger-hide} {
+  @include media-special('burger-hide') {
     transition: height 0s ease 0s;
     box-sizing: border-box;
     display: flex !important;
@@ -175,7 +173,7 @@ nav.nav>a.nav__item*x
   position: absolute; // Style
   overflow: hidden; // Postion
 
-  @media #{$media_burger-hide} {
+  @include media-special('burger-hide') {
     transition: height 0s ease 0s;
     box-sizing: border-box;
     display: flex !important;
@@ -188,7 +186,7 @@ nav.nav>a.nav__item*x
     text-align: center;
     z-index: index('menu') + 1;
     position: relative;
-    @media #{$media_burger-hide} {
+    @include media-special('burger-hide') {
       background-color: transparent;
       text-align: left;
       height: 100%;
@@ -200,13 +198,13 @@ nav.nav>a.nav__item*x
       transition: color $time-transition;
       margin-bottom: 10px;
       padding: 12px 0;
-      @include add_hover {
+      @include add-hover {
         color: #b8b8b8;
       }
       &:last-child {
         margin-bottom: 0;
       }
-      @media #{$media_burger-hide} {
+      @include media-special('burger-hide') {
         margin-bottom: 0;
         padding: 0;
         margin-right: 10px;
@@ -228,7 +226,7 @@ nav.nav>a.nav__item*x
 }
 
 // Activated burger menu
-@media #{$media_burger-show} {
+@include media-special('burger-show') {
   html {
     &.js_menu-active {
       .burger {

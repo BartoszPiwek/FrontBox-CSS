@@ -1,4 +1,4 @@
-$color: (
+$colors: (
   'default': #fff,
   'black': #000,
   'white': #fff,
@@ -15,3 +15,13 @@ $color: (
 
 $color-tap: false;
 $color-text-selection: false;
+
+// Function
+@function color($name) {
+  $color-var: map-get($colors, $name);
+  @if not $color-var {
+    @warn 'undefined color name: ' + $name;
+    @return false;
+  }
+  @return $color-var;
+}

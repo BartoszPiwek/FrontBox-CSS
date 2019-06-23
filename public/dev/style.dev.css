@@ -4,7 +4,6 @@ Framework   : FrontBox-CSS
 Url         : https://github.com/BartoszPiwek/FrontBox-CSS
 Version     : 1.1.0
 ********************************************************************/
-/* Text */
 /*
 Clearfix
 
@@ -154,10 +153,10 @@ IE 10+
 Style guide: Functions.input-placeholder
 */
 :root {
-  --desktop: 1200;
-  --tablet: 992;
-  --fablet: 768;
-  --mobile: 576;
+  --desktop: breakpoint("xl");
+  --tablet: breakpoint("lg");
+  --fablet: breakpoint("md");
+  --mobile: breakpoint("sm");
   --headerStickyDesktop: 50;
   --headerStickyTablet: 40;
   --headerStickyMobile: 30;
@@ -185,7 +184,7 @@ Scrollbar
 Create custom themes for the browser's native scrollbars
 
 Mixin:
-scrollbar($size, $color-background, $color-thumb;
+scrollbar($size, $color-background, $color-thumb);
 
 Mixin arguments:
 $size : numberPixel : 10px
@@ -201,6 +200,46 @@ Mixin output:
 </div>
 
 Style guide: Functions.clearfix
+*/
+/*
+Space
+
+Add padding space in asix x/y
+
+Mixin:
+space-x($size);
+space-y($size);
+space($size, $size-y);
+
+Mixin arguments:
+$size 		: numberPixel
+$size-y 	: numberPixel? : $size
+
+Mixin example:
+space-x(10px);
+space-y(30px);
+space(5px, 10px);
+
+Mixin output:
+<div class="row row-space-x">
+	<div class="col-6"></div>
+	<div class="col-6"></div>
+</div>
+<div class="row row-space-y">
+	<div class="col-12"></div>
+	<div class="col-12"></div>
+</div>
+<div class="row row-space">
+	<div class="col-12"></div>
+	<div class="col-12"></div>
+	<div class="col-6"></div>
+	<div class="col-6"></div>
+</div>
+
+Changelog:
+2019.06-21 - Init
+
+Style guide: Funcions.space
 */
 /*
 Square
@@ -313,22 +352,6 @@ Style guide: Blocks.youtube
   .block-youtube--1x1 {
     padding-top: 100%; }
 
-body {
-  border-right: var(--scrollbarWidth, 0) solid #05386b; }
-
-html.js_scroll-lock {
-  position: fixed; }
-  html.js_scroll-lock body {
-    overflow: hidden; }
-
-html:not(.js_scroll-lock) body {
-  top: 0 !important; }
-
-/*=========================================================================
-|| FILE: Animation
-===========================================================================
-|| Animate transitions from one CSS style configuration to another
-=========================================================================*/
 @keyframes animation_name {
   0% { }
   25% { }
@@ -340,290 +363,6 @@ html:not(.js_scroll-lock) body {
   from { }
   to { } }
 
-/*=========================================================================
-|| Boxes
-=========================================================================*/
-/*=========================================================================
-|| FILE: Footer
-===========================================================================
-|| Style for footer elements
-=========================================================================*/
-.footer {
-  padding: 35px 0;
-  overflow: hidden;
-  background-color: #05386b; }
-  .footer__item > *:first-child {
-    margin-top: 0; }
-  .footer__item > *:last-child {
-    margin-bottom: 0; }
-  .footer__title {
-    margin: 20px 0;
-    color: #fff;
-    font-size: 28px;
-    font-weight: 200; }
-  .footer__content {
-    color: #000;
-    font-size: 16px; }
-
-.row-footer {
-  width: calc(100% + 25px);
-  margin-left: -25px !important; }
-  .row-footer > *:not(.row-gap-ignore) {
-    padding-left: 25px !important; }
-  @media screen and (min-width: 768px) {
-    .row-footer {
-      width: calc(100% + 25px);
-      margin-left: -25px !important;
-      margin-bottom: -25px !important; }
-      .row-footer > *:not(.row-space-ignore) {
-        padding-bottom: 25px !important;
-        padding-left: 25px !important; } }
-  @media screen and (min-width: 992px) {
-    .row-footer {
-      width: calc(100% + 35px);
-      margin-left: -35px !important;
-      margin-bottom: -35px !important; }
-      .row-footer > *:not(.row-space-ignore) {
-        padding-bottom: 35px !important;
-        padding-left: 35px !important; } }
-  @media screen and (min-width: 1200px) {
-    .row-footer {
-      width: calc(100% + 45px);
-      margin-left: -45px !important;
-      margin-bottom: -45px !important; }
-      .row-footer > *:not(.row-space-ignore) {
-        padding-bottom: 45px !important;
-        padding-left: 45px !important; } }
-
-/*
-Hero
-
-Markup:
-<div class="hero">
-    <div class="hero__wrapper">
-        <div class="wrap">
-            <header class="hero__header">
-                <h1 class="hero__title">Hero Title</h1>
-            </header>
-            <div class="hero__body">Hero body</div>
-            <footer class="hero__footer">Hero footer</footer>
-        </div>
-    </div>
-</div>
-
-Mix class:
-.height-full
-
-Style guide: Elements.hero
-*/
-.hero {
-  position: relative;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  /* Mix class */ }
-  .hero__wrapper {
-    padding: 100px 0; }
-  .hero__header {
-    margin-bottom: 50px; }
-  .hero__body {
-    font-size: 30px; }
-  .hero__footer {
-    font-size: 22px;
-    margin-top: 50px; }
-  .hero__title {
-    font-size: 45px; }
-  .hero.height-full {
-    display: flex;
-    align-items: center; }
-    .hero.height-full > * {
-      flex: 1 1 auto; }
-
-/**
- * Default style
- */
-.icon {
-  transition: fill 0.2s; }
-
-/*=========================================================================
-|| FILE: Index
-===========================================================================
-|| Style for most index elements
-=========================================================================*/
-/*=========================================================================
-|| Links
-=========================================================================*/
-/**
- * Base
- */
-.list__icon {
-  display: none; }
-
-.list--same-size .list__item {
-  flex: 1 0 auto !important; }
-
-@media screen and (min-width: 768px) {
-  .nav-header-menu {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; } }
-
-.nav-header-menu > .nav-header-menu__item {
-  display: block;
-  margin-bottom: 20px;
-  padding: 10px 6px;
-  transition: color 0.2s;
-  color: #000;
-  text-align: center; }
-  .nav-header-menu > .nav-header-menu__item:last-child {
-    margin-bottom: 0 !important; }
-  @media screen and (min-width: 768px) {
-    .nav-header-menu > .nav-header-menu__item {
-      display: flex;
-      flex: 1 1 auto;
-      align-items: center;
-      justify-content: center;
-      margin-right: 16px;
-      margin-bottom: 0 !important;
-      padding: 0; }
-      .nav-header-menu > .nav-header-menu__item:last-child {
-        margin-right: 0 !important; } }
-  .nav-header-menu > .nav-header-menu__item--hover:hover .nav-header-menu > .nav-header-menu__item,
-  .nav-header-menu > .nav-header-menu__item--hover:active .nav-header-menu > .nav-header-menu__item,
-  .nav-header-menu > .nav-header-menu__item--hover:focus .nav-header-menu > .nav-header-menu__item,
-  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item,
-  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item,
-  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item, .nav-header-menu > .nav-header-menu__item:hover, .nav-header-menu > .nav-header-menu__item:active, .nav-header-menu > .nav-header-menu__item:focus {
-    color: #05386b; }
-
-.overlay {
-  position: relative;
-  z-index: 1; }
-  .overlay--default:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
-    background-color: #05386b;
-    content: '';
-    z-index: -1; }
-  .overlay--side:before, .overlay--side:after {
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    opacity: 0.5;
-    content: '';
-    z-index: -1;
-    background: linear-gradient(0deg, rgba(5, 56, 107, 0) 0, #05386b 100%); }
-  .overlay--side:after {
-    top: 0; }
-  .overlay--side:before {
-    bottom: 0;
-    transform: rotate(180deg); }
-
-/*=========================================================================
-|| Import plugins
-=========================================================================*/
-/*=========================================================================
-|| Style HTML tables
-=========================================================================*/
-/*=========================================================================
-|| FILE: Tools
-===========================================================================
-|| Create class using functions
-=========================================================================*/
-/*=========================================================================
-|| WRAP - center element in asix x
-|| = max width elemnt (end calculate = max-width + padding * 2)
-|| = padding for responsive view
-//=======================================================================*/
-.wrap {
-  max-width: 1064px;
-  padding-right: 20px;
-  padding-left: 20px;
-  /**
-   * Elements
-   */
-  /* Navigation bar */ }
-  .wrap-navbar {
-    max-width: 1064px;
-    padding-right: 20px;
-    padding-left: 20px; }
-
-.row {
-  /*=========================================================================
-  // ROW GAP
-  // Set space beetween columns in ASIX X
-  .space-x(20px);
-  // * space beetween columns
-  //=========================================================================
-  // ROW SPACE
-  // Set space beetween columns in ASIX Y
-  .space-y(20px);
-  // * space beetween columns
-  == WARNING: row will have 'overflow: hidden'
-  //=======================================================================*/ }
-
-.col {
-  /*=========================================================================
-  // COLUMN SIZE - set single column size (.row > .col-x) {variables without px}
-  // .add-col(column-size, parent-width, gap-size) {
-  // * columns size
-  // * parent element width (most .wrap)
-  // * space beetween columns {optional | default "0"}
-  == SNIPPETS: add-column
-  =========================================================================*/ }
-  .col-static--test {
-    flex-basis: 300px; }
-
-/**
- * Space
- */
-.space {
-  /* Default */
-  /* Sizes */ }
-  .space > * {
-    margin: 20px 0; }
-  .space--medium > * {
-    margin: 18px 0; }
-
-/*=========================================================================
-// Generate color list class { _functions.less }
-// .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
-=========================================================================*/
-.height-full {
-  height: 100vh;
-  height: calc(100vh - var(--vh-offset, 0px)); }
-
-/*=========================================================================
-|| Create responsive utilities
-=========================================================================*/
-/* Only mobile size */
-/* Fable size */
-/* Tablet size */
-/* Desktop size */
-/*=========================================================================
-|| WYSIWYG HTML output formatting
-=========================================================================*/
-.wysiwyg > *:first-child {
-  margin-top: 0 !important; }
-
-.wysiwyg > *:last-child {
-  margin-bottom: 0 !important; }
-
-.wysiwyg pre {
-  font-family: monospace; }
-
-/*=========================================================================
-|| FILE: Base
-===========================================================================
-|| Base style for page elements
-=========================================================================*/
 body,
 html {
   background-color: #379683;
@@ -667,7 +406,6 @@ img {
   image-rendering: -webkit-optimize-contrast; }
 
 * {
-  -ms-touch-action: manipulation;
   touch-action: manipulation; }
 
 .background {
@@ -720,6 +458,9 @@ img {
     left: 50%;
     transform: translate(-50%, -50%); }
 
+/*=========================================================================
+|| Boxes
+=========================================================================*/
 /*
 Buttons
 
@@ -877,13 +618,65 @@ Style guide: Component.Buttons.colors
 .btn--tiny {
   padding: 14px 12px; }
 
+/*=========================================================================
+|| FILE: Footer
+===========================================================================
+|| Style for footer elements
+=========================================================================*/
+.footer {
+  padding: 35px 0;
+  overflow: hidden;
+  background-color: #05386b; }
+  .footer__item > *:first-child {
+    margin-top: 0; }
+  .footer__item > *:last-child {
+    margin-bottom: 0; }
+  .footer__title {
+    margin: 20px 0;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 200; }
+  .footer__content {
+    color: #000;
+    font-size: 16px; }
+
+.row-footer {
+  width: calc(100% + 25px);
+  margin-left: -25px !important; }
+  .row-footer > *:not(.space-ignore) {
+    padding-left: 25px !important; }
+  @media screen and (min-width: 768px) {
+    .row-footer {
+      width: calc(100% + 25px);
+      margin-left: -25px !important;
+      margin-bottom: -25px !important; }
+      .row-footer > *:not(.space-ignore) {
+        padding-bottom: 25px !important;
+        padding-left: 25px !important; } }
+  @media screen and (min-width: 992px) {
+    .row-footer {
+      width: calc(100% + 35px);
+      margin-left: -35px !important;
+      margin-bottom: -35px !important; }
+      .row-footer > *:not(.space-ignore) {
+        padding-bottom: 35px !important;
+        padding-left: 35px !important; } }
+  @media screen and (min-width: 1200px) {
+    .row-footer {
+      width: calc(100% + 45px);
+      margin-left: -45px !important;
+      margin-bottom: -45px !important; }
+      .row-footer > *:not(.space-ignore) {
+        padding-bottom: 45px !important;
+        padding-left: 45px !important; } }
+
 /*
 SECTION Input
 
 Example:
 <div class="input" tabindex="0">
 	<input id="input-default" name="input-default" required="required" tabindex="-1">
-		<label class="input__label" for="input-default">
+	<label class="input__label" for="input-default">
 		<span class="input__input"></span>
 		<span class="input__text">
 			Label
@@ -907,7 +700,6 @@ Style guide: Forms.input-default
     width: 1px !important;
     white-space: nowrap !important;
     bottom: 0 !important;
-    position: absolute !important;
     left: 50% !important; }
     .input input:disabled + .input-radio__label {
       user-select: none;
@@ -1149,10 +941,7 @@ Style guide: Forms.input-text
   height: inherit;
   display: flex;
   -webkit-backface-visibility: hidden;
-  transition: height 0.2s;
-  transition: box-shadow 0.2s;
-  transition: background-color 0.2s;
-  transition: padding 0.2s;
+  transition: height 0.2s, box-shadow 0.2s, background-color 0.2s, padding 0.2s;
   background-color: #05386b;
   /* Header sticky */ }
   .header > .wrap {
@@ -1328,6 +1117,143 @@ html {
     background-color: transparent; }
 
 /*
+Hero
+
+Markup:
+<div class="hero">
+    <div class="hero__wrapper">
+        <div class="wrap">
+            <header class="hero__header">
+                <h1 class="hero__title">Hero Title</h1>
+            </header>
+            <div class="hero__body">Hero body</div>
+            <footer class="hero__footer">Hero footer</footer>
+        </div>
+    </div>
+</div>
+
+Mix class:
+.height-full
+
+Style guide: Elements.hero
+*/
+.hero {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  /* Mix class */ }
+  .hero__wrapper {
+    padding: 100px 0; }
+  .hero__header {
+    margin-bottom: 50px; }
+  .hero__body {
+    font-size: 30px; }
+  .hero__footer {
+    font-size: 22px;
+    margin-top: 50px; }
+  .hero__title {
+    font-size: 45px; }
+  .hero.height-full {
+    display: flex;
+    align-items: center; }
+    .hero.height-full > * {
+      flex: 1 1 auto; }
+
+/**
+ * Default style
+ */
+.icon {
+  transition: fill 0.2s; }
+
+/*=========================================================================
+|| FILE: Index
+===========================================================================
+|| Style for most index elements
+=========================================================================*/
+/*=========================================================================
+|| Links
+=========================================================================*/
+/**
+ * Base
+ */
+.list__icon {
+  display: none; }
+
+.list--same-size .list__item {
+  flex: 1 0 auto !important; }
+
+@media screen and (min-width: 768px) {
+  .nav-header-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; } }
+
+.nav-header-menu > .nav-header-menu__item {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 6px;
+  transition: color 0.2s;
+  color: #000;
+  text-align: center; }
+  .nav-header-menu > .nav-header-menu__item:last-child {
+    margin-bottom: 0 !important; }
+  @media screen and (min-width: 768px) {
+    .nav-header-menu > .nav-header-menu__item {
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      margin-bottom: 0 !important;
+      padding: 0; }
+      .nav-header-menu > .nav-header-menu__item:last-child {
+        margin-right: 0 !important; } }
+  .nav-header-menu > .nav-header-menu__item--hover:hover .nav-header-menu > .nav-header-menu__item,
+  .nav-header-menu > .nav-header-menu__item--hover:active .nav-header-menu > .nav-header-menu__item,
+  .nav-header-menu > .nav-header-menu__item--hover:focus .nav-header-menu > .nav-header-menu__item,
+  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item,
+  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item,
+  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item, .nav-header-menu > .nav-header-menu__item:hover, .nav-header-menu > .nav-header-menu__item:active, .nav-header-menu > .nav-header-menu__item:focus {
+    color: #05386b; }
+
+.overlay {
+  position: relative;
+  z-index: 1; }
+  .overlay--default:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: #05386b;
+    content: '';
+    z-index: -1; }
+  .overlay--side:before, .overlay--side:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    opacity: 0.5;
+    content: '';
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(5, 56, 107, 0) 0, #05386b 100%); }
+  .overlay--side:after {
+    top: 0; }
+  .overlay--side:before {
+    bottom: 0;
+    transform: rotate(180deg); }
+
+/*=========================================================================
+|| Import plugins
+=========================================================================*/
+/*=========================================================================
+|| Style HTML tables
+=========================================================================*/
+/*
 Tabs
 
 Markup:
@@ -1472,6 +1398,81 @@ Style guide: Elements.tabs
       height: 0;
       overflow: hidden; } }
 
+/*=========================================================================
+|| FILE: Tools
+===========================================================================
+|| Create class using functions
+=========================================================================*/
+/*=========================================================================
+|| WRAP - center element in asix x
+|| = max width elemnt (end calculate = max-width + padding * 2)
+|| = padding for responsive view
+//=======================================================================*/
+.wrap {
+  max-width: 1064px;
+  padding-right: 20px;
+  padding-left: 20px;
+  /**
+   * Elements
+   */
+  /* Navigation bar */ }
+  .wrap-navbar {
+    max-width: 1064px;
+    padding-right: 20px;
+    padding-left: 20px; }
+
+.row {
+  /*=========================================================================
+  // ROW GAP
+  // Set space beetween columns in ASIX X
+  .space-x(20px);
+  // * space beetween columns
+  //=========================================================================
+  // ROW SPACE
+  // Set space beetween columns in ASIX Y
+  .space-y(20px);
+  // * space beetween columns
+  == WARNING: row will have 'overflow: hidden'
+  //=======================================================================*/ }
+
+.col {
+  /*=========================================================================
+  // COLUMN SIZE - set single column size (.row > .col-x) {variables without px}
+  // .add-col(column-size, parent-width, gap-size) {
+  // * columns size
+  // * parent element width (most .wrap)
+  // * space beetween columns {optional | default "0"}
+  == SNIPPETS: add-column
+  =========================================================================*/ }
+  .col-static--test {
+    flex-basis: 300px; }
+
+/**
+ * Space
+ */
+.space {
+  /* Default */
+  /* Sizes */ }
+  .space > * {
+    margin: 20px 0; }
+  .space--medium > * {
+    margin: 18px 0; }
+
+/*=========================================================================
+// Generate color list class { _functions.less }
+// .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+=========================================================================*/
+.height-full {
+  height: 100vh;
+  height: calc(100vh - var(--vh-offset, 0px)); }
+
+/*=========================================================================
+|| Create responsive utilities
+=========================================================================*/
+/* Only mobile size */
+/* Fable size */
+/* Tablet size */
+/* Desktop size */
 /*
 Validator
 
@@ -1557,6 +1558,18 @@ Style guide: JavaScript.validator
   color: #28a745 !important; }
   .input-success + *:not([class]) {
     display: none; }
+
+/*=========================================================================
+|| WYSIWYG HTML output formatting
+=========================================================================*/
+.wysiwyg > *:first-child {
+  margin-top: 0 !important; }
+
+.wysiwyg > *:last-child {
+  margin-bottom: 0 !important; }
+
+.wysiwyg pre {
+  font-family: monospace; }
 
 .js_cookies-information {
   position: fixed;

@@ -40,8 +40,8 @@ export function begin() {
 }
 
 /* Style */
-import { style_main, style_base, style_grid, style_utilities } from "./frontbox/gulp/style";
-export const buildStyle = parallel(style_main, style_base, style_grid, style_utilities);
+import { style_main, style_bootstrap, style_utilities } from "./frontbox/gulp/style";
+export const buildStyle = parallel(style_main, style_bootstrap, style_utilities);
 /* HTML */
 import { html_main, html_include } from "./frontbox/gulp/html";
 export const buildHTML = parallel(html_main);
@@ -63,8 +63,7 @@ export function watchFiles() {
 	/* Style */
 	const styleObject = config.path.style;
 	watch(styleObject.main.watch, style_main);
-	watch(styleObject.base.watch, style_base);
-	watch(styleObject.grid.watch, style_grid);
+	watch(styleObject.bootstrap.watch, style_bootstrap);
 	watch(styleObject.utilities.watch, style_utilities);
 
 	/* HTML */
