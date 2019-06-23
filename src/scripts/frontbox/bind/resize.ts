@@ -1,4 +1,4 @@
-import { body } from "./../data/elements";
+import { body } from "../data/elements";
 
 /**
  * Resize
@@ -31,7 +31,7 @@ export class Resize {
 
 	/* Constructor */
 	constructor(data?: ResizeData) {
-		
+
 	}
 
 	trigger() {

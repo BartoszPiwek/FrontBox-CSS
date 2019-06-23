@@ -1,5 +1,5 @@
 
-[![](gitfiles/section-frontbox.png)](#)
+[![](http://images.bartoszpiwek.e-kei.pl/section-frontbox.png)](#)
 <h1>
 	<strong>FrontBox CSS</strong> <small>by Bartosz Piwek</small>
 </h1>
@@ -51,7 +51,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[![](gitfiles/section-requirements.png)](#)
+[![](http://images.bartoszpiwek.e-kei.pl/section-requirements.png)](#)
 ## Requirements
 
 <table>
@@ -129,7 +129,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[![](gitfiles/section-gulp.png)](#)
+[![](http://images.bartoszpiwek.e-kei.pl/section-gulp.png)](#)
 ## Gulp
 
 ### Terminal tasks:
@@ -163,7 +163,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[![](gitfiles/section-tree.png)](#)
+[![](http://images.bartoszpiwek.e-kei.pl/section-tree.png)](#)
 ## Projekt Tree
 
 ### Version
@@ -201,7 +201,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[![](gitfiles/section-testing.png)](#)
+[![](http://images.bartoszpiwek.e-kei.pl/section-testing.png)](#)
 ## Testing Tools
 
 <table>
@@ -246,7 +246,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <br>
 
-[![](gitfiles/section-bugs.png)](#)
+[![](http://images.bartoszpiwek.e-kei.pl/section-bugs.png)](#)
 ## Bugs
 
 Feel free to report:

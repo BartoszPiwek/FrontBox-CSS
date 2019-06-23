@@ -1,5 +1,5 @@
-import { body, html } from "./../data/elements";
-import { breakpointsDefault } from "./../data/css";
+import { body, html } from "./elements";
+import { breakpointsDefault } from "./css";
 
 export function getScrollbarWidth(): number {
 	const output = window.innerWidth - document.documentElement.clientWidth;
