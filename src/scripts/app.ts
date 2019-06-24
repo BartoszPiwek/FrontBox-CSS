@@ -1,10 +1,10 @@
-import { html } from "./modules/elements";
-import { Browser } from "./modules/browser";
-import { InformationCookie } from "./modules/cookie";
-import { InputCounter } from "./modules/input-counter";
-import { Resize } from "./modules/resize";
-import { ScrollLock } from "./modules/scrollLock";
-import { BurgerMenu } from "./modules/burger-menu";
+import { html } from "./bootstrap/elements";
+import { Browser } from "./bootstrap/browser";
+import { InformationCookie } from "./bootstrap/cookie";
+import { InputCounter } from "./bootstrap/input-counter";
+import { Resize } from "./bootstrap/resize";
+import { ScrollLock } from "./bootstrap/scrollLock";
+import { BurgerMenu } from "./bootstrap/burger-menu";
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 

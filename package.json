@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"start": "gulp",
-		"test": "grunt test"
+		"test": "gulp test"
 	},
 	"bugs": {
 		"url": "https://github.com/BartoszPiwek/FrontBox-CSS/issues"
@@ -24,11 +24,9 @@
 		"cssnano": "^4.1.10",
 		"gulp": "^4.0.2",
 		"less-plugin-glob": "^3.0.0",
-		"load-grunt-tasks": "^3.5.2",
 		"postcss": "^6.0.16",
 		"postcss-extract-media-query": "^1.2.0",
 		"postcss-pxtorem": "^4.0.1",
-		"time-grunt": "^1.3.0",
 		"uncss": "^0.17.0"
 	},
 	"dependencies": {

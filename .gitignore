@@ -22,11 +22,11 @@ src/js/libs/*
 *.map
 
 # Generated
-src/images/favicon
+src/images/favicon/*
 styleguide
 
 # Logs
-log/*.json
+log/*
 
 # Manifest
 package-lock.json

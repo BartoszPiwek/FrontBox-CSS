@@ -45,7 +45,7 @@ export function docs_style() {
 		allowEmpty: true,
 	})
 		.pipe(header(
-			`$dev: ${config.dev};`
+			`$dev: ${config.dev};\n`
 		))
 		.pipe(gulpif(!argv.prod,
 			sourcemaps.init({ loadMaps: true })

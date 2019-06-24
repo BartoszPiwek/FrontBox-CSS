@@ -1,8 +1,7 @@
-@import './../../src/style/variables';
+@import './../../src/style/variables/*';
 @import './../../src/style/tools/*';
 @import './../../src/style/modules/*';
 @import './kss-assets/kss.scss';
-// @import './../../src/style/style/*';
 
 $color-primary: red;
 $color-secondary: blue;

@@ -145,12 +145,12 @@ module.exports = {
 			svg: {
 				files: [
 					'src/images/svg/*.svg',
-					'!src/images/svg/*_.svg',
+					'!src/images/svg/*.fill.svg',
 				],
 				dest: 'src/images/svg',
 				watch: [
 					'src/images/svg/*.svg',
-					'!src/images/svg/*_.svg',
+					'!src/images/svg/*.fill.svg',
 				]
 			},
 			favicon: {
@@ -178,9 +178,6 @@ module.exports = {
 
 	/* Prefix */
 	"prefixFaviconHTML": "/images/favicon/",
-
-	/* Functions */
-	"getYear": "<%= grunt.template.today('yyyy') %>",
 
 	/* Project type */
 	"isWordpress": false,

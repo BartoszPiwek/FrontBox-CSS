@@ -368,13 +368,13 @@
 },{}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("./modules/elements");
-var browser_1 = require("./modules/browser");
-var cookie_1 = require("./modules/cookie");
-var input_counter_1 = require("./modules/input-counter");
-var resize_1 = require("./modules/resize");
-var scrollLock_1 = require("./modules/scrollLock");
-var burger_menu_1 = require("./modules/burger-menu");
+var elements_1 = require("./bootstrap/elements");
+var browser_1 = require("./bootstrap/browser");
+var cookie_1 = require("./bootstrap/cookie");
+var input_counter_1 = require("./bootstrap/input-counter");
+var resize_1 = require("./bootstrap/resize");
+var scrollLock_1 = require("./bootstrap/scrollLock");
+var burger_menu_1 = require("./bootstrap/burger-menu");
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 window.onload = function () {
@@ -403,7 +403,7 @@ window.onload = function () {
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./modules/browser":4,"./modules/burger-menu":5,"./modules/cookie":6,"./modules/elements":8,"./modules/input-counter":9,"./modules/resize":10,"./modules/scrollLock":11,"vh-check":2}],4:[function(require,module,exports){
+},{"./bootstrap/browser":4,"./bootstrap/burger-menu":5,"./bootstrap/cookie":6,"./bootstrap/elements":8,"./bootstrap/input-counter":9,"./bootstrap/resize":10,"./bootstrap/scrollLock":11,"vh-check":2}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");

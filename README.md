@@ -166,37 +166,41 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 [![](http://images.bartoszpiwek.e-kei.pl/section-tree.png)](#)
 ## Projekt Tree
 
-### Version
 <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
-├─── public/  	| Output generated website
-    ├─── prod/	| Production
-    └─── dev/ 	| Development
-</pre>
-
-### Settings
-<pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
-├─── config.js                | Main tasks config
+├─── public/                              | Output generated website folder
+    ├─── prod/
+    └─── dev/
 ├─── src/
+    ├─── audio/
+    ├─── fonts/
+    ├─── images/
+        ├─── favicon/                     | Generated favicons folder
+        ├─── svg/                     		| SVG files folder
+        ├─── cookies.png                  | Cookies image for TS Class InformationCookie
+        ├─── favicon.png                  | Favicon image for Gulp <a href="https://github.com/RealFaviconGenerator/gulp-real-favicon">gulp-real-favicon</a>
+        ├─── logo.png                     | Site logo image
+        ├─── placeholder.png              | Placeholder image for Plugin <a href="https://github.com/verlok/lazyload">vanilla-lazyload</a>
+    ├─── scripts/
+        ├─── bootstrap/                   | FrontBox modules folder
+        ├─── plugins/                     | Custom js/ts plugins folder
+        ├─── app.ts                       | Main script file
+        ├─── <i>other TS/JS files</i>
     ├─── style/
-        ├─── variables/				| Folder with SCSS variables
-
-</pre>
-
-### Style
-<pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
-├─── src/
-    ├─── style/
-				├─── bootstrap/										
-				├─── modules/										
-				├─── tools/
-				├─── utilities/
-				├─── plugins/
-				├─── style.scss 									| Page style
-				├─── grid.scss 										| Grid style
-				├─── utilities.scss 							| Utilities style
-				├─── _animations.scss
-				├─── _footer.scss
-				├─── <i>other SCSS files</i>
+        ├─── bootstrap/                   | FrontBox style folder
+        ├─── modules/                     | Addon functions & style folder
+        ├─── plugins/                     | Custom plugins style folder
+        ├─── utilities/                   | Utilities style folder
+        ├─── variables/                   | Folder with SCSS variables
+        ├─── style.scss 									| Page style concat
+        ├─── grid.scss 										| Grid style concat
+        ├─── utilities.scss               | Utilities style concat
+        ├─── <i>other SCSS files</i>
+    ├─── template/
+        ├─── includes/                    | Pug includes folder
+        ├─── partials/                    | Separated Pug code
+        ├─── <i>other PUG files</i>
+    ├─── video/
+├─── config.js                            | Main tasks config
 </pre>
 
 <br>
