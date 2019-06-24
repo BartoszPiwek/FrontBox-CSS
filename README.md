@@ -175,7 +175,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
     ├─── fonts/
     ├─── images/
         ├─── favicon/                     | Generated favicons folder
-        ├─── svg/                     		| SVG files folder
+        ├─── svg/                         | SVG files folder
         ├─── cookies.png                  | Cookies image for TS Class InformationCookie
         ├─── favicon.png                  | Favicon image for Gulp <a href="https://github.com/RealFaviconGenerator/gulp-real-favicon">gulp-real-favicon</a>
         ├─── logo.png                     | Site logo image
@@ -191,8 +191,8 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
         ├─── plugins/                     | Custom plugins style folder
         ├─── utilities/                   | Utilities style folder
         ├─── variables/                   | Folder with SCSS variables
-        ├─── style.scss 									| Page style concat
-        ├─── grid.scss 										| Grid style concat
+        ├─── style.scss                   | Page style concat
+        ├─── grid.scss                    | Grid style concat
         ├─── utilities.scss               | Utilities style concat
         ├─── <i>other SCSS files</i>
     ├─── template/
