@@ -1,5 +1,5 @@
-import { html, body } from "./data/elements";
-import { getScrollbarWidth, getScrollPosition } from "./data/browser";
+import { html, body } from "./elements";
+import { getScrollbarWidth, getScrollPosition } from "./browser";
 
 /**
  * Toggle scroll lock for body element
@@ -30,6 +30,7 @@ export class ScrollLock {
 	private off() {
 		html.classList.remove('js_scroll-lock');
 		window.scrollTo(0, this.positionTop);
+		body.style.top = '';
 		this.positionTop = 0;
 		this.state = false;
 	}

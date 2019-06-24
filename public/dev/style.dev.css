@@ -21,7 +21,7 @@ Change to position fixed on iOS Safari while scrolling
 
 Style guide: Fix.fixed
 */
-.fix_fixed, html.js_sticky-header:not(.js_menu-active) .header, html.js_menu-active .burger-menu {
+html.js_sticky-header:not(.js_menu-active) .header, html.js_menu-active .burger-menu {
   position: fixed;
   -webkit-transform: translateZ(0);
   transform: translate3d(0, 0, 0);
@@ -31,43 +31,6 @@ Style guide: Fix.fixed
   transform: translateZ(0);
   perspective: 1000; }
 
-/*
-Grid
-
-Grid CSS using flex
-
-Mixin:
-grid($grid-count, $breakpoints)
-
-Mixin arguments:
-$grid-count: number? : 12
-$grid-breakpoints: { [key: string]: any }? : $breakpoints
-
-Mixin example:
-$breakpoint(
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
-}
-@include grid(12, $breakpoints);
-
-Mixin output:
-<div class="row">
-<div class="col-12 kss-item"></div>
-</div>
-<div class="row">
-<div class="col-11 kss-item"></div>
-<div class="col-1 kss-item"></div>
-</div>
-
-Style guide: Grid.generate
-*/
-/*
-Row
-
-Style guide: Grid.row
-*/
 /*
 Group middle
 
@@ -152,31 +115,16 @@ IE 10+
 
 Style guide: Functions.input-placeholder
 */
-:root {
-  --desktop: breakpoint("xl");
-  --tablet: breakpoint("lg");
-  --fablet: breakpoint("md");
-  --mobile: breakpoint("sm");
-  --headerStickyDesktop: 50;
-  --headerStickyTablet: 40;
-  --headerStickyMobile: 30;
-  --scrollbarWidth: 0; }
+body {
+  border-right: var(--scrollbarWidth, 0) solid #05386b; }
 
-/*
+html.js_scroll-lock {
+  position: fixed; }
+  html.js_scroll-lock body {
+    overflow: hidden; }
 
-Position Center
-
-Absolute center element in ASIX X/Y
-
-Style guide: Blocks.position.center
-*/
-.block-center-absolute {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%), translateX(-50%);
-  text-align: center;
-  display: block; }
+html:not(.js_scroll-lock) body {
+  top: 0 !important; }
 
 /*
 Scrollbar
@@ -288,23 +236,6 @@ mixin_output:
 Style guide: Functions.triangle
 */
 /*
-VH Unit 
-
-Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
-
-Mixin:
-add_vh-unit($size, $property);
-
-Mixin arguments:
-$size : number? : 100
-$property : CSSProperty? : 'height'
-
-Mixin example:
-add_vh-unit(50, 'height')
-
-Style guide: Libs.vh-unit
-*/
-/*
 Wrap
 
 Center the content in specify width.<br>
@@ -363,6 +294,16 @@ Style guide: Blocks.youtube
   from { }
   to { } }
 
+:root {
+  --desktop: breakpoint("xl");
+  --tablet: breakpoint("lg");
+  --fablet: breakpoint("md");
+  --mobile: breakpoint("sm");
+  --headerStickyDesktop: 50;
+  --headerStickyTablet: 40;
+  --headerStickyMobile: 30;
+  --scrollbarWidth: 0; }
+
 body,
 html {
   background-color: #379683;
@@ -417,8 +358,6 @@ img {
   cursor: pointer; }
   .link--primary {
     color: #fff; }
-    .link--primary .icon {
-      fill: #fff; }
     .link--primary--hover:hover .link--primary,
     .link--primary--hover:active .link--primary,
     .link--primary--hover:focus .link--primary,
@@ -433,6 +372,8 @@ img {
       .link--primary--hover-active .link--primary .icon,
       .link--primary--hover-active .link--primary .icon, .link--primary:hover .icon, .link--primary:active .icon, .link--primary:focus .icon {
         fill: #379683; }
+    .link--primary .icon {
+      fill: #fff; }
 
 .page__loading, .page__overlay {
   position: fixed;
@@ -1248,11 +1189,141 @@ Style guide: Elements.hero
     transform: rotate(180deg); }
 
 /*=========================================================================
-|| Import plugins
-=========================================================================*/
-/*=========================================================================
 || Style HTML tables
 =========================================================================*/
+/*=========================================================================
+|| FILE: Tools
+===========================================================================
+|| Create class using functions
+=========================================================================*/
+/*=========================================================================
+|| WRAP - center element in asix x
+|| = max width elemnt (end calculate = max-width + padding * 2)
+|| = padding for responsive view
+//=======================================================================*/
+.wrap {
+  max-width: 1064px;
+  padding-right: 20px;
+  padding-left: 20px;
+  /**
+   * Elements
+   */
+  /* Navigation bar */ }
+  .wrap-navbar {
+    max-width: 1064px;
+    padding-right: 20px;
+    padding-left: 20px; }
+
+.row {
+  /*=========================================================================
+  // ROW GAP
+  // Set space beetween columns in ASIX X
+  .space-x(20px);
+  // * space beetween columns
+  //=========================================================================
+  // ROW SPACE
+  // Set space beetween columns in ASIX Y
+  .space-y(20px);
+  // * space beetween columns
+  == WARNING: row will have 'overflow: hidden'
+  //=======================================================================*/ }
+
+.col {
+  /*=========================================================================
+  // COLUMN SIZE - set single column size (.row > .col-x) {variables without px}
+  // .add-col(column-size, parent-width, gap-size) {
+  // * columns size
+  // * parent element width (most .wrap)
+  // * space beetween columns {optional | default "0"}
+  == SNIPPETS: add-column
+  =========================================================================*/ }
+  .col-static--test {
+    flex-basis: 300px; }
+
+/**
+ * Space
+ */
+.space {
+  /* Default */
+  /* Sizes */ }
+  .space > * {
+    margin: 20px 0; }
+  .space--medium > * {
+    margin: 18px 0; }
+
+/*=========================================================================
+// Generate color list class { _functions.less }
+// .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
+=========================================================================*/
+/*=========================================================================
+|| WYSIWYG HTML output formatting
+=========================================================================*/
+.wysiwyg > *:first-child {
+  margin-top: 0 !important; }
+
+.wysiwyg > *:last-child {
+  margin-bottom: 0 !important; }
+
+.wysiwyg pre {
+  font-family: monospace; }
+
+.js_cookies-information {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 1;
+  z-index: 6999;
+  background-color: rgba(5, 56, 107, 0.9);
+  padding: 8px 0;
+  border-top: 2px solid #05386b; }
+  .js_cookies-information__img {
+    display: none; }
+    @media screen and (min-width: 768px) {
+      .js_cookies-information__img {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        width: 95px;
+        height: auto; } }
+  .js_cookies-information__text {
+    font-size: 14px;
+    text-align: justify;
+    color: #fff; }
+  .js_cookies-information__container {
+    padding-right: 30px;
+    position: relative; }
+    @media screen and (min-width: 768px) {
+      .js_cookies-information__container {
+        padding-left: 115px; } }
+  .js_cookies-information__exit {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: transform 0.2s; }
+    .js_cookies-information__exit:before, .js_cookies-information__exit:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 0; }
+    .js_cookies-information__exit:before {
+      transform: rotate(45deg); }
+    .js_cookies-information__exit:after {
+      transform: rotate(-45deg); }
+    .js_cookies-information__exit:hover, .js_cookies-information__exit:focus, .js_cookies-information__exit:active {
+      transform: rotate(90deg); }
+  .js_cookies-information--hide {
+    transform: translate(0, 100%);
+    opacity: 0; }
+
 /*
 Tabs
 
@@ -1398,81 +1469,6 @@ Style guide: Elements.tabs
       height: 0;
       overflow: hidden; } }
 
-/*=========================================================================
-|| FILE: Tools
-===========================================================================
-|| Create class using functions
-=========================================================================*/
-/*=========================================================================
-|| WRAP - center element in asix x
-|| = max width elemnt (end calculate = max-width + padding * 2)
-|| = padding for responsive view
-//=======================================================================*/
-.wrap {
-  max-width: 1064px;
-  padding-right: 20px;
-  padding-left: 20px;
-  /**
-   * Elements
-   */
-  /* Navigation bar */ }
-  .wrap-navbar {
-    max-width: 1064px;
-    padding-right: 20px;
-    padding-left: 20px; }
-
-.row {
-  /*=========================================================================
-  // ROW GAP
-  // Set space beetween columns in ASIX X
-  .space-x(20px);
-  // * space beetween columns
-  //=========================================================================
-  // ROW SPACE
-  // Set space beetween columns in ASIX Y
-  .space-y(20px);
-  // * space beetween columns
-  == WARNING: row will have 'overflow: hidden'
-  //=======================================================================*/ }
-
-.col {
-  /*=========================================================================
-  // COLUMN SIZE - set single column size (.row > .col-x) {variables without px}
-  // .add-col(column-size, parent-width, gap-size) {
-  // * columns size
-  // * parent element width (most .wrap)
-  // * space beetween columns {optional | default "0"}
-  == SNIPPETS: add-column
-  =========================================================================*/ }
-  .col-static--test {
-    flex-basis: 300px; }
-
-/**
- * Space
- */
-.space {
-  /* Default */
-  /* Sizes */ }
-  .space > * {
-    margin: 20px 0; }
-  .space--medium > * {
-    margin: 18px 0; }
-
-/*=========================================================================
-// Generate color list class { _functions.less }
-// .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
-=========================================================================*/
-.height-full {
-  height: 100vh;
-  height: calc(100vh - var(--vh-offset, 0px)); }
-
-/*=========================================================================
-|| Create responsive utilities
-=========================================================================*/
-/* Only mobile size */
-/* Fable size */
-/* Tablet size */
-/* Desktop size */
 /*
 Validator
 
@@ -1559,75 +1555,23 @@ Style guide: JavaScript.validator
   .input-success + *:not([class]) {
     display: none; }
 
-/*=========================================================================
-|| WYSIWYG HTML output formatting
-=========================================================================*/
-.wysiwyg > *:first-child {
-  margin-top: 0 !important; }
+/*
+VH Unit 
 
-.wysiwyg > *:last-child {
-  margin-bottom: 0 !important; }
+Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
 
-.wysiwyg pre {
-  font-family: monospace; }
+Mixin:
+add_vh-unit($size, $property);
 
-.js_cookies-information {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  transition: transform 0.2s, opacity 0.2s;
-  opacity: 1;
-  z-index: 6999;
-  background-color: rgba(5, 56, 107, 0.9);
-  padding: 8px 0;
-  border-top: 2px solid #05386b; }
-  .js_cookies-information__img {
-    display: none; }
-    @media screen and (min-width: 768px) {
-      .js_cookies-information__img {
-        position: absolute;
-        display: block;
-        bottom: 0;
-        left: 0;
-        width: 95px;
-        height: auto; } }
-  .js_cookies-information__text {
-    font-size: 14px;
-    text-align: justify;
-    color: #fff; }
-  .js_cookies-information__container {
-    padding-right: 30px;
-    position: relative; }
-    @media screen and (min-width: 768px) {
-      .js_cookies-information__container {
-        padding-left: 115px; } }
-  .js_cookies-information__exit {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: transform 0.2s; }
-    .js_cookies-information__exit:before, .js_cookies-information__exit:after {
-      content: '';
-      width: 100%;
-      height: 2px;
-      background-color: #fff;
-      position: absolute;
-      top: 50%;
-      left: 0; }
-    .js_cookies-information__exit:before {
-      transform: rotate(45deg); }
-    .js_cookies-information__exit:after {
-      transform: rotate(-45deg); }
-    .js_cookies-information__exit:hover, .js_cookies-information__exit:focus, .js_cookies-information__exit:active {
-      transform: rotate(90deg); }
-  .js_cookies-information--hide {
-    transform: translate(0, 100%);
-    opacity: 0; }
+Mixin arguments:
+$size : number? : 100
+$property : CSSProperty? : 'height'
 
+Mixin example:
+add_vh-unit(50, 'height')
+
+Style guide: Libs.vh-unit
+*/
 /*=========================================================================
 || Plugin: wcag.less
 ===========================================================================

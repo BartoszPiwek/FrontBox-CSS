@@ -1,5 +1,19 @@
 // Base
 
+// Pass variables to JavaScript
+:root {
+  --desktop: #{breakpoint('xl')};
+  --tablet: #{breakpoint('lg')};
+  --fablet: #{breakpoint('md')};
+  --mobile: #{breakpoint('sm')};
+
+  --headerStickyDesktop: 50;
+  --headerStickyTablet: 40;
+  --headerStickyMobile: 30;
+
+  --scrollbarWidth: 0;
+}
+
 body,
 html {
   background-color: color('secondary');
@@ -9,7 +23,7 @@ html {
 }
 
 body {
-  // @extend %scrollbar-placeholder;
+  @extend %scrollbar-placeholder;
 }
 
 // Scrollbar

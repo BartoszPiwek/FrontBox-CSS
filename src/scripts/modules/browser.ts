@@ -28,7 +28,7 @@ export function getTransitionEvent(): string {
 		}
 	}
 	/* test-code */
-	console.error(`Browser\n-fired getTransitionEvent() function and return undefined transition`);
+	console.error(`Browser\n- fired getTransitionEvent() function and return undefined transition`);
 	/* end-test-code */
 }
 

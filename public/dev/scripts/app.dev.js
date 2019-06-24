@@ -368,13 +368,14 @@
 },{}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("./frontbox/data/elements");
-var browser_1 = require("./frontbox/data/browser");
-var cookie_1 = require("./frontbox/information/cookie");
-var input_counter_1 = require("./frontbox/form/input-counter");
-var resize_1 = require("./frontbox/bind/resize");
-var scrollLock_1 = require("./frontbox/browser/scrollLock");
-var burger_menu_1 = require("./frontbox/navbar/burger-menu");
+var elements_1 = require("./modules/elements");
+var browser_1 = require("./modules/browser");
+var cookie_1 = require("./modules/cookie");
+var input_counter_1 = require("./modules/input-counter");
+var resize_1 = require("./modules/resize");
+var scrollLock_1 = require("./modules/scrollLock");
+var burger_menu_1 = require("./modules/burger-menu");
+/* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 window.onload = function () {
     var browser = new browser_1.Browser(), scrollLock = new scrollLock_1.ScrollLock(), resize = new resize_1.Resize(), burger = new burger_menu_1.BurgerMenu({
@@ -399,95 +400,14 @@ window.onload = function () {
         e.preventDefault();
         return false;
     };
-    /* Polyfill */
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./frontbox/bind/resize":4,"./frontbox/browser/scrollLock":5,"./frontbox/data/browser":6,"./frontbox/data/elements":8,"./frontbox/form/input-counter":9,"./frontbox/information/cookie":10,"./frontbox/navbar/burger-menu":11,"vh-check":2}],4:[function(require,module,exports){
+},{"./modules/browser":4,"./modules/burger-menu":5,"./modules/cookie":6,"./modules/elements":8,"./modules/input-counter":9,"./modules/resize":10,"./modules/scrollLock":11,"vh-check":2}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Resize = /** @class */ (function () {
-    /* Constructor */
-    function Resize(data) {
-        /* Arguments */
-        this.data = {
-            template: false,
-        };
-        /* Time to fire resize */
-        this.resizeTime = 400;
-    }
-    Resize.prototype.trigger = function () {
-    };
-    Resize.prototype.add = function () {
-    };
-    Resize.prototype.clean = function () {
-    };
-    Resize.prototype.run = function () {
-    };
-    Resize.prototype.resize = function () {
-    };
-    return Resize;
-}());
-exports.Resize = Resize;
-},{}],5:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("../data/elements");
-var browser_1 = require("../data/browser");
-/**
- * Toggle scroll lock for body element
- * Export "%scrollbar-placeholder" to include scrollbar space
- *
- * @class ScrollLock
- * @version 1.0
- * @css
- * scroll-lock.scss
- * @require
- * getScrollbarWidth, getScrollPosition
- *
- * 20.06.2019 Add
- */
-var ScrollLock = /** @class */ (function () {
-    function ScrollLock() {
-    }
-    ScrollLock.prototype.on = function () {
-        this.positionTop = browser_1.getScrollPosition();
-        elements_1.body.style.top = "-" + this.positionTop + "px";
-        elements_1.html.classList.add('js_scroll-lock');
-        this.state = true;
-    };
-    ScrollLock.prototype.off = function () {
-        elements_1.html.classList.remove('js_scroll-lock');
-        window.scrollTo(0, this.positionTop);
-        this.positionTop = 0;
-        this.state = false;
-    };
-    ScrollLock.prototype.change = function (state) {
-        if (state && this.state === state) {
-            /* test-code */
-            console.info("ScrollLock\n- fired scrollLock() function with parameter '" + state + "', but state is already '" + this.state + "'");
-            /* end-tst-code */
-            return false;
-        }
-        browser_1.getScrollbarWidth();
-        if (state === true || this.state) {
-            this.off();
-        }
-        else {
-            this.on();
-        }
-        /* test-code */
-        console.info("ScrollLock\n- fired scrollLock() function with parameter '" + state + "', state is '" + this.state + "'");
-        /* end-test-code */
-    };
-    return ScrollLock;
-}());
-exports.ScrollLock = ScrollLock;
-},{"../data/browser":6,"../data/elements":8}],6:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("./../data/elements");
-var css_1 = require("./../data/css");
+var elements_1 = require("./elements");
+var css_1 = require("./css");
 function getScrollbarWidth() {
     var output = window.innerWidth - document.documentElement.clientWidth;
     elements_1.html.style.setProperty('--scrollbarWidth', String(output) + "px");
@@ -512,7 +432,7 @@ function getTransitionEvent() {
         }
     }
     /* test-code */
-    console.error("Browser\n-fired getTransitionEvent() function and return undefined transition");
+    console.error("Browser\n- fired getTransitionEvent() function and return undefined transition");
     /* end-test-code */
 }
 exports.getTransitionEvent = getTransitionEvent;
@@ -593,7 +513,133 @@ var Browser = /** @class */ (function () {
 }());
 exports.Browser = Browser;
 ;
-},{"./../data/css":7,"./../data/elements":8}],7:[function(require,module,exports){
+},{"./css":7,"./elements":8}],5:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var elements_1 = require("./elements");
+var BurgerMenu = /** @class */ (function () {
+    function BurgerMenu(param) {
+        this.active = false;
+        this.moving = false;
+        this.expandTime = 300;
+        this.expandStyle = 'from-right';
+        this.$button = param.$burger;
+        this.cssClassActive = param.cssClassActive;
+        this.scrollLock = param.scrollLock;
+        this.refresh();
+    }
+    BurgerMenu.prototype.refresh = function () {
+        var _this = this;
+        this.$button.onclick = function () {
+            if (_this.moving) {
+                return false;
+            }
+            _this.moving = true;
+            _this.toggle({
+                end: function () {
+                    _this.scrollLock.change();
+                    _this.moving = false;
+                }
+            });
+        };
+    };
+    BurgerMenu.prototype.toggle = function (callback) {
+        if (callback.begin) {
+            callback.begin();
+        }
+        elements_1.html.classList.toggle(this.cssClassActive);
+        if (callback.end) {
+            callback.end();
+        }
+    };
+    return BurgerMenu;
+}());
+exports.BurgerMenu = BurgerMenu;
+},{"./elements":8}],6:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Inform users that your site uses cookies
+ *
+ * @class Cookie
+ * @version 1.0
+ * @require
+ * JavaScript Cookie - https://github.com/js-cookie/js-cookie
+ *
+ * 21.05.2019 Convert jQuery code to vanilla JS
+ */
+var Cookies = require("js-cookie");
+var elements_1 = require("./elements");
+var InformationCookie = /** @class */ (function () {
+    function InformationCookie(data) {
+        var _this = this;
+        this.data = {
+            template: null,
+        };
+        this.getContent = function (callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'partials/cookies.html');
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState !== 4)
+                    return;
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    callback.apply(this, [xhr.responseText]);
+                }
+            };
+        };
+        /**
+         * Show information
+         */
+        this.mount = function (cookiesContentHTML) {
+            elements_1.body.insertAdjacentHTML('beforeend', cookiesContentHTML);
+            _this.cookie = document.getElementById('js_cookies-information');
+            _this.accept = document.querySelectorAll('.js_cookies-close');
+            _this.bindClick();
+        };
+        this.show = function () {
+            if (_this.data.template) {
+                _this.mount(_this.data.template);
+            }
+            else {
+                _this.getContent(function (cookiesContentHTML) {
+                    _this.mount(cookiesContentHTML);
+                });
+            }
+        };
+        if (!Cookies.get('using_cookies')) {
+            this.data = Object.assign(this.data, data);
+            this.show();
+            /* test-code */
+            console.log("Cookie\n - show information about using cookies");
+            /* end-test-code */
+        }
+        /* test-code */
+        else {
+            console.log("Cookie\n - information already showed");
+        }
+        /* end-test-code */
+    }
+    InformationCookie.prototype.bindClick = function () {
+        var _this = this;
+        this.accept.forEach(function (item) {
+            item.addEventListener('click', function () {
+                _this.onClick();
+            });
+        });
+    };
+    InformationCookie.prototype.onClick = function () {
+        Cookies.set('using_cookies', 1);
+        this.cookie.classList.add("js_cookies-information--hide");
+        /* test-code */
+        console.log("Cookie\n - accepted cookies");
+        /* end-test-code */
+        return false;
+    };
+    return InformationCookie;
+}());
+exports.InformationCookie = InformationCookie;
+},{"./elements":8,"js-cookie":1}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var root = document.querySelector(':root');
@@ -697,129 +743,84 @@ exports.InputCounter = InputCounter;
 },{}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Inform users that your site uses cookies
- *
- * @class Cookie
- * @version 1.0
- * @require
- * JavaScript Cookie - https://github.com/js-cookie/js-cookie
- *
- * 21.05.2019 Convert jQuery code to vanilla JS
- */
-var Cookies = require("js-cookie");
-var elements_1 = require("../data/elements");
-var InformationCookie = /** @class */ (function () {
-    function InformationCookie(data) {
-        var _this = this;
+var Resize = /** @class */ (function () {
+    /* Constructor */
+    function Resize(data) {
+        /* Arguments */
         this.data = {
-            template: null,
+            template: false,
         };
-        this.getContent = function (callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'cookies.html');
-            xhr.send();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState !== 4)
-                    return;
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    callback.apply(this, [xhr.responseText]);
-                }
-            };
-        };
-        /**
-         * Show information
-         */
-        this.mount = function (cookiesContentHTML) {
-            elements_1.body.insertAdjacentHTML('beforeend', cookiesContentHTML);
-            _this.cookie = document.getElementById('js_cookies-information');
-            _this.accept = document.querySelectorAll('.js_cookies-close');
-            _this.bindClick();
-        };
-        this.show = function () {
-            if (_this.data.template) {
-                _this.mount(_this.data.template);
-            }
-            else {
-                _this.getContent(function (cookiesContentHTML) {
-                    _this.mount(cookiesContentHTML);
-                });
-            }
-        };
-        if (!Cookies.get('using_cookies')) {
-            this.data = Object.assign(this.data, data);
-            this.show();
-            /* test-code */
-            console.log("Cookie\n - show information about using cookies");
-            /* end-test-code */
-        }
-        /* test-code */
-        else {
-            console.log("Cookie\n - information already showed");
-        }
-        /* end-test-code */
+        /* Time to fire resize */
+        this.resizeTime = 400;
     }
-    InformationCookie.prototype.bindClick = function () {
-        var _this = this;
-        this.accept.forEach(function (item) {
-            item.addEventListener('click', function () {
-                _this.onClick();
-            });
-        });
+    Resize.prototype.trigger = function () {
     };
-    InformationCookie.prototype.onClick = function () {
-        Cookies.set('using_cookies', 1);
-        this.cookie.classList.add("js_cookies-information--hide");
-        /* test-code */
-        console.log("Cookie\n - accepted cookies");
-        /* end-test-code */
-        return false;
+    Resize.prototype.add = function () {
     };
-    return InformationCookie;
+    Resize.prototype.clean = function () {
+    };
+    Resize.prototype.run = function () {
+    };
+    Resize.prototype.resize = function () {
+    };
+    return Resize;
 }());
-exports.InformationCookie = InformationCookie;
-},{"../data/elements":8,"js-cookie":1}],11:[function(require,module,exports){
+exports.Resize = Resize;
+},{}],11:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("../data/elements");
-var BurgerMenu = /** @class */ (function () {
-    function BurgerMenu(param) {
-        this.active = false;
-        this.moving = false;
-        this.expandTime = 300;
-        this.expandStyle = 'from-right';
-        this.$button = param.$burger;
-        this.cssClassActive = param.cssClassActive;
-        this.scrollLock = param.scrollLock;
-        this.refresh();
+var elements_1 = require("./elements");
+var browser_1 = require("./browser");
+/**
+ * Toggle scroll lock for body element
+ * Export "%scrollbar-placeholder" to include scrollbar space
+ *
+ * @class ScrollLock
+ * @version 1.0
+ * @css
+ * scroll-lock.scss
+ * @require
+ * getScrollbarWidth, getScrollPosition
+ *
+ * 20.06.2019 Add
+ */
+var ScrollLock = /** @class */ (function () {
+    function ScrollLock() {
     }
-    BurgerMenu.prototype.refresh = function () {
-        var _this = this;
-        this.$button.onclick = function () {
-            if (_this.moving) {
-                return false;
-            }
-            _this.moving = true;
-            _this.toggle({
-                end: function () {
-                    _this.scrollLock.change();
-                    _this.moving = false;
-                }
-            });
-        };
+    ScrollLock.prototype.on = function () {
+        this.positionTop = browser_1.getScrollPosition();
+        elements_1.body.style.top = "-" + this.positionTop + "px";
+        elements_1.html.classList.add('js_scroll-lock');
+        this.state = true;
     };
-    BurgerMenu.prototype.toggle = function (callback) {
-        if (callback.begin) {
-            callback.begin();
-        }
-        elements_1.html.classList.toggle(this.cssClassActive);
-        if (callback.end) {
-            callback.end();
-        }
+    ScrollLock.prototype.off = function () {
+        elements_1.html.classList.remove('js_scroll-lock');
+        window.scrollTo(0, this.positionTop);
+        elements_1.body.style.top = '';
+        this.positionTop = 0;
+        this.state = false;
     };
-    return BurgerMenu;
+    ScrollLock.prototype.change = function (state) {
+        if (state && this.state === state) {
+            /* test-code */
+            console.info("ScrollLock\n- fired scrollLock() function with parameter '" + state + "', but state is already '" + this.state + "'");
+            /* end-test-code */
+            return false;
+        }
+        browser_1.getScrollbarWidth();
+        if (state === true || this.state) {
+            this.off();
+        }
+        else {
+            this.on();
+        }
+        /* test-code */
+        console.info("ScrollLock\n- fired scrollLock() function with parameter '" + state + "', state is '" + this.state + "'");
+        /* end-test-code */
+    };
+    return ScrollLock;
 }());
-exports.BurgerMenu = BurgerMenu;
-},{"../data/elements":8}]},{},[3])
+exports.ScrollLock = ScrollLock;
+},{"./browser":4,"./elements":8}]},{},[3])
 
 //# sourceMappingURL=app.dev.js.map

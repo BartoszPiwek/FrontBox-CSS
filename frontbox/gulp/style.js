@@ -7,6 +7,11 @@ import footer from 'gulp-footer';
 import rename from "gulp-rename";
 import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import uncss from 'uncss';
+import postcssExtractMediaQuery from 'postcss-extract-media-query';
+import postcss from 'gulp-postcss';
 import { browserSync } from "./../../gulpfile.babel";
 const argv = require('yargs').argv;
 
@@ -26,7 +31,7 @@ export function style_main() {
 		.pipe(header(
 			`$dev: ${config.dev};`
 		))
-		.pipe(gulpif(!argv.prod,
+		.pipe(gulpif(config.workingWithFrontbox,
 			footer(
 				`@import '../../../FrontBox-Plugins/**/*.scss';`
 			)
@@ -35,7 +40,6 @@ export function style_main() {
 			footer(`
 				@import 'bootstrap';
 				@import 'utilities';
-				@import 'settings';
 			`)
 		))
 		.pipe(gulpif(!argv.prod,
@@ -43,6 +47,30 @@ export function style_main() {
 		))
 		.pipe(sassGlob())
 		.pipe(sass())
+		.pipe(gulpif(argv.prod,
+			postcss([
+				autoprefixer(),
+				// postcssExtractMediaQuery(),
+				cssnano(),
+				uncss.postcssPlugin({
+					html: [`./public/${getModeName()}/*.html`],
+					ignoreSheets: [
+						/fonts.googleapis/,
+					],
+					ignore: [
+						/\.select2*/,
+						/\.js_*/,
+						/expanded/,
+						/js/,
+						/wp-/,
+						/align/,
+						/admin-bar/,
+						/\.*slick*/,
+						/\.*active*/,
+					],
+				}),
+			])
+		))
 		.pipe(rename({
 			suffix: `.${getModeName()}`,
 		}))
@@ -68,7 +96,7 @@ export function style_bootstrap() {
 			sourcemaps.init({ loadMaps: true })
 		))
 		.pipe(sassGlob())
-		.pipe(sass())
+		.pipe(sass({ outputStyle: 'compressed' }))
 		.pipe(rename({
 			suffix: `.${getModeName()}`,
 		}))

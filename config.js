@@ -76,7 +76,8 @@ module.exports = {
 				dest: '',
 				watch: [
 					'src/scripts/app.ts',
-					'src/scripts/frontbox/**/*.ts',
+					'src/scripts/custom/*.ts',
+					'src/scripts/modules/*.ts',
 				]
 			}
 		},
@@ -93,6 +94,13 @@ module.exports = {
 				dest: '',
 				watch: [
 					'./src/template/includes/*.pug'
+				]
+			},
+			partials: {
+				files: './src/template/partials/*.pug',
+				dest: 'partials',
+				watch: [
+					'./src/template/partials/*.pug'
 				]
 			},
 		},

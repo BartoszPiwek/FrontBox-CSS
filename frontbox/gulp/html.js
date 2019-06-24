@@ -52,3 +52,22 @@ export function html_include() {
 		))
 		.pipe(browserSync.stream());
 }
+export function html_partials() {
+
+	const element = config.path.pug.partials;
+
+	return src(`${element.files}`, {
+		allowEmpty: true,
+	})
+		.pipe(pug({
+			data: {
+				data: config,
+				getModeName: getModeName,
+			},
+			filters: require("./pug-filters")(config),
+		}))
+		.pipe(dest(
+			`public/${getModeName()}/${element.dest}`
+		))
+		.pipe(browserSync.stream());
+}

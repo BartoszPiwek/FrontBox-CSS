@@ -10,7 +10,7 @@
  */
 import * as Cookies from 'js-cookie';
 
-import { body } from '../data/elements';
+import { body } from './elements';
 
 interface InformationCookieData {
 	template?: string;
@@ -46,7 +46,7 @@ export class InformationCookie {
 
 	private getContent = (callback: Function) => {
 		const xhr = new XMLHttpRequest();
-		xhr.open('GET', 'cookies.html');
+		xhr.open('GET', 'partials/cookies.html');
 		xhr.send();
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState !== 4) return;

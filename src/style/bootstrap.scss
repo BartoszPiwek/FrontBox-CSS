@@ -1,7 +1,18 @@
-@import 'variables/*';
-@import 'modules/*';
+@import 'variables/base';
+@import 'variables/color';
+@import 'variables/index';
+@import 'variables/media';
 
-@import 'bootstrap/*';
+@import 'modules/debug';
+@import 'modules/responsive';
+@import 'modules/wrap';
+
+@import 'bootstrap/base';
+@import 'bootstrap/browser-reset';
+@import 'bootstrap/container';
+@import 'bootstrap/grid';
+@import 'bootstrap/javascript';
+@import 'bootstrap/media-queries';
 
 @include grid($grid-count: 12, $grid-breakpoints: $breakpoints);
 @include grid-style;

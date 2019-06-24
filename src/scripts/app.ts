@@ -1,14 +1,14 @@
-import { html } from "./frontbox/data/elements";
-import { Browser } from "./frontbox/data/browser";
-import { InformationCookie } from "./frontbox/information/cookie";
-import { InputCounter } from "./frontbox/form/input-counter";
-import { Resize } from "./frontbox/bind/resize";
-import { ScrollLock } from "./frontbox/scrollLock";
-import { BurgerMenu } from "./frontbox/navbar/burger-menu";
+import { html } from "./modules/elements";
+import { Browser } from "./modules/browser";
+import { InformationCookie } from "./modules/cookie";
+import { InputCounter } from "./modules/input-counter";
+import { Resize } from "./modules/resize";
+import { ScrollLock } from "./modules/scrollLock";
+import { BurgerMenu } from "./modules/burger-menu";
+/* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 
 window.onload = () => {
-
 
 	const
 		browser = new Browser(),
@@ -40,10 +40,6 @@ window.onload = () => {
 		e.preventDefault();
 		return false;
 	};
-
-
-
-	/* Polyfill */
 
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');
