@@ -3,7 +3,7 @@ import { Browser } from "./frontbox/data/browser";
 import { InformationCookie } from "./frontbox/information/cookie";
 import { InputCounter } from "./frontbox/form/input-counter";
 import { Resize } from "./frontbox/bind/resize";
-import { ScrollLock } from "./frontbox/browser/scrollLock";
+import { ScrollLock } from "./frontbox/scrollLock";
 import { BurgerMenu } from "./frontbox/navbar/burger-menu";
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 

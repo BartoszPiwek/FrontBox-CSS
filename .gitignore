@@ -2,6 +2,7 @@
 node_modules/
 *.lock
 *lock.*
+!*lock.ts
 
 src/less/automatic/*less
 .tscache

@@ -1,5 +1,5 @@
 import { html } from "../data/elements";
-import { ScrollLock } from "../browser/scrollLock";
+import { ScrollLock } from "../scrollLock";
 
 interface IBurgerMenu {
 	$burger: HTMLElement
