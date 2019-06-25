@@ -13,12 +13,14 @@ window.onload = () => {
 	const
 		browser = new Browser(),
 		scrollLock = new ScrollLock(),
-		resize = new Resize(),
-		burger = new BurgerMenu({
-			scrollLock: scrollLock,
-			$burger: document.getElementById('burger-button'),
-			cssClassActive: 'js_menu-active',
-		});
+		resize = new Resize();
+
+	new BurgerMenu({
+		scrollLock: scrollLock,
+		$burger: document.getElementById('burger-button'),
+		$overlay: document.getElementById('header-overlay'),
+		cssClassActive: 'js_menu-active',
+	});
 
 	/* Forms */
 	new InputCounter({

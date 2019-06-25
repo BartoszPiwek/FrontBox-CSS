@@ -378,9 +378,11 @@ var burger_menu_1 = require("./bootstrap/burger-menu");
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 window.onload = function () {
-    var browser = new browser_1.Browser(), scrollLock = new scrollLock_1.ScrollLock(), resize = new resize_1.Resize(), burger = new burger_menu_1.BurgerMenu({
+    var browser = new browser_1.Browser(), scrollLock = new scrollLock_1.ScrollLock(), resize = new resize_1.Resize();
+    new burger_menu_1.BurgerMenu({
         scrollLock: scrollLock,
         $burger: document.getElementById('burger-button'),
+        $overlay: document.getElementById('header-overlay'),
         cssClassActive: 'js_menu-active',
     });
     /* Forms */
@@ -521,9 +523,10 @@ var BurgerMenu = /** @class */ (function () {
     function BurgerMenu(param) {
         this.active = false;
         this.moving = false;
-        this.expandTime = 300;
+        this.expandTime = 200;
         this.expandStyle = 'from-right';
         this.$button = param.$burger;
+        this.$overlay = param.$overlay;
         this.cssClassActive = param.cssClassActive;
         this.scrollLock = param.scrollLock;
         this.refresh();
@@ -531,26 +534,23 @@ var BurgerMenu = /** @class */ (function () {
     BurgerMenu.prototype.refresh = function () {
         var _this = this;
         this.$button.onclick = function () {
-            if (_this.moving) {
-                return false;
-            }
-            _this.moving = true;
-            _this.toggle({
-                end: function () {
-                    _this.scrollLock.change();
-                    _this.moving = false;
-                }
-            });
+            _this.click();
+        };
+        this.$overlay.onclick = function () {
+            _this.click();
         };
     };
-    BurgerMenu.prototype.toggle = function (callback) {
-        if (callback.begin) {
-            callback.begin();
+    BurgerMenu.prototype.click = function () {
+        var _this = this;
+        if (this.moving) {
+            return false;
         }
+        this.moving = true;
+        this.scrollLock.change();
         elements_1.html.classList.toggle(this.cssClassActive);
-        if (callback.end) {
-            callback.end();
-        }
+        window.setTimeout(function () {
+            _this.moving = false;
+        }, this.expandTime);
     };
     return BurgerMenu;
 }());

@@ -3,26 +3,25 @@ import { ScrollLock } from "./scrollLock";
 
 interface IBurgerMenu {
 	$burger: HTMLElement
+	$overlay: HTMLElement
 	cssClassActive: string
 	scrollLock: ScrollLock
-}
-
-interface IBurgerMenuToggle {
-	begin?: Function
-	end?: Function
 }
 
 export class BurgerMenu {
 
 	active: boolean = false;
 	moving: boolean = false;
-	expandTime: number = 300;
+	expandTime: number = 200;
 	expandStyle: string = 'from-right';
 	$button: HTMLElement;
+	$overlay: HTMLElement;
 	cssClassActive: string;
-	scrollLock: ScrollLock
+	scrollLock: ScrollLock;
+
 	constructor(param: IBurgerMenu) {
 		this.$button = param.$burger;
+		this.$overlay = param.$overlay;
 		this.cssClassActive = param.cssClassActive;
 		this.scrollLock = param.scrollLock;
 
@@ -32,33 +31,24 @@ export class BurgerMenu {
 	private refresh() {
 
 		this.$button.onclick = () => {
-
-			if (this.moving) {
-				return false;
-			}
-			this.moving = true;
-
-			this.toggle({
-				end: () => {
-					this.scrollLock.change();
-					this.moving = false;
-				}
-			});
-
+			this.click();
 		};
+
+		this.$overlay.onclick = () => {
+			this.click();
+		}
 	}
 
-	private toggle(callback?: IBurgerMenuToggle) {
-
-		if (callback.begin) {
-			callback.begin();
+	private click() {
+		if (this.moving) {
+			return false;
 		}
-
+		this.moving = true;
+		this.scrollLock.change();
 		html.classList.toggle(this.cssClassActive);
 
-		if (callback.end) {
-			callback.end();
-		}
+		window.setTimeout(() => {
+			this.moving = false;
+		}, this.expandTime);
 	}
-
 }

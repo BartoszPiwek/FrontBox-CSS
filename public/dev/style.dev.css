@@ -21,7 +21,7 @@ Change to position fixed on iOS Safari while scrolling
 
 Style guide: Fix.fixed
 */
-html.js_sticky-header:not(.js_menu-active) .header, html.js_menu-active .burger-menu {
+.burger-menu, html.js_sticky-header:not(.js_menu-active) .header, html.js_menu-active .burger-menu {
   position: fixed;
   -webkit-transform: translateZ(0);
   transform: translate3d(0, 0, 0);
@@ -888,6 +888,16 @@ Style guide: Forms.input-text
     .header__logo-text {
       font-size: 18px;
       margin-left: 10px; }
+  @media screen and (max-width: 767px) {
+    .header-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: opacity 0.2s z-index, 0.2s 0.2s;
+      opacity: 0;
+      z-index: -1; }
+      .js_menu-active .header-overlay {
+        z-index: 6999;
+        opacity: 1;
+        transition: opacity 0.2s, z-index 0.2s; } }
 
 /**
  * Burger button
@@ -930,7 +940,6 @@ Style guide: Forms.input-text
     display: flex;
     box-sizing: content-box;
     text-align: center;
-    position: absolute;
     right: 0;
     top: 0;
     padding-top: 70px;
@@ -938,15 +947,18 @@ Style guide: Forms.input-text
     height: 100vh;
     max-width: 300px;
     background-color: #05386b;
-    box-shadow: -6px 0 10px rgba(0, 0, 0, 0.4);
+    z-index: 7000;
     transform: translateX(100%);
-    opacity: 0; }
+    transition: transform 0.2s; }
     .burger-menu > .burger-menu__item {
       margin-bottom: 20px; }
       .burger-menu > .burger-menu__item:last-child {
         margin-bottom: 0; }
     .burger-menu__container {
-      width: 100%; } }
+      width: 100%; }
+    .js_menu-active .burger-menu {
+      transform: translateX(0);
+      box-shadow: -6px 0 10px rgba(0, 0, 0, 0.4); } }
 
 @media screen and (min-width: 768px) {
   .burger-menu {
@@ -1018,10 +1030,6 @@ nav.nav>a.nav__item*x
           margin-right: 20px; } }
       .nav__container > .nav__item.active {
         color: #90938f; }
-
-@media screen and (max-width: 767px) {
-  html.js_menu-active .burger-menu {
-    opacity: 1; } }
 
 /**
  * Advanced
@@ -1161,8 +1169,12 @@ Link
     color: #05386b; }
 
 .overlay {
-  position: relative;
-  z-index: 1; }
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
   .overlay--default:before {
     display: block;
     position: absolute;

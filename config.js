@@ -76,7 +76,7 @@ module.exports = {
 				dest: '',
 				watch: [
 					'src/scripts/app.ts',
-					'src/scripts/custom/*.ts',
+					'src/scripts/bootstrap/*.ts',
 					'src/scripts/modules/*.ts',
 				]
 			}

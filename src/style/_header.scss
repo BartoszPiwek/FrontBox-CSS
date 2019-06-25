@@ -53,6 +53,21 @@
       margin-left: 10px;
     }
   }
+
+  &-overlay {
+    @include media-special('burger-show') {
+      background-color: transparentize(color('black'), 0.5);
+      transition: opacity $time-transition z-index, $time-transition $time-transition;
+      opacity: 0;
+      z-index: -1;
+
+      .js_menu-active & {
+        z-index: index('menu') - 1;
+        opacity: 1;
+        transition: opacity $time-transition, z-index $time-transition;
+      }
+    }
+  }
 }
 
 /**
@@ -117,12 +132,13 @@
  * Burger menu
  */
 .burger-menu {
+  @extend %fix_fixed;
+
   @include media-special('burger-show') {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
     text-align: center;
-    position: absolute;
     right: 0;
     top: 0;
     padding-top: 70px;
@@ -130,9 +146,9 @@
     height: 100vh;
     max-width: 300px;
     background-color: color('primary');
-    box-shadow: -6px 0 10px transparentize(color('black'), 0.6);
+    z-index: index('menu');
     transform: translateX(100%);
-    opacity: 0;
+    transition: transform $time-transition;
 
     & > &__item {
       margin-bottom: 20px;
@@ -143,6 +159,11 @@
 
     &__container {
       width: 100%;
+    }
+
+    .js_menu-active & {
+      transform: translateX(0);
+      box-shadow: -6px 0 10px transparentize(color('black'), 0.6);
     }
   }
 
@@ -235,9 +256,6 @@ nav.nav>a.nav__item*x
             // less/plugins/animations/burger.less
             // .add-burger-animation();
           }
-        }
-        &-menu {
-          opacity: 1;
         }
       }
     }

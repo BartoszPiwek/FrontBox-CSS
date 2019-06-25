@@ -1,167 +1,167 @@
 module.exports = (data) => {
 
-    var
-        DATA = {
-            $burger: null,
-            $menu: null,
-            $menu_container: null,
-        },
-        ELEMENTS = data.ELEMENTS,
-        FUNCTIONS = data.FUNCTIONS,
-        SETTINGS = {
-            wait: 300,
-            style: 'under-header',
-        },
-        active = false,
-        moving = false;
+	var
+		DATA = {
+			$burger: null,
+			$menu: null,
+			$menu_container: null,
+		},
+		ELEMENTS = data.ELEMENTS,
+		FUNCTIONS = data.FUNCTIONS,
+		SETTINGS = {
+			wait: 300,
+			style: 'under-header',
+		},
+		active = false,
+		moving = false;
 
 
-    if (data.SETTINGS) {
-        $.extend(DATA, data.SETTINGS);
-    }
+	if (data.SETTINGS) {
+		$.extend(DATA, data.SETTINGS);
+	}
 
-    var start = (settings = false) => {
+	var start = (settings = false) => {
 
-        DATA.$burger = $("#burger-button");
-
-
-        if (DATA.$burger.length) {
-            DATA.$menu = $("#burger-menu");
-            DATA.$menu_container = $("#burger-menu-container");
-        }
-
-        DATA.$burger.on("click", burgerClick);
-
-        /* test-code */
-        DEBUG.variable.add(`Burger`, {
-            'active': active,
-            'moving': moving,
-        });
-        /* end-test-code */
-    };
-
-    var toggleOff = () => {
-
-        /* test-code */
-        DEBUG.console.add("Burger toggleOff", "click");
-        /* end-test-code */
-
-        moving = true;
-        active = false;
-
-        ELEMENTS.$html.removeClass('js_menu-active');
-        bodyScrollLock.enableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
+		DATA.$burger = $("#burger-button");
 
 
-        /* test-code */
-        // DEBUG.variable.add({
-        //     'Burger moving': moving,
-        //     'Burger active': active,
-        // });
-        /* end-test-code */
+		if (DATA.$burger.length) {
+			DATA.$menu = $("#burger-menu");
+			DATA.$menu_container = $("#burger-menu-container");
+		}
 
-        window.setTimeout(function() {
-            moving = false;
-            ELEMENTS.$html.removeClass('js_menu-active--end');
+		DATA.$burger.on("click", burgerClick);
 
-            /* test-code */
-            // DEBUG.variable.add({
-            //     'Burger moving': moving,
-            // });
-            /* end-test-code */
+		/* test-code */
+		DEBUG.variable.add(`Burger`, {
+			'active': active,
+			'moving': moving,
+		});
+		/* end-test-code */
+	};
 
-        }, SETTINGS.wait);
+	var toggleOff = () => {
 
-    };
+		/* test-code */
+		DEBUG.console.add("Burger toggleOff", "click");
+		/* end-test-code */
 
-    var toggleOn = () => {
+		moving = true;
+		active = false;
 
-        /* test-code */
-        DEBUG.console.add("Burger toggleOn", "click");
-        /* end-test-code */
+		ELEMENTS.$html.removeClass('js_menu-active');
+		bodyScrollLock.enableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
 
-        if (SETTINGS.style) {
-            switch (SETTINGS.style) {
 
-                /**
-                 * For burger animation
-                 * @import "../plugins/animation/navbar/under-header";
-                 */
-                case 'under-header':
-                    DATA.$menu = DATA.$menu_container.offsetHeight + 'px';
-                    break;
+		/* test-code */
+		// DEBUG.variable.add({
+		//     'Burger moving': moving,
+		//     'Burger active': active,
+		// });
+		/* end-test-code */
 
-                default:
-                    break;
-            }
-        }
+		window.setTimeout(function () {
+			moving = false;
+			ELEMENTS.$html.removeClass('js_menu-active--end');
 
-        ELEMENTS.$html.addClass('js_menu-active');
-        bodyScrollLock.disableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
-        ELEMENTS.$overlay.on('click', toggleOverlay);
+			/* test-code */
+			// DEBUG.variable.add({
+			//     'Burger moving': moving,
+			// });
+			/* end-test-code */
 
-        moving = true;
-        active = true;
+		}, SETTINGS.wait);
 
-        /* test-code */
-        // DEBUG.variable.add({
-        //     'Burger active': active,
-        //     'Burger moving': moving,
-        // });
-        /* end-test-code */
+	};
 
-        window.setTimeout(function() {
+	var toggleOn = () => {
 
-            ELEMENTS.$html.addClass('js_menu-active--end');
-            moving = false;
+		/* test-code */
+		DEBUG.console.add("Burger toggleOn", "click");
+		/* end-test-code */
 
-            /* test-code */
-            // DEBUG.variable.add({
-            //     'Burger moving': moving,
-            // });
-            /* end-test-code */
+		if (SETTINGS.style) {
+			switch (SETTINGS.style) {
 
-        }, SETTINGS.wait);
+				/**
+				 * For burger animation
+				 * @import "../plugins/animation/navbar/under-header";
+				 */
+				case 'under-header':
+					DATA.$menu = DATA.$menu_container.offsetHeight + 'px';
+					break;
 
-    };
+				default:
+					break;
+			}
+		}
 
-    var toggleOverlay = () => {
+		ELEMENTS.$html.addClass('js_menu-active');
+		bodyScrollLock.disableBodyScroll(ELEMENTS.$headerPlaceholder[0]);
+		ELEMENTS.$overlay.on('click', toggleOverlay);
 
-        /* test-code */
-        DEBUG.console.add("Burger overlay toggleOff", "click");
-        /* end-test-code */
+		moving = true;
+		active = true;
 
-        ELEMENTS.$overlay.off('click', toggleOverlay);
+		/* test-code */
+		// DEBUG.variable.add({
+		//     'Burger active': active,
+		//     'Burger moving': moving,
+		// });
+		/* end-test-code */
 
-        toggleOff();
+		window.setTimeout(function () {
 
-        return false;
-    };
+			ELEMENTS.$html.addClass('js_menu-active--end');
+			moving = false;
 
-    var burgerClick = () => {
+			/* test-code */
+			// DEBUG.variable.add({
+			//     'Burger moving': moving,
+			// });
+			/* end-test-code */
 
-        if (!moving) {
+		}, SETTINGS.wait);
 
-            /* test-code */
-            DEBUG.console.add("Burger clicked", "click");
-            /* end-test-code */
+	};
 
-            if (active) {
-                toggleOff();
-            } else {
-                toggleOn();
-            }
+	var toggleOverlay = () => {
 
-        }
-        /* test-code */
-        else {
-            DEBUG.console.add("Burger click blocked. Burger is moving");
-        }
-        /* end-test-code */
+		/* test-code */
+		DEBUG.console.add("Burger overlay toggleOff", "click");
+		/* end-test-code */
 
-        return false;
-    };
+		ELEMENTS.$overlay.off('click', toggleOverlay);
 
-    start();
+		toggleOff();
+
+		return false;
+	};
+
+	var burgerClick = () => {
+
+		if (!moving) {
+
+			/* test-code */
+			DEBUG.console.add("Burger clicked", "click");
+			/* end-test-code */
+
+			if (active) {
+				toggleOff();
+			} else {
+				toggleOn();
+			}
+
+		}
+		/* test-code */
+		else {
+			DEBUG.console.add("Burger click blocked. Burger is moving");
+		}
+		/* end-test-code */
+
+		return false;
+	};
+
+	start();
 
 };
