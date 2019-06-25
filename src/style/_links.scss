@@ -1,3 +1,26 @@
-/*=========================================================================
-|| Links
-=========================================================================*/
+/*
+Link
+
+*/
+.link {
+  transition: color $time-transition;
+  // .add-tap();
+  cursor: pointer;
+  // .remove_click_delay();
+
+  &--primary {
+    color: color('white');
+
+    @include add-hover {
+      color: color('secondary');
+
+      .icon {
+        fill: color('secondary');
+      }
+    }
+
+    .icon {
+      fill: color('white');
+    }
+  }
+}

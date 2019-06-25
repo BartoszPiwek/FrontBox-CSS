@@ -41,21 +41,19 @@ iframe {
 }
 
 input {
-  // Turn Off Number Input Spinners
-  &[type='number'] {
-    -moz-appearance: textfield;
+  // Remove IE custom pseudo elements
+  &::-ms-reveal,
+  &::-ms-clear {
+    display: none;
+  }
 
+  &[type='number'] {
+    // Turn Off Number Input Spinners
+    -moz-appearance: textfield;
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
       margin: 0;
       -webkit-appearance: none;
-    }
-  }
-  // Removin reveal password icons from IE10
-  &[type='password'] {
-    &::-ms-reveal,
-    &::-ms-clear {
-      display: none;
     }
   }
 }
