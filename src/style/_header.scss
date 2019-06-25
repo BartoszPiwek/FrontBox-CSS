@@ -262,37 +262,6 @@ nav.nav>a.nav__item*x
   }
 }
 
-/**
- * Advanced
- */
-
-html {
-  /* Add fix when burger won't open */
-  &.js_sticky-header:not(.js_menu-active) {
-    .header {
-      @extend %fix_fixed;
-    }
-  }
-
-  /* Add fix to burger-menu when menu is active */
-  &.js_menu-active {
-    .burger-menu {
-      @extend %fix_fixed;
-    }
-
-    .header-placeholder,
-    .header {
-      background-color: transparent;
-    }
-  }
-  &:not(.js_menu-active) {
-    .header-placeholder,
-    .header {
-      background-color: transparent;
-    }
-  }
-}
-
 // /* Default header height */
 // .header-placeholder {
 

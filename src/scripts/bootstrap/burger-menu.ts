@@ -10,20 +10,21 @@ interface IBurgerMenu {
 
 export class BurgerMenu {
 
+	scrollLock: ScrollLock;
+	$button: HTMLElement;
+	$overlay: HTMLElement;
 	active: boolean = false;
 	moving: boolean = false;
 	expandTime: number = 200;
-	expandStyle: string = 'from-right';
-	$button: HTMLElement;
-	$overlay: HTMLElement;
 	cssClassActive: string;
-	scrollLock: ScrollLock;
 
 	constructor(param: IBurgerMenu) {
 		this.$button = param.$burger;
-		this.$overlay = param.$overlay;
 		this.cssClassActive = param.cssClassActive;
 		this.scrollLock = param.scrollLock;
+		if (param.$overlay) {
+			this.$overlay = param.$overlay;
+		}
 
 		this.refresh();
 	}
@@ -34,8 +35,10 @@ export class BurgerMenu {
 			this.click();
 		};
 
-		this.$overlay.onclick = () => {
-			this.click();
+		if (this.$overlay) {
+			this.$overlay.onclick = () => {
+				this.click();
+			}
 		}
 	}
 

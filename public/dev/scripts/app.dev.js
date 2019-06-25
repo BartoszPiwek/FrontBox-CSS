@@ -524,11 +524,12 @@ var BurgerMenu = /** @class */ (function () {
         this.active = false;
         this.moving = false;
         this.expandTime = 200;
-        this.expandStyle = 'from-right';
         this.$button = param.$burger;
-        this.$overlay = param.$overlay;
         this.cssClassActive = param.cssClassActive;
         this.scrollLock = param.scrollLock;
+        if (param.$overlay) {
+            this.$overlay = param.$overlay;
+        }
         this.refresh();
     }
     BurgerMenu.prototype.refresh = function () {
@@ -536,9 +537,11 @@ var BurgerMenu = /** @class */ (function () {
         this.$button.onclick = function () {
             _this.click();
         };
-        this.$overlay.onclick = function () {
-            _this.click();
-        };
+        if (this.$overlay) {
+            this.$overlay.onclick = function () {
+                _this.click();
+            };
+        }
     };
     BurgerMenu.prototype.click = function () {
         var _this = this;

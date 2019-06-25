@@ -15,6 +15,10 @@ $media: (
 );
 
 // Functions
+@function breakpoint($name) {
+  @return map-get($breakpoints, $name);
+}
+
 @mixin media($name) {
   $width: map-get($breakpoints, $name);
   @if $width {
