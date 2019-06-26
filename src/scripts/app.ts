@@ -1,5 +1,5 @@
 import { html } from "./bootstrap/elements";
-import { Browser } from "./bootstrap/browser";
+import { Browser, getScrollbarWidth } from "./bootstrap/browser";
 import { InformationCookie } from "./bootstrap/cookie";
 import { InputCounter } from "./bootstrap/input-counter";
 import { Resize } from "./bootstrap/resize";
@@ -7,6 +7,7 @@ import { ScrollLock } from "./bootstrap/scrollLock";
 import { BurgerMenu } from "./bootstrap/burger-menu";
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
+const cssVars = require('css-vars-ponyfill') // CSS custom properties support
 
 window.onload = () => {
 
@@ -42,6 +43,17 @@ window.onload = () => {
 		e.preventDefault();
 		return false;
 	};
+
+	/* Polyfill */
+	cssVars({
+		onBeforeSend: () => {
+			console.log(this);
+
+		},
+		variables: {
+			scrollbarWidth: getScrollbarWidth() + 'px'
+		},
+	})
 
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');

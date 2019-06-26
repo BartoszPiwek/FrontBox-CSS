@@ -6,7 +6,9 @@
 @import 'modules/debug';
 @import 'modules/responsive';
 @import 'modules/wrap';
+@import 'modules/scrollbar';
 
+@import 'bootstrap/polyfill';
 @import 'bootstrap/base';
 @import 'bootstrap/browser-reset';
 @import 'bootstrap/container';

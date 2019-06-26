@@ -37,6 +37,7 @@ module.exports = {
 					'./src/style/variables/*.scss',
 					'./src/style/tools/*.scss',
 					'./src/style/modules/*.scss',
+					'./src/style/plugins/*.scss',
 				]
 			},
 			bootstrap: {

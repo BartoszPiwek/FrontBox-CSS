@@ -2,9 +2,10 @@ import { body, html } from "./elements";
 import { breakpointsDefault } from "./css";
 
 export function getScrollbarWidth(): number {
-	const output = window.innerWidth - document.documentElement.clientWidth;
-	html.style.setProperty('--scrollbarWidth', `${String(output)}px`);
-	return output;
+	const
+		scrollbar: number = document.getElementById('js_check-scrollbar').offsetWidth,
+		scrollbarContent: number = document.getElementById('js_check-scrollbar__content').clientWidth;
+	return scrollbar - scrollbarContent;
 }
 
 export function getScrollPosition(): number {

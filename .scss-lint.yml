@@ -133,7 +133,7 @@ linters:
     enabled: true
     allow_element_with_attribute: false
     allow_element_with_class: false
-    allow_element_with_id: false
+    allow_element_with_id: true
 
   SelectorDepth:
     enabled: true
