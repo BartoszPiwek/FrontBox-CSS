@@ -3,7 +3,7 @@ import { Browser, getScrollbarWidth } from "./bootstrap/browser";
 import { InformationCookie } from "./bootstrap/cookie";
 import { InputCounter } from "./bootstrap/input-counter";
 import { Resize } from "./bootstrap/resize";
-import { ScrollLock } from "./bootstrap/scrollLock";
+import { ScrollLock } from "./bootstrap/scroll-lock";
 import { BurgerMenu } from "./bootstrap/burger-menu";
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)

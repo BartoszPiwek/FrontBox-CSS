@@ -1797,13 +1797,13 @@ var browser_1 = require("./bootstrap/browser");
 var cookie_1 = require("./bootstrap/cookie");
 var input_counter_1 = require("./bootstrap/input-counter");
 var resize_1 = require("./bootstrap/resize");
-var scrollLock_1 = require("./bootstrap/scrollLock");
+var scroll_lock_1 = require("./bootstrap/scroll-lock");
 var burger_menu_1 = require("./bootstrap/burger-menu");
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 var cssVars = require('css-vars-ponyfill'); // CSS custom properties support
 window.onload = function () {
-    var browser = new browser_1.Browser(), scrollLock = new scrollLock_1.ScrollLock(), resize = new resize_1.Resize();
+    var browser = new browser_1.Browser(), scrollLock = new scroll_lock_1.ScrollLock(), resize = new resize_1.Resize();
     new burger_menu_1.BurgerMenu({
         scrollLock: scrollLock,
         $burger: document.getElementById('burger-button'),
@@ -1831,7 +1831,7 @@ window.onload = function () {
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/resize":11,"./bootstrap/scrollLock":12,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
+},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/resize":11,"./bootstrap/scroll-lock":12,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -1944,6 +1944,14 @@ exports.Browser = Browser;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
+/**
+ * Toggle burger menu with overlay
+ *
+ * @class						BurgerMenu
+ * @version					1.0
+ * @css							burger-menu.scss
+ * @require					ScrollLock object
+ */
 var BurgerMenu = /** @class */ (function () {
     function BurgerMenu(param) {
         this.active = false;
@@ -1955,10 +1963,13 @@ var BurgerMenu = /** @class */ (function () {
         if (param.$overlay) {
             this.$overlay = param.$overlay;
         }
-        this.refresh();
+        this.bind();
     }
-    BurgerMenu.prototype.refresh = function () {
+    BurgerMenu.prototype.bind = function () {
         var _this = this;
+        /* test-code */
+        console.info("BurgerMenu\n- fired bind() function'");
+        /* end-test-code */
         this.$button.onclick = function () {
             _this.click();
         };
@@ -1968,8 +1979,18 @@ var BurgerMenu = /** @class */ (function () {
             };
         }
     };
+    BurgerMenu.prototype.unbind = function () {
+        /* test-code */
+        console.info("BurgerMenu\n- fired unbind() function");
+        /* end-test-code */
+        this.$button.onclick = null;
+        this.$overlay.onclick = null;
+    };
     BurgerMenu.prototype.click = function () {
         var _this = this;
+        /* test-code */
+        console.info("BurgerMenu\n- fired click() function");
+        /* end-test-code */
         if (this.moving) {
             return false;
         }
@@ -1983,6 +2004,10 @@ var BurgerMenu = /** @class */ (function () {
     return BurgerMenu;
 }());
 exports.BurgerMenu = BurgerMenu;
+/**
+ * Changelog
+ * 26.06.2019 Add
+ */
 },{"./elements":9}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });

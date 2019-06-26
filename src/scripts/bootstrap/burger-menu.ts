@@ -1,5 +1,5 @@
 import { html } from "./elements";
-import { ScrollLock } from "./scrollLock";
+import { ScrollLock } from "./scroll-lock";
 
 interface IBurgerMenu {
 	$burger: HTMLElement
@@ -7,6 +7,15 @@ interface IBurgerMenu {
 	cssClassActive: string
 	scrollLock: ScrollLock
 }
+
+/**
+ * Toggle burger menu with overlay
+ *
+ * @class						BurgerMenu
+ * @version					1.0
+ * @css							burger-menu.scss
+ * @require					ScrollLock object
+ */
 
 export class BurgerMenu {
 
@@ -26,10 +35,13 @@ export class BurgerMenu {
 			this.$overlay = param.$overlay;
 		}
 
-		this.refresh();
+		this.bind();
 	}
 
-	private refresh() {
+	private bind() {
+		/* test-code */
+		console.info(`BurgerMenu\n- fired bind() function'`);
+		/* end-test-code */
 
 		this.$button.onclick = () => {
 			this.click();
@@ -42,7 +54,20 @@ export class BurgerMenu {
 		}
 	}
 
+	public unbind() {
+		/* test-code */
+		console.info(`BurgerMenu\n- fired unbind() function`);
+		/* end-test-code */
+
+		this.$button.onclick = null;
+		this.$overlay.onclick = null;
+	}
+
 	private click() {
+		/* test-code */
+		console.info(`BurgerMenu\n- fired click() function`);
+		/* end-test-code */
+
 		if (this.moving) {
 			return false;
 		}
@@ -55,3 +80,8 @@ export class BurgerMenu {
 		}, this.expandTime);
 	}
 }
+
+/**
+ * Changelog
+ * 26.06.2019 Add
+ */

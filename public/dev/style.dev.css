@@ -363,11 +363,20 @@ Style guide: Blocks.youtube
 
 body,
 html {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; }
+
+body {
   background-color: #379683;
   color: #fff;
-  font-family: Arial, Helmet, Freesans, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden; }
+  font-family: Arial, Helmet, Freesans, sans-serif; }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body {
+      min-height: 100vh; } }
 
 .scrollbar,
 body {

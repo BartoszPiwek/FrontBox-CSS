@@ -31,7 +31,7 @@ body {
   color: color('default');
   font-family: $font-family;
 
-  @include media-ie {
+  @include media-special('ie-only') {
     min-height: 100vh;
   }
 }
