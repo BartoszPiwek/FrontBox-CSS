@@ -50,13 +50,6 @@ block variables
 					link(rel="stylesheet" type="text/css" href="/css/bootstrap." + getModeName() + ".css" media="all")
 				link(rel="stylesheet" type="text/css" href="/style." + getModeName() + ".css" media="all")
 
-
-			//- Critical CSS
-			if criticalCss && !data.dev
-				<!-- build:css:critical inline -->
-				<link rel="stylesheet" href="../critical-css/#{criticalCss}.css">
-				<!-- /build -->
-
 			//- Favicons
 			include favicon
 

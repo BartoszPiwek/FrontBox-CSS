@@ -5,9 +5,7 @@ node_modules/
 !*lock.ts
 !*lock.scss
 
-src/less/automatic/*less
 .tscache
-src/template/critical-css/*
 docs
 
 # Libs
