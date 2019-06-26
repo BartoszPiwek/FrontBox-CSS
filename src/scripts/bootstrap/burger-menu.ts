@@ -40,7 +40,7 @@ export class BurgerMenu {
 
 	private bind() {
 		/* test-code */
-		console.info(`BurgerMenu\n- fired bind() function'`);
+		console.info(`BurgerMenu\n- fired bind() function`);
 		/* end-test-code */
 
 		this.$button.onclick = () => {
