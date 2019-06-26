@@ -12,10 +12,10 @@ $grid-breakpoints: { [key: string]: any }? : $breakpoints
 
 Mixin example:
 $breakpoint(
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
+	xs: 0,
+	sm: 576,
+	md: 768,
+	lg: 992,
 }
 @include grid(12, $breakpoints);
 
@@ -33,9 +33,8 @@ Style guide: Grid.generate
 
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
   @include responsive($grid-breakpoints) {
+    $prefix: &;
     @for $i from 1 through $grid-count {
-      $prefix: &;
-
       @at-root .#{$prefix}col-#{$i} {
         flex-basis: 100% / ($grid-count / $i);
         max-width: 100% / ($grid-count / $i);
@@ -55,6 +54,10 @@ Style guide: Grid.generate
         }
       }
     }
+
+    @at-root .#{$prefix}col-shrink {
+      flex: 0 0 auto;
+    }
   }
 }
 
@@ -69,6 +72,7 @@ Style guide: Grid.row
     position: relative;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
 
     > * {
       display: flex;
@@ -76,6 +80,7 @@ Style guide: Grid.row
       flex-direction: column;
       flex-grow: 0;
       flex-shrink: 0;
+      max-width: 100%;
       height: auto !important;
       min-height: 1px;
 

@@ -628,17 +628,11 @@ Style guide: Component.Buttons.colors
 
 .row-footer {
   width: calc(100% + 25px);
-  margin-left: -25px !important; }
+  margin-left: -25px !important;
+  margin-bottom: -25px !important; }
   .row-footer > *:not(.space-ignore) {
+    padding-bottom: 25px !important;
     padding-left: 25px !important; }
-  @media screen and (min-width: 768px) {
-    .row-footer {
-      width: calc(100% + 25px);
-      margin-left: -25px !important;
-      margin-bottom: -25px !important; }
-      .row-footer > *:not(.space-ignore) {
-        padding-bottom: 25px !important;
-        padding-left: 25px !important; } }
   @media screen and (min-width: 992px) {
     .row-footer {
       width: calc(100% + 35px);

@@ -1,15 +1,14 @@
 .header-placeholder#header-placeholder
 	header.header#header
 		.wrap.wrap-navbar
-			.container
-				.container__item.container__item--left
+			.row.flex-space-between
+				.col-shrink
 					.flex.flex-y-center
 						a.flex.flex-y-center(href="/")
 							img.header__logo(src="/images/logo.png", alt="FrontBox-CSS Logo")
 							span.header__logo-text
 								| FrontBox-CSS Starter Site
-				.container__item.container__item--right.flex-y-center
-
+				.col-shrink.flex-y-center
 					//- Burger button
 					#burger-button.burger-button
 						.plank
@@ -18,7 +17,7 @@
 
 					//- Burger menu container
 					#burger-menu.burger-menu
-						#burger-menu-container.burger-menu__container
+						#burger-menu-container.burger-menu__container.flex-y-center
 
 							//- Navigation items
 							nav.burger-menu__item.list-navigation
