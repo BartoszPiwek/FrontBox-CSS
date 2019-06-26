@@ -35,7 +35,8 @@ block variables
 				meta(name="keywords" content= keywords)
 
 			//- Addon Meta
-			meta(property="og:type" content="website")
+			if ogType
+				meta(property="og:type" content= ogType)
 			if data.website_color
 				meta(name="theme-color" content= data.website_color)
 			if data.website_author
