@@ -12,16 +12,30 @@ block variables
 			//- Title
 			if title
 				title #{title}
+				meta(itemprop="name" content= title)
+				meta(name="twitter:title" content= title)
+				meta(property="og:title" content= title)
 
 			//- Description
 			if description
 				meta(name="description" content= description)
+				meta(property="og:description" content= description)
+				meta(itemprop="description" content= description)
+				meta(name="twitter:description" content= description)
+
+			//- OG Image
+			if ogImage
+				meta(property="og:image" content= ogImage)
+				meta(name="twitter:card" content="summary_large_image")
+				meta(name="twitter:image:src" content= ogImage)
+				meta(itemprop="image" content= ogImage)
 
 			//- Keywords
 			if keywords
 				meta(name="keywords" content= keywords)
 
 			//- Addon Meta
+			meta(property="og:type" content="website")
 			if data.website_color
 				meta(name="theme-color" content= data.website_color)
 			if data.website_author
@@ -38,7 +52,7 @@ block variables
 
 
 			//- Critical CSS
-			if data.criticalCss && !data.dev
+			if criticalCss && !data.dev
 				<!-- build:css:critical inline -->
 				<link rel="stylesheet" href="../critical-css/#{criticalCss}.css">
 				<!-- /build -->

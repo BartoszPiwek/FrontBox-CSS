@@ -23,6 +23,7 @@ src/js/libs/*
 
 # Generated
 src/images/favicon/*
+!src/images/favicon/.gitkeep
 styleguide
 
 # Logs
