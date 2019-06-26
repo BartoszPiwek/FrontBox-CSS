@@ -36,20 +36,10 @@ window.onload = () => {
 	/* Informations */
 	new InformationCookie();
 
-	const scrollLockToggle = document.getElementById('scrollLock');
-
-	scrollLockToggle.onclick = (e: Event) => {
-		scrollLock.change();
-		e.preventDefault();
-		return false;
-	};
-
 	/* Polyfill */
-	cssVars({
-		onBeforeSend: () => {
-			console.log(this);
 
-		},
+	// CSS Custom Properties 
+	cssVars({
 		variables: {
 			scrollbarWidth: getScrollbarWidth() + 'px'
 		},

@@ -115,7 +115,7 @@ IE 10+
 
 Style guide: Functions.input-placeholder
 */
-body {
+.js_scroll-lock .js_cookies-information, .js_scroll-lock body {
   border-right: var(--scrollbarWidth, 0) solid #05386b; }
 
 html.js_scroll-lock {
@@ -283,6 +283,63 @@ Style guide: Blocks.youtube
   .block-youtube--1x1 {
     padding-top: 100%; }
 
+.js_cookies-information {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 1;
+  z-index: 6999;
+  background-color: rgba(5, 56, 107, 0.9);
+  padding: 8px 0;
+  border-top: 2px solid #05386b; }
+  .js_cookies-information__img {
+    display: none; }
+    @media screen and (min-width: 768px) {
+      .js_cookies-information__img {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        width: 95px;
+        height: auto; } }
+  .js_cookies-information__text {
+    font-size: 14px;
+    text-align: justify;
+    color: #fff; }
+  .js_cookies-information__container {
+    padding-right: 30px;
+    position: relative; }
+    @media screen and (min-width: 768px) {
+      .js_cookies-information__container {
+        padding-left: 115px; } }
+  .js_cookies-information__exit {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: transform 0.2s; }
+    .js_cookies-information__exit:before, .js_cookies-information__exit:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 0; }
+    .js_cookies-information__exit:before {
+      transform: rotate(45deg); }
+    .js_cookies-information__exit:after {
+      transform: rotate(-45deg); }
+    .js_cookies-information__exit:hover, .js_cookies-information__exit:focus, .js_cookies-information__exit:active {
+      transform: rotate(90deg); }
+  .js_cookies-information--hide {
+    transform: translate(0, 100%);
+    opacity: 0; }
+
 @keyframes animation_name {
   0% { }
   25% { }
@@ -302,12 +359,11 @@ Style guide: Blocks.youtube
   --headerStickyDesktop: 50;
   --headerStickyTablet: 40;
   --headerStickyMobile: 30;
-  --scrollbarWidth: 0;
-  --color: red; }
+  --scrollbarWidth: 0; }
 
 body,
 html {
-  background-color: var(--color);
+  background-color: #379683;
   color: #fff;
   font-family: Arial, Helmet, Freesans, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1268,63 +1324,6 @@ Link
 
 .wysiwyg pre {
   font-family: monospace; }
-
-.js_cookies-information {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  transition: transform 0.2s, opacity 0.2s;
-  opacity: 1;
-  z-index: 6999;
-  background-color: rgba(5, 56, 107, 0.9);
-  padding: 8px 0;
-  border-top: 2px solid #05386b; }
-  .js_cookies-information__img {
-    display: none; }
-    @media screen and (min-width: 768px) {
-      .js_cookies-information__img {
-        position: absolute;
-        display: block;
-        bottom: 0;
-        left: 0;
-        width: 95px;
-        height: auto; } }
-  .js_cookies-information__text {
-    font-size: 14px;
-    text-align: justify;
-    color: #fff; }
-  .js_cookies-information__container {
-    padding-right: 30px;
-    position: relative; }
-    @media screen and (min-width: 768px) {
-      .js_cookies-information__container {
-        padding-left: 115px; } }
-  .js_cookies-information__exit {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: transform 0.2s; }
-    .js_cookies-information__exit:before, .js_cookies-information__exit:after {
-      content: '';
-      width: 100%;
-      height: 2px;
-      background-color: #fff;
-      position: absolute;
-      top: 50%;
-      left: 0; }
-    .js_cookies-information__exit:before {
-      transform: rotate(45deg); }
-    .js_cookies-information__exit:after {
-      transform: rotate(-45deg); }
-    .js_cookies-information__exit:hover, .js_cookies-information__exit:focus, .js_cookies-information__exit:active {
-      transform: rotate(90deg); }
-  .js_cookies-information--hide {
-    transform: translate(0, 100%);
-    opacity: 0; }
 
 /*=========================================================================
 || Plugin: wcag.less

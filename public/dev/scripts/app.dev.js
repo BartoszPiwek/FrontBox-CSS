@@ -1821,18 +1821,12 @@ window.onload = function () {
     });
     /* Informations */
     new cookie_1.InformationCookie();
-    var scrollLockToggle = document.getElementById('scrollLock');
-    scrollLockToggle.onclick = function (e) {
-        scrollLock.change();
-        e.preventDefault();
-        return false;
-    };
-    var scrollbarContent = document.getElementById('js_check-scrollbar__content').clientWidth;
-    var scrollbar = document.getElementById('js_check-scrollbar').offsetWidth;
+    /* Polyfill */
+    // CSS Custom Properties 
     cssVars({
         variables: {
-            scrollbarWidth: String(scrollbar - scrollbarContent)
-        }
+            scrollbarWidth: browser_1.getScrollbarWidth() + 'px'
+        },
     });
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
@@ -1843,9 +1837,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
 var css_1 = require("./css");
 function getScrollbarWidth() {
-    var output = window.innerWidth - document.documentElement.clientWidth;
-    elements_1.html.style.setProperty('--scrollbarWidth', String(output) + "px");
-    return output;
+    var scrollbar = document.getElementById('js_check-scrollbar').offsetWidth, scrollbarContent = document.getElementById('js_check-scrollbar__content').clientWidth;
+    return scrollbar - scrollbarContent;
 }
 exports.getScrollbarWidth = getScrollbarWidth;
 function getScrollPosition() {
@@ -2208,28 +2201,25 @@ var elements_1 = require("./elements");
 var browser_1 = require("./browser");
 /**
  * Toggle scroll lock for body element
- * Export "%scrollbar-placeholder" to include scrollbar space
+ * Export "%scrollbar-placeholder" for CSS Selectorn to include scrollbar space
  *
- * @class ScrollLock
- * @version 1.0
- * @css
- * scroll-lock.scss
- * @require
- * getScrollbarWidth, getScrollPosition
- *
- * 20.06.2019 Add
+ * @class						ScrollLock
+ * @version					1.0
+ * @css							scroll-lock.scss
+ * @require					getScrollPosition
  */
 var ScrollLock = /** @class */ (function () {
     function ScrollLock() {
+        this.cssActiveClass = 'js_scroll-lock';
     }
     ScrollLock.prototype.on = function () {
         this.positionTop = browser_1.getScrollPosition();
         elements_1.body.style.top = "-" + this.positionTop + "px";
-        elements_1.html.classList.add('js_scroll-lock');
+        elements_1.html.classList.add(this.cssActiveClass);
         this.state = true;
     };
     ScrollLock.prototype.off = function () {
-        elements_1.html.classList.remove('js_scroll-lock');
+        elements_1.html.classList.remove(this.cssActiveClass);
         window.scrollTo(0, this.positionTop);
         elements_1.body.style.top = '';
         this.positionTop = 0;
@@ -2242,7 +2232,6 @@ var ScrollLock = /** @class */ (function () {
             /* end-test-code */
             return false;
         }
-        browser_1.getScrollbarWidth();
         if (state === true || this.state) {
             this.off();
         }
@@ -2256,6 +2245,11 @@ var ScrollLock = /** @class */ (function () {
     return ScrollLock;
 }());
 exports.ScrollLock = ScrollLock;
+/**
+ * Changelog
+ * 26.06.2019 Support custom properties polyfill
+ * 20.06.2019 Add
+ */
 },{"./browser":5,"./elements":9}]},{},[4])
 
 //# sourceMappingURL=app.dev.js.map

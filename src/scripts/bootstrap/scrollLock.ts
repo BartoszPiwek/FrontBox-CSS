@@ -1,34 +1,31 @@
 import { html, body } from "./elements";
-import { getScrollbarWidth, getScrollPosition } from "./browser";
+import { getScrollPosition } from "./browser";
 
 /**
  * Toggle scroll lock for body element
- * Export "%scrollbar-placeholder" to include scrollbar space
+ * Export "%scrollbar-placeholder" for CSS Selectorn to include scrollbar space
  *
- * @class ScrollLock
- * @version 1.0
- * @css
- * scroll-lock.scss
- * @require
- * getScrollbarWidth, getScrollPosition
- *
- * 20.06.2019 Add
+ * @class						ScrollLock
+ * @version					1.0
+ * @css							scroll-lock.scss
+ * @require					getScrollPosition
  */
 
 export class ScrollLock {
 
 	state: boolean;
 	positionTop: number;
+	cssActiveClass: string = 'js_scroll-lock';
 
 	private on() {
 		this.positionTop = getScrollPosition();
 		body.style.top = `-${this.positionTop}px`;
-		html.classList.add('js_scroll-lock');
+		html.classList.add(this.cssActiveClass);
 		this.state = true;
 	}
 
 	private off() {
-		html.classList.remove('js_scroll-lock');
+		html.classList.remove(this.cssActiveClass);
 		window.scrollTo(0, this.positionTop);
 		body.style.top = '';
 		this.positionTop = 0;
@@ -44,8 +41,6 @@ export class ScrollLock {
 			return false;
 		}
 
-		getScrollbarWidth();
-
 		if (state === true || this.state) {
 			this.off();
 		}
@@ -59,3 +54,8 @@ export class ScrollLock {
 	}
 }
 
+/**
+ * Changelog
+ * 26.06.2019 Support custom properties polyfill
+ * 20.06.2019 Add
+ */

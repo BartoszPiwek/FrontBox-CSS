@@ -16,15 +16,24 @@
 
 body,
 html {
-  background-color: color('secondary');
-  color: color('default');
-  font-family: $font-family;
-  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 100%;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
   @extend %scrollbar-placeholder;
+
+  background-color: color('secondary');
+  color: color('default');
+  font-family: $font-family;
+
+  @include media-ie {
+    min-height: 100vh;
+  }
 }
 
 // Scrollbar

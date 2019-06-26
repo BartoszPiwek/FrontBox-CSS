@@ -11,7 +11,8 @@ $breakpoints: (
 $media: (
   burger-show: 'screen and (max-width: 767px)',
   burger-hide: 'screen and (min-width: 768px)',
-  retuna: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+  retina: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)',
+  ie-only: 'screen and (-ms-high-contrast: active), (-ms-high-contrast: none)'
 );
 
 // Functions
