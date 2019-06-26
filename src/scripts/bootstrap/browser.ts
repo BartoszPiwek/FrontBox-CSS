@@ -8,9 +8,12 @@ export function getScrollbarWidth(): number {
 	return scrollbar - scrollbarContent;
 }
 
+export function isScrollbar(): boolean {
+	return window.innerWidth != document.documentElement.clientWidth;
+}
+
 export function getScrollPosition(): number {
-	const output = window.pageYOffset || html.scrollTop;
-	return output;
+	return window.pageYOffset || html.scrollTop;
 }
 
 export function getTransitionEvent(): string {

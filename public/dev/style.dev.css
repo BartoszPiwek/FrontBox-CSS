@@ -115,7 +115,7 @@ IE 10+
 
 Style guide: Functions.input-placeholder
 */
-.js_scroll-lock .js_cookies-information, .js_scroll-lock body {
+.js_scrollbar-active .js_cookies-information, .js_scrollbar-active body {
   border-right: var(--scrollbarWidth, 0) solid #05386b; }
 
 html.js_scroll-lock {

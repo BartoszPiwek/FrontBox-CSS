@@ -1841,9 +1841,12 @@ function getScrollbarWidth() {
     return scrollbar - scrollbarContent;
 }
 exports.getScrollbarWidth = getScrollbarWidth;
+function isScrollbar() {
+    return window.innerWidth != document.documentElement.clientWidth;
+}
+exports.isScrollbar = isScrollbar;
 function getScrollPosition() {
-    var output = window.pageYOffset || elements_1.html.scrollTop;
-    return output;
+    return window.pageYOffset || elements_1.html.scrollTop;
 }
 exports.getScrollPosition = getScrollPosition;
 function getTransitionEvent() {
@@ -2236,15 +2239,19 @@ var browser_1 = require("./browser");
 var ScrollLock = /** @class */ (function () {
     function ScrollLock() {
         this.cssActiveClass = 'js_scroll-lock';
+        this.cssActiveScrollbar = 'js_scrollbar-active';
     }
     ScrollLock.prototype.on = function () {
         this.positionTop = browser_1.getScrollPosition();
         elements_1.body.style.top = "-" + this.positionTop + "px";
+        if (browser_1.isScrollbar()) {
+            elements_1.html.classList.add(this.cssActiveScrollbar);
+        }
         elements_1.html.classList.add(this.cssActiveClass);
         this.state = true;
     };
     ScrollLock.prototype.off = function () {
-        elements_1.html.classList.remove(this.cssActiveClass);
+        elements_1.html.classList.remove(this.cssActiveClass, this.cssActiveScrollbar);
         window.scrollTo(0, this.positionTop);
         elements_1.body.style.top = '';
         this.positionTop = 0;

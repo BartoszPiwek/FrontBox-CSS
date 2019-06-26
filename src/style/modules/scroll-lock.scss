@@ -1,5 +1,5 @@
 %scrollbar-placeholder {
-  .js_scroll-lock & {
+  .js_scrollbar-active & {
     border-right: var(--scrollbarWidth, 0) solid color('primary');
   }
 }
