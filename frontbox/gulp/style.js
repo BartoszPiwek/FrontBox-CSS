@@ -31,7 +31,7 @@ export function style_main() {
 		.pipe(header(
 			`$dev: ${config.dev};`
 		))
-		.pipe(gulpif(config.workingWithFrontbox,
+		.pipe(gulpif(config.working,
 			footer(
 				`@import '../../../FrontBox-Plugins/**/*.scss';`
 			)

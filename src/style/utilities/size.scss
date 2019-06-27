@@ -1,39 +1,29 @@
 @include responsive($breakpoints) {
   $prefix: &;
 
-  @at-root .#{$prefix}flex {
-    /* Reset */
-    &_no {
-      &-width {
-        width: auto !important;
-      }
-
-      &-max-width {
-        max-width: none !important;
-      }
-
-      &-min-width {
-        min-width: none !important;
-      }
-
-      &-height {
-        height: auto !important;
-      }
-
-      &-max-height {
-        max-height: none !important;
-      }
-
-      &-min-height {
-        min-height: none !important;
-      }
+  @at-root .#{$prefix}no {
+    &-width {
+      width: auto !important;
     }
-  }
 
-  @at-root .#{$prefix}flex {
-    &-y-end {
-      height: 100vh;
-      height: calc(var(--vh, 1vh) * 100);
+    &-max-width {
+      max-width: none !important;
+    }
+
+    &-min-width {
+      min-width: none !important;
+    }
+
+    &-height {
+      height: auto !important;
+    }
+
+    &-max-height {
+      max-height: none !important;
+    }
+
+    &-min-height {
+      min-height: none !important;
     }
   }
 }

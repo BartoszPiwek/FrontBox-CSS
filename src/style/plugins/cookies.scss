@@ -5,9 +5,7 @@
   width: 100%;
   transition: transform $time-transition, opacity $time-transition;
   opacity: 1;
-
   z-index: index('menu') - 1;
-
   background-color: transparentize(color('primary'), 0.1);
   padding: 8px 0;
   border-top: 2px solid color('primary');
