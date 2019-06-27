@@ -15,6 +15,11 @@ cleartfix;
 Style guide: Functions.clearfix
 */
 /*
+Disable
+
+Set style for disabled elements
+*/
+/*
 Fixed
 
 Change to position fixed on iOS Safari while scrolling
@@ -71,25 +76,27 @@ Mixin style:
 
 Style guide: Functions.holder
 */
-/**
- * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
- * - add class &--hover for parent element to trigger hover for child element
- * EXAMPLE:
-    .foo {
-        .add-hover({
-            color: red;
-        });
-    }
- * OUTPUT:
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo:hover,
-    .foo:active,
-    .foo:focus {
-        background-color: red;
-    }
- */
+/*
+Hover
+
+Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+- add class &--hover for parent element to trigger hover for child element
+EXAMPLE:
+ .foo {
+     .add-hover({
+         color: red;
+     });
+ }
+OUTPUT:
+ .foo--hover:hover .foo,
+ .foo--hover:hover .foo,
+ .foo--hover:hover .foo,
+ .foo:hover,
+ .foo:active,
+ .foo:focus {
+     background-color: red;
+}
+*/
 /*
 Input Placeholder
 
@@ -485,7 +492,7 @@ Style guide: Component.Buttons
   .btn--hover:focus .btn,
   .btn--hover-active .btn,
   .btn--hover-active .btn,
-  .btn--hover-active .btn, .btn:hover, .btn:active, .btn:focus {
+  .btn--hover-active .btn, .btn.is-active, .btn:hover, .btn:active, .btn:focus {
     background-color: #053666; }
   .btn .icon {
     transition: transform 0.2s; }
@@ -544,7 +551,7 @@ Style guide: Component.Buttons.colors
   .btn--primary--hover:focus .btn--primary,
   .btn--primary--hover-active .btn--primary,
   .btn--primary--hover-active .btn--primary,
-  .btn--primary--hover-active .btn--primary, .btn--primary:hover, .btn--primary:active, .btn--primary:focus {
+  .btn--primary--hover-active .btn--primary, .btn--primary.is-active, .btn--primary:hover, .btn--primary:active, .btn--primary:focus {
     background-color: #053667; }
 
 .btn--secondary {
@@ -728,7 +735,7 @@ Style guide: Forms.input-default
     .input__label--hover:focus .input__label .input-checkbox__input,
     .input__label--hover-active .input__label .input-checkbox__input,
     .input__label--hover-active .input__label .input-checkbox__input,
-    .input__label--hover-active .input__label .input-checkbox__input, .input__label:hover .input-checkbox__input, .input__label:active .input-checkbox__input, .input__label:focus .input-checkbox__input {
+    .input__label--hover-active .input__label .input-checkbox__input, .input__label.is-active .input-checkbox__input, .input__label:hover .input-checkbox__input, .input__label:active .input-checkbox__input, .input__label:focus .input-checkbox__input {
       border-color: #000; }
 
 /*
@@ -1071,7 +1078,7 @@ nav.nav>a.nav__item*x
       .nav__container > .nav__item--hover:focus .nav__container > .nav__item,
       .nav__container > .nav__item--hover-active .nav__container > .nav__item,
       .nav__container > .nav__item--hover-active .nav__container > .nav__item,
-      .nav__container > .nav__item--hover-active .nav__container > .nav__item, .nav__container > .nav__item:hover, .nav__container > .nav__item:active, .nav__container > .nav__item:focus {
+      .nav__container > .nav__item--hover-active .nav__container > .nav__item, .nav__container > .nav__item.is-active, .nav__container > .nav__item:hover, .nav__container > .nav__item:active, .nav__container > .nav__item:focus {
         color: #b8b8b8; }
       .nav__container > .nav__item:last-child {
         margin-bottom: 0; }
@@ -1147,30 +1154,45 @@ Style guide: Elements.hero
 || Style for most index elements
 =========================================================================*/
 /*
-Link
+Links
 
+Style guide: Component.Links
 */
 .link {
   transition: color 0.2s;
   cursor: pointer; }
   .link--primary {
-    color: #fff; }
+    color: #05386b; }
+    .link--primary .icon {
+      fill: #05386b; }
     .link--primary--hover:hover .link--primary,
     .link--primary--hover:active .link--primary,
     .link--primary--hover:focus .link--primary,
     .link--primary--hover-active .link--primary,
     .link--primary--hover-active .link--primary,
-    .link--primary--hover-active .link--primary, .link--primary:hover, .link--primary:active, .link--primary:focus {
-      color: #379683; }
+    .link--primary--hover-active .link--primary, .link--primary.is-active, .link--primary:hover, .link--primary:active, .link--primary:focus {
+      color: #031f3a; }
       .link--primary--hover:hover .link--primary .icon,
       .link--primary--hover:active .link--primary .icon,
       .link--primary--hover:focus .link--primary .icon,
       .link--primary--hover-active .link--primary .icon,
       .link--primary--hover-active .link--primary .icon,
-      .link--primary--hover-active .link--primary .icon, .link--primary:hover .icon, .link--primary:active .icon, .link--primary:focus .icon {
-        fill: #379683; }
-    .link--primary .icon {
-      fill: #fff; }
+      .link--primary--hover-active .link--primary .icon, .link--primary.is-active .icon, .link--primary:hover .icon, .link--primary:active .icon, .link--primary:focus .icon {
+        fill: #031f3a; }
+  .link--disabled, .link.is-disabled {
+    color: #90938f !important;
+    cursor: not-allowed; }
+    .link--disabled .icon, .link.is-disabled .icon {
+      fill: #90938f !important; }
+  .link__group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: calc(100% + 10px);
+    margin-left: -10px !important; }
+    .link__group > *:not(.space-ignore) {
+      padding-left: 10px !important; }
 
 /**
  * Base
@@ -1212,7 +1234,7 @@ Link
   .nav-header-menu > .nav-header-menu__item--hover:focus .nav-header-menu > .nav-header-menu__item,
   .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item,
   .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item,
-  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item, .nav-header-menu > .nav-header-menu__item:hover, .nav-header-menu > .nav-header-menu__item:active, .nav-header-menu > .nav-header-menu__item:focus {
+  .nav-header-menu > .nav-header-menu__item--hover-active .nav-header-menu > .nav-header-menu__item, .nav-header-menu > .nav-header-menu__item.is-active, .nav-header-menu > .nav-header-menu__item:hover, .nav-header-menu > .nav-header-menu__item:active, .nav-header-menu > .nav-header-menu__item:focus {
     color: #05386b; }
 
 .overlay {
@@ -1288,6 +1310,22 @@ Link
   // * space beetween columns
   == WARNING: row will have 'overflow: hidden'
   //=======================================================================*/ }
+  .row-space-x {
+    width: calc(100% + 10px);
+    margin-left: -10px !important; }
+    .row-space-x > *:not(.space-ignore) {
+      padding-left: 10px !important; }
+  .row-space-y {
+    margin-bottom: -30px !important; }
+    .row-space-y > *:not(.space-ignore) {
+      padding-bottom: 30px !important; }
+  .row-space {
+    width: calc(100% + 5px);
+    margin-left: -5px !important;
+    margin-bottom: -10px !important; }
+    .row-space > *:not(.space-ignore) {
+      padding-bottom: 10px !important;
+      padding-left: 5px !important; }
 
 .col {
   /*=========================================================================
@@ -1328,6 +1366,254 @@ Link
 .wysiwyg pre {
   font-family: monospace; }
 
+/*
+Tabs
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: Elements.tabs
+*/
+.tabs__expand {
+  display: none; }
+
+.tabs__item {
+  flex: 1 1 auto;
+  padding: 20px;
+  background-color: #05386b;
+  text-align: center; }
+
+.tabs__view {
+  width: 100%; }
+
+.tabs__expand {
+  padding: 20px;
+  background-color: #00050a; }
+
+.tabs__content {
+  display: flex;
+  flex-direction: row; }
+
+.tabs--vertical {
+  flex-direction: column;
+  text-align: center; }
+
+.tabs--expand {
+  flex-direction: column;
+  text-align: center; }
+  .tabs--expand .tabs__expand {
+    display: block; }
+  .tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden; }
+
+@media screen and (min-width: 576px) {
+  .sm_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .sm_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .sm_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .sm_tabs--expand .tabs__expand {
+      display: block; }
+    .sm_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 768px) {
+  .md_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .md_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .md_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .md_tabs--expand .tabs__expand {
+      display: block; }
+    .md_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 992px) {
+  .lg_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .lg_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .lg_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .lg_tabs--expand .tabs__expand {
+      display: block; }
+    .lg_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 1200px) {
+  .xl_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .xl_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .xl_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .xl_tabs--expand .tabs__expand {
+      display: block; }
+    .xl_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 1366px) {
+  .hd_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .hd_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .hd_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .hd_tabs--expand .tabs__expand {
+      display: block; }
+    .hd_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 1440px) {
+  .whd_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .whd_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .whd_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .whd_tabs--expand .tabs__expand {
+      display: block; }
+    .whd_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+/*
+Validator
+
+Style for jQuery Validation Plugin
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: JavaScript.validator
+*/
+.input-error {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  /**
+      * Absolute validator information
+      - right style
+    **/
+  /**
+      * Absolute validator information
+      - left style
+    **/
+  /**
+      * Default validator information
+    **/ }
+  .input-error--absolute + *:not([class]) {
+    padding-top: 20px; }
+    @media screen and (min-width: 768px) {
+      .input-error--absolute + *:not([class]) {
+        position: absolute;
+        z-index: 20;
+        top: 50%;
+        padding-left: 10px; } }
+    .input-error--absolute + *:not([class]) label {
+      display: block;
+      position: relative;
+      padding: 6px;
+      border: 1px solid #dc3545;
+      border-radius: 4px;
+      background-color: #fff;
+      font-size: 13px;
+      text-align: center; }
+      .input-error--absolute + *:not([class]) label:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%); }
+  @media screen and (min-width: 768px) {
+    .input-error--right + *:not([class]) {
+      transform: translate(100%, -50%);
+      right: 0; } }
+  @media screen and (min-width: 768px) {
+    .input-error--left + *:not([class]) {
+      left: 0;
+      transform: translate(-100%, -50%);
+      padding-left: 0;
+      padding-right: 10px; } }
+  @media screen and (min-width: 768px) {
+    .input-error--left + *:not([class]) label:before {
+      top: 50%;
+      right: 0;
+      left: auto;
+      transform: translate(100%, -50%); } }
+  .input-error label.input-error {
+    text-align: center;
+    display: block;
+    padding: 6px; }
+
+/**
+  * Validator class
+  - success
+**/
+.input-success {
+  border-color: #28a745 !important;
+  color: #28a745 !important; }
+  .input-success + *:not([class]) {
+    display: none; }
+
+/*
+VH Unit 
+
+Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
+
+Mixin:
+add_vh-unit($size, $property);
+
+Mixin arguments:
+$size : number? : 100
+$property : CSSProperty? : 'height'
+
+Mixin example:
+add_vh-unit(50, 'height')
+
+Style guide: Libs.vh-unit
+*/
 /*=========================================================================
 || Plugin: wcag.less
 ===========================================================================

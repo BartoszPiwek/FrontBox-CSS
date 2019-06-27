@@ -1971,7 +1971,7 @@ var BurgerMenu = /** @class */ (function () {
     BurgerMenu.prototype.bind = function () {
         var _this = this;
         /* test-code */
-        console.info("BurgerMenu\n- fired bind() function'");
+        console.info("BurgerMenu\n- fired bind() function");
         /* end-test-code */
         this.$button.onclick = function () {
             _this.click();

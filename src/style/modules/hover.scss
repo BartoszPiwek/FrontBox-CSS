@@ -1,22 +1,24 @@
-/**
- * Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
- * - add class &--hover for parent element to trigger hover for child element
- * EXAMPLE:
-    .foo {
-        .add-hover({
-            color: red;
-        });
-    }
- * OUTPUT:
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo--hover:hover .foo,
-    .foo:hover,
-    .foo:active,
-    .foo:focus {
-        background-color: red;
-    }
- */
+/*
+Hover
+
+Set style for selectors :hover :active :focus ( .add-hover(@css_code); )
+- add class &--hover for parent element to trigger hover for child element
+EXAMPLE:
+ .foo {
+     .add-hover({
+         color: red;
+     });
+ }
+OUTPUT:
+ .foo--hover:hover .foo,
+ .foo--hover:hover .foo,
+ .foo--hover:hover .foo,
+ .foo:hover,
+ .foo:active,
+ .foo:focus {
+     background-color: red;
+}
+*/
 
 @mixin add-hover {
   &--hover:hover &,
@@ -25,6 +27,7 @@
   &--hover-active &,
   &--hover-active &,
   &--hover-active &,
+  &.is-active,
   &:hover,
   &:active,
   &:focus {

@@ -1,26 +1,41 @@
 /*
-Link
+Links
 
+Style guide: Component.Links
 */
+
 .link {
   transition: color $time-transition;
-  // .add-tap();
   cursor: pointer;
-  // .remove_click_delay();
 
   &--primary {
-    color: color('white');
-
-    @include add-hover {
-      color: color('secondary');
-
-      .icon {
-        fill: color('secondary');
-      }
-    }
+    color: color('primary');
 
     .icon {
-      fill: color('white');
+      fill: color('primary');
     }
+
+    @include add-hover {
+      color: darken(color('primary'), 10%);
+      .icon {
+        fill: darken(color('primary'), 10%);
+      }
+    }
+  }
+
+  @include add-disable {
+    color: color('disable') !important;
+    cursor: not-allowed;
+    .icon {
+      fill: color('disable') !important;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    @include space-x(10px);
   }
 }
