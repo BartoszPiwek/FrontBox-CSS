@@ -90,7 +90,11 @@ export function style_bootstrap() {
 		allowEmpty: true,
 	})
 		.pipe(header(
-			`$dev: ${config.dev};\n`
+			`
+				$infoOffJavascript: ${config.info.offJavascript};
+				$infoOldBrowser: ${config.info.oldBrowser};
+				$dev: ${config.dev};
+			`
 		))
 		.pipe(gulpif(!argv.prod,
 			sourcemaps.init({ loadMaps: true })

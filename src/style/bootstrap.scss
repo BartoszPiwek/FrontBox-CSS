@@ -14,6 +14,8 @@
 @import 'bootstrap/grid';
 @import 'bootstrap/javascript';
 @import 'bootstrap/media-queries';
+@import 'bootstrap/old-browser';
+@import 'bootstrap/off-javascript';
 
 @include grid($grid-count: 12, $grid-breakpoints: $breakpoints);
 @include grid-style;
@@ -22,4 +24,11 @@
 // Debug
 @if ($dev == true) {
   @include frontbox-debug;
+}
+/* Info */
+@if ($infoOldBrowser) {
+  @include info-old-browser;
+}
+@if ($infoOffJavascript) {
+  @include info-off-javascript;
 }
