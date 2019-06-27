@@ -8,7 +8,7 @@ block variables
 			meta(name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1")
 			meta(http-equiv="X-UA-Compatible" content="IE=Edge")
 			meta(name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no")
-
+			
 			//- Title
 			if title
 				title #{title}
@@ -25,10 +25,10 @@ block variables
 
 			//- OG Image
 			if ogImage
-				meta(property="og:image" content= ogImage)
+				meta(property="og:image" content="/images/og/" + ogImage)
 				meta(name="twitter:card" content="summary_large_image")
-				meta(name="twitter:image:src" content= ogImage)
-				meta(itemprop="image" content= ogImage)
+				meta(name="twitter:image:src" content="/images/og/" + ogImage)
+				meta(itemprop="image" content="/images/og/" + ogImage)
 
 			//- Keywords
 			if keywords
@@ -64,6 +64,7 @@ block variables
 								Przeglądarka zablokowała wykonywanie kodu <strong>JavaScript</strong>.
 							p.info-no-script__text.
 								Do pełnej funkcjonalności strony potrzebujesz włączonej obsługi skryptów. <a class="underline" href="https://www.enable-javascript.com/pl/" rel="nofollow" target="_blank">Tu znajdziesz instrukcje</a>, które pozwolą Ci włączyć skrypty w Twojej przeglądarce.
+			
 			//- Informations: Using old browser
 			if data.info.oldBrowser
 				<!--[if lte IE 9]>
@@ -80,7 +81,7 @@ block variables
 			//- Assets
 			block assets_footer
 				script(src="/scripts/app." + getModeName() + ".js")
-
+				
 			//- Polyfill
 			#js_check-scrollbar.scrollbar
 				#js_check-scrollbar__content

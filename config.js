@@ -12,7 +12,6 @@ module.exports = {
 		locale: 'pl-PL',
 		color: '#e7be54',
 		author: 'Bartosz Piwek',
-		ios_app: false,
 	},
 	/* Informations */
 	info: {
