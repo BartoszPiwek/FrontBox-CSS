@@ -1825,7 +1825,7 @@ window.onload = function () {
     // CSS Custom Properties 
     cssVars({
         variables: {
-            scrollbarWidth: browser.scrollbarWidth
+            scrollbarWidth: browser.scrollbarWidth + "px"
         },
     });
     /* Inform stylesheed to remove style fallback for JavaScript elements */
@@ -1883,9 +1883,9 @@ var Browser = /** @class */ (function () {
     }
     ;
     Browser.prototype.getScrollbarWidth = function () {
-        var $scrollbar = document.getElementById('js_check-scrollbar'), $content = $scrollbar.children.item(0);
+        var $scrollbar = document.getElementById('js_check-scrollbar'), $content = $scrollbar.children.item(0), output = $scrollbar.offsetWidth - $content.clientWidth;
         $scrollbar.parentNode.removeChild($scrollbar);
-        return $scrollbar.offsetWidth - $content.clientWidth;
+        return output;
     };
     /* Determine the mobile operating system */
     Browser.prototype.getMobileOperatingSystem = function () {

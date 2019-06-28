@@ -931,7 +931,13 @@ Style guide: Forms.input-text
   z-index: 1; }
 
 /*
-Header Imports
+Imports
+
+Burger planks animation
+
+Markup:
+.burger-button>.plank>.plank>.plank
+.js_menu-active>.burger-button>.plank>.plank>.plank
 
 Style guide: Header.imports
 */
@@ -943,6 +949,13 @@ First and last plank - rotate
 center plank - hide
 
 Style guide: Burger.animation
+*/
+/*
+Tools
+
+Contains: row
+
+Style guide: Header.tools
 */
 .row-header-space {
   width: calc(100% + 25px);

@@ -41,7 +41,7 @@ window.onload = () => {
 	// CSS Custom Properties 
 	cssVars({
 		variables: {
-			scrollbarWidth: browser.scrollbarWidth
+			scrollbarWidth: `${browser.scrollbarWidth}px`
 		},
 	})
 

@@ -67,9 +67,11 @@ export class Browser {
 	private getScrollbarWidth(): number {
 		const
 			$scrollbar: HTMLElement = document.getElementById('js_check-scrollbar'),
-			$content: Element = $scrollbar.children.item(0);
+			$content: Element = $scrollbar.children.item(0),
+			output = $scrollbar.offsetWidth - $content.clientWidth
+
 		$scrollbar.parentNode.removeChild($scrollbar);
-		return $scrollbar.offsetWidth - $content.clientWidth;
+		return output;
 	}
 
 	/* Determine the mobile operating system */

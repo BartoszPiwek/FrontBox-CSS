@@ -7,10 +7,12 @@
 html {
   &.js_scroll-lock {
     position: fixed;
+
     body {
       overflow: hidden;
     }
   }
+
   &:not(.js_scroll-lock) {
     body {
       top: 0 !important;
