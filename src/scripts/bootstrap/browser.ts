@@ -1,13 +1,6 @@
 import { body, html } from "./elements";
 import { breakpointsDefault } from "./css";
 
-export function getScrollbarWidth(): number {
-	const
-		scrollbar: number = document.getElementById('js_check-scrollbar').offsetWidth,
-		scrollbarContent: number = document.getElementById('js_check-scrollbar__content').clientWidth;
-	return scrollbar - scrollbarContent;
-}
-
 export function isScrollbar(): boolean {
 	return window.innerWidth != document.documentElement.clientWidth;
 }
@@ -42,12 +35,12 @@ export function getTransitionEvent(): string {
 export class Browser {
 
 	private transitionEvent: string;
-
 	private width: number;
 	private height: number;
 	private responsive: string;
 	private orientation: string;
 	private portable: string | boolean;
+	public scrollbarWidth: number;
 
 	constructor() {
 
@@ -65,10 +58,19 @@ export class Browser {
 			responsive: this.responsive,
 			orientation: this.orientation,
 			portable: this.portable,
+			scrollbarWidth: this.scrollbarWidth,
 		})
 		/* end-test-code */
 
 	};
+
+	private getScrollbarWidth(): number {
+		const
+			$scrollbar: HTMLElement = document.getElementById('js_check-scrollbar'),
+			$content: Element = $scrollbar.children.item(0);
+		$scrollbar.parentNode.removeChild($scrollbar);
+		return $scrollbar.offsetWidth - $content.clientWidth;
+	}
 
 	/* Determine the mobile operating system */
 	private getMobileOperatingSystem(): string | boolean {
@@ -112,6 +114,7 @@ export class Browser {
 		this.width = width;
 		this.height = height;
 		this.responsive = this.getResponsive();
+		this.scrollbarWidth = this.getScrollbarWidth();
 
 		/**
 		 * Don't refresh page if user change tab 

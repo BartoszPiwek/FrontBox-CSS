@@ -290,59 +290,73 @@ Style guide: Blocks.youtube
   .block-youtube--1x1 {
     padding-top: 100%; }
 
+/*
+Burger Animation
+
+Transition burger plans to icon 'X'
+First and last plank - rotate
+center plank - hide
+
+Style guide: Burger.animation
+*/
 .js_cookies-information {
   position: fixed;
+  z-index: 6999;
   bottom: 0;
   left: 0;
   width: 100%;
-  transition: transform 0.2s, opacity 0.2s;
-  opacity: 1;
-  z-index: 6999;
-  background-color: rgba(5, 56, 107, 0.9);
   padding: 8px 0;
-  border-top: 2px solid #05386b; }
+  transition: transform 0.2s, opacity 0.2s;
+  border-top: 2px solid #05386b;
+  opacity: 1;
+  background-color: rgba(5, 56, 107, 0.9); }
   .js_cookies-information__img {
     display: none; }
     @media screen and (min-width: 768px) {
       .js_cookies-information__img {
-        position: absolute;
         display: block;
+        position: absolute;
         bottom: 0;
         left: 0;
         width: 95px;
         height: auto; } }
   .js_cookies-information__text {
+    color: #fff;
     font-size: 14px;
-    text-align: justify;
-    color: #fff; }
+    text-align: justify; }
   .js_cookies-information__container {
-    padding-right: 30px;
-    position: relative; }
+    position: relative;
+    padding-right: 30px; }
     @media screen and (min-width: 768px) {
       .js_cookies-information__container {
         padding-left: 115px; } }
   .js_cookies-information__exit {
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 20px;
     height: 20px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: transform 0.2s; }
+    transition: transform 0.2s;
+    cursor: pointer; }
+    .js_cookies-information__exit--hover:hover .js_cookies-information__exit,
+    .js_cookies-information__exit--hover:active .js_cookies-information__exit,
+    .js_cookies-information__exit--hover:focus .js_cookies-information__exit,
+    .js_cookies-information__exit--hover-active .js_cookies-information__exit,
+    .js_cookies-information__exit--hover-active .js_cookies-information__exit,
+    .js_cookies-information__exit--hover-active .js_cookies-information__exit, .js_cookies-information__exit.is-active, .js_cookies-information__exit:hover, .js_cookies-information__exit:active, .js_cookies-information__exit:focus {
+      transform: rotate(90deg); }
     .js_cookies-information__exit:before, .js_cookies-information__exit:after {
       content: '';
-      width: 100%;
-      height: 2px;
-      background-color: #fff;
       position: absolute;
       top: 50%;
-      left: 0; }
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #fff; }
     .js_cookies-information__exit:before {
       transform: rotate(45deg); }
     .js_cookies-information__exit:after {
       transform: rotate(-45deg); }
-    .js_cookies-information__exit:hover, .js_cookies-information__exit:focus, .js_cookies-information__exit:active {
-      transform: rotate(90deg); }
   .js_cookies-information--hide {
     transform: translate(0, 100%);
     opacity: 0; }
@@ -427,29 +441,30 @@ img {
   pointer-events: none;
   user-select: none; }
 
-.page__loading, .page__overlay {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: background-color 0.2s;
-  background-color: transparent; }
-  .page__loading > *, .page__overlay > * {
-    display: none; }
-
-.js_resize .page__loading {
-  z-index: 99999;
-  background: fade(#000, 40%);
-  pointer-events: none;
-  user-select: none; }
-  .js_resize .page__loading > * {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
+.page {
+  position: relative; }
+  .page__loading, .page__overlay {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.2s;
+    background-color: transparent; }
+    .page__loading > *, .page__overlay > * {
+      display: none; }
+  .js_resize .page__loading {
+    z-index: 99999;
+    background: fade(#000, 40%);
+    pointer-events: none;
+    user-select: none; }
+    .js_resize .page__loading > * {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
 
 /*=========================================================================
 || Boxes
@@ -915,24 +930,37 @@ Style guide: Forms.input-text
   opacity: 1;
   z-index: 1; }
 
-/*=========================================================================
-|| FILE: Header
-===========================================================================
-|| Style for header
-=========================================================================*/
+/*
+Header Imports
+
+Style guide: Header.imports
+*/
+/*
+Burger Animation
+
+Transition burger plans to icon 'X'
+First and last plank - rotate
+center plank - hide
+
+Style guide: Burger.animation
+*/
+.row-header-space {
+  width: calc(100% + 25px);
+  margin-left: -25px !important;
+  margin-bottom: -20px !important; }
+  .row-header-space > *:not(.space-ignore) {
+    padding-bottom: 20px !important;
+    padding-left: 25px !important; }
+
 /**
  * Main header element style 
  * container for: navigation, brand image, etc)
  */
 .header {
-  height: inherit;
-  display: flex;
-  -webkit-backface-visibility: hidden;
+  padding: 20px 0;
   transition: height 0.2s, box-shadow 0.2s, background-color 0.2s, padding 0.2s;
   background-color: #05386b;
   /* Header sticky */ }
-  .header > .wrap {
-    display: flex; }
   .header-placeholder {
     box-sizing: content-box;
     z-index: 7000;
@@ -949,12 +977,6 @@ Style guide: Forms.input-text
     z-index: 8000;
     box-shadow: 0 10px 30px -6px fade(#000, 60%);
     background-color: #fff; }
-  .header__logo {
-    width: 50px;
-    height: 50px; }
-    .header__logo-text {
-      font-size: 18px;
-      margin-left: 10px; }
   @media screen and (max-width: 767px) {
     .header-overlay {
       background-color: rgba(0, 0, 0, 0.5);
@@ -976,8 +998,7 @@ Style guide: Forms.input-text
   width: 35px;
   height: 24px;
   position: relative;
-  /* Burger planks */
-  /* Burger hover */ }
+  /* Burger planks */ }
   @media screen and (min-width: 768px) {
     .burger-button {
       display: none; } }
@@ -997,6 +1018,18 @@ Style guide: Forms.input-text
       transform: translateY(-50%); }
     .burger-button > .plank:last-child {
       bottom: 0; }
+    .js_menu-active .burger-button > .plank:first-child {
+      top: 45%;
+      left: 0;
+      width: 100%;
+      transform: rotate(45deg); }
+    .js_menu-active .burger-button > .plank:nth-child(2) {
+      opacity: 0; }
+    .js_menu-active .burger-button > .plank:last-child {
+      top: 45%;
+      left: 0;
+      width: 100%;
+      transform: rotate(-45deg); }
 
 /**
  * Burger menu
@@ -1148,11 +1181,22 @@ Style guide: Elements.hero
 .icon {
   transition: fill 0.2s; }
 
-/*=========================================================================
-|| FILE: Index
-===========================================================================
-|| Style for most index elements
-=========================================================================*/
+/*
+Logo
+
+Style guide: Common.logo
+*/
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .logo__img {
+    width: 50px;
+    height: 50px; }
+  .logo__text {
+    margin-left: 10px;
+    font-size: 18px; }
+
 /*
 Links
 
@@ -1310,14 +1354,14 @@ Style guide: Component.Links
   // * space beetween columns
   == WARNING: row will have 'overflow: hidden'
   //=======================================================================*/ }
-  .row-space-x {
-    width: calc(100% + 10px);
-    margin-left: -10px !important; }
-    .row-space-x > *:not(.space-ignore) {
-      padding-left: 10px !important; }
-  .row-space-y {
+  .row-x-space {
+    width: calc(100% + 25px);
+    margin-left: -25px !important; }
+    .row-x-space > *:not(.space-ignore) {
+      padding-left: 25px !important; }
+  .row-y-space {
     margin-bottom: -30px !important; }
-    .row-space-y > *:not(.space-ignore) {
+    .row-y-space > *:not(.space-ignore) {
       padding-bottom: 30px !important; }
   .row-space {
     width: calc(100% + 5px);
@@ -1366,254 +1410,6 @@ Style guide: Component.Links
 .wysiwyg pre {
   font-family: monospace; }
 
-/*
-Tabs
-
-Markup:
-<div class="wrap">
- <div>content</div>
-</div>
-
-Emmet:
-.wrap
-
-Mixin:
-wrap($max-width, $paddin-x);
-
-Style guide: Elements.tabs
-*/
-.tabs__expand {
-  display: none; }
-
-.tabs__item {
-  flex: 1 1 auto;
-  padding: 20px;
-  background-color: #05386b;
-  text-align: center; }
-
-.tabs__view {
-  width: 100%; }
-
-.tabs__expand {
-  padding: 20px;
-  background-color: #00050a; }
-
-.tabs__content {
-  display: flex;
-  flex-direction: row; }
-
-.tabs--vertical {
-  flex-direction: column;
-  text-align: center; }
-
-.tabs--expand {
-  flex-direction: column;
-  text-align: center; }
-  .tabs--expand .tabs__expand {
-    display: block; }
-  .tabs--expand .tabs__view {
-    height: 0;
-    overflow: hidden; }
-
-@media screen and (min-width: 576px) {
-  .sm_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .sm_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .sm_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .sm_tabs--expand .tabs__expand {
-      display: block; }
-    .sm_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 768px) {
-  .md_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .md_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .md_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .md_tabs--expand .tabs__expand {
-      display: block; }
-    .md_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 992px) {
-  .lg_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .lg_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .lg_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .lg_tabs--expand .tabs__expand {
-      display: block; }
-    .lg_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 1200px) {
-  .xl_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .xl_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .xl_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .xl_tabs--expand .tabs__expand {
-      display: block; }
-    .xl_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 1366px) {
-  .hd_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .hd_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .hd_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .hd_tabs--expand .tabs__expand {
-      display: block; }
-    .hd_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 1440px) {
-  .whd_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .whd_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .whd_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .whd_tabs--expand .tabs__expand {
-      display: block; }
-    .whd_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-/*
-Validator
-
-Style for jQuery Validation Plugin
-
-Markup:
-<div class="wrap">
- <div>content</div>
-</div>
-
-Emmet:
-.wrap
-
-Mixin:
-wrap($max-width, $paddin-x);
-
-Style guide: JavaScript.validator
-*/
-.input-error {
-  color: #dc3545 !important;
-  border-color: #dc3545 !important;
-  /**
-      * Absolute validator information
-      - right style
-    **/
-  /**
-      * Absolute validator information
-      - left style
-    **/
-  /**
-      * Default validator information
-    **/ }
-  .input-error--absolute + *:not([class]) {
-    padding-top: 20px; }
-    @media screen and (min-width: 768px) {
-      .input-error--absolute + *:not([class]) {
-        position: absolute;
-        z-index: 20;
-        top: 50%;
-        padding-left: 10px; } }
-    .input-error--absolute + *:not([class]) label {
-      display: block;
-      position: relative;
-      padding: 6px;
-      border: 1px solid #dc3545;
-      border-radius: 4px;
-      background-color: #fff;
-      font-size: 13px;
-      text-align: center; }
-      .input-error--absolute + *:not([class]) label:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -100%); }
-  @media screen and (min-width: 768px) {
-    .input-error--right + *:not([class]) {
-      transform: translate(100%, -50%);
-      right: 0; } }
-  @media screen and (min-width: 768px) {
-    .input-error--left + *:not([class]) {
-      left: 0;
-      transform: translate(-100%, -50%);
-      padding-left: 0;
-      padding-right: 10px; } }
-  @media screen and (min-width: 768px) {
-    .input-error--left + *:not([class]) label:before {
-      top: 50%;
-      right: 0;
-      left: auto;
-      transform: translate(100%, -50%); } }
-  .input-error label.input-error {
-    text-align: center;
-    display: block;
-    padding: 6px; }
-
-/**
-  * Validator class
-  - success
-**/
-.input-success {
-  border-color: #28a745 !important;
-  color: #28a745 !important; }
-  .input-success + *:not([class]) {
-    display: none; }
-
-/*
-VH Unit 
-
-Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
-
-Mixin:
-add_vh-unit($size, $property);
-
-Mixin arguments:
-$size : number? : 100
-$property : CSSProperty? : 'height'
-
-Mixin example:
-add_vh-unit(50, 'height')
-
-Style guide: Libs.vh-unit
-*/
 /*=========================================================================
 || Plugin: wcag.less
 ===========================================================================

@@ -1,22 +1,23 @@
 .js_cookies-information {
+  @extend %scrollbar-placeholder;
+
   position: fixed;
+  z-index: index('menu') - 1;
   bottom: 0;
   left: 0;
   width: 100%;
-  transition: transform $time-transition, opacity $time-transition;
-  opacity: 1;
-  z-index: index('menu') - 1;
-  background-color: transparentize(color('primary'), 0.1);
   padding: 8px 0;
+  transition: transform $time-transition, opacity $time-transition;
   border-top: 2px solid color('primary');
-
-  @extend %scrollbar-placeholder;
+  opacity: 1;
+  background-color: transparentize(color('primary'), 0.1);
 
   &__img {
     display: none;
+
     @include media('md') {
-      position: absolute;
       display: block;
+      position: absolute;
       bottom: 0;
       left: 0;
       width: 95px;
@@ -25,47 +26,50 @@
   }
 
   &__text {
+    color: color('white');
     font-size: 14px;
     text-align: justify;
-    color: color('white');
   }
 
   &__container {
-    padding-right: 30px;
     position: relative;
+    padding-right: 30px;
+
     @include media('md') {
       padding-left: 115px;
     }
   }
 
   &__exit {
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 20px;
     height: 20px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
     transition: transform $time-transition;
+    cursor: pointer;
+
+    @include add-hover {
+      transform: rotate(90deg);
+    }
+
     &:before,
     &:after {
       content: '';
-      width: 100%;
-      height: 2px;
-      background-color: color('white');
       position: absolute;
       top: 50%;
       left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: color('white');
     }
+
     &:before {
       transform: rotate(45deg);
     }
+
     &:after {
       transform: rotate(-45deg);
-    }
-    &:hover,
-    &:focus,
-    &:active {
-      transform: rotate(90deg);
     }
   }
 

@@ -1,0 +1,29 @@
+/*
+Burger Animation
+
+Transition burger plans to icon 'X'
+First and last plank - rotate
+center plank - hide
+
+Style guide: Burger.animation
+*/
+
+@mixin burger-planks-animation {
+  &:first-child {
+    top: 45%;
+    left: 0;
+    width: 100%;
+    transform: rotate(45deg);
+  }
+
+  &:nth-child(2) {
+    opacity: 0;
+  }
+
+  &:last-child {
+    top: 45%;
+    left: 0;
+    width: 100%;
+    transform: rotate(-45deg);
+  }
+}

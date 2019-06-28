@@ -1,24 +1,28 @@
-/*=========================================================================
-|| FILE: Header
-===========================================================================
-|| Style for header
-=========================================================================*/
+/*
+Header Imports
+
+Style guide: Header.imports
+*/
+@import './plugins/burger-planks-animation';
+
+.row {
+  &-header-space {
+    @include space(25px, 20px);
+  }
+}
 
 /**
  * Main header element style 
  * container for: navigation, brand image, etc)
  */
 .header {
-  height: inherit;
-  display: flex;
-  -webkit-backface-visibility: hidden;
+  // height: inherit;
+  // display: flex;
+  // -webkit-backface-visibility: hidden;
+  padding: 20px 0;
   transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
     padding $time-transition;
   background-color: color('primary');
-
-  & > .wrap {
-    display: flex;
-  }
 
   // Placeholder for fixed header
   &-placeholder {
@@ -41,17 +45,6 @@
     z-index: index('header-sticky');
     box-shadow: 0 10px 30px -6px fade(color('black'), 60%);
     background-color: color('white');
-  }
-
-  // Logo
-  &__logo {
-    width: 50px;
-    height: 50px;
-
-    &-text {
-      font-size: 18px;
-      margin-left: 10px;
-    }
   }
 
   &-overlay {
@@ -117,15 +110,11 @@
     &:last-child {
       bottom: 0;
     }
-  }
 
-  /* Burger hover */
-  // .add-hover({
-  //     border-color: color('gray');
-  //     & > .plank {
-  //         background-color: color('gray');
-  //     }
-  // });
+    .js_menu-active & {
+      @include burger-planks-animation;
+    }
+  }
 }
 
 /**
@@ -253,8 +242,6 @@ nav.nav>a.nav__item*x
       .burger {
         &-button {
           > .plank {
-            // less/plugins/animations/burger.less
-            // .add-burger-animation();
           }
         }
       }

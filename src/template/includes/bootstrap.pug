@@ -1,6 +1,6 @@
 block variables
 <!DOCTYPE html>
-	<html class="js_no" lang=#{data.website.locale} itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#">
+	html.js_no(lang= data.website.locale itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#")
 		head
 
 			//- Base Meta
@@ -55,22 +55,9 @@ block variables
 		body#body
 
 			//- Informations: Disable javascripts
-			if data.info.offJavascript
-				noscript
-					.info-no-script
-						.info-no-script__content
-							p.info-no-script__header.
-								Przeglądarka zablokowała wykonywanie kodu <strong>JavaScript</strong>.
-							p.info-no-script__text.
-								Do pełnej funkcjonalności strony potrzebujesz włączonej obsługi skryptów. <a class="underline" href="https://www.enable-javascript.com/pl/" rel="nofollow" target="_blank">Tu znajdziesz instrukcje</a>, które pozwolą Ci włączyć skrypty w Twojej przeglądarce.
-			
+			include info-off-javascript.pug
 			//- Informations: Using old browser
-			if data.info.oldBrowser
-				<!--[if lte IE 9]>
-					.info-old-browser
-						p
-							| Korzystasz z <strong>przestarzałej</strong> przeglądarki. Proszę <a class="underline" ref="nofollow" target="_blank" href="http://browsehappy.com/">uaktualnij ją</a>.
-				<![endif]-->
+			include info-old-browser.pug
 
 			//- Main content
 			block content

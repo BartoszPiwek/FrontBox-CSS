@@ -72,6 +72,8 @@ img {
 
 // Global Overlay
 .page {
+  position: relative;
+
   &__loading,
   &__overlay {
     position: fixed;

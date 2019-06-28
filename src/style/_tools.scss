@@ -35,10 +35,10 @@
   // * space beetween columns
   == WARNING: row will have 'overflow: hidden'
   //=======================================================================*/
-  &-space-x {
-    @include space-x(10px);
+  &-x-space {
+    @include space-x(25px);
   }
-  &-space-y {
+  &-y-space {
     @include space-y(30px);
   }
   &-space {

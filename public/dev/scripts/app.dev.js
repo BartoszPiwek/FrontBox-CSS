@@ -1825,7 +1825,7 @@ window.onload = function () {
     // CSS Custom Properties 
     cssVars({
         variables: {
-            scrollbarWidth: browser_1.getScrollbarWidth() + 'px'
+            scrollbarWidth: browser.scrollbarWidth
         },
     });
     /* Inform stylesheed to remove style fallback for JavaScript elements */
@@ -1836,11 +1836,6 @@ window.onload = function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
 var css_1 = require("./css");
-function getScrollbarWidth() {
-    var scrollbar = document.getElementById('js_check-scrollbar').offsetWidth, scrollbarContent = document.getElementById('js_check-scrollbar__content').clientWidth;
-    return scrollbar - scrollbarContent;
-}
-exports.getScrollbarWidth = getScrollbarWidth;
 function isScrollbar() {
     return window.innerWidth != document.documentElement.clientWidth;
 }
@@ -1882,10 +1877,16 @@ var Browser = /** @class */ (function () {
             responsive: this.responsive,
             orientation: this.orientation,
             portable: this.portable,
+            scrollbarWidth: this.scrollbarWidth,
         });
         /* end-test-code */
     }
     ;
+    Browser.prototype.getScrollbarWidth = function () {
+        var $scrollbar = document.getElementById('js_check-scrollbar'), $content = $scrollbar.children.item(0);
+        $scrollbar.parentNode.removeChild($scrollbar);
+        return $scrollbar.offsetWidth - $content.clientWidth;
+    };
     /* Determine the mobile operating system */
     Browser.prototype.getMobileOperatingSystem = function () {
         var userAgent = navigator.userAgent || navigator.vendor;
@@ -1914,6 +1915,7 @@ var Browser = /** @class */ (function () {
         this.width = width;
         this.height = height;
         this.responsive = this.getResponsive();
+        this.scrollbarWidth = this.getScrollbarWidth();
         /**
          * Don't refresh page if user change tab
          * @browser Opera

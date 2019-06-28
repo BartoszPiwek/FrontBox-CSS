@@ -83,8 +83,10 @@ Style guide: Grid.row
       max-width: 100%;
       height: auto !important;
       min-height: 1px;
+    }
 
-      > * {
+    &.row-same {
+      * > * {
         flex: 1 1 auto;
       }
     }

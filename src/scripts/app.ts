@@ -1,5 +1,5 @@
 import { html } from "./bootstrap/elements";
-import { Browser, getScrollbarWidth } from "./bootstrap/browser";
+import { Browser } from "./bootstrap/browser";
 import { InformationCookie } from "./bootstrap/cookie";
 import { InputCounter } from "./bootstrap/input-counter";
 import { Resize } from "./bootstrap/resize";
@@ -41,7 +41,7 @@ window.onload = () => {
 	// CSS Custom Properties 
 	cssVars({
 		variables: {
-			scrollbarWidth: getScrollbarWidth() + 'px'
+			scrollbarWidth: browser.scrollbarWidth
 		},
 	})
 

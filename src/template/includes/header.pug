@@ -1,0 +1,28 @@
+header#header.header
+	.header__content
+		.wrap.wrap-navbar
+			.row.row-header-space.flex-space-between
+
+				//- Left
+				.col-shrink.col-y-center
+					a.logo(href="/")
+						img.logo__img(src="/images/logo.png", alt="FrontBox-CSS Logo")
+						span.logo__text
+							| FrontBox-CSS Starter Site
+
+				//- Right
+				.col-shrink.col-y-center
+					//- Burger button
+					#burger-button.burger-button
+						.plank
+						.plank
+						.plank
+					//- Burger menu container
+					#burger-menu.burger-menu
+						#burger-menu-container.burger-menu__container.flex-y-center
+							include nav-main 
+
+	//- Placeholder
+	#header-placeholder.header__placeholder
+	//- Overlay
+	#header-overlay.header__overlay.overlay
