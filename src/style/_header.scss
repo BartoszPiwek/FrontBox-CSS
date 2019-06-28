@@ -1,9 +1,24 @@
 /*
-Header Imports
+Imports
+
+Burger planks animation
+
+Markup:
+.burger-button>.plank>.plank>.plank
+.js_menu-active>.burger-button>.plank>.plank>.plank
 
 Style guide: Header.imports
 */
+
 @import './plugins/burger-planks-animation';
+
+/*
+Tools
+
+Contains: row
+
+Style guide: Header.tools
+*/
 
 .row {
   &-header-space {
@@ -234,58 +249,3 @@ nav.nav>a.nav__item*x
     }
   }
 }
-
-// Activated burger menu
-@include media-special('burger-show') {
-  html {
-    &.js_menu-active {
-      .burger {
-        &-button {
-          > .plank {
-          }
-        }
-      }
-    }
-  }
-}
-
-// /* Default header height */
-// .header-placeholder {
-
-//     each(@headerHeight, {
-
-//         & when (@key = mobile) {
-//             height: ~"@{value}px";
-//         }
-
-//         & when not (@key = mobile) {
-//             @mediaBreakpoint: @responsive[@@key][@string][default];
-//             @media @mediaBreakpoint {
-//               height: ~"@{value}px";
-//             }
-//         }
-
-//     });
-// }
-
-// /* Header height when is sticky */
-// html.js_sticky-header .header {
-//     right: 0;
-//     top: 0;
-//     width: 100%;
-
-//   each(@headerHeightSticky, {
-
-//     & when (@key = mobile) {
-//         height: ~"@{value}px";
-//     }
-
-//     & when not (@key = mobile) {
-//         @mediaBreakpoint: @responsive[@@key][@string][default];
-//         @media @mediaBreakpoint {
-//             height: ~"@{value}px";
-//         }
-//     }
-
-//   });
-// }
