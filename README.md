@@ -11,8 +11,6 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
   <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/">Productive</a>
 </p>
 
-<br>
-
 ## Table of contents
 
 - [Information](#information)
@@ -21,8 +19,6 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 - [Projekt Tree](#projekt-tree)
 - [Testing Tools](#testing-tools)
 - [Bugs](#bugs)
-
-<br>
 
 ## Information
 
