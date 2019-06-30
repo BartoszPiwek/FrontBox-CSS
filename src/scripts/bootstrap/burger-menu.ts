@@ -4,7 +4,8 @@ import { ScrollLock } from "./scroll-lock";
 interface IBurgerMenu {
 	$burger: HTMLElement
 	$overlay: HTMLElement
-	cssClassActive: string
+	$container: HTMLElement
+	cssClassActive?: string
 	scrollLock: ScrollLock
 }
 
@@ -20,17 +21,22 @@ interface IBurgerMenu {
 export class BurgerMenu {
 
 	scrollLock: ScrollLock;
-	$button: HTMLElement;
-	$overlay: HTMLElement;
-	active: boolean = false;
-	moving: boolean = false;
-	expandTime: number = 200;
-	cssClassActive: string;
+	$button: HTMLElement
+	$overlay: HTMLElement
+	$container: HTMLElement
+	active: boolean = false
+	moving: boolean = false
+	expandTime: number = 200
+	cssClassActive: string = 'js_burger-active';
 
 	constructor(param: IBurgerMenu) {
 		this.$button = param.$burger;
+		this.$container = param.$container;
 		this.cssClassActive = param.cssClassActive;
 		this.scrollLock = param.scrollLock;
+		if (param.cssClassActive) {
+			this.cssClassActive = param.cssClassActive;
+		}
 		if (param.$overlay) {
 			this.$overlay = param.$overlay;
 		}
@@ -73,7 +79,7 @@ export class BurgerMenu {
 		}
 		this.moving = true;
 		this.scrollLock.change();
-		html.classList.toggle(this.cssClassActive);
+		this.$container.classList.toggle(this.cssClassActive);
 
 		window.setTimeout(() => {
 			this.moving = false;

@@ -19,8 +19,9 @@ window.onload = () => {
 	new BurgerMenu({
 		scrollLock: scrollLock,
 		$burger: document.getElementById('burger-button'),
+		$container: document.getElementById('header'),
 		$overlay: document.getElementById('header-overlay'),
-		cssClassActive: 'js_menu-active',
+		cssClassActive: 'js_burger-active',
 	});
 
 	/* Forms */

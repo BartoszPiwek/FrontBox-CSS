@@ -958,7 +958,7 @@ Burger planks animation
 
 Markup:
 .burger-button>.plank>.plank>.plank
-.js_menu-active>.burger-button>.plank>.plank>.plank
+.js_burger-active>.burger-button>.plank>.plank>.plank
 
 Style guide: Header.imports
 */
@@ -985,6 +985,10 @@ Style guide: Header.tools
   .row-header-space > *:not(.space-ignore) {
     padding-bottom: 20px !important;
     padding-left: 25px !important; }
+
+.js_burger-active .header__overlay {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6); }
 
 /**
  * Main header element style 
@@ -1017,7 +1021,7 @@ Style guide: Header.tools
       transition: opacity 0.2s z-index, 0.2s 0.2s;
       opacity: 0;
       z-index: -1; }
-      .js_menu-active .header-overlay {
+      .js_burger-active .header-overlay {
         z-index: 6999;
         opacity: 1;
         transition: opacity 0.2s, z-index 0.2s; } }
@@ -1053,21 +1057,21 @@ Style guide: Header.tools
   .burger-button--hover-active .burger-button .plank, .burger-button.is-active .plank, .burger-button:hover .plank, .burger-button:active .plank, .burger-button:focus .plank {
     background-color: #379683; }
   .burger-button .plank {
-    transition: margin-top 0.2s 0.2s, transform 0.2s, opacity 0.2s;
+    transition: margin-top 0.1s 0.1s, transform 0.2s, opacity 0.2s;
     display: inline-block;
     position: absolute;
     width: 100%;
     height: 4px;
     border-radius: 10px;
     background-color: #90938f; }
-    .js_menu-active .burger-button .plank {
+    .js_burger-active .burger-button .plank {
       margin-top: calc(50% - 5px) !important;
-      transition: margin-top 0.2s, transform 0.2s 0.2s, opacity 0.2s; }
-      .js_menu-active .burger-button .plank:first-child {
+      transition: margin-top 0.2s, transform 0.1s 0.1s, opacity 0.2s; }
+      .js_burger-active .burger-button .plank:first-child {
         transform: rotate(45deg); }
-      .js_menu-active .burger-button .plank:last-child {
+      .js_burger-active .burger-button .plank:last-child {
         transform: rotate(-45deg); }
-      .js_menu-active .burger-button .plank:nth-child(2) {
+      .js_burger-active .burger-button .plank:nth-child(2) {
         opacity: 0; }
     .burger-button .plank:first-child {
       margin-top: 0; }
@@ -1101,7 +1105,7 @@ Style guide: Header.tools
         margin-bottom: 0; }
     .burger-menu__container {
       width: 100%; }
-    .js_menu-active .burger-menu {
+    .js_burger-active .burger-menu {
       transform: translateX(0);
       box-shadow: -6px 0 10px rgba(0, 0, 0, 0.4); } }
 

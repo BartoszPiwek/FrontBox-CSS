@@ -1807,8 +1807,9 @@ window.onload = function () {
     new burger_menu_1.BurgerMenu({
         scrollLock: scrollLock,
         $burger: document.getElementById('burger-button'),
+        $container: document.getElementById('header'),
         $overlay: document.getElementById('header-overlay'),
-        cssClassActive: 'js_menu-active',
+        cssClassActive: 'js_burger-active',
     });
     /* Forms */
     new input_counter_1.InputCounter({
@@ -1948,7 +1949,6 @@ exports.Browser = Browser;
 },{"./css":8,"./elements":9}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("./elements");
 /**
  * Toggle burger menu with overlay
  *
@@ -1962,9 +1962,14 @@ var BurgerMenu = /** @class */ (function () {
         this.active = false;
         this.moving = false;
         this.expandTime = 200;
+        this.cssClassActive = 'js_burger-active';
         this.$button = param.$burger;
+        this.$container = param.$container;
         this.cssClassActive = param.cssClassActive;
         this.scrollLock = param.scrollLock;
+        if (param.cssClassActive) {
+            this.cssClassActive = param.cssClassActive;
+        }
         if (param.$overlay) {
             this.$overlay = param.$overlay;
         }
@@ -2001,7 +2006,7 @@ var BurgerMenu = /** @class */ (function () {
         }
         this.moving = true;
         this.scrollLock.change();
-        elements_1.html.classList.toggle(this.cssClassActive);
+        this.$container.classList.toggle(this.cssClassActive);
         window.setTimeout(function () {
             _this.moving = false;
         }, this.expandTime);
@@ -2013,7 +2018,7 @@ exports.BurgerMenu = BurgerMenu;
  * Changelog
  * 26.06.2019 Add
  */
-},{"./elements":9}],7:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**

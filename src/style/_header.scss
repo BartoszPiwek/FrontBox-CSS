@@ -5,7 +5,7 @@ Burger planks animation
 
 Markup:
 .burger-button>.plank>.plank>.plank
-.js_menu-active>.burger-button>.plank>.plank>.plank
+.js_burger-active>.burger-button>.plank>.plank>.plank
 
 Style guide: Header.imports
 */
@@ -23,6 +23,15 @@ Style guide: Header.tools
 .row {
   &-header-space {
     @include space(25px, 20px);
+  }
+}
+
+.header {
+  &__overlay {
+    .js_burger-active & {
+      z-index: 1;
+      background-color: transparentize(color('black'), 0.4);
+    }
   }
 }
 
@@ -69,7 +78,7 @@ Style guide: Header.tools
       opacity: 0;
       z-index: -1;
 
-      .js_menu-active & {
+      .js_burger-active & {
         z-index: index('menu') - 1;
         opacity: 1;
         transition: opacity $time-transition, z-index $time-transition;
@@ -154,7 +163,7 @@ Style guide: Header.tools
       width: 100%;
     }
 
-    .js_menu-active & {
+    .js_burger-active & {
       transform: translateX(0);
       box-shadow: -6px 0 10px transparentize(color('black'), 0.6);
     }

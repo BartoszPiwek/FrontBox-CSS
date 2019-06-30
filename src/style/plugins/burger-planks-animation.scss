@@ -9,11 +9,12 @@ Style guide: Burger.animation
 */
 
 @mixin burger-planks-animation {
-  transition: margin-top $time-transition $time-transition, transform $time-transition, opacity $time-transition;
+  transition: margin-top $time-transition / 2 $time-transition / 2, transform $time-transition, opacity $time-transition;
 
-  .js_menu-active & {
+  .js_burger-active & {
     margin-top: calc(50% - 5px) !important;
-    transition: margin-top $time-transition, transform $time-transition $time-transition, opacity $time-transition;
+    transition: margin-top $time-transition, transform $time-transition / 2 $time-transition / 2,
+      opacity $time-transition;
 
     &:first-child {
       transform: rotate(45deg);
