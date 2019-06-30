@@ -141,17 +141,16 @@ Style guide: Header.tools
     @include vh;
     display: flex;
     z-index: index('menu');
-    box-sizing: content-box;
-    transition: transform $time-transition;
-    text-align: center;
-    right: 0;
     top: 0;
-    padding-top: 70px;
+    right: 0;
     width: 100%;
     max-width: 300px;
-    background-color: color('primary');
+    padding-top: 70px;
     overflow: hidden;
     transform: translateX(100%);
+    transition: transform $time-transition;
+    background-color: color('primary');
+    text-align: center;
 
     & > &__item {
       margin-bottom: 20px;
@@ -172,16 +171,11 @@ Style guide: Header.tools
   }
 
   @include media-special('burger-hide') {
-    transition: height 0s ease 0s;
-    box-sizing: border-box;
     display: flex !important;
     position: static;
-    transform: none;
     overflow: unset;
-
-    &__container {
-      display: flex;
-    }
+    transform: none;
+    transition: height 0s ease 0s;
   }
 }
 

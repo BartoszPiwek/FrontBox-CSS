@@ -1090,17 +1090,16 @@ Style guide: Header.tools
     height: calc(100vh - var(--vh-offset, 0px));
     display: flex;
     z-index: 7000;
-    box-sizing: content-box;
-    transition: transform 0.2s;
-    text-align: center;
-    right: 0;
     top: 0;
-    padding-top: 70px;
+    right: 0;
     width: 100%;
     max-width: 300px;
-    background-color: #05386b;
+    padding-top: 70px;
     overflow: hidden;
-    transform: translateX(100%); }
+    transform: translateX(100%);
+    transition: transform 0.2s;
+    background-color: #05386b;
+    text-align: center; }
     .burger-menu > .burger-menu__item {
       margin-bottom: 20px; }
       .burger-menu > .burger-menu__item:last-child {
@@ -1113,14 +1112,11 @@ Style guide: Header.tools
 
 @media screen and (min-width: 768px) {
   .burger-menu {
-    transition: height 0s ease 0s;
-    box-sizing: border-box;
     display: flex !important;
     position: static;
+    overflow: unset;
     transform: none;
-    overflow: unset; }
-    .burger-menu__container {
-      display: flex; } }
+    transition: height 0s ease 0s; } }
 
 /*
 || Navigation
