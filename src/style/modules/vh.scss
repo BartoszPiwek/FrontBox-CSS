@@ -1,0 +1,4 @@
+@mixin vh($properties: 'height', $value: 100vh) {
+  #{$properties}: #{$value};
+  #{$properties}: calc(#{$value} - var(--vh-offset, 0px));
+}
