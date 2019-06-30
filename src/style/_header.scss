@@ -29,8 +29,10 @@ Style guide: Header.tools
 .header {
   &__overlay {
     .js_burger-active & {
-      z-index: 1;
-      background-color: transparentize(color('black'), 0.4);
+      @include media-special('burger-show') {
+        z-index: 1;
+        background-color: transparentize(color('black'), 0.4);
+      }
     }
   }
 }
