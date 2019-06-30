@@ -167,25 +167,25 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 ## Projekt Tree
 
 <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
-├─── public/                              | Output generated website folder
+└─── public/                              | Output generated website folder
     ├─── prod/
     └─── dev/
-├─── src/
+└─── src/
     ├─── audio/
     ├─── fonts/
-    ├─── images/
+    └─── images/
         ├─── favicon/                     | Generated favicons folder
         ├─── svg/                         | SVG files folder
         ├─── cookies.png                  | Cookies image for TS Class InformationCookie
-        ├─── favicon.png                  | Favicon image for Gulp <a href="https://github.com/RealFaviconGenerator/gulp-real-favicon">gulp-real-favicon</a>
+        └─── favicon.png                  | Favicon image for Gulp <a href="https://github.com/RealFaviconGenerator/gulp-real-favicon">gulp-real-favicon</a>
         ├─── logo.png                     | Site logo image
-        ├─── placeholder.png              | Placeholder image for Plugin <a href="https://github.com/verlok/lazyload">vanilla-lazyload</a>
-    ├─── scripts/
+        └─── placeholder.png              | Placeholder image for Plugin <a href="https://github.com/verlok/lazyload">vanilla-lazyload</a>
+    └─── scripts/
         ├─── bootstrap/                   | FrontBox modules folder
         ├─── plugins/                     | Custom js/ts plugins folder
         ├─── app.ts                       | Main script file
-        ├─── <i>other TS/JS files</i>
-    ├─── style/
+        └─── <i>other TS/JS files</i>
+    └─── style/
         ├─── bootstrap/                   | FrontBox style folder
         ├─── modules/                     | Addon functions & style folder
         ├─── plugins/                     | Custom plugins style folder
@@ -194,13 +194,13 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
         ├─── style.scss                   | Page style concat
         ├─── grid.scss                    | Grid style concat
         ├─── utilities.scss               | Utilities style concat
-        ├─── <i>other SCSS files</i>
-    ├─── template/
+        └─── <i>other SCSS files</i>
+    └─── template/
         ├─── includes/                    | Pug includes folder
         ├─── partials/                    | Separated Pug code
-        ├─── <i>other PUG files</i>
-    ├─── video/
-├─── config.js                            | Main tasks config
+        └─── <i>other PUG files</i>
+    └─── video/
+└─── config.js                            | Main tasks config
 </pre>
 
 <br>

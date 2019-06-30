@@ -66,24 +66,24 @@ Style guide: Header.tools
   /* Header sticky */
   .js_sticky-header & {
     position: fixed;
+    z-index: index('header-sticky');
     top: 0;
     left: 0;
-    z-index: index('header-sticky');
-    box-shadow: 0 10px 30px -6px fade(color('black'), 60%);
     background-color: color('white');
+    box-shadow: 0 10px 30px -6px fade(color('black'), 60%);
   }
 
   &-overlay {
     @include media-special('burger-show') {
-      background-color: transparentize(color('black'), 0.5);
+      z-index: -1;
       transition: opacity $time-transition z-index, $time-transition $time-transition;
       opacity: 0;
-      z-index: -1;
+      background-color: transparentize(color('black'), 0.5);
 
       .js_burger-active & {
         z-index: index('menu') - 1;
-        opacity: 1;
         transition: opacity $time-transition, z-index $time-transition;
+        opacity: 1;
       }
     }
   }
