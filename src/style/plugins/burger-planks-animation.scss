@@ -9,21 +9,22 @@ Style guide: Burger.animation
 */
 
 @mixin burger-planks-animation {
-  &:first-child {
-    top: 45%;
-    left: 0;
-    width: 100%;
-    transform: rotate(45deg);
-  }
+  transition: margin-top $time-transition $time-transition, transform $time-transition, opacity $time-transition;
 
-  &:nth-child(2) {
-    opacity: 0;
-  }
+  .js_menu-active & {
+    margin-top: calc(50% - 5px) !important;
+    transition: margin-top $time-transition, transform $time-transition $time-transition, opacity $time-transition;
 
-  &:last-child {
-    top: 45%;
-    left: 0;
-    width: 100%;
-    transform: rotate(-45deg);
+    &:first-child {
+      transform: rotate(45deg);
+    }
+
+    &:last-child {
+      transform: rotate(-45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
   }
 }

@@ -15,6 +15,27 @@ cleartfix;
 Style guide: Functions.clearfix
 */
 /*
+Click Placeholder
+
+Create :before placeholder element to expand click space.
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Mixin:
+add-click-placeholder($space);
+
+Mixin arguments:
+$space 		: numberPixel? : 5px
+
+Changelog:
+30.06.2019 - Init
+
+Style guide: Functions.click placeholder
+*/
+/*
 Disable
 
 Set style for disabled elements
@@ -1001,57 +1022,69 @@ Style guide: Header.tools
         opacity: 1;
         transition: opacity 0.2s, z-index 0.2s; } }
 
-/**
- * Burger button
- */
 .burger-button {
-  cursor: pointer;
-  pointer-events: all;
-  z-index: 8001;
-  width: 35px;
-  height: 24px;
   position: relative;
-  /* Burger planks */ }
+  z-index: 0;
+  position: relative;
+  z-index: 8001;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  pointer-events: all; }
+  .burger-button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    transform: translate(-50%, -50%);
+    cursor: pointer; }
   @media screen and (min-width: 768px) {
     .burger-button {
       display: none; } }
-  .burger-button > .plank {
+  .burger-button--hover:hover .burger-button .plank,
+  .burger-button--hover:active .burger-button .plank,
+  .burger-button--hover:focus .burger-button .plank,
+  .burger-button--hover-active .burger-button .plank,
+  .burger-button--hover-active .burger-button .plank,
+  .burger-button--hover-active .burger-button .plank, .burger-button.is-active .plank, .burger-button:hover .plank, .burger-button:active .plank, .burger-button:focus .plank {
+    background-color: #379683; }
+  .burger-button .plank {
+    transition: margin-top 0.2s 0.2s, transform 0.2s, opacity 0.2s;
     display: inline-block;
     position: absolute;
-    left: 10%;
-    width: 80%;
+    width: 100%;
     height: 4px;
-    transition: all 0.2s;
-    background-color: #90938f;
-    border-radius: 10px; }
-    .burger-button > .plank:first-child {
-      top: 0; }
-    .burger-button > .plank:nth-child(2) {
-      top: 50%;
-      transform: translateY(-50%); }
-    .burger-button > .plank:last-child {
-      bottom: 0; }
-    .js_menu-active .burger-button > .plank:first-child {
-      top: 45%;
-      left: 0;
-      width: 100%;
-      transform: rotate(45deg); }
-    .js_menu-active .burger-button > .plank:nth-child(2) {
-      opacity: 0; }
-    .js_menu-active .burger-button > .plank:last-child {
-      top: 45%;
-      left: 0;
-      width: 100%;
-      transform: rotate(-45deg); }
+    border-radius: 10px;
+    background-color: #90938f; }
+    .js_menu-active .burger-button .plank {
+      margin-top: calc(50% - 5px) !important;
+      transition: margin-top 0.2s, transform 0.2s 0.2s, opacity 0.2s; }
+      .js_menu-active .burger-button .plank:first-child {
+        transform: rotate(45deg); }
+      .js_menu-active .burger-button .plank:last-child {
+        transform: rotate(-45deg); }
+      .js_menu-active .burger-button .plank:nth-child(2) {
+        opacity: 0; }
+    .burger-button .plank:first-child {
+      margin-top: 0; }
+    .burger-button .plank:nth-child(2) {
+      margin-top: calc(50% - 5px); }
+    .burger-button .plank:last-child {
+      margin-top: calc(100% - 10px); }
 
 /**
  * Burger menu
  */
 @media screen and (max-width: 767px) {
   .burger-menu {
-    overflow: hidden;
     display: flex;
+    z-index: 7000;
     box-sizing: content-box;
+    transition: transform 0.2s;
     text-align: center;
     right: 0;
     top: 0;
@@ -1060,9 +1093,8 @@ Style guide: Header.tools
     height: 100vh;
     max-width: 300px;
     background-color: #05386b;
-    z-index: 7000;
-    transform: translateX(100%);
-    transition: transform 0.2s; }
+    overflow: hidden;
+    transform: translateX(100%); }
     .burger-menu > .burger-menu__item {
       margin-bottom: 20px; }
       .burger-menu > .burger-menu__item:last-child {
