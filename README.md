@@ -173,7 +173,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
         ├─── favicon/                     | Generated favicons folder
         ├─── svg/                         | SVG files folder
         ├─── cookies.png                  | Cookies image for TS Class InformationCookie
-        └─── favicon.png                  | Favicon image for Gulp <a href="https://github.com/RealFaviconGenerator/gulp-real-favicon">gulp-real-favicon</a>
+        ├─── favicon.png                  | Favicon image for Gulp <a href="https://github.com/RealFaviconGenerator/gulp-real-favicon">gulp-real-favicon</a>
         ├─── logo.png                     | Site logo image
         └─── placeholder.png              | Placeholder image for Plugin <a href="https://github.com/verlok/lazyload">vanilla-lazyload</a>
     └─── scripts/
