@@ -23,7 +23,6 @@ Style guide: Functions.clearfix
 */
 
 @mixin scrollbar($size: '10px', $color-background: color('black'), $color-thumb: color('primary')) {
-  scrollbar-width: thin;
   &::-webkit-scrollbar {
     width: $size;
     height: $size;

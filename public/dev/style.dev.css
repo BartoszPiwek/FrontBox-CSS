@@ -420,23 +420,22 @@ body {
     body {
       min-height: 100vh; } }
 
-.scrollbar,
-body {
-  scrollbar-width: thin; }
-  .scrollbar::-webkit-scrollbar,
-  body::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-    background-color: #379683;
-    -webkit-appearance: none; }
-  .scrollbar::-webkit-scrollbar-thumb,
-  body::-webkit-scrollbar-thumb {
-    min-width: 5px;
-    max-height: 5px;
-    background-color: #05386b; }
-  .scrollbar::-webkit-scrollbar-track,
-  body::-webkit-scrollbar-track {
-    display: none; }
+.scrollbar::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #379683;
+  -webkit-appearance: none; }
+
+.scrollbar::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  min-width: 5px;
+  max-height: 5px;
+  background-color: #05386b; }
+
+.scrollbar::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  display: none; }
 
 svg,
 .icon {
