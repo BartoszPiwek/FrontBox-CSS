@@ -53,7 +53,7 @@ Style guide: Header.tools
     box-shadow: 0 5px 10px 0 transparentize(color('black'), 1);
 
     @include add-style-sticky {
-      position: fixed;
+      @extend %fix-fixed;
       padding: 10px 0;
       box-shadow: 0 5px 10px 0 transparentize(color('black'), 0.4);
     }
@@ -116,7 +116,7 @@ Style guide: Header.tools
  * Burger menu
  */
 .burger-menu {
-  @extend %fix_fixed;
+  @extend %fix-fixed;
 
   @include media-special('burger-show') {
     @include vh;

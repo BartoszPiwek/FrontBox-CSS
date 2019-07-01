@@ -6,7 +6,7 @@ Change to position fixed on iOS Safari while scrolling
 Style guide: Fix.fixed
 */
 
-%fix_fixed {
+@mixin fix-fixed {
   position: fixed;
   -webkit-transform: translateZ(0);
   transform: translate3d(0, 0, 0);
@@ -15,4 +15,8 @@ Style guide: Fix.fixed
   -webkit-perspective: 1000;
   transform: translateZ(0);
   perspective: 1000;
+}
+
+%fix-fixed {
+  @include fix-fixed;
 }

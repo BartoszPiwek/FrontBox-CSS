@@ -47,7 +47,7 @@ Change to position fixed on iOS Safari while scrolling
 
 Style guide: Fix.fixed
 */
-.burger-menu {
+.js_sticky .header__content, .burger-menu {
   position: fixed;
   -webkit-transform: translateZ(0);
   transform: translate3d(0, 0, 0);
@@ -1024,7 +1024,6 @@ Style guide: Header.tools
     background-color: #05386b;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0); }
     .js_sticky .header__content {
-      position: fixed;
       padding: 10px 0;
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6); }
   @media screen and (max-width: 767px) {
@@ -1279,8 +1278,8 @@ Style guide: Component.Links
   z-index: -1;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none; }
   .overlay--default:before {
     display: block;
