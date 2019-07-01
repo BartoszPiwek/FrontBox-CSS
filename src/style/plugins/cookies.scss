@@ -21,8 +21,8 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 95px;
-      height: auto;
+      width: 65px;
+      height: 67px;
     }
   }
 
@@ -34,10 +34,10 @@
 
   &__container {
     position: relative;
-    padding-right: 30px;
+    padding-right: 40px;
 
     @include media('md') {
-      padding-left: 115px;
+      padding-left: 80px;
     }
   }
 
