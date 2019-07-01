@@ -32,6 +32,7 @@ Style guide: Header.tools
       @include media-special('burger-show') {
         z-index: 1;
         background-color: transparentize(color('black'), 0.4);
+        pointer-events: all;
       }
     }
   }
