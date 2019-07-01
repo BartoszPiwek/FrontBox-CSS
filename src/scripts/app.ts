@@ -5,6 +5,7 @@ import { InputCounter } from "./bootstrap/input-counter";
 import { Resize } from "./bootstrap/resize";
 import { ScrollLock } from "./bootstrap/scroll-lock";
 import { BurgerMenu } from "./bootstrap/burger-menu";
+import { ElementPlaceholder } from "./bootstrap/element-placeholder";
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 const cssVars = require('css-vars-ponyfill') // CSS custom properties support
@@ -44,7 +45,10 @@ window.onload = () => {
 		variables: {
 			scrollbarWidth: `${browser.scrollbarWidth}px`
 		},
-	})
+	});
+
+	// const placeholder = new ElementPlaceholder();
+	// placeholder.create(document.getElementById('header'));
 
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');

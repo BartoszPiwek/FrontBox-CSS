@@ -6,10 +6,9 @@
  * @require
  * JavaScript Cookie - https://github.com/js-cookie/js-cookie
  *
- * 21.05.2019 Convert jQuery code to vanilla JS
  */
-import * as Cookies from 'js-cookie';
 
+import * as Cookies from 'js-cookie';
 import { body } from './elements';
 
 interface InformationCookieData {
@@ -103,3 +102,8 @@ export class InformationCookie {
 		return false;
 	}
 }
+
+/**
+ * Changelog
+ * 21.05.2019 Convert jQuery code to vanilla JS
+ */

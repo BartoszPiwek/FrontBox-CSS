@@ -37,18 +37,17 @@ Style guide: Header.tools
   }
 }
 
-/**
- * Main header element style 
- * container for: navigation, brand image, etc)
- */
 .header {
-  // height: inherit;
-  // display: flex;
-  // -webkit-backface-visibility: hidden;
-  padding: 20px 0;
-  transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
-    padding $time-transition;
-  background-color: color('primary');
+  position: relative;
+
+  // Placeholder size
+  height: 90px;
+  @include media('md') {
+    height: 90px;
+  }
+  @include media('lg') {
+    height: 90px;
+  }
 
   // Placeholder for fixed header
   &-placeholder {
@@ -60,6 +59,17 @@ Style guide: Header.tools
     top: 0;
     left: 0;
     width: 100%;
+    background-color: color('primary');
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
+      padding $time-transition;
     background-color: color('primary');
   }
 

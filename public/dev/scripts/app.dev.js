@@ -1829,6 +1829,8 @@ window.onload = function () {
             scrollbarWidth: browser.scrollbarWidth + "px"
         },
     });
+    // const placeholder = new ElementPlaceholder();
+    // placeholder.create(document.getElementById('header'));
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
@@ -2020,7 +2022,6 @@ exports.BurgerMenu = BurgerMenu;
  */
 },{}],7:[function(require,module,exports){
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Inform users that your site uses cookies
  *
@@ -2029,8 +2030,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @require
  * JavaScript Cookie - https://github.com/js-cookie/js-cookie
  *
- * 21.05.2019 Convert jQuery code to vanilla JS
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 var Cookies = require("js-cookie");
 var elements_1 = require("./elements");
 var InformationCookie = /** @class */ (function () {
@@ -2102,6 +2103,10 @@ var InformationCookie = /** @class */ (function () {
     return InformationCookie;
 }());
 exports.InformationCookie = InformationCookie;
+/**
+ * Changelog
+ * 21.05.2019 Convert jQuery code to vanilla JS
+ */
 },{"./elements":9,"js-cookie":2}],8:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
