@@ -330,7 +330,8 @@ Style guide: Burger.animation
   transition: transform 0.2s, opacity 0.2s;
   border-top: 2px solid #05386b;
   opacity: 1;
-  background-color: rgba(5, 56, 107, 0.9); }
+  background-color: rgba(5, 56, 107, 0.9);
+  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.6); }
   .js_cookies-information__img {
     display: none; }
     @media screen and (min-width: 768px) {
@@ -993,8 +994,7 @@ Style guide: Header.tools
 
 .header {
   position: relative;
-  height: 90px;
-  /* Header sticky */ }
+  height: 90px; }
   @media screen and (min-width: 768px) {
     .header {
       height: 90px; } }
@@ -1018,31 +1018,18 @@ Style guide: Header.tools
     width: 100%;
     padding: 20px 0;
     transition: height 0.2s, box-shadow 0.2s, background-color 0.2s, padding 0.2s;
-    background-color: #05386b; }
+    background-color: #05386b;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0); }
     .js_sticky .header__content {
       position: fixed;
-      padding: 10px 0; }
-  .js_sticky-header .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 10px 30px -6px fade(#000, 60%); }
-  @media screen and (max-width: 767px) {
-    .header-overlay {
-      z-index: -1;
-      transition: opacity 0.2s z-index, 0.2s 0.2s;
-      opacity: 0;
-      background-color: rgba(0, 0, 0, 0.5); }
-      .js_burger-active .header-overlay {
-        z-index: 6999;
-        transition: opacity 0.2s, z-index 0.2s;
-        opacity: 1; } }
+      padding: 10px 0;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6); }
 
 .burger-button {
   position: relative;
   z-index: 0;
   position: relative;
+  z-index: 8001;
   width: 30px;
   height: 24px;
   cursor: pointer;

@@ -28,7 +28,7 @@ Style guide: Header.tools
 
 .header {
   &__overlay {
-    .js_burger-active & {
+    @include add-style-burger-active {
       @include media-special('burger-show') {
         z-index: 1;
         background-color: transparentize(color('black'), 0.4);
@@ -56,7 +56,6 @@ Style guide: Header.tools
     z-index: index('menu');
     transition: background-color $time-transition;
     padding: 25px 0;
-    // position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -73,35 +72,12 @@ Style guide: Header.tools
     transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
       padding $time-transition;
     background-color: color('primary');
+    box-shadow: 0 5px 10px 0 transparentize(color('black'), 1);
 
-    .js_sticky & {
+    @include add-style-sticky {
       position: fixed;
       padding: 10px 0;
-    }
-  }
-
-  /* Header sticky */
-  .js_sticky-header & {
-    position: fixed;
-    // z-index: index('header-sticky');
-    top: 0;
-    left: 0;
-    background-color: color('white');
-    box-shadow: 0 10px 30px -6px fade(color('black'), 60%);
-  }
-
-  &-overlay {
-    @include media-special('burger-show') {
-      z-index: -1;
-      transition: opacity $time-transition z-index, $time-transition $time-transition;
-      opacity: 0;
-      background-color: transparentize(color('black'), 0.5);
-
-      .js_burger-active & {
-        z-index: index('menu') - 1;
-        transition: opacity $time-transition, z-index $time-transition;
-        opacity: 1;
-      }
+      box-shadow: 0 5px 10px 0 transparentize(color('black'), 0.4);
     }
   }
 }
@@ -109,7 +85,7 @@ Style guide: Header.tools
 .burger-button {
   @include add-click-placeholder;
   position: relative;
-  // z-index: index('header-sticky') + 1;
+  z-index: index('header') + 1;
   width: 30px;
   height: 24px;
   cursor: pointer;
