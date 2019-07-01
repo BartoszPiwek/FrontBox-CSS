@@ -1014,13 +1014,16 @@ Style guide: Header.tools
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 8000;
     width: 100%;
     padding: 20px 0;
     transition: height 0.2s, box-shadow 0.2s, background-color 0.2s, padding 0.2s;
     background-color: #05386b; }
+    .js_sticky .header__content {
+      position: fixed;
+      padding: 10px 0; }
   .js_sticky-header .header {
     position: fixed;
-    z-index: 8000;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -1040,7 +1043,6 @@ Style guide: Header.tools
   position: relative;
   z-index: 0;
   position: relative;
-  z-index: 8001;
   width: 30px;
   height: 24px;
   cursor: pointer;

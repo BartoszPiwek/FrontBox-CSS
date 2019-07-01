@@ -1,4 +1,3 @@
-import { html } from "./elements";
 import { ScrollLock } from "./scroll-lock";
 
 interface IBurgerMenu {

@@ -5,28 +5,17 @@ export function isScrollbar(): boolean {
 	return window.innerWidth != document.documentElement.clientWidth;
 }
 
+// TODO remove
 export function getScrollPosition(): number {
 	return window.pageYOffset || html.scrollTop;
 }
 
-export function getTransitionEvent(): string {
-	const
-		element = document.createElement("getTransitionEvent"),
-		transitions = {
-			"transition": "transitionend",
-			"OTransition": "oTransitionEnd",
-			"MozTransition": "transitionend",
-			"WebkitTransition": "webkitTransitionEnd"
-		};
-
-	for (const key in transitions) {
-		if (element.style[key] !== undefined) {
-			return transitions[key];
-		}
-	}
-	/* test-code */
-	console.error(`Browser\n- fired getTransitionEvent() function and return undefined transition`);
-	/* end-test-code */
+interface IScroll {
+	top: number
+	bottom: number
+	center: number
+	speed: number
+	direction: string
 }
 
 /**
@@ -34,34 +23,29 @@ export function getTransitionEvent(): string {
  */
 export class Browser {
 
-	private transitionEvent: string;
-	private width: number;
-	private height: number;
-	private responsive: string;
-	private orientation: string;
-	private portable: string | boolean;
-	public scrollbarWidth: number;
+	public scroll: IScroll
+	private transitionEvent: string
+	public width: number
+	public height: number
+	private responsive: string
+	private orientation: string
+	private portable: string | boolean
+	public scrollbarWidth: number
 
 	constructor() {
 
 		console.log(`Browser`);
 
-		this.transitionEvent = getTransitionEvent();
+		this.transitionEvent = this.getTransitionEvent();
 		this.portable = this.getMobileOperatingSystem();
 
 		this.refresh();
-
-		/* test-code */
-		console.table({
-			width: this.width,
-			height: this.height,
-			responsive: this.responsive,
-			orientation: this.orientation,
-			portable: this.portable,
-			scrollbarWidth: this.scrollbarWidth,
-		})
-		/* end-test-code */
-
+		window.addEventListener('scroll', () => {
+			this.onScroll();
+		});
+		window.addEventListener('resize orientationchange', () => {
+			this.onScroll();
+		});
 	};
 
 	private getScrollbarWidth(): number {
@@ -101,7 +85,44 @@ export class Browser {
 		return false;
 	};
 
-	private refresh(): void | boolean {
+	private refresh() {
+		this.responsive = this.getResponsive();
+		this.scrollbarWidth = this.getScrollbarWidth();
+		this.calculatePage();
+		this.onScroll();
+	}
+
+	private onScroll(): void {
+
+		/* Check last center */
+		let lastCenter = 0;
+		if (this.scroll) {
+			lastCenter = this.scroll.center
+		}
+
+		/* Prepare variables */
+		let
+			top = getScrollPosition(),
+			center = top + this.height / 2,
+			bottom = top + this.height,
+			speed = Math.abs(lastCenter - center),
+			direction = 'down';
+
+		/* Check scroll direction */
+		if (center < lastCenter) {
+			direction = "up";
+		}
+
+		this.scroll = {
+			top: top,
+			bottom: bottom,
+			center: center,
+			speed: speed,
+			direction: direction,
+		}
+	}
+
+	private calculatePage(): void | boolean {
 
 		/* Prepare variables */
 		let
@@ -115,8 +136,7 @@ export class Browser {
 		/* Set variables */
 		this.width = width;
 		this.height = height;
-		this.responsive = this.getResponsive();
-		this.scrollbarWidth = this.getScrollbarWidth();
+
 
 		/**
 		 * Don't refresh page if user change tab 
@@ -146,6 +166,27 @@ export class Browser {
 		else {
 			return 'landscape';
 		}
+	}
+
+	// Get transition vendor prefix
+	private getTransitionEvent(): string {
+		const
+			element = document.createElement("getTransitionEvent"),
+			transitions = {
+				"transition": "transitionend",
+				"OTransition": "oTransitionEnd",
+				"MozTransition": "transitionend",
+				"WebkitTransition": "webkitTransitionEnd"
+			};
+
+		for (const key in transitions) {
+			if (element.style[key] !== undefined) {
+				return transitions[key];
+			}
+		}
+		/* test-code */
+		console.error(`Browser\n- fired getTransitionEvent() function and return undefined transition`);
+		/* end-test-code */
 	}
 
 };

@@ -6,6 +6,7 @@ import { Resize } from "./bootstrap/resize";
 import { ScrollLock } from "./bootstrap/scroll-lock";
 import { BurgerMenu } from "./bootstrap/burger-menu";
 import { ElementPlaceholder } from "./bootstrap/element-placeholder";
+import { Sticky } from "./bootstrap/sticky";
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 const cssVars = require('css-vars-ponyfill') // CSS custom properties support
@@ -23,6 +24,11 @@ window.onload = () => {
 		$container: document.getElementById('header'),
 		$overlay: document.getElementById('header-overlay'),
 		cssClassActive: 'js_burger-active',
+	});
+	new Sticky({
+		browser: browser,
+		scrollLock: scrollLock,
+		$element: document.getElementById('header-content'),
 	});
 
 	/* Forms */

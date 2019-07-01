@@ -1799,6 +1799,7 @@ var input_counter_1 = require("./bootstrap/input-counter");
 var resize_1 = require("./bootstrap/resize");
 var scroll_lock_1 = require("./bootstrap/scroll-lock");
 var burger_menu_1 = require("./bootstrap/burger-menu");
+var sticky_1 = require("./bootstrap/sticky");
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 var cssVars = require('css-vars-ponyfill'); // CSS custom properties support
@@ -1810,6 +1811,11 @@ window.onload = function () {
         $container: document.getElementById('header'),
         $overlay: document.getElementById('header-overlay'),
         cssClassActive: 'js_burger-active',
+    });
+    new sticky_1.Sticky({
+        browser: browser,
+        scrollLock: scrollLock,
+        $element: document.getElementById('header-content'),
     });
     /* Forms */
     new input_counter_1.InputCounter({
@@ -1834,7 +1840,7 @@ window.onload = function () {
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/resize":11,"./bootstrap/scroll-lock":12,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
+},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/resize":11,"./bootstrap/scroll-lock":12,"./bootstrap/sticky":13,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -1843,46 +1849,27 @@ function isScrollbar() {
     return window.innerWidth != document.documentElement.clientWidth;
 }
 exports.isScrollbar = isScrollbar;
+// TODO remove
 function getScrollPosition() {
     return window.pageYOffset || elements_1.html.scrollTop;
 }
 exports.getScrollPosition = getScrollPosition;
-function getTransitionEvent() {
-    var element = document.createElement("getTransitionEvent"), transitions = {
-        "transition": "transitionend",
-        "OTransition": "oTransitionEnd",
-        "MozTransition": "transitionend",
-        "WebkitTransition": "webkitTransitionEnd"
-    };
-    for (var key in transitions) {
-        if (element.style[key] !== undefined) {
-            return transitions[key];
-        }
-    }
-    /* test-code */
-    console.error("Browser\n- fired getTransitionEvent() function and return undefined transition");
-    /* end-test-code */
-}
-exports.getTransitionEvent = getTransitionEvent;
 /**
  * @class Browser
  */
 var Browser = /** @class */ (function () {
     function Browser() {
+        var _this = this;
         console.log("Browser");
-        this.transitionEvent = getTransitionEvent();
+        this.transitionEvent = this.getTransitionEvent();
         this.portable = this.getMobileOperatingSystem();
         this.refresh();
-        /* test-code */
-        console.table({
-            width: this.width,
-            height: this.height,
-            responsive: this.responsive,
-            orientation: this.orientation,
-            portable: this.portable,
-            scrollbarWidth: this.scrollbarWidth,
+        window.addEventListener('scroll', function () {
+            _this.onScroll();
         });
-        /* end-test-code */
+        window.addEventListener('resize orientationchange', function () {
+            _this.onScroll();
+        });
     }
     ;
     Browser.prototype.getScrollbarWidth = function () {
@@ -1912,13 +1899,37 @@ var Browser = /** @class */ (function () {
     };
     ;
     Browser.prototype.refresh = function () {
+        this.responsive = this.getResponsive();
+        this.scrollbarWidth = this.getScrollbarWidth();
+        this.calculatePage();
+        this.onScroll();
+    };
+    Browser.prototype.onScroll = function () {
+        /* Check last center */
+        var lastCenter = 0;
+        if (this.scroll) {
+            lastCenter = this.scroll.center;
+        }
+        /* Prepare variables */
+        var top = getScrollPosition(), center = top + this.height / 2, bottom = top + this.height, speed = Math.abs(lastCenter - center), direction = 'down';
+        /* Check scroll direction */
+        if (center < lastCenter) {
+            direction = "up";
+        }
+        this.scroll = {
+            top: top,
+            bottom: bottom,
+            center: center,
+            speed: speed,
+            direction: direction,
+        };
+    };
+    Browser.prototype.calculatePage = function () {
         /* Prepare variables */
         var width = window.innerWidth, lastWidth = this.width, height = window.innerHeight, lastHeight = this.height, orientation = this.getOrientation(), lastOrientation = this.orientation;
         /* Set variables */
         this.width = width;
         this.height = height;
-        this.responsive = this.getResponsive();
-        this.scrollbarWidth = this.getScrollbarWidth();
         /**
          * Don't refresh page if user change tab
          * @browser Opera
@@ -1943,6 +1954,23 @@ var Browser = /** @class */ (function () {
         else {
             return 'landscape';
         }
+    };
+    // Get transition vendor prefix
+    Browser.prototype.getTransitionEvent = function () {
+        var element = document.createElement("getTransitionEvent"), transitions = {
+            "transition": "transitionend",
+            "OTransition": "oTransitionEnd",
+            "MozTransition": "transitionend",
+            "WebkitTransition": "webkitTransitionEnd"
+        };
+        for (var key in transitions) {
+            if (element.style[key] !== undefined) {
+                return transitions[key];
+            }
+        }
+        /* test-code */
+        console.error("Browser\n- fired getTransitionEvent() function and return undefined transition");
+        /* end-test-code */
     };
     return Browser;
 }());
@@ -2294,6 +2322,59 @@ exports.ScrollLock = ScrollLock;
  * 26.06.2019 Support custom properties polyfill
  * 20.06.2019 Add
  */
-},{"./browser":5,"./elements":9}]},{},[4])
+},{"./browser":5,"./elements":9}],13:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Toggle burger menu with overlay
+ *
+ * @class						BurgerMenu
+ * @version					1.0
+ * @css							burger-menu.scss
+ * @require					ScrollLock object
+ */
+var Sticky = /** @class */ (function () {
+    function Sticky(param) {
+        var _this = this;
+        this.browser = param.browser;
+        this.scrollLock = param.scrollLock;
+        this.$element = param.$element;
+        window.addEventListener('resize orientationchange', function () {
+            _this.refresh();
+        });
+        this.refresh();
+        window.addEventListener('scroll', function () {
+            _this.onScroll();
+        });
+        this.onScroll();
+    }
+    Sticky.prototype.refresh = function () {
+        this.offset = this.$element.parentElement.offsetTop;
+        console.log(this.offset);
+    };
+    Sticky.prototype.onScroll = function () {
+        if (!this.scrollLock.state) {
+            if (this.browser.scroll.top > this.offset) {
+                if (!this.active) {
+                    this.active = true;
+                    this.$element.parentElement.classList.add("js_sticky");
+                }
+            }
+            else {
+                if (this.active) {
+                    this.active = false;
+                    this.$element.parentElement.classList.remove("js_sticky");
+                }
+            }
+        }
+    };
+    return Sticky;
+}());
+exports.Sticky = Sticky;
+/**
+ * Changelog
+ * 26.06.2019 Add
+ */
+},{}]},{},[4])
 
 //# sourceMappingURL=app.dev.js.map

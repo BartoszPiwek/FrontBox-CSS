@@ -66,17 +66,23 @@ Style guide: Header.tools
     position: absolute;
     top: 0;
     left: 0;
+    z-index: index('header');
     width: 100%;
     padding: 20px 0;
     transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
       padding $time-transition;
     background-color: color('primary');
+
+    .js_sticky & {
+      position: fixed;
+      padding: 10px 0;
+    }
   }
 
   /* Header sticky */
   .js_sticky-header & {
     position: fixed;
-    z-index: index('header-sticky');
+    // z-index: index('header-sticky');
     top: 0;
     left: 0;
     background-color: color('white');
@@ -102,7 +108,7 @@ Style guide: Header.tools
 .burger-button {
   @include add-click-placeholder;
   position: relative;
-  z-index: index('header-sticky') + 1;
+  // z-index: index('header-sticky') + 1;
   width: 30px;
   height: 24px;
   cursor: pointer;
