@@ -38,11 +38,11 @@
 .row-footer {
   @include space(25px);
 
-  @include media('lg') {
+  @include media(tablet) {
     @include space(35px);
   }
 
-  @include media('xl') {
+  @include media(desktop) {
     @include space(45px);
   }
 }

@@ -27,46 +27,24 @@ Style guide: Header.tools
 }
 
 .header {
-  &__overlay {
-    @include add-style-burger-active {
-      @include media-special('burger-show') {
-        z-index: 1;
-        background-color: transparentize(color('black'), 0.4);
-        pointer-events: all;
-      }
-    }
-  }
-}
-
-.header {
   position: relative;
 
   // Placeholder size
   height: 90px;
-  @include media('md') {
-    height: 90px;
-  }
-  @include media('lg') {
+
+  @include media(fablet) {
     height: 90px;
   }
 
-  // Placeholder for fixed header
-  &-placeholder {
-    box-sizing: content-box;
-    z-index: index('menu');
-    transition: background-color $time-transition;
-    padding: 25px 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: color('primary');
+  @include media(tablet) {
+    height: 90px;
   }
 
   &__content {
     position: absolute;
+    z-index: index('header');
     top: 0;
     left: 0;
-    z-index: index('header');
     width: 100%;
     padding: 20px 0;
     transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
@@ -78,6 +56,16 @@ Style guide: Header.tools
       position: fixed;
       padding: 10px 0;
       box-shadow: 0 5px 10px 0 transparentize(color('black'), 0.4);
+    }
+  }
+
+  &__overlay {
+    @include add-style-burger-active {
+      @include media-special('burger-show') {
+        z-index: 1;
+        background-color: transparentize(color('black'), 0.4);
+        pointer-events: all;
+      }
     }
   }
 }
@@ -169,70 +157,5 @@ Style guide: Header.tools
     overflow: unset;
     transform: none;
     transition: height 0s ease 0s;
-  }
-}
-
-/*
-|| Navigation
-|| EMMET
-nav.nav>a.nav__item*x
- */
-
-.nav {
-  // Behavior
-  box-sizing: content-box;
-  bottom: 0;
-  position: absolute; // Style
-  overflow: hidden; // Postion
-
-  @include media-special('burger-hide') {
-    transition: height 0s ease 0s;
-    box-sizing: border-box;
-    display: flex !important;
-    position: static;
-    transform: none;
-    overflow: unset;
-  }
-  &__container {
-    background-color: color('primary');
-    text-align: center;
-    z-index: index('menu') + 1;
-    position: relative;
-    @include media-special('burger-hide') {
-      background-color: transparent;
-      text-align: left;
-      height: 100%;
-      display: flex;
-    } // a.nav__item
-    & > .nav__item {
-      display: block;
-      color: color('white');
-      transition: color $time-transition;
-      margin-bottom: 10px;
-      padding: 12px 0;
-      @include add-hover {
-        color: #b8b8b8;
-      }
-      &:last-child {
-        margin-bottom: 0;
-      }
-      @include media-special('burger-hide') {
-        margin-bottom: 0;
-        padding: 0;
-        margin-right: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-      @include media('lg') {
-        margin-right: 20px;
-      } // a.nav__item.active
-      &.active {
-        color: color('grey');
-      }
-    }
   }
 }

@@ -15,11 +15,11 @@
 
     height: 250px;
 
-    @include media('md') {
+    @include media(fablet) {
       height: 400px;
     }
 
-    @include media-max('sm') {
+    @include media-max(mobile) {
       width: calc(100% - 50px);
     }
 
@@ -41,7 +41,7 @@
       height: 100%;
       width: 100%;
 
-      @include media('md') {
+      @include media(fablet) {
         width: 300px;
       }
 
@@ -90,7 +90,7 @@
       .debug-box {
         &__container {
           width: 100%;
-          @include media('md') {
+          @include media(fablet) {
             width: 400px;
           }
         }

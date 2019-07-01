@@ -353,35 +353,53 @@ Style guide: Burger.animation
       .js_cookies-information__container {
         padding-left: 80px; } }
   .js_cookies-information__exit {
+    position: relative;
+    z-index: 0;
     position: absolute;
     top: 0;
     right: 0;
-    width: 20px;
-    height: 20px;
-    transition: transform 0.2s;
     cursor: pointer; }
-    .js_cookies-information__exit--hover:hover .js_cookies-information__exit,
-    .js_cookies-information__exit--hover:active .js_cookies-information__exit,
-    .js_cookies-information__exit--hover:focus .js_cookies-information__exit,
-    .js_cookies-information__exit--hover-active .js_cookies-information__exit,
-    .js_cookies-information__exit--hover-active .js_cookies-information__exit,
-    .js_cookies-information__exit--hover-active .js_cookies-information__exit, .js_cookies-information__exit.is-active, .js_cookies-information__exit:hover, .js_cookies-information__exit:active, .js_cookies-information__exit:focus {
-      transform: rotate(90deg); }
-    .js_cookies-information__exit:before, .js_cookies-information__exit:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: #fff; }
     .js_cookies-information__exit:before {
-      transform: rotate(45deg); }
-    .js_cookies-information__exit:after {
-      transform: rotate(-45deg); }
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      transform: translate(-50%, -50%);
+      cursor: pointer; }
+    .js_cookies-information__exit--hover:hover .js_cookies-information__exit .icon-x,
+    .js_cookies-information__exit--hover:active .js_cookies-information__exit .icon-x,
+    .js_cookies-information__exit--hover:focus .js_cookies-information__exit .icon-x,
+    .js_cookies-information__exit--hover-active .js_cookies-information__exit .icon-x,
+    .js_cookies-information__exit--hover-active .js_cookies-information__exit .icon-x,
+    .js_cookies-information__exit--hover-active .js_cookies-information__exit .icon-x, .js_cookies-information__exit.is-active .icon-x, .js_cookies-information__exit:hover .icon-x, .js_cookies-information__exit:active .icon-x, .js_cookies-information__exit:focus .icon-x {
+      transform: rotate(90deg); }
+    .js_cookies-information__exit .icon-x {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s; }
   .js_cookies-information--hide {
     transform: translate(0, 100%);
     opacity: 0; }
+
+.icon-x:before, .icon-x:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  transform-origin: left top;
+  background-color: #fff; }
+
+.icon-x:before {
+  transform: rotate(45deg) translate(-50%, -50%); }
+
+.icon-x:after {
+  transform: rotate(-45deg) translate(-50%, -50%); }
 
 @keyframes animation_name {
   0% { }
@@ -395,10 +413,10 @@ Style guide: Burger.animation
   to { } }
 
 :root {
-  --desktop: 1200;
-  --tablet: 992;
-  --fablet: 768;
-  --mobile: 576;
+  --desktop: ;
+  --tablet: ;
+  --fablet: ;
+  --mobile: ;
   --headerStickyDesktop: 50;
   --headerStickyTablet: 40;
   --headerStickyMobile: 30;
@@ -986,12 +1004,6 @@ Style guide: Header.tools
     padding-bottom: 20px !important;
     padding-left: 25px !important; }
 
-@media screen and (max-width: 767px) {
-  .js_burger-active .header__overlay {
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.6);
-    pointer-events: all; } }
-
 .header {
   position: relative;
   height: 90px; }
@@ -1001,20 +1013,11 @@ Style guide: Header.tools
   @media screen and (min-width: 992px) {
     .header {
       height: 90px; } }
-  .header-placeholder {
-    box-sizing: content-box;
-    z-index: 7000;
-    transition: background-color 0.2s;
-    padding: 25px 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #05386b; }
   .header__content {
     position: absolute;
+    z-index: 8000;
     top: 0;
     left: 0;
-    z-index: 8000;
     width: 100%;
     padding: 20px 0;
     transition: height 0.2s, box-shadow 0.2s, background-color 0.2s, padding 0.2s;
@@ -1024,6 +1027,11 @@ Style guide: Header.tools
       position: fixed;
       padding: 10px 0;
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6); }
+  @media screen and (max-width: 767px) {
+    .js_burger-active .header__overlay {
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.6);
+      pointer-events: all; } }
 
 .burger-button {
   position: relative;
@@ -1115,66 +1123,6 @@ Style guide: Header.tools
     overflow: unset;
     transform: none;
     transition: height 0s ease 0s; } }
-
-/*
-|| Navigation
-|| EMMET
-nav.nav>a.nav__item*x
- */
-.nav {
-  box-sizing: content-box;
-  bottom: 0;
-  position: absolute;
-  overflow: hidden; }
-  @media screen and (min-width: 768px) {
-    .nav {
-      transition: height 0s ease 0s;
-      box-sizing: border-box;
-      display: flex !important;
-      position: static;
-      transform: none;
-      overflow: unset; } }
-  .nav__container {
-    background-color: #05386b;
-    text-align: center;
-    z-index: 7001;
-    position: relative; }
-    @media screen and (min-width: 768px) {
-      .nav__container {
-        background-color: transparent;
-        text-align: left;
-        height: 100%;
-        display: flex; } }
-    .nav__container > .nav__item {
-      display: block;
-      color: #fff;
-      transition: color 0.2s;
-      margin-bottom: 10px;
-      padding: 12px 0; }
-      .nav__container > .nav__item--hover:hover .nav__container > .nav__item,
-      .nav__container > .nav__item--hover:active .nav__container > .nav__item,
-      .nav__container > .nav__item--hover:focus .nav__container > .nav__item,
-      .nav__container > .nav__item--hover-active .nav__container > .nav__item,
-      .nav__container > .nav__item--hover-active .nav__container > .nav__item,
-      .nav__container > .nav__item--hover-active .nav__container > .nav__item, .nav__container > .nav__item.is-active, .nav__container > .nav__item:hover, .nav__container > .nav__item:active, .nav__container > .nav__item:focus {
-        color: #b8b8b8; }
-      .nav__container > .nav__item:last-child {
-        margin-bottom: 0; }
-      @media screen and (min-width: 768px) {
-        .nav__container > .nav__item {
-          margin-bottom: 0;
-          padding: 0;
-          margin-right: 10px;
-          display: flex;
-          justify-content: center;
-          align-items: center; }
-          .nav__container > .nav__item:last-child {
-            margin-right: 0; } }
-      @media screen and (min-width: 992px) {
-        .nav__container > .nav__item {
-          margin-right: 20px; } }
-      .nav__container > .nav__item.active {
-        color: #90938f; }
 
 /*
 Hero
