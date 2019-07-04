@@ -26,7 +26,7 @@ export function favicon(done) {
 					precomposedIcons: true,
 					// declareOnlyDefaultIcon: true
 				},
-				appName: `${element.website.name}`
+				appName: `${config.website.name}`
 			},
 			desktopBrowser: {},
 			windows: {
@@ -42,16 +42,16 @@ export function favicon(done) {
 						rectangle: false
 					}
 				},
-				appName: `${element.website.name}`
+				appName: `${config.website.name}`
 			},
 			androidChrome: {
 				pictureAspect: 'backgroundAndMargin', // shadow/noChange
 				margin: '25%', //base size: 96x96
 				backgroundColor: '#ffffff',
-				// startUrl: 'https://m-o-z-g.gitlab.io`${element.website.name}`,
+				// startUrl: 'https://m-o-z-g.gitlab.io`${config.website.name}`,
 				themeColor: '#ffffff',
 				manifest: {
-					name: `${element.website.name}`,
+					name: `${config.website.name}`,
 					display: 'standalone',
 					orientation: 'notSet',
 					onConflict: 'override',
