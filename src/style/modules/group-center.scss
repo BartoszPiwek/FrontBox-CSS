@@ -1,0 +1,17 @@
+/*
+Group center
+
+Vertical center elements in content 
+
+Emmet:
+.group-center>span{Text}+img{}
+
+Style guide: Flow.group-center
+*/
+
+.group-center {
+	display: flex !important;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+}

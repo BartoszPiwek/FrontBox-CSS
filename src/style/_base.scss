@@ -2,11 +2,6 @@
 
 // Pass variables to JavaScript
 :root {
-	--desktop: #{breakpoint("xl")};
-	--tablet: #{breakpoint("lg")};
-	--fablet: #{breakpoint("md")};
-	--mobile: #{breakpoint("sm")};
-
 	--headerStickyDesktop: 50;
 	--headerStickyTablet: 40;
 	--headerStickyMobile: 30;
@@ -66,43 +61,13 @@ img {
 	touch-action: manipulation;
 }
 
+.page {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+}
+
 .background {
 	pointer-events: none;
 	user-select: none;
-}
-
-// Global Overlay
-.page {
-	position: relative;
-
-	&__loading,
-	&__overlay {
-		position: fixed;
-		z-index: -1;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		transition: background-color $time-transition;
-		background-color: transparent;
-
-		> * {
-			display: none;
-		}
-	}
-
-	.js_resize &__loading {
-		z-index: index("loading");
-		background: fade(color("black"), 40%);
-		pointer-events: none;
-		user-select: none;
-
-		> * {
-			display: block;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-	}
 }

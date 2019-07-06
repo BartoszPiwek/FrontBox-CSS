@@ -32,10 +32,7 @@ window.onload = () => {
 	});
 
 	new Tabs({
-		name: 'slider',
-		callbackChange: () => {
-			window.scrollTo(0, 0);
-		}
+		name: 'slider'
 	});
 
 	/* Forms */

@@ -1819,10 +1819,7 @@ window.onload = function () {
         $element: document.getElementById('header-content')
     });
     new tabs_1.Tabs({
-        name: 'slider',
-        callbackChange: function () {
-            window.scrollTo(0, 0);
-        }
+        name: 'slider'
     });
     /* Forms */
     new input_counter_1.InputCounter({
