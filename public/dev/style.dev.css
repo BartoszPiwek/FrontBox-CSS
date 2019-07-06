@@ -1040,15 +1040,15 @@ Hero
 
 Markup:
 <div class="hero">
-    <div class="hero__wrapper">
-        <div class="wrap">
-            <header class="hero__header">
-                <h1 class="hero__title">Hero Title</h1>
-            </header>
-            <div class="hero__body">Hero body</div>
-            <footer class="hero__footer">Hero footer</footer>
-        </div>
+  <div class="hero__wrapper">
+    <div class="wrap">
+        <header class="hero__header">
+          <h1 class="hero__title">Hero Title</h1>
+        </header>
+        <div class="hero__body">Hero body</div>
+        <footer class="hero__footer">Hero footer</footer>
     </div>
+  </div>
 </div>
 
 Mix class:
