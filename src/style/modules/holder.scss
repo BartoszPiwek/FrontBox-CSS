@@ -25,27 +25,27 @@ Mixin style:
 Style guide: Functions.holder
 */
 
-@mixin add_holder($width, $height) {
-  position: relative;
+@mixin add-holder($width, $height) {
+	position: relative;
 
-  &:before {
-    display: block;
-    content: '';
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
+	&:before {
+		content: "";
+		display: block;
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
 }
 
-@mixin add_holder-style {
-  .holder {
-    position: relative;
+@mixin add-holder-style {
+	.holder {
+		position: relative;
 
-    &__content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
+		&__content {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
 }

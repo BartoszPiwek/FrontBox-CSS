@@ -1,56 +1,56 @@
 @include responsive($breakpoints) {
-  $prefix: &;
+	$prefix: &;
 
-  @at-root .#{$prefix}pt {
-    @include generate-tool-count('padding-top', 85);
-  }
+	@at-root .#{$prefix}pt {
+		@include generate-tool-count("padding-top", 85);
+	}
 
-  @at-root .#{$prefix}pb {
-    @include generate-tool-count('padding-bottom', 85);
-  }
+	@at-root .#{$prefix}pb {
+		@include generate-tool-count("padding-bottom", 85);
+	}
 
-  @at-root .#{$prefix}pl {
-    @include generate-tool-count('padding-left', 85);
-  }
+	@at-root .#{$prefix}pl {
+		@include generate-tool-count("padding-left", 85);
+	}
 
-  @at-root .#{$prefix}pr {
-    @include generate-tool-count('padding-right', 85);
-  }
+	@at-root .#{$prefix}pr {
+		@include generate-tool-count("padding-right", 85);
+	}
 
-  @at-root .#{$prefix}padding-center {
-    padding: 0 auto;
-  }
+	@at-root .#{$prefix}padding-center {
+		padding: 0 auto;
+	}
 
-  /* Reset */
-  @at-root .#{$prefix}no {
-    &-pt,
-    &-padding-top {
-      padding-top: 0 !important;
-    }
+	/* Reset */
+	@at-root .#{$prefix}no {
+		&-pt,
+		&-padding-top {
+			padding-top: 0 !important;
+		}
 
-    &-pb,
-    &-padding-bottom {
-      padding-bottom: 0 !important;
-    }
+		&-pb,
+		&-padding-bottom {
+			padding-bottom: 0 !important;
+		}
 
-    &-pl,
-    &-padding-left {
-      padding-left: 0 !important;
-    }
+		&-pl,
+		&-padding-left {
+			padding-left: 0 !important;
+		}
 
-    &-pr,
-    &-padding-right {
-      padding-right: 0 !important;
-    }
+		&-pr,
+		&-padding-right {
+			padding-right: 0 !important;
+		}
 
-    &-px {
-      padding-right: 0 !important;
-      padding-left: 0 !important;
-    }
+		&-px {
+			padding-right: 0 !important;
+			padding-left: 0 !important;
+		}
 
-    &-py {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-    }
-  }
+		&-py {
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+	}
 }

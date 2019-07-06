@@ -2,20 +2,20 @@
 *,
 *:after,
 *:before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 // Default style elements
 iframe {
-  border: 0;
+	border: 0;
 }
 
 // Remove list style
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 
 // Heading
@@ -25,41 +25,59 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 16px;
-  font-weight: normal;
+	font-size: 16px;
+	font-weight: normal;
 }
 
 // Anchor
 a {
-  display: inline;
-  color: inherit;
-  text-decoration: none;
+	display: inline;
+	color: inherit;
+	text-decoration: none;
 }
 
 iframe {
-  border: 0;
+	border: 0;
 }
 
 input {
-  // Remove IE custom pseudo elements
-  &::-ms-reveal,
-  &::-ms-clear {
-    display: none;
-  }
+	// Remove IE custom pseudo elements
+	&::-ms-reveal,
+	&::-ms-clear {
+		display: none;
+	}
 
-  &[type='number'] {
-    // Turn Off Number Input Spinners
-    -moz-appearance: textfield;
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      margin: 0;
-      -webkit-appearance: none;
-    }
-  }
+	&[type="number"] {
+		// Turn Off Number Input Spinners
+		-moz-appearance: textfield;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			margin: 0;
+			-webkit-appearance: none;
+		}
+	}
+
+	// Hide oryginal input element
+	&[type="checkbox"],
+	&[type="radio"] {
+		position: absolute !important;
+		bottom: 0 !important;
+		left: 50% !important;
+		width: 1px !important;
+		height: 1px !important;
+		padding: 0 !important;
+		overflow: hidden !important;
+		clip: rect(0 0 0 0) !important;
+		border: 0 !important;
+		white-space: nowrap !important;
+		-webkit-clip-path: inset(50%) !important; // sass-lint:vendorprefix
+		clip-path: inset(50%) !important;
+	}
 }
 
 label {
-  [for] {
-    cursor: pointer;
-  }
+	[for] {
+		cursor: pointer;
+	}
 }

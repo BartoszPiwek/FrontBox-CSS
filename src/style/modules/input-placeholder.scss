@@ -23,12 +23,12 @@ IE 10+
 
 Style guide: Functions.input-placeholder
 */
-@mixin add_placeholder {
-  &::placeholder,
-  &::-webkit-input-placeholder,
-  &::-moz-placeholder,
-  &:-ms-input-placeholder,
-  &:-moz-placeholder {
-    @content;
-  }
+@mixin add-placeholder {
+	&::placeholder,
+	&::-webkit-input-placeholder,
+	&::-moz-placeholder,
+	&:-ms-input-placeholder,
+	&:-moz-placeholder {
+		@content;
+	}
 }

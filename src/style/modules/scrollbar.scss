@@ -22,21 +22,21 @@ Mixin output:
 Style guide: Functions.clearfix
 */
 
-@mixin scrollbar($size: '10px', $color-background: color('black'), $color-thumb: color('primary')) {
-  &::-webkit-scrollbar {
-    width: $size;
-    height: $size;
-    background-color: $color-thumb;
-    -webkit-appearance: none;
-  }
+@mixin scrollbar($size: "10px", $color-background: color("black"), $color-thumb: color("primary")) {
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+		background-color: $color-thumb;
+		-webkit-appearance: none;
+	}
 
-  &::-webkit-scrollbar-thumb {
-    min-width: $size;
-    max-height: $size;
-    background-color: $color-background;
-  }
+	&::-webkit-scrollbar-thumb {
+		min-width: $size;
+		max-height: $size;
+		background-color: $color-background;
+	}
 
-  &::-webkit-scrollbar-track {
-    display: none;
-  }
+	&::-webkit-scrollbar-track {
+		display: none;
+	}
 }

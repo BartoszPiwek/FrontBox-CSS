@@ -1,56 +1,56 @@
 @include responsive($breakpoints) {
-  $prefix: &;
+	$prefix: &;
 
-  @at-root .#{$prefix}mt {
-    @include generate-tool-count('margin-top', 85);
-  }
+	@at-root .#{$prefix}mt {
+		@include generate-tool-count("margin-top", 85);
+	}
 
-  @at-root .#{$prefix}mb {
-    @include generate-tool-count('margin-bottom', 85);
-  }
+	@at-root .#{$prefix}mb {
+		@include generate-tool-count("margin-bottom", 85);
+	}
 
-  @at-root .#{$prefix}ml {
-    @include generate-tool-count('margin-left', 85);
-  }
+	@at-root .#{$prefix}ml {
+		@include generate-tool-count("margin-left", 85);
+	}
 
-  @at-root .#{$prefix}mr {
-    @include generate-tool-count('margin-right', 85);
-  }
+	@at-root .#{$prefix}mr {
+		@include generate-tool-count("margin-right", 85);
+	}
 
-  @at-root .#{$prefix}margin-center {
-    margin: 0 auto;
-  }
+	@at-root .#{$prefix}margin-center {
+		margin: 0 auto;
+	}
 
-  /* Reset */
-  @at-root .#{$prefix}no {
-    &-mt,
-    &-margin-top {
-      margin-top: 0 !important;
-    }
+	/* Reset */
+	@at-root .#{$prefix}no {
+		&-mt,
+		&-margin-top {
+			margin-top: 0 !important;
+		}
 
-    &-mb,
-    &-margin-bottom {
-      margin-bottom: 0 !important;
-    }
+		&-mb,
+		&-margin-bottom {
+			margin-bottom: 0 !important;
+		}
 
-    &-ml,
-    &-margin-left {
-      margin-left: 0 !important;
-    }
+		&-ml,
+		&-margin-left {
+			margin-left: 0 !important;
+		}
 
-    &-mr,
-    &-margin-right {
-      margin-right: 0 !important;
-    }
+		&-mr,
+		&-margin-right {
+			margin-right: 0 !important;
+		}
 
-    &-mx {
-      margin-right: 0 !important;
-      margin-left: 0 !important;
-    }
+		&-mx {
+			margin-right: 0 !important;
+			margin-left: 0 !important;
+		}
 
-    &-my {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-    }
-  }
+		&-my {
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+		}
+	}
 }

@@ -1,13 +1,13 @@
 @mixin responsive($breakpoints-array: $breakpoints) {
-  @content;
+	@content;
 
-  @each $label, $other in $breakpoints {
-    $breakpoint-name: map-deep-get($breakpoints, $label, name);
+	@each $label, $other in $breakpoints {
+		$breakpoint-name: map-deep-get($breakpoints, $label, name);
 
-    @include media($label) {
-      #{$breakpoint-name}_ {
-        @content;
-      }
-    }
-  }
+		@include media($label) {
+			#{$breakpoint-name}_ {
+				@content;
+			}
+		}
+	}
 }

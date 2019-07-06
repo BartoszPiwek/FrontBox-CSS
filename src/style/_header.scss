@@ -10,7 +10,7 @@ Markup:
 Style guide: Header.imports
 */
 
-@import './plugins/burger-planks-animation.scss';
+@import "./plugins/burger-planks-animation.scss";
 
 /*
 Tools
@@ -21,141 +21,140 @@ Style guide: Header.tools
 */
 
 .row {
-  &-header-space {
-    @include space(25px, 20px);
-  }
+	&-header-space {
+		@include space(25px, 20px);
+	}
 }
 
 .header {
-  position: relative;
+	position: relative;
 
-  // Placeholder size
-  height: 90px;
+	// Placeholder size
+	height: 90px;
 
-  @include media(fablet) {
-    height: 90px;
-  }
+	&__content {
+		position: absolute;
+		z-index: index("header");
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 20px 0;
+		transition: height $time-transition, box-shadow $time-transition, background-color $time-transition, padding $time-transition;
+		background-color: color("primary");
+		box-shadow: 0 5px 10px 0 transparentize(color("black"), 1);
 
-  @include media(tablet) {
-    height: 90px;
-  }
+		@include add-style-sticky {
+			@extend %fix-fixed;
+			padding: 10px 0;
+			box-shadow: 0 5px 10px 0 transparentize(color("black"), 0.4);
+		}
+	}
 
-  &__content {
-    position: absolute;
-    z-index: index('header');
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    transition: height $time-transition, box-shadow $time-transition, background-color $time-transition,
-      padding $time-transition;
-    background-color: color('primary');
-    box-shadow: 0 5px 10px 0 transparentize(color('black'), 1);
+	&__overlay {
+		@include add-style-burger-active {
+			@include media-special("burger-show") {
+				z-index: 1;
+				background-color: transparentize(color("black"), 0.4);
+				pointer-events: all;
+			}
+		}
+	}
 
-    @include add-style-sticky {
-      @extend %fix-fixed;
-      padding: 10px 0;
-      box-shadow: 0 5px 10px 0 transparentize(color('black'), 0.4);
-    }
-  }
+	@include media(fablet) {
+		height: 90px;
+	}
 
-  &__overlay {
-    @include add-style-burger-active {
-      @include media-special('burger-show') {
-        z-index: 1;
-        background-color: transparentize(color('black'), 0.4);
-        pointer-events: all;
-      }
-    }
-  }
+	@include media(tablet) {
+		height: 90px;
+	}
 }
 
 .burger-button {
-  @include add-click-placeholder;
-  position: relative;
-  z-index: index('header') + 1;
-  width: 30px;
-  height: 24px;
-  cursor: pointer;
-  pointer-events: all;
+	@include add-click-placeholder;
+	position: relative;
+	z-index: index("header") + 1;
+	width: 30px;
+	height: 24px;
+	cursor: pointer;
+	pointer-events: all;
 
-  @include media-special('burger-hide') {
-    display: none;
-  }
+	.plank {
+		@include burger-planks-animation;
+		display: inline-block;
+		position: absolute;
+		width: 100%;
+		height: 4px;
+		border-radius: 10px;
+		background-color: color("grey");
 
-  @include add-hover {
-    .plank {
-      background-color: color('secondary');
-    }
-  }
+		&:first-child {
+			margin-top: 0;
+		}
 
-  .plank {
-    @include burger-planks-animation;
-    display: inline-block;
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    border-radius: 10px;
-    background-color: color('grey');
+		&:nth-child(2) {
+			margin-top: calc(50% - 5px);
+		}
 
-    &:first-child {
-      margin-top: 0;
-    }
+		&:last-child {
+			margin-top: calc(100% - 10px);
+		}
+	}
 
-    &:nth-child(2) {
-      margin-top: calc(50% - 5px);
-    }
+	@include media-special("burger-hide") {
+		display: none;
+	}
 
-    &:last-child {
-      margin-top: calc(100% - 10px);
-    }
-  }
+	@include add-hover {
+		.plank {
+			background-color: color("secondary");
+		}
+	}
 }
 
 /**
  * Burger menu
  */
 .burger-menu {
-  @extend %fix-fixed;
+	@extend %fix-fixed;
 
-  @include media-special('burger-show') {
-    @include vh;
-    display: flex;
-    z-index: index('menu');
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 300px;
-    padding-top: 70px;
-    overflow: hidden;
-    transform: translateX(100%);
-    transition: transform $time-transition;
-    background-color: color('primary');
-    text-align: center;
+	@include media-special("burger-show") {
+		@include vh;
+		display: flex;
+		z-index: index("menu");
+		top: 0;
+		right: 0;
+		width: 100%;
+		max-width: 300px;
+		padding-top: 70px;
+		overflow: hidden;
+		transform: translateX(100%);
+		transition: transform $time-transition;
+		background-color: color("primary");
+		text-align: center;
 
-    & > &__item {
-      margin-bottom: 20px;
+		& > &__item {
+			margin-bottom: 20px;
 
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
 
-    &__container {
-      width: 100%;
-    }
+		&__container {
+			width: 100%;
+		}
 
-    .js_burger-active & {
-      transform: translateX(0);
-      box-shadow: -6px 0 10px transparentize(color('black'), 0.6);
-    }
-  }
+		.js_burger-active & {
+			transform: translateX(0);
+			box-shadow: -6px 0 10px transparentize(color("black"), 0.6);
+		}
+	}
 
-  @include media-special('burger-hide') {
-    display: flex !important;
-    position: static;
-    overflow: unset;
-    transform: none;
-    transition: height 0s ease 0s;
-  }
+	@include media-special("burger-hide") {
+		display: flex !important;
+		position: static;
+		overflow: unset;
+		transform: none;
+		transition: height 0s ease 0s;
+	}
 }

@@ -9,8 +9,8 @@ Emmet:
 Style guide: Flow.group-middle
 */
 .group-middle {
-  > * {
-    vertical-align: middle !important;
-    display: inline-block !important;
-  }
+	> * {
+		display: inline-block !important;
+		vertical-align: middle !important;
+	}
 }

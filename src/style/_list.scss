@@ -1,18 +1,15 @@
-/**
- * Base
- */
 .list {
-  &__icon {
-    display: none;
-  }
+	&__icon {
+		display: none;
+	}
 
-  &--same-size {
-    .list {
-      &__item {
-        flex: 1 0 auto !important;
-      }
-    }
-  }
+	&--same-size {
+		.list {
+			&__item {
+				flex: 1 0 auto !important;
+			}
+		}
+	}
 }
 
 // /**

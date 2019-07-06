@@ -1800,6 +1800,7 @@ var resize_1 = require("./bootstrap/resize");
 var scroll_lock_1 = require("./bootstrap/scroll-lock");
 var burger_menu_1 = require("./bootstrap/burger-menu");
 var sticky_1 = require("./bootstrap/sticky");
+var tabs_1 = require("./bootstrap/tabs");
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 var cssVars = require('css-vars-ponyfill'); // CSS custom properties support
@@ -1816,6 +1817,12 @@ window.onload = function () {
         browser: browser,
         scrollLock: scrollLock,
         $element: document.getElementById('header-content'),
+    });
+    new tabs_1.Tabs({
+        name: 'slider',
+        callbackChange: function () {
+            window.scrollTo(0, 0);
+        },
     });
     /* Forms */
     new input_counter_1.InputCounter({
@@ -1840,7 +1847,7 @@ window.onload = function () {
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/resize":11,"./bootstrap/scroll-lock":12,"./bootstrap/sticky":13,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
+},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/resize":11,"./bootstrap/scroll-lock":12,"./bootstrap/sticky":13,"./bootstrap/tabs":14,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -2375,6 +2382,62 @@ exports.Sticky = Sticky;
  * Changelog
  * 26.06.2019 Add
  */
+},{}],14:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Tabs = /** @class */ (function () {
+    function Tabs(param) {
+        this.activeTab = 0;
+        this.active = false;
+        this.name = param.name;
+        if (param.callbackChange) {
+            this.callbackChange = param.callbackChange;
+        }
+        this.refresh();
+    }
+    Tabs.prototype.refresh = function () {
+        this.$contents = document.querySelectorAll("[data-tabs-content=\"" + this.name + "\"]")[0].children;
+        this.$buttons = document.querySelectorAll("[data-tabs-buttons=\"" + this.name + "\"]")[0].children;
+        this.$containers = document.querySelectorAll("[data-tabs-" + this.name + "-active]")[0].children;
+        if (this.active) {
+            this.unbind();
+        }
+        this.bind();
+    };
+    Tabs.prototype.bind = function () {
+        var _this = this;
+        var length = this.$buttons.length;
+        var _loop_1 = function (index) {
+            var $element = this_1.$buttons[index];
+            $element.addEventListener('click', function () {
+                _this.change(index);
+            });
+        };
+        var this_1 = this;
+        for (var index = 0; index < length; index++) {
+            _loop_1(index);
+        }
+    };
+    Tabs.prototype.unbind = function () {
+    };
+    Tabs.prototype.change = function (index) {
+        if (this.activeTab === index) {
+            return false;
+        }
+        this.$buttons[this.activeTab].classList.remove('active');
+        this.$contents[this.activeTab].classList.remove('active');
+        this.$containers[this.activeTab].classList.remove('active');
+        this.$buttons[index].classList.add('active');
+        this.$contents[index].classList.add('active');
+        this.$containers[index].classList.add('active');
+        if (this.callbackChange) {
+            this.callbackChange();
+        }
+        this.activeTab = index;
+    };
+    return Tabs;
+}());
+exports.Tabs = Tabs;
 },{}]},{},[4])
 
 //# sourceMappingURL=app.dev.js.map

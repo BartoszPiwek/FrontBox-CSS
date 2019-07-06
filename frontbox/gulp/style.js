@@ -28,22 +28,28 @@ export function style_main() {
 	return src(`${element.files}`, {
 		allowEmpty: true,
 	})
-		.pipe(header(
-			`$dev: ${config.dev};`
+		.pipe(gulpif(!argv.prod,
+			sourcemaps.init({ loadMaps: true })
 		))
+		.pipe(header(
+			`
+			$infoOffJavascript: ${config.info.offJavascript};
+			$infoOldBrowser: ${config.info.oldBrowser};
+			$dev: ${config.dev};
+			@import 'bootstrap';
+			@import 'utilities';
+			`
+		))
+		.pipe(gulpif(argv.prod, header(
+			`
+				@import 'bootstrap';
+				@import 'utilities';
+			`
+		)))
 		.pipe(gulpif(config.working,
 			footer(
 				`@import '../../../FrontBox-Plugins/**/*.scss';`
 			)
-		))
-		.pipe(gulpif(argv.prod,
-			footer(`
-				@import 'bootstrap';
-				@import 'utilities';
-			`)
-		))
-		.pipe(gulpif(!argv.prod,
-			sourcemaps.init({ loadMaps: true })
 		))
 		.pipe(sassGlob())
 		.pipe(sass())
@@ -58,15 +64,9 @@ export function style_main() {
 						/fonts.googleapis/,
 					],
 					ignore: [
-						/\.select2*/,
-						/\.js_*/,
-						/expanded/,
-						/js/,
-						/wp-/,
-						/align/,
-						/admin-bar/,
-						/\.*slick*/,
-						/\.*active*/,
+						/js_*/,
+						/data-tabs-slider-active/,
+						/\.active/,
 					],
 				}),
 			])

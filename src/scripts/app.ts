@@ -7,6 +7,7 @@ import { ScrollLock } from "./bootstrap/scroll-lock";
 import { BurgerMenu } from "./bootstrap/burger-menu";
 import { ElementPlaceholder } from "./bootstrap/element-placeholder";
 import { Sticky } from "./bootstrap/sticky";
+import { Tabs } from "./bootstrap/tabs";
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 const cssVars = require('css-vars-ponyfill') // CSS custom properties support
@@ -29,6 +30,12 @@ window.onload = () => {
 		browser: browser,
 		scrollLock: scrollLock,
 		$element: document.getElementById('header-content'),
+	});
+	new Tabs({
+		name: 'slider',
+		callbackChange: () => {
+			window.scrollTo(0, 0);
+		},
 	});
 
 	/* Forms */

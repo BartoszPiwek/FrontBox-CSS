@@ -2,23 +2,23 @@
 
 // NOTE Burger
 .is_burger-menu {
-  &--visible {
-    @include media-special('burger-show') {
-      display: block;
-    }
+	&--visible {
+		@include media-special("burger-show") {
+			display: block;
+		}
 
-    @include media-special('burger-hide') {
-      display: none;
-    }
-  }
+		@include media-special("burger-hide") {
+			display: none;
+		}
+	}
 
-  &--hide {
-    @include media-special('burger-show') {
-      display: none;
-    }
+	&--hide {
+		@include media-special("burger-show") {
+			display: none;
+		}
 
-    @include media-special('burger-hide') {
-      display: block;
-    }
-  }
+		@include media-special("burger-hide") {
+			display: block;
+		}
+	}
 }

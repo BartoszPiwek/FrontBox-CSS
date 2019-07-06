@@ -1,54 +1,63 @@
-/*=========================================================================
-|| Style HTML tables
-=========================================================================*/
+.table-scrollable {
+	@include scrollbar;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.table {
+	display: block;
+	width: 680px;
+	overflow-x: auto;
+	border-collapse: separate;
+}
 
 table {
-  caption {
-  }
+	caption {
+	}
 
-  tr {
-    td {
-    }
-  }
+	tr {
+		td {
+		}
+	}
 
-  th {
-    td {
-    }
-  }
+	th {
+		td {
+		}
+	}
 
-  thead {
-    tr {
-      td {
-      }
-    }
+	thead {
+		tr {
+			td {
+			}
+		}
 
-    th {
-      td {
-      }
-    }
-  }
+		th {
+			td {
+			}
+		}
+	}
 
-  tbody {
-    tr {
-      td {
-      }
-    }
+	tbody {
+		tr {
+			td {
+			}
+		}
 
-    th {
-      td {
-      }
-    }
-  }
+		th {
+			td {
+			}
+		}
+	}
 
-  tfoot {
-    tr {
-      td {
-      }
-    }
+	tfoot {
+		tr {
+			td {
+			}
+		}
 
-    th {
-      td {
-      }
-    }
-  }
+		th {
+			td {
+			}
+		}
+	}
 }

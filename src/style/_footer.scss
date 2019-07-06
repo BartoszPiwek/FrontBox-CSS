@@ -1,48 +1,42 @@
-/*=========================================================================
-|| FILE: Footer
-===========================================================================
-|| Style for footer elements
-=========================================================================*/
-
 .footer {
-  padding: 35px 0;
-  overflow: hidden;
-  background-color: color('primary');
+	padding: 35px 0;
+	overflow: hidden;
+	background-color: color("primary");
 
-  &__item {
-    > * {
-      &:first-child {
-        margin-top: 0;
-      }
+	&__item {
+		> * {
+			&:first-child {
+				margin-top: 0;
+			}
 
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
 
-  &__title {
-    margin: 20px 0;
-    color: color('white');
-    font-size: 28px;
-    font-weight: 200;
-  }
+	&__title {
+		margin: 20px 0;
+		color: color("white");
+		font-size: 28px;
+		font-weight: 200;
+	}
 
-  &__content {
-    color: color('black');
-    font-size: 16px;
-  }
+	&__content {
+		color: color("black");
+		font-size: 16px;
+	}
 }
 
 // Row
 .row-footer {
-  @include space(25px);
+	@include space(25px);
 
-  @include media(tablet) {
-    @include space(35px);
-  }
+	@include media(tablet) {
+		@include space(35px);
+	}
 
-  @include media(desktop) {
-    @include space(45px);
-  }
+	@include media(desktop) {
+		@include space(45px);
+	}
 }

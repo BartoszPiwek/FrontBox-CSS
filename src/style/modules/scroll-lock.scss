@@ -1,21 +1,21 @@
 %scrollbar-placeholder {
-  .js_scrollbar-active & {
-    border-right: var(--scrollbarWidth, 0) solid color('primary');
-  }
+	.js_scrollbar-active & {
+		border-right: var(--scrollbarWidth, 0) solid color("primary");
+	}
 }
 
 html {
-  &.js_scroll-lock {
-    position: fixed;
+	&.js_scroll-lock {
+		position: fixed;
 
-    body {
-      overflow: hidden;
-    }
-  }
+		body {
+			overflow: hidden;
+		}
+	}
 
-  &:not(.js_scroll-lock) {
-    body {
-      top: 0 !important;
-    }
-  }
+	&:not(.js_scroll-lock) {
+		body {
+			top: 0 !important;
+		}
+	}
 }

@@ -1,26 +1,26 @@
 @include responsive($breakpoints) {
-  $prefix: &;
+	$prefix: &;
 
-  @at-root .#{$prefix}flex {
-    &-y-end {
-      align-items: flex-end;
-    }
+	@at-root .#{$prefix}flex {
+		&-y-end {
+			align-items: flex-end;
+		}
 
-    &-y-center {
-      align-items: center;
-    }
+		&-y-center {
+			align-items: center;
+		}
 
-    &-column {
-      flex-direction: column;
-    }
+		&-column {
+			flex-direction: column;
+		}
 
-    &-space-between {
-      justify-content: space-between;
-    }
+		&-space-between {
+			justify-content: space-between;
+		}
 
-    &-samesize {
-      display: flex;
-      flex: 1 1 auto;
-    }
-  }
+		&-samesize {
+			display: flex;
+			flex: 1 1 auto;
+		}
+	}
 }

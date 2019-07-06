@@ -1,75 +1,75 @@
 $breakpoints: (
-  small: (
-    name: xs,
-    size: 0
-  ),
-  mobile: (
-    name: sm,
-    size: 576
-  ),
-  fablet: (
-    name: md,
-    size: 768
-  ),
-  tablet: (
-    name: lg,
-    size: 992
-  ),
-  desktop: (
-    name: xl,
-    size: 1200
-  ),
-  desktop-hd: (
-    name: hd,
-    size: 1366
-  ),
-  desktop-wide: (
-    name: whd,
-    size: 1440
-  )
+small: (
+	name: xs,
+	size: 0
+),
+mobile: (
+	name: sm,
+	size: 576
+),
+fablet: (
+	name: md,
+	size: 768
+),
+tablet: (
+	name: lg,
+	size: 992
+),
+desktop: (
+	name: xl,
+	size: 1200
+),
+desktop-hd: (
+	name: hd,
+	size: 1366
+),
+desktop-wide: (
+	name: whd,
+	size: 1440
+)
 );
 
 $media: (
-  burger-show: 'screen and (max-width: 767px)',
-  burger-hide: 'screen and (min-width: 768px)',
-  retina: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)',
-  ie-only: 'screen and (-ms-high-contrast: active), (-ms-high-contrast: none)'
+burger-show: "screen and (max-width: 767px)",
+burger-hide: "screen and (min-width: 768px)",
+retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)",
+ie-only: "screen and (-ms-high-contrast: active), (-ms-high-contrast: none)"
 );
 
 // Functions
 @function breakpoint($name) {
-  @return map-get($breakpoints, $name);
+	@return map-get($breakpoints, $name);
 }
 
 @mixin media($name) {
-  $width: map-deep-get($breakpoints, $name, size);
-  @if $width {
-    @media screen and (min-width: #{$width}px) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
+	$width: map-deep-get($breakpoints, $name, size);
+	@if $width {
+		@media screen and (min-width: #{$width}px) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
 }
 
 @mixin media-max($name) {
-  $width: map-deep-get($breakpoints, $name, size);
-  @if $width {
-    @media screen and (max-width: #{$width - 1}px) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
+	$width: map-deep-get($breakpoints, $name, size);
+	@if $width {
+		@media screen and (max-width: #{$width - 1}px) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
 }
 
 @mixin media-special($name) {
-  $queries: map-get($media, $name);
-  @if $queries {
-    @media #{$queries} {
-      @content;
-    }
-  } @else {
-    @content;
-  }
+	$queries: map-get($media, $name);
+	@if $queries {
+		@media #{$queries} {
+			@content;
+		}
+	} @else {
+		@content;
+	}
 }

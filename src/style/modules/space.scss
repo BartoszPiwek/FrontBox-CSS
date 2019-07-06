@@ -41,31 +41,31 @@ Style guide: Funcions.space
 
 // Horizontal space
 @mixin space-x($size) {
-  width: calc(100% + #{$size});
-  margin-left: -#{$size} !important;
+	width: calc(100% + #{$size});
+	margin-left: -#{$size} !important;
 
-  > *:not(.space-ignore) {
-    padding-left: $size !important;
-  }
+	> *:not(.space-ignore) {
+		padding-left: $size !important;
+	}
 }
 
 // Vertical space
 @mixin space-y($size) {
-  margin-bottom: -#{$size} !important;
+	margin-bottom: -#{$size} !important;
 
-  > *:not(.space-ignore) {
-    padding-bottom: $size !important;
-  }
+	> *:not(.space-ignore) {
+		padding-bottom: $size !important;
+	}
 }
 
 // Vertical/horizontal space
 @mixin space($size: 0, $size-y: $size) {
-  width: calc(100% + #{$size});
-  margin-left: -#{$size} !important;
-  margin-bottom: -#{$size-y} !important;
+	width: calc(100% + #{$size});
+	margin-bottom: -#{$size-y} !important;
+	margin-left: -#{$size} !important;
 
-  > *:not(.space-ignore) {
-    padding-bottom: $size-y !important;
-    padding-left: $size !important;
-  }
+	> *:not(.space-ignore) {
+		padding-bottom: $size-y !important;
+		padding-left: $size !important;
+	}
 }

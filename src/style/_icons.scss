@@ -1,13 +1,13 @@
 // Style SVG/IMG icons
 
 .icon {
-  &-logo {
-  }
+	&-logo {
+	}
 }
 
 /**
  * Default style
  */
 .icon {
-  transition: fill $time-transition;
+	transition: fill $time-transition;
 }

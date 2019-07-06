@@ -1,44 +1,44 @@
 html,
 body {
-  // display: flex;
-  // min-height: 100%;
-  width: 100%;
-  // flex-direction: column;
-  // flex: 1 1 auto;
+	// display: flex;
+	// min-height: 100%;
+	width: 100%;
+	// flex-direction: column;
+	// flex: 1 1 auto;
 }
 
 body {
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .footer {
-  margin-top: auto;
+	margin-top: auto;
 }
 
 // Space beetween elements
 .space {
-  > * {
-    &:first-child {
-      margin-top: 0;
-    }
+	> * {
+		&:first-child {
+			margin-top: 0;
+		}
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 * {
-  // Mobile tap color highlight
-  @if ($color-tap != false) {
-    -webkit-tap-highlight-color: $color-tap;
-  }
-  // Text selection color
-  @if ($color-text-selection != false) {
-    &::selection {
-      background: $color-text-selection;
-    }
-  }
+	// Mobile tap color highlight
+	@if ($color-tap != false) {
+		-webkit-tap-highlight-color: $color-tap;
+	}
+	// Text selection color
+	@if ($color-text-selection != false) {
+		&::selection {
+			background: $color-text-selection;
+		}
+	}
 }

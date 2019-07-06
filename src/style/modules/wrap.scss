@@ -20,19 +20,19 @@ Style guide: Flow.wrap
 
 // Function
 @mixin wrap($max-width, $padding-x: 0) {
-  max-width: $max-width + $padding-x * 2;
+	max-width: $max-width + $padding-x * 2;
 
-  @if $padding-x {
-    padding-right: $padding-x;
-    padding-left: $padding-x;
-  }
+	@if $padding-x {
+		padding-right: $padding-x;
+		padding-left: $padding-x;
+	}
 }
 
 // Style
 @mixin wrap-style {
-  .wrap {
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
-  }
+	.wrap {
+		width: 100%;
+		margin-right: auto;
+		margin-left: auto;
+	}
 }

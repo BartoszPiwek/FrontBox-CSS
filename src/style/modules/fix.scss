@@ -7,16 +7,19 @@ Style guide: Fix.fixed
 */
 
 @mixin fix-fixed {
-  position: fixed;
-  -webkit-transform: translateZ(0);
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  transform: translateZ(0);
-  perspective: 1000;
+	position: fixed;
+	/* stylelint-disable-next-line */
+	-webkit-transform: translateZ(0);
+	transform: translate3d(0, 0, 0);
+	transform: translateZ(0);
+	/* stylelint-disable-next-line */
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	/* stylelint-disable-next-line */
+	-webkit-perspective: 1000;
+	perspective: 1000;
 }
 
 %fix-fixed {
-  @include fix-fixed;
+	@include fix-fixed;
 }

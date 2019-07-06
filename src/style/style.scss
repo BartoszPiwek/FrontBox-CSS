@@ -7,8 +7,9 @@ Version     : 1.1.0
 
 @charset "UTF-8"; // https://developer.mozilla.org/en-US/docs/Web/CSS/@charset
 
-@import './variables/*';
-@import './tools/*';
-@import './modules/*';
-@import './plugins/*';
-@import '_*';
+@import "./variables/*";
+@import "./tools/*";
+@import "./modules/*";
+@import "./plugins/*";
+/* stylelint-disable-next-line scss/at-import-no-partial-leading-underscore */
+@import "_*";

@@ -1,70 +1,68 @@
-/*=========================================================================
-|| WYSIWYG HTML output formatting
-=========================================================================*/
-
+// ANCHOR .col
 .wysiwyg {
-  & > * {
-    &:first-child {
-      margin-top: 0 !important;
-    }
-    &:last-child {
-      margin-bottom: 0 !important;
-    }
-  }
+	> * {
+		&:first-child {
+			margin-top: 0 !important;
+		}
 
-  ul {
-    li {
-    }
-  }
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
 
-  ol {
-    li {
-    }
-  }
+	ul {
+		li {
+		}
+	}
 
-  p {
-  }
+	ol {
+		li {
+		}
+	}
 
-  div {
-  }
+	p {
+	}
 
-  strong {
-  }
+	div {
+	}
 
-  u {
-  }
+	strong {
+	}
 
-  blockquote {
-  }
+	u {
+	}
 
-  hr {
-  }
+	blockquote {
+	}
 
-  img {
-  }
+	hr {
+	}
 
-  a {
-  }
+	img {
+	}
 
-  h1 {
-  }
+	a {
+	}
 
-  h2 {
-  }
+	h1 {
+	}
 
-  h3 {
-  }
+	h2 {
+	}
 
-  h4 {
-  }
+	h3 {
+	}
 
-  h5 {
-  }
+	h4 {
+	}
 
-  h6 {
-  }
+	h5 {
+	}
 
-  pre {
-    font-family: $font-family-monospace;
-  }
+	h6 {
+	}
+
+	pre {
+		font-family: $font-family-monospace;
+	}
 }

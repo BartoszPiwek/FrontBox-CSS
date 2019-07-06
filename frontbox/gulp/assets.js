@@ -1,10 +1,11 @@
 /* Import libs */
 import { src, dest } from "gulp";
 import realFavicon from 'gulp-real-favicon';
+import changed from 'gulp-changed';
+import svgmin from 'gulp-svgmin';
 /* Import config */
 import * as config from "./../../config";
 import { getModeName } from './index';
-
 
 /* Generate a multiplatform favicon with RealFaviconGenerator */
 export function favicon(done) {
@@ -95,12 +96,14 @@ export function svg(done) {
 		.pipe(changed(`public/${getModeName()}/${element.dest}`))
 		.pipe(svgmin({
 			plugins: [
+				{ removeXMLProcInst: true },
+				{ removeComments: true },
+				{ removeDoctype: true },
 				{ removeViewBox: false },
 				{ removeUselessStrokeAndFill: true },
 				{ removeStyleElement: true },
-				{ removeAttrs: { attrs: ['xmlns', 'fill', 'stroke', 'width', 'height'] } },
+				{ removeAttrs: { attrs: ['xmlns', 'fill', 'stroke', 'width', 'height', 'id'] } },
 			]
 		}))
 		.pipe(dest(`${element.dest}`));
-
 }

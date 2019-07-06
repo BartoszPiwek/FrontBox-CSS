@@ -1,68 +1,68 @@
 .js_cookies-information {
-  @extend %scrollbar-placeholder;
+	@extend %scrollbar-placeholder;
 
-  position: fixed;
-  z-index: index('menu') - 1;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 8px 0;
-  transition: transform $time-transition, opacity $time-transition;
-  border-top: 2px solid color('primary');
-  opacity: 1;
-  background-color: transparentize(color('primary'), 0.1);
-  box-shadow: 0 -5px 10px 0 transparentize(color('black'), 0.4);
+	position: fixed;
+	z-index: index("menu") - 1;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 8px 0;
+	transition: transform $time-transition, opacity $time-transition;
+	border-top: 2px solid color("primary");
+	opacity: 1;
+	background-color: transparentize(color("primary"), 0.1);
+	box-shadow: 0 -5px 10px 0 transparentize(color("black"), 0.4);
 
-  &__img {
-    display: none;
+	&__img {
+		display: none;
 
-    @include media(fablet) {
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 65px;
-      height: 67px;
-    }
-  }
+		@include media(fablet) {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 65px;
+			height: 67px;
+		}
+	}
 
-  &__text {
-    color: color('white');
-    font-size: 14px;
-    text-align: justify;
-  }
+	&__text {
+		color: color("white");
+		font-size: 14px;
+		text-align: justify;
+	}
 
-  &__container {
-    position: relative;
-    padding-right: 40px;
+	&__container {
+		position: relative;
+		padding-right: 40px;
 
-    @include media(fablet) {
-      padding-left: 80px;
-    }
-  }
+		@include media(fablet) {
+			padding-left: 80px;
+		}
+	}
 
-  &__exit {
-    @include add-click-placeholder;
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
+	&__exit {
+		@include add-click-placeholder;
+		position: absolute;
+		top: 0;
+		right: 0;
+		cursor: pointer;
 
-    @include add-hover {
-      .icon-x {
-        transform: rotate(90deg);
-      }
-    }
+		.icon-x {
+			width: 20px;
+			height: 20px;
+			transition: transform $time-transition;
+		}
 
-    .icon-x {
-      width: 20px;
-      height: 20px;
-      transition: transform $time-transition;
-    }
-  }
+		@include add-hover {
+			.icon-x {
+				transform: rotate(90deg);
+			}
+		}
+	}
 
-  &--hide {
-    transform: translate(0, 100%);
-    opacity: 0;
-  }
+	&--hide {
+		transform: translate(0, 100%);
+		opacity: 0;
+	}
 }

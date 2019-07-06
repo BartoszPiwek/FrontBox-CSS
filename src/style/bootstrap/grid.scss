@@ -32,33 +32,33 @@ Style guide: Grid.generate
 */
 
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
-  @include responsive($grid-breakpoints) {
-    $prefix: &;
-    @for $i from 1 through $grid-count {
-      @at-root .#{$prefix}col-#{$i} {
-        flex-basis: 100% / ($grid-count / $i);
-        max-width: 100% / ($grid-count / $i);
-      }
+	@include responsive($grid-breakpoints) {
+		$prefix: &;
+		@for $i from 1 through $grid-count {
+			@at-root .#{$prefix}col-#{$i} {
+				flex-basis: 100% / ($grid-count / $i);
+				max-width: 100% / ($grid-count / $i);
+			}
 
-      @if $i != $grid-count {
-        @at-root .#{$prefix}pull-#{$i} {
-          right: 100% / ($grid-count / $i) !important;
-        }
+			@if $i != $grid-count {
+				@at-root .#{$prefix}pull-#{$i} {
+					right: 100% / ($grid-count / $i) !important;
+				}
 
-        @at-root .#{$prefix}push-#{$i} {
-          left: 100% / ($grid-count / $i) !important;
-        }
+				@at-root .#{$prefix}push-#{$i} {
+					left: 100% / ($grid-count / $i) !important;
+				}
 
-        @at-root .#{$prefix}order-#{$i} {
-          order: $i;
-        }
-      }
-    }
+				@at-root .#{$prefix}order-#{$i} {
+					order: $i;
+				}
+			}
+		}
 
-    @at-root .#{$prefix}col-shrink {
-      flex: 0 0 auto;
-    }
-  }
+		@at-root .#{$prefix}col-shrink {
+			flex: 0 0 auto;
+		}
+	}
 }
 
 /*
@@ -67,28 +67,28 @@ Row
 Style guide: Grid.row
 */
 @mixin grid-style {
-  .row {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
+	.row {
+		display: flex;
+		position: relative;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 100%;
 
-    > * {
-      display: flex;
-      position: relative;
-      flex-direction: column;
-      flex-grow: 0;
-      flex-shrink: 0;
-      max-width: 100%;
-      height: auto !important;
-      min-height: 1px;
-    }
+		> * {
+			display: flex;
+			position: relative;
+			flex-direction: column;
+			flex-grow: 0;
+			flex-shrink: 0;
+			max-width: 100%;
+			height: auto !important;
+			min-height: 1px;
+		}
 
-    &.row-same {
-      * > * {
-        flex: 1 1 auto;
-      }
-    }
-  }
+		&.row-same {
+			* > * {
+				flex: 1 1 auto;
+			}
+		}
+	}
 }

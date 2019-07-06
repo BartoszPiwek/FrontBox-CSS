@@ -1,96 +1,37 @@
-/*=========================================================================
-|| FILE: Tools
-===========================================================================
-|| Create class using functions
-=========================================================================*/
-
-/*=========================================================================
-|| WRAP - center element in asix x
-|| = max width elemnt (end calculate = max-width + padding * 2)
-|| = padding for responsive view
-//=======================================================================*/
+// ANCHOR .wrap
 .wrap {
-  @include wrap(1024px, 20px);
+	@include wrap(1024px, 20px);
 
-  /**
-   * Elements
-   */
-
-  /* Navigation bar */
-  &-navbar {
-    @include wrap(1024px, 20px);
-  }
+	&-navbar {
+		@include wrap(1024px, 20px);
+	}
 }
 
+// ANCHOR .row
 .row {
-  /*=========================================================================
-  // ROW GAP
-  // Set space beetween columns in ASIX X
-  .space-x(20px);
-  // * space beetween columns
-  //=========================================================================
-  // ROW SPACE
-  // Set space beetween columns in ASIX Y
-  .space-y(20px);
-  // * space beetween columns
-  == WARNING: row will have 'overflow: hidden'
-  //=======================================================================*/
-  &-x-space {
-    @include space-x(25px);
-  }
-  &-y-space {
-    @include space-y(30px);
-  }
-  &-space {
-    @include space(5px, 10px);
-  }
+	&-x-space {
+		@include space-x(25px);
+	}
+
+	&-y-space {
+		@include space-y(30px);
+	}
+
+	&-space {
+		@include space(5px, 10px);
+	}
 }
 
+// ANCHOR .col
 .col {
-  // tools {col-static}
-  /*=========================================================================
-  // COLUMN SIZE - set single column size (.row > .col-x) {variables without px}
-  // .add-col(column-size, parent-width, gap-size) {
-  // * columns size
-  // * parent element width (most .wrap)
-  // * space beetween columns {optional | default "0"}
-  == SNIPPETS: add-column
-  =========================================================================*/
-
-  &-static {
-    &--test {
-      flex-basis: 300px;
-    }
-  }
+	&-static {
+		&--test {
+			flex-basis: 300px;
+		}
+	}
 }
-
-/**
- * Space
- */
-.space {
-  /* Default */
-  > * {
-    margin: 20px 0;
-  }
-
-  /* Sizes */
-  &--medium > * {
-    margin: 18px 0;
-  }
-}
-
-/*=========================================================================
-// Generate color list class { _functions.less }
-// .color-list(@color-name-array, @color-variable-prefix, @prefix:color)
-=========================================================================*/
-
-// @color-1: #333333;
-// @color-2: #777777;
-// @color-3: @color-white;
-// @color-list-string: 1, 2, 3;
-// .color-list(@color-list-string, color, fill);
 
 // vh-unit
 .height-full {
-  // @include add_vh-unit(100);
+	// @include add_vh-unit(100);
 }

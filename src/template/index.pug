@@ -10,7 +10,7 @@ block variables
 	- var title = 'FrontBox-CSS Starter'
 	- var description = 'Starter Page'
 	- var keywords = false
-	- var ogType = 'website' // http://ogp.me/#types
+	- var ogType = 'website'
 	- var ogImage = false
 
 //- Main content
@@ -21,6 +21,8 @@ block append content
 	main.page
 		.wrap
 			| Change me!
+
+			:svg(file="checkmark", class="foo")
 		
 	include includes/footer.pug
 

@@ -5,37 +5,39 @@ Style guide: Component.Links
 */
 
 .link {
-  transition: color $time-transition;
-  cursor: pointer;
+	transition: color $time-transition;
+	cursor: pointer;
 
-  &--primary {
-    color: color('primary');
+	&--primary {
+		color: color("primary");
 
-    .icon {
-      fill: color('primary');
-    }
+		.icon {
+			fill: color("primary");
+		}
 
-    @include add-hover {
-      color: darken(color('primary'), 10%);
-      .icon {
-        fill: darken(color('primary'), 10%);
-      }
-    }
-  }
+		@include add-hover {
+			color: darken(color("primary"), 10%);
 
-  @include add-disable {
-    color: color('disable') !important;
-    cursor: not-allowed;
-    .icon {
-      fill: color('disable') !important;
-    }
-  }
+			.icon {
+				fill: darken(color("primary"), 10%);
+			}
+		}
+	}
 
-  &__group {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    @include space-x(10px);
-  }
+	&__group {
+		@include space-x(10px);
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+	}
+
+	@include add-disable {
+		color: color("disable") !important;
+		cursor: not-allowed;
+
+		.icon {
+			fill: color("disable") !important;
+		}
+	}
 }

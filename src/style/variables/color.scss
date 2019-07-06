@@ -1,17 +1,17 @@
 $colors: (
-  'default': #fff,
-  'black': #000,
-  'white': #fff,
-  'dark': #343a40,
-  'grey': #90938f,
-  'disable': #90938f,
-  'primary': #05386b,
-  'secondary': #379683,
-  'success': #28a745,
-  'danger': #dc3545,
-  'warning': #ffc107,
-  'info': #17a2b8,
-  'light': #f8f9fa
+"default": #fff,
+"black": #000,
+"white": #fff,
+"dark": #343a40,
+"grey": #90938f,
+"disable": #90938f,
+"primary": #05386b,
+"secondary": #379683,
+"success": #28a745,
+"danger": #dc3545,
+"warning": #ffc107,
+"info": #17a2b8,
+"light": #f8f9fa
 );
 
 $color-tap: false;
@@ -19,10 +19,10 @@ $color-text-selection: false;
 
 // Function
 @function color($name) {
-  $color-var: map-get($colors, $name);
-  @if not $color-var {
-    @warn 'undefined color name: ' + $name;
-    @return false;
-  }
-  @return $color-var;
+	$color-var: map-get($colors, $name);
+	@if not $color-var {
+		@warn "undefined color name: " + $name;
+		@return false;
+	}
+	@return $color-var;
 }

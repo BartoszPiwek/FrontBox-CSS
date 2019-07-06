@@ -23,28 +23,28 @@ mixin_output:
 Style guide: Functions.triangle
 */
 
-@mixin triangle($width, $height, $position: 'down', $color: color('primary')) {
-  $width-half: $width / 2;
-  $bool: ($position != 'left' and $position != 'right');
+@mixin triangle($width, $height, $position: "down", $color: color("primary")) {
+	$width-half: $width / 2;
+	$bool: ($position != "left" and $position != "right");
 
-  width: 0;
-  height: 0;
+	width: 0;
+	height: 0;
 
-  @if ($position == 'left') {
-    border-right: $height solid $color;
-  } @else if ($position == 'up') {
-    border-bottom: $height solid $color;
-  } @else if ($position == 'right') {
-    border-left: $height solid $color;
-  } @else if ($position == 'down') {
-    border-top: $height solid $color;
-  }
+	@if ($position == "left") {
+		border-right: $height solid $color;
+	} @else if ($position == "up") {
+		border-bottom: $height solid $color;
+	} @else if ($position == "right") {
+		border-left: $height solid $color;
+	} @else if ($position == "down") {
+		border-top: $height solid $color;
+	}
 
-  @if ($bool == true) {
-    border-right: $width-half solid transparent;
-    border-left: $width-half solid transparent;
-  } @else {
-    border-top: $width-half solid transparent;
-    border-bottom: $width-half solid transparent;
-  }
+	@if ($bool == true) {
+		border-right: $width-half solid transparent;
+		border-left: $width-half solid transparent;
+	} @else {
+		border-top: $width-half solid transparent;
+		border-bottom: $width-half solid transparent;
+	}
 }

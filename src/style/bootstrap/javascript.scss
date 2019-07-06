@@ -1,13 +1,13 @@
 .js_expand__container {
-  &--active {
-    height: 100% !important;
-  }
+	&--active {
+		height: 100% !important;
+	}
 
-  &--close {
-    height: 0 !important;
-  }
+	&--close {
+		height: 0 !important;
+	}
 }
 
 .js_transitionHeight {
-  transition: height $time-transition !important;
+	transition: height $time-transition !important;
 }

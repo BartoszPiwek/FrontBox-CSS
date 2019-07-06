@@ -21,16 +21,16 @@ OUTPUT:
 */
 
 @mixin add-hover {
-  &--hover:hover &,
-  &--hover:active &,
-  &--hover:focus &,
-  &--hover-active &,
-  &--hover-active &,
-  &--hover-active &,
-  &.is-active,
-  &:hover,
-  &:active,
-  &:focus {
-    @content;
-  }
+	&--hover:hover &,
+	&--hover:active &,
+	&--hover:focus &,
+	&--hover-active &,
+	&--hover-active &,
+	&--hover-active &,
+	&.is-active,
+	&:hover,
+	&:active,
+	&:focus {
+		@content;
+	}
 }

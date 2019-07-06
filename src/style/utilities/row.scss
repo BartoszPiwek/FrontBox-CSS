@@ -1,42 +1,42 @@
 @include responsive($breakpoints) {
-  $prefix: &;
+	$prefix: &;
 
-  @at-root .#{$prefix}row {
-    &-reverse {
-      flex-direction: row-reverse;
-    }
+	@at-root .#{$prefix}row {
+		&-reverse {
+			flex-direction: row-reverse;
+		}
 
-    &-justify {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-    }
+		&-justify {
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
 
-    &-responsive {
-      flex-wrap: nowrap;
-      overflow: hidden;
-    }
+		&-responsive {
+			flex-wrap: nowrap;
+			overflow: hidden;
+		}
 
-    &-center {
-      > * {
-        align-items: center;
-        justify-content: center;
-      }
-    }
+		&-center {
+			> * {
+				align-items: center;
+				justify-content: center;
+			}
+		}
 
-    &-v-center,
-    &-y-center {
-      > * {
-        align-items: center;
-      }
-    }
+		&-v-center,
+		&-y-center {
+			> * {
+				align-items: center;
+			}
+		}
 
-    &-h-center,
-    &-x-center {
-      > * {
-        justify-content: center;
-      }
-    }
-  }
+		&-h-center,
+		&-x-center {
+			> * {
+				justify-content: center;
+			}
+		}
+	}
 }

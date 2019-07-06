@@ -86,7 +86,7 @@ export function watchFiles() {
 
 }
 
-const build = series(parallel(buildCopy, buildScript, buildStyle, buildHTML), server, watchFiles);
+const build = series(parallel(buildAssets, buildCopy, buildScript, buildStyle, buildHTML), server, watchFiles);
 const cleanBuild = series(clean, build);
 
 /* Export */

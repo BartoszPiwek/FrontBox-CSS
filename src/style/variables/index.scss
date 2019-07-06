@@ -1,16 +1,16 @@
 $index: (
-  'loading': 99999,
-  'first': 9999,
-  'header': 8000,
-  'menu': 7000,
-  'cookies': 6000
+"loading": 99999,
+"first": 9999,
+"header": 8000,
+"menu": 7000,
+"cookies": 6000
 );
 
 // Function
 @function index($name) {
-  $index-var: map-get($index, $name);
-  @if not $index-var {
-    @error 'undefined index name: ' + $name;
-  }
-  @return $index-var;
+	$index-var: map-get($index, $name);
+	@if not $index-var {
+		@error "undefined index name: " + $name;
+	}
+	@return $index-var;
 }

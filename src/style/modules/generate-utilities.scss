@@ -1,7 +1,7 @@
 @mixin generate-tool-count($prefix, $count) {
-  @for $i from 1 through $count {
-    &-#{$i} {
-      #{$prefix}: #{$i}px !important;
-    }
-  }
+	@for $i from 1 through $count {
+		&-#{$i} {
+			#{$prefix}: #{$i}px !important;
+		}
+	}
 }

@@ -9,16 +9,16 @@ cleartfix;
 Style guide: Functions.clearfix
 */
 @mixin clearfix {
-  *zoom: 1;
-  zoom: 1;
+	*zoom: 1;
+	zoom: 1;
 
-  &:before,
-  &:after {
-    content: ' ';
-    display: table;
-  }
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
 
-  &:after {
-    clear: both;
-  }
+	&:after {
+		clear: both;
+	}
 }

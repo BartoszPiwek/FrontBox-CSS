@@ -20,39 +20,39 @@ Mix class:
 Style guide: Elements.hero
 */
 .hero {
-  position: relative;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
 
-  &__wrapper {
-    padding: 100px 0;
-  }
+	&__wrapper {
+		padding: 100px 0;
+	}
 
-  &__header {
-    margin-bottom: 50px;
-  }
+	&__header {
+		margin-bottom: 50px;
+	}
 
-  &__body {
-    font-size: 30px;
-  }
+	&__body {
+		font-size: 30px;
+	}
 
-  &__footer {
-    font-size: 22px;
-    margin-top: 50px;
-  }
+	&__footer {
+		margin-top: 50px;
+		font-size: 22px;
+	}
 
-  &__title {
-    font-size: 45px;
-  }
+	&__title {
+		font-size: 45px;
+	}
 
-  /* Mix class */
-  &.height-full {
-    display: flex;
-    align-items: center;
+	/* Mix class */
+	&.height-full {
+		display: flex;
+		align-items: center;
 
-    > * {
-      flex: 1 1 auto;
-    }
-  }
+		> * {
+			flex: 1 1 auto;
+		}
+	}
 }
