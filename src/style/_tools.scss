@@ -2,7 +2,11 @@
 .wrap {
 	@include wrap(1024px, 20px);
 
-	&-navbar {
+	&--navbar {
+		@include wrap(1024px, 20px);
+	}
+
+	&--footer {
 		@include wrap(1024px, 20px);
 	}
 }
@@ -19,6 +23,18 @@
 
 	&-space {
 		@include space(5px, 10px);
+	}
+
+	&--footer {
+		@include space(25px);
+
+		@include media(tablet) {
+			@include space(35px);
+		}
+
+		@include media(desktop) {
+			@include space(45px);
+		}
 	}
 }
 

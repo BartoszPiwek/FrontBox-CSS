@@ -1,5 +1,5 @@
-import { html, body } from "./elements";
-import { getScrollPosition, isScrollbar } from "./browser";
+import { html, body } from './elements';
+import { getScrollPosition, isScrollbar } from './browser';
 
 /**
  * Toggle scroll lock for body element
@@ -12,7 +12,6 @@ import { getScrollPosition, isScrollbar } from "./browser";
  */
 
 export class ScrollLock {
-
 	state: boolean;
 	positionTop: number;
 	cssActiveClass: string = 'js_scroll-lock';
@@ -37,7 +36,6 @@ export class ScrollLock {
 	}
 
 	public change(state?: boolean) {
-
 		if (state && this.state === state) {
 			/* test-code */
 			console.info(`ScrollLock\n- fired scrollLock() function with parameter '${state}', but state is already '${this.state}'`);
@@ -47,8 +45,7 @@ export class ScrollLock {
 
 		if (state === true || this.state) {
 			this.off();
-		}
-		else {
+		} else {
 			this.on();
 		}
 

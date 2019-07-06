@@ -1,10 +1,10 @@
-import { ScrollLock } from "./scroll-lock";
-import { Browser } from "./browser";
+import { ScrollLock } from './scroll-lock';
+import { Browser } from './browser';
 
 interface ISticky {
-	browser: Browser
-	$element: HTMLElement
-	scrollLock: ScrollLock
+	browser: Browser;
+	$element: HTMLElement;
+	scrollLock: ScrollLock;
 }
 
 /**
@@ -17,12 +17,11 @@ interface ISticky {
  */
 
 export class Sticky {
-
-	browser: Browser
-	scrollLock: ScrollLock
-	active: boolean
-	$element: HTMLElement
-	offset: number
+	browser: Browser;
+	scrollLock: ScrollLock;
+	active: boolean;
+	$element: HTMLElement;
+	offset: number;
 
 	constructor(param: ISticky) {
 		this.browser = param.browser;
@@ -38,13 +37,11 @@ export class Sticky {
 			this.onScroll();
 		});
 		this.onScroll();
-
 	}
 
 	private refresh() {
 		this.offset = this.$element.parentElement.offsetTop;
 		console.log(this.offset);
-
 	}
 
 	private onScroll() {
@@ -54,8 +51,7 @@ export class Sticky {
 					this.active = true;
 					this.$element.parentElement.classList.add(`js_sticky`);
 				}
-			}
-			else {
+			} else {
 				if (this.active) {
 					this.active = false;
 					this.$element.parentElement.classList.remove(`js_sticky`);
@@ -63,7 +59,6 @@ export class Sticky {
 			}
 		}
 	}
-
 }
 
 /**

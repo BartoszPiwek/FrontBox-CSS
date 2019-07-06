@@ -22,5 +22,11 @@
 			display: flex;
 			flex: 1 1 auto;
 		}
+
+		&-full {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+		}
 	}
 }

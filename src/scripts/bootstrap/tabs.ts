@@ -1,17 +1,16 @@
 interface ITabs {
-	name: string
-	callbackChange?: () => void
+	name: string;
+	callbackChange?: () => void;
 }
 
 export class Tabs {
-
-	$contents: HTMLCollection
-	$buttons: HTMLCollection
-	$containers: HTMLCollection
-	activeTab: number = 0
-	name: string
-	active: boolean = false
-	callbackChange: () => void
+	$contents: HTMLCollection;
+	$buttons: HTMLCollection;
+	$containers: HTMLCollection;
+	activeTab: number = 0;
+	name: string;
+	active: boolean = false;
+	callbackChange: () => void;
 
 	constructor(param: ITabs) {
 		this.name = param.name;
@@ -22,18 +21,23 @@ export class Tabs {
 		this.refresh();
 	}
 
-	refresh() {
-		this.$contents = document.querySelectorAll(`[data-tabs-content="${this.name}"]`)[0].children;
-		this.$buttons = document.querySelectorAll(`[data-tabs-buttons="${this.name}"]`)[0].children;
-		this.$containers = document.querySelectorAll(`[data-tabs-${this.name}-active]`)[0].children;
+	public refresh() {
+		let $contents = document.querySelectorAll(`[data-tabs-content="${this.name}"]`),
+			$buttons = document.querySelectorAll(`[data-tabs-buttons="${this.name}"]`),
+			$containers = document.querySelectorAll(`[data-tabs-${this.name}-active]`);
+
 		if (this.active) {
 			this.unbind();
-
 		}
-		this.bind();
+		if (this.$contents) {
+			this.$contents = $contents[0].children;
+			this.$buttons = $buttons[0].children;
+			this.$containers = $containers[0].children;
+			this.bind();
+		}
 	}
 
-	bind() {
+	public bind() {
 		const length = this.$buttons.length;
 
 		for (let index = 0; index < length; index++) {
@@ -44,11 +48,9 @@ export class Tabs {
 		}
 	}
 
-	unbind() {
+	public unbind() {}
 
-	}
-
-	change(index: number) {
+	public change(index: number) {
 		if (this.activeTab === index) {
 			return false;
 		}

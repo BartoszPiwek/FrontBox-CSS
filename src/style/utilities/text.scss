@@ -72,4 +72,8 @@
 	@at-root .#{$prefix}no-font {
 		font-size: 0 !important;
 	}
+
+	@at-root .#{$prefix}fs {
+		@include generate-tool-count("font-size", 85);
+	}
 }

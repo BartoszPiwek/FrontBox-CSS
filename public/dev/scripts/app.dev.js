@@ -1811,18 +1811,18 @@ window.onload = function () {
         $burger: document.getElementById('burger-button'),
         $container: document.getElementById('header'),
         $overlay: document.getElementById('header-overlay'),
-        cssClassActive: 'js_burger-active',
+        cssClassActive: 'js_burger-active'
     });
     new sticky_1.Sticky({
         browser: browser,
         scrollLock: scrollLock,
-        $element: document.getElementById('header-content'),
+        $element: document.getElementById('header-content')
     });
     new tabs_1.Tabs({
         name: 'slider',
         callbackChange: function () {
             window.scrollTo(0, 0);
-        },
+        }
     });
     /* Forms */
     new input_counter_1.InputCounter({
@@ -1830,17 +1830,17 @@ window.onload = function () {
             wrap: "[data-bind=\"input-counter\"]",
             input: ".input-counter__input",
             button: ".input-counter__btn",
-            disable: "--disable",
+            disable: "--disable"
         }
     });
     /* Informations */
     new cookie_1.InformationCookie();
     /* Polyfill */
-    // CSS Custom Properties 
+    // CSS Custom Properties
     cssVars({
         variables: {
             scrollbarWidth: browser.scrollbarWidth + "px"
-        },
+        }
     });
     // const placeholder = new ElementPlaceholder();
     // placeholder.create(document.getElementById('header'));
@@ -2396,13 +2396,16 @@ var Tabs = /** @class */ (function () {
         this.refresh();
     }
     Tabs.prototype.refresh = function () {
-        this.$contents = document.querySelectorAll("[data-tabs-content=\"" + this.name + "\"]")[0].children;
-        this.$buttons = document.querySelectorAll("[data-tabs-buttons=\"" + this.name + "\"]")[0].children;
-        this.$containers = document.querySelectorAll("[data-tabs-" + this.name + "-active]")[0].children;
+        var $contents = document.querySelectorAll("[data-tabs-content=\"" + this.name + "\"]"), $buttons = document.querySelectorAll("[data-tabs-buttons=\"" + this.name + "\"]"), $containers = document.querySelectorAll("[data-tabs-" + this.name + "-active]");
         if (this.active) {
             this.unbind();
         }
-        this.bind();
+        if (this.$contents) {
+            this.$contents = $contents[0].children;
+            this.$buttons = $buttons[0].children;
+            this.$containers = $containers[0].children;
+            this.bind();
+        }
     };
     Tabs.prototype.bind = function () {
         var _this = this;
@@ -2418,8 +2421,7 @@ var Tabs = /** @class */ (function () {
             _loop_1(index);
         }
     };
-    Tabs.prototype.unbind = function () {
-    };
+    Tabs.prototype.unbind = function () { };
     Tabs.prototype.change = function (index) {
         if (this.activeTab === index) {
             return false;

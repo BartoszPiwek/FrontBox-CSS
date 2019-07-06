@@ -34,7 +34,6 @@
 				"except": ["value"]
 			}
 		],
-		"length-zero-no-unit": true,
 		"media-feature-name-no-vendor-prefix": true,
 		"media-feature-parentheses-space-inside": "never",
 		"no-missing-end-of-source-newline": true,

@@ -27,16 +27,3 @@
 		font-size: 16px;
 	}
 }
-
-// Row
-.row-footer {
-	@include space(25px);
-
-	@include media(tablet) {
-		@include space(35px);
-	}
-
-	@include media(desktop) {
-		@include space(45px);
-	}
-}
