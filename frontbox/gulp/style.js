@@ -20,7 +20,13 @@ import { getModeName } from './index';
 
 export function style_main() {
 	const element = config.path.style.main;
-
+	let importStyle = '';
+	if (argv.prod) {
+		importStyle = `
+			@import 'bootstrap';
+			@import 'utilities';
+		`;
+	}
 	config.dev = !argv.prod;
 
 	return src(`${element.files}`, {
@@ -28,24 +34,12 @@ export function style_main() {
 	})
 		.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
 		.pipe(
-			header(
-				`
+			header(`
 			$infoOffJavascript: ${config.info.offJavascript};
 			$infoOldBrowser: ${config.info.oldBrowser};
-			$dev: ${config.dev};
-			`
-			)
-		)
-		.pipe(
-			gulpif(
-				argv.prod,
-				header(
-					`
-				@import 'bootstrap';
-				@import 'utilities';
-			`
-				)
-			)
+			$dev: ${!argv.prod};
+			${importStyle}
+			`)
 		)
 		.pipe(gulpif(config.working, footer(`@import '../../../FrontBox-Plugins/**/*.scss';`)))
 		.pipe(sassGlob())
@@ -80,13 +74,11 @@ export function style_bootstrap() {
 		allowEmpty: true
 	})
 		.pipe(
-			header(
-				`
+			header(`
 				$infoOffJavascript: ${config.info.offJavascript};
 				$infoOldBrowser: ${config.info.oldBrowser};
-				$dev: ${config.dev};
-			`
-			)
+				$dev: ${!argv.prod};
+			`)
 		)
 		.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
 		.pipe(sassGlob())

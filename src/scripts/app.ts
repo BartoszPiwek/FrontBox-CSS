@@ -32,7 +32,7 @@ window.onload = () => {
 	});
 
 	new Tabs({
-		name: 'slider'
+		name: 'primary'
 	});
 
 	/* Forms */
@@ -51,11 +51,11 @@ window.onload = () => {
 	/* Polyfill */
 
 	// CSS Custom Properties
-	cssVars({
-		variables: {
-			scrollbarWidth: `${browser.scrollbarWidth}px`
-		}
-	});
+	// cssVars({
+	// 	variables: {
+	// 		scrollbarWidth: `${browser.scrollbarWidth}px`
+	// 	}
+	// });
 
 	// const placeholder = new ElementPlaceholder();
 	// placeholder.create(document.getElementById('header'));

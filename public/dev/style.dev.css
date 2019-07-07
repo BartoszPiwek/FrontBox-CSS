@@ -1802,166 +1802,82 @@ Style guide: Blocks.timeline
     margin-top: 16px;
     font-size: 16px; }
 
-/*
-Tabs
+.tabs {
+  position: relative;
+  width: 100%;
+  overflow: hidden; }
+  .tabs__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 1s;
+    opacity: 0;
+    pointer-events: none; }
+    .tabs__item.active {
+      position: static;
+      opacity: 1;
+      pointer-events: all; }
+      @media screen and (min-width: 992px) {
+        .tabs__item.active {
+          top: 0;
+          transform: translateY(0); } }
 
-Markup:
-<div class="wrap">
- <div>content</div>
-</div>
+.tabs-background:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(0, 0, 0, 0.5) 100%);
+  background-repeat: repeat-x;
+  background-position: center center;
+  background-size: cover; }
 
-Emmet:
-.wrap
+.tabs-background__item {
+  position: absolute;
+  z-index: -2;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  transition: opacity 1s;
+  opacity: 0;
+  background-size: cover;
+  pointer-events: none; }
+  .tabs-background__item.active {
+    opacity: 1;
+    pointer-events: all; }
 
-Mixin:
-wrap($max-width, $paddin-x);
-
-Style guide: Elements.tabs
-*/
-.tabs__expand {
-  display: none; }
-
-.tabs__item {
-  flex: 1 1 auto;
-  padding: 20px;
-  background-color: #05386b;
+.tabs-navigation {
   text-align: center; }
-
-.tabs__view {
-  width: 100%; }
-
-.tabs__expand {
-  padding: 20px;
-  background-color: #00050a; }
-
-.tabs__content {
-  display: flex;
-  flex-direction: row; }
-
-.tabs--vertical {
-  flex-direction: column;
-  text-align: center; }
-
-.tabs--expand {
-  flex-direction: column;
-  text-align: center; }
-  .tabs--expand .tabs__expand {
-    display: block; }
-  .tabs--expand .tabs__view {
-    height: 0;
-    overflow: hidden; }
-
-@media screen and (min-width: 0px) {
-  .xs_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .xs_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .xs_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .xs_tabs--expand .tabs__expand {
-      display: block; }
-    .xs_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 576px) {
-  .sm_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .sm_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .sm_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .sm_tabs--expand .tabs__expand {
-      display: block; }
-    .sm_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 768px) {
-  .md_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .md_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .md_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .md_tabs--expand .tabs__expand {
-      display: block; }
-    .md_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 992px) {
-  .lg_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .lg_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .lg_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .lg_tabs--expand .tabs__expand {
-      display: block; }
-    .lg_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 1200px) {
-  .xl_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .xl_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .xl_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .xl_tabs--expand .tabs__expand {
-      display: block; }
-    .xl_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 1366px) {
-  .hd_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .hd_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .hd_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .hd_tabs--expand .tabs__expand {
-      display: block; }
-    .hd_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
-
-@media screen and (min-width: 1440px) {
-  .whd_tabs__content {
-    display: flex;
-    flex-direction: row; }
-  .whd_tabs--vertical {
-    flex-direction: column;
-    text-align: center; }
-  .whd_tabs--expand {
-    flex-direction: column;
-    text-align: center; }
-    .whd_tabs--expand .tabs__expand {
-      display: block; }
-    .whd_tabs--expand .tabs__view {
-      height: 0;
-      overflow: hidden; } }
+  .tabs-navigation > .tabs-navigation__item {
+    width: 20px;
+    height: 20px;
+    margin: 0 20px;
+    transition: background-color 0.2s;
+    background-color: rgba(255, 255, 255, 0.3); }
+    .tabs-navigation > .tabs-navigation__item.active {
+      background-color: #fff !important; }
+    .tabs-navigation > .tabs-navigation__item:first-child {
+      margin-left: 0; }
+    .tabs-navigation > .tabs-navigation__item:last-child {
+      margin-right: 0; }
+    .tabs-navigation > .tabs-navigation__item--hover:hover .tabs-navigation > .tabs-navigation__item,
+    .tabs-navigation > .tabs-navigation__item--hover:active .tabs-navigation > .tabs-navigation__item,
+    .tabs-navigation > .tabs-navigation__item--hover:focus .tabs-navigation > .tabs-navigation__item,
+    .tabs-navigation > .tabs-navigation__item--hover-active .tabs-navigation > .tabs-navigation__item,
+    .tabs-navigation > .tabs-navigation__item--hover-active .tabs-navigation > .tabs-navigation__item,
+    .tabs-navigation > .tabs-navigation__item--hover-active .tabs-navigation > .tabs-navigation__item, .tabs-navigation > .tabs-navigation__item.is-active, .tabs-navigation > .tabs-navigation__item:hover, .tabs-navigation > .tabs-navigation__item:active, .tabs-navigation > .tabs-navigation__item:focus {
+      background-color: rgba(255, 255, 255, 0.6); }
+    @media screen and (min-width: 992px) {
+      .tabs-navigation > .tabs-navigation__item {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px; } }
 
 /*
 Validator

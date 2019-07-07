@@ -1,5 +1,5 @@
-import { body, html } from "./elements";
-import { breakpointsDefault } from "./css";
+import { body, html } from './elements';
+import { breakpointsDefault } from './css';
 
 export function isScrollbar(): boolean {
 	return window.innerWidth != document.documentElement.clientWidth;
@@ -10,33 +10,51 @@ export function getScrollPosition(): number {
 	return window.pageYOffset || html.scrollTop;
 }
 
+// Get transition vendor prefix
+export function getTransitionEvent(): string {
+	const element = document.createElement('getTransitionEvent'),
+		transitions = {
+			transition: 'transitionend',
+			OTransition: 'oTransitionEnd',
+			MozTransition: 'transitionend',
+			WebkitTransition: 'webkitTransitionEnd'
+		};
+
+	for (const key in transitions) {
+		if (element.style[key] !== undefined) {
+			return transitions[key];
+		}
+	}
+	/* test-code */
+	console.error(`Browser\n- fired getTransitionEvent() function and return undefined transition`);
+	/* end-test-code */
+}
+
 interface IScroll {
-	top: number
-	bottom: number
-	center: number
-	speed: number
-	direction: string
+	top: number;
+	bottom: number;
+	center: number;
+	speed: number;
+	direction: string;
 }
 
 /**
  * @class Browser
  */
 export class Browser {
-
-	public scroll: IScroll
-	private transitionEvent: string
-	public width: number
-	public height: number
-	private responsive: string
-	private orientation: string
-	private portable: string | boolean
-	public scrollbarWidth: number
+	public scroll: IScroll;
+	public transitionEvent: string;
+	public width: number;
+	public height: number;
+	private responsive: string;
+	private orientation: string;
+	private portable: string | boolean;
+	public scrollbarWidth: number;
 
 	constructor() {
-
 		console.log(`Browser`);
 
-		this.transitionEvent = this.getTransitionEvent();
+		this.transitionEvent = getTransitionEvent();
 		this.portable = this.getMobileOperatingSystem();
 
 		this.refresh();
@@ -46,13 +64,12 @@ export class Browser {
 		window.addEventListener('resize orientationchange', () => {
 			this.onScroll();
 		});
-	};
+	}
 
 	private getScrollbarWidth(): number {
-		const
-			$scrollbar: HTMLElement = document.getElementById('js_check-scrollbar'),
+		const $scrollbar: HTMLElement = document.getElementById('js_check-scrollbar'),
 			$content: Element = $scrollbar.children.item(0),
-			output = $scrollbar.offsetWidth - $content.clientWidth
+			output = $scrollbar.offsetWidth - $content.clientWidth;
 
 		$scrollbar.parentNode.removeChild($scrollbar);
 		return output;
@@ -60,7 +77,6 @@ export class Browser {
 
 	/* Determine the mobile operating system */
 	private getMobileOperatingSystem(): string | boolean {
-
 		let userAgent = navigator.userAgent || navigator.vendor;
 
 		// Windows Phone must come first because its UA also contains "Android"
@@ -83,7 +99,7 @@ export class Browser {
 		}
 
 		return false;
-	};
+	}
 
 	private refresh() {
 		this.responsive = this.getResponsive();
@@ -93,16 +109,14 @@ export class Browser {
 	}
 
 	private onScroll(): void {
-
 		/* Check last center */
 		let lastCenter = 0;
 		if (this.scroll) {
-			lastCenter = this.scroll.center
+			lastCenter = this.scroll.center;
 		}
 
 		/* Prepare variables */
-		let
-			top = getScrollPosition(),
+		let top = getScrollPosition(),
 			center = top + this.height / 2,
 			bottom = top + this.height,
 			speed = Math.abs(lastCenter - center),
@@ -110,7 +124,7 @@ export class Browser {
 
 		/* Check scroll direction */
 		if (center < lastCenter) {
-			direction = "up";
+			direction = 'up';
 		}
 
 		this.scroll = {
@@ -118,15 +132,13 @@ export class Browser {
 			bottom: bottom,
 			center: center,
 			speed: speed,
-			direction: direction,
-		}
+			direction: direction
+		};
 	}
 
 	private calculatePage(): void | boolean {
-
 		/* Prepare variables */
-		let
-			width = window.innerWidth,
+		let width = window.innerWidth,
 			lastWidth = this.width,
 			height = window.innerHeight,
 			lastHeight = this.height,
@@ -137,15 +149,13 @@ export class Browser {
 		this.width = width;
 		this.height = height;
 
-
 		/**
-		 * Don't refresh page if user change tab 
+		 * Don't refresh page if user change tab
 		 * @browser Opera
 		 */
 		if (lastWidth === width && lastHeight === height && lastOrientation) {
 			return false;
 		}
-
 	}
 
 	private getResponsive(): string {
@@ -160,33 +170,10 @@ export class Browser {
 	}
 
 	private getOrientation(): string {
-		if (window.matchMedia("(orientation: portrait)").matches) {
+		if (window.matchMedia('(orientation: portrait)').matches) {
 			return 'portrait';
-		}
-		else {
+		} else {
 			return 'landscape';
 		}
 	}
-
-	// Get transition vendor prefix
-	private getTransitionEvent(): string {
-		const
-			element = document.createElement("getTransitionEvent"),
-			transitions = {
-				"transition": "transitionend",
-				"OTransition": "oTransitionEnd",
-				"MozTransition": "transitionend",
-				"WebkitTransition": "webkitTransitionEnd"
-			};
-
-		for (const key in transitions) {
-			if (element.style[key] !== undefined) {
-				return transitions[key];
-			}
-		}
-		/* test-code */
-		console.error(`Browser\n- fired getTransitionEvent() function and return undefined transition`);
-		/* end-test-code */
-	}
-
-};
+}

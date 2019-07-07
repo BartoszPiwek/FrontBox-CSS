@@ -1819,7 +1819,7 @@ window.onload = function () {
         $element: document.getElementById('header-content')
     });
     new tabs_1.Tabs({
-        name: 'slider'
+        name: 'primary'
     });
     /* Forms */
     new input_counter_1.InputCounter({
@@ -1858,6 +1858,24 @@ function getScrollPosition() {
     return window.pageYOffset || elements_1.html.scrollTop;
 }
 exports.getScrollPosition = getScrollPosition;
+// Get transition vendor prefix
+function getTransitionEvent() {
+    var element = document.createElement('getTransitionEvent'), transitions = {
+        transition: 'transitionend',
+        OTransition: 'oTransitionEnd',
+        MozTransition: 'transitionend',
+        WebkitTransition: 'webkitTransitionEnd'
+    };
+    for (var key in transitions) {
+        if (element.style[key] !== undefined) {
+            return transitions[key];
+        }
+    }
+    /* test-code */
+    console.error("Browser\n- fired getTransitionEvent() function and return undefined transition");
+    /* end-test-code */
+}
+exports.getTransitionEvent = getTransitionEvent;
 /**
  * @class Browser
  */
@@ -1865,7 +1883,7 @@ var Browser = /** @class */ (function () {
     function Browser() {
         var _this = this;
         console.log("Browser");
-        this.transitionEvent = this.getTransitionEvent();
+        this.transitionEvent = getTransitionEvent();
         this.portable = this.getMobileOperatingSystem();
         this.refresh();
         window.addEventListener('scroll', function () {
@@ -1875,7 +1893,6 @@ var Browser = /** @class */ (function () {
             _this.onScroll();
         });
     }
-    ;
     Browser.prototype.getScrollbarWidth = function () {
         var $scrollbar = document.getElementById('js_check-scrollbar'), $content = $scrollbar.children.item(0), output = $scrollbar.offsetWidth - $content.clientWidth;
         $scrollbar.parentNode.removeChild($scrollbar);
@@ -1901,7 +1918,6 @@ var Browser = /** @class */ (function () {
         }
         return false;
     };
-    ;
     Browser.prototype.refresh = function () {
         this.responsive = this.getResponsive();
         this.scrollbarWidth = this.getScrollbarWidth();
@@ -1918,14 +1934,14 @@ var Browser = /** @class */ (function () {
         var top = getScrollPosition(), center = top + this.height / 2, bottom = top + this.height, speed = Math.abs(lastCenter - center), direction = 'down';
         /* Check scroll direction */
         if (center < lastCenter) {
-            direction = "up";
+            direction = 'up';
         }
         this.scroll = {
             top: top,
             bottom: bottom,
             center: center,
             speed: speed,
-            direction: direction,
+            direction: direction
         };
     };
     Browser.prototype.calculatePage = function () {
@@ -1952,34 +1968,16 @@ var Browser = /** @class */ (function () {
         return 'mobile';
     };
     Browser.prototype.getOrientation = function () {
-        if (window.matchMedia("(orientation: portrait)").matches) {
+        if (window.matchMedia('(orientation: portrait)').matches) {
             return 'portrait';
         }
         else {
             return 'landscape';
         }
     };
-    // Get transition vendor prefix
-    Browser.prototype.getTransitionEvent = function () {
-        var element = document.createElement("getTransitionEvent"), transitions = {
-            "transition": "transitionend",
-            "OTransition": "oTransitionEnd",
-            "MozTransition": "transitionend",
-            "WebkitTransition": "webkitTransitionEnd"
-        };
-        for (var key in transitions) {
-            if (element.style[key] !== undefined) {
-                return transitions[key];
-            }
-        }
-        /* test-code */
-        console.error("Browser\n- fired getTransitionEvent() function and return undefined transition");
-        /* end-test-code */
-    };
     return Browser;
 }());
 exports.Browser = Browser;
-;
 },{"./css":8,"./elements":9}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -2382,9 +2380,11 @@ exports.Sticky = Sticky;
 },{}],14:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var transition_size_1 = require("./transition-size");
 var Tabs = /** @class */ (function () {
     function Tabs(param) {
         this.activeTab = 0;
+        this.isRun = false;
         this.active = false;
         this.name = param.name;
         if (param.callbackChange) {
@@ -2397,11 +2397,12 @@ var Tabs = /** @class */ (function () {
         if (this.active) {
             this.unbind();
         }
-        console.log(this.$contents);
         if ($contents.length) {
             this.$contents = $contents[0].children;
             this.$buttons = $buttons[0].children;
-            this.$containers = $containers[0].children;
+            if ($containers.length) {
+                this.$containers = $containers[0].children;
+            }
             this.bind();
         }
     };
@@ -2421,23 +2422,59 @@ var Tabs = /** @class */ (function () {
     };
     Tabs.prototype.unbind = function () { };
     Tabs.prototype.change = function (index) {
-        if (this.activeTab === index) {
+        var _this = this;
+        if (this.activeTab === index || this.isRun) {
             return false;
         }
+        this.isRun = true;
+        transition_size_1.transition({
+            $element: this.$contents[index],
+            callbackChanged: function () {
+                _this.isRun = false;
+                if (_this.callbackChange) {
+                    _this.callbackChange();
+                }
+            }
+        });
         this.$buttons[this.activeTab].classList.remove('active');
         this.$contents[this.activeTab].classList.remove('active');
-        this.$containers[this.activeTab].classList.remove('active');
         this.$buttons[index].classList.add('active');
         this.$contents[index].classList.add('active');
-        this.$containers[index].classList.add('active');
-        if (this.callbackChange) {
-            this.callbackChange();
+        if (this.$containers) {
+            this.$containers[this.activeTab].classList.remove('active');
+            this.$containers[index].classList.add('active');
         }
         this.activeTab = index;
     };
     return Tabs;
 }());
 exports.Tabs = Tabs;
-},{}]},{},[4])
+},{"./transition-size":15}],15:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var browser_1 = require("./browser");
+function transition(args) {
+    var $container = args.$element.parentElement, containerHeight = $container.clientHeight, elementHeight = args.$element.clientHeight;
+    function step1() {
+        $container.classList.add('js_transition');
+        $container.style.height = containerHeight + "px";
+        window.setTimeout(function () {
+            $container.style.height = elementHeight + "px";
+            step2();
+        }, 50);
+    }
+    function step2() {
+        $container.addEventListener(browser_1.getTransitionEvent(), function () {
+            $container.classList.remove('js_transition');
+            $container.style.height = null;
+            if (args.callbackChanged) {
+                args.callbackChanged();
+            }
+        }, false);
+    }
+    step1();
+}
+exports.transition = transition;
+},{"./browser":5}]},{},[4])
 
 //# sourceMappingURL=app.dev.js.map

@@ -1,3 +1,5 @@
+import { transition } from './transition-size';
+
 interface ITabs {
 	name: string;
 	callbackChange?: () => void;
@@ -9,6 +11,7 @@ export class Tabs {
 	$containers: HTMLCollection;
 	activeTab: number = 0;
 	name: string;
+	isRun: boolean = false;
 	active: boolean = false;
 	callbackChange: () => void;
 
@@ -29,12 +32,13 @@ export class Tabs {
 		if (this.active) {
 			this.unbind();
 		}
-		console.log(this.$contents);
 
 		if ($contents.length) {
 			this.$contents = $contents[0].children;
 			this.$buttons = $buttons[0].children;
-			this.$containers = $containers[0].children;
+			if ($containers.length) {
+				this.$containers = $containers[0].children;
+			}
 			this.bind();
 		}
 	}
@@ -53,20 +57,30 @@ export class Tabs {
 	public unbind() {}
 
 	public change(index: number) {
-		if (this.activeTab === index) {
+		if (this.activeTab === index || this.isRun) {
 			return false;
 		}
+		this.isRun = true;
+
+		transition({
+			$element: this.$contents[index],
+			callbackChanged: () => {
+				this.isRun = false;
+				if (this.callbackChange) {
+					this.callbackChange();
+				}
+			}
+		});
 
 		this.$buttons[this.activeTab].classList.remove('active');
 		this.$contents[this.activeTab].classList.remove('active');
-		this.$containers[this.activeTab].classList.remove('active');
 
 		this.$buttons[index].classList.add('active');
 		this.$contents[index].classList.add('active');
-		this.$containers[index].classList.add('active');
 
-		if (this.callbackChange) {
-			this.callbackChange();
+		if (this.$containers) {
+			this.$containers[this.activeTab].classList.remove('active');
+			this.$containers[index].classList.add('active');
 		}
 
 		this.activeTab = index;

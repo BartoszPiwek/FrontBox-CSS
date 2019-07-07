@@ -8,6 +8,6 @@
 	}
 }
 
-.js_transitionHeight {
-	transition: height $time-transition !important;
+.js_transition {
+	transition: height $time-transition, width $time-transition !important;
 }
