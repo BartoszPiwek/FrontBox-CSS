@@ -190,6 +190,6 @@
 		"selector-pseudo-element-no-unknown": true,
 		"shorthand-property-no-redundant-values": true,
 		"string-quotes": "double",
-		"value-no-vendor-prefix": true
+		"value-no-vendor-prefix": true,
 	}
 }

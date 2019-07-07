@@ -9,7 +9,7 @@ Markup:
 </div>
 
 Mixin:
-add-click-placeholder($space);
+add-click-expand($space);
 
 Mixin arguments:
 $space 		: numberPixel? : 5px
@@ -20,7 +20,7 @@ Changelog:
 Style guide: Functions.click placeholder
 */
 
-@mixin add-click-placeholder($space: 5px) {
+@mixin add-click-expand($space: 5px) {
 	position: relative;
 	z-index: 0;
 

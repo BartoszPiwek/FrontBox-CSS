@@ -70,7 +70,7 @@ Style guide: Header.tools
 }
 
 .burger-button {
-	@include add-click-placeholder;
+	@include add-click-expand;
 	position: relative;
 	z-index: index("header") + 1;
 	width: 30px;

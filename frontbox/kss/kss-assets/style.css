@@ -14784,7 +14784,7 @@ Markup:
 </div>
 
 Mixin:
-add-click-placeholder($space);
+add-click-expand($space);
 
 Mixin arguments:
 $space 		: numberPixel? : 5px
@@ -15768,7 +15768,7 @@ Markup:
 </div>
 
 Mixin:
-add-click-placeholder($space);
+add-click-expand($space);
 
 Mixin arguments:
 $space 		: numberPixel? : 5px

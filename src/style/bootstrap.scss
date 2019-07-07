@@ -8,6 +8,7 @@
 @import "modules/wrap";
 @import "modules/scrollbar";
 @import "modules/map-deep-get";
+@import "modules/click-expand";
 
 @import "bootstrap/polyfill";
 @import "bootstrap/base";
@@ -24,7 +25,7 @@
 
 // Debug
 @if ($dev == true) {
-	@include frontbox-debug;
+	// @include frontbox-debug;
 }
 /* Info */
 @if ($infoOldBrowser) {

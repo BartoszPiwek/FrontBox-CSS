@@ -42,7 +42,7 @@
 	}
 
 	&__exit {
-		@include add-click-placeholder;
+		@include add-click-expand;
 		position: absolute;
 		top: 0;
 		right: 0;

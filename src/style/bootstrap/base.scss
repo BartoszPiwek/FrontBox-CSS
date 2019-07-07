@@ -38,3 +38,9 @@ body {
 		}
 	}
 }
+
+.click-expand {
+	@if (function-exists("add-click-expand")) {
+		@include add-click-expand;
+	}
+}
