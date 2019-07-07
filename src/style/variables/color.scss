@@ -14,12 +14,29 @@ $colors: (
 "light": #f8f9fa
 );
 
+$colors-special: (
+"facebook": #3b5998,
+"twitter": #1da1f2,
+"youtube": #f00,
+"googleplus": #dd4b39,
+"instagram": #c13584
+);
+
 $color-tap: false;
 $color-text-selection: false;
 
 // Function
 @function color($name) {
 	$color-var: map-get($colors, $name);
+	@if not $color-var {
+		@warn "undefined color name: " + $name;
+		@return false;
+	}
+	@return $color-var;
+}
+
+@function color-special($name) {
+	$color-var: map-get($colors-special, $name);
 	@if not $color-var {
 		@warn "undefined color name: " + $name;
 		@return false;
