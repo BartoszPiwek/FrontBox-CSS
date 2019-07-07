@@ -58,7 +58,6 @@
 		"normalize.css": "^8.0.1",
 		"picturefill": "^3.0.3",
 		"postcss": "^7.0.17",
-		"postcss-extract-media-query": "^1.2.0",
 		"postcss-momentum-scrolling": "^1.6.12",
 		"postcss-pxtorem": "^4.0.1",
 		"preprocess": "^3.1.0",

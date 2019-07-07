@@ -10,7 +10,6 @@ import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import uncss from 'uncss';
-// import postcssExtractMediaQuery from 'postcss-extract-media-query';
 import postcss from 'gulp-postcss';
 import { browserSync } from './../../gulpfile.babel';
 const argv = require('yargs').argv;
@@ -56,7 +55,6 @@ export function style_main() {
 				argv.prod,
 				postcss([
 					autoprefixer(),
-					// postcssExtractMediaQuery(),
 					cssnano(),
 					uncss.postcssPlugin({
 						html: [`./public/${getModeName()}/*.html`],

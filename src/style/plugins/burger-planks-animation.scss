@@ -1,11 +1,25 @@
 /*
-Burger Animation
+Burger
 
 Transition burger plans to icon 'X'
 First and last plank - rotate
 center plank - hide
 
-Style guide: Burger.animation
+HTML:
+<div class="burger-button block">
+	<div class="plank"></div>
+	<div class="plank"></div>
+	<div class="plank"></div>
+</div>
+<div class="js_burger-active">
+	<div class="burger-button block">
+		<div class="plank"></div>
+		<div class="plank"></div>
+		<div class="plank"></div>
+	</div>
+</div>
+
+Style guide: Common.burger
 */
 
 @mixin burger-planks-animation {
