@@ -5,6 +5,17 @@ export function isScrollbar(): boolean {
 	return window.innerWidth != document.documentElement.clientWidth;
 }
 
+export function cleanUrl() {
+	const hash = window.location.hash;
+
+	if (hash.startsWith('#')) {
+		const cleanUrl = location.protocol + '//' + location.host + location.pathname;
+		window.history.replaceState({}, document.title, cleanUrl);
+		return hash.substring(hash.indexOf('-') + 1, hash.length);
+	}
+	return false;
+}
+
 // TODO remove
 export function getScrollPosition(): number {
 	return window.pageYOffset || html.scrollTop;
@@ -46,9 +57,9 @@ export class Browser {
 	public transitionEvent: string;
 	public width: number;
 	public height: number;
-	private responsive: string;
-	private orientation: string;
-	private portable: string | boolean;
+	public responsive: string;
+	public orientation: string;
+	public portable: string | boolean;
 	public scrollbarWidth: number;
 
 	constructor() {

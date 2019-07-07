@@ -9,6 +9,7 @@ import { ElementPlaceholder } from './bootstrap/element-placeholder';
 import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
+import { scrollTo } from './bootstrap/scroll-to';
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 const cssVars = require('css-vars-ponyfill'); // CSS custom properties support
@@ -33,7 +34,13 @@ window.onload = () => {
 	});
 
 	new Tabs({
-		name: 'primary'
+		name: 'primary',
+		callbackChange: () => {
+			scrollTo({
+				position: 0,
+				time: 1000
+			});
+		}
 	});
 
 	new ProtectEmail();
