@@ -15465,6 +15465,7 @@ Style guide: Flow.wrap
   #kss-node .is-fullscreen .kss-modifier__description {
     margin-right: 20px; }
   #kss-node .kss-modifier__example {
+    font-size: 0;
     clear: left;
     border: 2px dashed transparent;
     position: relative;
@@ -15474,12 +15475,12 @@ Style guide: Flow.wrap
     height: auto;
     width: auto;
     vertical-align: top;
-    background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
     background-position: 0 0, 10px 10px;
-    background-size: 20px 20px; }
+    background-size: 20px 20px;
+    background: white; }
     #kss-node .kss-modifier__example:last-child {
       margin-bottom: 0; }
-    #kss-node .kss-modifier__example * {
+    #kss-node .kss-modifier__example > * {
       outline: 1px solid blue; }
   #kss-node.kss-guides-mode .kss-modifier__example:before, #kss-node.kss-guides-mode .kss-modifier__example:after,
   #kss-node.kss-guides-mode .kss-modifier__example-footer:before,
@@ -17142,8 +17143,12 @@ Style guide: Component.Links
 /*
 Bouncing Dots 
 
-HTML:
-<div class="animation-boucing-dots"><span></span><span></span><span></span></div>
+Markup:
+<div class="animation-boucing-dots">
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
 
 Style guide: Animation.bouncing 
 */
@@ -17156,7 +17161,7 @@ Style guide: Animation.bouncing
     opacity: 0.1; } }
 
 .animation-boucing-dots {
-  display: block;
+  display: inline-block;
   position: relative;
   padding: 5px 0;
   font-size: 0;
@@ -17180,7 +17185,7 @@ Style guide: Animation.bouncing
 /*
 Circle rotate
 
-HTML:
+Markup:
 <div class="animation-circle-rotate"></div>
 
 Style guide: Animation.circle rotate 
@@ -17192,7 +17197,7 @@ Style guide: Animation.circle rotate
     transform: rotate(360deg); } }
 
 .animation-circle-rotate {
-  display: block;
+  display: inline-block;
   position: relative;
   width: 30px;
   height: 30px;
@@ -17228,7 +17233,7 @@ Style guide: Animation.circle rotate
 /*
 Donut spinner
 
-HTML:
+Markup:
 <div class="animation-donut-spinner"></div>
 
 Style guide: Animation.donut spinner
@@ -17240,13 +17245,23 @@ Style guide: Animation.donut spinner
     transform: rotate(360deg); } }
 
 .animation-donut-spinner {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
   font-size: 0;
   text-align: center; }
   .animation-donut-spinner:before {
     content: "";
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     animation: animation-donut-spinner 1.2s linear infinite;
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
@@ -17255,7 +17270,7 @@ Style guide: Animation.donut spinner
 /*
 Drop
 
-HTML:
+Markup:
 <div class="animation-drop"></div>
 
 Style guide: Animation.drop
@@ -17268,6 +17283,7 @@ Style guide: Animation.drop
     opacity: 0; } }
 
 .animation-drop {
+  display: inline-block;
   width: 40px;
   height: 40px;
   margin: 0 auto;
@@ -17278,7 +17294,7 @@ Style guide: Animation.drop
 /*
 Scale lines
 
-HTML:
+Markup:
 <div class="animation-scale-lines">
     <span></span>
     <span></span>
@@ -17296,32 +17312,438 @@ Style guide: Animation.scale lines
     opacity: 1; } }
 
 .animation-scale-lines {
-  display: block;
+  display: inline-flex;
   position: relative;
-  height: 40px;
-  text-align: center; }
-  .animation-scale-lines > span,
-  .animation-scale-lines .v-center__content > span {
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  margin: 0 auto; }
+  .animation-scale-lines > span {
     display: inline-block;
+    width: 6px;
+    height: 60%;
+    margin-left: 6px;
+    animation: animation-scale-lines 0.6s infinite alternate;
+    background-color: #05386b; }
+    .animation-scale-lines > span:first-child {
+      margin-left: 0; }
+    .animation-scale-lines > span:nth-child(2) {
+      animation-delay: 0.2s; }
+    .animation-scale-lines > span:nth-child(3) {
+      animation-delay: 0.4s; }
+
+/*
+Flipper
+
+Flip element content
+
+Markup:
+<div class="flipper">
+	<div class="flipper__container">
+		<div class="flipper__item flipper__item--front bg-red">
+			Front
+		</div>
+		<div class="flipper__item flipper__item--back bg-blue">
+			Back
+		</div>
+	</div>
+</div>
+
+Style guide: Blocks.flipper
+*/
+.flipper {
+  display: block;
+  width: 100px;
+  height: 100px;
+  perspective: 1000; }
+  .flipper__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 0.6s; }
+  .flipper__item {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: 0s;
+    transition-delay: 0.2s; }
+    .flipper__item--front {
+      z-index: 2; }
+    .flipper__item--back {
+      transform: rotateY(180deg);
+      opacity: 0; }
+  .flipper--hover:hover .flipper .flipper__container,
+  .flipper--hover:active .flipper .flipper__container,
+  .flipper--hover:focus .flipper .flipper__container,
+  .flipper--hover-active .flipper .flipper__container,
+  .flipper--hover-active .flipper .flipper__container,
+  .flipper--hover-active .flipper .flipper__container, .flipper.is-active .flipper__container, .flipper:hover .flipper__container, .flipper:active .flipper__container, .flipper:focus .flipper__container {
+    transform: rotateY(180deg); }
+  .flipper--hover:hover .flipper .flipper__item--front,
+  .flipper--hover:active .flipper .flipper__item--front,
+  .flipper--hover:focus .flipper .flipper__item--front,
+  .flipper--hover-active .flipper .flipper__item--front,
+  .flipper--hover-active .flipper .flipper__item--front,
+  .flipper--hover-active .flipper .flipper__item--front, .flipper.is-active .flipper__item--front, .flipper:hover .flipper__item--front, .flipper:active .flipper__item--front, .flipper:focus .flipper__item--front {
+    opacity: 0; }
+  .flipper--hover:hover .flipper .flipper__item--back,
+  .flipper--hover:active .flipper .flipper__item--back,
+  .flipper--hover:focus .flipper .flipper__item--back,
+  .flipper--hover-active .flipper .flipper__item--back,
+  .flipper--hover-active .flipper .flipper__item--back,
+  .flipper--hover-active .flipper .flipper__item--back, .flipper.is-active .flipper__item--back, .flipper:hover .flipper__item--back, .flipper:active .flipper__item--back, .flipper:focus .flipper__item--back {
+    opacity: 1; }
+
+/*
+Timeline
+
+Flip element content
+
+Markup:
+<div class="timeline">
+    <div class="timeline__container">
+        <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__text">Item 1</div>
+        </div>
+        <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__text">Item 2</div>
+        </div>
+        <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__text">Item 3</div>
+        </div>
+    </div>
+</div>
+
+Style guide: Blocks.timeline
+*/
+.timeline__text {
+  color: #000;
+  font-size: 14px; }
+
+.timeline__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #05386b; }
+
+.timeline__item.active .timeline__dot:before {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: #fff; }
+
+.timeline__container > .timeline__item:before {
+  top: 9px;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(5, 56, 107, 0.6); }
+
+.timeline__item {
+  position: relative;
+  flex: 1 0 0px; }
+  .timeline__item.active .timeline__dot:before {
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 6px;
-    height: 60%;
-    transform: translate(-50%, -50%);
-    animation: animation-scale-lines 0.6s infinite alternate;
-    background-color: #05386b; }
-    .animation-scale-lines > span:first-child,
-    .animation-scale-lines .v-center__content > span:first-child {
-      margin-left: 12px; }
-    .animation-scale-lines > span:nth-child(2),
-    .animation-scale-lines .v-center__content > span:nth-child(2) {
-      animation-delay: 0.2s; }
-    .animation-scale-lines > span:nth-child(3),
-    .animation-scale-lines .v-center__content > span:nth-child(3) {
-      margin-left: -12px;
-      animation-delay: 0.4s; }
+    transform: translate(-50%, -50%); }
 
+.timeline__container {
+  display: flex;
+  text-align: center; }
+  .timeline__container > .timeline__item {
+    z-index: 1; }
+    .timeline__container > .timeline__item:before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      width: 100%; }
+    .timeline__container > .timeline__item:first-child:before {
+      left: 50%;
+      width: 50%; }
+    .timeline__container > .timeline__item:last-child:before {
+      left: 0;
+      width: 50%; }
+
+.timeline__dot {
+  display: block;
+  position: relative;
+  margin: 0 auto; }
+
+/*
+Tabs
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: Elements.tabs
+*/
+.tabs__expand {
+  display: none; }
+
+.tabs__item {
+  flex: 1 1 auto;
+  padding: 20px;
+  background-color: #05386b;
+  text-align: center; }
+
+.tabs__view {
+  width: 100%; }
+
+.tabs__expand {
+  padding: 20px;
+  background-color: #00050a; }
+
+.tabs__content {
+  display: flex;
+  flex-direction: row; }
+
+.tabs--vertical {
+  flex-direction: column;
+  text-align: center; }
+
+.tabs--expand {
+  flex-direction: column;
+  text-align: center; }
+  .tabs--expand .tabs__expand {
+    display: block; }
+  .tabs--expand .tabs__view {
+    height: 0;
+    overflow: hidden; }
+
+@media screen and (min-width: 0px) {
+  .xs_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .xs_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .xs_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .xs_tabs--expand .tabs__expand {
+      display: block; }
+    .xs_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 576px) {
+  .sm_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .sm_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .sm_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .sm_tabs--expand .tabs__expand {
+      display: block; }
+    .sm_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 768px) {
+  .md_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .md_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .md_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .md_tabs--expand .tabs__expand {
+      display: block; }
+    .md_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 992px) {
+  .lg_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .lg_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .lg_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .lg_tabs--expand .tabs__expand {
+      display: block; }
+    .lg_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 1200px) {
+  .xl_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .xl_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .xl_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .xl_tabs--expand .tabs__expand {
+      display: block; }
+    .xl_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 1366px) {
+  .hd_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .hd_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .hd_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .hd_tabs--expand .tabs__expand {
+      display: block; }
+    .hd_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+@media screen and (min-width: 1440px) {
+  .whd_tabs__content {
+    display: flex;
+    flex-direction: row; }
+  .whd_tabs--vertical {
+    flex-direction: column;
+    text-align: center; }
+  .whd_tabs--expand {
+    flex-direction: column;
+    text-align: center; }
+    .whd_tabs--expand .tabs__expand {
+      display: block; }
+    .whd_tabs--expand .tabs__view {
+      height: 0;
+      overflow: hidden; } }
+
+/*
+Validator
+
+Style for jQuery Validation Plugin
+
+Markup:
+<div class="wrap">
+ <div>content</div>
+</div>
+
+Emmet:
+.wrap
+
+Mixin:
+wrap($max-width, $paddin-x);
+
+Style guide: JavaScript.validator
+*/
+.input-error {
+  border-color: #dc3545 !important;
+  color: #dc3545 !important;
+  /**
+      * Absolute validator information
+      - right style
+    **/
+  /**
+      * Absolute validator information
+      - left style
+    **/
+  /**
+      * Default validator information
+    **/ }
+  .input-error--absolute + *:not([class]) {
+    padding-top: 20px; }
+    .input-error--absolute + *:not([class]) label {
+      display: block;
+      position: relative;
+      padding: 6px;
+      border: 1px solid #dc3545;
+      border-radius: 4px;
+      background-color: #fff;
+      font-size: 13px;
+      text-align: center; }
+      .input-error--absolute + *:not([class]) label:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%); }
+    @media screen and (min-width: 768px) {
+      .input-error--absolute + *:not([class]) {
+        position: absolute;
+        z-index: 20;
+        top: 50%;
+        padding-left: 10px; } }
+  @media screen and (min-width: 768px) {
+    .input-error--right + *:not([class]) {
+      right: 0;
+      transform: translate(100%, -50%); } }
+  @media screen and (min-width: 768px) {
+    .input-error--left + *:not([class]) label:before {
+      top: 50%;
+      right: 0;
+      left: auto;
+      transform: translate(100%, -50%); } }
+  @media screen and (min-width: 768px) {
+    .input-error--left + *:not([class]) {
+      left: 0;
+      padding-right: 10px;
+      padding-left: 0;
+      transform: translate(-100%, -50%); } }
+  .input-error label.input-error {
+    display: block;
+    padding: 6px;
+    text-align: center; }
+
+/**
+  * Validator class
+  - success
+**/
+.input-success {
+  border-color: #28a745 !important;
+  color: #28a745 !important; }
+  .input-success + *:not([class]) {
+    display: none; }
+
+/*
+VH Unit 
+
+Het reliable CSS vh sizes with fallback (https://github.com/Hiswe/vh-check)
+
+Mixin:
+add_vh-unit($size, $property);
+
+Mixin arguments:
+$size : number? : 100
+$property : CSSProperty? : 'height'
+
+Mixin example:
+add_vh-unit(50, 'height')
+
+Style guide: Libs.vh-unit
+*/
 /*=========================================================================
 || Plugin: wcag.less
 ===========================================================================
@@ -17333,36 +17755,85 @@ Style guide: Animation.scale lines
     outline: none !important; }
 
 .wcag-skip {
-  opacity: 0;
   position: absolute;
-  left: -9999px;
-  top: 0;
-  background-color: #000;
-  transition: opacity 0.2s;
   z-index: -10;
+  top: 0;
+  left: -9999px;
   padding: 10px 20px;
+  transition: opacity 0.2s;
+  opacity: 0;
+  background-color: #000;
   color: #05386b; }
   .wcag-skip:before {
-    content: '';
+    content: "";
+    display: block;
+    position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateY(100%);
-    display: block;
-    position: absolute; }
+    transform: translateY(100%); }
 
 .js_wcag-focus .wcag-skip {
-  left: 50%;
-  top: 50%;
-  outline: 4px solid #05386b;
   z-index: 9990;
-  transform: translate(-50%, -50%); }
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: 4px solid #05386b; }
   .js_wcag-focus .wcag-skip:focus {
     opacity: 1; }
+
+/*
+Line text
+
+Markup:
+<div class="line-text">
+	<div class="line-text__item">
+		<div class="line-text__line line-text__line--left"></div>
+		Text
+		<div class="line-text__line line-text__line--right"></div>
+	</div>
+</div>
+
+Style guide: Blocks.line text
+*/
+.line-text {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 10px 0;
+  overflow: hidden; }
+  .line-text__item {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    padding: 0 20px;
+    transform: translate(-50%, -50%);
+    color: #05386b;
+    font-size: 13px; }
+  .line-text__line {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    width: 100vw;
+    height: 1px;
+    transform: translateY(-50%);
+    background-color: #05386b; }
+    .line-text__line--left {
+      left: 100%; }
+    .line-text__line--right {
+      right: 100%; }
 
 .block-square {
   background-color: red; }
   .block-square * > {
     color: blue; }
+
+.bg-red {
+  background-color: red; }
+
+.bg-blue {
+  background-color: blue; }
 
 .holder {
   position: relative; }

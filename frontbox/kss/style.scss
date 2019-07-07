@@ -20,6 +20,16 @@ $color-secondary: blue;
 	}
 }
 
+.bg {
+	&-red {
+		background-color: $color-primary;
+	}
+
+	&-blue {
+		background-color: $color-secondary;
+	}
+}
+
 // Functions
 @include add_holder-style;
 

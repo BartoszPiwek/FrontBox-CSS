@@ -633,6 +633,7 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     margin-right: 20px;
   }
   .kss-modifier__example {
+		font-size: 0;
     clear: left;
     border: 2px dashed transparent;
     position: relative; // Contain the example's absolute positioning.
@@ -642,17 +643,16 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     height: auto;
     width: auto;
     vertical-align: top;
-    background-image: linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4),
-      linear-gradient(45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
     background-position: 0 0, 10px 10px;
     background-size: 20px 20px;
+			background: white;
 
     &:last-child {
       margin-bottom: 0;
     }
 
-    * {
-      outline: 1px solid blue;
+    > * {
+			outline: 1px solid blue;
     }
   }
   &.kss-guides-mode .kss-modifier__example,
