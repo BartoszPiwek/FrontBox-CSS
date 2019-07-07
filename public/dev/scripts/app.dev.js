@@ -1801,6 +1801,7 @@ var scroll_lock_1 = require("./bootstrap/scroll-lock");
 var burger_menu_1 = require("./bootstrap/burger-menu");
 var sticky_1 = require("./bootstrap/sticky");
 var tabs_1 = require("./bootstrap/tabs");
+var protect_email_1 = require("./bootstrap/protect-email");
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 var cssVars = require('css-vars-ponyfill'); // CSS custom properties support
@@ -1821,6 +1822,7 @@ window.onload = function () {
     new tabs_1.Tabs({
         name: 'primary'
     });
+    new protect_email_1.ProtectEmail();
     /* Forms */
     new input_counter_1.InputCounter({
         cssClass: {
@@ -1834,17 +1836,17 @@ window.onload = function () {
     new cookie_1.InformationCookie();
     /* Polyfill */
     // CSS Custom Properties
-    cssVars({
-        variables: {
-            scrollbarWidth: browser.scrollbarWidth + "px"
-        }
-    });
+    // cssVars({
+    // 	variables: {
+    // 		scrollbarWidth: `${browser.scrollbarWidth}px`
+    // 	}
+    // });
     // const placeholder = new ElementPlaceholder();
     // placeholder.create(document.getElementById('header'));
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/resize":11,"./bootstrap/scroll-lock":12,"./bootstrap/sticky":13,"./bootstrap/tabs":14,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
+},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/protect-email":11,"./bootstrap/resize":12,"./bootstrap/scroll-lock":13,"./bootstrap/sticky":14,"./bootstrap/tabs":15,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -2241,6 +2243,38 @@ exports.InputCounter = InputCounter;
 },{}],11:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var ProtectEmail = /** @class */ (function () {
+    function ProtectEmail() {
+        this.refresh();
+    }
+    ProtectEmail.prototype.refresh = function () {
+        this.$links = document.getElementsByClassName('js_email');
+        var length = this.$links.length;
+        for (var index = 0; index < length; index++) {
+            var $element = this.$links[index];
+            $element.addEventListener('click', this.onClick);
+        }
+    };
+    ProtectEmail.prototype.onClick = function (e) {
+        // @ts-ignore
+        var $link = this;
+        var email = $link.children[0].textContent
+            .split('')
+            .reverse()
+            .join('');
+        $link.setAttribute('href', "mailto:" + email);
+        $link.classList.remove('js_email');
+        $link.textContent = email;
+        var $copy = $link.cloneNode(true);
+        $link.parentNode.replaceChild($copy, $link);
+        return;
+    };
+    return ProtectEmail;
+}());
+exports.ProtectEmail = ProtectEmail;
+},{}],12:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Resize = /** @class */ (function () {
     /* Constructor */
     function Resize(data) {
@@ -2264,7 +2298,7 @@ var Resize = /** @class */ (function () {
     return Resize;
 }());
 exports.Resize = Resize;
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -2324,7 +2358,7 @@ exports.ScrollLock = ScrollLock;
  * 26.06.2019 Support custom properties polyfill
  * 20.06.2019 Add
  */
-},{"./browser":5,"./elements":9}],13:[function(require,module,exports){
+},{"./browser":5,"./elements":9}],14:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -2377,7 +2411,7 @@ exports.Sticky = Sticky;
  * Changelog
  * 26.06.2019 Add
  */
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var transition_size_1 = require("./transition-size");
@@ -2449,21 +2483,16 @@ var Tabs = /** @class */ (function () {
     return Tabs;
 }());
 exports.Tabs = Tabs;
-},{"./transition-size":15}],15:[function(require,module,exports){
+},{"./transition-size":16}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var browser_1 = require("./browser");
 function transition(args) {
     var $container = args.$element.parentElement, containerHeight = $container.clientHeight, elementHeight = args.$element.clientHeight;
-    function step1() {
-        $container.classList.add('js_transition');
-        $container.style.height = containerHeight + "px";
-        window.setTimeout(function () {
-            $container.style.height = elementHeight + "px";
-            step2();
-        }, 50);
-    }
-    function step2() {
+    $container.classList.add('js_transition');
+    $container.style.height = containerHeight + "px";
+    window.setTimeout(function () {
+        $container.style.height = elementHeight + "px";
         $container.addEventListener(browser_1.getTransitionEvent(), function () {
             $container.classList.remove('js_transition');
             $container.style.height = null;
@@ -2471,8 +2500,7 @@ function transition(args) {
                 args.callbackChanged();
             }
         }, false);
-    }
-    step1();
+    }, 50);
 }
 exports.transition = transition;
 },{"./browser":5}]},{},[4])

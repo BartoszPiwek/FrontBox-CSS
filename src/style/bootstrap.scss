@@ -1,24 +1,25 @@
-@import "variables/base";
-@import "variables/color";
-@import "variables/index";
-@import "variables/media";
+@import "./variables/base";
+@import "./variables/color";
+@import "./variables/index";
+@import "./variables/media";
 
-@import "modules/debug";
-@import "modules/responsive";
-@import "modules/wrap";
-@import "modules/scrollbar";
-@import "modules/map-deep-get";
-@import "modules/click-expand";
+@import "./modules/debug";
+@import "./modules/responsive";
+@import "./modules/wrap";
+@import "./modules/scrollbar";
+@import "./modules/map-deep-get";
+@import "./modules/click-expand";
 
-@import "bootstrap/polyfill";
-@import "bootstrap/base";
-@import "bootstrap/browser-reset";
-@import "bootstrap/sr-only";
-@import "bootstrap/grid";
-@import "bootstrap/javascript";
-@import "bootstrap/media-queries";
-@import "bootstrap/old-browser";
-@import "bootstrap/off-javascript";
+@import "./bootstrap/polyfill";
+@import "./bootstrap/base";
+@import "./bootstrap/browser-reset";
+@import "./bootstrap/sr-only";
+@import "./bootstrap/grid";
+@import "./bootstrap/javascript";
+@import "./bootstrap/media-queries";
+@import "./bootstrap/old-browser";
+@import "./bootstrap/off-javascript";
+@import "./bootstrap/email-address";
 
 @include grid($grid-count: 12, $grid-breakpoints: $breakpoints);
 @include grid-style;

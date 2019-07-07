@@ -10,17 +10,11 @@ export function transition(args: iTransition) {
 		containerHeight = $container.clientHeight,
 		elementHeight = args.$element.clientHeight;
 
-	function step1() {
-		$container.classList.add('js_transition');
-		$container.style.height = `${containerHeight}px`;
+	$container.classList.add('js_transition');
+	$container.style.height = `${containerHeight}px`;
 
-		window.setTimeout(() => {
-			$container.style.height = `${elementHeight}px`;
-			step2();
-		}, 50);
-	}
-
-	function step2() {
+	window.setTimeout(() => {
+		$container.style.height = `${elementHeight}px`;
 		$container.addEventListener(
 			getTransitionEvent(),
 			() => {
@@ -33,7 +27,5 @@ export function transition(args: iTransition) {
 			},
 			false
 		);
-	}
-
-	step1();
+	}, 50);
 }

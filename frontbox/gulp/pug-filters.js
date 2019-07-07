@@ -1,24 +1,17 @@
-module.exports = (SETTINGS) => {
-
-	const
-		fs = require('fs'),
+module.exports = SETTINGS => {
+	const fs = require('fs'),
 		path = require('path');
 
-
 	return {
-
-		printFilesLink: (path) => {
-
+		printFilesLink: path => {
 			let output = '';
 
 			fs.readdirSync(`./public/${SETTINGS.version}/${path}`, { withFileTypes: true }).forEach(file => {
-
 				let name = file.slice(0, -5);
 
-				if (name !== 'index' && file.endsWith(".html")) {
+				if (name !== 'index' && file.endsWith('.html')) {
 					output += `<a class="block mt-5 mb-5" href="./${name}.html">${name}</a>`;
 				}
-
 			});
 			return output;
 		},
@@ -28,10 +21,17 @@ module.exports = (SETTINGS) => {
 			return svg.replace(`<svg `, `<svg class="svg icon-${args.file} ${args.class}"`);
 		},
 
-		pageName: (block) => {
+		'text-reverse': block => {
+			return block
+				.split('')
+				.reverse()
+				.join('');
+		},
+
+		pageName: block => {
 			return block;
 		},
-		escape: (block) => {
+		escape: block => {
 			return block
 				.replace(/&/g, '&amp;')
 				.replace(/</g, '&lt;')
@@ -42,5 +42,4 @@ module.exports = (SETTINGS) => {
 				.replace(/\n/g, '<br>');
 		}
 	};
-
 };

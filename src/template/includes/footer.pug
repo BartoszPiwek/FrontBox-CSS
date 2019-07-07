@@ -10,8 +10,14 @@ footer.footer#footer
 						.footer__item
 							h2.footer__title
 								| Footer title 1
-							p.footer__content
-								| Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci beatae praesentium ipsam atque impedit cumque iusto, officiis, ipsum quo, tenetur eius rerum. Reiciendis porro commodi, maiores neque iusto et libero.
+							div.footer__content
+								address.address
+									a.js_email.email-address.link.link--secondary(title="Email contact")
+										span.email-address__text
+											:text-reverse
+												email@address.com
+										span.sr-only
+											| W celu zabezpieczenia przed SPAM, adres pisany od prawej do lewej
 
 			.col-12.md_col-4
 				.js_expand.js_hide.xs_expand.expand--footer

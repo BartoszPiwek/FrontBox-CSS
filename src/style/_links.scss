@@ -24,6 +24,22 @@ Style guide: Component.Links
 		}
 	}
 
+	&--secondary {
+		color: color("secondary");
+
+		.icon {
+			fill: color("secondary");
+		}
+
+		@include add-hover {
+			color: darken(color("secondary"), 10%);
+
+			.icon {
+				fill: darken(color("secondary"), 10%);
+			}
+		}
+	}
+
 	&__group {
 		@include space-x(10px);
 		display: flex;

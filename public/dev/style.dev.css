@@ -1169,6 +1169,24 @@ Style guide: Component.Links
       .link--primary--hover-active .link--primary .icon,
       .link--primary--hover-active .link--primary .icon, .link--primary.is-active .icon, .link--primary:hover .icon, .link--primary:active .icon, .link--primary:focus .icon {
         fill: #031f3a; }
+  .link--secondary {
+    color: #379683; }
+    .link--secondary .icon {
+      fill: #379683; }
+    .link--secondary--hover:hover .link--secondary,
+    .link--secondary--hover:active .link--secondary,
+    .link--secondary--hover:focus .link--secondary,
+    .link--secondary--hover-active .link--secondary,
+    .link--secondary--hover-active .link--secondary,
+    .link--secondary--hover-active .link--secondary, .link--secondary.is-active, .link--secondary:hover, .link--secondary:active, .link--secondary:focus {
+      color: #297162; }
+      .link--secondary--hover:hover .link--secondary .icon,
+      .link--secondary--hover:active .link--secondary .icon,
+      .link--secondary--hover:focus .link--secondary .icon,
+      .link--secondary--hover-active .link--secondary .icon,
+      .link--secondary--hover-active .link--secondary .icon,
+      .link--secondary--hover-active .link--secondary .icon, .link--secondary.is-active .icon, .link--secondary:hover .icon, .link--secondary:active .icon, .link--secondary:focus .icon {
+        fill: #297162; }
   .link__group {
     width: calc(100% + 10px);
     margin-left: -10px !important;
@@ -1322,22 +1340,6 @@ Style guide: Component.Links
   .row--footer > *:not(.space-ignore) {
     padding-bottom: 25px !important;
     padding-left: 25px !important; }
-  @media screen and (min-width: 992px) {
-    .row--footer {
-      width: calc(100% + 35px);
-      margin-bottom: -35px !important;
-      margin-left: -35px !important; }
-      .row--footer > *:not(.space-ignore) {
-        padding-bottom: 35px !important;
-        padding-left: 35px !important; } }
-  @media screen and (min-width: 1200px) {
-    .row--footer {
-      width: calc(100% + 45px);
-      margin-bottom: -45px !important;
-      margin-left: -45px !important; }
-      .row--footer > *:not(.space-ignore) {
-        padding-bottom: 45px !important;
-        padding-left: 45px !important; } }
 
 .col-static--test {
   flex-basis: 300px; }
@@ -1853,6 +1855,7 @@ Style guide: Blocks.timeline
     pointer-events: all; }
 
 .tabs-navigation {
+  font-size: 0;
   text-align: center; }
   .tabs-navigation > .tabs-navigation__item {
     width: 20px;
