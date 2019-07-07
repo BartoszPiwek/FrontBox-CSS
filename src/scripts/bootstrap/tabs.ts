@@ -29,7 +29,9 @@ export class Tabs {
 		if (this.active) {
 			this.unbind();
 		}
-		if (this.$contents) {
+		console.log(this.$contents);
+
+		if ($contents.length) {
 			this.$contents = $contents[0].children;
 			this.$buttons = $buttons[0].children;
 			this.$containers = $containers[0].children;
