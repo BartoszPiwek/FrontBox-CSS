@@ -1,5 +1,4 @@
 import { easeInOutQuad } from './functions';
-import disableScroll from 'disable-scroll';
 
 interface IScrollTo {
 	position: number;
@@ -28,6 +27,5 @@ export function scrollTo(param: IScrollTo) {
 			}
 		}
 	};
-
 	animateScroll();
 }

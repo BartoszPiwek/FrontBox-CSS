@@ -34,13 +34,7 @@ window.onload = () => {
 	});
 
 	new Tabs({
-		name: 'primary',
-		callbackChange: () => {
-			scrollTo({
-				position: 0,
-				time: 1000
-			});
-		}
+		name: 'primary'
 	});
 
 	new ProtectEmail();

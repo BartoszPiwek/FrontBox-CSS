@@ -53,6 +53,7 @@
 		"gulp-sass": "^4.0.2",
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-sourcemaps": "^2.6.5",
+		"gulp-sri-hash": "^2.1.0",
 		"gulp-strip-code": "^0.1.4",
 		"gulp-svgmin": "^2.2.0",
 		"gulp-typescript": "^5.0.1",

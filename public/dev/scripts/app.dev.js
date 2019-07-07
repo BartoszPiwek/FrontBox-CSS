@@ -1802,7 +1802,6 @@ var burger_menu_1 = require("./bootstrap/burger-menu");
 var sticky_1 = require("./bootstrap/sticky");
 var tabs_1 = require("./bootstrap/tabs");
 var protect_email_1 = require("./bootstrap/protect-email");
-var scroll_to_1 = require("./bootstrap/scroll-to");
 /* Polyfill */
 require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
 var cssVars = require('css-vars-ponyfill'); // CSS custom properties support
@@ -1821,13 +1820,7 @@ window.onload = function () {
         $element: document.getElementById('header-content')
     });
     new tabs_1.Tabs({
-        name: 'primary',
-        callbackChange: function () {
-            scroll_to_1.scrollTo({
-                position: 0,
-                time: 1000
-            });
-        }
+        name: 'primary'
     });
     new protect_email_1.ProtectEmail();
     /* Forms */
@@ -1853,7 +1846,7 @@ window.onload = function () {
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":11,"./bootstrap/protect-email":12,"./bootstrap/resize":13,"./bootstrap/scroll-lock":14,"./bootstrap/scroll-to":15,"./bootstrap/sticky":16,"./bootstrap/tabs":17,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
+},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/protect-email":11,"./bootstrap/resize":12,"./bootstrap/scroll-lock":13,"./bootstrap/sticky":14,"./bootstrap/tabs":15,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -2182,17 +2175,6 @@ exports.CSS = window.getComputedStyle(exports.html);
 },{}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function easeInOutQuad(t, b, c, d) {
-    t /= d / 2;
-    if (t < 1)
-        return (c / 2) * t * t + b;
-    t--;
-    return (-c / 2) * (t * (t - 2) - 1) + b;
-}
-exports.easeInOutQuad = easeInOutQuad;
-},{}],11:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var InputCounter = /** @class */ (function () {
     function InputCounter(data) {
         this.database = [];
@@ -2268,7 +2250,7 @@ var InputCounter = /** @class */ (function () {
     return InputCounter;
 }());
 exports.InputCounter = InputCounter;
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProtectEmail = /** @class */ (function () {
@@ -2300,7 +2282,7 @@ var ProtectEmail = /** @class */ (function () {
     return ProtectEmail;
 }());
 exports.ProtectEmail = ProtectEmail;
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Resize = /** @class */ (function () {
@@ -2326,7 +2308,7 @@ var Resize = /** @class */ (function () {
     return Resize;
 }());
 exports.Resize = Resize;
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -2386,30 +2368,7 @@ exports.ScrollLock = ScrollLock;
  * 26.06.2019 Support custom properties polyfill
  * 20.06.2019 Add
  */
-},{"./browser":5,"./elements":9}],15:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var functions_1 = require("./functions");
-function scrollTo(param) {
-    var start = document.documentElement.scrollTop, change = param.position - start, increment = 20;
-    var currentTime = 0;
-    var animateScroll = function () {
-        currentTime += increment;
-        var val = functions_1.easeInOutQuad(currentTime, start, change, param.time);
-        document.documentElement.scrollTop = val;
-        if (currentTime < param.time) {
-            setTimeout(animateScroll, increment);
-        }
-        else {
-            if (param.callbackAfter) {
-                param.callbackAfter();
-            }
-        }
-    };
-    animateScroll();
-}
-exports.scrollTo = scrollTo;
-},{"./functions":10}],16:[function(require,module,exports){
+},{"./browser":5,"./elements":9}],14:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -2462,7 +2421,7 @@ exports.Sticky = Sticky;
  * Changelog
  * 26.06.2019 Add
  */
-},{}],17:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var transition_size_1 = require("./transition-size");
@@ -2534,7 +2493,7 @@ var Tabs = /** @class */ (function () {
     return Tabs;
 }());
 exports.Tabs = Tabs;
-},{"./transition-size":18}],18:[function(require,module,exports){
+},{"./transition-size":16}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var browser_1 = require("./browser");
