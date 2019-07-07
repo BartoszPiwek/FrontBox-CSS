@@ -47,6 +47,7 @@
 		"gulp-newer": "^1.4.0",
 		"gulp-postcss": "^8.0.0",
 		"gulp-pug": "^4.0.1",
+		"gulp-rcs": "^2.0.0",
 		"gulp-real-favicon": "^0.3.2",
 		"gulp-remove-code": "^3.0.4",
 		"gulp-rename": "^1.4.0",
