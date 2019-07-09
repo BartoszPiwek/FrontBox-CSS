@@ -54,8 +54,8 @@ export const buildAssets = parallel(svg, series(favicon, faviconAfter));
 /* Docs */
 import { docs_style, docs_watch, docs_run, docs_server } from './frontbox/gulp/docs';
 /* Prod */
-import { hashHtml, renameSelectors } from './frontbox/gulp/prod';
-export const buildProd = series(renameSelectors, hashHtml);
+import { hashHtml, renameSelectors, imageOptymalization } from './frontbox/gulp/prod';
+export const buildProd = series(renameSelectors, imageOptymalization, hashHtml);
 
 /* Main watch function */
 export function watchFiles() {
