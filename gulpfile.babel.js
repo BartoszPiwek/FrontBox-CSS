@@ -49,8 +49,8 @@ export const buildScript = parallel(script_main);
 import { copy_image, copy_fonts, copy_other, copy_video, copy_audio } from './frontbox/gulp/copy';
 export const buildCopy = parallel(copy_image, copy_fonts, copy_other, copy_video, copy_audio);
 /* Other */
-import { svg, favicon } from './frontbox/gulp/assets';
-export const buildAssets = parallel(svg, favicon);
+import { svg, favicon, faviconAfter } from './frontbox/gulp/assets';
+export const buildAssets = parallel(svg, series(favicon, faviconAfter));
 /* Docs */
 import { docs_style, docs_watch, docs_run, docs_server } from './frontbox/gulp/docs';
 /* Prod */
@@ -99,6 +99,6 @@ exports.default = () => {
 exports.style = series(buildStyle, server, watchFiles);
 exports.script = series(buildScript, server, watchFiles);
 exports.html = series(buildHTML, server, watchFiles);
-exports.favicon = favicon;
+exports.buildFavicon = series(favicon, faviconAfter);
 exports.docs = series(docs_style, docs_run, docs_server, docs_watch);
 exports.test = series(buildProd, watchFiles);
