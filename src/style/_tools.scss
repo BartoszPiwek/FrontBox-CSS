@@ -11,23 +11,24 @@
 	}
 }
 
-// ANCHOR .row
-.row {
-	&-x-space {
+// ANCHOR .space
+.space {
+	@include space(5px, 10px);
+
+	&-x {
 		@include space-x(25px);
 	}
 
-	&-y-space {
+	&-y {
 		@include space-y(30px);
 	}
+}
 
-	&-space {
-		@include space(5px, 10px);
-	}
-
-	&--footer {
-		@include space(25px);
-	}
+// ANCHOR .row
+.row {
+	// &--footer {
+	//
+	// }
 }
 
 // ANCHOR .col

@@ -25,6 +25,7 @@ body {
 	background-color: color("secondary");
 	color: color("default");
 	font-family: $font-family;
+	font-size: 16px;
 
 	@include media-special("ie-only") {
 		min-height: 100vh;

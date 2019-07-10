@@ -5,6 +5,15 @@ interface ITabs {
 	callbackChange?: () => void;
 }
 
+/*
+Markup:
+.tabs(data-tabs-content="primary")
+	.tabs__item.active
+	.tabs__item
+.tabs-navigation(data-tabs-buttons="primary")
+	button.tabs-navigation__item.active
+	button.tabs-navigation__item
+*/
 export class Tabs {
 	$contents: HTMLCollection;
 	$buttons: HTMLCollection;
@@ -54,7 +63,7 @@ export class Tabs {
 		}
 	}
 
-	public unbind() {}
+	public unbind() { }
 
 	public change(index: number) {
 		if (this.activeTab === index || this.isRun) {

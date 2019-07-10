@@ -2425,6 +2425,15 @@ exports.Sticky = Sticky;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var transition_size_1 = require("./transition-size");
+/*
+Markup:
+.tabs(data-tabs-content="primary")
+    .tabs__item.active
+    .tabs__item
+.tabs-navigation(data-tabs-buttons="primary")
+    button.tabs-navigation__item.active
+    button.tabs-navigation__item
+*/
 var Tabs = /** @class */ (function () {
     function Tabs(param) {
         this.activeTab = 0;
