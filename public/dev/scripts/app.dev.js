@@ -1802,9 +1802,7 @@ var burger_menu_1 = require("./bootstrap/burger-menu");
 var sticky_1 = require("./bootstrap/sticky");
 var tabs_1 = require("./bootstrap/tabs");
 var protect_email_1 = require("./bootstrap/protect-email");
-/* Polyfill */
-require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
-var cssVars = require('css-vars-ponyfill'); // CSS custom properties support
+var polyfill_1 = require("./plugins/polyfill");
 window.onload = function () {
     var browser = new browser_1.Browser(), scrollLock = new scroll_lock_1.ScrollLock(), resize = new resize_1.Resize();
     new burger_menu_1.BurgerMenu({
@@ -1822,7 +1820,9 @@ window.onload = function () {
     new tabs_1.Tabs({
         name: 'primary'
     });
-    new protect_email_1.ProtectEmail();
+    new protect_email_1.ProtectEmail({
+        elements: document.getElementsByClassName('js_email')
+    });
     /* Forms */
     new input_counter_1.InputCounter({
         cssClass: {
@@ -1834,19 +1834,16 @@ window.onload = function () {
     });
     /* Informations */
     new cookie_1.InformationCookie();
-    /* Polyfill */
-    // CSS Custom Properties
-    // cssVars({
-    // 	variables: {
-    // 		scrollbarWidth: `${browser.scrollbarWidth}px`
-    // 	}
-    // });
     // const placeholder = new ElementPlaceholder();
     // placeholder.create(document.getElementById('header'));
+    /* Polyfill */
+    polyfill_1.polyfill({
+        scrollbarWidth: browser.scrollbarWidth
+    });
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
 };
-},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/protect-email":11,"./bootstrap/resize":12,"./bootstrap/scroll-lock":13,"./bootstrap/sticky":14,"./bootstrap/tabs":15,"css-vars-ponyfill":1,"vh-check":3}],5:[function(require,module,exports){
+},{"./bootstrap/browser":5,"./bootstrap/burger-menu":6,"./bootstrap/cookie":7,"./bootstrap/elements":9,"./bootstrap/input-counter":10,"./bootstrap/protect-email":11,"./bootstrap/resize":12,"./bootstrap/scroll-lock":13,"./bootstrap/sticky":14,"./bootstrap/tabs":15,"./plugins/polyfill":17}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -2252,21 +2249,22 @@ var InputCounter = /** @class */ (function () {
 exports.InputCounter = InputCounter;
 },{}],11:[function(require,module,exports){
 "use strict";
+/**
+ * Hide emails from spam bots
+ *
+ * @export
+ * @class ProtectEmail
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProtectEmail = /** @class */ (function () {
-    function ProtectEmail() {
-        this.refresh();
+    function ProtectEmail(param) {
+        var _this = this;
+        this.elements = param.elements;
+        [].slice.call(this.elements).forEach(function (item) {
+            item.addEventListener('click', _this.onClick);
+        });
     }
-    ProtectEmail.prototype.refresh = function () {
-        this.$links = document.getElementsByClassName('js_email');
-        var length = this.$links.length;
-        for (var index = 0; index < length; index++) {
-            var $element = this.$links[index];
-            $element.addEventListener('click', this.onClick);
-        }
-    };
     ProtectEmail.prototype.onClick = function (e) {
-        // @ts-ignore
         var $link = this;
         var email = $link.children[0].textContent
             .split('')
@@ -2275,13 +2273,16 @@ var ProtectEmail = /** @class */ (function () {
         $link.setAttribute('href', "mailto:" + email);
         $link.classList.remove('js_email');
         $link.textContent = email;
-        var $copy = $link.cloneNode(true);
-        $link.parentNode.replaceChild($copy, $link);
+        $link.parentNode.replaceChild($link.cloneNode(true), $link);
         return;
     };
     return ProtectEmail;
 }());
 exports.ProtectEmail = ProtectEmail;
+/**
+ * Changelog
+ * 12.07.2019 Add
+ */
 },{}],12:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -2522,6 +2523,21 @@ function transition(args) {
     }, 50);
 }
 exports.transition = transition;
-},{"./browser":5}]},{},[4])
+},{"./browser":5}],17:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+// Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
+require('vh-check')();
+// CSS custom properties support
+var cssVars = require('css-vars-ponyfill');
+function polyfill(param) {
+    cssVars({
+        variables: {
+            scrollbarWidth: param.scrollbarWidth + "px"
+        }
+    });
+}
+exports.polyfill = polyfill;
+},{"css-vars-ponyfill":1,"vh-check":3}]},{},[4])
 
 //# sourceMappingURL=app.dev.js.map

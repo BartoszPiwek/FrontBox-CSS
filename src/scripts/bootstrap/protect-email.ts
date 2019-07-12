@@ -1,22 +1,25 @@
-export class ProtectEmail {
-	$links: HTMLCollectionOf<Element>;
+/**
+ * Hide emails from spam bots
+ *
+ * @export
+ * @class ProtectEmail
+ */
 
-	constructor() {
-		this.refresh();
+interface IProtectEmail {
+	elements: HTMLCollectionOf<Element>;
+}
+export class ProtectEmail implements IProtectEmail {
+	elements: HTMLCollectionOf<Element>;
+
+	constructor(param: IProtectEmail) {
+		this.elements = param.elements;
+
+		[].slice.call(this.elements).forEach(item => {
+			item.addEventListener('click', this.onClick);
+		});
 	}
 
-	refresh() {
-		this.$links = document.getElementsByClassName('js_email');
-		const length = this.$links.length;
-
-		for (let index = 0; index < length; index++) {
-			const $element = this.$links[index];
-			$element.addEventListener('click', this.onClick);
-		}
-	}
-
-	onClick(e: MouseEvent): EventListenerOrEventListenerObject {
-		// @ts-ignore
+	onClick(this: HTMLElement, e: MouseEvent): EventListener {
 		const $link: HTMLElement = this;
 		const email = $link.children[0].textContent
 			.split('')
@@ -27,8 +30,12 @@ export class ProtectEmail {
 		$link.classList.remove('js_email');
 		$link.textContent = email;
 
-		const $copy = $link.cloneNode(true);
-		$link.parentNode.replaceChild($copy, $link);
+		$link.parentNode.replaceChild($link.cloneNode(true), $link);
 		return;
 	}
 }
+
+/**
+ * Changelog
+ * 12.07.2019 Add
+ */

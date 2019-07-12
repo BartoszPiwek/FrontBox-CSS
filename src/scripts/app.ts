@@ -10,9 +10,7 @@ import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
 import { scrollTo } from './bootstrap/scroll-to';
-/* Polyfill */
-require('vh-check')(); // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
-const cssVars = require('css-vars-ponyfill'); // CSS custom properties support
+import { polyfill } from './plugins/polyfill';
 
 window.onload = () => {
 	const browser = new Browser(),
@@ -37,7 +35,9 @@ window.onload = () => {
 		name: 'primary'
 	});
 
-	new ProtectEmail();
+	new ProtectEmail({
+		elements: document.getElementsByClassName('js_email')
+	});
 
 	/* Forms */
 	new InputCounter({
@@ -52,18 +52,13 @@ window.onload = () => {
 	/* Informations */
 	new InformationCookie();
 
-	/* Polyfill */
-
-	// CSS Custom Properties
-	// cssVars({
-	// 	variables: {
-	// 		scrollbarWidth: `${browser.scrollbarWidth}px`
-	// 	}
-	// });
-
 	// const placeholder = new ElementPlaceholder();
 	// placeholder.create(document.getElementById('header'));
 
+	/* Polyfill */
+	polyfill({
+		scrollbarWidth: browser.scrollbarWidth
+	});
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');
 };

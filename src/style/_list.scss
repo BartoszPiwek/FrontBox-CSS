@@ -57,7 +57,13 @@ Markup:
 
 Style guide: List.vertical
 */
+
+.list--vertical {
+	@include add-space-y(14px);
+}
+
 .list--horizontal {
+	@include add-space-x(26px);
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

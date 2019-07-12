@@ -40,7 +40,7 @@ Style guide: Funcions.space
 */
 
 // Horizontal space
-@mixin space-x($size) {
+@mixin add-space-x($size) {
 	width: calc(100% + #{$size});
 	margin-left: -#{$size} !important;
 
@@ -50,7 +50,7 @@ Style guide: Funcions.space
 }
 
 // Vertical space
-@mixin space-y($size) {
+@mixin add-space-y($size) {
 	margin-bottom: -#{$size} !important;
 
 	> *:not(.space-ignore) {
@@ -59,7 +59,7 @@ Style guide: Funcions.space
 }
 
 // Vertical/horizontal space
-@mixin space($size: 0, $size-y: $size) {
+@mixin add-space($size: 0, $size-y: $size) {
 	width: calc(100% + #{$size});
 	margin-bottom: -#{$size-y} !important;
 	margin-left: -#{$size} !important;

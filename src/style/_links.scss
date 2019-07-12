@@ -41,7 +41,7 @@ Style guide: Component.Links
 	}
 
 	&__group {
-		@include space-x(10px);
+		@inlcude add-space-x(10px);
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;

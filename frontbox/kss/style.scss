@@ -81,14 +81,14 @@ $color-secondary: blue;
 // Space
 .row {
 	&.space-x {
-		@include space-x(10px);
+		@inlcude add-space-x(10px);
 	}
 
 	&.space-y {
-		@include space-y(30px);
+		@inlcude add-space-y(30px);
 	}
 
 	&.space {
-		@include space(5px, 10px);
+		@inlcude add-space(5px, 10px);
 	}
 }
