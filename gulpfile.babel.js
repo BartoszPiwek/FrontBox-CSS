@@ -20,16 +20,20 @@ import { styleMain, styleBootstrap, styleUtilities } from './frontbox/gulp/style
 import { htmlMain, htmlInclude, htmlPartials } from './frontbox/gulp/html';
 
 function server(cb) {
-	browserSync.init({
-		open: config.browsersync.open,
-		host: config.browsersync.host,
-		proxy: config.browsersync.proxy,
-		port: config.browsersync.port,
-		server: {
-			baseDir: `${destPath()}/`
-		}
-	});
-	cb();
+	if (argv.server) {
+		browserSync.init({
+			open: config.browsersync.open,
+			host: config.browsersync.host,
+			proxy: config.browsersync.proxy,
+			port: config.browsersync.port,
+			server: {
+				baseDir: `${destPath()}/`
+			}
+		});
+		cb();
+	} else {
+		cb();
+	}
 }
 
 function watchFiles(cb) {

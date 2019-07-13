@@ -9,8 +9,8 @@ export function cleanBegin(cb) {
   if (argv.new) {
     del(config.projectDevFiles);
     cb();
-  } else if (argv.clean) {
-    del(`${destPath()}/`);
+  } else if (argv.clean || argv.prod) {
+    del(`${destPath()}`);
     cb();
   } else {
     cb();

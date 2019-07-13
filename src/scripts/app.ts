@@ -1,3 +1,9 @@
+/*!************************************************************************
+Framework:      FrontBox 1.3.0
+Author:         Bartosz Piwek
+Repository:     https://github.com/BartoszPiwek/FrontBox
+************************************************************************!*/
+
 import { html } from './bootstrap/elements';
 import { Browser } from './bootstrap/browser';
 import { InformationCookie } from './bootstrap/cookie';

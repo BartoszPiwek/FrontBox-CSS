@@ -1791,6 +1791,11 @@
 
 },{}],4:[function(require,module,exports){
 "use strict";
+/*!************************************************************************
+Framework:      FrontBox 1.3.0
+Author:         Bartosz Piwek
+Repository:     https://github.com/BartoszPiwek/FrontBox
+************************************************************************!*/
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./bootstrap/elements");
 var browser_1 = require("./bootstrap/browser");

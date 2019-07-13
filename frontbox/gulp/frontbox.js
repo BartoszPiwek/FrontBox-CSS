@@ -5,5 +5,5 @@ export function getMode() {
     return argv.prod ? 'prod' : 'dev';
 }
 export function destPath() {
-    return `./public/${getMode()}`;
+    return `public/${getMode()}`;
 }
