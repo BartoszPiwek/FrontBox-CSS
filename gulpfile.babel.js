@@ -1,111 +1,79 @@
 /*!************************************************************************
-Framework:      FrontBox 1.2.0
+Framework:      FrontBox 1.3.0
 Author:         Bartosz Piwek
 Repository:     https://github.com/BartoszPiwek/FrontBox
 ************************************************************************!*/
 
-/* Import libs */
-import { watch, series, parallel } from 'gulp';
-import { src, dest } from 'gulp';
-import gulpif from 'gulp-if';
-import through from 'through2';
-const argv = require('yargs').argv;
+/* Libs */
+import { series, parallel, watch } from 'gulp';
 export const browserSync = require('browser-sync').create();
-/* Import config */
+/* Config */
 import * as config from './config';
-import { getModeName } from './frontbox/gulp/frontbox';
-export function server(done) {
+import { destPath } from './frontbox/gulp/frontbox';
+const argv = require('yargs').argv;
+/* Import tasks */
+import { cleanBegin, cleanEnd } from './frontbox/gulp/clean';
+import { copyImage, copyFonts, copyOther, copyVideo, copyAudio } from './frontbox/gulp/copy';
+import { generateFavicon, minifySvg } from './frontbox/gulp/assets';
+import { scriptApp } from './frontbox/gulp/script';
+import { styleMain, styleBootstrap, styleUtilities } from './frontbox/gulp/style';
+import { htmlMain, htmlInclude, htmlPartials } from './frontbox/gulp/html';
+
+function server(cb) {
 	browserSync.init({
 		open: config.browsersync.open,
 		host: config.browsersync.host,
 		proxy: config.browsersync.proxy,
 		port: config.browsersync.port,
 		server: {
-			baseDir: `./public/${getModeName()}/`
+			baseDir: `${destPath()}/`
 		}
 	});
-
-	done();
+	cb();
 }
 
-/* Style */
-import { style_main, style_bootstrap, style_utilities } from './frontbox/gulp/style';
-export const buildStyle = parallel(style_main, style_bootstrap, style_utilities);
-/* HTML */
-import { html_main, html_include, html_partials } from './frontbox/gulp/html';
-export const buildHTML = parallel(html_main, html_partials);
-/* Script */
-import { script_main } from './frontbox/gulp/script';
-export const buildScript = parallel(script_main);
-/* Copy */
-import { copy_image, copy_fonts, copy_other, copy_video, copy_audio } from './frontbox/gulp/copy';
-export const buildCopy = parallel(copy_image, copy_fonts, copy_other, copy_video, copy_audio);
-/* Other */
-import { svg, favicon, faviconAfter } from './frontbox/gulp/assets';
-export const buildAssets = parallel(svg, series(favicon, faviconAfter));
-/* Docs */
-import { docs_style, docs_watch, docs_run, docs_server } from './frontbox/gulp/docs';
-/* Prod */
-import { hashHtml, renameSelectors, imageOptymalization } from './frontbox/gulp/prod';
-import { pipe } from 'rxjs';
-import { clean_first } from './frontbox/gulp/clean';
-export const buildProd = series(renameSelectors, imageOptymalization, hashHtml);
+function watchFiles(cb) {
+	if (argv.watch) {
+		let watchFiles;
 
-/* Main watch function */
-export function watchFiles() {
-	/* Style */
-	const styleObject = config.path.style;
-	watch(styleObject.main.watch, style_main);
-	watch(styleObject.bootstrap.watch, style_bootstrap);
-	watch(styleObject.utilities.watch, style_utilities);
+		watchFiles = config.path.style;
+		watch(watchFiles.main.watch, styleMain);
+		watch(watchFiles.bootstrap.watch, styleBootstrap);
+		watch(watchFiles.utilities.watch, styleUtilities);
 
-	/* HTML */
-	const htmlObject = config.path.pug;
-	watch(htmlObject.main.watch, html_main);
-	watch(htmlObject.include.watch, html_include);
-	watch(htmlObject.partials.watch, html_partials);
+		watchFiles = config.path.pug;
+		watch(watchFiles.main.watch, htmlMain);
+		watch(watchFiles.include.watch, htmlInclude);
+		watch(watchFiles.partials.watch, htmlPartials);
 
-	/* Script */
-	const scriptObject = config.path.script;
-	watch(scriptObject.main.watch, script_main);
+		watchFiles = config.path.script;
+		watch(watchFiles.app.watch, scriptApp);
 
-	// Favicon
-	watch(config.path.assets.favicon.file)
-		.on('change', () => {
-			series(favicon, faviconAfter);
-		});
+		watchFiles = config.path.copy;
+		watch(watchFiles.image.watch, copyImage);
+		watch(watchFiles.fonts.watch, copyFonts);
+		watch(watchFiles.other.watch, copyOther);
+		watch(watchFiles.video.watch, copyVideo);
+		watch(watchFiles.audio.watch, copyAudio);
 
-	/* Copy */
-	const copyObject = config.path.copy;
-	watch(copyObject.image.watch, copy_image);
-	watch(copyObject.fonts.watch, copy_fonts);
-	watch(copyObject.other.watch, copy_other);
-	watch(copyObject.video.watch, copy_video);
-	watch(copyObject.audio.watch, copy_audio);
+		cb();
+	} else {
+		cb();
+	}
 }
-
-const build = series(buildCopy, buildAssets, parallel(buildScript, buildStyle, buildHTML), server, watchFiles);
-const build_prod = series(buildCopy, buildAssets, parallel(buildScript, buildStyle, buildHTML), buildProd, server, watchFiles);
-// const cleanBuild = series(clean, build_prod);
 
 /* Tasks */
-const del = require('del');
 exports.default = series(
-
-	clean_first
-
-
-	// return pipe(gulpif(argv.prod,
-	// 	// console.log('aaa')
-	// 	del(config.projectDevFiles)
-	// ))
-	// 	.pipe(null);
-
+	cleanBegin,
+	minifySvg,
+	parallel(copyImage, copyFonts, copyOther, copyVideo, copyAudio),
+	scriptApp,
+	parallel(styleMain, styleBootstrap, styleUtilities),
+	parallel(htmlMain, htmlPartials),
+	cleanEnd,
+	server,
+	watchFiles
 );
-
-exports.style = series(buildStyle, server, watchFiles);
-exports.script = series(buildScript, server, watchFiles);
-exports.html = series(buildHTML, server, watchFiles);
-exports.buildFavicon = series(favicon);
-exports.docs = series(docs_style, docs_run, docs_server, docs_watch);
-exports.test = series(imageOptymalization);
+exports.favicon = series(generateFavicon);
+exports.test = series(styleMain);
+// // exports.docs = series(docs_style, docs_run, docs_server, docs_watch);

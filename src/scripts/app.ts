@@ -10,7 +10,7 @@ import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
 import { scrollTo } from './bootstrap/scroll-to';
-import { polyfill } from './plugins/polyfill';
+import { polyfill } from './app/polyfill';
 
 window.onload = () => {
 	const browser = new Browser(),

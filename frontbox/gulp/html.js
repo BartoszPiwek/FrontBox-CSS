@@ -1,67 +1,44 @@
-/* Import libs */
+/* Libs */
 import { src, dest } from 'gulp';
 import pug from 'gulp-pug';
 import { browserSync } from './../../gulpfile.babel';
 import changed from 'gulp-changed';
-const argv = require('yargs').argv;
-/* Import config */
+import newer from 'gulp-newer';
+/* Config */
 import * as config from './../../config';
-import { getModeName } from './frontbox';
+import { destPath, getMode } from './frontbox';
+const argv = require('yargs').argv;
 
-export function html_main() {
+const passVariables = {
+	data: {
+		data: config,
+		getMode: getMode,
+		dev: !argv.prod,
+	},
+	filters: require('./pug-filters')(config)
+};
+
+export function htmlMain() {
 	const element = config.path.pug.main;
-
-	config.dev = !argv.prod;
-
-	return src(`${element.files}`, {
-		allowEmpty: true
-	})
-		.pipe(changed(`public/${getModeName()}`))
-		.pipe(
-			pug({
-				data: {
-					data: config,
-					getModeName: getModeName
-				},
-				filters: require('./pug-filters')(config)
-			})
-		)
-		.pipe(dest(`public/${getModeName()}`))
+	return src(`${element.files}`)
+		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(changed(`${destPath()}`))
+		.pipe(pug(passVariables))
+		.pipe(dest(`${destPath()}`))
 		.pipe(browserSync.stream());
 }
-export function html_include() {
+export function htmlInclude() {
 	const element = config.path.pug.include;
-
-	return src(`${element.files}`, {
-		allowEmpty: true
-	})
-		.pipe(
-			pug({
-				data: {
-					data: config,
-					getModeName: getModeName
-				},
-				filters: require('./pug-filters')(config)
-			})
-		)
-		.pipe(dest(`public/${getModeName()}/`))
+	return src(`${element.files}`)
+		.pipe(pug(passVariables))
+		.pipe(dest(`${destPath()}`))
 		.pipe(browserSync.stream());
 }
-export function html_partials() {
+export function htmlPartials() {
 	const element = config.path.pug.partials;
-
-	return src(`${element.files}`, {
-		allowEmpty: true
-	})
-		.pipe(
-			pug({
-				data: {
-					data: config,
-					getModeName: getModeName
-				},
-				filters: require('./pug-filters')(config)
-			})
-		)
-		.pipe(dest(`public/${getModeName()}/${element.dest}`))
+	return src(`${element.files}`)
+		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(pug(passVariables))
+		.pipe(dest(`${destPath()}/${element.dest}`))
 		.pipe(browserSync.stream());
 }

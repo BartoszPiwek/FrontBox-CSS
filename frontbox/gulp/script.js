@@ -1,4 +1,4 @@
-/* Import libs */
+/* Libs */
 import browserify from 'browserify';
 import { dest } from 'gulp';
 import babel from 'gulp-babel';
@@ -7,23 +7,21 @@ import rename from 'gulp-rename';
 import stripCode from 'gulp-strip-code';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
-
-import { getModeName } from './frontbox';
+import sourcemaps from "gulp-sourcemaps";
+/* Config */
+import { destPath, getMode } from './frontbox';
 import * as config from './../../config';
 import { browserSync } from './../../gulpfile.babel';
-
-const sourcemaps = require('gulp-sourcemaps');
 const argv = require('yargs').argv;
 
 /* Import config */
-export function script_main() {
-
-	const element = config.path.script.main;
-
-	return browserify({ entries: `${element.files}` }, {
-		plugin: ['tsify'],
-		debug: !argv.prod,
-	})
+export function scriptApp() {
+	const element = config.path.script.app;
+	return browserify({ entries: `${element.files}` },
+		{
+			plugin: ['tsify'],
+			debug: !argv.prod,
+		})
 		.bundle()
 		.pipe(source('app.js'))
 		.pipe(buffer())
@@ -48,13 +46,13 @@ export function script_main() {
 			sourcemaps.init({ loadMaps: true })
 		))
 		.pipe(rename({
-			suffix: `.${getModeName()}`,
+			suffix: `.${getMode()}`,
 		}))
 		.pipe(gulpif(!argv.prod,
 			sourcemaps.write(`./`, { sourceRoot: './js' })
 		))
 		.pipe(dest(
-			`public/${getModeName()}/scripts/`
+			`${destPath()}/${element.dest}`
 		))
 		.pipe(browserSync.stream());
 }

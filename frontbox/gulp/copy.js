@@ -1,55 +1,37 @@
-/* Import libs */
+/* Libs */
 import { src, dest } from "gulp";
-import changed from 'gulp-changed';
-/* Import config */
+import newer from 'gulp-newer';
+/* Config */
 import * as config from "./../../config";
-import { getModeName } from './frontbox';
+import { destPath } from './frontbox';
 
-export function copy_image() {
-
+export function copyImage() {
 	const element = config.path.copy.image;
-
 	return src(`${element.files}`)
-		.pipe(changed(`public/${getModeName()}/${element.dest}`))
-		.pipe(dest(`public/${getModeName()}/${element.dest}`));
+		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(dest(`${destPath()}/${element.dest}`));
 }
-export function copy_fonts() {
-
+export function copyFonts() {
 	const element = config.path.copy.fonts;
-
-	return src(`${element.files}`, {
-		allowEmpty: true,
-	})
-		.pipe(changed(`public/${getModeName()}/${element.dest}`))
-		.pipe(dest(`public/${getModeName()}/${element.dest}`));
+	return src(`${element.files}`)
+		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(dest(`${destPath()}/${element.dest}`));
 }
-export function copy_other() {
-
+export function copyOther() {
 	const element = config.path.copy.other;
-
-	return src(`${element.files}`, {
-		allowEmpty: true,
-	})
-		.pipe(changed(`public/${getModeName()}/${element.dest}`))
-		.pipe(dest(`public/${getModeName()}/${element.dest}`));
+	return src(`${element.files}`)
+		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(dest(`${destPath()}/${element.dest}`));
 }
-export function copy_video() {
-
+export function copyVideo() {
 	const element = config.path.copy.video;
-
-	return src(`${element.files}`, {
-		allowEmpty: true,
-	})
-		.pipe(changed(`public/${getModeName()}/${element.dest}`))
-		.pipe(dest(`public/${getModeName()}/${element.dest}`));
+	return src(`${element.files}`)
+		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(dest(`${destPath()}/${element.dest}`));
 }
-export function copy_audio() {
-
+export function copyAudio() {
 	const element = config.path.copy.audio;
-
-	return src(`${element.files}`, {
-		allowEmpty: true,
-	})
-		.pipe(changed(`public/${getModeName()}/${element.dest}`))
-		.pipe(dest(`public/${getModeName()}/${element.dest}`));
+	return src(`${element.files}`)
+		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(dest(`${destPath()}/${element.dest}`));
 }

@@ -9,6 +9,8 @@ module.exports = {
 	/* Website */
 	website: {
 		name: 'FrontBox-CSS',
+		description: 'Static WWW builder tool',
+		url: 'https://github.com/BartoszPiwek/FrontBox-CSS',
 		locale: 'pl-PL',
 		color: '#e7be54',
 		author: 'Bartosz Piwek',
@@ -65,11 +67,12 @@ module.exports = {
 			},
 		},
 		script: {
-			main: {
+			app: {
 				files: 'src/scripts/app.ts',
-				dest: '',
+				dest: 'scripts',
 				watch: [
 					'src/scripts/app.ts',
+					'src/scripts/app/*.ts',
 					'src/scripts/bootstrap/*.ts',
 					'src/scripts/modules/*.ts',
 				]
@@ -149,9 +152,9 @@ module.exports = {
 			},
 			favicon: {
 				file: 'src/images/favicon.png',
-				desc: 'src/images/favicon',
-				iconsPath: '/images/favicon',
-				log: 'log/faviconData.json'
+				desc: 'src/images/favicons',
+				htmlAssets: '/images/favicons',
+				htmlDesc: '../../template/includes/favicon.html'
 			}
 		},
 		plugins: '../../../FrontBox-Plugins',

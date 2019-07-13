@@ -1,9 +1,6 @@
 # Node
 node_modules/
 *.lock
-*lock.*
-!*lock.ts
-!*lock.scss
 
 .tscache
 docs
@@ -21,8 +18,8 @@ styleguide
 *.map
 
 # Generated
-src/images/favicon/*
-!src/images/favicon/.gitkeep
+src/images/favicons/*
+!src/images/favicons/.gitkeep
 styleguide
 
 # Logs

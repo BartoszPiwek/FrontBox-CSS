@@ -44,10 +44,10 @@ block variables
 
 			//- Assets
 			block assets_header
-				if data.dev
-					link(rel="stylesheet" type="text/css" href="/css/utilities." + getModeName() + ".css" media="all")
-					link(rel="stylesheet" type="text/css" href="/css/bootstrap." + getModeName() + ".css" media="all")
-				link(rel="stylesheet" type="text/css" href="/style." + getModeName() + ".css" media="all")
+				if dev
+					link(rel="stylesheet" type="text/css" href="/css/utilities." + getMode() + ".css" media="all")
+					link(rel="stylesheet" type="text/css" href="/css/bootstrap." + getMode() + ".css" media="all")
+				link(rel="stylesheet" type="text/css" href="/style." + getMode() + ".css" media="all")
 
 			//- Favicons
 			include favicon.html
@@ -66,7 +66,7 @@ block variables
 
 			//- Assets
 			block assets_footer
-				script(src="/scripts/app." + getModeName() + ".js")
+				script(src="/scripts/app." + getMode() + ".js")
 				
 			//- Polyfill
 			#js_check-scrollbar.scrollbar
