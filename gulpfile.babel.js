@@ -88,10 +88,21 @@ const build_prod = series(buildCopy, buildAssets, parallel(buildScript, buildSty
 // const cleanBuild = series(clean, build_prod);
 
 /* Tasks */
-exports.default = () => {
-	const del = require('del');
+const del = require('del');
+exports.default = series(
 
-	return pipe(gulpif(argv.prod, del(config.projectDevFiles)));
+	((cb) => {
+		if (argv.new) {
+			del(config.projectDevFiles);
+			cb();
+		} else if (argv.clean) {
+			del(`${destPath()}/`);
+			cb();
+		} else {
+			cb();
+		}
+	})
+
 
 	// return pipe(gulpif(argv.prod,
 	// 	// console.log('aaa')
@@ -99,7 +110,8 @@ exports.default = () => {
 	// ))
 	// 	.pipe(null);
 
-};
+);
+
 exports.style = series(buildStyle, server, watchFiles);
 exports.script = series(buildScript, server, watchFiles);
 exports.html = series(buildHTML, server, watchFiles);
