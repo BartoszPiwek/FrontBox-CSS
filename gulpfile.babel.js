@@ -72,8 +72,8 @@ exports.default = series(
 	minifySvg,
 	parallel(copyImage, copyFonts, copyOther, copyVideo, copyAudio),
 	scriptApp,
-	parallel(styleMain, styleBootstrap, styleUtilities),
 	parallel(htmlMain, htmlPartials),
+	parallel(styleMain, styleBootstrap, styleUtilities),
 	cleanEnd,
 	server,
 	watchFiles
