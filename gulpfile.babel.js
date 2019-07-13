@@ -48,6 +48,7 @@ import { docs_style, docs_watch, docs_run, docs_server } from './frontbox/gulp/d
 /* Prod */
 import { hashHtml, renameSelectors, imageOptymalization } from './frontbox/gulp/prod';
 import { pipe } from 'rxjs';
+import { clean_first } from './frontbox/gulp/clean';
 export const buildProd = series(renameSelectors, imageOptymalization, hashHtml);
 
 /* Main watch function */
@@ -91,17 +92,7 @@ const build_prod = series(buildCopy, buildAssets, parallel(buildScript, buildSty
 const del = require('del');
 exports.default = series(
 
-	((cb) => {
-		if (argv.new) {
-			del(config.projectDevFiles);
-			cb();
-		} else if (argv.clean) {
-			del(`${destPath()}/`);
-			cb();
-		} else {
-			cb();
-		}
-	})
+	clean_first
 
 
 	// return pipe(gulpif(argv.prod,
