@@ -6,7 +6,7 @@ import changed from 'gulp-changed';
 const argv = require('yargs').argv;
 /* Import config */
 import * as config from './../../config';
-import { getModeName } from './index';
+import { getModeName } from './frontbox';
 
 export function html_main() {
 	const element = config.path.pug.main;

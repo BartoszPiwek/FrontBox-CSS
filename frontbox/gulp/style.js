@@ -16,7 +16,7 @@ const argv = require('yargs').argv;
 
 /* Import config */
 import * as config from './../../config';
-import { getModeName } from './index';
+import { getModeName } from './frontbox';
 
 export function style_main() {
 	const element = config.path.style.main;

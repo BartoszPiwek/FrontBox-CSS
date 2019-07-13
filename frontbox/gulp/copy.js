@@ -3,7 +3,7 @@ import { src, dest } from "gulp";
 import changed from 'gulp-changed';
 /* Import config */
 import * as config from "./../../config";
-import { getModeName } from './index';
+import { getModeName } from './frontbox';
 
 export function copy_image() {
 

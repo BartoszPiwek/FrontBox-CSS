@@ -154,8 +154,9 @@ module.exports = {
 				log: 'log/faviconData.json'
 			}
 		},
-		plugins: '../../../FrontBox-Plugins'
+		plugins: '../../../FrontBox-Plugins',
 	},
+	projectDevFiles: [`public`, `*.md`, `LICENSE`, `gitfiles`],
 	/* Project type */
 	projektType: false, // false, 'wordpress'
 	/* Debug */

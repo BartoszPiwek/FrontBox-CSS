@@ -8,11 +8,12 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 import { watch, series, parallel } from 'gulp';
 import { src, dest } from 'gulp';
 import gulpif from 'gulp-if';
+import through from 'through2';
 const argv = require('yargs').argv;
 export const browserSync = require('browser-sync').create();
 /* Import config */
 import * as config from './config';
-import { getModeName } from './frontbox/gulp/index';
+import { getModeName } from './frontbox/gulp/frontbox';
 export function server(done) {
 	browserSync.init({
 		open: config.browsersync.open,
@@ -25,15 +26,6 @@ export function server(done) {
 	});
 
 	done();
-}
-
-export function clean() {
-	const del = require('del');
-	return del(`public/${getModeName()}`);
-}
-export function begin() {
-	const del = require('del');
-	return del([`public`, `*.md`, `LICENSE`, `gitfiles`]);
 }
 
 /* Style */
@@ -55,6 +47,7 @@ export const buildAssets = parallel(svg, series(favicon, faviconAfter));
 import { docs_style, docs_watch, docs_run, docs_server } from './frontbox/gulp/docs';
 /* Prod */
 import { hashHtml, renameSelectors, imageOptymalization } from './frontbox/gulp/prod';
+import { pipe } from 'rxjs';
 export const buildProd = series(renameSelectors, imageOptymalization, hashHtml);
 
 /* Main watch function */
@@ -75,6 +68,12 @@ export function watchFiles() {
 	const scriptObject = config.path.script;
 	watch(scriptObject.main.watch, script_main);
 
+	// Favicon
+	watch(config.path.assets.favicon.file)
+		.on('change', () => {
+			series(favicon, faviconAfter);
+		});
+
 	/* Copy */
 	const copyObject = config.path.copy;
 	watch(copyObject.image.watch, copy_image);
@@ -86,19 +85,24 @@ export function watchFiles() {
 
 const build = series(buildCopy, buildAssets, parallel(buildScript, buildStyle, buildHTML), server, watchFiles);
 const build_prod = series(buildCopy, buildAssets, parallel(buildScript, buildStyle, buildHTML), buildProd, server, watchFiles);
-const cleanBuild = series(clean, build_prod);
+// const cleanBuild = series(clean, build_prod);
 
 /* Tasks */
 exports.default = () => {
-	if (argv.prod || argv.clean) {
-		cleanBuild();
-	} else {
-		build();
-	}
+	const del = require('del');
+
+	return pipe(gulpif(argv.prod, del(config.projectDevFiles)));
+
+	// return pipe(gulpif(argv.prod,
+	// 	// console.log('aaa')
+	// 	del(config.projectDevFiles)
+	// ))
+	// 	.pipe(null);
+
 };
 exports.style = series(buildStyle, server, watchFiles);
 exports.script = series(buildScript, server, watchFiles);
 exports.html = series(buildHTML, server, watchFiles);
-exports.buildFavicon = series(favicon, faviconAfter);
+exports.buildFavicon = series(favicon);
 exports.docs = series(docs_style, docs_run, docs_server, docs_watch);
-exports.test = series(buildProd, watchFiles);
+exports.test = series(imageOptymalization);

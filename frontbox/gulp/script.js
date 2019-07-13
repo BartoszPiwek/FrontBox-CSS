@@ -8,7 +8,7 @@ import stripCode from 'gulp-strip-code';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
 
-import { getModeName } from '.';
+import { getModeName } from './frontbox';
 import * as config from './../../config';
 import { browserSync } from './../../gulpfile.babel';
 
