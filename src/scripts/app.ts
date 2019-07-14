@@ -17,6 +17,13 @@ import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
 import { scrollTo } from './bootstrap/scroll-to';
 import { polyfill } from './app/polyfill';
+import { FrontboxConsole } from './bootstrap/console';
+
+/* test-code */
+export const frontboxConsole = new FrontboxConsole({
+	hide: false
+});
+/* end-test-code */
 
 window.onload = () => {
 	const browser = new Browser(),
@@ -67,4 +74,10 @@ window.onload = () => {
 	});
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');
+	/* test-code */
+	frontboxConsole.add({
+		title: 'App',
+		content: 'Running correct'
+	});
+	/* end-test-code */
 };

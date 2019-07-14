@@ -70,10 +70,19 @@ function watchFiles(cb) {
 exports.default = series(
 	cleanBegin,
 	minifySvg,
-	parallel(copyImage, copyFonts, copyOther, copyVideo, copyAudio),
-	scriptApp,
-	parallel(htmlMain, htmlPartials),
-	parallel(styleMain, styleBootstrap, styleUtilities),
+	parallel(
+		copyImage,
+		copyFonts,
+		copyOther,
+		copyVideo,
+		copyAudio,
+		scriptApp,
+		htmlMain,
+		htmlPartials,
+		styleMain,
+		styleBootstrap,
+		styleUtilities
+	),
 	cleanEnd,
 	server,
 	watchFiles

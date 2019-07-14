@@ -1808,6 +1808,12 @@ var sticky_1 = require("./bootstrap/sticky");
 var tabs_1 = require("./bootstrap/tabs");
 var protect_email_1 = require("./bootstrap/protect-email");
 var polyfill_1 = require("./app/polyfill");
+var console_1 = require("./bootstrap/console");
+/* test-code */
+exports.frontboxConsole = new console_1.FrontboxConsole({
+    hide: false
+});
+/* end-test-code */
 window.onload = function () {
     var browser = new browser_1.Browser(), scrollLock = new scroll_lock_1.ScrollLock(), resize = new resize_1.Resize();
     new burger_menu_1.BurgerMenu({
@@ -1847,8 +1853,14 @@ window.onload = function () {
     });
     /* Inform stylesheed to remove style fallback for JavaScript elements */
     elements_1.html.classList.remove('js_no');
+    /* test-code */
+    exports.frontboxConsole.add({
+        title: 'App',
+        content: 'Running correct'
+    });
+    /* end-test-code */
 };
-},{"./app/polyfill":5,"./bootstrap/browser":6,"./bootstrap/burger-menu":7,"./bootstrap/cookie":8,"./bootstrap/elements":10,"./bootstrap/input-counter":11,"./bootstrap/protect-email":12,"./bootstrap/resize":13,"./bootstrap/scroll-lock":14,"./bootstrap/sticky":15,"./bootstrap/tabs":16}],5:[function(require,module,exports){
+},{"./app/polyfill":5,"./bootstrap/browser":6,"./bootstrap/burger-menu":7,"./bootstrap/console":8,"./bootstrap/cookie":9,"./bootstrap/elements":11,"./bootstrap/input-counter":12,"./bootstrap/protect-email":13,"./bootstrap/resize":14,"./bootstrap/scroll-lock":15,"./bootstrap/sticky":16,"./bootstrap/tabs":17}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
@@ -2007,7 +2019,7 @@ var Browser = /** @class */ (function () {
     return Browser;
 }());
 exports.Browser = Browser;
-},{"./css":9,"./elements":10}],7:[function(require,module,exports){
+},{"./css":10,"./elements":11}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -2081,6 +2093,34 @@ exports.BurgerMenu = BurgerMenu;
  */
 },{}],8:[function(require,module,exports){
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var elements_1 = require("./elements");
+var FrontboxConsole = /** @class */ (function () {
+    function FrontboxConsole(param) {
+        this.counter = 0;
+        this.data = {
+            hide: false
+        };
+        Object.assign(this.data, param);
+        elements_1.body.insertAdjacentHTML('beforeend', "<div class=\"debug-console " + (this.data.hide ? 'hide' : '') + "\" id=\"debugConsole\"></div>");
+        this.content = document.getElementById('debugConsole');
+    }
+    FrontboxConsole.prototype.add = function (param) {
+        var id = this.counter++, html = "\n        <div class=\"debug-console-item " + (param.type ? param.type : '') + "\" id=\"debugConsole" + id + "\">\n          <div class=\"debug-console-item__title\">" + param.title + "</div>\n          <div class=\"debug-console-item__content\">" + param.content + "</div>\n        </div>\n      ";
+        this.content.insertAdjacentHTML('beforeend', html);
+        var element = document.getElementById("debugConsole" + id);
+        window.setTimeout(function () {
+            element.classList.add('debug-console-item--remove');
+            window.setTimeout(function () {
+                element.parentNode.removeChild(element);
+            }, 500);
+        }, 8000);
+    };
+    return FrontboxConsole;
+}());
+exports.FrontboxConsole = FrontboxConsole;
+},{"./elements":11}],9:[function(require,module,exports){
+"use strict";
 /**
  * Inform users that your site uses cookies
  *
@@ -2093,11 +2133,12 @@ exports.BurgerMenu = BurgerMenu;
 Object.defineProperty(exports, "__esModule", { value: true });
 var Cookies = require("js-cookie");
 var elements_1 = require("./elements");
+var app_1 = require("../app");
 var InformationCookie = /** @class */ (function () {
     function InformationCookie(data) {
         var _this = this;
         this.data = {
-            template: null,
+            template: null
         };
         this.getContent = function (callback) {
             var xhr = new XMLHttpRequest();
@@ -2130,17 +2171,22 @@ var InformationCookie = /** @class */ (function () {
                 });
             }
         };
-        if (!Cookies.get('using_cookies')) {
-            this.data = Object.assign(this.data, data);
-            this.show();
+        if (Cookies.get('using-cookies')) {
             /* test-code */
-            console.log("Cookie\n - show information about using cookies");
+            app_1.frontboxConsole.add({
+                title: 'Cookie',
+                content: 'information already showed'
+            });
             /* end-test-code */
+            return;
         }
+        this.data = Object.assign(this.data, data);
+        this.show();
         /* test-code */
-        else {
-            console.log("Cookie\n - information already showed");
-        }
+        app_1.frontboxConsole.add({
+            title: 'Cookie',
+            content: 'show information about using cookies'
+        });
         /* end-test-code */
     }
     InformationCookie.prototype.bindClick = function () {
@@ -2152,10 +2198,13 @@ var InformationCookie = /** @class */ (function () {
         });
     };
     InformationCookie.prototype.onClick = function () {
-        Cookies.set('using_cookies', 1);
-        this.cookie.classList.add("js_cookies-information--hide");
+        Cookies.set('using-cookies', 1);
+        this.cookie.classList.add('js_cookies-information--hide');
         /* test-code */
-        console.log("Cookie\n - accepted cookies");
+        app_1.frontboxConsole.add({
+            title: 'Cookie',
+            content: 'accepted cookies'
+        });
         /* end-test-code */
         return false;
     };
@@ -2166,7 +2215,7 @@ exports.InformationCookie = InformationCookie;
  * Changelog
  * 21.05.2019 Convert jQuery code to vanilla JS
  */
-},{"./elements":10,"js-cookie":2}],9:[function(require,module,exports){
+},{"../app":4,"./elements":11,"js-cookie":2}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var root = document.querySelector(':root');
@@ -2183,13 +2232,13 @@ exports.breakpointsHeader = {
     fablet: Number(CSS.getPropertyValue("--headerFablet")),
     mobile: Number(CSS.getPropertyValue("--headerMobile")),
 };
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.body = document.body;
 exports.html = document.documentElement;
 exports.CSS = window.getComputedStyle(exports.html);
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var InputCounter = /** @class */ (function () {
@@ -2267,7 +2316,7 @@ var InputCounter = /** @class */ (function () {
     return InputCounter;
 }());
 exports.InputCounter = InputCounter;
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 /**
  * Hide emails from spam bots
@@ -2303,7 +2352,7 @@ exports.ProtectEmail = ProtectEmail;
  * Changelog
  * 12.07.2019 Add
  */
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Resize = /** @class */ (function () {
@@ -2329,7 +2378,7 @@ var Resize = /** @class */ (function () {
     return Resize;
 }());
 exports.Resize = Resize;
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
@@ -2389,7 +2438,7 @@ exports.ScrollLock = ScrollLock;
  * 26.06.2019 Support custom properties polyfill
  * 20.06.2019 Add
  */
-},{"./browser":6,"./elements":10}],15:[function(require,module,exports){
+},{"./browser":6,"./elements":11}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -2442,7 +2491,7 @@ exports.Sticky = Sticky;
  * Changelog
  * 26.06.2019 Add
  */
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var transition_size_1 = require("./transition-size");
@@ -2523,7 +2572,7 @@ var Tabs = /** @class */ (function () {
     return Tabs;
 }());
 exports.Tabs = Tabs;
-},{"./transition-size":17}],17:[function(require,module,exports){
+},{"./transition-size":18}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var browser_1 = require("./browser");

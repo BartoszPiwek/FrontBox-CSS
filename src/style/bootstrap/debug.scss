@@ -1,0 +1,102 @@
+@mixin debug-console {
+	.debug-console {
+		position: fixed;
+		z-index: 999999;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		opacity: 0.6;
+		font-size: 12px;
+		pointer-events: none;
+
+		&:before {
+			content: "Console";
+			display: flex;
+			position: absolute;
+			top: 0;
+			left: 0;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			padding: 4px;
+			transform: translateY(-100%);
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			background-color: transparentize(color("black"), 0.2);
+			color: color("white");
+		}
+
+		& > &-item {
+			&:first-child {
+				border-top: 1px solid color("black");
+			}
+
+			&:last-child {
+				border-bottom: 1px solid color("black");
+			}
+		}
+
+		&-item {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			width: 100%;
+			margin-top: 0;
+			padding: 8px;
+			transition: transform 0.5s, opacity 0.5s;
+			animation-name: debug-console-item-add;
+			animation-duration: 0.5s;
+			animation-play-state: running;
+			animation-timing-function: ease;
+			animation-delay: 0s;
+			animation-iteration-count: 1;
+			animation-direction: normal;
+			border-right: 1px solid color("black");
+			border-left: 1px solid color("black");
+			opacity: 0;
+			background-color: color("primary");
+			animation-fill-mode: forwards;
+
+			&--remove {
+				animation-name: debug-console-item-remove;
+			}
+
+			&__title {
+				padding-right: 10px;
+				font-weight: bold;
+
+				&:after {
+					content: ":";
+				}
+			}
+
+			&__content {
+				font-style: italic;
+			}
+		}
+
+		@include media("tablet") {
+			right: 10px;
+			max-width: 300px;
+		}
+	}
+	@keyframes debug-console-item-add {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes debug-console-item-remove {
+		from {
+			opacity: 1;
+		}
+
+		to {
+			opacity: 0;
+		}
+	}
+}
