@@ -81,17 +81,5 @@ window.onload = () => {
 		title: 'App',
 		content: 'Running correct'
 	});
-	document.getElementById('testConsole').addEventListener('click', () => {
-		frontboxConsole.add({
-			title: 'App',
-			content: 'Running correct',
-			type: 'error'
-		});
-		frontboxConsole.add({
-			title: 'App',
-			content: 'Running correct',
-			type: 'warning'
-		});
-	});
 	/* end-test-code */
 };

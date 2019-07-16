@@ -53,28 +53,40 @@ export function styleMain() {
 		.pipe(dest(`${destPath()}/${element.dest}`))
 		.pipe(browserSync.stream());
 }
-export function styleBootstrap() {
+export function styleBootstrap(cb) {
 	const element = config.path.style.bootstrap;
-	return src(`${element.files}`)
-		.pipe(header(passVariables))
-		.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
-		.pipe(sassGlob())
-		.pipe(sass({ outputStyle: 'compressed' }))
-		.pipe(rename({
-			suffix: `.${getMode()}`
-		}))
-		.pipe(dest(`${destPath()}/${element.dest}`))
-		.pipe(browserSync.stream());
+
+	if (!argv.prod) {
+		return src(`${element.files}`)
+			.pipe(header(passVariables))
+			.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
+			.pipe(sassGlob())
+			.pipe(sass({ outputStyle: 'compressed' }))
+			.pipe(rename({
+				suffix: `.${getMode()}`
+			}))
+			.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
+			.pipe(dest(`${destPath()}/${element.dest}`))
+			.pipe(browserSync.stream());
+	} else {
+		cb();
+	}
 }
-export function styleUtilities() {
+export function styleUtilities(cb) {
 	const element = config.path.style.utilities;
-	return src(`${element.files}`)
-		.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
-		.pipe(sassGlob())
-		.pipe(sass())
-		.pipe(rename({
-			suffix: `.${getMode()}`
-		}))
-		.pipe(dest(`${destPath()}/${element.dest}`))
-		.pipe(browserSync.stream());
+
+	if (!argv.prod) {
+		return src(`${element.files}`)
+			.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
+			.pipe(sassGlob())
+			.pipe(sass())
+			.pipe(rename({
+				suffix: `.${getMode()}`
+			}))
+			.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
+			.pipe(dest(`${destPath()}/${element.dest}`))
+			.pipe(browserSync.stream());
+	} else {
+		cb();
+	}
 }

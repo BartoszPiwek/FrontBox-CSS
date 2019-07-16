@@ -30,7 +30,7 @@ export class FrontboxConsole {
 	data: IFrontboxConsole = {
 		hide: false,
 		open: false,
-		autoOpen: true
+		autoOpen: false
 	};
 
 	constructor(param: IFrontboxConsole) {

@@ -9,7 +9,9 @@
 	},
 	"scripts": {
 		"start": "gulp --watch --server",
+		"build": "gulp --prod",
 		"test": "gulp test",
+		"docs": "gulp docs",
 		"update": "ncu"
 	},
 	"bugs": {

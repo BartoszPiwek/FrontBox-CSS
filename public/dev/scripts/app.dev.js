@@ -1860,18 +1860,6 @@ window.onload = function () {
         title: 'App',
         content: 'Running correct'
     });
-    document.getElementById('testConsole').addEventListener('click', function () {
-        exports.frontboxConsole.add({
-            title: 'App',
-            content: 'Running correct',
-            type: 'error'
-        });
-        exports.frontboxConsole.add({
-            title: 'App',
-            content: 'Running correct',
-            type: 'warning'
-        });
-    });
     /* end-test-code */
 };
 },{"./app/polyfill":5,"./bootstrap/browser":6,"./bootstrap/burger-menu":7,"./bootstrap/console":8,"./bootstrap/cookie":9,"./bootstrap/elements":11,"./bootstrap/input-counter":12,"./bootstrap/protect-email":13,"./bootstrap/resize":14,"./bootstrap/scroll-lock":15,"./bootstrap/sticky":16,"./bootstrap/tabs":17}],5:[function(require,module,exports){
@@ -2125,7 +2113,7 @@ var FrontboxConsole = /** @class */ (function () {
         this.data = {
             hide: false,
             open: false,
-            autoOpen: true
+            autoOpen: false
         };
         Object.assign(this.data, param);
         if (this.data.hide) {
