@@ -32,10 +32,10 @@ body {
 	}
 }
 
-// Scrollbar
+// add-scrollbar
 .scrollbar,
 body {
-	@include scrollbar(5px, color("primary"), color("secondary"));
+	@include add-scrollbar(5px, color("primary"), color("secondary"));
 }
 
 svg,

@@ -1,7 +1,7 @@
 /*
 Scrollbar
 
-Create custom themes for the browser's native scrollbars
+Create custom themes for the browser's native add-scrollbars
 
 Mixin:
 scrollbar($size, $color-background, $color-thumb);
@@ -22,7 +22,7 @@ Mixin output:
 Style guide: Functions.clearfix
 */
 
-@mixin scrollbar($size: "10px", $color-background: color("black"), $color-thumb: color("primary")) {
+@mixin add-scrollbar($size: "10px", $color-background: color("black"), $color-thumb: color("primary")) {
 	&::-webkit-scrollbar {
 		width: $size;
 		height: $size;

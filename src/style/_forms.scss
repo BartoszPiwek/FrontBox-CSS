@@ -229,7 +229,7 @@ Style guide: Forms.input-text
 	&:hover {
 		border-color: transparentize(color("black"), 0.4);
 		color: transparentize(color("black"), 0.4);
-		@include add_placeholder {
+		@include add-input-placeholder {
 			color: transparentize(color("black"), 0.4);
 		}
 	}
@@ -238,7 +238,7 @@ Style guide: Forms.input-text
 	&:focus {
 		border-color: color("black");
 		color: color("black");
-		@include add_placeholder {
+		@include add-input-placeholder {
 			color: color("black");
 		}
 	}
@@ -248,7 +248,7 @@ Style guide: Forms.input-text
 		width: 100%;
 	}
 
-	@include add_placeholder {
+	@include add-input-placeholder {
 		transition: color $time-transition;
 		color: color("primary");
 		font-style: italic;

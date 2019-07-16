@@ -43,13 +43,13 @@ $color-secondary: blue;
 .placeholder {
 	color: $color-secondary;
 
-	@include add_placeholder {
+	@include add-input-placeholder {
 		color: $color-primary;
 	}
 }
 
 .scrollbar {
-	@include scrollbar("20px", $color-primary, $color-secondary);
+	@include add-scrollbar("20px", $color-primary, $color-secondary);
 	width: 100%;
 	height: 200px;
 	overflow: scroll;
@@ -62,19 +62,19 @@ $color-secondary: blue;
 
 .triangle {
 	&-up {
-		@include triangle(30px, 20px, "up", $color-primary);
+		@include add-triangle(30px, 20px, "up", $color-primary);
 	}
 
 	&-right {
-		@include triangle(30px, 20px, "right", $color-primary);
+		@include add-triangle(30px, 20px, "right", $color-primary);
 	}
 
 	&-down {
-		@include triangle(30px, 20px, "down", $color-primary);
+		@include add-triangle(30px, 20px, "down", $color-primary);
 	}
 
 	&-left {
-		@include triangle(20px, 10px, "left", $color-secondary);
+		@include add-triangle(20px, 10px, "left", $color-secondary);
 	}
 }
 

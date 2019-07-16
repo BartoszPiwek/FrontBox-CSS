@@ -23,7 +23,7 @@ mixin_output:
 Style guide: Functions.triangle
 */
 
-@mixin triangle($width, $height, $position: "down", $color: color("primary")) {
+@mixin add-triangle($width, $height, $position: "down", $color: color("primary")) {
 	$width-half: $width / 2;
 	$bool: ($position != "left" and $position != "right");
 

@@ -19,7 +19,7 @@ Style guide: Flow.wrap
 */
 
 // Function
-@mixin wrap($max-width, $padding-x: 0) {
+@mixin add-wrap($max-width, $padding-x: 0) {
 	max-width: $max-width + $padding-x * 2;
 
 	@if $padding-x {

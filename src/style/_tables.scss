@@ -1,5 +1,5 @@
 .table-scrollable {
-	@include scrollbar;
+	@include add-scrollbar;
 	overflow-x: auto;
 	overflow-y: hidden;
 }

@@ -61,22 +61,6 @@ Style guide: Fix.fixed
   perspective: 1000; }
 
 /*
-Group center
-
-Vertical center elements in content 
-
-Emmet:
-.group-center>span{Text}+img{}
-
-Style guide: Flow.group-center
-*/
-.group-center {
-  display: flex !important;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center; }
-
-/*
 
 Holder
 
@@ -127,12 +111,12 @@ OUTPUT:
 Input Placeholder
 
 Mixin:
-@inlcude add_placeholder { @content };
+@inlcude add-input-placeholder { @content };
 
 Mixin example:
 .placeholder {
 	color: $color-secondary;
-	@inlcude add_placeholder {
+	@inlcude add-input-placeholder {
 		color: $color-primary;
 	}
 }
@@ -148,21 +132,10 @@ IE 10+
 
 Style guide: Functions.input-placeholder
 */
-.js_scrollbar-active .js_cookies-information, .js_scrollbar-active body {
-  border-right: var(--scrollbarWidth, 0) solid #05386b; }
-
-html.js_scroll-lock {
-  position: fixed; }
-  html.js_scroll-lock body {
-    overflow: hidden; }
-
-html:not(.js_scroll-lock) body {
-  top: 0 !important; }
-
 /*
 Scrollbar
 
-Create custom themes for the browser's native scrollbars
+Create custom themes for the browser's native add-scrollbars
 
 Mixin:
 scrollbar($size, $color-background, $color-thumb);
@@ -222,28 +195,6 @@ Changelog:
 
 Style guide: Funcions.space
 */
-/*
-Square
-
-Block square
-
-Markup:
-<div class="block-square">
-	Content
-</div>
-
-Style guide: Blocks.square
-*/
-.block-square {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%; }
-  .block-square > * {
-    position: absolute;
-    top: 0;
-    left: 0; }
-
 /*
 Triangle
 
@@ -375,6 +326,22 @@ Style guide: Common.burger
     transform: translate(0, 100%);
     opacity: 0; }
 
+/*
+Group center
+
+Vertical center elements in content 
+
+Emmet:
+.group-center>span{Text}+img{}
+
+Style guide: Flow.group-center
+*/
+.group-center {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center; }
+
 .icon-x:before, .icon-x:after {
   content: "";
   position: absolute;
@@ -390,6 +357,39 @@ Style guide: Common.burger
 
 .icon-x:after {
   transform: rotate(-45deg) translate(-50%, -50%); }
+
+.js_scrollbar-active .js_cookies-information, .js_scrollbar-active body {
+  border-right: var(--scrollbarWidth, 0) solid #05386b; }
+
+html.js_scroll-lock {
+  position: fixed; }
+  html.js_scroll-lock body {
+    overflow: hidden; }
+
+html:not(.js_scroll-lock) body {
+  top: 0 !important; }
+
+/*
+Square
+
+Block square
+
+Markup:
+<div class="block-square">
+	Content
+</div>
+
+Style guide: Blocks.square
+*/
+.block-square {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; }
+  .block-square > * {
+    position: absolute;
+    top: 0;
+    left: 0; }
 
 /*
 YouTube
@@ -1184,11 +1184,14 @@ Style guide: Component.Links
       .link--secondary--hover-active .link--secondary .icon, .link--secondary.is-active .icon, .link--secondary:hover .icon, .link--secondary:active .icon, .link--secondary:focus .icon {
         fill: #297162; }
   .link__group {
-    @inlcude add-space-x(10px);
+    width: calc(100% + 10px);
+    margin-left: -10px !important;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center; }
+    .link__group > *:not(.space-ignore) {
+      padding-left: 10px !important; }
   .link--disabled, .link.is-disabled {
     color: #90938f !important;
     cursor: not-allowed; }

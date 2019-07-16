@@ -1,13 +1,13 @@
 // ANCHOR .wrap
 .wrap {
-	@include wrap(1024px, 20px);
+	@include add-wrap(1024px, 20px);
 
 	&--navbar {
-		@include wrap(1024px, 20px);
+		@include add-wrap(1024px, 20px);
 	}
 
 	&--footer {
-		@include wrap(1024px, 20px);
+		@include add-wrap(1024px, 20px);
 	}
 }
 

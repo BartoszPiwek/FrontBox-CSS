@@ -2,12 +2,12 @@
 Input Placeholder
 
 Mixin:
-@inlcude add_placeholder { @content };
+@inlcude add-input-placeholder { @content };
 
 Mixin example:
 .placeholder {
 	color: $color-secondary;
-	@inlcude add_placeholder {
+	@inlcude add-input-placeholder {
 		color: $color-primary;
 	}
 }
@@ -23,7 +23,7 @@ IE 10+
 
 Style guide: Functions.input-placeholder
 */
-@mixin add-placeholder {
+@mixin add-input-placeholder {
 	&::placeholder,
 	&::-webkit-input-placeholder,
 	&::-moz-placeholder,
