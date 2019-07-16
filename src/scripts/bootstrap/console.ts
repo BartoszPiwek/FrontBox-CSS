@@ -67,14 +67,14 @@ export class FrontboxConsole {
 		}
 
 		const id = this.counter++,
-			html = `
+			template = `
         <div class="debug-console-item ${param.type ? param.type : ''}" id="debugConsole${id}">
           	<div class="debug-console-item__title">${param.title}</div>
 	          <div class="debug-console-item__content">${param.content}</div>
           </div>
         </div>
       `;
-		this.content.insertAdjacentHTML('afterbegin', html);
+		this.content.insertAdjacentHTML('afterbegin', template);
 
 		if (this.data.autoOpen) {
 			this.autoOpenCounter++;

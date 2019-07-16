@@ -2144,8 +2144,8 @@ var FrontboxConsole = /** @class */ (function () {
         if (this.data.hide) {
             return;
         }
-        var id = this.counter++, html = "\n        <div class=\"debug-console-item " + (param.type ? param.type : '') + "\" id=\"debugConsole" + id + "\">\n          \t<div class=\"debug-console-item__title\">" + param.title + "</div>\n\t          <div class=\"debug-console-item__content\">" + param.content + "</div>\n          </div>\n        </div>\n      ";
-        this.content.insertAdjacentHTML('afterbegin', html);
+        var id = this.counter++, template = "\n        <div class=\"debug-console-item " + (param.type ? param.type : '') + "\" id=\"debugConsole" + id + "\">\n          \t<div class=\"debug-console-item__title\">" + param.title + "</div>\n\t          <div class=\"debug-console-item__content\">" + param.content + "</div>\n          </div>\n        </div>\n      ";
+        this.content.insertAdjacentHTML('afterbegin', template);
         if (this.data.autoOpen) {
             this.autoOpenCounter++;
             if (!this.data.open && !this.tempActive) {
