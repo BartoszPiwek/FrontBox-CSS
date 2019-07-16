@@ -21,7 +21,9 @@ import { FrontboxConsole } from './bootstrap/console';
 
 /* test-code */
 export const frontboxConsole = new FrontboxConsole({
-	hide: false
+	hide: false,
+	open: false,
+	autoOpen: true
 });
 /* end-test-code */
 
@@ -78,6 +80,12 @@ window.onload = () => {
 	frontboxConsole.add({
 		title: 'App',
 		content: 'Running correct'
+	});
+	document.getElementById('testConsole').addEventListener('click', () => {
+		frontboxConsole.add({
+			title: 'App',
+			content: 'Running correct'
+		});
 	});
 	/* end-test-code */
 };

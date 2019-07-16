@@ -1811,7 +1811,9 @@ var polyfill_1 = require("./app/polyfill");
 var console_1 = require("./bootstrap/console");
 /* test-code */
 exports.frontboxConsole = new console_1.FrontboxConsole({
-    hide: false
+    hide: false,
+    open: false,
+    autoOpen: true
 });
 /* end-test-code */
 window.onload = function () {
@@ -1857,6 +1859,12 @@ window.onload = function () {
     exports.frontboxConsole.add({
         title: 'App',
         content: 'Running correct'
+    });
+    document.getElementById('testConsole').addEventListener('click', function () {
+        exports.frontboxConsole.add({
+            title: 'App',
+            content: 'Running correct'
+        });
     });
     /* end-test-code */
 };
@@ -2093,32 +2101,76 @@ exports.BurgerMenu = BurgerMenu;
  */
 },{}],8:[function(require,module,exports){
 "use strict";
+/**
+ * Show console logs on webpage front
+ *
+ * @class FrontboxConsole
+ * @version 1.0
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var elements_1 = require("./elements");
 var FrontboxConsole = /** @class */ (function () {
     function FrontboxConsole(param) {
+        var _this = this;
         this.counter = 0;
+        this.tempActive = false;
+        this.open = false;
+        this.autoOpenCounter = 0;
         this.data = {
-            hide: false
+            hide: false,
+            open: false,
+            autoOpen: true
         };
         Object.assign(this.data, param);
-        elements_1.body.insertAdjacentHTML('beforeend', "<div class=\"debug-console " + (this.data.hide ? 'hide' : '') + "\" id=\"debugConsole\"></div>");
-        this.content = document.getElementById('debugConsole');
+        if (this.data.hide) {
+            return;
+        }
+        var template = "\n\t\t\t<div class=\"debug-console " + (this.data.open ? 'open' : '') + "\" id=\"debugConsole\">\n\t\t\t\t<div class=\"debug-console__label\" id=\"debugConsoleLabel\">FrontBox Console</div>\n\t\t\t\t<div class=\"debug-console__content\" id=\"debugConsoleContent\"></div>\n\t\t\t</div>\n\t\t";
+        elements_1.body.insertAdjacentHTML('beforeend', template);
+        this.element = document.getElementById('debugConsole');
+        this.content = document.getElementById('debugConsoleContent');
+        this.label = document.getElementById('debugConsoleLabel');
+        this.label.addEventListener('click', function (e) {
+            _this.data.open = !_this.data.open;
+            _this.toggle(e);
+        });
     }
+    FrontboxConsole.prototype.toggle = function (e) {
+        this.element.classList.toggle('open');
+        return;
+    };
     FrontboxConsole.prototype.add = function (param) {
-        var id = this.counter++, html = "\n        <div class=\"debug-console-item " + (param.type ? param.type : '') + "\" id=\"debugConsole" + id + "\">\n          <div class=\"debug-console-item__title\">" + param.title + "</div>\n          <div class=\"debug-console-item__content\">" + param.content + "</div>\n        </div>\n      ";
-        this.content.insertAdjacentHTML('beforeend', html);
-        var element = document.getElementById("debugConsole" + id);
+        var _this = this;
+        if (this.data.hide) {
+            return;
+        }
+        var id = this.counter++, html = "\n        <div class=\"debug-console-item " + (param.type ? param.type : '') + "\" id=\"debugConsole" + id + "\">\n          \t<div class=\"debug-console-item__title\">" + param.title + "</div>\n\t          <div class=\"debug-console-item__content\">" + param.content + "</div>\n          </div>\n        </div>\n      ";
+        this.content.insertAdjacentHTML('afterbegin', html);
+        if (this.data.autoOpen) {
+            this.autoOpenCounter++;
+            if (!this.data.open && !this.tempActive) {
+                this.tempActive = true;
+                this.toggle();
+            }
+        }
         window.setTimeout(function () {
-            element.classList.add('debug-console-item--remove');
+            _this.autoOpenCounter--;
+            if (_this.tempActive && !_this.data.open && _this.data.autoOpen && _this.autoOpenCounter == 0) {
+                _this.toggle();
+                _this.tempActive = false;
+            }
             window.setTimeout(function () {
-                element.parentNode.removeChild(element);
-            }, 500);
-        }, 8000);
+                document.getElementById("debugConsole" + id).classList.add('old');
+            }, 3000);
+        }, 3000);
     };
     return FrontboxConsole;
 }());
 exports.FrontboxConsole = FrontboxConsole;
+/**
+ * Changelog
+ * 16.06.2019 Add
+ */
 },{"./elements":11}],9:[function(require,module,exports){
 "use strict";
 /**

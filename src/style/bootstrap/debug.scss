@@ -4,62 +4,59 @@
 		z-index: 999999;
 		right: 0;
 		bottom: 0;
-		width: 100%;
-		opacity: 0.6;
+		width: calc(100% - 22px);
+		height: 250px;
+		transform: translateX(100%);
+		transition: transform $time-transition;
+		background-color: transparentize(color("black"), 0.2);
+		font-family: $font-family-monospace;
 		font-size: 12px;
-		pointer-events: none;
 
-		&:before {
-			content: "Console";
+		&.open {
+			transform: translateX(0);
+		}
+
+		&__label {
 			display: flex;
 			position: absolute;
 			top: 0;
 			left: 0;
 			align-items: center;
 			justify-content: center;
-			width: 100%;
-			padding: 4px;
-			transform: translateY(-100%);
+			width: 22px;
+			height: 100%;
+			transform: translateX(-100%);
 			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
-			background-color: transparentize(color("black"), 0.2);
+			border-bottom-left-radius: 10px;
+			background-color: transparentize(color("black"), 0.4);
 			color: color("white");
+			cursor: pointer;
+			writing-mode: vertical-rl;
 		}
 
-		& > &-item {
-			&:first-child {
-				border-top: 1px solid color("black");
-			}
-
-			&:last-child {
-				border-bottom: 1px solid color("black");
-			}
+		&__content {
+			height: 100%;
+			overflow-y: auto;
 		}
 
 		&-item {
 			display: flex;
-			flex-direction: row;
+
+			flex-direction: column;
 			flex-wrap: nowrap;
 			justify-content: space-between;
 			width: 100%;
 			margin-top: 0;
-			padding: 8px;
-			transition: transform 0.5s, opacity 0.5s;
-			animation-name: debug-console-item-add;
-			animation-duration: 0.5s;
-			animation-play-state: running;
-			animation-timing-function: ease;
-			animation-delay: 0s;
-			animation-iteration-count: 1;
-			animation-direction: normal;
+			padding: 5px;
+			transition: opacity $time-transition;
 			border-right: 1px solid color("black");
 			border-left: 1px solid color("black");
-			opacity: 0;
-			background-color: color("primary");
+			opacity: 1;
+			background-color: color("black");
 			animation-fill-mode: forwards;
 
-			&--remove {
-				animation-name: debug-console-item-remove;
+			&.old {
+				opacity: 0.6;
 			}
 
 			&__title {
@@ -74,29 +71,15 @@
 			&__content {
 				font-style: italic;
 			}
+
+			@include media("mobile") {
+				flex-direction: row;
+			}
 		}
 
-		@include media("tablet") {
-			right: 10px;
-			max-width: 300px;
-		}
-	}
-	@keyframes debug-console-item-add {
-		from {
-			opacity: 0;
-		}
-
-		to {
-			opacity: 1;
-		}
-	}
-	@keyframes debug-console-item-remove {
-		from {
-			opacity: 1;
-		}
-
-		to {
-			opacity: 0;
+		@include media("mobile") {
+			width: 300px;
+			height: 400px;
 		}
 	}
 }
