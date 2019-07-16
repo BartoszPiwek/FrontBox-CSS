@@ -40,7 +40,7 @@
 			"index('$1')"
 		]
 	},
-	// Media Queries
+	/* Media Queries */
 	"Media queries: default": {
 		"prefix": "media",
 		"body": [
@@ -65,11 +65,59 @@
 			"}"
 		]
 	},
-	// Functions
+	/* Pseudo-elements */
+	"Pseudo-elements: before": {
+		"prefix": "before",
+		"body": [
+			"&:before {",
+			"\tcontent: \"\";",
+			"\t$1",
+			"}"
+		]
+	},
+	"Pseudo-elements: after": {
+		"prefix": "after",
+		"body": [
+			"&:after {",
+			"\tcontent: \"\";",
+			"\t$1",
+			"}"
+		]
+	},
+	/* Properties */
+	"Properties: fixed": {
+		"prefix": "fixed",
+		"body": "position: fixed;"
+	},
+	"Properties: relative": {
+		"prefix": "relative",
+		"body": "position: relative;"
+	},
+	/* Functions */
 	"Functions: scrollbar": {
 		"prefix": "include_scrollbar",
 		"body": [
 			"@include scrollbar();"
 		]
 	},
+	"Functions: clearfix": {
+		"prefix": "clearfix",
+		"body": [
+			"@include clearfix();"
+		]
+	},
+	"Functions: hover": {
+		"prefix": "hover",
+		"body": [
+			"@include add-hover {",
+			"\t$1",
+			"}"
+		]
+	},
+	"Functions: add-click-expand": {
+		"prefix": "add-click-expand",
+		"body": [
+			"@include add-click-expand(${1:5px});"
+		]
+	}
 }
