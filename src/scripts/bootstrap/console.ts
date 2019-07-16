@@ -10,7 +10,7 @@ import { body } from './elements';
 interface IFrontboxConsoleAdd {
 	title: string;
 	content: string;
-	type?: string;
+	type?: 'error' | 'warning';
 }
 interface IFrontboxConsole {
 	hide?: boolean;

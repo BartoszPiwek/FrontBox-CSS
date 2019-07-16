@@ -1863,7 +1863,13 @@ window.onload = function () {
     document.getElementById('testConsole').addEventListener('click', function () {
         exports.frontboxConsole.add({
             title: 'App',
-            content: 'Running correct'
+            content: 'Running correct',
+            type: 'error'
+        });
+        exports.frontboxConsole.add({
+            title: 'App',
+            content: 'Running correct',
+            type: 'warning'
         });
     });
     /* end-test-code */

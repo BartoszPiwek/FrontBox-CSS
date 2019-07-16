@@ -59,6 +59,14 @@
 				opacity: 0.6;
 			}
 
+			&.error {
+				color: color("error");
+			}
+
+			&.warning {
+				color: color("warning");
+			}
+
 			&__title {
 				padding-right: 10px;
 				font-weight: bold;
@@ -70,6 +78,10 @@
 
 			&__content {
 				font-style: italic;
+			}
+
+			@include add-hover {
+				opacity: 1;
 			}
 
 			@include media("mobile") {
