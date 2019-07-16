@@ -132,7 +132,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <table>
 	<tr>
 		<td>Generate website with server and automatic update after modifying files</td>
-		<td>gulp</td>
+		<td>npm start</td>
 	</tr>
 	<tr>
 		<td>Generate favicons</td>
@@ -143,16 +143,20 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 		<td>gulp docs</td>
 	</tr>
 	<tr>
-		<td>Remove FrontBox-CSS development files</td>
-		<td>gulp clean</td>
-	</tr>
-	<tr>
 		<td>Debug task</td>
-		<td>gulp test</td>
+		<td>npm test</td>
 	</tr>
 	<tr>
 		<td>Change version to productive</td>
 		<td>--prod</td>
+	</tr>
+	<tr>
+		<td>Watch files</td>
+		<td>--watch</td>
+	</tr>
+	<tr>
+		<td>Create server</td>
+		<td>--server</td>
 	</tr>
 
 </table>
@@ -170,7 +174,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
     ├─── audio/
     ├─── fonts/
     └─── images/
-        ├─── favicon/                     | Generated favicons folder
+        ├─── favicons/                    | Generated favicons folder
         ├─── svg/                         | SVG files folder
         ├─── cookies.png                  | Cookies image for TS Class InformationCookie
         ├─── favicon.png                  | Favicon image for Gulp <a href="https://github.com/RealFaviconGenerator/gulp-real-favicon">gulp-real-favicon</a>
