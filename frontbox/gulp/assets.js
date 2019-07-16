@@ -13,7 +13,6 @@ export function generateFavicon() {
 		.pipe(newer(`${element.desc}`))
 		.pipe(favicons({
 			appName: config.website.name,
-			appShortName: 'App',
 			appDescription: config.website.description,
 			background: config.website.color,
 			path: element.htmlAssets,
