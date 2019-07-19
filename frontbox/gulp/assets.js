@@ -33,7 +33,7 @@ export function minifySvg() {
 	return src(element.files)
 		.pipe(newer(`${destPath()}/${element.dest}`))
 		.pipe(svgmin({
-			plugins: [{ removeXMLProcInst: true }, { removeComments: true }, { removeDoctype: true }, { removeViewBox: false }, { removeUselessStrokeAndFill: true }, { removeStyleElement: true }, { removeAttrs: { attrs: ['xmlns', 'fill', 'stroke', 'width', 'height', 'id'] } }]
+			plugins: [{ removeXMLProcInst: true }, { removeComments: true }, { removeDoctype: true }, { removeViewBox: false }, { removeUselessStrokeAndFill: true }, { removeStyleElement: true }, { removeAttrs: { attrs: ['xmlns', 'fill', 'class', 'stroke', 'width', 'height', 'id'] } }]
 		}))
 		.pipe(dest(`${element.dest}`));
 }
