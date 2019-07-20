@@ -1,5 +1,5 @@
-
 [![](http://images.bartoszpiwek.e-kei.pl/section-frontbox.png)](#)
+
 <h1>
 	<strong>FrontBox CSS</strong> <small>by Bartosz Piwek</small>
 </h1>
@@ -48,6 +48,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <br>
 
 [![](http://images.bartoszpiwek.e-kei.pl/section-requirements.png)](#)
+
 ## Requirements
 
 <table>
@@ -79,6 +80,16 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 	<tr>
 		<td><a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a></td>
 		<td>Linter SCSS</td>
+	</tr>
+	<tr>
+	<tr>
+		<td>stylelint npm package</td>
+		<td>
+			<span style="font-family: monospace; line-height: 1.26;">
+				yarn add global<br>
+				stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
+			</span>
+		</td>
 	</tr>
 	<tr>
 		<td><a href="https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter">SCSS Formatter</a></td>
@@ -126,9 +137,11 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <br>
 
 [![](http://images.bartoszpiwek.e-kei.pl/section-gulp.png)](#)
+
 ## Gulp
 
 ### Terminal tasks:
+
 <table>
 	<tr>
 		<td>Generate website with server and automatic update after modifying files</td>
@@ -164,6 +177,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <br>
 
 [![](http://images.bartoszpiwek.e-kei.pl/section-tree.png)](#)
+
 ## Projekt Tree
 
 <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.26;">
@@ -206,6 +220,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <br>
 
 [![](http://images.bartoszpiwek.e-kei.pl/section-testing.png)](#)
+
 ## Testing Tools
 
 <table>
@@ -224,6 +239,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 </table>
 
 ### Browser extensions
+
 <table>
 	<tr>
 		<td><a href="https://chrome.google.com/webstore/detail/pixelparallel-by-htmlburg/iffnoibnepbcloaaagchjonfplimpkob">Pixel Perfect HTML</a></td>
@@ -251,6 +267,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <br>
 
 [![](http://images.bartoszpiwek.e-kei.pl/section-bugs.png)](#)
+
 ## Bugs
 
 Feel free to report:
