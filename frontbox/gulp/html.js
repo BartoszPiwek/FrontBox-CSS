@@ -24,7 +24,7 @@ export function htmlMain() {
 		.pipe(newer(`${destPath()}/${element.dest}`))
 		.pipe(changed(`${destPath()}`))
 		.pipe(pug(passVariables))
-		.pipe(dest(`${destPath()}`))
+		.pipe(dest(`${destPath()}/${element.dest}`))
 		.pipe(browserSync.stream());
 }
 export function htmlInclude() {
