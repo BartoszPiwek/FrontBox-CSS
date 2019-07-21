@@ -2,10 +2,8 @@
  * Show console logs on webpage front
  *
  * @class FrontboxConsole
- * @version 1.0
+ * @version 1.1
  */
-
-import { body } from './elements';
 
 interface IFrontboxConsoleAdd {
 	title: string;
@@ -18,40 +16,39 @@ interface IFrontboxConsole {
 	autoOpen?: boolean;
 }
 
-export class FrontboxConsole {
+export class FrontboxConsole implements IFrontboxConsole {
 	element: HTMLElement;
 	content: HTMLElement;
 	label: HTMLElement;
 	counter: number = 0;
 	tempActive: boolean = false;
-	open: boolean = false;
 	autoOpenCounter: number = 0;
 
-	data: IFrontboxConsole = {
-		hide: false,
-		open: false,
-		autoOpen: false
-	};
+	hide = false;
+	open = false;
+	autoOpen = false;
 
 	constructor(param: IFrontboxConsole) {
-		Object.assign(this.data, param);
+		Object.assign(this, param);
 
-		if (this.data.hide) {
+		if (this.hide) {
 			return;
 		}
 
-		const template = `
-			<div class="debug-console ${this.data.open ? 'open' : ''}" id="debugConsole">
+		document.body.insertAdjacentHTML(
+			'beforeend',
+			`<div class="debug-console ${this.open ? 'open' : ''}" id="debugConsole">
 				<div class="debug-console__label" id="debugConsoleLabel">FrontBox Console</div>
 				<div class="debug-console__content" id="debugConsoleContent"></div>
-			</div>
-		`;
-		body.insertAdjacentHTML('beforeend', template);
+			</div>`
+		);
+
 		this.element = document.getElementById('debugConsole');
 		this.content = document.getElementById('debugConsoleContent');
 		this.label = document.getElementById('debugConsoleLabel');
+
 		this.label.addEventListener('click', (e: MouseEvent) => {
-			this.data.open = !this.data.open;
+			this.open = !this.open;
 			this.toggle(e);
 		});
 	}
@@ -62,23 +59,23 @@ export class FrontboxConsole {
 	}
 
 	add(param: IFrontboxConsoleAdd) {
-		if (this.data.hide) {
+		if (this.hide) {
 			return;
 		}
 
-		const id = this.counter++,
-			template = `
-        <div class="debug-console-item ${param.type ? param.type : ''}" id="debugConsole${id}">
+		const id = this.counter++;
+		this.content.insertAdjacentHTML(
+			'afterbegin',
+			`<div class="debug-console-item ${param.type ? param.type : ''}" id="debugConsole${id}">
           	<div class="debug-console-item__title">${param.title}</div>
 	          <div class="debug-console-item__content">${param.content}</div>
           </div>
-        </div>
-      `;
-		this.content.insertAdjacentHTML('afterbegin', template);
+        </div>`
+		);
 
-		if (this.data.autoOpen) {
+		if (this.autoOpen) {
 			this.autoOpenCounter++;
-			if (!this.data.open && !this.tempActive) {
+			if (!this.open && !this.tempActive) {
 				this.tempActive = true;
 				this.toggle();
 			}
@@ -86,7 +83,7 @@ export class FrontboxConsole {
 
 		window.setTimeout(() => {
 			this.autoOpenCounter--;
-			if (this.tempActive && !this.data.open && this.data.autoOpen && this.autoOpenCounter == 0) {
+			if (this.tempActive && !this.open && this.autoOpen && this.autoOpenCounter == 0) {
 				this.toggle();
 				this.tempActive = false;
 			}

@@ -2099,33 +2099,28 @@ exports.BurgerMenu = BurgerMenu;
  * Show console logs on webpage front
  *
  * @class FrontboxConsole
- * @version 1.0
+ * @version 1.1
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var elements_1 = require("./elements");
 var FrontboxConsole = /** @class */ (function () {
     function FrontboxConsole(param) {
         var _this = this;
         this.counter = 0;
         this.tempActive = false;
-        this.open = false;
         this.autoOpenCounter = 0;
-        this.data = {
-            hide: false,
-            open: false,
-            autoOpen: false
-        };
-        Object.assign(this.data, param);
-        if (this.data.hide) {
+        this.hide = false;
+        this.open = false;
+        this.autoOpen = false;
+        Object.assign(this, param);
+        if (this.hide) {
             return;
         }
-        var template = "\n\t\t\t<div class=\"debug-console " + (this.data.open ? 'open' : '') + "\" id=\"debugConsole\">\n\t\t\t\t<div class=\"debug-console__label\" id=\"debugConsoleLabel\">FrontBox Console</div>\n\t\t\t\t<div class=\"debug-console__content\" id=\"debugConsoleContent\"></div>\n\t\t\t</div>\n\t\t";
-        elements_1.body.insertAdjacentHTML('beforeend', template);
+        document.body.insertAdjacentHTML('beforeend', "<div class=\"debug-console " + (this.open ? 'open' : '') + "\" id=\"debugConsole\">\n\t\t\t\t<div class=\"debug-console__label\" id=\"debugConsoleLabel\">FrontBox Console</div>\n\t\t\t\t<div class=\"debug-console__content\" id=\"debugConsoleContent\"></div>\n\t\t\t</div>");
         this.element = document.getElementById('debugConsole');
         this.content = document.getElementById('debugConsoleContent');
         this.label = document.getElementById('debugConsoleLabel');
         this.label.addEventListener('click', function (e) {
-            _this.data.open = !_this.data.open;
+            _this.open = !_this.open;
             _this.toggle(e);
         });
     }
@@ -2135,21 +2130,21 @@ var FrontboxConsole = /** @class */ (function () {
     };
     FrontboxConsole.prototype.add = function (param) {
         var _this = this;
-        if (this.data.hide) {
+        if (this.hide) {
             return;
         }
-        var id = this.counter++, template = "\n        <div class=\"debug-console-item " + (param.type ? param.type : '') + "\" id=\"debugConsole" + id + "\">\n          \t<div class=\"debug-console-item__title\">" + param.title + "</div>\n\t          <div class=\"debug-console-item__content\">" + param.content + "</div>\n          </div>\n        </div>\n      ";
-        this.content.insertAdjacentHTML('afterbegin', template);
-        if (this.data.autoOpen) {
+        var id = this.counter++;
+        this.content.insertAdjacentHTML('afterbegin', "<div class=\"debug-console-item " + (param.type ? param.type : '') + "\" id=\"debugConsole" + id + "\">\n          \t<div class=\"debug-console-item__title\">" + param.title + "</div>\n\t          <div class=\"debug-console-item__content\">" + param.content + "</div>\n          </div>\n        </div>");
+        if (this.autoOpen) {
             this.autoOpenCounter++;
-            if (!this.data.open && !this.tempActive) {
+            if (!this.open && !this.tempActive) {
                 this.tempActive = true;
                 this.toggle();
             }
         }
         window.setTimeout(function () {
             _this.autoOpenCounter--;
-            if (_this.tempActive && !_this.data.open && _this.data.autoOpen && _this.autoOpenCounter == 0) {
+            if (_this.tempActive && !_this.open && _this.autoOpen && _this.autoOpenCounter == 0) {
                 _this.toggle();
                 _this.tempActive = false;
             }
@@ -2165,7 +2160,7 @@ exports.FrontboxConsole = FrontboxConsole;
  * Changelog
  * 16.06.2019 Add
  */
-},{"./elements":11}],9:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 /**
  * Inform users that your site uses cookies
