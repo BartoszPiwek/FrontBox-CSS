@@ -1,25 +1,29 @@
-import { getModeName } from './frontbox';
+import { destPath } from './frontbox';
 import { src, dest } from 'gulp';
 import image from 'gulp-image';
-import sriHash from 'gulp-sri-hash';
+import hash from 'gulp-static-hash';
 import rcs from 'gulp-rcs';
 import newer from 'gulp-newer';
 
 export function hashHtml() {
-	return src(`./public/${getModeName()}/*.html`)
-		.pipe(sriHash())
-		.pipe(dest(`./public/${getModeName()}`));
+	return src(`${destPath()}/*.html`)
+		.pipe(
+			hash({
+				asset: `${destPath()}`
+			})
+		)
+		.pipe(dest(`${destPath()}`));
 }
 
 export function renameSelectors() {
-	return src([`./public/${getModeName()}/**/*.css`, `./public/${getModeName()}/**/*.html`, `./public/${getModeName()}/**/*.js`])
+	return src([`${destPath()}/**/*.css`, `${destPath()}/**/*.html`, `${destPath()}/**/*.js`])
 		.pipe(rcs())
-		.pipe(dest(`./public/${getModeName()}`));
+		.pipe(dest(`${destPath()}`));
 }
 
 export function imageOptymalization() {
-	return src(`./public/${getModeName()}/images/**/*.{png,jpg,gif}`)
-		.pipe(newer(`./public/${getModeName()}`))
+	return src(`${destPath()}/images/**/*.{png,jpg,gif}`)
+		.pipe(newer(`${destPath()}`))
 		.pipe(
 			image({
 				pngquant: true,
@@ -28,5 +32,5 @@ export function imageOptymalization() {
 				cache: false
 			})
 		)
-		.pipe(dest(`./public/${getModeName()}`));
+		.pipe(dest(`${destPath()}`));
 }

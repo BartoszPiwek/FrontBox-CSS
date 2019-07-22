@@ -18,6 +18,7 @@ import { generateFavicon, minifySvg } from './frontbox/gulp/assets';
 import { scriptApp } from './frontbox/gulp/script';
 import { styleMain, styleBootstrap, styleUtilities } from './frontbox/gulp/style';
 import { htmlMain, htmlInclude, htmlPartials } from './frontbox/gulp/html';
+import { hashHtml } from './frontbox/gulp/prod';
 
 function server(cb) {
 	if (argv.server) {
@@ -66,27 +67,16 @@ function watchFiles(cb) {
 	}
 }
 
+function prodTasks(...args) {
+	if (argv.prod) {
+		return series(hashHtml)(...args);
+	} else {
+		args[0]();
+	}
+}
+
 /* Tasks */
-exports.default = series(
-	cleanBegin,
-	minifySvg,
-	parallel(
-		copyImage,
-		copyFonts,
-		copyOther,
-		copyVideo,
-		copyAudio,
-		scriptApp,
-		htmlMain,
-		htmlPartials,
-		styleMain,
-		styleBootstrap,
-		styleUtilities
-	),
-	cleanEnd,
-	server,
-	watchFiles
-);
+exports.default = series(cleanBegin, minifySvg, parallel(copyImage, copyFonts, copyOther, copyVideo, copyAudio, scriptApp, htmlMain, htmlPartials, styleMain, styleBootstrap, styleUtilities), cleanEnd, prodTasks, server, watchFiles);
 exports.favicon = series(generateFavicon);
-exports.test = series(styleMain);
+exports.test = series(prodTasks);
 // // exports.docs = series(docs_style, docs_run, docs_server, docs_watch);
