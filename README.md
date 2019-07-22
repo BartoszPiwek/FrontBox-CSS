@@ -79,18 +79,12 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <table>
 	<tr>
 		<td><a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a></td>
-		<td>Linter SCSS</td>
-	</tr>
-	<tr>
-	<tr>
-		<td>stylelint npm package</td>
 		<td>
-			<span style="font-family: monospace; line-height: 1.26;">
-				yarn add global<br>
-				stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
-			</span>
+			Linter SCSS<br>
+			yarn add global stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
 		</td>
 	</tr>
+	<tr>
 	<tr>
 		<td><a href="https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter">SCSS Formatter</a></td>
 		<td>Format SCSS</td>
