@@ -78,9 +78,9 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 <table>
 	<tr>
-		<td><a href="https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint">scss-lint</a></td>
+		<td><a href="https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint">Stylelint</a></td>
 		<td>
-			Linter SCSS<br>
+			Modern CSS/SCSS/Less linter<br>
 			yarn add global stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
 		</td>
 	</tr>
