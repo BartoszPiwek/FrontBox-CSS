@@ -175,15 +175,15 @@ space-y(30px);
 space(5px, 10px);
 
 Mixin output:
-<div class="row row-space-x">
+<div class="row space-x">
 	<div class="col-6"></div>
 	<div class="col-6"></div>
 </div>
-<div class="row row-space-y">
+<div class="row space-y">
 	<div class="col-12"></div>
 	<div class="col-12"></div>
 </div>
-<div class="row row-space">
+<div class="row space">
 	<div class="col-12"></div>
 	<div class="col-12"></div>
 	<div class="col-6"></div>
@@ -1185,13 +1185,13 @@ Style guide: Component.Links
         fill: #297162; }
   .link__group {
     width: calc(100% + 10px);
-    margin-left: -10px !important;
+    margin-left: -10px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center; }
     .link__group > *:not(.space-ignore) {
-      padding-left: 10px !important; }
+      padding-left: 10px; }
   .link--disabled, .link.is-disabled {
     color: #90938f !important;
     cursor: not-allowed; }
@@ -1236,18 +1236,18 @@ Markup:
 Style guide: List.vertical
 */
 .list--vertical {
-  margin-bottom: -14px !important; }
+  margin-bottom: -14px; }
   .list--vertical > *:not(.space-ignore) {
-    padding-bottom: 14px !important; }
+    padding-bottom: 14px; }
 
 .list--horizontal {
   width: calc(100% + 26px);
-  margin-left: -26px !important;
+  margin-left: -26px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
   .list--horizontal > *:not(.space-ignore) {
-    padding-left: 26px !important; }
+    padding-left: 26px; }
   .list--horizontal .list__item {
     display: inline-block;
     flex: 0 1 auto; }
@@ -1359,11 +1359,22 @@ Style guide: List.vertical
     padding-left: 20px; }
 
 .space {
-  @inlcude add-space(5px, 10px); }
+  width: calc(100% + 5px);
+  margin-left: -5px;
+  margin-bottom: -10px; }
+  .space > *:not(.space-ignore) {
+    padding-left: 5px; }
+  .space > *:not(.space-ignore) {
+    padding-bottom: 10px; }
   .space-x {
-    @inlcude add-space-x(25px); }
+    width: calc(100% + 25px);
+    margin-left: -25px; }
+    .space-x > *:not(.space-ignore) {
+      padding-left: 25px; }
   .space-y {
-    @inlcude add-space-y(30px); }
+    margin-bottom: -30px; }
+    .space-y > *:not(.space-ignore) {
+      padding-bottom: 30px; }
 
 .col-static--test {
   flex-basis: 300px; }

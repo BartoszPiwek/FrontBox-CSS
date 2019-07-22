@@ -13,14 +13,14 @@
 
 // ANCHOR .space
 .space {
-	@inlcude add-space(5px, 10px);
+	@include add-space(5px, 10px);
 
 	&-x {
-		@inlcude add-space-x(25px);
+		@include add-space-x(25px);
 	}
 
 	&-y {
-		@inlcude add-space-y(30px);
+		@include add-space-y(30px);
 	}
 }
 

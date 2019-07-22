@@ -13,19 +13,6 @@ body {
 	margin-top: auto;
 }
 
-// Space beetween elements
-.space {
-	> * {
-		&:first-child {
-			margin-top: 0;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
 * {
 	// Mobile tap color highlight
 	@if ($color-tap != false) {

@@ -18,15 +18,15 @@ space-y(30px);
 space(5px, 10px);
 
 Mixin output:
-<div class="row row-space-x">
+<div class="row space-x">
 	<div class="col-6"></div>
 	<div class="col-6"></div>
 </div>
-<div class="row row-space-y">
+<div class="row space-y">
 	<div class="col-12"></div>
 	<div class="col-12"></div>
 </div>
-<div class="row row-space">
+<div class="row space">
 	<div class="col-12"></div>
 	<div class="col-12"></div>
 	<div class="col-6"></div>
@@ -42,30 +42,24 @@ Style guide: Funcions.space
 // Horizontal space
 @mixin add-space-x($size) {
 	width: calc(100% + #{$size});
-	margin-left: -#{$size} !important;
+	margin-left: -#{$size};
 
 	> *:not(.space-ignore) {
-		padding-left: $size !important;
+		padding-left: $size;
 	}
 }
 
 // Vertical space
 @mixin add-space-y($size) {
-	margin-bottom: -#{$size} !important;
+	margin-bottom: -#{$size};
 
 	> *:not(.space-ignore) {
-		padding-bottom: $size !important;
+		padding-bottom: $size;
 	}
 }
 
 // Vertical/horizontal space
-@mixin add-space($size: 0, $size-y: $size) {
-	width: calc(100% + #{$size});
-	margin-bottom: -#{$size-y} !important;
-	margin-left: -#{$size} !important;
-
-	> *:not(.space-ignore) {
-		padding-bottom: $size-y !important;
-		padding-left: $size !important;
-	}
+@mixin add-space($size-x: 0, $size-y: $size) {
+	@include add-space-x($size-x);
+	@include add-space-y($size-y);
 }
