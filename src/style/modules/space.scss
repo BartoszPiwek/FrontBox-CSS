@@ -60,7 +60,7 @@ Style guide: Funcions.space
 }
 
 // Vertical/horizontal space
-@mixin add-space($size-x: 0, $size-y: $size) {
-	@include add-space-x($size-x);
+@mixin add-space($size: 0, $size-y: $size) {
+	@include add-space-x($size);
 	@include add-space-y($size-y);
 }
