@@ -86,8 +86,8 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 	</tr>
 	<tr>
 	<tr>
-		<td><a href="https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter">SCSS Formatter</a></td>
-		<td>Format SCSS</td>
+		<td><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier</a></td>
+		<td>Code formatter</td>
 	</tr>
 	<tr>
 		<td><a href="https://marketplace.visualstudio.com/items?itemName=rebornix.project-snippets">Project Snippets</a></td>
