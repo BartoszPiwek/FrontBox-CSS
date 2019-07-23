@@ -1,3 +1,5 @@
+import { isNumber } from 'util';
+
 /**
  * Show console logs on webpage front
  *
@@ -20,9 +22,12 @@ export class FrontboxConsole implements IFrontboxConsole {
 	element: HTMLElement;
 	content: HTMLElement;
 	label: HTMLElement;
+	unread: HTMLElement;
+
 	counter: number = 0;
 	tempActive: boolean = false;
 	autoOpenCounter: number = 0;
+	unreadCount: number = 0;
 
 	hide = false;
 	open = false;
@@ -38,7 +43,9 @@ export class FrontboxConsole implements IFrontboxConsole {
 		document.body.insertAdjacentHTML(
 			'beforeend',
 			`<div class="debug-console ${this.open ? 'open' : ''}" id="debugConsole">
-				<div class="debug-console__label" id="debugConsoleLabel">FrontBox Console</div>
+				<div class="debug-console__label" id="debugConsoleLabel">
+					FrontBox Console
+				</div>
 				<div class="debug-console__content" id="debugConsoleContent"></div>
 			</div>`
 		);
@@ -47,7 +54,17 @@ export class FrontboxConsole implements IFrontboxConsole {
 		this.content = document.getElementById('debugConsoleContent');
 		this.label = document.getElementById('debugConsoleLabel');
 
+		if (!this.autoOpen) {
+			this.label.insertAdjacentHTML('beforeend', `<span class="debug-console__unread" id="debugConsoleUnread">0</span>`);
+			this.unread = document.getElementById('debugConsoleUnread');
+		}
+
 		this.label.addEventListener('click', (e: MouseEvent) => {
+			if (!this.autoOpen) {
+				this.unreadCount = 0;
+				this.updateUnreadCounter('');
+			}
+
 			this.open = !this.open;
 			this.toggle(e);
 		});
@@ -56,6 +73,10 @@ export class FrontboxConsole implements IFrontboxConsole {
 	toggle(e?: MouseEvent): EventListener {
 		this.element.classList.toggle('open');
 		return;
+	}
+
+	updateUnreadCounter(value: number | string) {
+		this.unread.innerText = String(value);
 	}
 
 	add(param: IFrontboxConsoleAdd) {
@@ -79,6 +100,8 @@ export class FrontboxConsole implements IFrontboxConsole {
 				this.tempActive = true;
 				this.toggle();
 			}
+		} else {
+			this.updateUnreadCounter(++this.unreadCount);
 		}
 
 		window.setTimeout(() => {
@@ -94,8 +117,3 @@ export class FrontboxConsole implements IFrontboxConsole {
 		}, 3000);
 	}
 }
-
-/**
- * Changelog
- * 16.06.2019 Add
- */

@@ -39,6 +39,26 @@
 			overflow-y: auto;
 		}
 
+		&__unread {
+			position: absolute;
+			top: 5px;
+			left: 50%;
+			width: 20px;
+			height: 20px;
+			padding: 4px;
+			transform: translateX(-50%) rotate(-90deg);
+			transition: opacity $time-transition;
+			border-radius: 50%;
+			background-color: color("error");
+			color: color("white");
+			font-size: 10px;
+			text-align: center;
+
+			&:empty {
+				opacity: 0;
+			}
+		}
+
 		&-item {
 			display: flex;
 

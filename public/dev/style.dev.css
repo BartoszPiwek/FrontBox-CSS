@@ -953,7 +953,13 @@ Contains: row
 Style guide: Header.tools
 */
 .row-header-space {
-  @inlcude add-space(25px, 20px); }
+  width: calc(100% + 25px);
+  margin-left: -25px;
+  margin-bottom: -20px; }
+  .row-header-space > *:not(.space-ignore) {
+    padding-left: 25px; }
+  .row-header-space > *:not(.space-ignore) {
+    padding-bottom: 20px; }
 
 .header {
   position: relative;
@@ -1042,8 +1048,8 @@ Style guide: Header.tools
  */
 @media screen and (max-width: 767px) {
   .burger-menu {
-    height: 100vh;
-    height: calc(100vh - var(--vh-offset, 0px));
+    height: calc(100vh );
+    height: calc(100vh - var(--vh-offset, 0px) );
     display: flex;
     z-index: 7000;
     top: 0;
@@ -1100,22 +1106,28 @@ Style guide: Elements.hero
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  /* Mix class */ }
+  background-attachment: fixed;
+  /* Modifications */ }
   .hero__wrapper {
     padding: 100px 0; }
   .hero__header {
     margin-bottom: 50px; }
   .hero__body {
+    margin: 50px 0;
     font-size: 30px; }
   .hero__footer {
     margin-top: 50px;
     font-size: 22px; }
   .hero__title {
     font-size: 45px; }
-  .hero.height-full {
+  .hero--primary {
+    height: calc(100vh - 90px);
+    height: calc(100vh - var(--vh-offset, 0px) - 90px);
     display: flex;
-    align-items: center; }
-    .hero.height-full > * {
+    align-items: center;
+    background-color: #05386b;
+    background-image: url(""); }
+    .hero--primary > * {
       flex: 1 1 auto; }
 
 /**
@@ -1379,6 +1391,10 @@ Style guide: List.vertical
 
 .col-static--test {
   flex-basis: 300px; }
+
+.height-full {
+  height: calc(100vh );
+  height: calc(100vh - var(--vh-offset, 0px) ); }
 
 .wysiwyg > *:first-child {
   margin-top: 0 !important; }

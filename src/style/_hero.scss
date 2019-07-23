@@ -24,6 +24,7 @@ Style guide: Elements.hero
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
+	background-attachment: fixed;
 
 	&__wrapper {
 		padding: 100px 0;
@@ -34,6 +35,7 @@ Style guide: Elements.hero
 	}
 
 	&__body {
+		margin: 50px 0;
 		font-size: 30px;
 	}
 
@@ -46,10 +48,13 @@ Style guide: Elements.hero
 		font-size: 45px;
 	}
 
-	/* Mix class */
-	&.height-full {
+	/* Modifications */
+	&--primary {
+		@include vh($values: "- 90px");
 		display: flex;
 		align-items: center;
+		background-color: color("primary");
+		background-image: url("");
 
 		> * {
 			flex: 1 1 auto;

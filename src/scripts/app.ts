@@ -23,7 +23,7 @@ import { FrontboxConsole } from './bootstrap/console';
 export const frontboxConsole = new FrontboxConsole({
 	hide: false,
 	open: false,
-	autoOpen: true
+	autoOpen: false
 });
 /* end-test-code */
 

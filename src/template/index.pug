@@ -19,8 +19,20 @@ block append content
 	include includes/header.pug
 
 	main#page.page
-		.wrap
 
+		.hero.hero--primary
+			.wrap
+				.hero__wrapper
+					header.hero__header
+						h1.hero__title
+							| Hero title
+					main.hero__body
+						| Hero content
+					footer.hero__footer
+						| Hero footer
+
+		.wrap
+			
 			ul.list.list--vertical.list--dot
 				li.list__item
 					| List item
