@@ -1,0 +1,7 @@
+{
+	/* Filters */
+	"Filters: svg": {
+		"prefix": "svg",
+		"body": [":svg(file='${1:fileName}', class='${2:addonClass}')"]
+	}
+}

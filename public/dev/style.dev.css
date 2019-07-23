@@ -1159,7 +1159,21 @@ Style guide: Component.Links
 */
 .link {
   transition: color 0.2s;
-  cursor: pointer; }
+  cursor: pointer;
+  /* Modifications */ }
+  .link__group {
+    width: calc(100% + 10px);
+    margin-left: -10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center; }
+    .link__group > *:not(.space-ignore) {
+      padding-left: 10px; }
+    .link__group > svg,
+    .link__group > span,
+    .link__group > img {
+      box-sizing: content-box; }
   .link--primary {
     color: #05386b; }
     .link--primary .icon {
@@ -1178,33 +1192,6 @@ Style guide: Component.Links
       .link--primary--hover-active .link--primary .icon,
       .link--primary--hover-active .link--primary .icon, .link--primary.is-active .icon, .link--primary:hover .icon, .link--primary:active .icon, .link--primary:focus .icon {
         fill: #031f3a; }
-  .link--secondary {
-    color: #379683; }
-    .link--secondary .icon {
-      fill: #379683; }
-    .link--secondary--hover:hover .link--secondary,
-    .link--secondary--hover:active .link--secondary,
-    .link--secondary--hover:focus .link--secondary,
-    .link--secondary--hover-active .link--secondary,
-    .link--secondary--hover-active .link--secondary,
-    .link--secondary--hover-active .link--secondary, .link--secondary.is-active, .link--secondary:hover, .link--secondary:active, .link--secondary:focus {
-      color: #297162; }
-      .link--secondary--hover:hover .link--secondary .icon,
-      .link--secondary--hover:active .link--secondary .icon,
-      .link--secondary--hover:focus .link--secondary .icon,
-      .link--secondary--hover-active .link--secondary .icon,
-      .link--secondary--hover-active .link--secondary .icon,
-      .link--secondary--hover-active .link--secondary .icon, .link--secondary.is-active .icon, .link--secondary:hover .icon, .link--secondary:active .icon, .link--secondary:focus .icon {
-        fill: #297162; }
-  .link__group {
-    width: calc(100% + 10px);
-    margin-left: -10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center; }
-    .link__group > *:not(.space-ignore) {
-      padding-left: 10px; }
   .link--disabled, .link.is-disabled {
     color: #90938f !important;
     cursor: not-allowed; }

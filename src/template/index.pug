@@ -20,6 +20,18 @@ block append content
 
 	main#page.page
 
+		.wrap
+			.row.space
+				.col-4
+					a.link.link--primary
+						| Link primary!
+				.col-4
+					a.link.link--primary
+						.link__group
+							:svg(file='checkmark')
+							span
+								| Link primary!
+
 		.hero.hero--primary
 			.wrap
 				.hero__wrapper

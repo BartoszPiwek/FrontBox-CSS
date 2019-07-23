@@ -8,6 +8,23 @@ Style guide: Component.Links
 	transition: color $time-transition;
 	cursor: pointer;
 
+	&__group {
+		@include add-space-x(10px);
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+
+		> {
+			svg,
+			span,
+			img {
+				box-sizing: content-box;
+			}
+		}
+	}
+
+	/* Modifications */
 	&--primary {
 		color: color("primary");
 
@@ -24,29 +41,8 @@ Style guide: Component.Links
 		}
 	}
 
-	&--secondary {
-		color: color("secondary");
-
-		.icon {
-			fill: color("secondary");
-		}
-
-		@include add-hover {
-			color: darken(color("secondary"), 10%);
-
-			.icon {
-				fill: darken(color("secondary"), 10%);
-			}
-		}
-	}
-
-	&__group {
-		@include add-space-x(10px);
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-	}
+	// &--secondary {
+	// }
 
 	@include add-disable {
 		color: color("disable") !important;
