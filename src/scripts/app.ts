@@ -18,6 +18,7 @@ import { ProtectEmail } from './bootstrap/protect-email';
 import { scrollTo } from './bootstrap/scroll-to';
 import { polyfill } from './app/polyfill';
 import { FrontboxConsole } from './bootstrap/console';
+import { Wcag } from './bootstrap/wcag';
 
 /* test-code */
 export const frontboxConsole = new FrontboxConsole({
@@ -66,6 +67,8 @@ window.onload = () => {
 
 	/* Informations */
 	new InformationCookie();
+
+	new Wcag();
 
 	// const placeholder = new ElementPlaceholder();
 	// placeholder.create(document.getElementById('header'));

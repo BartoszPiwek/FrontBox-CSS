@@ -1809,6 +1809,7 @@ var tabs_1 = require("./bootstrap/tabs");
 var protect_email_1 = require("./bootstrap/protect-email");
 var polyfill_1 = require("./app/polyfill");
 var console_1 = require("./bootstrap/console");
+var wcag_1 = require("./bootstrap/wcag");
 /* test-code */
 exports.frontboxConsole = new console_1.FrontboxConsole({
     hide: false,
@@ -1847,6 +1848,7 @@ window.onload = function () {
     });
     /* Informations */
     new cookie_1.InformationCookie();
+    new wcag_1.Wcag();
     // const placeholder = new ElementPlaceholder();
     // placeholder.create(document.getElementById('header'));
     /* Polyfill */
@@ -1862,7 +1864,7 @@ window.onload = function () {
     });
     /* end-test-code */
 };
-},{"./app/polyfill":5,"./bootstrap/browser":6,"./bootstrap/burger-menu":7,"./bootstrap/console":8,"./bootstrap/cookie":9,"./bootstrap/elements":11,"./bootstrap/input-counter":12,"./bootstrap/protect-email":13,"./bootstrap/resize":14,"./bootstrap/scroll-lock":15,"./bootstrap/sticky":16,"./bootstrap/tabs":17}],5:[function(require,module,exports){
+},{"./app/polyfill":5,"./bootstrap/browser":6,"./bootstrap/burger-menu":7,"./bootstrap/console":8,"./bootstrap/cookie":9,"./bootstrap/elements":11,"./bootstrap/input-counter":12,"./bootstrap/protect-email":13,"./bootstrap/resize":14,"./bootstrap/scroll-lock":15,"./bootstrap/sticky":16,"./bootstrap/tabs":17,"./bootstrap/wcag":19}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // Get reliable CSS vh sizes (https://github.com/Hiswe/vh-check)
@@ -2638,6 +2640,21 @@ function transition(args) {
     }, 50);
 }
 exports.transition = transition;
-},{"./browser":6}]},{},[4])
+},{"./browser":6}],19:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Wcag = /** @class */ (function () {
+    function Wcag() {
+        document.documentElement.addEventListener('keydown', function (e) {
+            document.body.classList.add('js_wcag');
+        });
+        document.documentElement.addEventListener('mousedown', function (e) {
+            document.body.classList.remove('js_wcag');
+        });
+    }
+    return Wcag;
+}());
+exports.Wcag = Wcag;
+},{}]},{},[4])
 
 //# sourceMappingURL=app.dev.js.map
