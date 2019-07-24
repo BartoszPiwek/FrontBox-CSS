@@ -6,9 +6,9 @@
 Static WWW builder tool. Use prepared html templates, include necessary element style and javascript behaviors, write own code using helpfull functions, speed up work with snippets.
 <p>
 	<span>Test framework:</span>
-  <a href="http://dev.frontbox.bartoszpiwek.e-kei.pl/">Development</a>
+  <a href="https://quirky-perlman-434ce5.netlify.com">Development</a>
   ·
-  <a href="http://prod.frontbox.bartoszpiwek.e-kei.pl/">Productive</a>
+  <a href="https://tender-pasteur-b2164f.netlify.com">Productive</a>
 </p>
 
 ## Table of contents
