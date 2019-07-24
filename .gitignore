@@ -8,9 +8,9 @@ docs
 # Libs
 src/js/libs/*
 
-# Generated website
-# public/dev/*
-# public/prod/*
+# Generated
+public/dev/*
+public/prod/*
 styleguide
 
 # Maps
