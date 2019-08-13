@@ -23,6 +23,8 @@ IE 10+
 
 Style guide: Functions.input-placeholder
 */
+
+/* stylelint-disable */
 @mixin add-input-placeholder {
 	&::placeholder,
 	&::-webkit-input-placeholder,
