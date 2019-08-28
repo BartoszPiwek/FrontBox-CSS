@@ -14,35 +14,24 @@
 }
 
 html {
-	line-height: 1.15;
-	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 	-webkit-touch-callout: none;
 }
 
 body {
-	margin: 0;
-	font-size: 1.6rem;
-	letter-spacing: normal;
-	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-// Default style elements
 iframe {
 	border: 0;
 }
 
-//=========================================================================
-// ANCHOR List
-//=========================================================================
 ol,
 ul {
 	list-style: none;
 }
 
-// Heading
 h1,
 h2,
 h3,
@@ -53,7 +42,6 @@ h6 {
 	font-weight: normal;
 }
 
-// Anchor
 a {
 	display: inline;
 	color: inherit;
@@ -67,64 +55,45 @@ iframe {
 //=========================================================================
 // ANCHOR Form
 //=========================================================================
-
-input {
-	&[type="text"] {
-		&::-ms-clear,
-		&::-ms-reveal {
-			display: none;
-			width: 0;
-			height: 0;
-		}
+[type="text"] {
+	&::-ms-clear,
+	&::-ms-reveal {
+		display: none;
+		width: 0;
+		height: 0;
 	}
+}
 
-	&[type="number"] {
-		-moz-appearance: textfield;
+[type="number"] {
+	-moz-appearance: textfield;
+}
 
-		&::-webkit-inner-spin-button,
-		&::-webkit-outer-spin-button {
-			height: auto;
-			margin: 0;
-			-webkit-appearance: none;
-		}
-	}
+/* Hide oryginal input element */
+[type="checkbox"],
+[type="radio"] {
+	position: absolute !important;
+	bottom: 0 !important;
+	left: 50% !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0 0 0 0) !important;
+	border: 0 !important;
+	white-space: nowrap !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+}
 
-	// Hide oryginal input element
-	&[type="checkbox"],
-	&[type="radio"] {
-		position: absolute !important;
-		bottom: 0 !important;
-		left: 50% !important;
-		width: 1px !important;
-		height: 1px !important;
-		padding: 0 !important;
-		overflow: hidden !important;
-		clip: rect(0 0 0 0) !important;
-		border: 0 !important;
-		white-space: nowrap !important;
-		-webkit-clip-path: inset(50%) !important; // sass-lint:vendorprefix
-		clip-path: inset(50%) !important;
-	}
-
-	&[type="button"],
-	&[type="reset"],
-	&[type="submit"],
-	button {
-		-webkit-appearance: button;
-		border: 0;
-		outline: none;
-		background: 0 0;
-		cursor: pointer;
-
-		&::-moz-focus-inner {
-			padding: 0;
-			border-style: none;
-		}
-
-		&:-moz-focusring {
-			outline: 1px dotted ButtonText;
-		}
-	}
+[type="button"],
+[type="reset"],
+[type="submit"],
+button {
+	-webkit-appearance: button;
+	border: 0;
+	outline: none;
+	background: 0 0;
+	cursor: pointer;
 }
 
 label {
