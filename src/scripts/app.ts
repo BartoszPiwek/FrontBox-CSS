@@ -6,11 +6,11 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 
 import { html } from './bootstrap/elements';
 import { Browser } from './bootstrap/browser';
-import { InformationCookie } from './bootstrap/cookie';
+import { CookieInformation } from './bootstrap/cookie';
 import { InputCounter } from './bootstrap/input-counter';
 import { Resize } from './bootstrap/resize';
 import { ScrollLock } from './bootstrap/scroll-lock';
-import { BurgerMenu } from './bootstrap/burger-menu';
+import { Burger } from './bootstrap/burger';
 import { ElementPlaceholder } from './bootstrap/element-placeholder';
 import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
@@ -29,21 +29,19 @@ export const frontboxConsole = new FrontboxConsole({
 /* end-test-code */
 
 export const scrollLock = new ScrollLock();
+export const browser = new Browser();
 
 window.onload = () => {
-	const browser = new Browser(),
-		resize = new Resize();
+	const resize = new Resize();
 
-	new BurgerMenu({
+	new Burger({
 		button: document.getElementById('burger-button'),
 		container: document.getElementById('header'),
 		overlay: document.getElementById('burger-overlay')
 	});
 
 	new Sticky({
-		browser: browser,
-		scrollLock: scrollLock,
-		$element: document.getElementById('header-content')
+		element: document.getElementById('header-content')
 	});
 
 	new Tabs({
@@ -51,7 +49,7 @@ window.onload = () => {
 	});
 
 	new ProtectEmail({
-		elements: document.getElementsByClassName('js_email')
+		elements: document.querySelectorAll('.js_email')
 	});
 
 	/* Forms */
@@ -65,7 +63,7 @@ window.onload = () => {
 	});
 
 	/* Informations */
-	new InformationCookie();
+	new CookieInformation();
 
 	new Wcag();
 

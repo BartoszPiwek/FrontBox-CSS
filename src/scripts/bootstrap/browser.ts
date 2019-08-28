@@ -60,7 +60,7 @@ export class Browser {
 	public responsive: string;
 	public orientation: string;
 	public portable: string | boolean;
-	public scrollbarWidth: number;
+	private _scrollbarWidth: number;
 
 	constructor() {
 		console.log(`Browser`);
@@ -77,13 +77,16 @@ export class Browser {
 		});
 	}
 
-	private getScrollbarWidth(): number {
-		const $scrollbar: HTMLElement = document.getElementById('js_check-scrollbar'),
-			$content: Element = $scrollbar.children.item(0),
-			output = $scrollbar.offsetWidth - $content.clientWidth;
+	public get scrollbarWidth(): number {
+		if (this._scrollbarWidth) {
+			const scrollbar: HTMLElement = document.getElementById('js_check-scrollbar');
+			const content: Element = scrollbar.children.item(0);
 
-		$scrollbar.parentNode.removeChild($scrollbar);
-		return output;
+			this._scrollbarWidth = scrollbar.offsetWidth - content.clientWidth;
+			scrollbar.parentNode.removeChild(scrollbar);
+		}
+
+		return this._scrollbarWidth;
 	}
 
 	/* Determine the mobile operating system */
@@ -114,7 +117,6 @@ export class Browser {
 
 	private refresh() {
 		this.responsive = this.getResponsive();
-		this.scrollbarWidth = this.getScrollbarWidth();
 		this.calculatePage();
 		this.onScroll();
 	}

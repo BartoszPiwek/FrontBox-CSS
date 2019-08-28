@@ -1,67 +1,46 @@
-import { ScrollLock } from './scroll-lock';
-import { Browser } from './browser';
-
-interface ISticky {
-	browser: Browser;
-	$element: HTMLElement;
-	scrollLock: ScrollLock;
-}
+import { Component } from './component';
+import { scrollLock, browser } from '../app';
 
 /**
- * Toggle burger menu with overlay
+ * Add sticky style to element
  *
- * @class						BurgerMenu
  * @version					1.0
- * @css							burger-menu.scss
- * @require					ScrollLock object
+ * @style						burger-menu.scss
+ * @require					ScrollLock
+ * @changelog
+ * 26.06.2019 Add
  */
 
-export class Sticky {
-	browser: Browser;
-	scrollLock: ScrollLock;
+interface ISticky {
+	element: HTMLElement;
+}
+
+export class Sticky extends Component {
+	element: HTMLElement;
+
 	active: boolean;
-	$element: HTMLElement;
 	offset: number;
 
 	constructor(param: ISticky) {
-		this.browser = param.browser;
-		this.scrollLock = param.scrollLock;
-		this.$element = param.$element;
-
-		window.addEventListener('resize orientationchange', () => {
-			this.refresh();
-		});
-		this.refresh();
-
-		window.addEventListener('scroll', () => {
-			this.onScroll();
-		});
-		this.onScroll();
+		super(param);
 	}
 
-	private refresh() {
-		this.offset = this.$element.parentElement.offsetTop;
-		console.log(this.offset);
+	public onResize() {
+		this.offset = this.element.parentElement.offsetTop;
 	}
 
-	private onScroll() {
-		if (!this.scrollLock.state) {
-			if (this.browser.scroll.top > this.offset) {
+	public onScroll() {
+		/* Don't run detection when scrollLock is on */
+		if (!scrollLock.state) {
+			if (browser.scroll.top > this.offset) {
 				if (!this.active) {
 					this.active = true;
-					this.$element.parentElement.classList.add(`js_sticky`);
+					this.element.parentElement.classList.add(`js_sticky`);
 				}
-			} else {
-				if (this.active) {
-					this.active = false;
-					this.$element.parentElement.classList.remove(`js_sticky`);
-				}
+			} else if (this.active) {
+				this.active = false;
+				this.element.parentElement.classList.remove(`js_sticky`);
 			}
 		}
 	}
 }
-
-/**
- * Changelog
- * 26.06.2019 Add
- */
