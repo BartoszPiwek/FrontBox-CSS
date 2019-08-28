@@ -16,51 +16,59 @@
 }
 
 .burger-button {
-	@include add-click-expand;
+	@include media-special("burger-show") {
+		@include add-click-expand;
 
-	position: relative;
-	z-index: index("header") + 1;
-	width: 30px;
-	height: 24px;
-	cursor: pointer;
-	pointer-events: all;
+		position: relative;
+		z-index: index("header") + 1;
+		width: 30px;
+		height: 24px;
+		cursor: pointer;
+		pointer-events: all;
 
-	.plank {
-		display: inline-block;
-		position: absolute;
-		width: 100%;
-		height: 4px;
+		.plank {
+			display: inline-block;
+			position: absolute;
+			width: 100%;
+			height: 4px;
 
-		transition: margin-top $time-transition / 2 $time-transition / 2, transform $time-transition, opacity $time-transition, background-color $time-transition;
-		border-radius: 10px;
-		background-color: color("grey");
-
-		&:first-child {
-			margin-top: 0;
-		}
-
-		&:nth-child(2) {
-			margin-top: calc(50% - 5px);
-		}
-
-		&:last-child {
-			margin-top: calc(100% - 10px);
-		}
-
-		@include style-burger-active {
-			margin-top: calc(50% - 5px) !important;
-			transition: margin-top $time-transition, transform $time-transition / 2 $time-transition / 2, opacity $time-transition, background-color $time-transition;
+			transition: margin-top $time-transition / 2 $time-transition / 2, transform $time-transition, opacity $time-transition, background-color $time-transition;
+			border-radius: 10px;
+			background-color: color("grey");
 
 			&:first-child {
-				transform: rotate(45deg);
-			}
-
-			&:last-child {
-				transform: rotate(-45deg);
+				margin-top: 0;
 			}
 
 			&:nth-child(2) {
-				opacity: 0;
+				margin-top: calc(50% - 5px);
+			}
+
+			&:last-child {
+				margin-top: calc(100% - 10px);
+			}
+
+			@include style-burger-active {
+				margin-top: calc(50% - 5px) !important;
+				transition: margin-top $time-transition, transform $time-transition / 2 $time-transition / 2, opacity $time-transition, background-color $time-transition;
+
+				&:first-child {
+					transform: rotate(45deg);
+				}
+
+				&:last-child {
+					transform: rotate(-45deg);
+				}
+
+				&:nth-child(2) {
+					opacity: 0;
+				}
+			}
+		}
+
+		@include add-hover {
+			.plank {
+				background-color: color("secondary");
 			}
 		}
 	}
@@ -68,18 +76,12 @@
 	@include media-special("burger-hide") {
 		display: none;
 	}
-
-	@include add-hover {
-		.plank {
-			background-color: color("secondary");
-		}
-	}
 }
 
 .burger-content {
-	@extend %fix-fixed;
-
 	@include media-special("burger-show") {
+		@include fix-fixed;
+
 		@include vh;
 		display: flex;
 		z-index: index("menu");

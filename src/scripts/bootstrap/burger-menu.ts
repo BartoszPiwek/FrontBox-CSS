@@ -3,7 +3,7 @@ import { scrollLock } from '../app';
 interface IBurgerMenu {
 	button: HTMLElement;
 	overlay?: HTMLElement;
-	container: HTMLElement;
+	classInject: HTMLElement;
 	cssClassActive?: string;
 }
 
@@ -20,7 +20,7 @@ export class BurgerMenu implements IBurgerMenu {
 
 	button: HTMLElement;
 	overlay?: HTMLElement;
-	container: HTMLElement;
+	classInject: HTMLElement;
 
 	active: boolean = false;
 	moving: boolean = false;
@@ -50,7 +50,7 @@ export class BurgerMenu implements IBurgerMenu {
 
 		this.moving = true;
 		this.scrollLock.change();
-		this.container.classList.toggle(this.cssClassActive);
+		this.classInject.classList.toggle(this.cssClassActive);
 
 		window.setTimeout(() => {
 			this.moving = false;

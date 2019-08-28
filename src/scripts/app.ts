@@ -37,7 +37,7 @@ window.onload = () => {
 	new BurgerMenu({
 		button: document.getElementById('burger-button'),
 		container: document.getElementById('header'),
-		overlay: document.getElementById('header-overlay')
+		overlay: document.getElementById('burger-overlay')
 	});
 
 	new Sticky({
