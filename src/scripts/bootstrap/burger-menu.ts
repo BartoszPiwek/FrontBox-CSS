@@ -1,84 +1,56 @@
-import { ScrollLock } from "./scroll-lock";
+import { scrollLock } from '../app';
 
 interface IBurgerMenu {
-	$burger: HTMLElement
-	$overlay: HTMLElement
-	$container: HTMLElement
-	cssClassActive?: string
-	scrollLock: ScrollLock
+	button: HTMLElement;
+	overlay?: HTMLElement;
+	container: HTMLElement;
+	cssClassActive?: string;
 }
 
 /**
  * Toggle burger menu with overlay
  *
- * @class						BurgerMenu
  * @version					1.0
- * @css							burger-menu.scss
+ * @css							burger.scss
  * @require					ScrollLock object
  */
 
-export class BurgerMenu {
+export class BurgerMenu implements IBurgerMenu {
+	scrollLock = scrollLock;
 
-	scrollLock: ScrollLock;
-	$button: HTMLElement
-	$overlay: HTMLElement
-	$container: HTMLElement
-	active: boolean = false
-	moving: boolean = false
-	expandTime: number = 200
+	button: HTMLElement;
+	overlay?: HTMLElement;
+	container: HTMLElement;
+
+	active: boolean = false;
+	moving: boolean = false;
+
+	expandTime: number = 200;
+
 	cssClassActive: string = 'js_burger-active';
 
 	constructor(param: IBurgerMenu) {
-		this.$button = param.$burger;
-		this.$container = param.$container;
-		this.cssClassActive = param.cssClassActive;
-		this.scrollLock = param.scrollLock;
-		if (param.cssClassActive) {
-			this.cssClassActive = param.cssClassActive;
-		}
-		if (param.$overlay) {
-			this.$overlay = param.$overlay;
-		}
+		Object.assign(this, param);
 
-		this.bind();
-	}
-
-	private bind() {
-		/* test-code */
-		console.info(`BurgerMenu\n- fired bind() function`);
-		/* end-test-code */
-
-		this.$button.onclick = () => {
-			this.click();
+		this.button.onclick = () => {
+			this.toggle();
 		};
 
-		if (this.$overlay) {
-			this.$overlay.onclick = () => {
-				this.click();
-			}
+		if (this.overlay) {
+			this.overlay.onclick = () => {
+				this.toggle();
+			};
 		}
 	}
 
-	public unbind() {
-		/* test-code */
-		console.info(`BurgerMenu\n- fired unbind() function`);
-		/* end-test-code */
-
-		this.$button.onclick = null;
-		this.$overlay.onclick = null;
-	}
-
-	private click() {
-		/* test-code */
-		console.info(`BurgerMenu\n- fired click() function`);
-		/* end-test-code */
-
+	private toggle() {
 		if (this.moving) {
 			return false;
 		}
+
 		this.moving = true;
 		this.scrollLock.change();
-		this.$container.classList.toggle(this.cssClassActive);
+		this.container.classList.toggle(this.cssClassActive);
 
 		window.setTimeout(() => {
 			this.moving = false;
@@ -88,5 +60,6 @@ export class BurgerMenu {
 
 /**
  * Changelog
+ * 28.08.2019 Cleaning
  * 26.06.2019 Add
  */

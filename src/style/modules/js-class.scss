@@ -3,9 +3,3 @@
 		@content;
 	}
 }
-
-@mixin add-style-burger-active {
-	.js_burger-active & {
-		@content;
-	}
-}

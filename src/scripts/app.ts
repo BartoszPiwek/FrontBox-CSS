@@ -28,17 +28,16 @@ export const frontboxConsole = new FrontboxConsole({
 });
 /* end-test-code */
 
+export const scrollLock = new ScrollLock();
+
 window.onload = () => {
 	const browser = new Browser(),
-		scrollLock = new ScrollLock(),
 		resize = new Resize();
 
 	new BurgerMenu({
-		scrollLock: scrollLock,
-		$burger: document.getElementById('burger-button'),
-		$container: document.getElementById('header'),
-		$overlay: document.getElementById('header-overlay'),
-		cssClassActive: 'js_burger-active'
+		button: document.getElementById('burger-button'),
+		container: document.getElementById('header'),
+		overlay: document.getElementById('header-overlay')
 	});
 
 	new Sticky({
