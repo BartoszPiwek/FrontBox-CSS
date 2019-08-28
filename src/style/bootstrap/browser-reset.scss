@@ -1,10 +1,32 @@
-// Fix content space
+/* stylelint-disable property-no-vendor-prefix */
+/* stylelint-disable selector-no-qualifying-type */
+
+//=========================================================================
+// ANCHOR Global
+//=========================================================================
 *,
 *:after,
 *:before {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	outline: none;
+}
+
+html {
+	line-height: 1.15;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-touch-callout: none;
+}
+
+body {
+	margin: 0;
+	font-size: 1.6rem;
+	letter-spacing: normal;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 // Default style elements
@@ -12,7 +34,9 @@ iframe {
 	border: 0;
 }
 
-// Remove list style
+//=========================================================================
+// ANCHOR List
+//=========================================================================
 ol,
 ul {
 	list-style: none;
@@ -40,19 +64,26 @@ iframe {
 	border: 0;
 }
 
+//=========================================================================
+// ANCHOR Form
+//=========================================================================
+
 input {
-	// Remove IE custom pseudo elements
-	&::-ms-reveal,
-	&::-ms-clear {
-		display: none;
+	&[type="text"] {
+		&::-ms-clear,
+		&::-ms-reveal {
+			display: none;
+			width: 0;
+			height: 0;
+		}
 	}
 
 	&[type="number"] {
-		// Turn Off Number Input Spinners
 		-moz-appearance: textfield;
 
 		&::-webkit-inner-spin-button,
 		&::-webkit-outer-spin-button {
+			height: auto;
 			margin: 0;
 			-webkit-appearance: none;
 		}
@@ -74,21 +105,32 @@ input {
 		-webkit-clip-path: inset(50%) !important; // sass-lint:vendorprefix
 		clip-path: inset(50%) !important;
 	}
+
+	&[type="button"],
+	&[type="reset"],
+	&[type="submit"],
+	button {
+		-webkit-appearance: button;
+		border: 0;
+		outline: none;
+		background: 0 0;
+		cursor: pointer;
+
+		&::-moz-focus-inner {
+			padding: 0;
+			border-style: none;
+		}
+
+		&:-moz-focusring {
+			outline: 1px dotted ButtonText;
+		}
+	}
 }
 
 label {
 	[for] {
 		cursor: pointer;
 	}
-}
-
-button {
-	border: 0;
-	outline: none;
-	background: 0 0;
-	cursor: pointer;
-	/* stylelint-disable-next-line */
-	-webkit-appearance: button;
 }
 
 address {
