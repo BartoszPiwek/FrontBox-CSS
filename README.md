@@ -4,40 +4,48 @@
 	<strong>FrontBox CSS</strong> <small>by Bartosz Piwek</small>
 </h1>
 
-<table>
-<tr>
-<td align="center">
-<a href="https://quirky-perlman-434ce5.netlify.com">Development</a>
-</td>
-<td align="center">
-<a href="https://tender-pasteur-b2164f.netlify.com">Productive</a>
-</td>
-</tr>
-
-<tr>
-<td align="center">
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ad028d61-7253-4819-a571-350e3acd37a5/deploy-status)](https://app.netlify.com/sites/quirky-perlman-434ce5/deploys)
-
-</td>
-<td align="center">
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7bf6c2d1-2d28-42b2-86d2-2c04fe70d4a1/deploy-status)](https://app.netlify.com/sites/tender-pasteur-b2164f/deploys)
-
-</td>
-</tr>
-</table>
-
 Static WWW builder tool. Use prepared html templates, include necessary element style and javascript behaviors, write own code using helpfull functions, speed up work with snippets.
 
 ## Table of contents
 
+- [Preview/Test](#preview/test)
 - [Information](#information)
 - [Requirements](#requirements)
 - [Gulp](#gulp)
 - [Projekt Tree](#projekt-tree)
 - [Testing Tools](#testing-tools)
 - [Bugs](#bugs)
+
+## Preview/Status
+
+<table>
+
+<tr>
+	<td>
+		Version
+	</td>
+	<td>
+		Status
+	</td>
+</tr>
+
+<tr>
+	<td>
+		<a href="https://quirky-perlman-434ce5.netlify.com">Development</a>
+	</td>
+<td>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ad028d61-7253-4819-a571-350e3acd37a5/deploy-status)](https://app.netlify.com/sites/quirky-perlman-434ce5/deploys)
+
+</td></tr><tr><td>
+
+<a href="https://tender-pasteur-b2164f.netlify.com">Productive</a>
+
+</td><td>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7bf6c2d1-2d28-42b2-86d2-2c04fe70d4a1/deploy-status)](https://app.netlify.com/sites/tender-pasteur-b2164f/deploys)
+
+</td></tr></table>
 
 ## Information
 
