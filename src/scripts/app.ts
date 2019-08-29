@@ -8,14 +8,13 @@ import { html } from './bootstrap/elements';
 import { Browser } from './bootstrap/browser';
 import { CookieInformation } from './bootstrap/cookie';
 import { InputCounter } from './bootstrap/input-counter';
-import { Resize } from './bootstrap/resize';
 import { ScrollLock } from './bootstrap/scroll-lock';
 import { Burger } from './bootstrap/burger';
-import { ElementPlaceholder } from './bootstrap/element-placeholder';
+// import { ElementPlaceholder } from './bootstrap/element-placeholder';
 import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
-import { scrollTo } from './bootstrap/scroll-to';
+// import { scrollTo } from './bootstrap/scroll-to';
 import { polyfill } from './app/polyfill';
 import { FrontboxConsole } from './bootstrap/console';
 import { Wcag } from './bootstrap/wcag';
@@ -32,8 +31,6 @@ export const scrollLock = new ScrollLock();
 export const browser = new Browser();
 
 window.onload = () => {
-	const resize = new Resize();
-
 	new Burger({
 		button: document.getElementById('burger-button'),
 		container: document.getElementById('header'),
@@ -45,7 +42,11 @@ window.onload = () => {
 	});
 
 	new Tabs({
-		name: 'primary'
+		active: 0,
+		name: 'primary',
+		callbackAfter: () => {
+			console.log('changed');
+		}
 	});
 
 	new ProtectEmail({

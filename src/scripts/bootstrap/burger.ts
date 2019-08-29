@@ -4,6 +4,7 @@ import { Component } from './component';
 /**
  * Toggle burger container
  *
+ * @class
  * @version					1.0
  * @style						burger.scss
  * @require					ScrollLock
@@ -26,7 +27,7 @@ export class Burger extends Component {
 	private overlay?: HTMLElement;
 
 	private active: boolean = false;
-	private moving: boolean = false;
+	private running: boolean = false;
 
 	private expandTime: number = 200;
 
@@ -49,17 +50,17 @@ export class Burger extends Component {
 	}
 
 	private toggle() {
-		if (this.moving) {
+		if (this.running) {
 			return false;
 		}
-		this.moving = true;
+		this.running = true;
 		this.active = !this.active;
 
 		scrollLock.change(this.active);
 		this.container.classList.toggle(this.cssClassActive);
 
 		window.setTimeout(() => {
-			this.moving = false;
+			this.running = false;
 		}, this.expandTime);
 	}
 }

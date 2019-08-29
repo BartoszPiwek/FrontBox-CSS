@@ -4,6 +4,7 @@ import { scrollLock, browser } from '../app';
 /**
  * Add sticky style to element
  *
+ * @class
  * @version					1.0
  * @style						burger-menu.scss
  * @require					ScrollLock

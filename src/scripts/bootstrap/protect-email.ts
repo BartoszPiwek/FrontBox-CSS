@@ -3,6 +3,7 @@ import { Component } from './component';
 /**
  * Hide e-mails from spam bots
  *
+ * @class
  * @version					1.0
  * @style						email-address.scss
  * @changelog

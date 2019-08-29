@@ -1,31 +1,41 @@
-import { getTransitionEvent } from './browser';
+import { browser } from '../app';
 
-interface iTransition {
-	$element: Element;
-	callbackChanged?: () => void;
+/**
+ * Add sticky style to element
+ *
+ * @function
+ * @version					1.0
+ * @style						javascript.scss
+ * @require					Browser
+ * @changelog
+ * 30.08.2019 Cleaning
+ * 26.06.2019 Add
+ */
+
+interface ITransitionSide {
+	element: Element;
+	callbackAfter?: Function;
 }
 
-export function transition(args: iTransition) {
-	const $container = args.$element.parentElement,
-		containerHeight = $container.clientHeight,
-		elementHeight = args.$element.clientHeight;
+export function transitionSize(param: ITransitionSide) {
+	const container = param.element.parentElement;
+	let eventListener: EventListener = () => {
+		container.classList.remove('js_transition');
+		container.style.height = null;
 
-	$container.classList.add('js_transition');
-	$container.style.height = `${containerHeight}px`;
+		if (param.callbackAfter) {
+			param.callbackAfter();
+		}
+
+		container.removeEventListener(browser.transitionEvent, eventListener);
+		return false;
+	};
+
+	container.classList.add('js_transition');
+	container.style.height = `${container.clientHeight}px`;
 
 	window.setTimeout(() => {
-		$container.style.height = `${elementHeight}px`;
-		$container.addEventListener(
-			getTransitionEvent(),
-			() => {
-				$container.classList.remove('js_transition');
-				$container.style.height = null;
-
-				if (args.callbackChanged) {
-					args.callbackChanged();
-				}
-			},
-			false
-		);
-	}, 50);
+		container.style.height = `${param.element.clientHeight}px`;
+		container.addEventListener(browser.transitionEvent, eventListener);
+	});
 }

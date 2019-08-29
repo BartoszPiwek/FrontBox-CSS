@@ -21,26 +21,6 @@ export function getScrollPosition(): number {
 	return window.pageYOffset || html.scrollTop;
 }
 
-// Get transition vendor prefix
-export function getTransitionEvent(): string {
-	const element = document.createElement('getTransitionEvent'),
-		transitions = {
-			transition: 'transitionend',
-			OTransition: 'oTransitionEnd',
-			MozTransition: 'transitionend',
-			WebkitTransition: 'webkitTransitionEnd'
-		};
-
-	for (const key in transitions) {
-		if (element.style[key] !== undefined) {
-			return transitions[key];
-		}
-	}
-	/* test-code */
-	console.error(`Browser\n- fired getTransitionEvent() function and return undefined transition`);
-	/* end-test-code */
-}
-
 interface IScroll {
 	top: number;
 	bottom: number;
@@ -54,7 +34,6 @@ interface IScroll {
  */
 export class Browser {
 	public scroll: IScroll;
-	public transitionEvent: string;
 	public width: number;
 	public height: number;
 	public responsive: string;
@@ -62,10 +41,11 @@ export class Browser {
 	public portable: string | boolean;
 	private _scrollbarWidth: number;
 
+	private _transitionEvent: string;
+
 	constructor() {
 		console.log(`Browser`);
 
-		this.transitionEvent = getTransitionEvent();
 		this.portable = this.getMobileOperatingSystem();
 
 		this.refresh();
@@ -87,6 +67,27 @@ export class Browser {
 		}
 
 		return this._scrollbarWidth;
+	}
+
+	public get transitionEvent(): string {
+		if (!this._transitionEvent) {
+			const element = document.createElement('getTransitionEvent');
+			const transitions = {
+				transition: 'transitionend',
+				OTransition: 'oTransitionEnd',
+				MozTransition: 'transitionend',
+				WebkitTransition: 'webkitTransitionEnd'
+			};
+
+			for (const key in transitions) {
+				if (element.style[key] !== undefined) {
+					this._transitionEvent = transitions[key];
+					break;
+				}
+			}
+		}
+
+		return this._transitionEvent;
 	}
 
 	/* Determine the mobile operating system */
