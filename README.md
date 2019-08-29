@@ -8,7 +8,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 ## Table of contents
 
-- [Preview/Test](#preview/test)
+- [Preview/Status](#preview/status)
 - [Information](#information)
 - [Requirements](#requirements)
 - [Gulp](#gulp)
