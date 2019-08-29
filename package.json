@@ -70,7 +70,6 @@
 		"normalize.css": "^8.0.1",
 		"picturefill": "^3.0.3",
 		"postcss": "^7.0.17",
-		"postcss-momentum-scrolling": "^1.8.15",
 		"postcss-pxtorem": "^4.0.1",
 		"preprocess": "^3.1.0",
 		"rename-css-selectors": "^3.2.5",
