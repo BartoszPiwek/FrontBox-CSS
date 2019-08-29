@@ -1,5 +1,4 @@
 import * as Cookies from 'js-cookie';
-import { body } from './elements';
 import { Component } from './component';
 
 /**
@@ -13,57 +12,50 @@ import { Component } from './component';
  */
 
 interface ICookieInformation {
-	template?: string;
+	templateUrl: string;
 }
 
 export class CookieInformation extends Component {
 	private cookie: HTMLElement;
 	private accept: NodeList;
-	private template?: string;
+	private templateUrl: string;
 
-	constructor(param?: ICookieInformation) {
+	constructor(param: ICookieInformation) {
 		super(param);
 	}
 
-	public onInit() {
+	public async onInit() {
 		if (Cookies.get('using-cookies')) {
 			return;
 		}
-		this.show();
-	}
 
-	private show() {
-		if (this.template) {
-			this.mount(this.template);
-		} else {
-			this.getContent(cookiesContentHTML => {
-				this.mount(cookiesContentHTML);
-			});
-		}
-	}
+		const contentHTML = await this.getContent(this.templateUrl);
+		document.body.insertAdjacentHTML('beforeend', contentHTML);
 
-	private getContent(callback: Function) {
-		const xhr = new XMLHttpRequest();
-		xhr.open('GET', 'partials/cookies.html');
-		xhr.send();
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState !== 4) return;
-			if (xhr.status >= 200 && xhr.status < 300) {
-				callback.apply(this, [xhr.responseText]);
-			}
-		};
-	}
+		const cookie = document.getElementById('js_cookies-information'),
+			accept = document.querySelectorAll('.js_cookies-close');
 
-	private mount = (cookiesContentHTML: string) => {
-		body.insertAdjacentHTML('beforeend', cookiesContentHTML);
-		this.cookie = document.getElementById('js_cookies-information');
-		this.accept = document.querySelectorAll('.js_cookies-close');
-
-		this.accept.forEach(item => {
+		accept.forEach(item => {
 			item.addEventListener('click', () => {
 				Cookies.set('using-cookies', 1);
-				this.cookie.classList.add('js_cookies-information--hide');
+				cookie.classList.add('js_cookies-information--hide');
 			});
 		});
-	};
+	}
+
+	private async getContent(url): Promise<string> {
+		return new Promise((resolve, reject) => {
+			const xhr = new XMLHttpRequest();
+			xhr.open('GET', url, true);
+			xhr.onload = () => {
+				if (xhr.status >= 200 && xhr.status < 300) {
+					resolve(xhr.response);
+				} else {
+					reject(xhr.statusText);
+				}
+			};
+			xhr.onerror = () => reject(xhr.statusText);
+			xhr.send();
+		});
+	}
 }

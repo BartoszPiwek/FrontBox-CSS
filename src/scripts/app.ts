@@ -63,7 +63,9 @@ window.onload = () => {
 	});
 
 	/* Informations */
-	new CookieInformation();
+	new CookieInformation({
+		templateUrl: 'partials/cookies.html'
+	});
 
 	new Wcag();
 
