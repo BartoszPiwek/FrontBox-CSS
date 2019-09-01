@@ -14,10 +14,10 @@ import { Burger } from './bootstrap/burger';
 import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
-// import { scrollTo } from './bootstrap/scroll-to';
 import { polyfill } from './app/polyfill';
 import { FrontboxConsole } from './bootstrap/console';
 import { Wcag } from './bootstrap/wcag';
+import { scrollTo } from './bootstrap/scroll-to';
 
 /* test-code */
 export const frontboxConsole = new FrontboxConsole({
@@ -42,11 +42,15 @@ window.onload = () => {
 	});
 
 	new Tabs({
-		active: 0,
-		name: 'primary',
-		callbackAfter: () => {
-			console.log('changed');
-		}
+		name: 'primary'
+	});
+
+	document.getElementById('scrollTo').addEventListener('click', () => {
+		scrollTo({
+			element: document.getElementById('scrollTo'),
+			time: 1000,
+			offset: 20
+		});
 	});
 
 	new ProtectEmail({
@@ -79,6 +83,7 @@ window.onload = () => {
 	});
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');
+
 	/* test-code */
 	frontboxConsole.add({
 		title: 'App',

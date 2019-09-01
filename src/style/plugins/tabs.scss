@@ -1,0 +1,117 @@
+/**
+ * A single content area with multiple panels, each associated with a header in a list
+ * 
+ * @version					1.0
+ * @js							tabs.ts
+ * @markup
+.tabs(data-tabs-content="primary")
+	.tabs__item.active
+		| Tab 1
+	.tabs__item
+		| Tab 2
+.tabs-navigation(data-tabs-buttons="primary")
+	button.tabs-navigation__item.active
+	button.tabs-navigation__item
+ * @changelog
+ * 30.08.2019 Cleaning
+ * 26.06.2019 Add
+ * @guide						JavaScript.tabs
+ * 
+ */
+
+.tabs {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+
+	&__item {
+		width: 100%;
+		transition: opacity 1s;
+
+		&:not(.active) {
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		&.active {
+			@include media("tablet") {
+				top: 0;
+				transform: translateY(0);
+			}
+		}
+	}
+}
+
+.tabs-background {
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, rgba(0, 0, 0, 0.5) 100%);
+		background-repeat: repeat-x;
+		background-position: center center;
+		background-size: cover;
+	}
+
+	&__item {
+		position: absolute;
+		z-index: -2;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		transform: translate(-50%, -50%);
+		transition: opacity 1s;
+		opacity: 0;
+		background-size: cover;
+		pointer-events: none;
+
+		&.active {
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+}
+
+.tabs-navigation {
+	font-size: 0;
+	text-align: center;
+
+	&__item {
+		width: 20px;
+		height: 20px;
+		margin: 0 20px;
+		transition: background-color $time-transition;
+		background-color: transparentize(color("white"), 0.7);
+
+		&.active {
+			background-color: color("white") !important;
+		}
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		@include add-hover {
+			background-color: transparentize(color("white"), 0.4);
+		}
+
+		@include media("tablet") {
+			width: 10px;
+			height: 10px;
+			margin: 0 5px;
+		}
+	}
+}

@@ -1,5 +1,5 @@
 import { html, body } from './elements';
-import { getScrollPosition, isScrollbar } from './browser';
+import { browser } from '../app';
 
 /**
  * Toggle scroll lock for body element
@@ -25,11 +25,13 @@ export class ScrollLock {
 	}
 
 	private on() {
-		this.positionTop = getScrollPosition();
+		this.positionTop = browser.scrollPosition;
 		body.style.top = `-${this.positionTop}px`;
-		if (isScrollbar()) {
+
+		if (browser.isScrollbar) {
 			html.classList.add(this.cssActiveScrollbar);
 		}
+
 		html.classList.add(this.cssActiveClass);
 		this._state = true;
 	}

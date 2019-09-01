@@ -1,5 +1,6 @@
-import { scrollLock } from '../app';
+import { scrollLock, browser } from '../app';
 import { Component } from './component';
+import { breakpoints } from '../consts';
 
 /**
  * Toggle burger container
@@ -46,6 +47,12 @@ export class Burger extends Component {
 			this.overlay.onclick = () => {
 				this.toggle();
 			};
+		}
+	}
+
+	public onResize() {
+		if (this.active && browser.width > breakpoints.burgerShow) {
+			this.toggle();
 		}
 	}
 

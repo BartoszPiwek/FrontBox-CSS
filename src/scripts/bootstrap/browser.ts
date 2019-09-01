@@ -1,25 +1,6 @@
-import { body, html } from './elements';
-import { breakpointsDefault } from './css';
-
-export function isScrollbar(): boolean {
-	return window.innerWidth != document.documentElement.clientWidth;
-}
-
-export function cleanUrl() {
-	const hash = window.location.hash;
-
-	if (hash.startsWith('#')) {
-		const cleanUrl = location.protocol + '//' + location.host + location.pathname;
-		window.history.replaceState({}, document.title, cleanUrl);
-		return hash.substring(hash.indexOf('-') + 1, hash.length);
-	}
-	return false;
-}
-
-// TODO remove
-export function getScrollPosition(): number {
-	return window.pageYOffset || html.scrollTop;
-}
+import { html } from './elements';
+import { breakpointsDefault } from '../consts';
+import { Component } from './component';
 
 interface IScroll {
 	top: number;
@@ -32,33 +13,59 @@ interface IScroll {
 /**
  * @class Browser
  */
-export class Browser {
+export class Browser extends Component {
 	public scroll: IScroll;
 	public width: number;
 	public height: number;
-	public responsive: string;
-	public orientation: string;
 	public portable: string | boolean;
 	private _scrollbarWidth: number;
 
 	private _transitionEvent: string;
 
 	constructor() {
-		console.log(`Browser`);
+		super();
+	}
 
-		this.portable = this.getMobileOperatingSystem();
+	public onInit() {
+		this.calculatePage();
+	}
 
-		this.refresh();
-		window.addEventListener('scroll', () => {
-			this.onScroll();
-		});
-		window.addEventListener('resize orientationchange', () => {
-			this.onScroll();
-		});
+	public onResize() {
+		this.calculatePage();
+	}
+
+	public onScroll() {
+		/* Check last center */
+		let lastCenter = 0;
+		if (this.scroll) {
+			lastCenter = this.scroll.center;
+		}
+
+		/* Prepare variables */
+		let direction: string;
+		let top = this.scrollPosition;
+		let bottom = top + this.height;
+		let center = bottom - this.height / 2;
+		let speed = Math.abs(lastCenter - center);
+
+		/* Check scroll direction */
+		if (center < lastCenter) {
+			direction = 'up';
+		} else {
+			direction = 'down';
+		}
+
+		this.scroll = {
+			top: top,
+			bottom: bottom,
+			center: center,
+			speed: speed,
+			direction: direction
+		};
 	}
 
 	public get scrollbarWidth(): number {
-		if (this._scrollbarWidth) {
+		if (!this._scrollbarWidth) {
 			const scrollbar: HTMLElement = document.getElementById('js_check-scrollbar');
 			const content: Element = scrollbar.children.item(0);
 
@@ -90,89 +97,15 @@ export class Browser {
 		return this._transitionEvent;
 	}
 
-	/* Determine the mobile operating system */
-	private getMobileOperatingSystem(): string | boolean {
-		let userAgent = navigator.userAgent || navigator.vendor;
-
-		// Windows Phone must come first because its UA also contains "Android"
-		if (/windows phone/i.test(userAgent)) {
-			return 'Windows Phone';
-		}
-
-		if (/android/i.test(userAgent)) {
-			return 'Android';
-		}
-
-		// iOS detection from: http://stackoverflow.com/a/9039885/177710
-		if (/iPad|iPhone|iPod/.test(userAgent) && !!navigator.platform) {
-			return 'iOS';
-		}
-
-		// PHP user agent
-		if (body.classList.contains('device-portable')) {
-			return true;
-		}
-
-		return false;
-	}
-
-	private refresh() {
-		this.responsive = this.getResponsive();
-		this.calculatePage();
-		this.onScroll();
-	}
-
-	private onScroll(): void {
-		/* Check last center */
-		let lastCenter = 0;
-		if (this.scroll) {
-			lastCenter = this.scroll.center;
-		}
-
-		/* Prepare variables */
-		let top = getScrollPosition(),
-			center = top + this.height / 2,
-			bottom = top + this.height,
-			speed = Math.abs(lastCenter - center),
-			direction = 'down';
-
-		/* Check scroll direction */
-		if (center < lastCenter) {
-			direction = 'up';
-		}
-
-		this.scroll = {
-			top: top,
-			bottom: bottom,
-			center: center,
-			speed: speed,
-			direction: direction
-		};
-	}
-
-	private calculatePage(): void | boolean {
-		/* Prepare variables */
-		let width = window.innerWidth,
-			lastWidth = this.width,
-			height = window.innerHeight,
-			lastHeight = this.height,
-			orientation = this.getOrientation(),
-			lastOrientation = this.orientation;
-
-		/* Set variables */
-		this.width = width;
-		this.height = height;
-
-		/**
-		 * Don't refresh page if user change tab
-		 * @browser Opera
-		 */
-		if (lastWidth === width && lastHeight === height && lastOrientation) {
-			return false;
+	public get orientation(): 'portrait' | 'landscape' {
+		if (window.matchMedia('(orientation: portrait)').matches) {
+			return 'portrait';
+		} else {
+			return 'landscape';
 		}
 	}
 
-	private getResponsive(): string {
+	public get responsive(): string {
 		for (const key in breakpointsDefault) {
 			const value = breakpointsDefault[key];
 
@@ -183,11 +116,16 @@ export class Browser {
 		return 'mobile';
 	}
 
-	private getOrientation(): string {
-		if (window.matchMedia('(orientation: portrait)').matches) {
-			return 'portrait';
-		} else {
-			return 'landscape';
-		}
+	public get scrollPosition(): number {
+		return window.pageYOffset || html.scrollTop;
+	}
+
+	public get isScrollbar(): boolean {
+		return window.innerWidth != document.documentElement.clientWidth;
+	}
+
+	private calculatePage(): void {
+		this.width = window.innerWidth;
+		this.height = window.innerHeight;
 	}
 }

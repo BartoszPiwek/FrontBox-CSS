@@ -1,18 +1,22 @@
 import { easeInOutQuad } from './functions';
+import { browser } from '../app';
+import { headerHeight } from '../consts';
 
 interface IScrollTo {
-	position: number;
+	element: HTMLElement;
 	time: number;
-	callbackAfter?: () => void;
+	offset?: number;
+	callbackAfter?: Function;
 }
 
 export function scrollTo(param: IScrollTo) {
-	const start = document.documentElement.scrollTop,
-		change = param.position - start,
+	const offset = param.offset ? param.offset : 0;
+	const start = browser.scroll.top;
+	const change = param.element.offsetTop - start - headerHeight[browser.responsive] - offset,
 		increment = 20;
 	let currentTime = 0;
 
-	const animateScroll = () => {
+	(function animateScroll() {
 		currentTime += increment;
 
 		const val = easeInOutQuad(currentTime, start, change, param.time);
@@ -26,6 +30,5 @@ export function scrollTo(param: IScrollTo) {
 				param.callbackAfter();
 			}
 		}
-	};
-	animateScroll();
+	})();
 }

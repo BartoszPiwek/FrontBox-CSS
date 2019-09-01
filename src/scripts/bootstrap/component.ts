@@ -12,9 +12,13 @@ export abstract class Component implements IComponent {
 
 		/* Run function on resize */
 		if (this.onResize) {
-			window.addEventListener('resize orientationchange', () => {
-				this.onResize();
-			});
+			window.addEventListener(
+				'resize',
+				() => {
+					this.onResize();
+				},
+				false
+			);
 			this.onResize();
 		}
 

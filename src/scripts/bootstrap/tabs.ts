@@ -1,8 +1,11 @@
 import { transitionSize } from './transition-size';
 import { Component } from './component';
+/* test-code */
+import { frontboxConsole } from '../app';
+/* end-test-code */
 
 /**
- * Add sticky style to element
+ * A single content area with multiple panels, each associated with a header in a list
  *
  * @class
  * @version					1.0
@@ -24,7 +27,7 @@ import { Component } from './component';
 
 interface ITabs {
 	name: string;
-	active: number;
+	active?: number;
 	callbackAfter?: Function;
 }
 
@@ -34,7 +37,7 @@ export class Tabs extends Component {
 	private containers: HTMLCollection;
 	private name: string;
 	private running: boolean = false;
-	private active: number;
+	private active: number = 0;
 	private callbackAfter?: () => void;
 
 	constructor(param: ITabs) {
@@ -42,9 +45,10 @@ export class Tabs extends Component {
 	}
 
 	public onInit() {
-		this.buttons = document.querySelectorAll(`[data-tabs-buttons="${this.name}"]`)[0].children;
+		let buttons = document.querySelectorAll(`[data-tabs-buttons="${this.name}"]`);
 
-		if (this.buttons.length) {
+		if (buttons.length) {
+			this.buttons = buttons[0].children;
 			this.contents = document.querySelectorAll(`[data-tabs-content="${this.name}"]`)[0].children;
 			let containers = document.querySelectorAll(`[data-tabs-${this.name}-active]`);
 
@@ -62,7 +66,15 @@ export class Tabs extends Component {
 					return;
 				});
 			}
+		} else {
+			/* test-code */
+			frontboxConsole.add({
+				type: 'warning',
+				title: 'Tabs',
+				content: `Tabs with name '${this.name}' not exist`
+			});
 		}
+		/* endtest-code */
 	}
 
 	public change(index: number) {
