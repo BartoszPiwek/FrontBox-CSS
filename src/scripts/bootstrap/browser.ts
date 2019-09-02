@@ -1,5 +1,5 @@
 import { html } from './elements';
-import { breakpointsDefault } from '../consts';
+import { breakpoints } from '../../../consts';
 import { Component } from './component';
 
 interface IScroll {
@@ -106,8 +106,8 @@ export class Browser extends Component {
 	}
 
 	public get responsive(): string {
-		for (const key in breakpointsDefault) {
-			const value = breakpointsDefault[key];
+		for (const key in breakpoints) {
+			const value = breakpoints[key].value;
 
 			if (window.matchMedia(`(min-width: ${value}px)`).matches) {
 				return key;

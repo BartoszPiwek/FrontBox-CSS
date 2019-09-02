@@ -1,6 +1,6 @@
 import { easeInOutQuad } from './functions';
 import { browser } from '../app';
-import { headerHeight } from '../consts';
+import { headerHeight } from '../../../consts';
 
 interface IScrollTo {
 	element: HTMLElement;

@@ -1,6 +1,6 @@
 import { scrollLock, browser } from '../app';
 import { Component } from './component';
-import { breakpoints } from '../consts';
+import { breakpointsSpecial } from '../../../consts';
 
 /**
  * Toggle burger container
@@ -51,7 +51,7 @@ export class Burger extends Component {
 	}
 
 	public onResize() {
-		if (this.active && browser.width > breakpoints.burgerShow) {
+		if (this.active && browser.width > breakpointsSpecial.burgerShow.value) {
 			this.toggle();
 		}
 	}
