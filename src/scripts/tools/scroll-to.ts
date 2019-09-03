@@ -1,6 +1,6 @@
 import { easeInOutQuad } from './transition';
 import { browser } from '../app';
-import { headerHeight } from '../consts';
+import { headerHeight } from '../../../consts';
 
 /**
  * Scroll browser to element
