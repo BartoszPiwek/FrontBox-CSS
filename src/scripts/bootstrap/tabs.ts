@@ -1,8 +1,8 @@
-import { transitionSize } from './transition-size';
-import { Component } from './component';
 /* test-code */
 import { frontboxConsole } from '../app';
 /* end-test-code */
+import { Component } from './component';
+import { transitionSize } from '../tools/transition-size';
 
 /**
  * A single content area with multiple panels, each associated with a header in a list
@@ -17,7 +17,7 @@ import { frontboxConsole } from '../app';
 		| Tab 1
 	.tabs__item
 		| Tab 2
-.tabs-navigation(data-tabs-buttons="primary")
+.tabs-navigation(data-tabs-navigation="primary")
 	button.tabs-navigation__item.active
 	button.tabs-navigation__item
  * @changelog
@@ -32,59 +32,59 @@ interface ITabs {
 }
 
 export class Tabs extends Component {
-	private contents: HTMLCollection;
-	private buttons: HTMLCollection;
-	private containers: HTMLCollection;
+	private content: HTMLCollection;
+	private navigation: HTMLCollection;
 	private name: string;
 	private running: boolean = false;
 	private active: number = 0;
+	private _length: number;
 	private callbackAfter?: () => void;
+
+	public get length() {
+		return this._length;
+	}
 
 	constructor(param: ITabs) {
 		super(param);
 	}
 
 	public onInit() {
-		let buttons = document.querySelectorAll(`[data-tabs-buttons="${this.name}"]`);
+		let navigation: NodeListOf<Element> = document.querySelectorAll(`[data-tabs-navigation="${this.name}"]`);
+		let content: NodeListOf<Element> = document.querySelectorAll(`[data-tabs-content="${this.name}"]`);
 
-		if (buttons.length) {
-			this.buttons = buttons[0].children;
-			this.contents = document.querySelectorAll(`[data-tabs-content="${this.name}"]`)[0].children;
-			let containers = document.querySelectorAll(`[data-tabs-${this.name}-active]`);
-
-			if (containers.length) {
-				this.containers = containers[0].children;
-			}
-
-			const length = this.buttons.length;
-
-			for (let index = 0; index < length; index++) {
-				const button = this.buttons[index];
-
-				button.addEventListener('click', () => {
-					this.change(index);
-					return;
-				});
-			}
-		} else {
+		if (!navigation.length && !content.length) {
 			/* test-code */
 			frontboxConsole.add({
 				type: 'warning',
 				title: 'Tabs',
 				content: `Tabs with name '${this.name}' not exist`
 			});
+			/* end-test-code */
+
+			return;
 		}
-		/* endtest-code */
+
+		this.navigation = navigation[0].children;
+		this.content = content[0].children;
+		this._length = this.navigation.length;
+
+		for (let index = 0; index < this.length; index++) {
+			this.navigation[index].addEventListener('click', () => {
+				this.change(index);
+				return;
+			});
+		}
 	}
 
 	public change(index: number) {
 		if (this.active === index || this.running) {
 			return false;
 		}
+
 		this.running = true;
 
 		transitionSize({
-			element: this.contents[index],
+			element: this.content[index],
 			callbackAfter: () => {
 				this.running = false;
 
@@ -94,16 +94,11 @@ export class Tabs extends Component {
 			}
 		});
 
-		this.buttons[this.active].classList.remove('active');
-		this.contents[this.active].classList.remove('active');
+		this.navigation[this.active].classList.remove('active');
+		this.content[this.active].classList.remove('active');
 
-		this.buttons[index].classList.add('active');
-		this.contents[index].classList.add('active');
-
-		if (this.containers) {
-			this.containers[this.active].classList.remove('active');
-			this.containers[index].classList.add('active');
-		}
+		this.navigation[index].classList.add('active');
+		this.content[index].classList.add('active');
 
 		this.active = index;
 	}

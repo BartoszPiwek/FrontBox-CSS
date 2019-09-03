@@ -4,28 +4,27 @@ Author:         Bartosz Piwek
 Repository:     https://github.com/BartoszPiwek/FrontBox
 ************************************************************************!*/
 
-import { html } from './bootstrap/elements';
-import { Browser } from './bootstrap/browser';
-import { CookieInformation } from './bootstrap/cookie';
-import { InputCounter } from './bootstrap/input-counter';
-import { ScrollLock } from './bootstrap/scroll-lock';
-import { Burger } from './bootstrap/burger';
-// import { ElementPlaceholder } from './bootstrap/element-placeholder';
-import { Sticky } from './bootstrap/sticky';
-import { Tabs } from './bootstrap/tabs';
-import { ProtectEmail } from './bootstrap/protect-email';
-import { polyfill } from './app/polyfill';
-import { FrontboxConsole } from './bootstrap/console';
-import { Wcag } from './bootstrap/wcag';
-import { scrollTo } from './bootstrap/scroll-to';
-
 /* test-code */
+import { FrontboxConsole } from './bootstrap/console';
 export const frontboxConsole = new FrontboxConsole({
 	hide: false,
 	open: false,
 	autoOpen: false
 });
 /* end-test-code */
+
+import { html } from './bootstrap/elements';
+import { Browser } from './bootstrap/browser';
+import { CookieInformation } from './bootstrap/cookie';
+import { InputCounter } from './bootstrap/input-counter';
+import { ScrollLock } from './bootstrap/scroll-lock';
+import { Burger } from './bootstrap/burger';
+import { Sticky } from './bootstrap/sticky';
+import { Tabs } from './bootstrap/tabs';
+import { ProtectEmail } from './bootstrap/protect-email';
+import { polyfill } from './app/polyfill';
+import { Wcag } from './bootstrap/wcag';
+import { scrollTo } from './tools/scroll-to';
 
 export const scrollLock = new ScrollLock();
 export const browser = new Browser();

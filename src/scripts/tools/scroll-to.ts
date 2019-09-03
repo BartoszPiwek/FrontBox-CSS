@@ -1,6 +1,22 @@
-import { easeInOutQuad } from './functions';
+import { easeInOutQuad } from './transition';
 import { browser } from '../app';
 import { headerHeight } from '../consts';
+
+/**
+ * Scroll browser to element
+ *
+ * @function
+ * @version					1.0
+ * @example
+scrollTo({
+	element: document.getElementById('scrollTo'),
+	time: 1000,
+	offset: 20
+});
+ * @require					Browser, easeInOutQuad, headerHeight
+ * @changelog
+ * 04.08.2019 Add
+ */
 
 interface IScrollTo {
 	element: HTMLElement;
