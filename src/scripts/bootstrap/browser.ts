@@ -1,3 +1,6 @@
+/* test-code */
+import { frontboxWatch } from '../app';
+/* end-test-code */
 import { html } from './elements';
 import { breakpoints } from '../../../consts';
 import { Component } from './component';
@@ -26,8 +29,17 @@ export class Browser extends Component {
 		super();
 	}
 
-	public onInit() {
-		this.calculatePage();
+	public afterInit() {
+		/* test-code */
+		frontboxWatch.add({
+			key: 'browser-scroll',
+			data: ['top', 'bottom', 'center', 'speed', 'direction']
+		});
+		frontboxWatch.add({
+			key: 'browser-size',
+			data: ['width', 'height']
+		});
+		/* end-test-code */
 	}
 
 	public onResize() {
@@ -62,6 +74,13 @@ export class Browser extends Component {
 			speed: speed,
 			direction: direction
 		};
+
+		/* test-code */
+		frontboxWatch.refresh({
+			key: 'browser',
+			data: this.scroll
+		});
+		/* end-test-code */
 	}
 
 	public get scrollbarWidth(): number {
@@ -127,5 +146,15 @@ export class Browser extends Component {
 	private calculatePage(): void {
 		this.width = window.innerWidth;
 		this.height = window.innerHeight;
+
+		/* test-code */
+		frontboxWatch.refresh({
+			key: 'browser-size',
+			data: {
+				width: this.width,
+				height: this.height
+			}
+		});
+		/* end-test-code */
 	}
 }

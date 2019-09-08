@@ -1,8 +1,7 @@
-@mixin debug-console {
-	.debug-console {
+@mixin init-debugger {
+	.debugger {
 		position: fixed;
 		z-index: 999999;
-		right: 0;
 		bottom: 0;
 		width: calc(100% - 22px);
 		height: 250px;
@@ -20,14 +19,10 @@
 			display: flex;
 			position: absolute;
 			top: 0;
-			left: 0;
 			align-items: center;
 			justify-content: center;
 			width: 22px;
 			height: 100%;
-			transform: translateX(-100%);
-			border-top-left-radius: 10px;
-			border-bottom-left-radius: 10px;
 			background-color: transparentize(color("black"), 0.4);
 			color: color("white");
 			cursor: pointer;
@@ -106,6 +101,34 @@
 
 			@include media("mobile") {
 				flex-direction: row;
+			}
+		}
+
+		&--watch {
+			left: 0;
+			transform: translateX(-100%);
+
+			.debugger {
+				&__label {
+					right: 0;
+					transform: translateX(100%);
+					border-top-right-radius: 10px;
+					border-bottom-right-radius: 10px;
+				}
+			}
+		}
+
+		&--console {
+			right: 0;
+			transform: translateX(100%);
+
+			.debugger {
+				&__label {
+					left: 0;
+					transform: translateX(-100%);
+					border-top-left-radius: 10px;
+					border-bottom-left-radius: 10px;
+				}
 			}
 		}
 

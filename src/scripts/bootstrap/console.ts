@@ -1,5 +1,3 @@
-import { isNumber } from 'util';
-
 /**
  * Show console logs on webpage front
  *
@@ -42,21 +40,21 @@ export class FrontboxConsole implements IFrontboxConsole {
 
 		document.body.insertAdjacentHTML(
 			'beforeend',
-			`<div class="debug-console ${this.open ? 'open' : ''}" id="debugConsole">
-				<div class="debug-console__label" id="debugConsoleLabel">
+			`<div class="debugger debugger--console ${this.open ? 'open' : ''}" id="debuggerConsole">
+				<div class="debugger__label" id="debuggerConsoleLabel">
 					FrontBox Console
 				</div>
-				<div class="debug-console__content" id="debugConsoleContent"></div>
+				<div class="debugger__content" id="debuggerConsoleContent"></div>
 			</div>`
 		);
 
-		this.element = document.getElementById('debugConsole');
-		this.content = document.getElementById('debugConsoleContent');
-		this.label = document.getElementById('debugConsoleLabel');
+		this.element = document.getElementById('debuggerConsole');
+		this.content = document.getElementById('debuggerConsoleContent');
+		this.label = document.getElementById('debuggerConsoleLabel');
 
 		if (!this.autoOpen) {
-			this.label.insertAdjacentHTML('beforeend', `<span class="debug-console__unread" id="debugConsoleUnread">0</span>`);
-			this.unread = document.getElementById('debugConsoleUnread');
+			this.label.insertAdjacentHTML('beforeend', `<span class="debugger__unread" id="debuggerConsoleUnread">0</span>`);
+			this.unread = document.getElementById('debuggerConsoleUnread');
 		}
 
 		this.label.addEventListener('click', (e: MouseEvent) => {
@@ -87,9 +85,9 @@ export class FrontboxConsole implements IFrontboxConsole {
 		const id = this.counter++;
 		this.content.insertAdjacentHTML(
 			'afterbegin',
-			`<div class="debug-console-item ${param.type ? param.type : ''}" id="debugConsole${id}">
-          	<div class="debug-console-item__title">${param.title}</div>
-	          <div class="debug-console-item__content">${param.content}</div>
+			`<div class="debugger-item ${param.type ? param.type : ''}" id="debuggerConsole${id}">
+          	<div class="debugger-item__title">${param.title}</div>
+	          <div class="debugger-item__content">${param.content}</div>
           </div>
         </div>`
 		);
@@ -112,7 +110,7 @@ export class FrontboxConsole implements IFrontboxConsole {
 			}
 
 			window.setTimeout(() => {
-				document.getElementById(`debugConsole${id}`).classList.add('old');
+				document.getElementById(`debuggerConsole${id}`).classList.add('old');
 			}, 3000);
 		}, 3000);
 	}

@@ -6,6 +6,11 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 
 /* test-code */
 import { FrontboxConsole } from './bootstrap/console';
+import { FrontboxWatch } from './bootstrap/watch';
+export const frontboxWatch = new FrontboxWatch({
+	hide: false,
+	open: true
+});
 export const frontboxConsole = new FrontboxConsole({
 	hide: false,
 	open: false,

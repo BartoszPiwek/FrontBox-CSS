@@ -21,7 +21,7 @@
 @import "./bootstrap/old-browser";
 @import "./bootstrap/off-javascript";
 @import "./bootstrap/email-address";
-@import "./bootstrap/debug";
+@import "./bootstrap/debugger";
 
 @include grid($grid-count: 12, $grid-breakpoints: $breakpoints);
 @include grid-style;
@@ -29,7 +29,7 @@
 
 // Debug
 @if ($dev == true) {
-	@include debug-console;
+	@include init-debugger;
 }
 /* Info */
 @if ($infoOldBrowser) {
