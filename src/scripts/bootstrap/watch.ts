@@ -69,9 +69,17 @@ export class FrontboxWatch implements IFrontboxWatch {
 			return;
 		}
 
+		this.content.insertAdjacentHTML(
+			'beforebegin',
+			`<div class="debugger-item debugger-item--big">
+        	<div class="debugger-item__title">${param.key}</div>
+        </div>
+      </div>`
+		);
+
 		param.data.forEach(value => {
 			this.content.insertAdjacentHTML(
-				'afterbegin',
+				'beforebegin',
 				`<div class="debugger-item">
           	<div class="debugger-item__title">${value}</div>
 	          <div class="debugger-item__content" id="${param.key}-${value}"></div>
@@ -84,7 +92,7 @@ export class FrontboxWatch implements IFrontboxWatch {
 	refresh(param: IFrontboxWatchRefresh) {
 		for (const key in param.data) {
 			if (param.data.hasOwnProperty(key)) {
-				const element = param.data[key] ? param.data[key] : '...';
+				const element = param.data[key];
 				document.getElementById(`${param.key}-${key}`).innerHTML = element;
 			}
 		}

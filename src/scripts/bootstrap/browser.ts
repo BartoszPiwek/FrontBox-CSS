@@ -8,7 +8,6 @@ import { Component } from './component';
 interface IScroll {
 	top: number;
 	bottom: number;
-	center: number;
 	speed: number;
 	direction: string;
 }
@@ -33,7 +32,7 @@ export class Browser extends Component {
 		/* test-code */
 		frontboxWatch.add({
 			key: 'browser-scroll',
-			data: ['top', 'bottom', 'center', 'speed', 'direction']
+			data: ['top', 'bottom', 'speed', 'direction']
 		});
 		frontboxWatch.add({
 			key: 'browser-size',
@@ -48,20 +47,19 @@ export class Browser extends Component {
 
 	public onScroll() {
 		/* Check last center */
-		let lastCenter = 0;
+		let lastTop = 0;
 		if (this.scroll) {
-			lastCenter = this.scroll.center;
+			lastTop = this.scroll.top;
 		}
 
 		/* Prepare variables */
 		let direction: string;
 		let top = this.scrollPosition;
 		let bottom = top + this.height;
-		let center = bottom - this.height / 2;
-		let speed = Math.abs(lastCenter - center);
+		let speed = Math.abs(lastTop - top);
 
 		/* Check scroll direction */
-		if (center < lastCenter) {
+		if (top < lastTop) {
 			direction = 'up';
 		} else {
 			direction = 'down';
@@ -70,14 +68,13 @@ export class Browser extends Component {
 		this.scroll = {
 			top: top,
 			bottom: bottom,
-			center: center,
 			speed: speed,
 			direction: direction
 		};
 
 		/* test-code */
 		frontboxWatch.refresh({
-			key: 'browser',
+			key: 'browser-scroll',
 			data: this.scroll
 		});
 		/* end-test-code */
