@@ -9,7 +9,7 @@ import { FrontboxConsole } from './bootstrap/console';
 import { FrontboxWatch } from './bootstrap/watch';
 export const frontboxWatch = new FrontboxWatch({
 	hide: false,
-	open: true
+	open: false
 });
 export const frontboxConsole = new FrontboxConsole({
 	hide: false,
