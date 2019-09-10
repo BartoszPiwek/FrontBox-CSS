@@ -10,6 +10,7 @@ interface IComponent {
 
 export abstract class Component implements IComponent {
 	private lastWidth: number;
+	private lastHeight: number;
 
 	constructor(param?: any) {
 		if (param) {
@@ -24,12 +25,14 @@ export abstract class Component implements IComponent {
 		/* Run function on resize */
 		if (this.onResize) {
 			this.lastWidth = window.innerWidth;
+			this.lastHeight = vh.windowHeight;
 
 			window.addEventListener(
 				'resize',
 				() => {
-					if ((vh.isNeed && vh.vh !== vh.windowHeight) || !vh.isNeed) {
+					if ((vh.isNeed && this.lastHeight !== vh.windowHeight) || !vh.isNeed) {
 						this.lastWidth = window.innerWidth;
+						this.lastHeight = vh.windowHeight;
 
 						this.onResize();
 
