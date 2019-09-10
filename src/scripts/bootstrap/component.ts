@@ -1,3 +1,6 @@
+import { vh } from '../app/polyfill';
+import { browser, frontboxConsole } from '../app';
+
 interface IComponent {
 	onInit?: Function;
 	afterInit?: Function;
@@ -6,6 +9,8 @@ interface IComponent {
 }
 
 export abstract class Component implements IComponent {
+	private lastWidth: number;
+
 	constructor(param?: any) {
 		if (param) {
 			Object.assign(this, param);
@@ -18,10 +23,23 @@ export abstract class Component implements IComponent {
 
 		/* Run function on resize */
 		if (this.onResize) {
+			this.lastWidth = window.innerWidth;
+
 			window.addEventListener(
 				'resize',
 				() => {
-					this.onResize();
+					if ((vh.isNeed && vh.vh !== vh.windowHeight) || !vh.isNeed) {
+						this.lastWidth = window.innerWidth;
+
+						this.onResize();
+
+						/* test-code */
+						frontboxConsole.add({
+							title: 'App',
+							content: `${vh.isNeed} ${vh.vh} ${vh.windowHeight}`
+						});
+						/* end-test-code */
+					}
 				},
 				false
 			);

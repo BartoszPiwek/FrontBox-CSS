@@ -27,7 +27,6 @@ import { Burger } from './bootstrap/burger';
 import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
-import { polyfill } from './app/polyfill';
 import { Wcag } from './bootstrap/wcag';
 import { scrollTo } from './tools/scroll-to';
 
@@ -81,17 +80,13 @@ window.onload = () => {
 	// const placeholder = new ElementPlaceholder();
 	// placeholder.create(document.getElementById('header'));
 
-	/* Polyfill */
-	polyfill({
-		scrollbarWidth: browser.scrollbarWidth
-	});
 	/* Inform stylesheed to remove style fallback for JavaScript elements */
 	html.classList.remove('js_no');
 
 	/* test-code */
 	frontboxConsole.add({
 		title: 'App',
-		content: 'Running correct'
+		content: 'Running...'
 	});
 	/* end-test-code */
 };
