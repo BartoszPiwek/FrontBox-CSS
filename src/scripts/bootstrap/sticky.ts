@@ -1,5 +1,5 @@
 import { Component } from './component';
-import { scrollLock, browser } from '../app';
+import { scroll, browser } from '../app';
 
 /**
  * Add sticky style to element
@@ -7,7 +7,7 @@ import { scrollLock, browser } from '../app';
  * @class
  * @version					1.0
  * @style						burger-menu.scss
- * @require					ScrollLock
+ * @require					Scroll
  * @changelog
  * 26.06.2019 Add
  */
@@ -31,8 +31,8 @@ export class Sticky extends Component {
 	}
 
 	public onScroll() {
-		/* Don't run detection when scrollLock is on */
-		if (!scrollLock.state) {
+		/* Don't run detection when scroll is on */
+		if (!scroll.state) {
 			if (browser.scroll.top > this.offset) {
 				if (!this.active) {
 					this.active = true;

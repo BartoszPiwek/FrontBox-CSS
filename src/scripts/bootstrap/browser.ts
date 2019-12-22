@@ -22,6 +22,8 @@ export class Browser extends Component {
 	public portable: string | boolean;
 	private _scrollbarWidth: number;
 
+	public documentHeight: number;
+
 	private _transitionEvent: string;
 
 	constructor() {
@@ -122,14 +124,11 @@ export class Browser extends Component {
 	}
 
 	public get responsive(): string {
-		for (const key in breakpoints) {
-			const value = breakpoints[key].value;
-
-			if (window.matchMedia(`(min-width: ${value}px)`).matches) {
-				return key;
+		for (const element of breakpoints.reverse()) {
+			if (window.matchMedia(`(min-width: ${element.value}px)`).matches) {
+				return element.name;
 			}
 		}
-		return 'mobile';
 	}
 
 	public get scrollPosition(): number {
@@ -143,6 +142,11 @@ export class Browser extends Component {
 	private calculatePage(): void {
 		this.width = window.innerWidth;
 		this.height = window.innerHeight;
+
+		const body = document.body,
+			html = document.documentElement;
+
+		this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 
 		/* test-code */
 		frontboxWatch.refresh({

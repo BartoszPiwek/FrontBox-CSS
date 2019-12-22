@@ -20,7 +20,7 @@ block append content
 
 	main#page.page
 		.wrap
-			| <a href="#" id="scrollTo">Scroll to tabs</a>
+			| <a id="scrollTo" href="#">Scroll to tabs</a>
 		.wrap
 			| Change me!
 		.wrap
@@ -89,7 +89,22 @@ block append content
 			| Change me!
 		.wrap
 			| Change me!
+
 		.wrap
+			.slider#slider
+				button.slider-arrow.slider-arrow--left(type="button" title="Previous" )
+				.slider__container
+					.slider__track
+						.slider-item
+							img(src="https://via.placeholder.com/150", alt="", srcset="")
+						.slider-item
+							img(src="https://via.placeholder.com/150", alt="", srcset="")
+						.slider-item
+							img(src="https://via.placeholder.com/150", alt="", srcset="")
+				button.slider-arrow.slider-arrow--right(title="Previous" type="button")
+				//- .slider-dots
+
+		.wrap#fee
 			h2.h2 Tabs
 			
 			.tabs(data-tabs-content="primary")

@@ -1,9 +1,7 @@
 /* stylelint-disable property-no-vendor-prefix */
 /* stylelint-disable selector-no-qualifying-type */
 
-//=========================================================================
-// ANCHOR Global
-//=========================================================================
+/* Main Elements */
 *,
 *:after,
 *:before {
@@ -52,9 +50,7 @@ iframe {
 	border: 0;
 }
 
-//=========================================================================
-// ANCHOR Form
-//=========================================================================
+/* Form Elements */
 [type="text"] {
 	&::-ms-clear,
 	&::-ms-reveal {
@@ -68,7 +64,7 @@ iframe {
 	-moz-appearance: textfield;
 }
 
-/* Hide oryginal input element */
+//  Hide original input element
 [type="checkbox"],
 [type="radio"] {
 	position: absolute !important;

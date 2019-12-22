@@ -22,15 +22,14 @@ import { html } from './bootstrap/elements';
 import { Browser } from './bootstrap/browser';
 import { CookieInformation } from './bootstrap/cookie';
 import { InputCounter } from './bootstrap/input-counter';
-import { ScrollLock } from './bootstrap/scroll-lock';
+import { Scroll } from './bootstrap/scroll';
 import { Burger } from './bootstrap/burger';
 import { Sticky } from './bootstrap/sticky';
 import { Tabs } from './bootstrap/tabs';
 import { ProtectEmail } from './bootstrap/protect-email';
 import { Wcag } from './bootstrap/wcag';
-import { scrollTo } from './tools/scroll-to';
 
-export const scrollLock = new ScrollLock();
+export const scroll = new Scroll();
 export const browser = new Browser();
 
 window.onload = () => {
@@ -49,10 +48,9 @@ window.onload = () => {
 	});
 
 	document.getElementById('scrollTo').addEventListener('click', () => {
-		scrollTo({
-			element: document.getElementById('scrollTo'),
-			time: 1000,
-			offset: 20
+		scroll.to({
+			element: document.getElementById('fee'),
+			time: 1000
 		});
 	});
 
@@ -70,7 +68,7 @@ window.onload = () => {
 		}
 	});
 
-	/* Informations */
+	/* Information's */
 	new CookieInformation({
 		templateUrl: 'partials/cookies.html'
 	});
@@ -80,8 +78,8 @@ window.onload = () => {
 	// const placeholder = new ElementPlaceholder();
 	// placeholder.create(document.getElementById('header'));
 
-	/* Inform stylesheed to remove style fallback for JavaScript elements */
-	html.classList.remove('js_no');
+	/* Inform stylesheet to remove style fallback for JavaScript elements */
+	html.classList.remove('js_disabled');
 
 	/* test-code */
 	frontboxConsole.add({

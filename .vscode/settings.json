@@ -16,6 +16,8 @@
 	"prettier.printWidth": 500,
 	"prettier.semi": true,
 	"prettier.singleQuote": true,
-	"prettier.stylelintIntegration": true,
-	"prettier.useTabs": true
+	"prettier.useTabs": true,
+	"cSpell.words": [
+		"frontbox"
+	]
 }
