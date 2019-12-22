@@ -42,11 +42,12 @@
 	}
 
 	&__exit {
-		@include add-click-expand;
 		position: absolute;
 		top: 0;
 		right: 0;
 		cursor: pointer;
+
+		@include add-click-expand;
 
 		.icon-x {
 			width: 20px;

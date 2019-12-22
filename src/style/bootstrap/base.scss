@@ -18,7 +18,7 @@ body {
 	@if ($color-tap != false) {
 		-webkit-tap-highlight-color: $color-tap;
 	}
-	
+
 	// Text selection color
 	@if ($color-text-selection != false) {
 		&::selection {

@@ -45,20 +45,20 @@
 				"dollar-variables",
 				{
 					"type": "at-rule",
-					"name": "extend"
+					"name": "extend",
 				},
+				"declarations",
 				{
 					"type": "at-rule",
 					"name": "include",
 					"hasBlock": false
 				},
-				"declarations",
 				"rules",
 				{
 					"type": "at-rule",
 					"name": "include",
-					"hasBlock": true
-				}
+					"hasBlock": true,
+				},
 			]
 		],
 		"order/properties-order": [
@@ -167,10 +167,18 @@
 		"rule-empty-line-before": [
 			"always-multi-line",
 			{
-				"except": ["first-nested"],
-				"ignore": ["after-comment"]
+				"except": ["first-nested", "inside-block-and-after-rule"],
+				"ignore": ["after-comment"],
 			}
 		],
+		"at-rule-empty-line-before": ["always", {
+			"except": ["first-nested", "blockless-after-same-name-blockless"],
+			"ignore": ["after-comment"],
+		}],
+		"declaration-empty-line-before": ["always", {
+			"except": ["after-declaration", "first-nested"],
+			"ignore": ["after-comment"],
+		}],
 		"scss/at-extend-no-missing-placeholder": true,
 		"scss/at-function-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
 		"scss/at-import-no-partial-leading-underscore": true,
