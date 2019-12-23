@@ -1,16 +1,17 @@
 /*
 Grid
 
+Description:
 Generate CSS flex grid
 
 Mixin:
 grid($grid-count, $breakpoints)
 
-Mixin arguments:
+Arguments:
 $grid-count: number? : 12
 $grid-breakpoints: { [key: string]: any }? : $breakpoints
 
-Mixin example:
+Mixin aaa:
 $breakpoint(
 	xs: 0,
 	sm: 576,
@@ -21,11 +22,31 @@ $breakpoint(
 
 Mixin output:
 <div class="row">
-<div class="col-12 kss-item"></div>
+<div class="col-12 kss-item">col-12</div>
 </div>
 <div class="row">
-<div class="col-11 kss-item"></div>
-<div class="col-1 kss-item"></div>
+<div class="col-11 kss-item">col-11</div>
+<div class="col-1 kss-item">col-1</div>
+</div>
+<div class="row">
+<div class="col-10 kss-item">col-10</div>
+<div class="col-2 kss-item">col-2</div>
+</div>
+<div class="row">
+<div class="col-9 kss-item">col-9</div>
+<div class="col-3 kss-item">col-3</div>
+</div>
+<div class="row">
+<div class="col-8 kss-item">col-8</div>
+<div class="col-4 kss-item">col-4</div>
+</div>
+<div class="row">
+<div class="col-7 kss-item">col-7</div>
+<div class="col-5 kss-item">col-5</div>
+</div>
+<div class="row">
+<div class="col-6 kss-item">col-6</div>
+<div class="col-6 kss-item">col-6</div>
 </div>
 
 Style guide: Grid.generate

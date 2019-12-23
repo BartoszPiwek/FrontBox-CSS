@@ -146,10 +146,38 @@
 					</p>
 					{{/if}}
 
+					{{!-- Description --}}
 					{{#if description}}
 					<div class="kss-description">
 						{{{description}}}
 					</div>
+					{{/if}}
+
+					{{!-- Mixin --}}
+					{{#if mixin}}
+					<h3>Mixin</h3>
+					<pre class="hljs"><code class="language-handlebars">{{{hljs mixin 'handlebars'}}}</code></pre>
+					{{/if}}
+
+					{{!-- Arguments --}}
+					{{#if arguments}}
+					<h3>Arguments</h3>
+					<table class="kss-arguments">
+						<thead>
+							<td>Variable</td>
+							<td>Type (<span class="kss-arguments__optional">required</span>)</td>
+							<td>Default value</td>
+						</thead>
+						<tbody>
+							{{#kssArguments arguments}}
+							<tr class="kss-arguments__item">
+								<td class="kss-arguments__variable">{{{argument.variable}}}</td>
+								<td class="kss-arguments__type">{{{argument.type}}}</td>
+								<td class="kss-arguments__value">{{{argument.value}}}</td>
+							</tr>
+							{{/kssArguments}}
+						</tbody>
+					</table>
 					{{/if}}
 
 					{{#if colors }}

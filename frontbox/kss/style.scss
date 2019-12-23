@@ -1,13 +1,27 @@
-@import "./../../public/dev/css/utilities.dev";
-@import "./../../src/style/variables/*";
-@import "./../../src/style/tools/*";
-@import "./../../src/style/modules/*";
-@import "./../../plugins/*";
-@import "./../../src/style/bootstrap/browser-reset";
+// $infoOldBrowser: false;
+// $infoOffJavascript: false;
+
+@import "style/variables";
+@import "style/arguments";
+@import "style/headers";
+
+// @import "./../../src/style/variables/base";
+// @import "./../../src/style/variables/color";
+// @import "./../../src/style/variables/index";
+// @import "./../../src/style/variables/media";
+
+// @import "./../../public/dev/css/utilities.dev";
+// @import "./../../src/style/variables/*";
+// @import "./../../src/style/tools/*";
+// @import "./../../src/style/modules/*";
+// @import "./../../src/style/bootstrap";
+// @import "./../../plugins/*";
+// @import "./../../src/style/bootstrap/browser-reset";
 @import "./kss-assets/kss.scss";
-/* stylelint-disable-next-line */
-@import "./../../public/dev/style.dev";
-@import "../../../FrontBox-Plugins/**/*";
+// /* stylelint-disable-next-line */
+// @import "./../../public/dev/style.dev";
+// @import "../../../FrontBox-Plugins/**/*";
+
 
 $color-primary: red;
 $color-secondary: blue;
@@ -32,63 +46,63 @@ $color-secondary: blue;
 }
 
 // Functions
-@include add_holder-style;
+// @include add_holder-style;
 
-.holder {
-	@include add_holder(100px, 50px);
-	background-color: $color-primary;
-	color: $color-secondary;
-}
+// .holder {
+// 	@include add_holder(100px, 50px);
+// 	background-color: $color-primary;
+// 	color: $color-secondary;
+// }
 
-.placeholder {
-	color: $color-secondary;
+// .placeholder {
+// 	color: $color-secondary;
 
-	@include add-input-placeholder {
-		color: $color-primary;
-	}
-}
+// 	@include add-input-placeholder {
+// 		color: $color-primary;
+// 	}
+// }
 
-.scrollbar {
-	@include add-scrollbar("20px", $color-primary, $color-secondary);
-	width: 100%;
-	height: 200px;
-	overflow: scroll;
+// .scrollbar {
+// 	@include add-scrollbar("20px", $color-primary, $color-secondary);
+// 	width: 100%;
+// 	height: 200px;
+// 	overflow: scroll;
 
-	&__content {
-		width: 200%;
-		height: 200%;
-	}
-}
+// 	&__content {
+// 		width: 200%;
+// 		height: 200%;
+// 	}
+// }
 
-.triangle {
-	&-up {
-		@include add-triangle(30px, 20px, "up", $color-primary);
-	}
+// .triangle {
+// 	&-up {
+// 		@include add-triangle(30px, 20px, "up", $color-primary);
+// 	}
 
-	&-right {
-		@include add-triangle(30px, 20px, "right", $color-primary);
-	}
+// 	&-right {
+// 		@include add-triangle(30px, 20px, "right", $color-primary);
+// 	}
 
-	&-down {
-		@include add-triangle(30px, 20px, "down", $color-primary);
-	}
+// 	&-down {
+// 		@include add-triangle(30px, 20px, "down", $color-primary);
+// 	}
 
-	&-left {
-		@include add-triangle(20px, 10px, "left", $color-secondary);
-	}
-}
+// 	&-left {
+// 		@include add-triangle(20px, 10px, "left", $color-secondary);
+// 	}
+// }
 
 // Space
-.row {
-	&.space-x {
-		@inlcude add-space-x(10px);
-	}
+// .row {
+// 	&.space-x {
+// 		@inlcude add-space-x(10px);
+// 	}
 
-	&.space-y {
-		@inlcude add-space-y(30px);
-	}
+// 	&.space-y {
+// 		@inlcude add-space-y(30px);
+// 	}
 
-	&.space {
-		@inlcude add-space(5px, 10px);
-	}
-}
+// 	&.space {
+// 		@inlcude add-space(5px, 10px);
+// 	}
+// }
