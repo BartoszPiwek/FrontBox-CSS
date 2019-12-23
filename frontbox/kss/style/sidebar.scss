@@ -10,8 +10,11 @@
 
     &-nav {
       &__menu {
-
         padding: 40px 20px;
+
+        > *:first-child {
+          margin-top: 0;
+        }
       }
 
       &__child {
@@ -24,6 +27,13 @@
 
       &__item {
         margin: 12px 0;
+      }
+
+      &__link {
+        &.is-viewed {
+          font-weight: bold;
+          color: $colorPrimary;
+        }
       }
 
       .is-active {

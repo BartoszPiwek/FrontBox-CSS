@@ -13,7 +13,7 @@
 	{{{styles}}}
 </head>
 
-<body id="kss-node" {{#if template.isItem}}class="kss-fullscreen-mode" {{/if}}>
+<body id="body" {{#if template.isItem}}class="kss-fullscreen-mode" {{/if}}>
 
 	{{!-- Navigation --}}
 	<aside class="sidebar">
@@ -380,11 +380,12 @@
 	<script src="kss-assets/kss.js"></script>
 	<script src="kss-assets/kss-fullscreen.js"></script>
 	<script src="kss-assets/kss-guides.js"></script>
+	<script src="kss-assets/scrollspy.js"></script>
 	<script src="kss-assets/kss-markup.js"></script>
 	<script>
-		var spy = new ScrollSpy('#kss-node', {
-			nav: '.kss-nav__menu-child > li > a',
-			className: 'is-in-viewport'
+		var spy = new ScrollSpy('#body', {
+			nav: '.sidebar-nav__child > li > a',
+			className: 'is-viewed'
 		});
 		var kssFullScreen = new KssFullScreen({
 			idPrefix: 'kss-fullscreen-',

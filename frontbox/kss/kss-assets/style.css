@@ -119,10 +119,15 @@ h3 {
   overflow-y: auto; }
   .sidebar-nav__menu {
     padding: 40px 20px; }
+    .sidebar-nav__menu > *:first-child {
+      margin-top: 0; }
   .sidebar-nav__child .sidebar-nav__item {
     margin: 6px 0; }
   .sidebar-nav__item {
     margin: 12px 0; }
+  .sidebar-nav__link.is-viewed {
+    font-weight: bold;
+    color: #1f5d2f; }
   .sidebar-nav .is-active > a {
     color: #1f5d2f;
     font-weight: bold; }
