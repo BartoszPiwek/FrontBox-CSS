@@ -80,4 +80,5 @@ function prodTasks(...args) {
 exports.default = series(cleanBegin, minifySvg, parallel(copyImage, copyFonts, copyOther, copyVideo, copyAudio, scriptApp, htmlMain, htmlPartials, styleMain, styleBootstrap, styleUtilities), cleanEnd, prodTasks, server, watchFiles);
 exports.favicon = series(generateFavicon);
 exports.test = series(prodTasks);
-exports.docs = series(docs_style, docs_run, docs_server, docs_watch);
+exports.docs = series(docs_style, docs_run);
+exports.docsTest = series(docs_style, docs_run, docs_server, docs_watch);
