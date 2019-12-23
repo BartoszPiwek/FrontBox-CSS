@@ -1,54 +1,53 @@
 .sidebar {
-  border-right: 1px solid transparentize($colorSecondary, .8);
-  position: fixed;
-  top: 0;
-  position: fixed;
-  width: 200px;
-  height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
+	position: fixed;
+	position: fixed;
+	top: 0;
+	width: 200px;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-right: 1px solid transparentize($colorSecondary, 0.8);
 
-    &-nav {
-      &__menu {
-        padding: 40px 20px;
+	&-nav {
+		&__menu {
+			padding: 40px 20px;
 
-        > *:first-child {
-          margin-top: 0;
-        }
-      }
+			> *:first-child {
+				margin-top: 0;
+			}
+		}
 
-      &__child {
-        .sidebar-nav {
-          &__item {
-            margin: 6px 0;
-          }
-        }
-      }
+		&__child {
+			.sidebar-nav {
+				&__item {
+					margin: 6px 0;
+				}
+			}
+		}
 
-      &__item {
-        margin: 12px 0;
-      }
+		&__item {
+			margin: 12px 0;
+		}
 
-      &__link {
-        &.is-viewed {
-          font-weight: bold;
-          color: $colorPrimary;
-        }
-      }
+		&__link {
+			&.is-viewed {
+				color: $colorPrimary;
+				font-weight: bold;
+			}
+		}
 
-      .is-active {
-        > a {
-          color: $colorPrimary;
-        font-weight: bold;
-        }
+		.is-active {
+			> a {
+				color: $colorPrimary;
+				font-weight: bold;
+			}
 
-        > .sidebar-nav {
-          &__child {
-                    padding-left: 12px;
-        border-left: 2px solid transparentize($colorSecondary, .8);;
-        
-          }
-        }
-      }
-    }
-  }
+			> .sidebar-nav {
+				&__child {
+					padding-left: 12px;
+					border-left: 2px solid transparentize($colorSecondary, 0.8);
+				}
+			}
+		}
+	}
+}
