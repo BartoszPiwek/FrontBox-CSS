@@ -1,0 +1,11 @@
+.page {
+  width: calc(100% - 250px);
+  margin-left: auto;
+  
+  &-header {
+    color: $colorPrimary;
+    font-size: 45px;
+    margin: 20px 0 30px;
+  }
+}
+

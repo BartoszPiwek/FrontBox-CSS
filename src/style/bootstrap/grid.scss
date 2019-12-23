@@ -1,55 +1,42 @@
 /*
-Grid
+Column
 
-Description:
 Generate CSS flex grid
 
-Mixin:
+Function:
 grid($grid-count, $breakpoints)
 
 Arguments:
 $grid-count: number? : 12
 $grid-breakpoints: { [key: string]: any }? : $breakpoints
 
-Mixin aaa:
+Usage:
 $breakpoint(
-	xs: 0,
-	sm: 576,
-	md: 768,
-	lg: 992,
+ xs: 0,
+ sm: 576,
+ md: 768,
+ lg: 992,
 }
 @include grid(12, $breakpoints);
 
-Mixin output:
+Output:
 <div class="row">
-<div class="col-12 kss-item">col-12</div>
-</div>
-<div class="row">
-<div class="col-11 kss-item">col-11</div>
-<div class="col-1 kss-item">col-1</div>
-</div>
-<div class="row">
-<div class="col-10 kss-item">col-10</div>
-<div class="col-2 kss-item">col-2</div>
-</div>
-<div class="row">
-<div class="col-9 kss-item">col-9</div>
-<div class="col-3 kss-item">col-3</div>
-</div>
-<div class="row">
-<div class="col-8 kss-item">col-8</div>
-<div class="col-4 kss-item">col-4</div>
-</div>
-<div class="row">
-<div class="col-7 kss-item">col-7</div>
-<div class="col-5 kss-item">col-5</div>
-</div>
-<div class="row">
-<div class="col-6 kss-item">col-6</div>
-<div class="col-6 kss-item">col-6</div>
+ <div class="col-12">col-12</div>
+ <div class="col-11">col-11</div>
+ <div class="col-1">col-1</div>
+ <div class="col-10">col-10</div>
+ <div class="col-2">col-2</div>
+ <div class="col-9">col-9</div>
+ <div class="col-3">col-3</div>
+ <div class="col-8">col-8</div>
+ <div class="col-4">col-4</div>
+ <div class="col-7">col-7</div>
+ <div class="col-5">col-5</div>
+ <div class="col-6">col-6</div>
+ <div class="col-6">col-6</div>
 </div>
 
-Style guide: Grid.generate
+Style guide: Grid.column
 */
 
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {

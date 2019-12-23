@@ -1,0 +1,44 @@
+.sidebar {
+  border-right: 1px solid transparentize($colorSecondary, .8);
+  position: fixed;
+  top: 0;
+  position: fixed;
+  width: 200px;
+  height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+    &-nav {
+      &__menu {
+
+        padding: 40px 20px;
+      }
+
+      &__child {
+        .sidebar-nav {
+          &__item {
+            margin: 6px 0;
+          }
+        }
+      }
+
+      &__item {
+        margin: 12px 0;
+      }
+
+      .is-active {
+        > a {
+          color: $colorPrimary;
+        font-weight: bold;
+        }
+
+        > .sidebar-nav {
+          &__child {
+                    padding-left: 12px;
+        border-left: 2px solid transparentize($colorSecondary, .8);;
+        
+          }
+        }
+      }
+    }
+  }

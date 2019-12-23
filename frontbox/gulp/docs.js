@@ -19,7 +19,7 @@ export function docs_run(done) {
 			builder: './frontbox/kss/',
 			title: 'FrontBox-CSS Debug Style Guide',
 			css: ['./kss-assets/style.css'],
-			custom: ['emmet', 'mixin', 'mixin_usage', 'Icons', 'Arguments'],
+			custom: ['emmet', 'Function', 'Output', 'Icons', 'Usage', 'Arguments', 'Title'],
 			extend: './frontbox/kss/helpers'
 		},
 		browserSync.stream(),
