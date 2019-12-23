@@ -15,7 +15,7 @@ const argv = require('yargs').argv;
 export function docs_run(done) {
 	kss(
 		{
-			source: [`src/style/`, `./../FrontBox-Plugins/`],
+			source: [`src/style/`],
 			builder: './frontbox/kss/',
 			title: 'FrontBox-CSS Debug Style Guide',
 			css: ['./kss-assets/style.css'],
