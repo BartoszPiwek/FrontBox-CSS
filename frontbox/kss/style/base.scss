@@ -1,4 +1,77 @@
 html {
-  background-color: $colorWhite;
-  font-family: Lato;
+	margin-left: calc(100vw - 100%);
+	background-color: $colorWhite;
+	font-family: Lato;
+}
+
+html,
+body,
+.page {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	min-height: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+.page {
+	width: 100%;
+	max-width: 1366px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+body {
+}
+
+h3 {
+	position: relative;
+	margin: 40px 0 26px;
+	font-size: 26px;
+}
+
+.main {
+	width: calc(100% - 250px);
+	margin-left: auto;
+	padding: 40px 20px;
+
+	&-header {
+		margin-bottom: 30px;
+		font-size: 45px;
+		font-weight: 300;
+		text-align: right;
+	}
+}
+
+.section {
+	&-title {
+		position: sticky;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		margin: 30px 0 20px;
+		border-bottom: 2px solid transparentize($colorSecondary, 0.8);
+		background: $colorWhite;
+
+		&__text {
+			font-size: 38px;
+			font-weight: bold;
+		}
+
+		&__ref {
+			font-size: 14px;
+			font-style: italic;
+		}
+
+		&__link {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+
+	&-description {
+		margin: 20px 0;
+	}
 }

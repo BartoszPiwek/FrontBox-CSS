@@ -42,7 +42,8 @@ export function docs_style() {
 		.pipe(sassGlob())
 		.pipe(sass())
 		.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
-		.pipe(dest(`frontbox/kss/kss-assets/`));
+		.pipe(dest(`frontbox/kss/kss-assets/`))
+		.pipe(browserSync.stream());
 }
 
 export function docs_server(done) {

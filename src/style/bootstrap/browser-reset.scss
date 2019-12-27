@@ -50,6 +50,10 @@ iframe {
 	border: 0;
 }
 
+table {
+	border-spacing: 0;
+}
+
 /* Form Elements */
 [type="text"] {
 	&::-ms-clear,
@@ -85,11 +89,11 @@ iframe {
 [type="reset"],
 [type="submit"],
 button {
-	-webkit-appearance: button;
 	border: 0;
 	outline: none;
 	background: 0 0;
 	cursor: pointer;
+	-webkit-appearance: button;
 }
 
 label {

@@ -4,6 +4,7 @@ $colorWhite: #f3f7fb;
 $colorBlack: #1b1716;
 
 @import "./../../src/style/bootstrap/browser-reset";
+@import '../../node_modules/highlight.js/styles/vs2015';
 @import "style/*";
 // @import "./../../src/style/variables/base";
 // @import "./../../src/style/variables/color";
@@ -17,11 +18,10 @@ $colorBlack: #1b1716;
 // @import "./../../src/style/bootstrap";
 // @import "./../../plugins/*";
 @import "./kss-assets/kss.scss";
+
 // /* stylelint-disable-next-line */
 // @import "./../../public/dev/style.dev";
 // @import "../../../FrontBox-Plugins/**/*";
-
-
 $color-primary: red;
 $color-secondary: blue;
 
@@ -29,7 +29,7 @@ $color-secondary: blue;
 .block-square {
 	background-color: $color-primary;
 
-	* > {
+	* >  {
 		color: $color-secondary;
 	}
 }

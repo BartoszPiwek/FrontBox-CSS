@@ -1,28 +1,29 @@
 .table {
-  width: 700px;
+	width: 100%;
+	min-width: 700px;
 
-  thead {
-    td {
-      font-weight: bold;
-      padding: 4px 8px;
-      color: $colorWhite;
-      background-color: $colorSecondary;
-    }
-  }
+	thead {
+		td {
+			padding: 10px 14px;
+			background-color: $colorSecondary;
+			color: $colorWhite;
+			font-weight: bold;
+		}
+	}
 
-  tbody {
-    tr {
-      &:hover {
-        td {
-          background-color: transparentize($colorSecondary, .9);
-        }
-      }
-    }
+	tbody {
+		tr {
+			&:hover {
+				td {
+					background-color: transparentize($colorSecondary, 0.9);
+				}
+			}
+		}
 
-    td {
-      padding: 6px 8px;
-      border-bottom: 1px solid $colorSecondary;
-      font-family: monospace;
-    }
-  }
+		td {
+			padding: 6px 14px;
+			border-bottom: 1px solid $colorSecondary;
+			font-family: monospace;
+		}
+	}
 }

@@ -76,9 +76,16 @@ function prodTasks(...args) {
 	}
 }
 
+function generateDocumentation(...args) {
+	if (argv.watch) {
+		return series(docs_style, docs_run, docs_server, docs_watch)(...args);
+	} else {
+		return series(docs_style, docs_run)(...args);
+	}
+}
+
 /* Tasks */
 exports.default = series(cleanBegin, minifySvg, parallel(copyImage, copyFonts, copyOther, copyVideo, copyAudio, scriptApp, htmlMain, htmlPartials, styleMain, styleBootstrap, styleUtilities), cleanEnd, prodTasks, server, watchFiles);
 exports.favicon = series(generateFavicon);
 exports.test = series(prodTasks);
-exports.docs = series(docs_style, docs_run);
-exports.docsTest = series(docs_style, docs_run, docs_server, docs_watch);
+exports.docs = series(generateDocumentation);

@@ -1,13 +1,12 @@
 .code {
-  display: block;
-  overflow: hidden;
-  padding: 0.5em;
-  white-space: pre;
-  background: $colorSecondary;
-  overflow: hidden;
+	display: block;
+	padding: 14px;
+	overflow: hidden;
+	background: $colorSecondary;
+	white-space: pre;
 
-  &__content {
-    font-family: monospace;
-    color: $colorWhite;
-  }
+	&__content {
+		color: $colorWhite;
+		font-family: monospace;
+	}
 }

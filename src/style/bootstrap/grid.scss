@@ -8,7 +8,7 @@ grid($grid-count, $breakpoints)
 
 Arguments:
 $grid-count: number? : 12
-$grid-breakpoints: { [key: string]: any }? : $breakpoints
+$grid-breakpoints: { [key: string]: number }? : $breakpoints
 
 Usage:
 $breakpoint(
@@ -42,28 +42,29 @@ Style guide: Grid.column
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
 	@include responsive($grid-breakpoints) {
 		$prefix: &;
+
 		@for $i from 1 through $grid-count {
-			@at-root .#{$prefix}col-#{$i} {
+			@at-root .#{$prefix}col-#{$i}{
 				flex-basis: 100% / ($grid-count / $i);
 				max-width: 100% / ($grid-count / $i);
 			}
 
 			@if $i != $grid-count {
-				@at-root .#{$prefix}pull-#{$i} {
+				@at-root .#{$prefix}pull-#{$i}{
 					right: 100% / ($grid-count / $i) !important;
 				}
 
-				@at-root .#{$prefix}push-#{$i} {
+				@at-root .#{$prefix}push-#{$i}{
 					left: 100% / ($grid-count / $i) !important;
 				}
 
-				@at-root .#{$prefix}order-#{$i} {
+				@at-root .#{$prefix}order-#{$i}{
 					order: $i;
 				}
 			}
 		}
 
-		@at-root .#{$prefix}col-shrink {
+		@at-root .#{$prefix}col-shrink{
 			flex: 0 0 auto;
 		}
 	}
