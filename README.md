@@ -45,6 +45,14 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7bf6c2d1-2d28-42b2-86d2-2c04fe70d4a1/deploy-status)](https://app.netlify.com/sites/tender-pasteur-b2164f/deploys)
 
+</td></tr><tr>
+	<td>
+		<p><a href="https://vigorous-austin-c1164f.netlify.com/">Documentation</a></p>
+	</td>
+<td>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b492ef35-2480-45e6-8420-b7926e588f1f/deploy-status)](https://app.netlify.com/sites/vigorous-austin-c1164f/deploys)
+
 </td></tr></table>
 
 ## Information
