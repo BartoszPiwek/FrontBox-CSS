@@ -1,9 +1,7 @@
 type IBreakpoints = {
-	[key: string]: {
-		value: number;
-		shortName: string;
-		name?: string;
-	};
+	value: number;
+	shortName: string;
+	name?: string;
 };
 
 type IBreakpointsSpecial = {
@@ -17,38 +15,43 @@ type IResponsiveElementsHeight = {
 	[key: string]: number;
 };
 
-export const breakpoints: IBreakpoints = {
-	small: {
+export const breakpoints: IBreakpoints[] = [
+	{
+		name: 'small',
 		shortName: 'xs',
 		value: 0
 	},
-	mobile: {
+	{
+		name: 'mobile',
 		shortName: 'sm',
 		value: 576
 	},
-	fablet: {
+	{
+		name: 'fablet',
 		shortName: 'md',
 		value: 768
 	},
-	tablet: {
+	{
+		name: 'tablet',
 		shortName: 'lg',
 		value: 992
 	},
-	desktop: {
+	{
+		name: 'desktop',
 		shortName: 'xl',
 		value: 1200
 	},
-	desktopHd: {
-		shortName: 'hd',
+	{
 		name: 'desktop-hd',
+		shortName: 'hd',
 		value: 1366
 	},
-	desktopWide: {
-		shortName: 'whd',
+	{
 		name: 'desktop-wide',
+		shortName: 'whd',
 		value: 1440
 	}
-};
+];
 
 export const breakpointsSpecial: IBreakpointsSpecial = {
 	burgerShow: {
@@ -62,6 +65,7 @@ export const breakpointsSpecial: IBreakpointsSpecial = {
 };
 
 export const headerHeight: IResponsiveElementsHeight = {
+	'desktop-hd': 70,
 	desktop: 70,
 	fablet: 70,
 	tablet: 70,

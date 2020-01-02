@@ -1,6 +1,5 @@
 {
 	"editor.formatOnPaste": true,
-	"editor.formatOnSave": true,
 	"editor.tabSize": 2,
 	"files.exclude": {
 		"node_modules/": true,
@@ -13,9 +12,12 @@
 	"scss.lint.float": "warning",
 	"scss.lint.emptyRules": "error",
 	"scss.lint.duplicateProperties": "error",
-	"prettier.printWidth": 500,
-	"prettier.semi": true,
-	"prettier.singleQuote": true,
-	"prettier.stylelintIntegration": true,
-	"prettier.useTabs": true
+	"cSpell.words": [
+		"fablet",
+		"frontbox"
+	],
+	"editor.codeActionsOnSave": {
+		"source.fixAll.tslint": true,
+		"source.organizeImports": true
+	}
 }

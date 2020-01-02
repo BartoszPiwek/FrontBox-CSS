@@ -1,61 +1,70 @@
 /*
-Grid
+Column
 
-Grid CSS using flex
+Generate CSS flex grid
 
-Mixin:
+Function:
 grid($grid-count, $breakpoints)
 
-Mixin arguments:
+Arguments:
 $grid-count: number? : 12
-$grid-breakpoints: { [key: string]: any }? : $breakpoints
+$grid-breakpoints: { [key: string]: number }? : $breakpoints
 
-Mixin example:
+Usage:
 $breakpoint(
-	xs: 0,
-	sm: 576,
-	md: 768,
-	lg: 992,
+ xs: 0,
+ sm: 576,
+ md: 768,
+ lg: 992,
 }
 @include grid(12, $breakpoints);
 
-Mixin output:
+Output:
 <div class="row">
-<div class="col-12 kss-item"></div>
-</div>
-<div class="row">
-<div class="col-11 kss-item"></div>
-<div class="col-1 kss-item"></div>
+ <div class="col-12">col-12</div>
+ <div class="col-11">col-11</div>
+ <div class="col-1">col-1</div>
+ <div class="col-10">col-10</div>
+ <div class="col-2">col-2</div>
+ <div class="col-9">col-9</div>
+ <div class="col-3">col-3</div>
+ <div class="col-8">col-8</div>
+ <div class="col-4">col-4</div>
+ <div class="col-7">col-7</div>
+ <div class="col-5">col-5</div>
+ <div class="col-6">col-6</div>
+ <div class="col-6">col-6</div>
 </div>
 
-Style guide: Grid.generate
+Style guide: Grid.column
 */
 
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
 	@include responsive($grid-breakpoints) {
 		$prefix: &;
+
 		@for $i from 1 through $grid-count {
-			@at-root .#{$prefix}col-#{$i} {
+			@at-root .#{$prefix}col-#{$i}{
 				flex-basis: 100% / ($grid-count / $i);
 				max-width: 100% / ($grid-count / $i);
 			}
 
 			@if $i != $grid-count {
-				@at-root .#{$prefix}pull-#{$i} {
+				@at-root .#{$prefix}pull-#{$i}{
 					right: 100% / ($grid-count / $i) !important;
 				}
 
-				@at-root .#{$prefix}push-#{$i} {
+				@at-root .#{$prefix}push-#{$i}{
 					left: 100% / ($grid-count / $i) !important;
 				}
 
-				@at-root .#{$prefix}order-#{$i} {
+				@at-root .#{$prefix}order-#{$i}{
 					order: $i;
 				}
 			}
 		}
 
-		@at-root .#{$prefix}col-shrink {
+		@at-root .#{$prefix}col-shrink{
 			flex: 0 0 auto;
 		}
 	}

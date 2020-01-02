@@ -1,9 +1,11 @@
 import { html, body } from './elements';
 import { browser } from '../app';
+import { easeInOutQuad } from '../tools/transition';
+import { headerHeight } from '../../../consts';
 
 /**
  * Toggle scroll lock for body element
- * Export "%scrollbar-placeholder" for CSS Selectorn to include scrollbar space
+ * Export "%scrollbar-placeholder" for CSS Selectors to include scrollbar space
  *
  * @class
  * @version					1.0
@@ -14,7 +16,14 @@ import { browser } from '../app';
  * 20.06.2019 Add
  */
 
-export class ScrollLock {
+interface IScrollTo {
+	element: HTMLElement;
+	time: number;
+	offset?: number;
+	callbackAfter?: Function;
+}
+
+export class Scroll {
 	private _state: boolean = false;
 	private positionTop: number;
 	private cssActiveClass: string = 'js_scroll-lock';
@@ -45,7 +54,6 @@ export class ScrollLock {
 	}
 
 	public change(state?: boolean) {
-		/* Ignore change to same state */
 		if (this._state === state) {
 			return;
 		}
@@ -55,5 +63,39 @@ export class ScrollLock {
 		} else {
 			this.off();
 		}
+	}
+
+	public to(param: IScrollTo) {
+		this.change(true);
+
+		const offset = param.offset ? param.offset : 0;
+		const start = this.positionTop;
+		let change = param.element.offsetTop - start - headerHeight[browser.responsive] - offset;
+		let increment = 20;
+		let currentTime = 0;
+
+		if (change - start > browser.documentHeight - browser.height) {
+			change = browser.documentHeight - browser.height;
+		}
+
+		const animateScroll = () => {
+			currentTime += increment;
+
+			const val = easeInOutQuad(currentTime, start, change, param.time);
+
+			body.style.top = `-${val}px`;
+
+			if (currentTime < param.time) {
+				setTimeout(animateScroll, increment);
+			} else {
+				this.positionTop = change;
+				this.change(false);
+
+				if (param.callbackAfter) {
+					param.callbackAfter();
+				}
+			}
+		};
+		animateScroll();
 	}
 }

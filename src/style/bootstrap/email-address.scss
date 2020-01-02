@@ -1,10 +1,11 @@
 .email-address {
 	cursor: pointer;
 
-	.sr-only {
-		top: 0 !important;
-		transform: none !important;
-	}
+	// TODO: test screen view
+	// .sr-only {
+	// 	top: 0 !important;
+	// 	transform: none !important;
+	// }
 
 	&__text {
 		unicode-bidi: bidi-override;

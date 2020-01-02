@@ -1,9 +1,7 @@
 /* stylelint-disable property-no-vendor-prefix */
 /* stylelint-disable selector-no-qualifying-type */
 
-//=========================================================================
-// ANCHOR Global
-//=========================================================================
+/* Main Elements */
 *,
 *:after,
 *:before {
@@ -52,9 +50,11 @@ iframe {
 	border: 0;
 }
 
-//=========================================================================
-// ANCHOR Form
-//=========================================================================
+table {
+	border-spacing: 0;
+}
+
+/* Form Elements */
 [type="text"] {
 	&::-ms-clear,
 	&::-ms-reveal {
@@ -68,7 +68,7 @@ iframe {
 	-moz-appearance: textfield;
 }
 
-/* Hide oryginal input element */
+//  Hide original input element
 [type="checkbox"],
 [type="radio"] {
 	position: absolute !important;
@@ -89,11 +89,11 @@ iframe {
 [type="reset"],
 [type="submit"],
 button {
-	-webkit-appearance: button;
 	border: 0;
 	outline: none;
 	background: 0 0;
 	cursor: pointer;
+	-webkit-appearance: button;
 }
 
 label {

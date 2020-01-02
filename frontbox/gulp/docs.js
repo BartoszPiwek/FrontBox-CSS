@@ -1,25 +1,26 @@
 /* Import libs */
-import { watch, src, dest, series } from 'gulp';
+import { dest, series, src, watch } from 'gulp';
+import header from 'gulp-header';
+import gulpif from 'gulp-if';
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
-import header from 'gulp-header';
-import kss from 'kss';
-import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
-import { browserSync } from './../../gulpfile.babel';
-const argv = require('yargs').argv;
-
+import kss from 'kss';
 /* Import config */
 import * as config from './../../config';
+import { browserSync } from './../../gulpfile.babel';
+
+const argv = require('yargs').argv;
 
 export function docs_run(done) {
 	kss(
 		{
-			source: [`src/style/`, `./../FrontBox-Plugins/`],
+			source: [`src/style/`],
 			builder: './frontbox/kss/',
 			title: 'FrontBox-CSS Debug Style Guide',
 			css: ['./kss-assets/style.css'],
-			custom: ['emmet', 'mixin', 'mixin_usage']
+			custom: ['emmet', 'Function', 'Output', 'Icons', 'Usage', 'Arguments', 'Title'],
+			extend: './frontbox/kss/helpers'
 		},
 		browserSync.stream(),
 		done()
@@ -41,7 +42,8 @@ export function docs_style() {
 		.pipe(sassGlob())
 		.pipe(sass())
 		.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
-		.pipe(dest(`frontbox/kss/kss-assets/`));
+		.pipe(dest(`frontbox/kss/kss-assets/`))
+		.pipe(browserSync.stream());
 }
 
 export function docs_server(done) {

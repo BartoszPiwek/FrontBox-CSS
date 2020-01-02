@@ -1,4 +1,4 @@
-import { scrollLock, browser } from '../app';
+import { scroll, browser } from '../app';
 import { Component } from './component';
 import { breakpointsSpecial } from '../../../consts';
 
@@ -8,7 +8,7 @@ import { breakpointsSpecial } from '../../../consts';
  * @class
  * @version					1.0
  * @style						burger.scss
- * @require					ScrollLock
+ * @require					Scroll
  * @changelog
  * 28.08.2019 Cleaning
  * 26.06.2019 Add
@@ -63,7 +63,7 @@ export class Burger extends Component {
 		this.running = true;
 		this.active = !this.active;
 
-		scrollLock.change(this.active);
+		scroll.change(this.active);
 		this.container.classList.toggle(this.cssClassActive);
 
 		window.setTimeout(() => {

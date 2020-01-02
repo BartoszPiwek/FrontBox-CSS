@@ -5,20 +5,21 @@ Repository:     https://github.com/BartoszPiwek/FrontBox
 ************************************************************************!*/
 
 /* Libs */
-import { series, parallel, watch } from 'gulp';
-export const browserSync = require('browser-sync').create();
+import { parallel, series, watch } from 'gulp';
 /* Config */
 import * as config from './config';
-import { destPath } from './frontbox/gulp/frontbox';
-const argv = require('yargs').argv;
+import { generateFavicon, minifySvg } from './frontbox/gulp/assets';
 /* Import tasks */
 import { cleanBegin, cleanEnd } from './frontbox/gulp/clean';
-import { copyImage, copyFonts, copyOther, copyVideo, copyAudio } from './frontbox/gulp/copy';
-import { generateFavicon, minifySvg } from './frontbox/gulp/assets';
-import { scriptApp } from './frontbox/gulp/script';
-import { styleMain, styleBootstrap, styleUtilities } from './frontbox/gulp/style';
-import { htmlMain, htmlInclude, htmlPartials } from './frontbox/gulp/html';
+import { copyAudio, copyFonts, copyImage, copyOther, copyVideo } from './frontbox/gulp/copy';
+import { docs_run, docs_server, docs_style, docs_watch } from './frontbox/gulp/docs';
+import { destPath } from './frontbox/gulp/frontbox';
+import { htmlInclude, htmlMain, htmlPartials } from './frontbox/gulp/html';
 import { hashHtml } from './frontbox/gulp/prod';
+import { scriptApp } from './frontbox/gulp/script';
+import { styleBootstrap, styleMain, styleUtilities } from './frontbox/gulp/style';
+export const browserSync = require('browser-sync').create();
+const argv = require('yargs').argv;
 
 function server(cb) {
 	if (argv.server) {
@@ -75,8 +76,16 @@ function prodTasks(...args) {
 	}
 }
 
+function generateDocumentation(...args) {
+	if (argv.watch) {
+		return series(docs_style, docs_run, docs_server, docs_watch)(...args);
+	} else {
+		return series(docs_style, docs_run)(...args);
+	}
+}
+
 /* Tasks */
 exports.default = series(cleanBegin, minifySvg, parallel(copyImage, copyFonts, copyOther, copyVideo, copyAudio, scriptApp, htmlMain, htmlPartials, styleMain, styleBootstrap, styleUtilities), cleanEnd, prodTasks, server, watchFiles);
 exports.favicon = series(generateFavicon);
 exports.test = series(prodTasks);
-// // exports.docs = series(docs_style, docs_run, docs_server, docs_watch);
+exports.docs = series(generateDocumentation);
