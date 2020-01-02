@@ -4,14 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>{{options.title}}</title>
-
-	<meta name="description" content="">
+	<meta name="description" content="FrontBox CSS Documentation">
 	<meta name="generator" content="kss-node">
 	<meta name="viewport" content="width=device-width">
-	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	{{{styles}}}
+	<link rel="stylesheet" href="./kss-assets/style.css">
 </head>
 
 <body class="body" id="body" {{#if template.isItem}}class="kss-fullscreen-mode" {{/if}}>
@@ -198,14 +197,11 @@
 					<h3>Output</h3>
 
 					<div class="kss-modifier__wrapper">
-						<div class="kss-modifier__heading kss-style">
-							Preview
-						</div>
 
 						<div class="kss-modifier__example">
 							<iframe class="debug-iframe" data-iframe="output"></iframe>
 							<div data-iframe-content="output">
-								{{{output}}}
+								{{{pug output}}}
 							</div>
 						</div>
 					</div>
@@ -215,6 +211,8 @@
 							Markup
 						</summary>
 						<pre class="code"><code class="code__content">{{{hljs output 'html'}}}</code></pre>
+						<br>
+						<pre class="code"><code class="code__content">{{{hljs (pug output) 'html'}}}</code></pre>
 					</details>
 					{{/if}}
 
@@ -333,20 +331,6 @@
 				</div>
 				{{/if}}
 
-				{{!-- Emmet --}}
-				{{#if emmet }}
-				<details class="kss-markup kss-style">
-					<summary>
-						{{#if markupFile }}
-						Emmet: <code>{{markupFile}}</code>
-						{{else}}
-						Emmet
-						{{/if}}
-					</summary>
-					<pre class="hljs"><code class="language-handlebars">{{{hljs emmet 'handlebars'}}}</code></pre>
-				</details>
-				{{/if}}
-
 				{{/if}}
 
 				{{!-- Mixin --}}
@@ -366,8 +350,13 @@
 				{{/if}}
 
 				{{#if source.filename}}
-				<div class="kss-source kss-style">
-					Source: <code>{{source.filename}}</code>, line {{source.line}}
+				<div class="section__footer section-source">
+					<p class="section-source__title">Source</p>
+					<code class="section-source__link">
+						<a href="https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/{{source.filename}}#L{{source.line}}" target="_blank">
+							{{source.filename}}
+						</a>
+					</code>
 				</div>
 				{{/if}}
 			</section>

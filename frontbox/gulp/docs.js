@@ -1,26 +1,26 @@
 /* Import libs */
-import { dest, series, src, watch } from 'gulp';
-import header from 'gulp-header';
-import gulpif from 'gulp-if';
-import sass from 'gulp-sass';
-import sassGlob from 'gulp-sass-glob';
-import sourcemaps from 'gulp-sourcemaps';
-import kss from 'kss';
+import { dest, series, src, watch } from "gulp";
+import header from "gulp-header";
+import gulpif from "gulp-if";
+import sass from "gulp-sass";
+import sassGlob from "gulp-sass-glob";
+import sourcemaps from "gulp-sourcemaps";
+import kss from "kss";
 /* Import config */
-import * as config from './../../config';
-import { browserSync } from './../../gulpfile.babel';
+import * as config from "./../../config";
+import { browserSync } from "./../../gulpfile.babel";
 
-const argv = require('yargs').argv;
+const argv = require("yargs").argv;
 
 export function docs_run(done) {
 	kss(
 		{
 			source: [`src/style/`],
-			builder: './frontbox/kss/',
-			title: 'FrontBox-CSS Debug Style Guide',
-			css: ['./kss-assets/style.css'],
-			custom: ['emmet', 'Function', 'Output', 'Icons', 'Usage', 'Arguments', 'Title'],
-			extend: './frontbox/kss/helpers'
+			builder: "./frontbox/kss/",
+			title: "FrontBox-CSS Debug Style Guide",
+			css: ["./kss-assets/style.css"],
+			custom: ["Function", "Output", "Icons", "Usage", "Arguments", "Title"],
+			extend: "./frontbox/kss/helpers"
 		},
 		browserSync.stream(),
 		done()
@@ -28,7 +28,14 @@ export function docs_run(done) {
 }
 
 export function docs_watch() {
-	watch(['src/style/**/*', `$./../FrontBox-Plugins/**/*.scss`, 'frontbox/kss/**/*.(scss|hbs)'], series(docs_style, docs_run));
+	watch(
+		[
+			"src/style/**/*",
+			`$./../FrontBox-Plugins/**/*.scss`,
+			"frontbox/kss/**/*.(scss|hbs)"
+		],
+		series(docs_style, docs_run)
+	);
 }
 
 export function docs_style() {
@@ -41,7 +48,7 @@ export function docs_style() {
 		.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
 		.pipe(sassGlob())
 		.pipe(sass())
-		.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
+		.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: "./" })))
 		.pipe(dest(`frontbox/kss/kss-assets/`))
 		.pipe(browserSync.stream());
 }

@@ -4,7 +4,7 @@ $colorWhite: #f3f7fb;
 $colorBlack: #1b1716;
 
 @import "./../../src/style/bootstrap/browser-reset";
-@import '../../node_modules/highlight.js/styles/vs2015';
+@import "../../node_modules/highlight.js/styles/vs2015";
 @import "style/*";
 // @import "./../../src/style/variables/base";
 // @import "./../../src/style/variables/color";
@@ -29,7 +29,7 @@ $color-secondary: blue;
 .block-square {
 	background-color: $color-primary;
 
-	* >  {
+	* > {
 		color: $color-secondary;
 	}
 }

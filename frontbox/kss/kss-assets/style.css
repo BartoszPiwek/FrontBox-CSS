@@ -238,6 +238,16 @@ h3 {
 .section-description {
   margin: 20px 0; }
 
+.section-footer {
+  margin: 20px 0; }
+
+.section-source {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0; }
+
 .code {
   display: block;
   padding: 14px;
@@ -283,7 +293,8 @@ h3 {
 
 .table {
   width: 100%;
-  min-width: 700px; }
+  min-width: 700px;
+  font-family: monospace; }
   .table thead td {
     padding: 10px 14px;
     background-color: #38515b;
@@ -293,8 +304,7 @@ h3 {
     background-color: rgba(56, 81, 91, 0.1); }
   .table tbody td {
     padding: 6px 14px;
-    border-bottom: 1px solid #38515b;
-    font-family: monospace; }
+    border-bottom: 1px solid #38515b; }
 
 .kss-style {
   color: #444;

@@ -1,6 +1,7 @@
 .table {
 	width: 100%;
 	min-width: 700px;
+	font-family: monospace;
 
 	thead {
 		td {
@@ -23,7 +24,6 @@
 		td {
 			padding: 6px 14px;
 			border-bottom: 1px solid $colorSecondary;
-			font-family: monospace;
 		}
 	}
 }
