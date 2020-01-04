@@ -1,6 +1,6 @@
 block variables
 <!DOCTYPE html>
-	html.js_no(lang= data.website.locale itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#")
+	html.js_no(lang= website.locale itemscope itemtype="http://schema.org/WebPage" dir="ltr" prefix="og: http://ogp.me/ns#")
 		head
 
 			//- Base Meta
@@ -37,26 +37,26 @@ block variables
 			//- Addon Meta
 			if ogType
 				meta(property="og:type" content= ogType)
-			if data.website.color
-				meta(name="theme-color" content= data.website.color)
-			if data.website.author
-				meta(name="author" content= data.website.author)
+			if website.color
+				meta(name="theme-color" content= website.color)
+			if website.author
+				meta(name="author" content= website.author)
 
 			//- Assets
 			block assets_header
 				if dev
-					link(rel="stylesheet" type="text/css" href="/css/utilities." + getMode() + ".css" media="all")
-					link(rel="stylesheet" type="text/css" href="/css/bootstrap." + getMode() + ".css" media="all")
-				link(rel="stylesheet" type="text/css" href="/style." + getMode() + ".css" media="all")
+					link(rel="stylesheet" type="text/css" href="/css/utilities." + getMode + ".css" media="all")
+					link(rel="stylesheet" type="text/css" href="/css/bootstrap." + getMode + ".css" media="all")
+				link(rel="stylesheet" type="text/css" href="/style." + getMode + ".css" media="all")
 
-			//- Favicons
+			//- Favicon
 			include favicon.html
 
 		body#body
 
-			//- Informations: Disable javascripts
+			//- information's: Disable javascript
 			include info-off-javascript.pug
-			//- Informations: Using old browser
+			//- information's: Using old browser
 			include info-old-browser.pug
 
 			//- Main content
@@ -66,7 +66,7 @@ block variables
 
 			//- Assets
 			block assets_footer
-				script(src="/scripts/app." + getMode() + ".js")
+				script(src="/scripts/app." + getMode + ".js")
 				
 			//- Polyfill
 			#js_check-scrollbar.scrollbar

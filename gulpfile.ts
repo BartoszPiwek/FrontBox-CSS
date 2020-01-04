@@ -8,6 +8,7 @@ import { configBrowser } from "./config";
 import { Copy } from "./frontbox/gulp/copy";
 import { DocumentationStyle } from "./frontbox/gulp/documentation-style";
 import { websiteDestinationPath } from "./frontbox/gulp/frontbox";
+import { Html } from "./frontbox/gulp/html";
 
 export const browserSync = require('browser-sync').create();
 
@@ -15,6 +16,7 @@ const argv = require('yargs').argv;
 const del = require('del');
 const documentationStyle = new DocumentationStyle();
 const copy = new Copy();
+const html = new Html();
 
 @Gulpclass()
 export class Gulpfile {
@@ -35,12 +37,10 @@ export class Gulpfile {
       del.sync(`${websiteDestinationPath}`);
     }
 
-    // copy.init().map(task => {
-    //   task();
-    // })
     copy.init();
-
-    // await parallel(copy.init());
+    html.init();
+    html.main();
+    html.partials();
 
     if (argv.server) {
       this.createServer();

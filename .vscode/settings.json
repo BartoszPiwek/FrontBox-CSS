@@ -17,7 +17,14 @@
 		"antialiased",
 		"fablet",
 		"frontbox",
-		"woff"
+		"gitfiles",
+		"itemprop",
+		"itemscope",
+		"itemtype",
+		"nofollow",
+		"tabindex",
+		"woff",
+		"wordpress"
 	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.tslint": true,

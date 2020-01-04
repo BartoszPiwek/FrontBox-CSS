@@ -1,44 +1,74 @@
-/* Libs */
-import { dest, src } from 'gulp';
-import changed from 'gulp-changed';
-import newer from 'gulp-newer';
-import pug from 'gulp-pug';
-/* Config */
-import * as config from '../../config.back';
-import { browserSync } from '../../gulpfile.babel';
-import { destPath, getMode } from './frontbox';
-const argv = require('yargs').argv;
+import { dest, series, src, watch } from 'gulp';
+import * as changed from 'gulp-changed';
+import * as newer from 'gulp-newer';
+import * as pug from 'gulp-pug';
+import { Gulpclass, Task } from 'gulpclass/Decorators';
+import { configHtml, configWebsite } from '../../config';
+import { browserSync } from '../../gulpfile';
+import { getMode, websiteDestinationPath } from './frontbox';
 
-const passVariables = {
+const argv = require('yargs').argv;
+const pugOptions = {
 	data: {
-		data: config,
 		getMode: getMode,
-		dev: !argv.prod,
+		dev: getMode === 'dev',
+		website: {
+			...configWebsite
+		}
 	},
-	filters: require('./pug-filters')(config)
+	verbose: true,
+	filters: require('./pug-filters')({
+		version: getMode
+	})
 };
 
-export function htmlMain() {
-	const element = config.path.pug.main;
-	return src(`${element.files}`)
-		.pipe(newer(`${destPath()}/${element.dest}`))
-		.pipe(changed(`${destPath()}`))
-		.pipe(pug(passVariables))
-		.pipe(dest(`${destPath()}/${element.dest}`))
-		.pipe(browserSync.stream());
-}
-export function htmlInclude() {
-	const element = config.path.pug.include;
-	return src(`${element.files}`)
-		.pipe(pug(passVariables))
-		.pipe(dest(`${destPath()}`))
-		.pipe(browserSync.stream());
-}
-export function htmlPartials() {
-	const element = config.path.pug.partials;
-	return src(`${element.files}`)
-		.pipe(newer(`${destPath()}/${element.dest}`))
-		.pipe(pug(passVariables))
-		.pipe(dest(`${destPath()}/${element.dest}`))
-		.pipe(browserSync.stream());
+@Gulpclass()
+export class Html {
+
+	init() {
+		if (argv.watch) {
+			this.watch();
+		}
+	}
+
+	@Task('main')
+	main() {
+		return src(`${configHtml.main.files}`)
+			.pipe(newer(`${websiteDestinationPath}/${configHtml.main.dest}`))
+			.pipe(changed(`${websiteDestinationPath}`))
+			.pipe(pug(pugOptions))
+			.pipe(dest(`${websiteDestinationPath}/${configHtml.main.dest}`))
+			.pipe(browserSync.stream());
+	}
+
+	@Task('include')
+	include() {
+		return src(`${configHtml.include.files}`)
+			.pipe(pug(pugOptions))
+			.pipe(dest(`${websiteDestinationPath}`))
+			.pipe(browserSync.stream());
+	}
+
+	@Task('partials')
+	partials() {
+		return src(`${configHtml.partials.files}`)
+			.pipe(newer(`${websiteDestinationPath}/${configHtml.partials.dest}`))
+			.pipe(pug(pugOptions))
+			.pipe(dest(`${websiteDestinationPath}/${configHtml.partials.dest}`))
+			.pipe(browserSync.stream());
+	}
+
+	@Task()
+	watch() {
+		for (const key in configHtml) {
+			if (configHtml.hasOwnProperty(key)) {
+				const element = configHtml[key];
+
+				watch(
+					element.watch,
+					series(key)
+				);
+			}
+		}
+	}
 }

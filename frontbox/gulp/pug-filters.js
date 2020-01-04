@@ -15,6 +15,7 @@ module.exports = SETTINGS => {
 			});
 			return output;
 		},
+
 		/* https://github.com/BartoszPiwek/FrontBox-CSS/wiki/PUG#filters */
 		svg: (pug, args) => {
 			const svg = fs.readFileSync(`./src/images/svg/${args.file}.svg`, 'utf8');

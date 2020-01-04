@@ -31,11 +31,16 @@ export class Copy {
 	@Task()
 	watch() {
 		for (const copyTask of configCopy) {
+			const copy = () => {
+				return this.tasks[copyTask.name]();
+			};
+
+			(Object.assign(copy, { displayName: `copy${copyTask.name.charAt(0).toUpperCase() + copyTask.name.slice(1)}` }));
+
 			watch(
 				copyTask.watch,
-				() => {
-					return this.tasks[copyTask.name]();
-				})
+				copy
+			)
 		}
 	}
 }

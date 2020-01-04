@@ -9,6 +9,52 @@ export const configBrowser = {
 	port: 8080
 }
 
+export const configWebsite = {
+	name: 'FrontBox-CSS',
+	description: 'Static WWW builder tool',
+	url: 'https://github.com/BartoszPiwek/FrontBox-CSS',
+	locale: 'pl-PL',
+	color: '#e7be54',
+	author: 'Bartosz Piwek',
+	info: {
+		javascriptOff: true,
+		usingOldBrowser: true
+	}
+}
+
+export const configProject = {
+	type: null, // 'wordpress'
+}
+
+export const configFramework = {
+	frameworkDevelopment: true,
+	frameworkDevelopmentFiles: [`public`, `*.md`, `LICENSE`, `gitfiles`]
+}
+
+export const configHtml = {
+	main: {
+		files: './src/template/*.pug',
+		dest: '',
+		watch: [
+			'./src/template/*.pug',
+		]
+	},
+	include: {
+		files: './src/template/*.pug',
+		dest: '',
+		watch: [
+			'./src/template/includes/*.pug'
+		]
+	},
+	partials: {
+		files: './src/template/partials/*.pug',
+		dest: 'partials',
+		watch: [
+			'./src/template/partials/*.pug'
+		]
+	}
+}
+
 export const configCopy = [
 	{
 		name: 'image',
@@ -20,10 +66,10 @@ export const configCopy = [
 	},
 	{
 		name: 'fonts',
-		files: './src/fonts/*.{eot|woff2|woff|ttf|svg}',
+		files: './src/fonts/*.{eot,woff2,woff,ttf,svg}',
 		dest: 'fonts',
 		watch: [
-			'./src/fonts/*.{eot|woff2|woff|ttf|svg}',
+			'./src/fonts/*.{eot,woff2,woff,ttf,svg}',
 		]
 	},
 	{
