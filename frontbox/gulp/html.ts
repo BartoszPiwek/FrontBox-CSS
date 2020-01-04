@@ -2,6 +2,7 @@ import { dest, series, src, watch } from 'gulp';
 import * as changed from 'gulp-changed';
 import * as newer from 'gulp-newer';
 import * as pug from 'gulp-pug';
+import * as hash from 'gulp-static-hash';
 import { Gulpclass, Task } from 'gulpclass/Decorators';
 import { configHtml, configWebsite } from '../../config';
 import { browserSync } from '../../gulpfile';
@@ -26,6 +27,10 @@ const pugOptions = {
 export class Html {
 
 	init() {
+
+		this.main();
+		this.partials();
+
 		if (argv.watch) {
 			this.watch();
 		}
@@ -56,6 +61,17 @@ export class Html {
 			.pipe(pug(pugOptions))
 			.pipe(dest(`${websiteDestinationPath}/${configHtml.partials.dest}`))
 			.pipe(browserSync.stream());
+	}
+
+	@Task('hash')
+	hash() {
+		return src(`${websiteDestinationPath}/*.html`)
+			.pipe(
+				hash({
+					asset: `${websiteDestinationPath}`
+				})
+			)
+			.pipe(dest(`${websiteDestinationPath}`));
 	}
 
 	@Task()

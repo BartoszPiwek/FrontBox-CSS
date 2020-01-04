@@ -12,7 +12,7 @@ const argv = require("yargs").argv;
 const browserSync = require('browser-sync').create();
 
 @Gulpclass()
-export class DocumentationStyle {
+export class FrontboxGulpDocumentationStyle {
 
 	@Task()
 	server() {

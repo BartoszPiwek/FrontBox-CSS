@@ -1,12 +1,30 @@
-/*!************************************************************************
-Framework:      FrontBox 1.3.0
-Author:         Bartosz Piwek
-Repository:     https://github.com/BartoszPiwek/FrontBox
-************************************************************************!*/
+/*!
+ * FrontBox 1.3.0
+ * Copyright Bartosz Piwek
+ * https://github.com/BartoszPiwek/FrontBox
+ */
 
+import { Browser } from './bootstrap/browser';
+import { Burger } from './bootstrap/burger';
 /* test-code */
 import { FrontboxConsole } from './bootstrap/console';
+/* end-test-code */
+import { CookieInformation } from './bootstrap/cookie';
+import { html } from './bootstrap/elements';
+import { InputCounter } from './bootstrap/input-counter';
+import { ProtectEmail } from './bootstrap/protect-email';
+import { Scroll } from './bootstrap/scroll';
+import { Sticky } from './bootstrap/sticky';
+import { Tabs } from './bootstrap/tabs';
+/* test-code */
 import { FrontboxWatch } from './bootstrap/watch';
+/* end-test-code */
+import { Wcag } from './bootstrap/wcag';
+
+export const scroll = new Scroll();
+export const browser = new Browser();
+
+/* test-code */
 export const frontboxWatch = new FrontboxWatch({
 	hide: false,
 	open: false
@@ -17,20 +35,6 @@ export const frontboxConsole = new FrontboxConsole({
 	autoOpen: false
 });
 /* end-test-code */
-
-import { html } from './bootstrap/elements';
-import { Browser } from './bootstrap/browser';
-import { CookieInformation } from './bootstrap/cookie';
-import { InputCounter } from './bootstrap/input-counter';
-import { Scroll } from './bootstrap/scroll';
-import { Burger } from './bootstrap/burger';
-import { Sticky } from './bootstrap/sticky';
-import { Tabs } from './bootstrap/tabs';
-import { ProtectEmail } from './bootstrap/protect-email';
-import { Wcag } from './bootstrap/wcag';
-
-export const scroll = new Scroll();
-export const browser = new Browser();
 
 window.onload = () => {
 	new Burger({

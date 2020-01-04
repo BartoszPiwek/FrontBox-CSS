@@ -5,7 +5,7 @@ import newer from 'gulp-newer';
 import svgmin from 'gulp-svgmin';
 /* Config */
 import * as config from '../../config.back';
-import { destPath } from './frontbox';
+import { websiteDestinationPath } from './frontbox';
 
 export function generateFavicon() {
 	const element = config.path.assets.favicon;
@@ -31,7 +31,7 @@ export function generateFavicon() {
 export function minifySvg() {
 	const element = config.path.assets.svg;
 	return src(element.files)
-		.pipe(newer(`${destPath()}/${element.dest}`))
+		.pipe(newer(`${websiteDestinationPath}/${element.dest}`))
 		.pipe(svgmin({
 			plugins: [{ removeXMLProcInst: true }, { removeComments: true }, { removeDoctype: true }, { removeViewBox: false }, { removeUselessStrokeAndFill: true }, { removeStyleElement: true }, { removeAttrs: { attrs: ['xmlns', 'fill', 'class', 'stroke', 'width', 'height', 'id'] } }]
 		}))

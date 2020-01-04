@@ -5,18 +5,22 @@
  */
 import { Gulpclass, Task } from "gulpclass/Decorators";
 import { configBrowser } from "./config";
-import { Copy } from "./frontbox/gulp/copy";
-import { DocumentationStyle } from "./frontbox/gulp/documentation-style";
+import { FrontboxGulpCopy } from "./frontbox/gulp/copy";
+import { FrontboxGulpDocumentationStyle } from "./frontbox/gulp/documentation-style";
 import { websiteDestinationPath } from "./frontbox/gulp/frontbox";
 import { Html } from "./frontbox/gulp/html";
+import { FrontboxGulpScript } from "./frontbox/gulp/script";
+import { FrontboxGulpStyle } from "./frontbox/gulp/style";
 
 export const browserSync = require('browser-sync').create();
 
 const argv = require('yargs').argv;
 const del = require('del');
-const documentationStyle = new DocumentationStyle();
-const copy = new Copy();
+const documentationStyle = new FrontboxGulpDocumentationStyle();
+const copy = new FrontboxGulpCopy();
 const html = new Html();
+const script = new FrontboxGulpScript();
+const style = new FrontboxGulpStyle();
 
 @Gulpclass()
 export class Gulpfile {
@@ -39,8 +43,8 @@ export class Gulpfile {
 
     copy.init();
     html.init();
-    html.main();
-    html.partials();
+    script.init();
+    style.init();
 
     if (argv.server) {
       this.createServer();

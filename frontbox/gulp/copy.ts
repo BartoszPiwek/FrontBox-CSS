@@ -8,8 +8,7 @@ import { websiteDestinationPath } from "./frontbox";
 const argv = require("yargs").argv;
 
 @Gulpclass()
-export class Copy {
-
+export class FrontboxGulpCopy {
 	private tasks = {};
 
 	init() {

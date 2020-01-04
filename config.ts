@@ -31,6 +31,69 @@ export const configFramework = {
 	frameworkDevelopmentFiles: [`public`, `*.md`, `LICENSE`, `gitfiles`]
 }
 
+export const configStyle = [
+	{
+		name: 'main',
+		files: './src/style/style.scss',
+		dest: '',
+		watch: [
+			'./src/style/style.scss',
+			'./src/style/_*.scss',
+			'./src/style/variables/*.scss',
+			'./src/style/tools/*.scss',
+			'./src/style/modules/*.scss',
+			'./src/style/plugins/*.scss',
+		]
+	},
+	{
+		name: 'bootstrap',
+		files: './src/style/bootstrap.scss',
+		dest: 'css',
+		watch: [
+			'./src/style/bootstrap.scss',
+			'./src/style/bootstrap/*.scss',
+			'./src/style/variables/*.scss',
+			'./src/style/tools/*.scss',
+			'./src/style/modules/*.scss',
+		]
+	},
+	{
+		name: 'grid',
+		files: './src/style/grid.scss',
+		dest: 'css',
+		watch: [
+			'./src/style/grid.scss',
+			'./src/style/tools/_media.scss',
+			'./src/style/variables/_media.scss',
+			'./src/style/modules/_grid.scss',
+			'./src/style/modules/_row.scss',
+		]
+	},
+	{
+		name: 'utilities',
+		files: './src/style/utilities.scss',
+		dest: 'css',
+		watch: [
+			'./src/style/utilities.scss',
+			"./src/style/utilities/*.scss"
+		]
+	},
+]
+
+export const configScript = [
+	{
+		name: 'app',
+		files: './src/scripts/app.ts',
+		dest: 'scripts',
+		watch: [
+			'./src/scripts/app.ts',
+			'./src/scripts/app/*.ts',
+			'./src/scripts/bootstrap/*.ts',
+			'./src/scripts/modules/*.ts',
+		]
+	}
+];
+
 export const configHtml = {
 	main: {
 		files: './src/template/*.pug',

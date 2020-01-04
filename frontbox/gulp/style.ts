@@ -1,98 +1,84 @@
-/* Libs */
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
-import { dest, src } from 'gulp';
-import footer from 'gulp-footer';
-import header from 'gulp-header';
-import gulpif from 'gulp-if';
-import postcss from 'gulp-postcss';
-import rename from 'gulp-rename';
-import sass from 'gulp-sass';
-import sassGlob from 'gulp-sass-glob';
-import sourcemaps from 'gulp-sourcemaps';
-import uncss from 'uncss';
-/* Config */
-import * as config from '../../config.back';
-import { browserSync } from '../../gulpfile.babel';
-import { destPath, getMode } from './frontbox';
+import * as autoprefixer from 'autoprefixer';
+import * as cssnano from 'cssnano';
+import { dest, src, watch } from 'gulp';
+import * as header from 'gulp-header';
+import * as gulpif from 'gulp-if';
+import * as postcss from 'gulp-postcss';
+import * as rename from 'gulp-rename';
+import * as sass from 'gulp-sass';
+import * as sassGlob from 'gulp-sass-glob';
+import * as sourcemaps from 'gulp-sourcemaps';
+import { Gulpclass, Task } from 'gulpclass/Decorators';
+import * as uncss from 'uncss';
+import { configStyle, configWebsite } from '../../config';
+import { browserSync } from '../../gulpfile';
+import { getMode, websiteDestinationPath } from './frontbox';
+
 const argv = require('yargs').argv;
 
-const concatStyle = argv.prod ? `@import 'bootstrap'; @import 'utilities';` : '';
-const passVariables = `
+const scssOptions = `
 	$dev: ${!argv.prod};
-	$infoOffJavascript: ${config.info.offJavascript};
-	$infoOldBrowser: ${config.info.oldBrowser};
+	$infoOffJavascript: ${configWebsite.info.javascriptOff};
+	$infoOldBrowser: ${configWebsite.info.usingOldBrowser};
 `;
 
-export function styleMain() {
-	const element = config.path.style.main;
-	return src(`${element.files}`)
-		.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
-		.pipe(header(passVariables + concatStyle))
-		.pipe(gulpif(config.working, footer(`@import '${config.path.plugins}/**/*.scss';`)))
-		.pipe(sassGlob())
-		.pipe(sass())
-		.pipe(
-			gulpif(
-				argv.prod,
-				postcss([
-					autoprefixer(),
-					cssnano(),
-					uncss.postcssPlugin({
-						html: [`${destPath()}/*.html`],
-						ignoreSheets: [/fonts.googleapis/],
-						ignore: [/js_*/, /data-tabs-slider-active/, /\.active/]
-					})
-				])
-			)
-		)
-		.pipe(rename({
-			suffix: `.${getMode()}`
-		}))
-		.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
-		.pipe(dest(`${destPath()}/${element.dest}`))
-		.pipe(browserSync.stream());
-}
+@Gulpclass()
+export class FrontboxGulpStyle {
+  private tasks = {};
 
-export function styleBootstrap(cb) {
-	const element = config.path.style.bootstrap;
+  init() {
+    configStyle.map((element) => {
+      this.tasks[element.name] = () => {
+        return src(`${element.files}`, {
+          allowEmpty: true
+        })
+          .pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
+          .pipe(header(scssOptions))
+          .pipe(sassGlob())
+          .pipe(sass())
+          .pipe(
+            gulpif(
+              argv.prod,
+              postcss([
+                autoprefixer(),
+                cssnano(),
+                uncss.postcssPlugin({
+                  html: [`${websiteDestinationPath}/*.html`],
+                  ignoreSheets: [/fonts.googleapis/],
+                  ignore: [/js_*/, /data-tabs-slider-active/, /\.active/]
+                })
+              ])
+            )
+          )
+          .pipe(rename({
+            suffix: `.${getMode}`
+          }))
+          .pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
+          .pipe(dest(`${websiteDestinationPath}/${element.dest}`))
+          .pipe(browserSync.stream());
+      };
 
-	if (!argv.prod) {
-		return src(`${element.files}`)
-			.pipe(header(passVariables))
-			.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
-			.pipe(sassGlob())
-			.pipe(sass({ outputStyle: 'compressed' }))
-			.pipe(rename({
-				suffix: `.${getMode()}`
-			}))
-			.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
-			.pipe(dest(`${destPath()}/${element.dest}`))
-			.pipe(browserSync.stream());
-	} else {
-		cb();
-	}
-}
+      this.tasks[element.name]();
+    })
 
-export function styleUtilities(cb) {
-	const element = config.path.style.utilities;
+    if (argv.watch) {
+      this.watch();
+    }
+  }
 
-	if (!argv.prod) {
-		return src(`${element.files}`)
-			.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
-			.pipe(sassGlob())
-			.pipe(sass())
-			.pipe(rename({
-				suffix: `.${getMode()}`
-			}))
-			.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
-			.pipe(dest(`${destPath()}/${element.dest}`))
-			.pipe(browserSync.stream());
-	} else {
-		cb();
-	}
-}
+  @Task()
+  watch() {
+    for (const element of configStyle) {
+      const copy = () => {
+        return this.tasks[element.name]();
+      };
 
-export function styleConcat() {
+      (Object.assign(copy, { displayName: `style${element.name.charAt(0).toUpperCase() + element.name.slice(1)}` }));
 
+      watch(
+        element.watch,
+        copy
+      )
+    }
+  }
 }

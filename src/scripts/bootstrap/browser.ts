@@ -1,9 +1,9 @@
 /* test-code */
-import { frontboxWatch } from '../app';
+import { breakpoints } from '../../../consts';
+// import { frontboxWatch } from '../app';
+import { Component } from './component';
 /* end-test-code */
 import { html } from './elements';
-import { breakpoints } from '../../../consts';
-import { Component } from './component';
 
 interface IScroll {
 	top: number;
@@ -32,14 +32,14 @@ export class Browser extends Component {
 
 	public afterInit() {
 		/* test-code */
-		frontboxWatch.add({
-			key: 'browser-scroll',
-			data: ['top', 'bottom', 'speed', 'direction']
-		});
-		frontboxWatch.add({
-			key: 'browser-size',
-			data: ['width', 'height']
-		});
+		// frontboxWatch.add({
+		// 	key: 'browser-scroll',
+		// 	data: ['top', 'bottom', 'speed', 'direction']
+		// });
+		// frontboxWatch.add({
+		// 	key: 'browser-size',
+		// 	data: ['width', 'height']
+		// });
 		/* end-test-code */
 	}
 
@@ -75,10 +75,10 @@ export class Browser extends Component {
 		};
 
 		/* test-code */
-		frontboxWatch.refresh({
-			key: 'browser-scroll',
-			data: this.scroll
-		});
+		// frontboxWatch.refresh({
+		// 	key: 'browser-scroll',
+		// 	data: this.scroll
+		// });
 		/* end-test-code */
 	}
 
@@ -149,13 +149,13 @@ export class Browser extends Component {
 		this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 
 		/* test-code */
-		frontboxWatch.refresh({
-			key: 'browser-size',
-			data: {
-				width: this.width,
-				height: this.height
-			}
-		});
+		// frontboxWatch.refresh({
+		// 	key: 'browser-size',
+		// 	data: {
+		// 		width: this.width,
+		// 		height: this.height
+		// 	}
+		// });
 		/* end-test-code */
 	}
 }

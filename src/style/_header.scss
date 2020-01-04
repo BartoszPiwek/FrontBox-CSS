@@ -14,8 +14,6 @@ Style guide: Header.tools
 
 .header {
 	position: relative;
-
-	// Placeholder size
 	height: 90px;
 
 	&__content {
@@ -31,6 +29,7 @@ Style guide: Header.tools
 
 		@include add-style-sticky {
 			@extend %fix-fixed;
+
 			padding: 10px 0;
 			box-shadow: 0 5px 10px 0 transparentize(color("black"), 0.4);
 		}

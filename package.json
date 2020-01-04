@@ -8,8 +8,8 @@
 		"node": ">= 0.8.0"
 	},
 	"scripts": {
-		"start": "gulp --watch --server",
-		"build": "gulp --prod",
+		"start": "gulp buildWebsite --watch --server",
+		"build": "gulp buildWebsite --prod",
 		"test": "gulp test",
 		"docs": "gulp documentationStyle",
 		"update": "ncu"
@@ -24,6 +24,7 @@
 		"@babel/plugin-transform-typescript": "^7.5.5",
 		"@babel/preset-env": "^7.5.5",
 		"@babel/register": "^7.5.5",
+		"@types/autoprefixer": "^9.6.1",
 		"@types/jquery": "^3.3.31",
 		"@types/node": "^12.7.2",
 		"autoprefixer": "^9.6.1",
@@ -65,6 +66,7 @@
 		"gulp-strip-code": "^0.1.4",
 		"gulp-svgmin": "^2.2.0",
 		"gulp-typescript": "^5.0.1",
+		"gulpclass": "^0.2.0",
 		"kss": "^3.0.0-beta.25",
 		"node-sass": "^4.12.0",
 		"normalize.css": "^8.0.1",
@@ -79,14 +81,13 @@
 		"stylelint-scss": "^3.10.0",
 		"svgmin": "^0.1.0",
 		"then-del": "^1.0.0",
+		"ts-node": "^8.5.4",
 		"tsify": "^4.0.1",
 		"typescript": "^3.7.4",
 		"uncss": "^0.17.2",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"vnu-jar": "^19.6.7",
-		"ts-node": "^8.5.4",
-		"gulpclass": "^0.2.0"
+		"vnu-jar": "^19.6.7"
 	},
 	"dependencies": {
 		"css-vars-ponyfill": "^2.1.1",
