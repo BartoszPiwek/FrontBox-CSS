@@ -9,9 +9,8 @@ docs
 src/js/libs/*
 
 # Generated
-public/dev/*
-public/prod/*
-styleguide
+public
+documentation
 
 # Maps
 *.map.*

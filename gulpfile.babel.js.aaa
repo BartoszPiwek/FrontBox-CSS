@@ -77,10 +77,12 @@ function prodTasks(...args) {
 }
 
 function generateDocumentation(...args) {
+	const element = config.path.style.main;
+
 	if (argv.watch) {
 		return series(docs_style, docs_run, docs_server, docs_watch)(...args);
 	} else {
-		return series(docs_style, docs_run)(...args);
+		return series(docs_style, styleMain, docs_run)(...args);
 	}
 }
 

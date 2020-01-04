@@ -1,20 +1,20 @@
 /* Libs */
-import { src, dest } from 'gulp';
-import sass from 'gulp-sass';
-import sassGlob from 'gulp-sass-glob';
-import header from 'gulp-header';
-import footer from 'gulp-footer';
-import rename from 'gulp-rename';
-import gulpif from 'gulp-if';
-import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import uncss from 'uncss';
+import { dest, src } from 'gulp';
+import footer from 'gulp-footer';
+import header from 'gulp-header';
+import gulpif from 'gulp-if';
 import postcss from 'gulp-postcss';
-import { browserSync } from './../../gulpfile.babel';
+import rename from 'gulp-rename';
+import sass from 'gulp-sass';
+import sassGlob from 'gulp-sass-glob';
+import sourcemaps from 'gulp-sourcemaps';
+import uncss from 'uncss';
 /* Config */
-import * as config from './../../config';
-import { getMode, destPath } from './frontbox';
+import * as config from '../../config.back';
+import { browserSync } from '../../gulpfile.babel';
+import { destPath, getMode } from './frontbox';
 const argv = require('yargs').argv;
 
 const concatStyle = argv.prod ? `@import 'bootstrap'; @import 'utilities';` : '';
@@ -53,6 +53,7 @@ export function styleMain() {
 		.pipe(dest(`${destPath()}/${element.dest}`))
 		.pipe(browserSync.stream());
 }
+
 export function styleBootstrap(cb) {
 	const element = config.path.style.bootstrap;
 
@@ -72,6 +73,7 @@ export function styleBootstrap(cb) {
 		cb();
 	}
 }
+
 export function styleUtilities(cb) {
 	const element = config.path.style.utilities;
 
@@ -89,4 +91,8 @@ export function styleUtilities(cb) {
 	} else {
 		cb();
 	}
+}
+
+export function styleConcat() {
+
 }

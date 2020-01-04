@@ -11,7 +11,7 @@
 		"start": "gulp --watch --server",
 		"build": "gulp --prod",
 		"test": "gulp test",
-		"docs": "gulp docs",
+		"docs": "gulp documentationStyle",
 		"update": "ncu"
 	},
 	"bugs": {
@@ -80,11 +80,13 @@
 		"svgmin": "^0.1.0",
 		"then-del": "^1.0.0",
 		"tsify": "^4.0.1",
-		"typescript": "^3.6.2",
+		"typescript": "^3.7.4",
 		"uncss": "^0.17.2",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"vnu-jar": "^19.6.7"
+		"vnu-jar": "^19.6.7",
+		"ts-node": "^8.5.4",
+		"gulpclass": "^0.2.0"
 	},
 	"dependencies": {
 		"css-vars-ponyfill": "^2.1.1",

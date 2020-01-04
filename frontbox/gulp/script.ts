@@ -4,14 +4,14 @@ import { dest } from 'gulp';
 import babel from 'gulp-babel';
 import gulpif from 'gulp-if';
 import rename from 'gulp-rename';
+import sourcemaps from 'gulp-sourcemaps';
 import stripCode from 'gulp-strip-code';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
-import sourcemaps from 'gulp-sourcemaps';
+import * as config from '../../config.back';
+import { browserSync } from '../../gulpfile.babel';
 /* Config */
 import { destPath, getMode } from './frontbox';
-import * as config from './../../config';
-import { browserSync } from './../../gulpfile.babel';
 const argv = require('yargs').argv;
 
 /* Import config */

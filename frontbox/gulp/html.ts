@@ -1,11 +1,11 @@
 /* Libs */
-import { src, dest } from 'gulp';
-import pug from 'gulp-pug';
-import { browserSync } from './../../gulpfile.babel';
+import { dest, src } from 'gulp';
 import changed from 'gulp-changed';
 import newer from 'gulp-newer';
+import pug from 'gulp-pug';
 /* Config */
-import * as config from './../../config';
+import * as config from '../../config.back';
+import { browserSync } from '../../gulpfile.babel';
 import { destPath, getMode } from './frontbox';
 const argv = require('yargs').argv;
 

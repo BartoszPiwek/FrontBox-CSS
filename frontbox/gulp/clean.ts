@@ -1,8 +1,8 @@
 /* Libs */
 const del = require('del');
-import { destPath } from './frontbox';
 /* Config */
-import * as config from './../../config';
+import * as config from '../../config.back';
+import { destPath } from './frontbox';
 const argv = require('yargs').argv;
 
 export function cleanBegin(cb) {

@@ -110,10 +110,10 @@ module.exports = {
 				]
 			},
 			fonts: {
-				files: './src/fonts/*.{eot|woff2|woff|ttf|svg}',
+				files: './src/fonts/*.{eot,woff2,woff,ttf,svg}',
 				dest: 'fonts',
 				watch: [
-					'./src/fonts/*.{eot|woff2|woff|ttf|svg}',
+					'./src/fonts/*.{eot,woff2,woff,ttf,svg}',
 				]
 			},
 			other: {

@@ -1,10 +1,10 @@
 /* Libs */
-import { src, dest } from 'gulp';
+import { dest, src } from 'gulp';
 import favicons from 'gulp-favicons';
 import newer from 'gulp-newer';
 import svgmin from 'gulp-svgmin';
 /* Config */
-import * as config from './../../config';
+import * as config from '../../config.back';
 import { destPath } from './frontbox';
 
 export function generateFavicon() {

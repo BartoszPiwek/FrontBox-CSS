@@ -13,8 +13,11 @@
 	"scss.lint.emptyRules": "error",
 	"scss.lint.duplicateProperties": "error",
 	"cSpell.words": [
+		"Gulpclass",
+		"antialiased",
 		"fablet",
-		"frontbox"
+		"frontbox",
+		"woff"
 	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.tslint": true,
