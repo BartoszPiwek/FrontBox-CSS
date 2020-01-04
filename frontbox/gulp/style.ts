@@ -15,7 +15,6 @@ import { browserSync } from '../../gulpfile';
 import { getMode, websiteDestinationPath } from './frontbox';
 
 const argv = require('yargs').argv;
-
 const scssOptions = `
 	$dev: ${!argv.prod};
 	$infoOffJavascript: ${configWebsite.info.javascriptOff};

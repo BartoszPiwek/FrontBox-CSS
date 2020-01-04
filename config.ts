@@ -28,7 +28,7 @@ export const configProject = {
 
 export const configFramework = {
 	frameworkDevelopment: true,
-	frameworkDevelopmentFiles: [`public`, `*.md`, `LICENSE`, `gitfiles`]
+	frameworkDevelopmentFiles: [`public`, `*.md`, `LICENSE`, `gitfiles`, 'frontbox/gitfiles']
 }
 
 export const configStyle = [
