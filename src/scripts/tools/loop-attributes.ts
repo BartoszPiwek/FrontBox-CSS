@@ -3,7 +3,7 @@ import { frontboxConsole } from '../app';
 /* end-test-code */
 
 /**
- * Get values from finded attributes and fire callback
+ * Get values from finder attributes and fire callback
  *
  * @function
  * @version					1.0

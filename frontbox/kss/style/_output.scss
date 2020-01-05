@@ -1,0 +1,31 @@
+.output {
+	margin: 0 auto;
+	padding: 14px;
+	overflow: hidden;
+	background: $colorSecondary;
+	text-align: center;
+}
+
+.iframe {
+	height: 0;
+	animation-name: debug-responsive;
+	animation-duration: 8s;
+	animation-play-state: running; // running|paused
+	animation-timing-function: ease-out; // ease|ease-in|ease-out|ease-in-out|linear|step-start|step-end|cubic-bezier()
+	animation-delay: 0s;
+	animation-iteration-count: infinite; // number|infinite
+	animation-direction: alternate; // normal|reverse|alternate|alternate-reverse
+	border: 0;
+	background-color: #fff;
+	animation-fill-mode: none; // none|backwards|forwards|both
+}
+
+@keyframes debug-responsive {
+	from {
+		width: 100%;
+	}
+
+	to {
+		width: 320px;
+	}
+}

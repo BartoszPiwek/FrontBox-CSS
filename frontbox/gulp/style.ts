@@ -12,7 +12,7 @@ import { Gulpclass, Task } from 'gulpclass/Decorators';
 import * as uncss from 'uncss';
 import { configStyle, configWebsite } from '../../config';
 import { browserSync } from '../../gulpfile';
-import { getMode, websiteDestinationPath } from './frontbox';
+import { FrontboxTaskAbstract, getMode, IFrontboxInitTaks, websiteDestinationPath } from './frontbox';
 
 const argv = require('yargs').argv;
 const scssOptions = `
@@ -22,10 +22,14 @@ const scssOptions = `
 `;
 
 @Gulpclass()
-export class FrontboxGulpStyle {
+export class FrontboxGulpStyle extends FrontboxTaskAbstract {
   private tasks = {};
 
-  init() {
+  init(param?: IFrontboxInitTaks) {
+    if (param) {
+      Object.assign(this, param);
+    }
+
     configStyle.map((element) => {
       this.tasks[element.name] = () => {
         return src(`${element.files}`, {
@@ -49,11 +53,11 @@ export class FrontboxGulpStyle {
               ])
             )
           )
-          .pipe(rename({
+          .pipe(gulpif(this.includePrefix, rename({
             suffix: `.${getMode}`
-          }))
+          })))
           .pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: './' })))
-          .pipe(dest(`${websiteDestinationPath}/${element.dest}`))
+          .pipe(dest(this.destinationPath ? this.destinationPath : `${websiteDestinationPath}/${element.dest}`))
           .pipe(browserSync.stream());
       };
 

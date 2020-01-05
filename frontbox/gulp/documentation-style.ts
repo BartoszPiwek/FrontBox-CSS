@@ -33,7 +33,7 @@ export class FrontboxGulpDocumentationStyle {
 			source: [`src/style/`],
 			builder: "./frontbox/kss/",
 			title: "FrontBox-CSS Debug Style Guide",
-			css: ["./kss-assets/style.css"],
+			css: ["./assets/style.css"],
 			custom: ["Function", "Output", "Icons", "Usage", "Arguments", "Title"],
 			extend: "./frontbox/kss/helpers",
 			destination: configDocumentationStyle.dest
@@ -44,13 +44,24 @@ export class FrontboxGulpDocumentationStyle {
 
 	@Task('style')
 	style() {
-		return src(`frontbox/kss/style.scss`, {
+		return src(`frontbox/kss/style/kss.scss`, {
 			allowEmpty: true
 		})
 			.pipe(gulpif(!argv.prod, sourcemaps.init({ loadMaps: true })))
 			.pipe(sassGlob())
 			.pipe(sass())
 			.pipe(gulpif(!argv.prod, sourcemaps.write(`./`, { sourceRoot: "./" })))
+			.pipe(dest(`${configDocumentationStyle.dest}/style`))
+			.pipe(browserSync.stream());
+	}
+
+	@Task('styleIframe')
+	styleIframe() {
+		return src(`frontbox/kss/style/iframe.scss`, {
+			allowEmpty: true
+		})
+			.pipe(sassGlob())
+			.pipe(sass())
 			.pipe(dest(`${configDocumentationStyle.dest}/style`))
 			.pipe(browserSync.stream());
 	}
@@ -65,6 +76,11 @@ export class FrontboxGulpDocumentationStyle {
 		watch(
 			["frontbox/kss/**/*.hbs"],
 			series('run')
+		);
+
+		watch(
+			["frontbox/kss/**/iframe.scss"],
+			series('styleIframe')
 		);
 	}
 }

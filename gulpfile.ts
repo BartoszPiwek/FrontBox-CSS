@@ -4,7 +4,7 @@
  * https://github.com/BartoszPiwek/FrontBox
  */
 import { Gulpclass, Task } from "gulpclass/Decorators";
-import { configBrowser } from "./config";
+import { configBrowser, configDocumentationStyle } from "./config";
 import { FrontboxGulpCopy } from "./frontbox/gulp/copy";
 import { FrontboxGulpDocumentationStyle } from "./frontbox/gulp/documentation-style";
 import { websiteDestinationPath } from "./frontbox/gulp/frontbox";
@@ -55,8 +55,17 @@ export class Gulpfile {
 
   @Task()
   async documentationStyle() {
+    if (argv.clean) {
+      del.sync(`${configDocumentationStyle}`);
+    }
+
     documentationStyle.run();
     documentationStyle.style();
+    documentationStyle.styleIframe();
+    style.init({
+      destinationPath: `${configDocumentationStyle.dest}/style`,
+      includePrefix: false
+    });
 
     if (argv.watch) {
       documentationStyle.watch();

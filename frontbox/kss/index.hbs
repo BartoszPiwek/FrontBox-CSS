@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="./style/style.css">
+	<link rel="stylesheet" href="./style/kss.css">
 </head>
 
 <body class="body" id="body" {{#if template.isItem}}class="kss-fullscreen-mode" {{/if}}>
@@ -198,8 +198,8 @@
 
 					<div class="kss-modifier__wrapper">
 
-						<div class="kss-modifier__example">
-							<iframe class="debug-iframe" data-iframe="output"></iframe>
+						<div class="output">
+							<iframe class="iframe" data-iframe="output"></iframe>
 							<div data-iframe-content="output">
 								{{{pug output}}}
 							</div>
@@ -403,11 +403,15 @@
 				find = $this.attr("data-iframe"),
 				$content = $(`[data-iframe-content="${find}"]`);
 
-			$this.contents().find("head").append('<link rel="stylesheet" href="/kss-assets/style.css">');
+			$this.contents().find("head").append('<link rel="stylesheet" href="/style/bootstrap.css">');
+			$this.contents().find("head").append('<link rel="stylesheet" href="/style/utilities.css">');
+			$this.contents().find("head").append('<link rel="stylesheet" href="/style/style.css">');
+			$this.contents().find("head").append('<link rel="stylesheet" href="/style/iframe.css">');
 			$this.contents().find("head").append('<meta name="viewport" content="width=device-width, initial-scale=1">');
-			$this.contents().find("body").addClass('debug-iframe-content');
-			$this.contents().find("body").append('<style> body,html { padding: 0!important; margin: 0!important; position: static!important; height: auto!important; min-height: auto!important; } </style>');
 			$this.contents().find("body").append($content);
+			setTimeout(function () {
+				$this.css('height', $this[0].contentWindow.document.documentElement.scrollHeight + 'px');
+			}, 1000);
 		});
 	</script>
 </body>
