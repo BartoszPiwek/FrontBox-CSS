@@ -1,4 +1,38 @@
 /*
+Row
+
+Container for columns. 
+Compatibility with [space](section-functions.html#functions-space) function
+
+Style guide: Grid.row
+*/
+@mixin grid-style-row {
+	.row {
+		display: flex;
+		position: relative;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 100%;
+
+		> * {
+			display: flex;
+			position: relative;
+			flex-direction: column;
+			flex-grow: 0;
+			flex-shrink: 0;
+			height: auto !important;
+			min-height: 1px;
+		}
+
+		&.row-same {
+			* > * {
+				flex: 1 1 auto;
+			}
+		}
+	}
+}
+
+/*
 Column
 
 Generate CSS flex columns. 
@@ -65,37 +99,6 @@ Style guide: Grid.column
 
 		@at-root .#{$prefix}col-shrink {
 			flex: 0 0 auto;
-		}
-	}
-}
-
-/*
-Row
-
-Style guide: Grid.row
-*/
-@mixin grid-style {
-	.row {
-		display: flex;
-		position: relative;
-		flex-direction: row;
-		flex-wrap: wrap;
-		width: 100%;
-
-		> * {
-			display: flex;
-			position: relative;
-			flex-direction: column;
-			flex-grow: 0;
-			flex-shrink: 0;
-			height: auto !important;
-			min-height: 1px;
-		}
-
-		&.row-same {
-			* > * {
-				flex: 1 1 auto;
-			}
 		}
 	}
 }

@@ -1,20 +1,21 @@
-module.exports = function (Handlebars) {
-  'use strict';
+module.exports = function(Handlebars) {
+	"use strict";
 
-  Handlebars.registerHelper('kssArguments', function (doc, block) {
-    var output = [];
-    var regex = /^(\$\S+)\s*: (.+)\s*: (\S+)\s*/gm;
-    var test;
+	Handlebars.registerHelper("kssArguments", function(doc, block) {
+		const regex = /^.*/gm;
+		let output = [];
+		let test;
 
-    while ((test = regex.exec(doc)) !== null) {
-      this.argument = {};
-      this.argument.variable = test[1];
-      this.argument.type = test[2];
-      this.argument.value = test[3];
+		while ((test = regex.exec(doc)) !== null) {
+			let elements = test[0].split(":").map(v => v.trim());
 
-      output.push(block.fn(this));
-    }
+			this.argument = {};
+			this.argument.variable = elements[0];
+			this.argument.type = elements[1];
+			this.argument.value = elements[2];
+			output.push(block.fn(this));
+		}
 
-    return output.join('');
-  });
+		return output.join("");
+	});
 };

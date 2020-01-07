@@ -1,22 +1,20 @@
-// ANCHOR .wrap
 .wrap {
-	@include add-wrap(1024px, 20px);
+	// @include add-wrap(1024px, 20px);
 
-	&--navbar {
-		@include add-wrap(1024px, 20px);
-	}
+	// &--navbar {
+	// 	@include add-wrap(1024px, 20px);
+	// }
 
-	&--footer {
-		@include add-wrap(1024px, 20px);
-	}
+	// &--footer {
+	// 	@include add-wrap(1024px, 20px);
+	// }
 }
 
-// ANCHOR .space
 .space {
 	@include add-space(5px, 10px);
 
 	&-x {
-		@include add-space-x(25px);
+		@include add-space-x(10px);
 	}
 
 	&-y {
@@ -24,23 +22,18 @@
 	}
 }
 
-// ANCHOR .row
 .row {
 	// &--footer {
 	//
 	// }
 }
 
-// ANCHOR .col
 .col {
 	&-static {
-		&--test {
-			flex-basis: 300px;
-		}
 	}
 }
 
 // vh-unit
-.height-full {
-	@include vh;
-}
+// .height-full {
+// 	@include vh;
+// }

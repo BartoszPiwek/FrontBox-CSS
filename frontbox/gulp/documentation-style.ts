@@ -9,11 +9,10 @@ import * as kss from "kss";
 import { configDocumentationStyle } from "../../config";
 
 const argv = require("yargs").argv;
-const browserSync = require('browser-sync').create();
+const browserSync = require("browser-sync").create();
 
 @Gulpclass()
 export class FrontboxGulpDocumentationStyle {
-
 	@Task()
 	server() {
 		browserSync.init({
@@ -27,7 +26,7 @@ export class FrontboxGulpDocumentationStyle {
 		});
 	}
 
-	@Task('run')
+	@Task("run")
 	async run() {
 		return await kss({
 			source: [`src/style/`],
@@ -38,11 +37,11 @@ export class FrontboxGulpDocumentationStyle {
 			extend: "./frontbox/kss/helpers",
 			destination: configDocumentationStyle.dest
 		}).then(() => {
-			browserSync.reload()
+			browserSync.reload();
 		});
 	}
 
-	@Task('style')
+	@Task("style")
 	style() {
 		return src(`frontbox/kss/style/kss.scss`, {
 			allowEmpty: true
@@ -55,7 +54,7 @@ export class FrontboxGulpDocumentationStyle {
 			.pipe(browserSync.stream());
 	}
 
-	@Task('styleIframe')
+	@Task("styleIframe")
 	styleIframe() {
 		return src(`frontbox/kss/style/iframe.scss`, {
 			allowEmpty: true
@@ -68,19 +67,12 @@ export class FrontboxGulpDocumentationStyle {
 
 	@Task()
 	watch() {
-		watch(
-			["frontbox/kss/**/*.scss"],
-			series('style')
-		);
+		watch(["frontbox/kss/**/*.scss"], series("style"));
 
-		watch(
-			["frontbox/kss/**/*.hbs"],
-			series('run')
-		);
+		watch(["frontbox/kss/**/*.hbs"], series("run"));
 
-		watch(
-			["frontbox/kss/**/iframe.scss"],
-			series('styleIframe')
-		);
+		watch(["frontbox/kss/**/iframe.scss"], series("styleIframe"));
+
+		watch([`${configDocumentationStyle.dest}/style/**/*.css`], series("run"));
 	}
 }

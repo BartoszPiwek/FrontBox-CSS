@@ -24,7 +24,7 @@
 @import "./bootstrap/debugger";
 
 @include grid($grid-count: 12, $grid-breakpoints: $breakpoints);
-@include grid-style;
+@include grid-style-row;
 @include wrap-style;
 
 // Debug

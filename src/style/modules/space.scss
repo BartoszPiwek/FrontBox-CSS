@@ -1,43 +1,43 @@
 /*
 Space
 
-Add padding space in asix x/y
+Include space function inside container class element (in this example for element `.row`) to create space 
+around / aside / between children element's (`[class=^col]`). Do not put addon style inside this relations.
 
-Mixin:
+Function:
 space-x($size);
 space-y($size);
 space($size, $size-y);
 
-Mixin arguments:
-$size 		: numberPixel
-$size-y 	: numberPixel? : $size
+Arguments:
+$size: numberPixel
+$size-y: numberPixel? : $size
 
-Mixin example:
-space-x(10px);
-space-y(30px);
-space(5px, 10px);
+Usage:
+.space-x {
+ @include space-x(10px);
+}
+.space-y {
+ @include space-y(30px);
+}
+.space {
+ @include space(5px, 10px);
+}
 
-Mixin output:
-<div class="row space-x">
-	<div class="col-6"></div>
-	<div class="col-6"></div>
-</div>
-<div class="row space-y">
-	<div class="col-12"></div>
-	<div class="col-12"></div>
-</div>
-<div class="row space">
-	<div class="col-12"></div>
-	<div class="col-12"></div>
-	<div class="col-6"></div>
-	<div class="col-6"></div>
-</div>
+Output:
+.row.space-x
+ .col-6
+ .col-6
+.row.space-y
+ .col-12
+ .col-12
+.row.space
+ .col-12
+ .col-12
+ .col-6
+ .col-6
 
-Changelog:
-2019.07-22 - remove '!important', function 'add-space' include functions 'add-space-x' and 'add-space-y'
-2019.06-21 - init
-
-Style guide: Functions.space
+Style guide: Modules.space
 */
 
 // Horizontal space

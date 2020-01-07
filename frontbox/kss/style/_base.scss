@@ -27,7 +27,6 @@ body {
 h3 {
 	position: relative;
 	margin: 30px 0 20px;
-	font-size: 26px;
 }
 
 .main {
@@ -49,9 +48,10 @@ h3 {
 		z-index: 2;
 		top: 0;
 		left: 0;
-		margin: 30px 0 20px;
+		margin: 30px 0 35px;
 		border-bottom: 2px solid transparentize($colorSecondary, 0.8);
 		background: $colorWhite;
+		padding: 10px 0;
 
 		&__text {
 			font-size: 38px;
@@ -72,7 +72,14 @@ h3 {
 	}
 
 	&-description {
+		line-height: 22px;
 		margin: 20px 0;
+
+		code {
+			background-color: $colorSecondary;
+			padding: 2px;
+			color: $colorWhite;
+		}
 	}
 
 	&-footer {
@@ -86,4 +93,17 @@ h3 {
 		justify-content: space-between;
 		margin: 20px 0;
 	}
+
+	// &-item {
+	// 	margin: 50px 0;
+
+	// 	&__title {
+	// 		font-size: 21px;
+	// 		padding: 6px;
+	// 		background: $colorWhite;
+	// 		position: absolute;
+	// 		transform: translateX(-100%);
+	// 		margin: 10px 0px 0 -20px;
+	// 	}
+	// }
 }

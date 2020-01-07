@@ -155,28 +155,29 @@
 					</div>
 					{{/if}}
 
+
 					{{!-- Function --}}
 					{{#if function}}
 					<div class="section-item">
-						<h3>Function</h3>
-						<pre class="code"><code class="code__content">{{{hljs function 'scss'}}}</code></pre>
+						<h3 class="section-item__title">Function</h3>
+						<pre class="code"><code class="code__content">{{{prism function}}}</code></pre>
 					</div>
 					{{/if}}
 
 					{{!-- Arguments --}}
 					{{#if arguments}}
 					<div class="section-item">
-						<h3>Arguments</h3>
+						<h3 class="section-item__title">Arguments</h3>
 						<table class="table">
 							<thead>
 								<td>Variable</td>
-								<td>Type (required)</td>
+								<td>Type</td>
 								<td>Default value</td>
 							</thead>
 							<tbody>
 								{{#kssArguments arguments}}
 								<tr>
-									<td class="hljs-variable">{{{argument.variable}}}</td>
+									<td class="token function">{{{argument.variable}}}</td>
 									<td>{{{argument.type}}}</td>
 									<td>{{{argument.value}}}</td>
 								</tr>
@@ -188,13 +189,15 @@
 
 					{{!-- Example --}}
 					{{#if usage}}
-					<h3>Usage</h3>
-					<pre class="code"><code class="code__content">{{{hljs usage 'scss'}}}</code></pre>
+					<div class="section-item">
+						<h3 class="section-item__title">Usage</h3>
+						<pre class="code"><code class="code__content">{{{prism usage 'scss'}}}</code></pre>
+					</div>
 					{{/if}}
 
 					{{!-- Output --}}
 					{{#if output}}
-					<h3>Output</h3>
+					<h3 class="section-item__title">Output</h3>
 
 					<div class="kss-modifier__wrapper">
 
@@ -233,25 +236,6 @@
 									{{/if}}
 								</figcaption>
 							</figure>
-						</li>
-						{{/each}}
-					</ul>
-					{{/if}}
-
-					{{#if parameters}}
-					<div class="kss-parameters__title">Parameters:</div>
-					<ul class="kss-parameters">
-						{{#each parameters}}
-						<li class="kss-parameters__item">
-							<div class="kss-parameters__name"><code>{{name}}</code></div>
-							<div class="kss-parameters__description">
-								{{{description}}}
-								{{#if defaultValue}}
-								<div class="kss-parameters__default-value">
-									Defaults to: <code>{{defaultValue}}</code>
-								</div>
-								{{/if}}
-							</div>
 						</li>
 						{{/each}}
 					</ul>
@@ -304,49 +288,6 @@
 				</details>
 				{{/if}}
 
-				{{!-- Function --}}
-				{{#if mixin}}
-				<div class="kss-modifier__wrapper">
-					<div class="kss-modifier__heading kss-style">
-						Mixin{{#if modifiers}}s{{/if}}
-					</div>
-
-					<div class="kss-modifier__example">
-						@include {{{mixin}}}
-						<div class="kss-modifier__example-footer"></div>
-					</div>
-
-					{{#each modifiers}}
-					<div class="kss-modifier__name kss-style">
-						{{name}}
-					</div>
-					<div class="kss-modifier__description kss-style">
-						{{{description}}}
-					</div>
-					<div class="kss-modifier__example">
-						{{{markup}}}
-						<div class="kss-modifier__example-footer"></div>
-					</div>
-					{{/each}}
-				</div>
-				{{/if}}
-
-				{{/if}}
-
-				{{!-- Mixin --}}
-				{{#if mixin}}
-				<h3 class="kss-h3">Function</h3>
-				<pre class="hljs"><code class="language-handlebars">{{{hljs mixin 'handlebars'}}}</code></pre>
-				{{/if}}
-
-				{{!-- Mixin Usage --}}
-				{{#if mixin_usage}}
-				<details class="kss-markup kss-style">
-					<summary>
-						Mixin usage
-					</summary>
-					<pre class="hljs"><code class="language-handlebars">{{{hljs mixin_usage 'handlebars'}}}</code></pre>
-				</details>
 				{{/if}}
 
 				{{#if source.filename}}

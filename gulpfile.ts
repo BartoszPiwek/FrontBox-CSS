@@ -12,10 +12,10 @@ import { Html } from "./frontbox/gulp/html";
 import { FrontboxGulpScript } from "./frontbox/gulp/script";
 import { FrontboxGulpStyle } from "./frontbox/gulp/style";
 
-export const browserSync = require('browser-sync').create();
+export const browserSync = require("browser-sync").create();
 
-const argv = require('yargs').argv;
-const del = require('del');
+const argv = require("yargs").argv;
+const del = require("del");
 const documentationStyle = new FrontboxGulpDocumentationStyle();
 const copy = new FrontboxGulpCopy();
 const html = new Html();
@@ -24,55 +24,55 @@ const style = new FrontboxGulpStyle();
 
 @Gulpclass()
 export class Gulpfile {
+	@Task()
+	async createServer() {
+		browserSync.init({
+			...configBrowser,
+			server: {
+				baseDir: `${websiteDestinationPath}`
+			}
+		});
+	}
 
-  @Task()
-  async createServer() {
-    browserSync.init({
-      ...configBrowser,
-      server: {
-        baseDir: `${websiteDestinationPath}`
-      }
-    });
-  }
+	@Task()
+	async buildWebsite() {
+		if (argv.clean || argv.prod || argv.new) {
+			del.sync(`${websiteDestinationPath}`);
+		}
 
-  @Task()
-  async buildWebsite() {
-    if (argv.clean || argv.prod || argv.new) {
-      del.sync(`${websiteDestinationPath}`);
-    }
+		copy.init();
+		html.init();
+		script.init();
+		style.init();
 
-    copy.init();
-    html.init();
-    script.init();
-    style.init();
+		if (argv.server) {
+			this.createServer();
+		}
 
-    if (argv.server) {
-      this.createServer();
-    }
+		//TODO:clean end
+	}
 
-    //TODO:clean end
-  }
+	@Task()
+	async documentationStyle() {
+		if (argv.clean) {
+			del.sync(`${configDocumentationStyle}`);
+		}
 
-  @Task()
-  async documentationStyle() {
-    if (argv.clean) {
-      del.sync(`${configDocumentationStyle}`);
-    }
+		documentationStyle.run();
+		documentationStyle.style();
+		documentationStyle.styleIframe();
 
-    documentationStyle.run();
-    documentationStyle.style();
-    documentationStyle.styleIframe();
-    style.init({
-      destinationPath: `${configDocumentationStyle.dest}/style`,
-      includePrefix: false
-    });
+		style.init({
+			destinationPath: `${configDocumentationStyle.dest}/style`,
+			includePrefix: false
+		});
 
-    if (argv.watch) {
-      documentationStyle.watch();
-    }
+		if (argv.watch) {
+			documentationStyle.watch();
+		}
 
-    if (argv.server) {
-      documentationStyle.server();
-    }
-  }
+		if (argv.server) {
+			documentationStyle.server();
+		}
+	}
 }
