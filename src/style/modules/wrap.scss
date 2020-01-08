@@ -1,24 +1,28 @@
 /*
 Wrap
 
-Center the content in specify width.<br>
-Add space aside content (padding left/right)
+Include wrap function inside container class to hold content in maximize width with space aside corner.
+Space can be created in asix x (`padding left` and `padding-right`).<br>
+Default class for this function named `.wrap` and is located in [style/_tools.scss](https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/_tools.scss) file. Prepared modifications are `navbar` and `footer`<br>
 
-Markup:
-<div class="wrap">
- <div>content</div>
-</div>
+Function:
+add-wrap($max-width, $padding-x);
 
-Emmet:
+Arguments:
+$max-width: numberPixel
+$padding-x: numberPixel? : 0
+
+Usage:
+.wrap {
+ @include add-wrap(1024px, 20px);
+}
+
+Output:
 .wrap
 
-Mixin:
-wrap($max-width, $padding-x);
-
-Style guide: Flow.wrap
+Style guide: Modules.wrap
 */
 
-// Function
 @mixin add-wrap($max-width, $padding-x: 0) {
 	max-width: $max-width + $padding-x * 2;
 
@@ -28,7 +32,6 @@ Style guide: Flow.wrap
 	}
 }
 
-// Style
 @mixin wrap-style {
 	.wrap {
 		width: 100%;

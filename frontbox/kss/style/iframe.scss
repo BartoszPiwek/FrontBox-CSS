@@ -40,3 +40,19 @@ body {
 		overflow: hidden;
 	}
 }
+
+.wrap {
+	min-height: 35px;
+	background: $colorSecondary;
+
+	&:before {
+		display: block;
+		width: 100%;
+		min-height: 35px;
+		z-index: -1;
+		background: $colorPrimary;
+		color: $colorBlack;
+		content: "";
+		border: 1px solid $colorSecondary;
+	}
+}

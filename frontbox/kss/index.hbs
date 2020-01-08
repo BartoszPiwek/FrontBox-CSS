@@ -147,18 +147,15 @@
 								{{{pug output '.debug-element, .debug-element__content'}}}
 							</div>
 						</pre>
-					</div>
-
-					<details class="kss-markup kss-style">
-						<summary>
-							Markup
-						</summary>
+						<br>
+						<h4 class="section-item__title">Pug</h4>
 						<pre
 							class="language-pug"><code class="language-pug" data-language="pug">{{{prism output 'pug'}}}</code></pre>
 						<br>
+						<h4 class="section-item__title">HTML</h4>
 						<pre
 							class="language-html"><code class="language-html" data-language="html">{{{prism (pug output) 'html'}}}</code></pre>
-					</details>
+					</div>
 					{{/if}}
 
 					{{#if colors }}
@@ -235,13 +232,14 @@
 				{{#if source.filename}}
 				<div class="section__footer section-source">
 					<p class="section-source__title">Source</p>
-					<code class="section-source__link">
-						<a href="https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/{{source.filename}}#L{{source.line}}" target="_blank">
-							{{source.filename}}
-						</a>
-					</code>
+					<a class="section-source__link"
+						href="https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/{{source.filename}}#L{{source.line}}"
+						target="_blank">
+						{{source.filename}}
+					</a>
 				</div>
 				{{/if}}
+
 			</section>
 			{{/if}}
 
@@ -283,8 +281,7 @@
 		$iframe.each(function (index, element) {
 			var
 				$this = $(this),
-				find = $this.attr("data-iframe"),
-				$content = $(`[data-iframe-content="${find}"]`);
+				$content = $this.next();
 
 			$this.contents().find("head").append('<link rel="stylesheet" href="/style/bootstrap.css">');
 			$this.contents().find("head").append('<link rel="stylesheet" href="/style/utilities.css">');
