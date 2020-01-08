@@ -30,6 +30,10 @@ const scssOptions = `
 export class FrontboxGulpStyle extends FrontboxTaskAbstract {
 	private tasks = {};
 
+	constructor() {
+		super();
+	}
+
 	init(param?: IFrontboxInitTaks) {
 		if (param) {
 			Object.assign(this, param);
