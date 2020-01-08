@@ -44,12 +44,13 @@ h3 {
 
 .section {
 	&-title {
+		box-shadow: 0 5px 10px #f3f7fb;
 		position: sticky;
 		z-index: 2;
 		top: 0;
 		left: 0;
 		margin: 30px 0 35px;
-		border-bottom: 2px solid transparentize($colorSecondary, 0.8);
+		border-bottom: 2px solid $colorSecondary;
 		background: $colorWhite;
 		padding: 10px 0;
 
@@ -59,6 +60,7 @@ h3 {
 		}
 
 		&__ref {
+			color: $colorBlack;
 			font-size: 14px;
 			font-style: italic;
 		}
@@ -76,7 +78,7 @@ h3 {
 		margin: 20px 0;
 
 		code {
-			background-color: $colorSecondary;
+			background-color: $colorPrimary;
 			padding: 2px;
 			color: $colorWhite;
 		}
@@ -84,7 +86,7 @@ h3 {
 		a {
 			white-space: nowrap;
 			position: relative;
-			color: $colorSecondary;
+			color: $colorPrimary;
 
 			&:before {
 				content: "";

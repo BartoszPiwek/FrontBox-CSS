@@ -1,12 +1,12 @@
-.code {
-	display: block;
-	padding: 14px;
-	overflow: hidden;
-	background: $colorSecondary;
-	white-space: pre;
+[class^="language-"] {
+	border-color: $colorPrimary !important;
+	box-shadow: 0 0px 0px 0px $colorPrimary, 0px 0px 0px 1px $colorWhite !important;
+}
 
-	&__content {
-		color: $colorWhite;
-		font-family: monospace;
-	}
+.language-none {
+	background: rgba(69, 142, 209, 0.04);
+	white-space: normal !important;
+	padding: 10px !important;
+	border-top: 10px solid $colorPrimary;
+	box-shadow: 0 0px 0px 0px $colorPrimary, 0px 0px 0px 1px $colorWhite;
 }

@@ -6,7 +6,7 @@
 	thead {
 		td {
 			padding: 10px 14px;
-			background-color: $colorSecondary;
+			background-color: $colorPrimary;
 			color: $colorWhite;
 			font-weight: bold;
 		}
@@ -23,7 +23,7 @@
 
 		td {
 			padding: 6px 14px;
-			border-bottom: 1px solid $colorSecondary;
+			border-bottom: 2px solid $colorSecondary;
 		}
 	}
 }

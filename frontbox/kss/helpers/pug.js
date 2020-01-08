@@ -2,13 +2,13 @@ const pug = require("pug");
 const frontboxKssHelpful = require("./helpful");
 
 module.exports = function(Handlebars) {
-	Handlebars.registerHelper("pug", function(value, args, foo) {
-		// if (args && args[0]) {
-		value = frontboxKssHelpful.pugWrapInElement(value, [
-			".debug-element",
-			".debug-element__content"
-		]);
-		// }
+	Handlebars.registerHelper("pug", function(value, wrapClasses) {
+		if (wrapClasses && typeof wrapClasses === "string") {
+			value = frontboxKssHelpful.pugWrapInElement(
+				value,
+				wrapClasses.split(",")
+			);
+		}
 
 		try {
 			return pug.render(value, {

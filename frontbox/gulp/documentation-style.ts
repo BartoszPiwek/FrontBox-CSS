@@ -35,6 +35,7 @@ export class FrontboxGulpDocumentationStyle {
 			css: ["./assets/style.css"],
 			custom: ["Function", "Output", "Icons", "Usage", "Arguments", "Title"],
 			extend: "./frontbox/kss/helpers",
+			homepage: "./../../README.md",
 			destination: configDocumentationStyle.dest
 		}).then(() => {
 			browserSync.reload();

@@ -7,9 +7,10 @@ exports.pugWrapInElement = function(code, tags) {
 	while ((test = regexSearchParentsWithContent.exec(code + "\n")) !== null) {
 		let pugArray = test[0].split("\n");
 
-		tags.forEach(element => {
+		tags.forEach(function(element) {
 			pugArray = pugArray.map(v => " " + v);
 			pugArray.unshift(element);
+			console.log(pugArray);
 		});
 
 		output.push(pugArray.join("\n"));
