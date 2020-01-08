@@ -197,14 +197,12 @@
 
 					{{!-- Output --}}
 					{{#if output}}
-					<h3 class="section-item__title">Output</h3>
-
-					<div class="kss-modifier__wrapper">
-
+					<div class="section-item">
+						<h3 class="section-item__title">Output</h3>
 						<div class="output">
 							<iframe class="iframe" data-iframe="output"></iframe>
 							<div data-iframe-content="output">
-								{{{pug output}}}
+								{{{pug output [".debug-element", ".debug-element__content"]}}}
 							</div>
 						</div>
 					</div>

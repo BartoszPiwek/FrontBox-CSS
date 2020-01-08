@@ -11,14 +11,14 @@
 }
 
 .space {
-	@include add-space(5px, 10px);
+	@include add-space(20px, 10px);
 
 	&-x {
-		@include add-space-x(10px);
+		@include add-space-x(20px);
 	}
 
 	&-y {
-		@include add-space-y(30px);
+		@include add-space-y(10px);
 	}
 }
 

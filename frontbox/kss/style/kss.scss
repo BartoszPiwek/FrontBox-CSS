@@ -1,11 +1,5 @@
-$colorPrimary: #1f5d2f;
-$colorSecondary: #38515b;
-$colorWhite: #f3f7fb;
-$colorBlack: #1b1716;
-
+@import "variables";
 @import "./../../../src/style/bootstrap/browser-reset";
 @import "../../../node_modules/highlight.js/styles/vs2015";
 @import "../../../node_modules/prismjs/themes/prism";
 @import "_*";
-$color-primary: red;
-$color-secondary: blue;

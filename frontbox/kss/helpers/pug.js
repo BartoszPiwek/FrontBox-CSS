@@ -1,21 +1,17 @@
 const pug = require("pug");
+const frontboxKssHelpful = require("./helpful");
 
 module.exports = function(Handlebars) {
-	Handlebars.registerHelper("pug", function(value) {
-		const regex = /\..*\n( .*\n)+/gm;
-		let output = [];
-		let test;
-
-		while ((test = regex.exec(value + "\n")) !== null) {
-			let pugArray = test[0].split("\n");
-			pugArray = pugArray.map(v => " " + v);
-			pugArray.unshift(".output-item");
-
-			output.push(pugArray.join("\n"));
-		}
+	Handlebars.registerHelper("pug", function(value, args, foo) {
+		// if (args && args[0]) {
+		value = frontboxKssHelpful.pugWrapInElement(value, [
+			".debug-element",
+			".debug-element__content"
+		]);
+		// }
 
 		try {
-			return pug.render(output.join("\n"), {
+			return pug.render(value, {
 				pretty: true
 			});
 		} catch (e) {

@@ -1,3 +1,5 @@
+@import "variables";
+
 body,
 html {
 	display: block !important;
@@ -13,19 +15,26 @@ html {
 }
 
 [class^="col"] {
+	color: $colorBlack;
+
 	&:before {
-		display: block;
-		background: blue;
-		height: 45px;
+		min-height: 35px;
+		z-index: -1;
+		background: $colorWhite;
+		color: $colorBlack;
 		content: "";
+		border: 1px solid $colorBlack;
 	}
 }
 
-.output-item {
-	overflow: hidden;
-	background: white;
-
+.debug-element {
 	& + & {
-		margin-top: 50px;
+		margin-top: 25px;
+		border-top: 1px solid $colorWhite;
+		padding-top: 25px;
+	}
+
+	&__content {
+		overflow: hidden;
 	}
 }

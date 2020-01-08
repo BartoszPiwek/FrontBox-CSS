@@ -1,27 +1,30 @@
 /*
 Space
 
-Include space function inside container class element (in this example for element `.row`) to create space 
-around / aside / between children element's (`[class=^col]`). Do not put addon style inside this relations.
+Include space function inside container class element to create space between element children's.
+Space can be created in asix x (`padding-left`), y (`padding-bottom`) or xy (`padding-left` and `padding-bottom`).
+Do not put addon style inside this relations. Default classes for this function named `.space` `.space-x` `.space-y` 
+and located in  [style/_tools.scss](https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/_tools.scss) file.<br>
+In this example we include default function classes in `.row` elements to create space between `[class=^col]`. 
 
 Function:
-space-x($size);
-space-y($size);
-space($size, $size-y);
+add-space-x($size);
+add-space-y($size);
+add-space($size, $size-y);
 
 Arguments:
 $size: numberPixel
 $size-y: numberPixel? : $size
 
 Usage:
+.space {
+ @include add-space(20px, 10px);
+}
 .space-x {
- @include space-x(10px);
+ @include add-space-x(20px);
 }
 .space-y {
- @include space-y(30px);
-}
-.space {
- @include space(5px, 10px);
+ @include add-space-y(10px);
 }
 
 Output:
@@ -34,8 +37,8 @@ Output:
 .row.space
  .col-12
  .col-12
- .col-6
- .col-6
+ .col-6 
+ .col-6 
 
 Style guide: Modules.space
 */

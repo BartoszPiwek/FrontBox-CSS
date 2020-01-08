@@ -1,8 +1,8 @@
 /*
 Row
 
-Container for columns. 
-Compatibility with [space](section-functions.html#functions-space) function
+Style form container for columns. 
+Compatibility with [space](section-modules.html#modules-space) function
 
 Style guide: Grid.row
 */
@@ -33,12 +33,12 @@ Style guide: Grid.row
 }
 
 /*
-Column
+Columns
 
 Generate CSS flex columns. 
 
 Function:
-grid($grid-count, $breakpoints)
+grid($grid-count, $breakpoints);
 
 Arguments:
 $grid-count: number? : 12
@@ -69,7 +69,7 @@ Output:
  .col-6 col-6
  .col-6 col-6
 
-Style guide: Grid.column
+Style guide: Grid.columns
 */
 
 @mixin grid($grid-count: 12, $grid-breakpoints: $breakpoints) {
