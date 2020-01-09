@@ -16,7 +16,7 @@ body,
 
 .page {
 	width: 100%;
-	max-width: 1366px;
+	max-width: 1300px;
 	margin: 0 auto;
 	padding: 0 10px;
 }
@@ -30,29 +30,40 @@ h3 {
 }
 
 .main {
-	width: calc(100% - 250px);
+	width: calc(100% - 200px);
 	margin-left: auto;
-	padding: 40px 20px;
+	padding: 40px 0;
 
-	&-header {
+	&__header {
 		margin-bottom: 30px;
 		font-size: 45px;
 		font-weight: 300;
 		text-align: right;
 	}
+
+	&__container {
+	}
+
+	&__description {
+		font-size: 18px;
+	}
 }
 
 .section {
+	&__wrap {
+		padding-left: 60px;
+	}
+
 	&-title {
-		box-shadow: 0 5px 10px #f3f7fb;
 		position: sticky;
-		z-index: 2;
+		z-index: 3;
 		top: 0;
 		left: 0;
 		margin: 30px 0 35px;
+		padding: 10px 10px 10px 0;
 		border-bottom: 2px solid $colorSecondary;
 		background: $colorWhite;
-		padding: 10px 0;
+		box-shadow: 5px 5px 10px #f3f7fb;
 
 		&__text {
 			font-size: 38px;
@@ -74,29 +85,8 @@ h3 {
 	}
 
 	&-description {
-		line-height: 22px;
 		margin: 20px 0;
-
-		code {
-			background-color: $colorPrimary;
-			padding: 2px;
-			color: $colorWhite;
-		}
-
-		a {
-			white-space: nowrap;
-			position: relative;
-			color: $colorPrimary;
-
-			&:before {
-				content: "";
-				position: absolute;
-				bottom: -2px;
-				width: 100%;
-				height: 1px;
-				background: $colorSecondary;
-			}
-		}
+		line-height: 22px;
 	}
 
 	&-footer {
@@ -108,14 +98,13 @@ h3 {
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
-		margin: 20px 0;
 
 		&__link {
+			position: relative;
+			color: $colorSecondary;
 			color: $colorSecondary;
 			font-family: monospace;
 			white-space: nowrap;
-			position: relative;
-			color: $colorSecondary;
 
 			&:before {
 				content: "";
@@ -129,12 +118,19 @@ h3 {
 	}
 
 	&-item {
-		margin: 30px 0 40px;
+		margin: 20px 0 30px;
 
 		&__title {
-			font-size: 21px;
+			display: inline-block;
+			position: sticky;
+			z-index: 2;
+			top: 68px;
+			margin: 15px 0 20px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-bottom: 1px solid $colorSecondary;
 			background: $colorWhite;
-			margin-bottom: 10px;
+			font-size: 21px;
 		}
 	}
 }

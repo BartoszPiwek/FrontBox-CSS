@@ -2,7 +2,14 @@
 @import "./variables/color";
 @import "./variables/index";
 @import "./variables/media";
+/* 
+Modules
 
+List of hermetic modules used in project.<br>
+Modules can have global style injector. Include this function only once.
+
+Style guide: Modules
+*/
 @import "./modules/debug";
 @import "./modules/responsive";
 @import "./modules/wrap";
@@ -10,7 +17,6 @@
 @import "./modules/map-deep-get";
 @import "./modules/click-expand";
 @import "./modules/hover";
-
 @import "./bootstrap/polyfill";
 @import "./bootstrap/base";
 @import "./bootstrap/browser-reset";
@@ -35,6 +41,7 @@
 @if ($infoOldBrowser) {
 	@include info-old-browser;
 }
+
 @if ($infoOffJavascript) {
 	@include info-off-javascript;
 }

@@ -1,12 +1,13 @@
 [class^="language-"] {
+	margin-top: 0 !important;
 	border-color: $colorPrimary !important;
 	box-shadow: 0 0px 0px 0px $colorPrimary, 0px 0px 0px 1px $colorWhite !important;
 }
 
 .language-none {
-	background: rgba(69, 142, 209, 0.04);
-	white-space: normal !important;
 	padding: 10px !important;
 	border-top: 10px solid $colorPrimary;
+	background: rgba(69, 142, 209, 0.04);
 	box-shadow: 0 0px 0px 0px $colorPrimary, 0px 0px 0px 1px $colorWhite;
+	white-space: normal !important;
 }

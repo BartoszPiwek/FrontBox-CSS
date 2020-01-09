@@ -55,6 +55,7 @@ export const configStyle = [
 		name: "bootstrap",
 		files: "./src/style/bootstrap.scss",
 		dest: "css",
+		concatWith: "style",
 		watch: [
 			"./src/style/bootstrap.scss",
 			"./src/style/bootstrap/*.scss",
@@ -64,22 +65,14 @@ export const configStyle = [
 		]
 	},
 	{
-		name: "grid",
-		files: "./src/style/grid.scss",
-		dest: "css",
-		watch: [
-			"./src/style/grid.scss",
-			"./src/style/tools/_media.scss",
-			"./src/style/variables/_media.scss",
-			"./src/style/modules/_grid.scss",
-			"./src/style/modules/_row.scss"
-		]
-	},
-	{
 		name: "utilities",
 		files: "./src/style/utilities.scss",
 		dest: "css",
-		watch: ["./src/style/utilities.scss", "./src/style/utilities/*.scss"]
+		concatWith: "style",
+		watch: [
+			"./src/style/utilities.scss",
+			"./src/style/utilities/*.scss"
+		]
 	}
 ];
 

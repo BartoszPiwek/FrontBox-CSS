@@ -1,6 +1,7 @@
 import * as autoprefixer from "autoprefixer";
 import * as cssnano from "cssnano";
 import { dest, src, watch } from "gulp";
+import * as concat from "gulp-concat";
 import * as header from "gulp-header";
 import * as gulpif from "gulp-if";
 import * as postcss from "gulp-postcss";
@@ -12,12 +13,7 @@ import { Gulpclass, Task } from "gulpclass/Decorators";
 import * as uncss from "uncss";
 import { configStyle, configWebsite } from "../../config";
 import { browserSync } from "../../gulpfile";
-import {
-	FrontboxTaskAbstract,
-	getMode,
-	IFrontboxInitTaks,
-	websiteDestinationPath
-} from "./frontbox";
+import { FrontboxTaskAbstract, getMode, IFrontboxInitTaks, websiteDestinationPath } from "./frontbox";
 
 const argv = require("yargs").argv;
 const scssOptions = `
@@ -28,8 +24,6 @@ const scssOptions = `
 
 @Gulpclass()
 export class FrontboxGulpStyle extends FrontboxTaskAbstract {
-	private tasks = {};
-
 	constructor() {
 		super();
 	}
@@ -86,9 +80,37 @@ export class FrontboxGulpStyle extends FrontboxTaskAbstract {
 			this.tasks[element.name]();
 		});
 
+		if (argv.prod || this.canConcatFiles) {
+			this.concatFiles();
+		}
+
 		if (argv.watch) {
 			this.watch();
 		}
+	}
+
+	@Task()
+	concatFiles() {
+		const mainConcatFiles = configStyle.filter(v => !v.concatWith);
+
+		mainConcatFiles.map(element => {
+			const concatFiles = configStyle.filter(v => v.concatWith === element.name);
+
+			this.concatTasks[element.name] = () => {
+				let srcFilesPath = concatFiles.map((v) => {
+					return './' + (this.destinationPath ? this.destinationPath : `$websiteDestinationPath}/${element.dest}`) + `/${v.name}.css`;
+				});
+				srcFilesPath.push('./' + (this.destinationPath ? this.destinationPath : `${websiteDestinationPath}/${element.dest}`) + `/${element.name}.css`);
+
+				return src(srcFilesPath)
+					.pipe(concat(`${element.name}.all.css`))
+					.pipe(dest(this.destinationPath
+						? this.destinationPath
+						: `${websiteDestinationPath}/${element.dest}`));
+			}
+
+			this.concatTasks[element.name]();
+		});
 	}
 
 	@Task()
