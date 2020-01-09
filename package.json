@@ -25,6 +25,7 @@
 		"@babel/preset-env": "^7.5.5",
 		"@babel/register": "^7.5.5",
 		"@types/autoprefixer": "^9.6.1",
+		"@types/gulp-if": "0.0.33",
 		"@types/jquery": "^3.3.31",
 		"@types/node": "^12.7.2",
 		"autoprefixer": "^9.6.1",

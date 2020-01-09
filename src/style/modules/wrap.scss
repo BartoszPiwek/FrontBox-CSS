@@ -3,7 +3,9 @@ Wrap
 
 Include wrap function inside container class to hold content in maximize width with space aside corner.
 Space can be created in asix x (`padding left` and `padding-right`).<br>
-Default class for this function named `.wrap` and is located in [style/_tools.scss](https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/_tools.scss) file. Prepared modifications are `navbar` and `footer`<br>
+Default class for this function named `.wrap` and is located in 
+[style/_tools.scss](https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/_tools.scss) file. 
+Prepared modifications are `navbar` and `footer`<br>
 
 Function:
 add-wrap($max-width, $padding-x);
@@ -31,6 +33,24 @@ Style guide: Modules.wrap
 		padding-left: $padding-x;
 	}
 }
+
+/*
+Style
+
+Include wrap function inside container class to hold content in maximize width with space aside corner.
+Space can be created in asix x (`padding left` and `padding-right`).<br>
+Default class for this function named `.wrap` and is located in 
+[style/_tools.scss](https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/_tools.scss) file. 
+Prepared modifications are `navbar` and `footer`<br>
+
+Function:
+wrap-style;
+
+Usage:
+@include wrap-style;
+
+Style guide: Modules.wrap.style
+*/
 
 @mixin wrap-style {
 	.wrap {

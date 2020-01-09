@@ -11,9 +11,11 @@ module.exports = function(Handlebars) {
 		}
 
 		try {
-			return pug.render(value, {
-				pretty: true
-			});
+			return pug
+				.render(value, {
+					pretty: true
+				})
+				.trim();
 		} catch (e) {
 			console.log(e);
 		}
