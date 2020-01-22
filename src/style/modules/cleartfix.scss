@@ -3,14 +3,17 @@ Clearfix
 
 Force an element to self-clear its children
 
-Mixin:
+Function:
 cleartfix;
 
-Style guide: Functions.clearfix
+Usage:
+@include cleartfix;
+
+Style guide: Modules.Clearfix
 */
 @mixin clearfix {
-	*zoom: 1;
 	zoom: 1;
+	*zoom: 1;
 
 	&:before,
 	&:after {

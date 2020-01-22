@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="doc" lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="./style/kss.css">
 </head>
 
-<body class="body" id="body">
+<body class="doc-body">
 	<div class="page">
 
 		<aside class="sidebar">
@@ -146,6 +146,15 @@
 							<h3 class="section-item__title section__wrap">Usage</h3>
 							<div class="section__wrap">
 								<pre class="language-scss"><code class="language-scss">{{{prism usage 'scss'}}}</code></pre>
+							</div>
+						</div>
+						{{/if}}
+
+						{{#if outputcss}}
+						<div class="section-item">
+							<h3 class="section-item__title section__wrap">Output</h3>
+							<div class="section__wrap">
+								<pre class="language-scss"><code class="language-scss">{{{prism outputcss 'scss'}}}</code></pre>
 							</div>
 						</div>
 						{{/if}}

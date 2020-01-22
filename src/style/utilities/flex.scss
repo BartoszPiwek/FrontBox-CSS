@@ -1,7 +1,7 @@
-@include responsive($breakpoints) {
+@include add-responsive($breakpoints) {
 	$prefix: &;
 
-	@at-root .#{$prefix}flex {
+	@at-root .#{$prefix}flex{
 		&-y-end {
 			align-items: flex-end;
 		}

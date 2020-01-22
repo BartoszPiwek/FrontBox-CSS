@@ -1,13 +1,13 @@
-module.exports = function(Handlebars) {
+module.exports = function (Handlebars) {
 	"use strict";
 
-	Handlebars.registerHelper("kssArguments", function(doc, block) {
+	Handlebars.registerHelper("kssArguments", function (doc, block) {
 		const regex = /^.*/gm;
 		let output = [];
 		let test;
 
 		while ((test = regex.exec(doc)) !== null) {
-			let elements = test[0].split(":").map(v => v.trim());
+			let elements = test[0].split(" : ").map(v => v.trim());
 
 			this.argument = {};
 			this.argument.variable = elements[0];

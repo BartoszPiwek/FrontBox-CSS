@@ -1,7 +1,7 @@
-@include responsive($breakpoints) {
+@include add-responsive($breakpoints) {
 	$prefix: &;
 
-	@at-root .#{$prefix}col {
+	@at-root .#{$prefix}col{
 		flex: 1 1 1px !important;
 
 		&-static {

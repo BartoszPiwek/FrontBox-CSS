@@ -5,51 +5,51 @@ Style guide: Component.Links
 */
 
 .link {
-	transition: color $time-transition;
-	cursor: pointer;
+	// transition: color $time-transition;
+	// cursor: pointer;
 
-	&__group {
-		@include add-space-x(10px);
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
+	// &__group {
+	// 	@include add-space-x(10px);
+	// 	display: flex;
+	// 	flex-direction: row;
+	// 	flex-wrap: nowrap;
+	// 	align-items: center;
 
-		> {
-			svg,
-			span,
-			img {
-				box-sizing: content-box;
-			}
-		}
-	}
-
-	/* Modifications */
-	&--primary {
-		color: color("primary");
-
-		.icon {
-			fill: color("primary");
-		}
-
-		@include add-hover {
-			color: darken(color("primary"), 10%);
-
-			.icon {
-				fill: darken(color("primary"), 10%);
-			}
-		}
-	}
-
-	// &--secondary {
+	// 	> {
+	// 		svg,
+	// 		span,
+	// 		img {
+	// 			box-sizing: content-box;
+	// 		}
+	// 	}
 	// }
 
-	@include add-disable {
-		color: color("disable") !important;
-		cursor: not-allowed;
+	// /* Modifications */
+	// &--primary {
+	// 	color: color("primary");
 
-		.icon {
-			fill: color("disable") !important;
-		}
-	}
+	// 	.icon {
+	// 		fill: color("primary");
+	// 	}
+
+	// 	@include add-hover {
+	// 		color: darken(color("primary"), 10%);
+
+	// 		.icon {
+	// 			fill: darken(color("primary"), 10%);
+	// 		}
+	// 	}
+	// }
+
+	// // &--secondary {
+	// // }
+
+	// @include add-disable {
+	// 	color: color("disable") !important;
+	// 	cursor: not-allowed;
+
+	// 	.icon {
+	// 		fill: color("disable") !important;
+	// 	}
+	// }
 }

@@ -33,7 +33,7 @@ export class FrontboxGulpDocumentationStyle {
 			builder: "./frontbox/kss/",
 			title: "FrontBox-CSS Debug Style Guide",
 			css: ["./assets/style.css"],
-			custom: ["Function", "Output", "Icons", "Usage", "Arguments", "Title"],
+			custom: ["Function", "Output", "OutputCSS", "Icons", "Usage", "Arguments", "Title"],
 			extend: "./frontbox/kss/helpers",
 			homepage: "./../../README.md",
 			destination: configDocumentationStyle.dest

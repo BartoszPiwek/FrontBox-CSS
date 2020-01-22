@@ -1,11 +1,11 @@
-@include responsive($breakpoints) {
+@include add-responsive($breakpoints) {
 	$prefix: &;
 
-	@at-root .#{$prefix}round {
+	@at-root .#{$prefix}round{
 		border-radius: 50%;
 	}
 
-	@at-root .#{$prefix}rotate {
+	@at-root .#{$prefix}rotate{
 		&-180 {
 			transform: rotate(180deg) !important;
 		}
@@ -19,7 +19,7 @@
 		}
 	}
 
-	@at-root .#{$prefix}no-wrap {
+	@at-root .#{$prefix}no-wrap{
 		max-width: 100% !important;
 	}
 }

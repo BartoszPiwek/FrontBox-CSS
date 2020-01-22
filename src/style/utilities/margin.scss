@@ -1,28 +1,28 @@
-@include responsive($breakpoints) {
+@include add-responsive($breakpoints) {
 	$prefix: &;
 
-	@at-root .#{$prefix}mt {
+	@at-root .#{$prefix}mt{
 		@include generate-tool-count("margin-top", 85);
 	}
 
-	@at-root .#{$prefix}mb {
+	@at-root .#{$prefix}mb{
 		@include generate-tool-count("margin-bottom", 85);
 	}
 
-	@at-root .#{$prefix}ml {
+	@at-root .#{$prefix}ml{
 		@include generate-tool-count("margin-left", 85);
 	}
 
-	@at-root .#{$prefix}mr {
+	@at-root .#{$prefix}mr{
 		@include generate-tool-count("margin-right", 85);
 	}
 
-	@at-root .#{$prefix}margin-center {
+	@at-root .#{$prefix}margin-center{
 		margin: 0 auto;
 	}
 
 	/* Reset */
-	@at-root .#{$prefix}no {
+	@at-root .#{$prefix}no{
 		&-mt,
 		&-margin-top {
 			margin-top: 0 !important;

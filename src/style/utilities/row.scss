@@ -1,7 +1,7 @@
-@include responsive($breakpoints) {
+@include add-responsive($breakpoints) {
 	$prefix: &;
 
-	@at-root .#{$prefix}row {
+	@at-root .#{$prefix}row{
 		&-reverse {
 			flex-direction: row-reverse;
 		}

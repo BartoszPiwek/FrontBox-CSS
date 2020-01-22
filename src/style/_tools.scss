@@ -22,6 +22,16 @@
 	}
 }
 
+.scrollbar,
+html,
+* {
+	@include add-scrollbar(20, color('primary'), color('secondary'));
+}
+
+.click-expand {
+	@include add-click-expand(10);
+}
+
 .row {
 	// &--footer {
 	//

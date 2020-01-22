@@ -1,28 +1,28 @@
-@include responsive($breakpoints) {
+@include add-responsive($breakpoints) {
 	$prefix: &;
 
-	@at-root .#{$prefix}pt {
+	@at-root .#{$prefix}pt{
 		@include generate-tool-count("padding-top", 85);
 	}
 
-	@at-root .#{$prefix}pb {
+	@at-root .#{$prefix}pb{
 		@include generate-tool-count("padding-bottom", 85);
 	}
 
-	@at-root .#{$prefix}pl {
+	@at-root .#{$prefix}pl{
 		@include generate-tool-count("padding-left", 85);
 	}
 
-	@at-root .#{$prefix}pr {
+	@at-root .#{$prefix}pr{
 		@include generate-tool-count("padding-right", 85);
 	}
 
-	@at-root .#{$prefix}padding-center {
+	@at-root .#{$prefix}padding-center{
 		padding: 0 auto;
 	}
 
 	/* Reset */
-	@at-root .#{$prefix}no {
+	@at-root .#{$prefix}no{
 		&-pt,
 		&-padding-top {
 			padding-top: 0 !important;
