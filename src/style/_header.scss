@@ -27,7 +27,7 @@ Style guide: Header.tools
 		background-color: color("primary");
 		box-shadow: 0 5px 10px 0 transparentize(color("black"), 1);
 
-		@include add-style-sticky {
+		.js_sticky {
 			@extend %fix-fixed;
 
 			padding: 10px 0;

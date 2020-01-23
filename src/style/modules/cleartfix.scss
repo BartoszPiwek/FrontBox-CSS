@@ -1,7 +1,7 @@
 /*
 Clearfix
 
-Force an element to self-clear its children
+Include function inside selector to force an element self-clear its children.
 
 Function:
 cleartfix;
@@ -11,6 +11,7 @@ Usage:
 
 Style guide: Modules.Clearfix
 */
+
 @mixin clearfix {
 	zoom: 1;
 	*zoom: 1;

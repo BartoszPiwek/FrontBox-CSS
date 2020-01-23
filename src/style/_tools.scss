@@ -23,8 +23,7 @@
 }
 
 .scrollbar,
-html,
-* {
+html {
 	@include add-scrollbar(20, color('primary'), color('secondary'));
 }
 
@@ -41,6 +40,10 @@ html,
 .col {
 	&-static {
 	}
+}
+
+.holder {
+	@include add-holder(100, 200);
 }
 
 // vh-unit

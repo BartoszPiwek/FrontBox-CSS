@@ -1,28 +1,21 @@
 /*
-
 Holder
 
-Mixin:
-add_holder($width, $height);
+Include function inside selector to create responsive holder.
 
-Mixin arguments:
+Function:
+add-holder($width, $height);
+
+Arguments:
 $width: number
 $height: number
 
-Mixin example:
-.holder {
-	@include add_holder(500, 1000);
+Usage:
+.selector {
+	@include add-holder(500, 1000);
 }
 
-Mixin output:
-<div class="holder">
-	<div class="holder__content">Content</div>
-</div>
-
-Mixin style:
-@include add_holder-style;
-
-Style guide: Functions.holder
+Style guide: Modules.Holder
 */
 
 @mixin add-holder($width, $height) {
@@ -36,7 +29,21 @@ Style guide: Functions.holder
 	}
 }
 
-@mixin add-holder-style {
+/*
+Style
+
+Inject style for selectors `.holder` and `.holder__content`.
+
+Function:
+holder-style;
+
+Usage:
+@include holder-style;
+
+Style guide: Modules.Holder.Style
+*/
+
+@mixin holder-style {
 	.holder {
 		position: relative;
 

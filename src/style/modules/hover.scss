@@ -1,30 +1,47 @@
 /*
 Hover
 
-Set element style for states `:hover` `:active` `:focus`.
-Add class &--hover for parent element to trigger hover for child element
+Include function inside selector to style `:hover`, `:active` and `:focus` states.<br>
+> Set <b>true</b> for parameter <b>$parentHover</b> to create trigger hover class `&--hover` for any parent element. 
 
 Function:
-add-hover;
+add-hover($parentHover);
+
+Arguments:
+$parentHover : boolean : false
 
 Usage:
 .selector {
- @include add-hover {
+ @include add-hover(true) {
   // content 	
  };
+}
+
+OutputCSS:
+.selector:hover,
+.selector:active,
+.selector:focus,
+.selector--hover:hover .selector,
+.selector--hover:active .selector,
+.selector--hover:focus .selector {
+  // content 	
 }
 
 Style guide: Modules.Hover
 */
 
-@mixin add-hover {
-	&--hover:hover &,
-	&--hover:active &,
-	&--hover:focus &,
+@mixin add-hover($parentHover: false) {
 	&:hover,
 	&:active,
-	&:focus,
-	&.is-active {
+	&:focus {
 		@content;
+	}
+
+	@if ($parentHover == true) {
+		&--hover:hover &,
+		&--hover:active &,
+		&--hover:focus & {
+			@content;
+		}
 	}
 }
