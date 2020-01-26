@@ -25,7 +25,7 @@ export class CookieInformation extends Component {
 	}
 
 	public async onInit() {
-		if (Cookies.get('using-cookies')) {
+		if (Cookies.get('cookie-accept')) {
 			return;
 		}
 
@@ -37,7 +37,7 @@ export class CookieInformation extends Component {
 
 		accept.forEach(item => {
 			item.addEventListener('click', () => {
-				Cookies.set('using-cookies', 1);
+				Cookies.set('cookie-accept', 1);
 				cookie.classList.add('js_cookies-information--hide');
 			});
 		});

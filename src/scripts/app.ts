@@ -15,7 +15,6 @@ import { InputCounter } from './bootstrap/input-counter';
 import { ProtectEmail } from './bootstrap/protect-email';
 import { Scroll } from './bootstrap/scroll';
 import { Sticky } from './bootstrap/sticky';
-import { Tabs } from './bootstrap/tabs';
 /* test-code */
 import { FrontboxWatch } from './bootstrap/watch';
 /* end-test-code */
@@ -45,17 +44,6 @@ window.onload = () => {
 
 	new Sticky({
 		element: document.getElementById('header-content')
-	});
-
-	new Tabs({
-		name: 'primary'
-	});
-
-	document.getElementById('scrollTo').addEventListener('click', () => {
-		scroll.to({
-			element: document.getElementById('fee'),
-			time: 1000
-		});
 	});
 
 	new ProtectEmail({

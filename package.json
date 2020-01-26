@@ -89,13 +89,13 @@
 		"uncss": "^0.17.2",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"vnu-jar": "^19.6.7"
+		"vnu-jar": "^19.6.7",
+		"prismjs": "^1.18.0"
 	},
 	"dependencies": {
 		"css-vars-ponyfill": "^2.1.1",
 		"global": "^4.4.0",
 		"js-cookie": "^2.2.1",
-		"prismjs": "^1.18.0",
 		"vh-check": "^2.0.5"
 	},
 	"repository": "https://github.com/BartoszPiwek/FrontBox.git",

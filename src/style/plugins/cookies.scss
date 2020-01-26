@@ -41,7 +41,7 @@
 		}
 	}
 
-	&__exit {
+	&-exit {
 		@include add-click-expand;
 
 		position: absolute;
@@ -49,14 +49,34 @@
 		right: 0;
 		cursor: pointer;
 
-		.icon-x {
+		&__icon {
 			width: 20px;
 			height: 20px;
 			transition: transform $time-transition;
+
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100%;
+				height: 2px;
+				transform-origin: left top;
+				background-color: color("white");
+			}
+
+			&:before {
+				transform: rotate(45deg) translate(-50%, -50%);
+			}
+
+			&:after {
+				transform: rotate(-45deg) translate(-50%, -50%);
+			}
 		}
 
 		@include add-hover {
-			.icon-x {
+			.js_cookies-information-exit__icon {
 				transform: rotate(90deg);
 			}
 		}

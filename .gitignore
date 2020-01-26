@@ -11,6 +11,7 @@ src/js/libs/*
 # Generated
 public
 documentation
+log
 
 # Maps
 *.map.*
@@ -18,13 +19,6 @@ documentation
 
 # Generated
 src/images/favicons/*
-!src/images/favicons/.gitkeep
-styleguide
-
-# Logs
-log/*
 
 # Manifest
-package-lock.json
 yarn-error.log
-yarn.lock
