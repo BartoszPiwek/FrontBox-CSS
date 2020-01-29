@@ -75,39 +75,33 @@
 				{{!-- Page content --}}
 				<section id="{{referenceURI}}" class="section section--depth-{{depth}}">
 
-					<div class="section__body">
-						<h2 class="section-title">
-							<div class="section__wrap">
-								<a class="section-title__link" href="#{{referenceURI}}">
-									<span class="section-title__text">
-										{{header}}
-									</span>
-									<span class="section-title__ref">
-										{{#if @root.hasNumericReferences}}
-										#permalink
-										{{else}}
-										#{{reference}}
-										{{/if}}
-									</span>
-								</a>
-							</div>
-						</h2>
-
-						{{styleGuide}}
-
-						{{#if description}}
-						<div class="section-description markdown section__wrap">
-							{{{description}}}
-							{{#if source.filename}}
-							Source code located in file
-							<a href="https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/{{source.filename}}#L{{source.line}}"
-								target="_blank">
-								{{source.filename}}
-							</a>.
+					<a class="section-title depth-{{depth}}" href="#{{referenceURI}}">
+						<span class="section-title__text depth-{{depth}}">
+							{{header}}
+						</span>
+						<span class="section-title__ref">
+							{{#if @root.hasNumericReferences}}
+							#permalink
+							{{else}}
+							#{{reference}}
 							{{/if}}
-						</div>
-						{{/if}}
+						</span>
+					</a>
 
+					{{#if description}}
+					<div class="section-description markdown section__wrap">
+						{{{description}}}
+						{{#if source.filename}}
+						Source code located in file
+						<a href="https://github.com/BartoszPiwek/FrontBox-CSS/tree/master/src/style/{{source.filename}}#L{{source.line}}"
+							target="_blank">
+							{{source.filename}}
+						</a>.
+						{{/if}}
+					</div>
+					{{/if}}
+
+					<div class="section__body">
 						{{#if function}}
 						<div class="section-item">
 							<h3 class="section-item__title section__wrap">Function</h3>
@@ -211,52 +205,79 @@
 						{{/if}}
 					</div>
 
+					{{!-- Example code with modifiers and markups --}}
 					{{#if example}}
-					<div class="kss-modifier__wrapper">
-						<div class="kss-modifier__heading kss-style">
-							Example{{#if modifiers}}s{{/if}}
-						</div>
+					<div class="section-item">
+						<h3 class="section-item__title section__wrap">Example{{#if modifiers}}s{{/if}}</h3>
+						<div class="section__wrap kss-example-wrapper">
 
-						{{#if modifiers}}
-						<div class="kss-modifier__default-name kss-style">
-							Default styling
-						</div>
-						{{/if}}
+							{{#ifEquals depth 2}}
+							<div class="kss-example">
+								<div class="kss-output">
+									<div class="kss-output__title">
+										Default styling
+									</div>
+									<div class="kss-output__content">
+										<pre class="language-none">
+											<iframe class="iframe" data-iframe></iframe>
+											<div>{{{pug example}}}</div>
+										</pre>
+									</div>
+								</div>
 
-						<div class="kss-modifier__example">
-							{{!-- <iframe class="debug-iframe" data-iframe="list-vertical-responsive"></iframe> --}}
-							{{!-- <div data-iframe-content="list-vertical-responsive"> --}}
-							{{{example}}}
-							{{!-- </div> --}}
-						</div>
+								<details class="kss-markup kss-style">
+									<summary>
+										{{#if markupFile }}
+										Markup: <code>{{markupFile}}</code>
+										{{else}}
+										Markup
+										{{/if}}
+									</summary>
+									<div class="markup-content">
+										<pre
+											class="language-pug"><code class="language-pug" data-language="pug">{{{prism markup 'pug'}}}</code></pre>
+										<pre
+											class="language-html"><code class="language-html" data-language="html">{{{prism (pug markup) 'html'}}}</code></pre>
+									</div>
+								</details>
+							</div>
+							{{/ifEquals}}
 
-						{{#each modifiers}}
-						<div class="kss-modifier__name kss-style">
-							{{name}}
+							{{#each modifiers}}
+							<div class="kss-example">
+								<div class="kss-output">
+									<div class="kss-output__title">
+										<code class="kss-code">{{name}}</code> {{{description}}}
+									</div>
+									<div class="kss-output__content">
+										<pre class="language-none">
+											<iframe class="iframe" data-iframe></iframe>
+											<div>{{{pug markup}}}</div>
+										</pre>
+									</div>
+								</div>
+
+								<details class="kss-markup kss-style">
+									<summary>
+										{{#if markupFile }}
+										Markup: <code>{{markupFile}}</code>
+										{{else}}
+										Markup
+										{{/if}}
+									</summary>
+									<div class="markup-content">
+										<pre
+											class="language-pug"><code class="language-pug" data-language="pug">{{{prism markup 'pug'}}}</code></pre>
+										<pre
+											class="language-html"><code class="language-html" data-language="html">{{{prism (pug markup) 'html'}}}</code></pre>
+									</div>
+								</details>
+							</div>
+
+							{{/each}}
+
 						</div>
-						<div class="kss-modifier__description kss-style">
-							{{{description}}}
-						</div>
-						<div class="kss-modifier__example">
-							{{{markup}}}
-							<div class="kss-modifier__example-footer"></div>
-						</div>
-						{{/each}}
 					</div>
-
-					{{#if markup}}
-					<details class="kss-markup kss-style">
-						<summary>
-							{{#if markupFile }}
-							Markup: <code>{{markupFile}}</code>
-							{{else}}
-							Markup
-							{{/if}}
-						</summary>
-						<pre class="hljs"><code class="language-handlebars">{{{hljs markup 'handlebars'}}}</code></pre>
-					</details>
-					{{/if}}
-
 					{{/if}}
 
 				</section>

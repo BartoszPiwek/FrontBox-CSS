@@ -54,36 +54,6 @@ h3 {
 		padding-left: 60px;
 	}
 
-	&-title {
-		position: sticky;
-		z-index: 3;
-		top: 0;
-		left: 0;
-		margin: 30px 0 35px;
-		padding: 10px 10px 10px 0;
-		border-bottom: 2px solid $colorSecondary;
-		background: $colorWhite;
-		box-shadow: 5px 5px 10px #f3f7fb;
-
-		&__text {
-			font-size: 38px;
-			font-weight: bold;
-		}
-
-		&__ref {
-			color: $colorBlack;
-			font-size: 14px;
-			font-style: italic;
-		}
-
-		&__link {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
-		}
-	}
-
 	&-description {
 		margin: 20px 0;
 		line-height: 22px;
@@ -133,4 +103,89 @@ h3 {
 
 .select-all {
 	user-select: all;
+}
+
+code {
+	display: inline-block;
+	padding: 2px;
+	background-color: $colorPrimary;
+	color: $colorWhite;
+	font-family: monospace;
+}
+
+.kss-example {
+	position: relative;
+	padding-top: 30px;
+	margin-top: 30px;
+
+	& + & {
+		border-top: 1px solid $colorSecondary;
+	}
+
+	&-wrapper {
+		& > *:first-child {
+			padding-top: 0;
+			margin-top: 0;
+		}
+	}
+}
+
+.kss-output {
+	&__title {
+		padding: 5px;
+		background: #fdfdfd;
+		border-left: 10px solid $colorSecondary;
+
+		.kss-code {
+			transform: translateY(-1px);
+		}
+	}
+}
+
+.section-title {
+	display: block;
+	position: sticky;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	margin: 30px 0 35px;
+	padding: 10px 10px 10px 0;
+	background: $colorWhite;
+	box-shadow: 5px 5px 10px #f3f7fb;
+
+	&__ref {
+		color: $colorBlack;
+		font-size: 14px;
+		font-style: italic;
+	}
+
+	&__text {
+		&.depth {
+			&-2 {
+				font-size: 38px;
+			}
+
+			&-3 {
+				font-size: 25px;
+			}
+		}
+	}
+
+	&__link {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&.depth {
+		&-2 {
+			border-left: 20px solid $colorSecondary;
+			border-bottom: 2px solid $colorSecondary;
+		}
+
+		&-3 {
+			border-left: 10px solid $colorSecondary;
+		}
+	}
 }

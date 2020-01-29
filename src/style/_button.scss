@@ -1,27 +1,24 @@
 /*
-Buttons
+Button
 
 Clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality
 
-.btn-block - grow element width to 100%
-.btn-disable - disables the button, it cannot be clicked
-.btn-link - display only text without decorations
+.btn-block - Set full width of a parent element
+.btn-disable - Set button state to disabled and reset pseudo-classes style
 
 Markup:
-<a class="btn {{modifier_class}}">Anchor element</a>
-<button class="btn {{modifier_class}}">Button element</button>
-<input class="btn {{modifier_class}}" type="button" value="Input Button" />
+a(class="btn {{modifier_class}}") Anchor element
 
-Style guide: Component.Buttons
+Style guide: Components.Button
 */
 
 .btn {
 	display: inline-block;
 	position: relative;
 	box-sizing: border-box;
-	height: 100%;
 	padding: 14px 6px;
-	transition: background-color $time-transition, color $time-transition, border-color $time-transition, transform $time-transition;
+	transition: background-color $time-transition, color $time-transition,
+		border-color $time-transition, transform $time-transition;
 	border: 0;
 	border-radius: 5px;
 	background-color: color("primary");
@@ -42,13 +39,20 @@ Style guide: Component.Buttons
 		transform: translateY(1px);
 	}
 
-	//=========================================================================
-	// ANCHOR Elements
-	//=========================================================================
+	&-block {
+		display: block;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	@include add-hover {
+		background-color: darken(color("primary"), 0.95);
+	}
 
 	&-disable,
 	&[disabled] {
-		pointer-events: none;
+		cursor: not-allowed;
+		transform: none !important;
 
 		&:before {
 			content: "";
@@ -63,55 +67,26 @@ Style guide: Component.Buttons
 			pointer-events: none;
 		}
 	}
-
-	&-block {
-		display: block;
-		width: 100% !important;
-		max-width: 100% !important;
-	}
-
-	&-link {
-		border-color: transparent !important;
-		background: transparent !important;
-		color: color("black") !important;
-
-		&:before,
-		&:after {
-			background: transparent !important;
-		}
-	}
-
-	@include add-hover {
-		background-color: darken(color("primary"), 0.95);
-	}
 }
-
-//=========================================================================
-// ANCHOR Colors
-//=========================================================================
 
 /*
 Colors
 
-Clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality
-
-.btn--primary - colors
-.btn--primary:hover - colors
-.btn--secondary - colors
-.btn--success - colors
-.btn--danger - colors
-.btn--warning - colors
-.btn--info - colors
-.btn--light - colors
-.btn--dark - colors
+.btn--primary - color
+.btn--secondary - color
+.btn--success - color
+.btn--danger - color
+.btn--warning - color
+.btn--info - color
+.btn--light - color
+.btn--dark - color
 
 Markup:
-<a class="btn {{modifier_class}}">Anchor element</a>
-<button class="btn {{modifier_class}}">Button element</button>
-<input class="btn {{modifier_class}}" type="button" value="Input Button" />
+a(class="btn {{modifier_class}}") Anchor element
 
-Style guide: Component.Buttons.colors
+Style guide: Components.Button.colors
 */
+
 .btn {
 	&--primary {
 		background-color: color("primary");
@@ -140,19 +115,7 @@ Style guide: Component.Buttons.colors
 	// &--info {
 	//   background-color: color('info');
 	// }
-
-	// &--light {
-	//   background-color: color('light');
-	// }
-
-	// &--dark {
-	//   background-color: color('dark');
-	// }
 }
-
-//=========================================================================
-// ANCHOR Size
-//=========================================================================
 
 /*
 Size
@@ -165,11 +128,9 @@ Size
 .btn--tiny - size
 
 Markup:
-<a class="btn {{modifier_class}}">Anchor element</a>
-<button class="btn {{modifier_class}}">Button element</button>
-<input class="btn {{modifier_class}}" type="button" value="Input Button" />
+a(class="btn {{modifier_class}}") Anchor element
 
-Style guide: Component.Buttons.colors
+Style guide: Components.Button.size
 */
 
 .btn {
