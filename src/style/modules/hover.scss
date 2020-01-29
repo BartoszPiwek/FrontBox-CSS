@@ -1,7 +1,7 @@
 /*
 Hover
 
-Include function inside selector to style `:hover`, `:active` and `:focus` states.<br>
+Include function inside selector to style `:hover`, `:active` and `:focus` states. Style only trigger for non touch devices.<br>
 > Set <b>true</b> for parameter <b>$parentHover</b> to create trigger hover class `&--hover` for any parent element. 
 
 Function:
@@ -18,30 +18,41 @@ Usage:
 }
 
 OutputCSS:
-.selector:hover,
-.selector:active,
-.selector:focus,
-.selector--hover:hover .selector,
-.selector--hover:active .selector,
-.selector--hover:focus .selector {
+@media (hover: hover) {
+ .selector:hover,
+ .selector:active,
+ .selector:focus {
   // content 	
+ }
 }
+@media (hover: hover) {
+ .selector--hover:hover .selector,
+ .selector--hover:active .selector,
+ .selector--hover:focus .selector {
+   // content 	
+ }
+}
+
 
 Style guide: Modules.Hover
 */
 
 @mixin add-hover($parentHover: false) {
-	&:hover,
-	&:active,
-	&:focus {
-		@content;
+	@media (hover: hover) {
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
 	}
 
 	@if ($parentHover == true) {
-		&--hover:hover &,
-		&--hover:active &,
-		&--hover:focus & {
-			@content;
+		@media (hover: hover) {
+			&--hover:hover &,
+			&--hover:active &,
+			&--hover:focus & {
+				@content;
+			}
 		}
 	}
 }
