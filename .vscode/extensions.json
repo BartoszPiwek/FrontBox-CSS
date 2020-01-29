@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"mrmlnc.vscode-scss",
+		"mrmlnc.vscode-puglint",
+		"mrmlnc.vscode-pugbeautify",
+		"rebornix.project-snippets",
+		"esbenp.prettier-vscode",
+		"ms-vscode.typescript-javascript-grammar",
+		"editorconfig.editorconfig",
+		"streetsidesoftware.code-spell-checker",
+		"shinnn.stylelint"
+	]
+}
