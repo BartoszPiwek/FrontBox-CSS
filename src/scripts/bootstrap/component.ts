@@ -1,5 +1,4 @@
-import { vh } from '../app/polyfill';
-import { browser, frontboxConsole } from '../app';
+import { vh } from "../app/polyfill";
 
 interface IComponent {
 	onInit?: Function;
@@ -28,20 +27,16 @@ export abstract class Component implements IComponent {
 			this.lastHeight = vh.windowHeight;
 
 			window.addEventListener(
-				'resize',
+				"resize",
 				() => {
-					if ((vh.isNeed && this.lastHeight !== vh.windowHeight) || !vh.isNeed) {
+					if (
+						(vh.isNeed && this.lastHeight !== vh.windowHeight) ||
+						!vh.isNeed
+					) {
 						this.lastWidth = window.innerWidth;
 						this.lastHeight = vh.windowHeight;
 
 						this.onResize();
-
-						/* test-code */
-						frontboxConsole.add({
-							title: 'App',
-							content: `${vh.isNeed} ${vh.vh} ${vh.windowHeight}`
-						});
-						/* end-test-code */
 					}
 				},
 				false
@@ -51,7 +46,7 @@ export abstract class Component implements IComponent {
 
 		/* Run function on scroll */
 		if (this.onScroll) {
-			window.addEventListener('scroll', () => {
+			window.addEventListener("scroll", () => {
 				this.onScroll();
 			});
 			this.onScroll();

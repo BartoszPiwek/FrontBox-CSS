@@ -1,8 +1,5 @@
-/* test-code */
-import { frontboxConsole } from '../app';
-/* end-test-code */
-import { Component } from './component';
-import { transitionSize } from '../tools/transition-size';
+import { transitionSize } from "../tools/transition-size";
+import { Component } from "./component";
 
 /**
  * A single content area with multiple panels, each associated with a header in a list
@@ -49,18 +46,14 @@ export class Tabs extends Component {
 	}
 
 	public onInit() {
-		let navigation: NodeListOf<Element> = document.querySelectorAll(`[data-tabs-navigation="${this.name}"]`);
-		let content: NodeListOf<Element> = document.querySelectorAll(`[data-tabs-content="${this.name}"]`);
+		let navigation: NodeListOf<Element> = document.querySelectorAll(
+			`[data-tabs-navigation="${this.name}"]`
+		);
+		let content: NodeListOf<Element> = document.querySelectorAll(
+			`[data-tabs-content="${this.name}"]`
+		);
 
 		if (!navigation.length && !content.length) {
-			/* test-code */
-			frontboxConsole.add({
-				type: 'warning',
-				title: 'Tabs',
-				content: `Tabs with name '${this.name}' not exist`
-			});
-			/* end-test-code */
-
 			return;
 		}
 
@@ -69,7 +62,7 @@ export class Tabs extends Component {
 		this._length = this.navigation.length;
 
 		for (let index = 0; index < this.length; index++) {
-			this.navigation[index].addEventListener('click', () => {
+			this.navigation[index].addEventListener("click", () => {
 				this.change(index);
 				return;
 			});
@@ -94,11 +87,11 @@ export class Tabs extends Component {
 			}
 		});
 
-		this.navigation[this.active].classList.remove('active');
-		this.content[this.active].classList.remove('active');
+		this.navigation[this.active].classList.remove("active");
+		this.content[this.active].classList.remove("active");
 
-		this.navigation[index].classList.add('active');
-		this.content[index].classList.add('active');
+		this.navigation[index].classList.add("active");
+		this.content[index].classList.add("active");
 
 		this.active = index;
 	}

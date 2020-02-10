@@ -1,9 +1,6 @@
-/* test-code */
-import { breakpoints } from '../../../consts';
-// import { frontboxWatch } from '../app';
-import { Component } from './component';
-/* end-test-code */
-import { html } from './elements';
+import { breakpoints } from "../../../consts";
+import { Component } from "./component";
+import { html } from "./elements";
 
 interface IScroll {
 	top: number;
@@ -30,19 +27,6 @@ export class Browser extends Component {
 		super();
 	}
 
-	public afterInit() {
-		/* test-code */
-		// frontboxWatch.add({
-		// 	key: 'browser-scroll',
-		// 	data: ['top', 'bottom', 'speed', 'direction']
-		// });
-		// frontboxWatch.add({
-		// 	key: 'browser-size',
-		// 	data: ['width', 'height']
-		// });
-		/* end-test-code */
-	}
-
 	public onResize() {
 		this.calculatePage();
 	}
@@ -62,9 +46,9 @@ export class Browser extends Component {
 
 		/* Check scroll direction */
 		if (top < lastTop) {
-			direction = 'up';
+			direction = "up";
 		} else {
-			direction = 'down';
+			direction = "down";
 		}
 
 		this.scroll = {
@@ -73,18 +57,13 @@ export class Browser extends Component {
 			speed: speed,
 			direction: direction
 		};
-
-		/* test-code */
-		// frontboxWatch.refresh({
-		// 	key: 'browser-scroll',
-		// 	data: this.scroll
-		// });
-		/* end-test-code */
 	}
 
 	public get scrollbarWidth(): number {
 		if (!this._scrollbarWidth) {
-			const scrollbar: HTMLElement = document.getElementById('js_check-scrollbar');
+			const scrollbar: HTMLElement = document.getElementById(
+				"js_check-scrollbar"
+			);
 			const content: Element = scrollbar.children.item(0);
 
 			this._scrollbarWidth = scrollbar.offsetWidth - content.clientWidth;
@@ -96,12 +75,12 @@ export class Browser extends Component {
 
 	public get transitionEvent(): string {
 		if (!this._transitionEvent) {
-			const element = document.createElement('getTransitionEvent');
+			const element = document.createElement("getTransitionEvent");
 			const transitions = {
-				transition: 'transitionend',
-				OTransition: 'oTransitionEnd',
-				MozTransition: 'transitionend',
-				WebkitTransition: 'webkitTransitionEnd'
+				transition: "transitionend",
+				OTransition: "oTransitionEnd",
+				MozTransition: "transitionend",
+				WebkitTransition: "webkitTransitionEnd"
 			};
 
 			for (const key in transitions) {
@@ -115,11 +94,11 @@ export class Browser extends Component {
 		return this._transitionEvent;
 	}
 
-	public get orientation(): 'portrait' | 'landscape' {
-		if (window.matchMedia('(orientation: portrait)').matches) {
-			return 'portrait';
+	public get orientation(): "portrait" | "landscape" {
+		if (window.matchMedia("(orientation: portrait)").matches) {
+			return "portrait";
 		} else {
-			return 'landscape';
+			return "landscape";
 		}
 	}
 
@@ -146,16 +125,12 @@ export class Browser extends Component {
 		const body = document.body,
 			html = document.documentElement;
 
-		this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-
-		/* test-code */
-		// frontboxWatch.refresh({
-		// 	key: 'browser-size',
-		// 	data: {
-		// 		width: this.width,
-		// 		height: this.height
-		// 	}
-		// });
-		/* end-test-code */
+		this.documentHeight = Math.max(
+			body.scrollHeight,
+			body.offsetHeight,
+			html.clientHeight,
+			html.scrollHeight,
+			html.offsetHeight
+		);
 	}
 }

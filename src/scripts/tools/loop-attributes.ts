@@ -1,7 +1,3 @@
-/* test-code */
-import { frontboxConsole } from '../app';
-/* end-test-code */
-
 /**
  * Get values from finder attributes and fire callback
  *
@@ -32,11 +28,4 @@ export function loopAttributes(param: ILoopAttributes): void {
 	for (let index = 0; index < length; index++) {
 		param.callback(elements[index].getAttribute(param.attribute));
 	}
-
-	/* test-code */
-	frontboxConsole.add({
-		title: `loopAttributes '${param.attribute}'`,
-		content: `Finded ${length} value/s`
-	});
-	/* end-test-code */
 }
