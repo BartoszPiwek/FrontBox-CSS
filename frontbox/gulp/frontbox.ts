@@ -1,4 +1,4 @@
-import { series, watch } from "gulp";
+import { watch } from "gulp";
 import { Gulpclass, Task } from "gulpclass/Decorators";
 import { IFrontboxConfig, IFrontboxTask } from "./interface";
 
@@ -30,13 +30,15 @@ export abstract class AbstractFrontboxGulpTask {
 
 	public loopTasks(fun: Function) {
 		this.configTask.forEach(v => {
-			fun(v);
+			return fun(v);
 		})
 	}
 
 	public createTasks(fun: Function) {
 		this.configTask.forEach(v => {
-			this.tasks[v.name] = () => fun(v);
+			this.tasks[v.name] = () => {
+				return fun(v);
+			};
 		})
 	}
 
@@ -69,16 +71,12 @@ export abstract class AbstractFrontboxGulpTask {
 		// });
 	}
 
-	public abstract task?(element: IFrontboxConfig);
-
-	public abstract start();
-
 	@Task()
 	public watch(prefix: string) {
 		this.configTask.forEach(element => {
 
-			const copy = (done) => {
-				this.tasks[element.name]();
+			const copy = async (done) => {
+				await this.tasks[element.name]();
 				done();
 			};
 
@@ -87,8 +85,10 @@ export abstract class AbstractFrontboxGulpTask {
 					element.name.slice(1)}`
 			});
 
-			watch(element.watch, series(copy));
+			watch(element.watch, copy);
 		});
 	}
 
+	public abstract task?(element: IFrontboxConfig);
+	public abstract start();
 }
