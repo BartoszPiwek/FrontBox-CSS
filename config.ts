@@ -1,3 +1,5 @@
+import { IFrontboxConfig } from "./frontbox/gulp/interface";
+
 export const configDocumentationStyle = {
 	dest: "documentation/style"
 };
@@ -37,7 +39,7 @@ export const configFramework = {
 	]
 };
 
-export const configStyle = [
+export const configStyle: IFrontboxConfig[] = [
 	{
 		name: "style",
 		files: "./src/style/style.scss",
@@ -90,23 +92,26 @@ export const configScript = [
 	}
 ];
 
-export const configHtml = {
-	main: {
+export const configHtml: IFrontboxConfig[] = [
+	{
+		name: "main",
 		files: "./src/template/*.pug",
 		dest: "",
 		watch: ["./src/template/*.pug"]
 	},
-	include: {
+	{
+		name: "include",
 		files: "./src/template/*.pug",
 		dest: "",
 		watch: ["./src/template/includes/*.pug"]
 	},
-	partials: {
+	{
+		name: "partials",
 		files: "./src/template/partials/*.pug",
 		dest: "partials",
 		watch: ["./src/template/partials/*.pug"]
 	}
-};
+];
 
 export const configCopy = [
 	{

@@ -17,8 +17,7 @@ Style guide: Components.Button
 	position: relative;
 	box-sizing: border-box;
 	padding: 14px 6px;
-	transition: background-color $time-transition, color $time-transition,
-		border-color $time-transition, transform $time-transition;
+	transition: background-color $time-transition, color $time-transition, border-color $time-transition, transform $time-transition;
 	border: 0;
 	border-radius: 5px;
 	background-color: color("primary");
@@ -45,14 +44,10 @@ Style guide: Components.Button
 		max-width: 100% !important;
 	}
 
-	@include add-hover {
-		background-color: darken(color("primary"), 0.95);
-	}
-
 	&-disable,
 	&[disabled] {
-		cursor: not-allowed;
 		transform: none !important;
+		cursor: not-allowed;
 
 		&:before {
 			content: "";
@@ -66,6 +61,10 @@ Style guide: Components.Button
 			background: color("black");
 			pointer-events: none;
 		}
+	}
+
+	@include add-hover {
+		background-color: darken(color("primary"), 0.95);
 	}
 }
 

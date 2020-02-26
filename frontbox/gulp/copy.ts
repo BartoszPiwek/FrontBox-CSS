@@ -1,45 +1,36 @@
-/* Libs */
-import { dest, src, watch } from "gulp";
+import { dest, src } from "gulp";
 import * as newer from 'gulp-newer';
 import { Gulpclass, Task } from "gulpclass/Decorators";
 import { configCopy } from "../../config";
-import { websiteDestinationPath } from "./frontbox";
+import { AbstractFrontboxGulpTask } from "./frontbox";
+import { IFrontboxConfig, IFrontboxTask } from "./interface";
 
 const argv = require("yargs").argv;
 
 @Gulpclass()
-export class FrontboxGulpCopy {
-	private tasks = {};
-
-	init() {
-		configCopy.map((element) => {
-			this.tasks[element.name] = () => {
-				return src(`${element.files}`)
-					.pipe(newer(`${websiteDestinationPath}/${element.dest}`))
-					.pipe(dest(`${websiteDestinationPath}/${element.dest}`))
-			};
-
-			this.tasks[element.name]();
-		})
-
-		if (argv.watch) {
-			this.watch();
-		}
+export class FrontboxGulpCopy extends AbstractFrontboxGulpTask {
+	constructor(params?: IFrontboxTask) {
+		super(configCopy, params);
 	}
 
 	@Task()
-	watch() {
-		for (const copyTask of configCopy) {
-			const copy = () => {
-				return this.tasks[copyTask.name]();
-			};
+	task(element: IFrontboxConfig) {
+		return src(`${element.files}`)
+			.pipe(newer(`${this.destinationPath}/${element.dest}`))
+			.pipe(dest(`${this.destinationPath}/${element.dest}`));
+	}
 
-			(Object.assign(copy, { displayName: `copy${copyTask.name.charAt(0).toUpperCase() + copyTask.name.slice(1)}` }));
+	start() {
+		this.createTasks(element => {
+			this.task(element);
+		})
 
-			watch(
-				copyTask.watch,
-				copy
-			)
+		this.loopTasks(element => {
+			this.tasks[element.name]();
+		})
+
+		if (argv.watch && !argv.prod) {
+			this.watch('copy');
 		}
 	}
 }

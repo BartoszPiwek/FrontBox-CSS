@@ -48,20 +48,20 @@ export class InputCounter {
 
 	loopElement() { }
 
-	add( wrap: Element ) {
+	add(wrap: Element) {
 
-		let 
-		input: HTMLInputElement,
-		button: NodeListOf<Element>,
-		value: number,
-		max: number,
-		min: number;
+		let
+			input: HTMLInputElement,
+			button: NodeListOf<Element>,
+			value: number,
+			max: number,
+			min: number;
 
 		input = wrap.querySelector('.input-counter__input');
 		button = wrap.querySelectorAll('.input-counter__btn');
-		value = Number( input.value );
-		min = Number( input.min );
-		max = Number( input.max );
+		value = Number(input.value);
+		min = Number(input.min);
+		max = Number(input.max);
 
 		this.database.push({
 			wrap: wrap,
@@ -78,30 +78,25 @@ export class InputCounter {
 		}
 
 		input.oninput = () => {
+			let valueNew = Number(input.value);
 
-
-			let valueNew = Number( input.value );
-
-			console.log(valueNew);
-			
-
-			if ( !valueNew ) {
-				input.value = String( value );
+			if (!valueNew) {
+				input.value = String(value);
 				return false;
 			}
 
 			value = valueNew;
-			if ( valueNew >= max ) {
+			if (valueNew >= max) {
 				value = max
 				console.log("max");
-				
+
 			}
-			else if ( valueNew <= min ) {
+			else if (valueNew <= min) {
 				value = min
 				console.log("min");
 			}
 
-			input.value = String( value );
+			input.value = String(value);
 
 			input.select();
 		};
@@ -121,11 +116,11 @@ export class InputCounter {
 		let wrap = document.querySelectorAll(`[data-bind="input-counter"]`);
 
 		/* Fill database */
-		wrap.forEach( (item) => {
+		wrap.forEach((item) => {
 			this.add(item);
 		});
 
-		console.log( this.database );
+		console.log(this.database);
 
 		this.active = true;
 	}

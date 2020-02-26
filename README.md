@@ -76,7 +76,7 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 	</tr>
 	<tr>
 		<td>Version</td>
-		<td>1.2.0</td>
+		<td>1.5.0</td>
 	</tr>
 </table>
 

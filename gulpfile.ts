@@ -1,14 +1,15 @@
 /*!
- * FrontBox 1.3.0
- * Copyright Bartosz Piwek
+ * FrontBox-CSS 1.5.0
+ * Bartosz Piwek
  * https://github.com/BartoszPiwek/FrontBox
  */
+
 import { Gulpclass, Task } from "gulpclass/Decorators";
 import { configBrowser, configDocumentationStyle } from "./config";
 import { FrontboxGulpCopy } from "./frontbox/gulp/copy";
 import { FrontboxGulpDocumentationStyle } from "./frontbox/gulp/documentation-style";
 import { websiteDestinationPath } from "./frontbox/gulp/frontbox";
-import { Html } from "./frontbox/gulp/html";
+import { FrontboxGulpHTML } from "./frontbox/gulp/html";
 import { FrontboxGulpScript } from "./frontbox/gulp/script";
 import { FrontboxGulpStyle } from "./frontbox/gulp/style";
 
@@ -17,10 +18,10 @@ export const browserSync = require("browser-sync").create();
 const argv = require("yargs").argv;
 const del = require("del");
 const documentationStyle = new FrontboxGulpDocumentationStyle();
-const copy = new FrontboxGulpCopy();
-const html = new Html();
-const script = new FrontboxGulpScript();
-const style = new FrontboxGulpStyle();
+let copy: FrontboxGulpCopy;
+let script: FrontboxGulpScript;
+let style: FrontboxGulpStyle;
+let html: FrontboxGulpHTML;
 
 @Gulpclass()
 export class Gulpfile {
@@ -29,23 +30,28 @@ export class Gulpfile {
 		browserSync.init({
 			...configBrowser,
 			server: {
-				baseDir: `${websiteDestinationPath}`
+				baseDir: websiteDestinationPath
 			}
 		});
 	}
 
-	@Task()
+	@Task('buildWebsite')
 	async buildWebsite() {
+		style = new FrontboxGulpStyle();
+		html = new FrontboxGulpHTML();
+		script = new FrontboxGulpScript();
+		copy = new FrontboxGulpCopy();
+
 		if (argv.clean || argv.prod || argv.new) {
-			del.sync(`${websiteDestinationPath}`);
+			del.sync(websiteDestinationPath);
 		}
 
-		copy.init();
-		html.init();
-		script.init();
-		style.init();
+		copy.start();
+		html.start();
+		script.start();
+		style.start();
 
-		if (argv.server) {
+		if (argv.server && !argv.prod) {
 			this.createServer();
 		}
 
@@ -54,6 +60,11 @@ export class Gulpfile {
 
 	@Task()
 	async documentationStyle() {
+		style = new FrontboxGulpStyle({
+			destinationPath: `${configDocumentationStyle.dest}/style`,
+			includePrefix: false
+		});
+
 		if (argv.clean) {
 			del.sync(`${configDocumentationStyle}`);
 		}
@@ -62,10 +73,7 @@ export class Gulpfile {
 		documentationStyle.style();
 		documentationStyle.styleIframe();
 
-		style.init({
-			destinationPath: `${configDocumentationStyle.dest}/style`,
-			includePrefix: false
-		});
+		style.start();
 
 		if (argv.watch) {
 			documentationStyle.watch();
