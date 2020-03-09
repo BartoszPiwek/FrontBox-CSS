@@ -1,7 +1,8 @@
 import { dest, src } from "gulp";
-import * as newer from 'gulp-newer';
-import { Gulpclass, Task } from "gulpclass/Decorators";
+import * as newer from "gulp-newer";
+import { Gulpclass } from "gulpclass/Decorators";
 import { configCopy } from "../../config";
+import { browserSync } from "../../gulpfile";
 import { AbstractFrontboxGulpTask } from "./frontbox";
 import { IFrontboxConfig, IFrontboxTask } from "./interface";
 
@@ -13,24 +14,29 @@ export class FrontboxGulpCopy extends AbstractFrontboxGulpTask {
 		super(configCopy, params);
 	}
 
-	@Task()
 	task(element: IFrontboxConfig) {
-		return src(`${element.files}`)
-			.pipe(newer(`${this.destinationPath}/${element.dest}`))
-			.pipe(dest(`${this.destinationPath}/${element.dest}`));
+		return new Promise(resolve => {
+			src(element.files)
+				.pipe(newer(`${this.destinationPath}/${element.dest}`))
+				.pipe(dest(`${this.destinationPath}/${element.dest}`))
+				.on("end", () => {
+					resolve();
+					browserSync.stream();
+				});
+		});
 	}
 
-	start() {
+	async start() {
 		this.createTasks(element => {
-			this.task(element);
-		})
+			return this.task(element);
+		});
 
-		this.loopTasks(element => {
-			this.tasks[element.name]();
-		})
+		await this.loopTasks(async element => {
+			await this.tasks[element.name]();
+		});
 
 		if (argv.watch && !argv.prod) {
-			this.watch('copy');
+			this.watch("copy");
 		}
 	}
 }

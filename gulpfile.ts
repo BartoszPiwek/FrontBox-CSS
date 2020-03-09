@@ -4,7 +4,7 @@
  * https://github.com/BartoszPiwek/FrontBox
  */
 
-import { Gulpclass, Task } from "gulpclass/Decorators";
+import { Gulpclass, SequenceTask, Task } from "gulpclass/Decorators";
 import { configBrowser, configDocumentationStyle } from "./config";
 import { FrontboxGulpCopy } from "./frontbox/gulp/copy";
 import { FrontboxGulpDocumentationStyle } from "./frontbox/gulp/documentation-style";
@@ -26,43 +26,66 @@ let html: FrontboxGulpHTML;
 @Gulpclass()
 export class Gulpfile {
 	@Task()
-	async createServer() {
-		browserSync.init({
-			...configBrowser,
-			server: {
-				baseDir: websiteDestinationPath
-			}
-		});
+	async createServer(done) {
+		if (argv.server) {
+			return browserSync.init({
+				...configBrowser,
+				server: {
+					baseDir: websiteDestinationPath
+				}
+			});
+		} else {
+			done();
+		}
 	}
 
-	@Task('buildWebsite')
-	async buildWebsite() {
+	@Task()
+	async cleanWebsite(done) {
+		if (argv.clean || argv.prod || argv.new) {
+			return del.sync(websiteDestinationPath);
+		} else {
+			done();
+		}
+	}
+
+	@SequenceTask()
+	buildWebsite() {
 		style = new FrontboxGulpStyle();
 		html = new FrontboxGulpHTML();
 		script = new FrontboxGulpScript();
 		copy = new FrontboxGulpCopy();
 
-		if (argv.clean || argv.prod || argv.new) {
-			del.sync(websiteDestinationPath);
-		}
-
-		copy.start();
-		html.start();
-		script.start();
-		style.start();
-
-		if (argv.server && !argv.prod) {
-			this.createServer();
-		}
-
-		//TODO:clean end
+		return [
+			"cleanWebsite",
+			"buildDevWebsite",
+			"buildProdWebsite",
+			"createServer"
+		];
 	}
 
 	@Task()
-	async documentationStyle() {
+	async buildDevWebsite(done) {
+		await copy.start();
+		await html.start();
+		await script.start();
+		await style.start();
+
+		done();
+	}
+
+	@Task()
+	async buildProdWebsite(done) {
+		if (argv.prod) {
+			style.concatFiles();
+		} else {
+			done();
+		}
+	}
+
+	@Task()
+	async buildStyleDocumentation() {
 		style = new FrontboxGulpStyle({
-			destinationPath: `${configDocumentationStyle.dest}/style`,
-			includePrefix: false
+			destinationPath: `${configDocumentationStyle.dest}/style`
 		});
 
 		if (argv.clean) {

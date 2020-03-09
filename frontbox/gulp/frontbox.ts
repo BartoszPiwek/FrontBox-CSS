@@ -1,4 +1,5 @@
-import { watch } from "gulp";
+import { dest, src, watch } from "gulp";
+import * as concat from "gulp-concat";
 import { Gulpclass, Task } from "gulpclass/Decorators";
 import { IFrontboxConfig, IFrontboxTask } from "./interface";
 
@@ -14,11 +15,9 @@ export abstract class AbstractFrontboxGulpTask {
 	public configTask: IFrontboxConfig[];
 
 	public destinationPath: string;
-	public includePrefix: boolean;
 	public canConcatFiles: boolean;
 
 	constructor(configTask: IFrontboxConfig[], params?: IFrontboxTask) {
-		this.includePrefix = true;
 		this.configTask = configTask;
 
 		this.destinationPath = websiteDestinationPath;
@@ -28,54 +27,68 @@ export abstract class AbstractFrontboxGulpTask {
 		}
 	}
 
-	public loopTasks(fun: Function) {
-		this.configTask.forEach(v => {
-			return fun(v);
-		})
+	public async asyncForEach(array, callback) {
+		for (let index = 0; index < array.length; index++) {
+			await callback(array[index], index, array);
+		}
+	}
+
+	public async loopTasks(fun: Function) {
+		await this.asyncForEach(this.configTask, async v => {
+			await fun(v);
+		});
 	}
 
 	public createTasks(fun: Function) {
 		this.configTask.forEach(v => {
-			this.tasks[v.name] = () => {
-				return fun(v);
+			this.tasks[v.name] = async () => {
+				return await fun(v);
 			};
-		})
+		});
 	}
 
 	public concatFiles() {
-		// this.configStyle.filter(v => !v.concatWith).map(async mainConfigStyle => {
+		this.configTask
+			.filter(v => !v.concatWith)
+			.map(async mainConfigStyle => {
+				this.concatTasks[mainConfigStyle.name] = () => {
+					const filesToConcat = this.configTask.filter(
+						v =>
+							v.concatWith === mainConfigStyle.name ||
+							v.name === mainConfigStyle.name
+					);
+					let pathFilesToConcat = filesToConcat.map(concatConfigStyle => {
+						return (
+							[
+								this.destinationPath
+									? this.destinationPath
+									: websiteDestinationPath,
+								concatConfigStyle.dest,
+								concatConfigStyle.name
+							]
+								.filter(concatConfigStyle => concatConfigStyle != "")
+								.join("/") + ".css"
+						);
+					});
 
-		// 	this.concatTasks[mainConfigStyle.name] = () => {
-
-		// 		const filesToConcat = configStyle.filter(v => v.concatWith === mainConfigStyle.name || v.name === mainConfigStyle.name);
-
-		// 		let pathFilesToConcat = filesToConcat.map((concatConfigStyle) => {
-		// 			return [
-		// 				this.destinationPath ? this.destinationPath : websiteDestinationPath,
-		// 				concatConfigStyle.dest,
-		// 				concatConfigStyle.name + '.' + getMode
-		// 			].filter(concatConfigStyle => concatConfigStyle != '').join('/') + '.css';
-		// 		});
-
-		// 		console.log(pathFilesToConcat);
-
-
-		// 		return src(pathFilesToConcat)
-		// 			.pipe(concat(`${mainConfigStyle.name}.${getMode}.css`))
-		// 			.pipe(dest(this.destinationPath
-		// 				? this.destinationPath
-		// 				: `${websiteDestinationPath}/${mainConfigStyle.dest}`));
-		// 	}
-
-		// 	await this.concatTasks[mainConfigStyle.name]();
-		// });
+					return src(pathFilesToConcat)
+						.pipe(concat(`${mainConfigStyle.name}.css`))
+						.pipe(
+							dest(
+								this.destinationPath
+									? this.destinationPath
+									: `${websiteDestinationPath}/${mainConfigStyle.dest}`
+							)
+						);
+				};
+				await this.concatTasks[mainConfigStyle.name]();
+			});
 	}
 
 	@Task()
 	public watch(prefix: string) {
 		this.configTask.forEach(element => {
-
-			const copy = async (done) => {
+			const copy = async done => {
 				await this.tasks[element.name]();
 				done();
 			};
@@ -90,5 +103,6 @@ export abstract class AbstractFrontboxGulpTask {
 	}
 
 	public abstract task?(element: IFrontboxConfig);
-	public abstract start();
+
+	// public abstract start();
 }
