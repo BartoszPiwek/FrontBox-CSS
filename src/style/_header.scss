@@ -23,15 +23,19 @@ Style guide: Header.tools
 		left: 0;
 		width: 100%;
 		padding: 20px 0;
-		transition: height $time-transition, box-shadow $time-transition, background-color $time-transition, padding $time-transition;
+		transition: height $time-transition, box-shadow $time-transition,
+			background-color $time-transition, padding $time-transition;
 		background-color: color("primary");
 		box-shadow: 0 5px 10px 0 transparentize(color("black"), 1);
+	}
 
-		.js_sticky {
-			@extend %fix-fixed;
-
-			padding: 10px 0;
-			box-shadow: 0 5px 10px 0 transparentize(color("black"), 0.4);
+	&.js_sticky {
+		.header {
+			&__content {
+				@extend %fix-fixed;
+				padding: 10px 0;
+				box-shadow: 0 5px 10px 0 transparentize(color("black"), 0.4);
+			}
 		}
 	}
 

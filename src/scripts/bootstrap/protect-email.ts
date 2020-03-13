@@ -1,4 +1,4 @@
-import { Component } from './component';
+import { Component } from './component'
 
 /**
  * Hide e-mails from spam bots
@@ -12,34 +12,36 @@ import { Component } from './component';
  */
 
 interface IProtectEmail {
-	elements: NodeList;
+	elements: NodeList
 }
 
 export class ProtectEmail extends Component {
-	private elements: NodeList;
+	private elements: NodeList
 
 	constructor(param: IProtectEmail) {
-		super(param);
+		super(param)
 	}
 
 	onInit() {
 		this.elements.forEach(item => {
-			item.addEventListener('click', this.onClick);
-		});
+			item.addEventListener('click', this.onClick)
+		})
 	}
 
 	onClick(this: HTMLElement, e: MouseEvent): EventListener {
-		const link: HTMLElement = this;
+		const link: HTMLElement = this
 		const email = link.children[0].textContent
 			.split('')
 			.reverse()
-			.join('');
+			.join('')
 
-		link.setAttribute('href', `mailto:${email}`);
-		link.classList.remove('js_email');
-		link.textContent = email;
-		link.parentNode.replaceChild(link.cloneNode(true), link);
+		link.setAttribute('href', `mailto:${email}`)
+		link.classList.remove('js_email')
+		link.textContent = email
+		link.parentNode.replaceChild(link.cloneNode(true), link)
 
-		return;
+		link.click()
+
+		return
 	}
 }

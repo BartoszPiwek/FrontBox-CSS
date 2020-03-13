@@ -36,8 +36,8 @@ export class FrontboxGulpStyle extends AbstractFrontboxGulpTask {
 				.pipe(dest(`${this.destinationPath}/${element.dest}`))
 				.on("end", () => {
 					resolve();
-					browserSync.stream();
-				});
+				})
+				.pipe(browserSync.reload({ stream: true }));
 		});
 	}
 
