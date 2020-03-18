@@ -12,7 +12,8 @@
 		"build": "gulp buildWebsite --prod",
 		"test": "gulp test",
 		"docs": "gulp buildStyleDocumentation",
-		"update": "ncu"
+		"update": "ncu",
+		"server": "gulp createServer --server"
 	},
 	"bugs": {
 		"url": "https://github.com/BartoszPiwek/FrontBox-CSS/issues"
@@ -74,8 +75,10 @@
 		"normalize.css": "^8.0.1",
 		"picturefill": "^3.0.3",
 		"postcss": "^7.0.17",
+		"postcss-extract-media-query": "^2.0.0",
 		"postcss-pxtorem": "^4.0.1",
 		"preprocess": "^3.1.0",
+		"prismjs": "^1.18.0",
 		"rename-css-selectors": "^3.2.5",
 		"stylelint": "^10.1.0",
 		"stylelint-config-property-sort-order-smacss": "^5.0.0",
@@ -89,8 +92,7 @@
 		"uncss": "^0.17.2",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"vnu-jar": "^19.6.7",
-		"prismjs": "^1.18.0"
+		"vnu-jar": "^19.6.7"
 	},
 	"dependencies": {
 		"css-vars-ponyfill": "^2.1.1",

@@ -61,33 +61,6 @@ export class FrontboxGulpHTML extends AbstractFrontboxGulpTask {
 		}
 	}
 
-	// @Task('main')
-	// main() {
-	// 	return src(`${configHtml.main.files}`)
-	// 		.pipe(newer(`${websiteDestinationPath}/${configHtml.main.dest}`))
-	// 		.pipe(changed(`${websiteDestinationPath}`))
-	// 		.pipe(pug(pugOptions))
-	// 		.pipe(dest(`${websiteDestinationPath}/${configHtml.main.dest}`))
-	// 		.pipe(browserSync.stream());
-	// }
-
-	// @Task('include')
-	// include() {
-	// 	return src(`${configHtml.include.files}`)
-	// 		.pipe(pug(pugOptions))
-	// 		.pipe(dest(`${websiteDestinationPath}`))
-	// 		.pipe(browserSync.stream());
-	// }
-
-	// @Task('partials')
-	// partials() {
-	// 	return src(`${configHtml.partials.files}`)
-	// 		.pipe(newer(`${websiteDestinationPath}/${configHtml.partials.dest}`))
-	// 		.pipe(pug(pugOptions))
-	// 		.pipe(dest(`${websiteDestinationPath}/${configHtml.partials.dest}`))
-	// 		.pipe(browserSync.stream());
-	// }
-
 	// @Task('hash')
 	// hash() {
 	// 	return src(`${websiteDestinationPath}/*.html`)
