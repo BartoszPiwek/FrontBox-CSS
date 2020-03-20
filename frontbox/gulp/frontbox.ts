@@ -49,21 +49,23 @@ export abstract class AbstractFrontboxGulpTask {
 	@Task()
 	public watch(prefix: string) {
 		this.configTask.forEach(element => {
-			const copy = async done => {
+			const taskFunction = async done => {
 				await this.tasks[element.name]()
 				done()
 			}
 
-			Object.assign(copy, {
+			Object.assign(taskFunction, {
 				displayName: `${prefix}${element.name.charAt(0).toUpperCase() +
 					element.name.slice(1)}`,
 			})
 
-			watch(element.watch, copy)
+			watch(element.watch, taskFunction)
 		})
 	}
 
 	public abstract task?(element: IFrontboxConfig)
+	public abstract taskProd?(element: IFrontboxConfig)
 
-	// public abstract start();
+	public abstract start()
+	public abstract startProd()
 }

@@ -17,7 +17,7 @@ const pugOptions = {
 		},
 	},
 	pretty: true,
-	verbose: false,
+	verbose: true,
 	filters: require('./pug-filters')({
 		version: getMode,
 	}),
@@ -48,9 +48,26 @@ export class FrontboxGulpHTML extends AbstractFrontboxGulpTask {
 	}
 
 	@Task()
+	taskImpact(element: IFrontboxConfig) {
+		return new Promise(resolve => {
+			src(`${element.files}`)
+				.pipe(pug(pugOptions))
+				.pipe(dest(`${this.destinationPath}/${element.dest}`))
+				.on('end', () => {
+					resolve()
+					browserSync.reload()
+				})
+		})
+	}
+
+	@Task()
 	async start() {
-		this.createTasks(element => {
-			return this.task(element)
+		this.createTasks((element: IFrontboxConfig) => {
+			if (element.otherTasksImpact) {
+				return this.taskImpact(element)
+			} else {
+				return this.task(element)
+			}
 		})
 
 		await this.loopTasks(async element => {
