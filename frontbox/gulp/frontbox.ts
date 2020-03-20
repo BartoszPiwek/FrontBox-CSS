@@ -63,9 +63,9 @@ export abstract class AbstractFrontboxGulpTask {
 		})
 	}
 
-	public abstract task?(element: IFrontboxConfig)
-	public abstract taskProd?(element: IFrontboxConfig)
+	protected abstract task(element: IFrontboxConfig): void
+	protected taskProd?(element: IFrontboxConfig): void
 
-	public abstract start()
-	public abstract startProd()
+	protected abstract start(): void
+	protected startProd?(): void
 }
