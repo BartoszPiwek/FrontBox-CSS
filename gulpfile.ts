@@ -76,7 +76,6 @@ export class Gulpfile {
 	@Task()
 	async buildProdWebsite(done) {
 		if (argv.prod) {
-			await style.concatFiles()
 			await style.startProd()
 		} else {
 			done()

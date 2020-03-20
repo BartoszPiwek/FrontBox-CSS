@@ -16,6 +16,7 @@ const pugOptions = {
 			...configWebsite,
 		},
 	},
+	pretty: true,
 	verbose: false,
 	filters: require('./pug-filters')({
 		version: getMode,

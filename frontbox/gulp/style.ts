@@ -162,6 +162,8 @@ export class FrontboxGulpStyle extends AbstractFrontboxGulpTask {
 
 	@Task()
 	async startProd() {
+		await this.concatFiles()
+
 		this.tasks = []
 
 		this.configTask.forEach(v => {

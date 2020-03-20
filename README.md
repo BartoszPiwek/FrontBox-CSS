@@ -8,13 +8,13 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 
 ## Table of contents
 
-- [Preview/Status](#previewstatus)
-- [Information](#information)
-- [Requirements](#requirements)
-- [Gulp](#gulp)
-- [Projekt Tree](#projekt-tree)
-- [Testing Tools](#testing-tools)
-- [Bugs](#bugs)
+-   [Preview/Status](#previewstatus)
+-   [Information](#information)
+-   [Requirements](#requirements)
+-   [Gulp](#gulp)
+-   [Projekt Tree](#projekt-tree)
+-   [Testing Tools](#testing-tools)
+-   [Bugs](#bugs)
 
 ## Preview/Status
 
@@ -174,19 +174,19 @@ Static WWW builder tool. Use prepared html templates, include necessary element 
 <table>
 	<tr>
 		<td>Generate website with server and automatic update after modifying files</td>
-		<td>npm start</td>
+		<td>yarn start</td>
 	</tr>
 	<tr>
 		<td>Generate favicons</td>
-		<td>gulp favicon</td>
+		<td>yarn favicon</td>
 	</tr>
 	<tr>
 		<td>Create docs (<a href="https://github.com/kneath/kss" target="_blank">KSS</a>)</td>
-		<td>gulp docs</td>
+		<td>yarn docs</td>
 	</tr>
 	<tr>
 		<td>Debug task</td>
-		<td>npm test</td>
+		<td>yarn test</td>
 	</tr>
 	<tr>
 		<td>Change version to productive</td>
