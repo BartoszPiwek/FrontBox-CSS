@@ -64,13 +64,11 @@ export class Gulpfile {
 	}
 
 	@Task()
-	async buildDevWebsite(done) {
+	async buildDevWebsite() {
 		await copy.start()
 		await html.start()
 		await script.start()
 		await style.start()
-
-		done()
 	}
 
 	@Task()
