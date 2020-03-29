@@ -1,8 +1,8 @@
 ```diff
 - This repository has been deprecated
 - I decide to separated repository into 3 pieces
-- 1. FrontBox Static https://github.com/BartoszPiwek/FrontBox-Style
-- 3. FrontBox Style https://github.com/BartoszPiwek/FrontBox-Static
+- 1. FrontBox Static https://github.com/BartoszPiwek/FrontBox-Static
+- 3. FrontBox Style https://github.com/BartoszPiwek/FrontBox-Style
 - 2. FrontBox KSS Styleguide https://github.com/BartoszPiwek/FrontBox-KSS-Styleguide
 - ... more?
 ```
