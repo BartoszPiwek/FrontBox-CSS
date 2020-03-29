@@ -1,3 +1,12 @@
+```diff
+- This repository has been deprecated
+- I decide to separated repository into 3 pieces
+- 1. Frontbox Static https://github.com/BartoszPiwek/FrontBox-Style
+- 3. Frontbox Style https://github.com/BartoszPiwek/FrontBox-Style
+- 2. Frontbox KSS Styleguide https://github.com/BartoszPiwek/Frontbox-KSS-Styleguide
+- ... more?
+```
+
 [![](frontbox/gitfiles/section-frontbox.png)](#)
 
 <h1>
